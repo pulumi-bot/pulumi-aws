@@ -182,6 +182,13 @@ type LogGroupInput interface {
 	ToLogGroupOutputWithContext(ctx context.Context) LogGroupOutput
 }
 
+type LogGroupPtrInput interface {
+	pulumi.Input
+
+	ToLogGroupPtrOutput() LogGroupPtrOutput
+	ToLogGroupPtrOutputWithContext(ctx context.Context) LogGroupPtrOutput
+}
+
 func (LogGroup) ElementType() reflect.Type {
 	return reflect.TypeOf((*LogGroup)(nil)).Elem()
 }
@@ -192,6 +199,14 @@ func (i LogGroup) ToLogGroupOutput() LogGroupOutput {
 
 func (i LogGroup) ToLogGroupOutputWithContext(ctx context.Context) LogGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogGroupOutput)
+}
+
+func (i LogGroup) ToLogGroupPtrOutput() LogGroupPtrOutput {
+	return i.ToLogGroupPtrOutputWithContext(context.Background())
+}
+
+func (i LogGroup) ToLogGroupPtrOutputWithContext(ctx context.Context) LogGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogGroupPtrOutput)
 }
 
 type LogGroupOutput struct {
@@ -210,6 +225,23 @@ func (o LogGroupOutput) ToLogGroupOutputWithContext(ctx context.Context) LogGrou
 	return o
 }
 
+type LogGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogGroup)(nil)).Elem()
+}
+
+func (o LogGroupPtrOutput) ToLogGroupPtrOutput() LogGroupPtrOutput {
+	return o
+}
+
+func (o LogGroupPtrOutput) ToLogGroupPtrOutputWithContext(ctx context.Context) LogGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LogGroupOutput{})
+	pulumi.RegisterOutputType(LogGroupPtrOutput{})
 }

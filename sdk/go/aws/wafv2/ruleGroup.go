@@ -221,6 +221,13 @@ type RuleGroupInput interface {
 	ToRuleGroupOutputWithContext(ctx context.Context) RuleGroupOutput
 }
 
+type RuleGroupPtrInput interface {
+	pulumi.Input
+
+	ToRuleGroupPtrOutput() RuleGroupPtrOutput
+	ToRuleGroupPtrOutputWithContext(ctx context.Context) RuleGroupPtrOutput
+}
+
 func (RuleGroup) ElementType() reflect.Type {
 	return reflect.TypeOf((*RuleGroup)(nil)).Elem()
 }
@@ -231,6 +238,14 @@ func (i RuleGroup) ToRuleGroupOutput() RuleGroupOutput {
 
 func (i RuleGroup) ToRuleGroupOutputWithContext(ctx context.Context) RuleGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupOutput)
+}
+
+func (i RuleGroup) ToRuleGroupPtrOutput() RuleGroupPtrOutput {
+	return i.ToRuleGroupPtrOutputWithContext(context.Background())
+}
+
+func (i RuleGroup) ToRuleGroupPtrOutputWithContext(ctx context.Context) RuleGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupPtrOutput)
 }
 
 type RuleGroupOutput struct {
@@ -249,6 +264,23 @@ func (o RuleGroupOutput) ToRuleGroupOutputWithContext(ctx context.Context) RuleG
 	return o
 }
 
+type RuleGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RuleGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleGroup)(nil)).Elem()
+}
+
+func (o RuleGroupPtrOutput) ToRuleGroupPtrOutput() RuleGroupPtrOutput {
+	return o
+}
+
+func (o RuleGroupPtrOutput) ToRuleGroupPtrOutputWithContext(ctx context.Context) RuleGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RuleGroupOutput{})
+	pulumi.RegisterOutputType(RuleGroupPtrOutput{})
 }

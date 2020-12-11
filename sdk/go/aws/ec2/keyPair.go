@@ -173,6 +173,13 @@ type KeyPairInput interface {
 	ToKeyPairOutputWithContext(ctx context.Context) KeyPairOutput
 }
 
+type KeyPairPtrInput interface {
+	pulumi.Input
+
+	ToKeyPairPtrOutput() KeyPairPtrOutput
+	ToKeyPairPtrOutputWithContext(ctx context.Context) KeyPairPtrOutput
+}
+
 func (KeyPair) ElementType() reflect.Type {
 	return reflect.TypeOf((*KeyPair)(nil)).Elem()
 }
@@ -183,6 +190,14 @@ func (i KeyPair) ToKeyPairOutput() KeyPairOutput {
 
 func (i KeyPair) ToKeyPairOutputWithContext(ctx context.Context) KeyPairOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyPairOutput)
+}
+
+func (i KeyPair) ToKeyPairPtrOutput() KeyPairPtrOutput {
+	return i.ToKeyPairPtrOutputWithContext(context.Background())
+}
+
+func (i KeyPair) ToKeyPairPtrOutputWithContext(ctx context.Context) KeyPairPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyPairPtrOutput)
 }
 
 type KeyPairOutput struct {
@@ -201,6 +216,23 @@ func (o KeyPairOutput) ToKeyPairOutputWithContext(ctx context.Context) KeyPairOu
 	return o
 }
 
+type KeyPairPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (KeyPairPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyPair)(nil)).Elem()
+}
+
+func (o KeyPairPtrOutput) ToKeyPairPtrOutput() KeyPairPtrOutput {
+	return o
+}
+
+func (o KeyPairPtrOutput) ToKeyPairPtrOutputWithContext(ctx context.Context) KeyPairPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(KeyPairOutput{})
+	pulumi.RegisterOutputType(KeyPairPtrOutput{})
 }

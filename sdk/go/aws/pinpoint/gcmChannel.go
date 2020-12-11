@@ -147,6 +147,13 @@ type GcmChannelInput interface {
 	ToGcmChannelOutputWithContext(ctx context.Context) GcmChannelOutput
 }
 
+type GcmChannelPtrInput interface {
+	pulumi.Input
+
+	ToGcmChannelPtrOutput() GcmChannelPtrOutput
+	ToGcmChannelPtrOutputWithContext(ctx context.Context) GcmChannelPtrOutput
+}
+
 func (GcmChannel) ElementType() reflect.Type {
 	return reflect.TypeOf((*GcmChannel)(nil)).Elem()
 }
@@ -157,6 +164,14 @@ func (i GcmChannel) ToGcmChannelOutput() GcmChannelOutput {
 
 func (i GcmChannel) ToGcmChannelOutputWithContext(ctx context.Context) GcmChannelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GcmChannelOutput)
+}
+
+func (i GcmChannel) ToGcmChannelPtrOutput() GcmChannelPtrOutput {
+	return i.ToGcmChannelPtrOutputWithContext(context.Background())
+}
+
+func (i GcmChannel) ToGcmChannelPtrOutputWithContext(ctx context.Context) GcmChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcmChannelPtrOutput)
 }
 
 type GcmChannelOutput struct {
@@ -175,6 +190,23 @@ func (o GcmChannelOutput) ToGcmChannelOutputWithContext(ctx context.Context) Gcm
 	return o
 }
 
+type GcmChannelPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GcmChannelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcmChannel)(nil)).Elem()
+}
+
+func (o GcmChannelPtrOutput) ToGcmChannelPtrOutput() GcmChannelPtrOutput {
+	return o
+}
+
+func (o GcmChannelPtrOutput) ToGcmChannelPtrOutputWithContext(ctx context.Context) GcmChannelPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(GcmChannelOutput{})
+	pulumi.RegisterOutputType(GcmChannelPtrOutput{})
 }

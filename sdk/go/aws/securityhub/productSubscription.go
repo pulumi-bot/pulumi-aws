@@ -136,6 +136,13 @@ type ProductSubscriptionInput interface {
 	ToProductSubscriptionOutputWithContext(ctx context.Context) ProductSubscriptionOutput
 }
 
+type ProductSubscriptionPtrInput interface {
+	pulumi.Input
+
+	ToProductSubscriptionPtrOutput() ProductSubscriptionPtrOutput
+	ToProductSubscriptionPtrOutputWithContext(ctx context.Context) ProductSubscriptionPtrOutput
+}
+
 func (ProductSubscription) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProductSubscription)(nil)).Elem()
 }
@@ -146,6 +153,14 @@ func (i ProductSubscription) ToProductSubscriptionOutput() ProductSubscriptionOu
 
 func (i ProductSubscription) ToProductSubscriptionOutputWithContext(ctx context.Context) ProductSubscriptionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProductSubscriptionOutput)
+}
+
+func (i ProductSubscription) ToProductSubscriptionPtrOutput() ProductSubscriptionPtrOutput {
+	return i.ToProductSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i ProductSubscription) ToProductSubscriptionPtrOutputWithContext(ctx context.Context) ProductSubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProductSubscriptionPtrOutput)
 }
 
 type ProductSubscriptionOutput struct {
@@ -164,6 +179,23 @@ func (o ProductSubscriptionOutput) ToProductSubscriptionOutputWithContext(ctx co
 	return o
 }
 
+type ProductSubscriptionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProductSubscriptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProductSubscription)(nil)).Elem()
+}
+
+func (o ProductSubscriptionPtrOutput) ToProductSubscriptionPtrOutput() ProductSubscriptionPtrOutput {
+	return o
+}
+
+func (o ProductSubscriptionPtrOutput) ToProductSubscriptionPtrOutputWithContext(ctx context.Context) ProductSubscriptionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProductSubscriptionOutput{})
+	pulumi.RegisterOutputType(ProductSubscriptionPtrOutput{})
 }

@@ -366,6 +366,13 @@ type DirectoryInput interface {
 	ToDirectoryOutputWithContext(ctx context.Context) DirectoryOutput
 }
 
+type DirectoryPtrInput interface {
+	pulumi.Input
+
+	ToDirectoryPtrOutput() DirectoryPtrOutput
+	ToDirectoryPtrOutputWithContext(ctx context.Context) DirectoryPtrOutput
+}
+
 func (Directory) ElementType() reflect.Type {
 	return reflect.TypeOf((*Directory)(nil)).Elem()
 }
@@ -376,6 +383,14 @@ func (i Directory) ToDirectoryOutput() DirectoryOutput {
 
 func (i Directory) ToDirectoryOutputWithContext(ctx context.Context) DirectoryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DirectoryOutput)
+}
+
+func (i Directory) ToDirectoryPtrOutput() DirectoryPtrOutput {
+	return i.ToDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (i Directory) ToDirectoryPtrOutputWithContext(ctx context.Context) DirectoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryPtrOutput)
 }
 
 type DirectoryOutput struct {
@@ -394,6 +409,23 @@ func (o DirectoryOutput) ToDirectoryOutputWithContext(ctx context.Context) Direc
 	return o
 }
 
+type DirectoryPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DirectoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Directory)(nil)).Elem()
+}
+
+func (o DirectoryPtrOutput) ToDirectoryPtrOutput() DirectoryPtrOutput {
+	return o
+}
+
+func (o DirectoryPtrOutput) ToDirectoryPtrOutputWithContext(ctx context.Context) DirectoryPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DirectoryOutput{})
+	pulumi.RegisterOutputType(DirectoryPtrOutput{})
 }

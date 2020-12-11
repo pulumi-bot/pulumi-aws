@@ -250,6 +250,13 @@ type RestApiInput interface {
 	ToRestApiOutputWithContext(ctx context.Context) RestApiOutput
 }
 
+type RestApiPtrInput interface {
+	pulumi.Input
+
+	ToRestApiPtrOutput() RestApiPtrOutput
+	ToRestApiPtrOutputWithContext(ctx context.Context) RestApiPtrOutput
+}
+
 func (RestApi) ElementType() reflect.Type {
 	return reflect.TypeOf((*RestApi)(nil)).Elem()
 }
@@ -260,6 +267,14 @@ func (i RestApi) ToRestApiOutput() RestApiOutput {
 
 func (i RestApi) ToRestApiOutputWithContext(ctx context.Context) RestApiOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RestApiOutput)
+}
+
+func (i RestApi) ToRestApiPtrOutput() RestApiPtrOutput {
+	return i.ToRestApiPtrOutputWithContext(context.Background())
+}
+
+func (i RestApi) ToRestApiPtrOutputWithContext(ctx context.Context) RestApiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestApiPtrOutput)
 }
 
 type RestApiOutput struct {
@@ -278,6 +293,23 @@ func (o RestApiOutput) ToRestApiOutputWithContext(ctx context.Context) RestApiOu
 	return o
 }
 
+type RestApiPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RestApiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestApi)(nil)).Elem()
+}
+
+func (o RestApiPtrOutput) ToRestApiPtrOutput() RestApiPtrOutput {
+	return o
+}
+
+func (o RestApiPtrOutput) ToRestApiPtrOutputWithContext(ctx context.Context) RestApiPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RestApiOutput{})
+	pulumi.RegisterOutputType(RestApiPtrOutput{})
 }

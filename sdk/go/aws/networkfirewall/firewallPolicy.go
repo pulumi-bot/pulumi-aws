@@ -220,6 +220,13 @@ type FirewallPolicyInput interface {
 	ToFirewallPolicyOutputWithContext(ctx context.Context) FirewallPolicyOutput
 }
 
+type FirewallPolicyPtrInput interface {
+	pulumi.Input
+
+	ToFirewallPolicyPtrOutput() FirewallPolicyPtrOutput
+	ToFirewallPolicyPtrOutputWithContext(ctx context.Context) FirewallPolicyPtrOutput
+}
+
 func (FirewallPolicy) ElementType() reflect.Type {
 	return reflect.TypeOf((*FirewallPolicy)(nil)).Elem()
 }
@@ -230,6 +237,14 @@ func (i FirewallPolicy) ToFirewallPolicyOutput() FirewallPolicyOutput {
 
 func (i FirewallPolicy) ToFirewallPolicyOutputWithContext(ctx context.Context) FirewallPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyOutput)
+}
+
+func (i FirewallPolicy) ToFirewallPolicyPtrOutput() FirewallPolicyPtrOutput {
+	return i.ToFirewallPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i FirewallPolicy) ToFirewallPolicyPtrOutputWithContext(ctx context.Context) FirewallPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyPtrOutput)
 }
 
 type FirewallPolicyOutput struct {
@@ -248,6 +263,23 @@ func (o FirewallPolicyOutput) ToFirewallPolicyOutputWithContext(ctx context.Cont
 	return o
 }
 
+type FirewallPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FirewallPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallPolicy)(nil)).Elem()
+}
+
+func (o FirewallPolicyPtrOutput) ToFirewallPolicyPtrOutput() FirewallPolicyPtrOutput {
+	return o
+}
+
+func (o FirewallPolicyPtrOutput) ToFirewallPolicyPtrOutputWithContext(ctx context.Context) FirewallPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(FirewallPolicyOutput{})
+	pulumi.RegisterOutputType(FirewallPolicyPtrOutput{})
 }

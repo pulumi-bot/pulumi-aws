@@ -195,6 +195,13 @@ type VideoStreamInput interface {
 	ToVideoStreamOutputWithContext(ctx context.Context) VideoStreamOutput
 }
 
+type VideoStreamPtrInput interface {
+	pulumi.Input
+
+	ToVideoStreamPtrOutput() VideoStreamPtrOutput
+	ToVideoStreamPtrOutputWithContext(ctx context.Context) VideoStreamPtrOutput
+}
+
 func (VideoStream) ElementType() reflect.Type {
 	return reflect.TypeOf((*VideoStream)(nil)).Elem()
 }
@@ -205,6 +212,14 @@ func (i VideoStream) ToVideoStreamOutput() VideoStreamOutput {
 
 func (i VideoStream) ToVideoStreamOutputWithContext(ctx context.Context) VideoStreamOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VideoStreamOutput)
+}
+
+func (i VideoStream) ToVideoStreamPtrOutput() VideoStreamPtrOutput {
+	return i.ToVideoStreamPtrOutputWithContext(context.Background())
+}
+
+func (i VideoStream) ToVideoStreamPtrOutputWithContext(ctx context.Context) VideoStreamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VideoStreamPtrOutput)
 }
 
 type VideoStreamOutput struct {
@@ -223,6 +238,23 @@ func (o VideoStreamOutput) ToVideoStreamOutputWithContext(ctx context.Context) V
 	return o
 }
 
+type VideoStreamPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VideoStreamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VideoStream)(nil)).Elem()
+}
+
+func (o VideoStreamPtrOutput) ToVideoStreamPtrOutput() VideoStreamPtrOutput {
+	return o
+}
+
+func (o VideoStreamPtrOutput) ToVideoStreamPtrOutputWithContext(ctx context.Context) VideoStreamPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VideoStreamOutput{})
+	pulumi.RegisterOutputType(VideoStreamPtrOutput{})
 }

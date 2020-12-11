@@ -127,6 +127,13 @@ type PublicKeyInput interface {
 	ToPublicKeyOutputWithContext(ctx context.Context) PublicKeyOutput
 }
 
+type PublicKeyPtrInput interface {
+	pulumi.Input
+
+	ToPublicKeyPtrOutput() PublicKeyPtrOutput
+	ToPublicKeyPtrOutputWithContext(ctx context.Context) PublicKeyPtrOutput
+}
+
 func (PublicKey) ElementType() reflect.Type {
 	return reflect.TypeOf((*PublicKey)(nil)).Elem()
 }
@@ -137,6 +144,14 @@ func (i PublicKey) ToPublicKeyOutput() PublicKeyOutput {
 
 func (i PublicKey) ToPublicKeyOutputWithContext(ctx context.Context) PublicKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PublicKeyOutput)
+}
+
+func (i PublicKey) ToPublicKeyPtrOutput() PublicKeyPtrOutput {
+	return i.ToPublicKeyPtrOutputWithContext(context.Background())
+}
+
+func (i PublicKey) ToPublicKeyPtrOutputWithContext(ctx context.Context) PublicKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicKeyPtrOutput)
 }
 
 type PublicKeyOutput struct {
@@ -155,6 +170,23 @@ func (o PublicKeyOutput) ToPublicKeyOutputWithContext(ctx context.Context) Publi
 	return o
 }
 
+type PublicKeyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PublicKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicKey)(nil)).Elem()
+}
+
+func (o PublicKeyPtrOutput) ToPublicKeyPtrOutput() PublicKeyPtrOutput {
+	return o
+}
+
+func (o PublicKeyPtrOutput) ToPublicKeyPtrOutputWithContext(ctx context.Context) PublicKeyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PublicKeyOutput{})
+	pulumi.RegisterOutputType(PublicKeyPtrOutput{})
 }

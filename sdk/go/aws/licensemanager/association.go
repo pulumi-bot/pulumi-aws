@@ -109,6 +109,13 @@ type AssociationInput interface {
 	ToAssociationOutputWithContext(ctx context.Context) AssociationOutput
 }
 
+type AssociationPtrInput interface {
+	pulumi.Input
+
+	ToAssociationPtrOutput() AssociationPtrOutput
+	ToAssociationPtrOutputWithContext(ctx context.Context) AssociationPtrOutput
+}
+
 func (Association) ElementType() reflect.Type {
 	return reflect.TypeOf((*Association)(nil)).Elem()
 }
@@ -119,6 +126,14 @@ func (i Association) ToAssociationOutput() AssociationOutput {
 
 func (i Association) ToAssociationOutputWithContext(ctx context.Context) AssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AssociationOutput)
+}
+
+func (i Association) ToAssociationPtrOutput() AssociationPtrOutput {
+	return i.ToAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i Association) ToAssociationPtrOutputWithContext(ctx context.Context) AssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssociationPtrOutput)
 }
 
 type AssociationOutput struct {
@@ -137,6 +152,23 @@ func (o AssociationOutput) ToAssociationOutputWithContext(ctx context.Context) A
 	return o
 }
 
+type AssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Association)(nil)).Elem()
+}
+
+func (o AssociationPtrOutput) ToAssociationPtrOutput() AssociationPtrOutput {
+	return o
+}
+
+func (o AssociationPtrOutput) ToAssociationPtrOutputWithContext(ctx context.Context) AssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AssociationOutput{})
+	pulumi.RegisterOutputType(AssociationPtrOutput{})
 }

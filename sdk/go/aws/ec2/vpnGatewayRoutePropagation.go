@@ -127,6 +127,13 @@ type VpnGatewayRoutePropagationInput interface {
 	ToVpnGatewayRoutePropagationOutputWithContext(ctx context.Context) VpnGatewayRoutePropagationOutput
 }
 
+type VpnGatewayRoutePropagationPtrInput interface {
+	pulumi.Input
+
+	ToVpnGatewayRoutePropagationPtrOutput() VpnGatewayRoutePropagationPtrOutput
+	ToVpnGatewayRoutePropagationPtrOutputWithContext(ctx context.Context) VpnGatewayRoutePropagationPtrOutput
+}
+
 func (VpnGatewayRoutePropagation) ElementType() reflect.Type {
 	return reflect.TypeOf((*VpnGatewayRoutePropagation)(nil)).Elem()
 }
@@ -137,6 +144,14 @@ func (i VpnGatewayRoutePropagation) ToVpnGatewayRoutePropagationOutput() VpnGate
 
 func (i VpnGatewayRoutePropagation) ToVpnGatewayRoutePropagationOutputWithContext(ctx context.Context) VpnGatewayRoutePropagationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayRoutePropagationOutput)
+}
+
+func (i VpnGatewayRoutePropagation) ToVpnGatewayRoutePropagationPtrOutput() VpnGatewayRoutePropagationPtrOutput {
+	return i.ToVpnGatewayRoutePropagationPtrOutputWithContext(context.Background())
+}
+
+func (i VpnGatewayRoutePropagation) ToVpnGatewayRoutePropagationPtrOutputWithContext(ctx context.Context) VpnGatewayRoutePropagationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayRoutePropagationPtrOutput)
 }
 
 type VpnGatewayRoutePropagationOutput struct {
@@ -155,6 +170,23 @@ func (o VpnGatewayRoutePropagationOutput) ToVpnGatewayRoutePropagationOutputWith
 	return o
 }
 
+type VpnGatewayRoutePropagationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpnGatewayRoutePropagationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnGatewayRoutePropagation)(nil)).Elem()
+}
+
+func (o VpnGatewayRoutePropagationPtrOutput) ToVpnGatewayRoutePropagationPtrOutput() VpnGatewayRoutePropagationPtrOutput {
+	return o
+}
+
+func (o VpnGatewayRoutePropagationPtrOutput) ToVpnGatewayRoutePropagationPtrOutputWithContext(ctx context.Context) VpnGatewayRoutePropagationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VpnGatewayRoutePropagationOutput{})
+	pulumi.RegisterOutputType(VpnGatewayRoutePropagationPtrOutput{})
 }

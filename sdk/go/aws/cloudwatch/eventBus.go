@@ -129,6 +129,13 @@ type EventBusInput interface {
 	ToEventBusOutputWithContext(ctx context.Context) EventBusOutput
 }
 
+type EventBusPtrInput interface {
+	pulumi.Input
+
+	ToEventBusPtrOutput() EventBusPtrOutput
+	ToEventBusPtrOutputWithContext(ctx context.Context) EventBusPtrOutput
+}
+
 func (EventBus) ElementType() reflect.Type {
 	return reflect.TypeOf((*EventBus)(nil)).Elem()
 }
@@ -139,6 +146,14 @@ func (i EventBus) ToEventBusOutput() EventBusOutput {
 
 func (i EventBus) ToEventBusOutputWithContext(ctx context.Context) EventBusOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EventBusOutput)
+}
+
+func (i EventBus) ToEventBusPtrOutput() EventBusPtrOutput {
+	return i.ToEventBusPtrOutputWithContext(context.Background())
+}
+
+func (i EventBus) ToEventBusPtrOutputWithContext(ctx context.Context) EventBusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventBusPtrOutput)
 }
 
 type EventBusOutput struct {
@@ -157,6 +172,23 @@ func (o EventBusOutput) ToEventBusOutputWithContext(ctx context.Context) EventBu
 	return o
 }
 
+type EventBusPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventBusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventBus)(nil)).Elem()
+}
+
+func (o EventBusPtrOutput) ToEventBusPtrOutput() EventBusPtrOutput {
+	return o
+}
+
+func (o EventBusPtrOutput) ToEventBusPtrOutputWithContext(ctx context.Context) EventBusPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EventBusOutput{})
+	pulumi.RegisterOutputType(EventBusPtrOutput{})
 }

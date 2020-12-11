@@ -147,6 +147,13 @@ type ReceiptFilterInput interface {
 	ToReceiptFilterOutputWithContext(ctx context.Context) ReceiptFilterOutput
 }
 
+type ReceiptFilterPtrInput interface {
+	pulumi.Input
+
+	ToReceiptFilterPtrOutput() ReceiptFilterPtrOutput
+	ToReceiptFilterPtrOutputWithContext(ctx context.Context) ReceiptFilterPtrOutput
+}
+
 func (ReceiptFilter) ElementType() reflect.Type {
 	return reflect.TypeOf((*ReceiptFilter)(nil)).Elem()
 }
@@ -157,6 +164,14 @@ func (i ReceiptFilter) ToReceiptFilterOutput() ReceiptFilterOutput {
 
 func (i ReceiptFilter) ToReceiptFilterOutputWithContext(ctx context.Context) ReceiptFilterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReceiptFilterOutput)
+}
+
+func (i ReceiptFilter) ToReceiptFilterPtrOutput() ReceiptFilterPtrOutput {
+	return i.ToReceiptFilterPtrOutputWithContext(context.Background())
+}
+
+func (i ReceiptFilter) ToReceiptFilterPtrOutputWithContext(ctx context.Context) ReceiptFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptFilterPtrOutput)
 }
 
 type ReceiptFilterOutput struct {
@@ -175,6 +190,23 @@ func (o ReceiptFilterOutput) ToReceiptFilterOutputWithContext(ctx context.Contex
 	return o
 }
 
+type ReceiptFilterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReceiptFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReceiptFilter)(nil)).Elem()
+}
+
+func (o ReceiptFilterPtrOutput) ToReceiptFilterPtrOutput() ReceiptFilterPtrOutput {
+	return o
+}
+
+func (o ReceiptFilterPtrOutput) ToReceiptFilterPtrOutputWithContext(ctx context.Context) ReceiptFilterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ReceiptFilterOutput{})
+	pulumi.RegisterOutputType(ReceiptFilterPtrOutput{})
 }

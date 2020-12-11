@@ -174,6 +174,13 @@ type ApiKeyInput interface {
 	ToApiKeyOutputWithContext(ctx context.Context) ApiKeyOutput
 }
 
+type ApiKeyPtrInput interface {
+	pulumi.Input
+
+	ToApiKeyPtrOutput() ApiKeyPtrOutput
+	ToApiKeyPtrOutputWithContext(ctx context.Context) ApiKeyPtrOutput
+}
+
 func (ApiKey) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApiKey)(nil)).Elem()
 }
@@ -184,6 +191,14 @@ func (i ApiKey) ToApiKeyOutput() ApiKeyOutput {
 
 func (i ApiKey) ToApiKeyOutputWithContext(ctx context.Context) ApiKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyOutput)
+}
+
+func (i ApiKey) ToApiKeyPtrOutput() ApiKeyPtrOutput {
+	return i.ToApiKeyPtrOutputWithContext(context.Background())
+}
+
+func (i ApiKey) ToApiKeyPtrOutputWithContext(ctx context.Context) ApiKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyPtrOutput)
 }
 
 type ApiKeyOutput struct {
@@ -202,6 +217,23 @@ func (o ApiKeyOutput) ToApiKeyOutputWithContext(ctx context.Context) ApiKeyOutpu
 	return o
 }
 
+type ApiKeyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApiKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiKey)(nil)).Elem()
+}
+
+func (o ApiKeyPtrOutput) ToApiKeyPtrOutput() ApiKeyPtrOutput {
+	return o
+}
+
+func (o ApiKeyPtrOutput) ToApiKeyPtrOutputWithContext(ctx context.Context) ApiKeyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApiKeyOutput{})
+	pulumi.RegisterOutputType(ApiKeyPtrOutput{})
 }

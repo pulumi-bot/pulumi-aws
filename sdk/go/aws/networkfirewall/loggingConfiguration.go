@@ -209,6 +209,13 @@ type LoggingConfigurationInput interface {
 	ToLoggingConfigurationOutputWithContext(ctx context.Context) LoggingConfigurationOutput
 }
 
+type LoggingConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToLoggingConfigurationPtrOutput() LoggingConfigurationPtrOutput
+	ToLoggingConfigurationPtrOutputWithContext(ctx context.Context) LoggingConfigurationPtrOutput
+}
+
 func (LoggingConfiguration) ElementType() reflect.Type {
 	return reflect.TypeOf((*LoggingConfiguration)(nil)).Elem()
 }
@@ -219,6 +226,14 @@ func (i LoggingConfiguration) ToLoggingConfigurationOutput() LoggingConfiguratio
 
 func (i LoggingConfiguration) ToLoggingConfigurationOutputWithContext(ctx context.Context) LoggingConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigurationOutput)
+}
+
+func (i LoggingConfiguration) ToLoggingConfigurationPtrOutput() LoggingConfigurationPtrOutput {
+	return i.ToLoggingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i LoggingConfiguration) ToLoggingConfigurationPtrOutputWithContext(ctx context.Context) LoggingConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigurationPtrOutput)
 }
 
 type LoggingConfigurationOutput struct {
@@ -237,6 +252,23 @@ func (o LoggingConfigurationOutput) ToLoggingConfigurationOutputWithContext(ctx 
 	return o
 }
 
+type LoggingConfigurationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LoggingConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingConfiguration)(nil)).Elem()
+}
+
+func (o LoggingConfigurationPtrOutput) ToLoggingConfigurationPtrOutput() LoggingConfigurationPtrOutput {
+	return o
+}
+
+func (o LoggingConfigurationPtrOutput) ToLoggingConfigurationPtrOutputWithContext(ctx context.Context) LoggingConfigurationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LoggingConfigurationOutput{})
+	pulumi.RegisterOutputType(LoggingConfigurationPtrOutput{})
 }

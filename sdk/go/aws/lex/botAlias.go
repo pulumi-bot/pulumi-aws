@@ -188,6 +188,13 @@ type BotAliasInput interface {
 	ToBotAliasOutputWithContext(ctx context.Context) BotAliasOutput
 }
 
+type BotAliasPtrInput interface {
+	pulumi.Input
+
+	ToBotAliasPtrOutput() BotAliasPtrOutput
+	ToBotAliasPtrOutputWithContext(ctx context.Context) BotAliasPtrOutput
+}
+
 func (BotAlias) ElementType() reflect.Type {
 	return reflect.TypeOf((*BotAlias)(nil)).Elem()
 }
@@ -198,6 +205,14 @@ func (i BotAlias) ToBotAliasOutput() BotAliasOutput {
 
 func (i BotAlias) ToBotAliasOutputWithContext(ctx context.Context) BotAliasOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BotAliasOutput)
+}
+
+func (i BotAlias) ToBotAliasPtrOutput() BotAliasPtrOutput {
+	return i.ToBotAliasPtrOutputWithContext(context.Background())
+}
+
+func (i BotAlias) ToBotAliasPtrOutputWithContext(ctx context.Context) BotAliasPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BotAliasPtrOutput)
 }
 
 type BotAliasOutput struct {
@@ -216,6 +231,23 @@ func (o BotAliasOutput) ToBotAliasOutputWithContext(ctx context.Context) BotAlia
 	return o
 }
 
+type BotAliasPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BotAliasPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BotAlias)(nil)).Elem()
+}
+
+func (o BotAliasPtrOutput) ToBotAliasPtrOutput() BotAliasPtrOutput {
+	return o
+}
+
+func (o BotAliasPtrOutput) ToBotAliasPtrOutputWithContext(ctx context.Context) BotAliasPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(BotAliasOutput{})
+	pulumi.RegisterOutputType(BotAliasPtrOutput{})
 }

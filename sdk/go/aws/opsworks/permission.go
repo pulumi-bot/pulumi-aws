@@ -153,6 +153,13 @@ type PermissionInput interface {
 	ToPermissionOutputWithContext(ctx context.Context) PermissionOutput
 }
 
+type PermissionPtrInput interface {
+	pulumi.Input
+
+	ToPermissionPtrOutput() PermissionPtrOutput
+	ToPermissionPtrOutputWithContext(ctx context.Context) PermissionPtrOutput
+}
+
 func (Permission) ElementType() reflect.Type {
 	return reflect.TypeOf((*Permission)(nil)).Elem()
 }
@@ -163,6 +170,14 @@ func (i Permission) ToPermissionOutput() PermissionOutput {
 
 func (i Permission) ToPermissionOutputWithContext(ctx context.Context) PermissionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PermissionOutput)
+}
+
+func (i Permission) ToPermissionPtrOutput() PermissionPtrOutput {
+	return i.ToPermissionPtrOutputWithContext(context.Background())
+}
+
+func (i Permission) ToPermissionPtrOutputWithContext(ctx context.Context) PermissionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PermissionPtrOutput)
 }
 
 type PermissionOutput struct {
@@ -181,6 +196,23 @@ func (o PermissionOutput) ToPermissionOutputWithContext(ctx context.Context) Per
 	return o
 }
 
+type PermissionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PermissionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Permission)(nil)).Elem()
+}
+
+func (o PermissionPtrOutput) ToPermissionPtrOutput() PermissionPtrOutput {
+	return o
+}
+
+func (o PermissionPtrOutput) ToPermissionPtrOutputWithContext(ctx context.Context) PermissionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PermissionOutput{})
+	pulumi.RegisterOutputType(PermissionPtrOutput{})
 }

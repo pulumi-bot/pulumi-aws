@@ -315,6 +315,13 @@ type AmiCopyInput interface {
 	ToAmiCopyOutputWithContext(ctx context.Context) AmiCopyOutput
 }
 
+type AmiCopyPtrInput interface {
+	pulumi.Input
+
+	ToAmiCopyPtrOutput() AmiCopyPtrOutput
+	ToAmiCopyPtrOutputWithContext(ctx context.Context) AmiCopyPtrOutput
+}
+
 func (AmiCopy) ElementType() reflect.Type {
 	return reflect.TypeOf((*AmiCopy)(nil)).Elem()
 }
@@ -325,6 +332,14 @@ func (i AmiCopy) ToAmiCopyOutput() AmiCopyOutput {
 
 func (i AmiCopy) ToAmiCopyOutputWithContext(ctx context.Context) AmiCopyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AmiCopyOutput)
+}
+
+func (i AmiCopy) ToAmiCopyPtrOutput() AmiCopyPtrOutput {
+	return i.ToAmiCopyPtrOutputWithContext(context.Background())
+}
+
+func (i AmiCopy) ToAmiCopyPtrOutputWithContext(ctx context.Context) AmiCopyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AmiCopyPtrOutput)
 }
 
 type AmiCopyOutput struct {
@@ -343,6 +358,23 @@ func (o AmiCopyOutput) ToAmiCopyOutputWithContext(ctx context.Context) AmiCopyOu
 	return o
 }
 
+type AmiCopyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AmiCopyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AmiCopy)(nil)).Elem()
+}
+
+func (o AmiCopyPtrOutput) ToAmiCopyPtrOutput() AmiCopyPtrOutput {
+	return o
+}
+
+func (o AmiCopyPtrOutput) ToAmiCopyPtrOutputWithContext(ctx context.Context) AmiCopyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AmiCopyOutput{})
+	pulumi.RegisterOutputType(AmiCopyPtrOutput{})
 }

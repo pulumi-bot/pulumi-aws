@@ -99,6 +99,13 @@ type ThingPrincipalAttachmentInput interface {
 	ToThingPrincipalAttachmentOutputWithContext(ctx context.Context) ThingPrincipalAttachmentOutput
 }
 
+type ThingPrincipalAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToThingPrincipalAttachmentPtrOutput() ThingPrincipalAttachmentPtrOutput
+	ToThingPrincipalAttachmentPtrOutputWithContext(ctx context.Context) ThingPrincipalAttachmentPtrOutput
+}
+
 func (ThingPrincipalAttachment) ElementType() reflect.Type {
 	return reflect.TypeOf((*ThingPrincipalAttachment)(nil)).Elem()
 }
@@ -109,6 +116,14 @@ func (i ThingPrincipalAttachment) ToThingPrincipalAttachmentOutput() ThingPrinci
 
 func (i ThingPrincipalAttachment) ToThingPrincipalAttachmentOutputWithContext(ctx context.Context) ThingPrincipalAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ThingPrincipalAttachmentOutput)
+}
+
+func (i ThingPrincipalAttachment) ToThingPrincipalAttachmentPtrOutput() ThingPrincipalAttachmentPtrOutput {
+	return i.ToThingPrincipalAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i ThingPrincipalAttachment) ToThingPrincipalAttachmentPtrOutputWithContext(ctx context.Context) ThingPrincipalAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThingPrincipalAttachmentPtrOutput)
 }
 
 type ThingPrincipalAttachmentOutput struct {
@@ -127,6 +142,23 @@ func (o ThingPrincipalAttachmentOutput) ToThingPrincipalAttachmentOutputWithCont
 	return o
 }
 
+type ThingPrincipalAttachmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ThingPrincipalAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ThingPrincipalAttachment)(nil)).Elem()
+}
+
+func (o ThingPrincipalAttachmentPtrOutput) ToThingPrincipalAttachmentPtrOutput() ThingPrincipalAttachmentPtrOutput {
+	return o
+}
+
+func (o ThingPrincipalAttachmentPtrOutput) ToThingPrincipalAttachmentPtrOutputWithContext(ctx context.Context) ThingPrincipalAttachmentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ThingPrincipalAttachmentOutput{})
+	pulumi.RegisterOutputType(ThingPrincipalAttachmentPtrOutput{})
 }

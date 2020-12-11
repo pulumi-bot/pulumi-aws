@@ -131,6 +131,13 @@ type VpcEndpointSubnetAssociationInput interface {
 	ToVpcEndpointSubnetAssociationOutputWithContext(ctx context.Context) VpcEndpointSubnetAssociationOutput
 }
 
+type VpcEndpointSubnetAssociationPtrInput interface {
+	pulumi.Input
+
+	ToVpcEndpointSubnetAssociationPtrOutput() VpcEndpointSubnetAssociationPtrOutput
+	ToVpcEndpointSubnetAssociationPtrOutputWithContext(ctx context.Context) VpcEndpointSubnetAssociationPtrOutput
+}
+
 func (VpcEndpointSubnetAssociation) ElementType() reflect.Type {
 	return reflect.TypeOf((*VpcEndpointSubnetAssociation)(nil)).Elem()
 }
@@ -141,6 +148,14 @@ func (i VpcEndpointSubnetAssociation) ToVpcEndpointSubnetAssociationOutput() Vpc
 
 func (i VpcEndpointSubnetAssociation) ToVpcEndpointSubnetAssociationOutputWithContext(ctx context.Context) VpcEndpointSubnetAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointSubnetAssociationOutput)
+}
+
+func (i VpcEndpointSubnetAssociation) ToVpcEndpointSubnetAssociationPtrOutput() VpcEndpointSubnetAssociationPtrOutput {
+	return i.ToVpcEndpointSubnetAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i VpcEndpointSubnetAssociation) ToVpcEndpointSubnetAssociationPtrOutputWithContext(ctx context.Context) VpcEndpointSubnetAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointSubnetAssociationPtrOutput)
 }
 
 type VpcEndpointSubnetAssociationOutput struct {
@@ -159,6 +174,23 @@ func (o VpcEndpointSubnetAssociationOutput) ToVpcEndpointSubnetAssociationOutput
 	return o
 }
 
+type VpcEndpointSubnetAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcEndpointSubnetAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcEndpointSubnetAssociation)(nil)).Elem()
+}
+
+func (o VpcEndpointSubnetAssociationPtrOutput) ToVpcEndpointSubnetAssociationPtrOutput() VpcEndpointSubnetAssociationPtrOutput {
+	return o
+}
+
+func (o VpcEndpointSubnetAssociationPtrOutput) ToVpcEndpointSubnetAssociationPtrOutputWithContext(ctx context.Context) VpcEndpointSubnetAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VpcEndpointSubnetAssociationOutput{})
+	pulumi.RegisterOutputType(VpcEndpointSubnetAssociationPtrOutput{})
 }

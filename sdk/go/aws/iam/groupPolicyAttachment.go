@@ -144,6 +144,13 @@ type GroupPolicyAttachmentInput interface {
 	ToGroupPolicyAttachmentOutputWithContext(ctx context.Context) GroupPolicyAttachmentOutput
 }
 
+type GroupPolicyAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToGroupPolicyAttachmentPtrOutput() GroupPolicyAttachmentPtrOutput
+	ToGroupPolicyAttachmentPtrOutputWithContext(ctx context.Context) GroupPolicyAttachmentPtrOutput
+}
+
 func (GroupPolicyAttachment) ElementType() reflect.Type {
 	return reflect.TypeOf((*GroupPolicyAttachment)(nil)).Elem()
 }
@@ -154,6 +161,14 @@ func (i GroupPolicyAttachment) ToGroupPolicyAttachmentOutput() GroupPolicyAttach
 
 func (i GroupPolicyAttachment) ToGroupPolicyAttachmentOutputWithContext(ctx context.Context) GroupPolicyAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupPolicyAttachmentOutput)
+}
+
+func (i GroupPolicyAttachment) ToGroupPolicyAttachmentPtrOutput() GroupPolicyAttachmentPtrOutput {
+	return i.ToGroupPolicyAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i GroupPolicyAttachment) ToGroupPolicyAttachmentPtrOutputWithContext(ctx context.Context) GroupPolicyAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupPolicyAttachmentPtrOutput)
 }
 
 type GroupPolicyAttachmentOutput struct {
@@ -172,6 +187,23 @@ func (o GroupPolicyAttachmentOutput) ToGroupPolicyAttachmentOutputWithContext(ct
 	return o
 }
 
+type GroupPolicyAttachmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GroupPolicyAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupPolicyAttachment)(nil)).Elem()
+}
+
+func (o GroupPolicyAttachmentPtrOutput) ToGroupPolicyAttachmentPtrOutput() GroupPolicyAttachmentPtrOutput {
+	return o
+}
+
+func (o GroupPolicyAttachmentPtrOutput) ToGroupPolicyAttachmentPtrOutputWithContext(ctx context.Context) GroupPolicyAttachmentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(GroupPolicyAttachmentOutput{})
+	pulumi.RegisterOutputType(GroupPolicyAttachmentPtrOutput{})
 }

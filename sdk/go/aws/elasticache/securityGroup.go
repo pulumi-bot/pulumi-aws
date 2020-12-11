@@ -157,6 +157,13 @@ type SecurityGroupInput interface {
 	ToSecurityGroupOutputWithContext(ctx context.Context) SecurityGroupOutput
 }
 
+type SecurityGroupPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGroupPtrOutput() SecurityGroupPtrOutput
+	ToSecurityGroupPtrOutputWithContext(ctx context.Context) SecurityGroupPtrOutput
+}
+
 func (SecurityGroup) ElementType() reflect.Type {
 	return reflect.TypeOf((*SecurityGroup)(nil)).Elem()
 }
@@ -167,6 +174,14 @@ func (i SecurityGroup) ToSecurityGroupOutput() SecurityGroupOutput {
 
 func (i SecurityGroup) ToSecurityGroupOutputWithContext(ctx context.Context) SecurityGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupOutput)
+}
+
+func (i SecurityGroup) ToSecurityGroupPtrOutput() SecurityGroupPtrOutput {
+	return i.ToSecurityGroupPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGroup) ToSecurityGroupPtrOutputWithContext(ctx context.Context) SecurityGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupPtrOutput)
 }
 
 type SecurityGroupOutput struct {
@@ -185,6 +200,23 @@ func (o SecurityGroupOutput) ToSecurityGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
+type SecurityGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecurityGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGroup)(nil)).Elem()
+}
+
+func (o SecurityGroupPtrOutput) ToSecurityGroupPtrOutput() SecurityGroupPtrOutput {
+	return o
+}
+
+func (o SecurityGroupPtrOutput) ToSecurityGroupPtrOutputWithContext(ctx context.Context) SecurityGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SecurityGroupOutput{})
+	pulumi.RegisterOutputType(SecurityGroupPtrOutput{})
 }

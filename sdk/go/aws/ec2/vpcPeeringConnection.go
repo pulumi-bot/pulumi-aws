@@ -357,6 +357,13 @@ type VpcPeeringConnectionInput interface {
 	ToVpcPeeringConnectionOutputWithContext(ctx context.Context) VpcPeeringConnectionOutput
 }
 
+type VpcPeeringConnectionPtrInput interface {
+	pulumi.Input
+
+	ToVpcPeeringConnectionPtrOutput() VpcPeeringConnectionPtrOutput
+	ToVpcPeeringConnectionPtrOutputWithContext(ctx context.Context) VpcPeeringConnectionPtrOutput
+}
+
 func (VpcPeeringConnection) ElementType() reflect.Type {
 	return reflect.TypeOf((*VpcPeeringConnection)(nil)).Elem()
 }
@@ -367,6 +374,14 @@ func (i VpcPeeringConnection) ToVpcPeeringConnectionOutput() VpcPeeringConnectio
 
 func (i VpcPeeringConnection) ToVpcPeeringConnectionOutputWithContext(ctx context.Context) VpcPeeringConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionOutput)
+}
+
+func (i VpcPeeringConnection) ToVpcPeeringConnectionPtrOutput() VpcPeeringConnectionPtrOutput {
+	return i.ToVpcPeeringConnectionPtrOutputWithContext(context.Background())
+}
+
+func (i VpcPeeringConnection) ToVpcPeeringConnectionPtrOutputWithContext(ctx context.Context) VpcPeeringConnectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionPtrOutput)
 }
 
 type VpcPeeringConnectionOutput struct {
@@ -385,6 +400,23 @@ func (o VpcPeeringConnectionOutput) ToVpcPeeringConnectionOutputWithContext(ctx 
 	return o
 }
 
+type VpcPeeringConnectionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcPeeringConnectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcPeeringConnection)(nil)).Elem()
+}
+
+func (o VpcPeeringConnectionPtrOutput) ToVpcPeeringConnectionPtrOutput() VpcPeeringConnectionPtrOutput {
+	return o
+}
+
+func (o VpcPeeringConnectionPtrOutput) ToVpcPeeringConnectionPtrOutputWithContext(ctx context.Context) VpcPeeringConnectionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VpcPeeringConnectionOutput{})
+	pulumi.RegisterOutputType(VpcPeeringConnectionPtrOutput{})
 }

@@ -189,6 +189,13 @@ type IpSetInput interface {
 	ToIpSetOutputWithContext(ctx context.Context) IpSetOutput
 }
 
+type IpSetPtrInput interface {
+	pulumi.Input
+
+	ToIpSetPtrOutput() IpSetPtrOutput
+	ToIpSetPtrOutputWithContext(ctx context.Context) IpSetPtrOutput
+}
+
 func (IpSet) ElementType() reflect.Type {
 	return reflect.TypeOf((*IpSet)(nil)).Elem()
 }
@@ -199,6 +206,14 @@ func (i IpSet) ToIpSetOutput() IpSetOutput {
 
 func (i IpSet) ToIpSetOutputWithContext(ctx context.Context) IpSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IpSetOutput)
+}
+
+func (i IpSet) ToIpSetPtrOutput() IpSetPtrOutput {
+	return i.ToIpSetPtrOutputWithContext(context.Background())
+}
+
+func (i IpSet) ToIpSetPtrOutputWithContext(ctx context.Context) IpSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpSetPtrOutput)
 }
 
 type IpSetOutput struct {
@@ -217,6 +232,23 @@ func (o IpSetOutput) ToIpSetOutputWithContext(ctx context.Context) IpSetOutput {
 	return o
 }
 
+type IpSetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IpSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpSet)(nil)).Elem()
+}
+
+func (o IpSetPtrOutput) ToIpSetPtrOutput() IpSetPtrOutput {
+	return o
+}
+
+func (o IpSetPtrOutput) ToIpSetPtrOutputWithContext(ctx context.Context) IpSetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(IpSetOutput{})
+	pulumi.RegisterOutputType(IpSetPtrOutput{})
 }

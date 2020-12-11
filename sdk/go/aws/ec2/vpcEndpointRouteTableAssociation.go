@@ -131,6 +131,13 @@ type VpcEndpointRouteTableAssociationInput interface {
 	ToVpcEndpointRouteTableAssociationOutputWithContext(ctx context.Context) VpcEndpointRouteTableAssociationOutput
 }
 
+type VpcEndpointRouteTableAssociationPtrInput interface {
+	pulumi.Input
+
+	ToVpcEndpointRouteTableAssociationPtrOutput() VpcEndpointRouteTableAssociationPtrOutput
+	ToVpcEndpointRouteTableAssociationPtrOutputWithContext(ctx context.Context) VpcEndpointRouteTableAssociationPtrOutput
+}
+
 func (VpcEndpointRouteTableAssociation) ElementType() reflect.Type {
 	return reflect.TypeOf((*VpcEndpointRouteTableAssociation)(nil)).Elem()
 }
@@ -141,6 +148,14 @@ func (i VpcEndpointRouteTableAssociation) ToVpcEndpointRouteTableAssociationOutp
 
 func (i VpcEndpointRouteTableAssociation) ToVpcEndpointRouteTableAssociationOutputWithContext(ctx context.Context) VpcEndpointRouteTableAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointRouteTableAssociationOutput)
+}
+
+func (i VpcEndpointRouteTableAssociation) ToVpcEndpointRouteTableAssociationPtrOutput() VpcEndpointRouteTableAssociationPtrOutput {
+	return i.ToVpcEndpointRouteTableAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i VpcEndpointRouteTableAssociation) ToVpcEndpointRouteTableAssociationPtrOutputWithContext(ctx context.Context) VpcEndpointRouteTableAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointRouteTableAssociationPtrOutput)
 }
 
 type VpcEndpointRouteTableAssociationOutput struct {
@@ -159,6 +174,23 @@ func (o VpcEndpointRouteTableAssociationOutput) ToVpcEndpointRouteTableAssociati
 	return o
 }
 
+type VpcEndpointRouteTableAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcEndpointRouteTableAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcEndpointRouteTableAssociation)(nil)).Elem()
+}
+
+func (o VpcEndpointRouteTableAssociationPtrOutput) ToVpcEndpointRouteTableAssociationPtrOutput() VpcEndpointRouteTableAssociationPtrOutput {
+	return o
+}
+
+func (o VpcEndpointRouteTableAssociationPtrOutput) ToVpcEndpointRouteTableAssociationPtrOutputWithContext(ctx context.Context) VpcEndpointRouteTableAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VpcEndpointRouteTableAssociationOutput{})
+	pulumi.RegisterOutputType(VpcEndpointRouteTableAssociationPtrOutput{})
 }

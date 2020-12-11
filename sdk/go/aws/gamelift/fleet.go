@@ -251,6 +251,13 @@ type FleetInput interface {
 	ToFleetOutputWithContext(ctx context.Context) FleetOutput
 }
 
+type FleetPtrInput interface {
+	pulumi.Input
+
+	ToFleetPtrOutput() FleetPtrOutput
+	ToFleetPtrOutputWithContext(ctx context.Context) FleetPtrOutput
+}
+
 func (Fleet) ElementType() reflect.Type {
 	return reflect.TypeOf((*Fleet)(nil)).Elem()
 }
@@ -261,6 +268,14 @@ func (i Fleet) ToFleetOutput() FleetOutput {
 
 func (i Fleet) ToFleetOutputWithContext(ctx context.Context) FleetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FleetOutput)
+}
+
+func (i Fleet) ToFleetPtrOutput() FleetPtrOutput {
+	return i.ToFleetPtrOutputWithContext(context.Background())
+}
+
+func (i Fleet) ToFleetPtrOutputWithContext(ctx context.Context) FleetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetPtrOutput)
 }
 
 type FleetOutput struct {
@@ -279,6 +294,23 @@ func (o FleetOutput) ToFleetOutputWithContext(ctx context.Context) FleetOutput {
 	return o
 }
 
+type FleetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FleetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Fleet)(nil)).Elem()
+}
+
+func (o FleetPtrOutput) ToFleetPtrOutput() FleetPtrOutput {
+	return o
+}
+
+func (o FleetPtrOutput) ToFleetPtrOutputWithContext(ctx context.Context) FleetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(FleetOutput{})
+	pulumi.RegisterOutputType(FleetPtrOutput{})
 }

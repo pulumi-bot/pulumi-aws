@@ -310,6 +310,13 @@ type CachesIscsiVolumeInput interface {
 	ToCachesIscsiVolumeOutputWithContext(ctx context.Context) CachesIscsiVolumeOutput
 }
 
+type CachesIscsiVolumePtrInput interface {
+	pulumi.Input
+
+	ToCachesIscsiVolumePtrOutput() CachesIscsiVolumePtrOutput
+	ToCachesIscsiVolumePtrOutputWithContext(ctx context.Context) CachesIscsiVolumePtrOutput
+}
+
 func (CachesIscsiVolume) ElementType() reflect.Type {
 	return reflect.TypeOf((*CachesIscsiVolume)(nil)).Elem()
 }
@@ -320,6 +327,14 @@ func (i CachesIscsiVolume) ToCachesIscsiVolumeOutput() CachesIscsiVolumeOutput {
 
 func (i CachesIscsiVolume) ToCachesIscsiVolumeOutputWithContext(ctx context.Context) CachesIscsiVolumeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CachesIscsiVolumeOutput)
+}
+
+func (i CachesIscsiVolume) ToCachesIscsiVolumePtrOutput() CachesIscsiVolumePtrOutput {
+	return i.ToCachesIscsiVolumePtrOutputWithContext(context.Background())
+}
+
+func (i CachesIscsiVolume) ToCachesIscsiVolumePtrOutputWithContext(ctx context.Context) CachesIscsiVolumePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CachesIscsiVolumePtrOutput)
 }
 
 type CachesIscsiVolumeOutput struct {
@@ -338,6 +353,23 @@ func (o CachesIscsiVolumeOutput) ToCachesIscsiVolumeOutputWithContext(ctx contex
 	return o
 }
 
+type CachesIscsiVolumePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CachesIscsiVolumePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CachesIscsiVolume)(nil)).Elem()
+}
+
+func (o CachesIscsiVolumePtrOutput) ToCachesIscsiVolumePtrOutput() CachesIscsiVolumePtrOutput {
+	return o
+}
+
+func (o CachesIscsiVolumePtrOutput) ToCachesIscsiVolumePtrOutputWithContext(ctx context.Context) CachesIscsiVolumePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CachesIscsiVolumeOutput{})
+	pulumi.RegisterOutputType(CachesIscsiVolumePtrOutput{})
 }

@@ -163,7 +163,7 @@ func (i ClusterServerSideEncryptionArgs) ToClusterServerSideEncryptionPtrOutput(
 }
 
 func (i ClusterServerSideEncryptionArgs) ToClusterServerSideEncryptionPtrOutputWithContext(ctx context.Context) ClusterServerSideEncryptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterServerSideEncryptionOutput).ToClusterServerSideEncryptionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterServerSideEncryptionOutput).ToClusterServerSideEncryptionPtrOutput()
 }
 
 // ClusterServerSideEncryptionPtrInput is an input type that accepts ClusterServerSideEncryptionArgs, ClusterServerSideEncryptionPtr and ClusterServerSideEncryptionPtrOutput values.
@@ -196,7 +196,7 @@ func (i *clusterServerSideEncryptionPtrType) ToClusterServerSideEncryptionPtrOut
 }
 
 func (i *clusterServerSideEncryptionPtrType) ToClusterServerSideEncryptionPtrOutputWithContext(ctx context.Context) ClusterServerSideEncryptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterServerSideEncryptionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterServerSideEncryptionOutput).ToClusterServerSideEncryptionPtrOutput()
 }
 
 type ClusterServerSideEncryptionOutput struct{ *pulumi.OutputState }

@@ -281,6 +281,13 @@ type FunctionEventInvokeConfigInput interface {
 	ToFunctionEventInvokeConfigOutputWithContext(ctx context.Context) FunctionEventInvokeConfigOutput
 }
 
+type FunctionEventInvokeConfigPtrInput interface {
+	pulumi.Input
+
+	ToFunctionEventInvokeConfigPtrOutput() FunctionEventInvokeConfigPtrOutput
+	ToFunctionEventInvokeConfigPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigPtrOutput
+}
+
 func (FunctionEventInvokeConfig) ElementType() reflect.Type {
 	return reflect.TypeOf((*FunctionEventInvokeConfig)(nil)).Elem()
 }
@@ -291,6 +298,14 @@ func (i FunctionEventInvokeConfig) ToFunctionEventInvokeConfigOutput() FunctionE
 
 func (i FunctionEventInvokeConfig) ToFunctionEventInvokeConfigOutputWithContext(ctx context.Context) FunctionEventInvokeConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigOutput)
+}
+
+func (i FunctionEventInvokeConfig) ToFunctionEventInvokeConfigPtrOutput() FunctionEventInvokeConfigPtrOutput {
+	return i.ToFunctionEventInvokeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FunctionEventInvokeConfig) ToFunctionEventInvokeConfigPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigPtrOutput)
 }
 
 type FunctionEventInvokeConfigOutput struct {
@@ -309,6 +324,23 @@ func (o FunctionEventInvokeConfigOutput) ToFunctionEventInvokeConfigOutputWithCo
 	return o
 }
 
+type FunctionEventInvokeConfigPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FunctionEventInvokeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionEventInvokeConfig)(nil)).Elem()
+}
+
+func (o FunctionEventInvokeConfigPtrOutput) ToFunctionEventInvokeConfigPtrOutput() FunctionEventInvokeConfigPtrOutput {
+	return o
+}
+
+func (o FunctionEventInvokeConfigPtrOutput) ToFunctionEventInvokeConfigPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(FunctionEventInvokeConfigOutput{})
+	pulumi.RegisterOutputType(FunctionEventInvokeConfigPtrOutput{})
 }

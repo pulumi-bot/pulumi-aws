@@ -142,6 +142,13 @@ type ResourceShareInput interface {
 	ToResourceShareOutputWithContext(ctx context.Context) ResourceShareOutput
 }
 
+type ResourceSharePtrInput interface {
+	pulumi.Input
+
+	ToResourceSharePtrOutput() ResourceSharePtrOutput
+	ToResourceSharePtrOutputWithContext(ctx context.Context) ResourceSharePtrOutput
+}
+
 func (ResourceShare) ElementType() reflect.Type {
 	return reflect.TypeOf((*ResourceShare)(nil)).Elem()
 }
@@ -152,6 +159,14 @@ func (i ResourceShare) ToResourceShareOutput() ResourceShareOutput {
 
 func (i ResourceShare) ToResourceShareOutputWithContext(ctx context.Context) ResourceShareOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceShareOutput)
+}
+
+func (i ResourceShare) ToResourceSharePtrOutput() ResourceSharePtrOutput {
+	return i.ToResourceSharePtrOutputWithContext(context.Background())
+}
+
+func (i ResourceShare) ToResourceSharePtrOutputWithContext(ctx context.Context) ResourceSharePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceSharePtrOutput)
 }
 
 type ResourceShareOutput struct {
@@ -170,6 +185,23 @@ func (o ResourceShareOutput) ToResourceShareOutputWithContext(ctx context.Contex
 	return o
 }
 
+type ResourceSharePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourceSharePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceShare)(nil)).Elem()
+}
+
+func (o ResourceSharePtrOutput) ToResourceSharePtrOutput() ResourceSharePtrOutput {
+	return o
+}
+
+func (o ResourceSharePtrOutput) ToResourceSharePtrOutputWithContext(ctx context.Context) ResourceSharePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResourceShareOutput{})
+	pulumi.RegisterOutputType(ResourceSharePtrOutput{})
 }

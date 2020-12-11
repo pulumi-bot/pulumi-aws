@@ -261,6 +261,13 @@ type TrafficMirrorFilterRuleInput interface {
 	ToTrafficMirrorFilterRuleOutputWithContext(ctx context.Context) TrafficMirrorFilterRuleOutput
 }
 
+type TrafficMirrorFilterRulePtrInput interface {
+	pulumi.Input
+
+	ToTrafficMirrorFilterRulePtrOutput() TrafficMirrorFilterRulePtrOutput
+	ToTrafficMirrorFilterRulePtrOutputWithContext(ctx context.Context) TrafficMirrorFilterRulePtrOutput
+}
+
 func (TrafficMirrorFilterRule) ElementType() reflect.Type {
 	return reflect.TypeOf((*TrafficMirrorFilterRule)(nil)).Elem()
 }
@@ -271,6 +278,14 @@ func (i TrafficMirrorFilterRule) ToTrafficMirrorFilterRuleOutput() TrafficMirror
 
 func (i TrafficMirrorFilterRule) ToTrafficMirrorFilterRuleOutputWithContext(ctx context.Context) TrafficMirrorFilterRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorFilterRuleOutput)
+}
+
+func (i TrafficMirrorFilterRule) ToTrafficMirrorFilterRulePtrOutput() TrafficMirrorFilterRulePtrOutput {
+	return i.ToTrafficMirrorFilterRulePtrOutputWithContext(context.Background())
+}
+
+func (i TrafficMirrorFilterRule) ToTrafficMirrorFilterRulePtrOutputWithContext(ctx context.Context) TrafficMirrorFilterRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorFilterRulePtrOutput)
 }
 
 type TrafficMirrorFilterRuleOutput struct {
@@ -289,6 +304,23 @@ func (o TrafficMirrorFilterRuleOutput) ToTrafficMirrorFilterRuleOutputWithContex
 	return o
 }
 
+type TrafficMirrorFilterRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TrafficMirrorFilterRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TrafficMirrorFilterRule)(nil)).Elem()
+}
+
+func (o TrafficMirrorFilterRulePtrOutput) ToTrafficMirrorFilterRulePtrOutput() TrafficMirrorFilterRulePtrOutput {
+	return o
+}
+
+func (o TrafficMirrorFilterRulePtrOutput) ToTrafficMirrorFilterRulePtrOutputWithContext(ctx context.Context) TrafficMirrorFilterRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TrafficMirrorFilterRuleOutput{})
+	pulumi.RegisterOutputType(TrafficMirrorFilterRulePtrOutput{})
 }

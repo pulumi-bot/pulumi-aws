@@ -270,6 +270,13 @@ type RoleInput interface {
 	ToRoleOutputWithContext(ctx context.Context) RoleOutput
 }
 
+type RolePtrInput interface {
+	pulumi.Input
+
+	ToRolePtrOutput() RolePtrOutput
+	ToRolePtrOutputWithContext(ctx context.Context) RolePtrOutput
+}
+
 func (Role) ElementType() reflect.Type {
 	return reflect.TypeOf((*Role)(nil)).Elem()
 }
@@ -280,6 +287,14 @@ func (i Role) ToRoleOutput() RoleOutput {
 
 func (i Role) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoleOutput)
+}
+
+func (i Role) ToRolePtrOutput() RolePtrOutput {
+	return i.ToRolePtrOutputWithContext(context.Background())
+}
+
+func (i Role) ToRolePtrOutputWithContext(ctx context.Context) RolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolePtrOutput)
 }
 
 type RoleOutput struct {
@@ -298,6 +313,23 @@ func (o RoleOutput) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 	return o
 }
 
+type RolePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RolePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Role)(nil)).Elem()
+}
+
+func (o RolePtrOutput) ToRolePtrOutput() RolePtrOutput {
+	return o
+}
+
+func (o RolePtrOutput) ToRolePtrOutputWithContext(ctx context.Context) RolePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RoleOutput{})
+	pulumi.RegisterOutputType(RolePtrOutput{})
 }

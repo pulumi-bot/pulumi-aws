@@ -138,6 +138,13 @@ type AssessmentTargetInput interface {
 	ToAssessmentTargetOutputWithContext(ctx context.Context) AssessmentTargetOutput
 }
 
+type AssessmentTargetPtrInput interface {
+	pulumi.Input
+
+	ToAssessmentTargetPtrOutput() AssessmentTargetPtrOutput
+	ToAssessmentTargetPtrOutputWithContext(ctx context.Context) AssessmentTargetPtrOutput
+}
+
 func (AssessmentTarget) ElementType() reflect.Type {
 	return reflect.TypeOf((*AssessmentTarget)(nil)).Elem()
 }
@@ -148,6 +155,14 @@ func (i AssessmentTarget) ToAssessmentTargetOutput() AssessmentTargetOutput {
 
 func (i AssessmentTarget) ToAssessmentTargetOutputWithContext(ctx context.Context) AssessmentTargetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AssessmentTargetOutput)
+}
+
+func (i AssessmentTarget) ToAssessmentTargetPtrOutput() AssessmentTargetPtrOutput {
+	return i.ToAssessmentTargetPtrOutputWithContext(context.Background())
+}
+
+func (i AssessmentTarget) ToAssessmentTargetPtrOutputWithContext(ctx context.Context) AssessmentTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssessmentTargetPtrOutput)
 }
 
 type AssessmentTargetOutput struct {
@@ -166,6 +181,23 @@ func (o AssessmentTargetOutput) ToAssessmentTargetOutputWithContext(ctx context.
 	return o
 }
 
+type AssessmentTargetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AssessmentTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssessmentTarget)(nil)).Elem()
+}
+
+func (o AssessmentTargetPtrOutput) ToAssessmentTargetPtrOutput() AssessmentTargetPtrOutput {
+	return o
+}
+
+func (o AssessmentTargetPtrOutput) ToAssessmentTargetPtrOutputWithContext(ctx context.Context) AssessmentTargetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AssessmentTargetOutput{})
+	pulumi.RegisterOutputType(AssessmentTargetPtrOutput{})
 }

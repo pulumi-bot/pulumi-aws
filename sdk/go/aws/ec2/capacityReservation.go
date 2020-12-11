@@ -235,6 +235,13 @@ type CapacityReservationInput interface {
 	ToCapacityReservationOutputWithContext(ctx context.Context) CapacityReservationOutput
 }
 
+type CapacityReservationPtrInput interface {
+	pulumi.Input
+
+	ToCapacityReservationPtrOutput() CapacityReservationPtrOutput
+	ToCapacityReservationPtrOutputWithContext(ctx context.Context) CapacityReservationPtrOutput
+}
+
 func (CapacityReservation) ElementType() reflect.Type {
 	return reflect.TypeOf((*CapacityReservation)(nil)).Elem()
 }
@@ -245,6 +252,14 @@ func (i CapacityReservation) ToCapacityReservationOutput() CapacityReservationOu
 
 func (i CapacityReservation) ToCapacityReservationOutputWithContext(ctx context.Context) CapacityReservationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CapacityReservationOutput)
+}
+
+func (i CapacityReservation) ToCapacityReservationPtrOutput() CapacityReservationPtrOutput {
+	return i.ToCapacityReservationPtrOutputWithContext(context.Background())
+}
+
+func (i CapacityReservation) ToCapacityReservationPtrOutputWithContext(ctx context.Context) CapacityReservationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CapacityReservationPtrOutput)
 }
 
 type CapacityReservationOutput struct {
@@ -263,6 +278,23 @@ func (o CapacityReservationOutput) ToCapacityReservationOutputWithContext(ctx co
 	return o
 }
 
+type CapacityReservationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CapacityReservationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CapacityReservation)(nil)).Elem()
+}
+
+func (o CapacityReservationPtrOutput) ToCapacityReservationPtrOutput() CapacityReservationPtrOutput {
+	return o
+}
+
+func (o CapacityReservationPtrOutput) ToCapacityReservationPtrOutputWithContext(ctx context.Context) CapacityReservationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CapacityReservationOutput{})
+	pulumi.RegisterOutputType(CapacityReservationPtrOutput{})
 }

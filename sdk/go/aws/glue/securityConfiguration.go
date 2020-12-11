@@ -138,6 +138,13 @@ type SecurityConfigurationInput interface {
 	ToSecurityConfigurationOutputWithContext(ctx context.Context) SecurityConfigurationOutput
 }
 
+type SecurityConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToSecurityConfigurationPtrOutput() SecurityConfigurationPtrOutput
+	ToSecurityConfigurationPtrOutputWithContext(ctx context.Context) SecurityConfigurationPtrOutput
+}
+
 func (SecurityConfiguration) ElementType() reflect.Type {
 	return reflect.TypeOf((*SecurityConfiguration)(nil)).Elem()
 }
@@ -148,6 +155,14 @@ func (i SecurityConfiguration) ToSecurityConfigurationOutput() SecurityConfigura
 
 func (i SecurityConfiguration) ToSecurityConfigurationOutputWithContext(ctx context.Context) SecurityConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityConfigurationOutput)
+}
+
+func (i SecurityConfiguration) ToSecurityConfigurationPtrOutput() SecurityConfigurationPtrOutput {
+	return i.ToSecurityConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityConfiguration) ToSecurityConfigurationPtrOutputWithContext(ctx context.Context) SecurityConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityConfigurationPtrOutput)
 }
 
 type SecurityConfigurationOutput struct {
@@ -166,6 +181,23 @@ func (o SecurityConfigurationOutput) ToSecurityConfigurationOutputWithContext(ct
 	return o
 }
 
+type SecurityConfigurationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecurityConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityConfiguration)(nil)).Elem()
+}
+
+func (o SecurityConfigurationPtrOutput) ToSecurityConfigurationPtrOutput() SecurityConfigurationPtrOutput {
+	return o
+}
+
+func (o SecurityConfigurationPtrOutput) ToSecurityConfigurationPtrOutputWithContext(ctx context.Context) SecurityConfigurationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SecurityConfigurationOutput{})
+	pulumi.RegisterOutputType(SecurityConfigurationPtrOutput{})
 }

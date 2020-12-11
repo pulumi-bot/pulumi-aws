@@ -144,6 +144,13 @@ type StaticIpAttachmentInput interface {
 	ToStaticIpAttachmentOutputWithContext(ctx context.Context) StaticIpAttachmentOutput
 }
 
+type StaticIpAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToStaticIpAttachmentPtrOutput() StaticIpAttachmentPtrOutput
+	ToStaticIpAttachmentPtrOutputWithContext(ctx context.Context) StaticIpAttachmentPtrOutput
+}
+
 func (StaticIpAttachment) ElementType() reflect.Type {
 	return reflect.TypeOf((*StaticIpAttachment)(nil)).Elem()
 }
@@ -154,6 +161,14 @@ func (i StaticIpAttachment) ToStaticIpAttachmentOutput() StaticIpAttachmentOutpu
 
 func (i StaticIpAttachment) ToStaticIpAttachmentOutputWithContext(ctx context.Context) StaticIpAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StaticIpAttachmentOutput)
+}
+
+func (i StaticIpAttachment) ToStaticIpAttachmentPtrOutput() StaticIpAttachmentPtrOutput {
+	return i.ToStaticIpAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i StaticIpAttachment) ToStaticIpAttachmentPtrOutputWithContext(ctx context.Context) StaticIpAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StaticIpAttachmentPtrOutput)
 }
 
 type StaticIpAttachmentOutput struct {
@@ -172,6 +187,23 @@ func (o StaticIpAttachmentOutput) ToStaticIpAttachmentOutputWithContext(ctx cont
 	return o
 }
 
+type StaticIpAttachmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (StaticIpAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StaticIpAttachment)(nil)).Elem()
+}
+
+func (o StaticIpAttachmentPtrOutput) ToStaticIpAttachmentPtrOutput() StaticIpAttachmentPtrOutput {
+	return o
+}
+
+func (o StaticIpAttachmentPtrOutput) ToStaticIpAttachmentPtrOutputWithContext(ctx context.Context) StaticIpAttachmentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(StaticIpAttachmentOutput{})
+	pulumi.RegisterOutputType(StaticIpAttachmentPtrOutput{})
 }

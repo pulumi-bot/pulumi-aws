@@ -175,6 +175,13 @@ type AnalyzerInput interface {
 	ToAnalyzerOutputWithContext(ctx context.Context) AnalyzerOutput
 }
 
+type AnalyzerPtrInput interface {
+	pulumi.Input
+
+	ToAnalyzerPtrOutput() AnalyzerPtrOutput
+	ToAnalyzerPtrOutputWithContext(ctx context.Context) AnalyzerPtrOutput
+}
+
 func (Analyzer) ElementType() reflect.Type {
 	return reflect.TypeOf((*Analyzer)(nil)).Elem()
 }
@@ -185,6 +192,14 @@ func (i Analyzer) ToAnalyzerOutput() AnalyzerOutput {
 
 func (i Analyzer) ToAnalyzerOutputWithContext(ctx context.Context) AnalyzerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AnalyzerOutput)
+}
+
+func (i Analyzer) ToAnalyzerPtrOutput() AnalyzerPtrOutput {
+	return i.ToAnalyzerPtrOutputWithContext(context.Background())
+}
+
+func (i Analyzer) ToAnalyzerPtrOutputWithContext(ctx context.Context) AnalyzerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyzerPtrOutput)
 }
 
 type AnalyzerOutput struct {
@@ -203,6 +218,23 @@ func (o AnalyzerOutput) ToAnalyzerOutputWithContext(ctx context.Context) Analyze
 	return o
 }
 
+type AnalyzerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AnalyzerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Analyzer)(nil)).Elem()
+}
+
+func (o AnalyzerPtrOutput) ToAnalyzerPtrOutput() AnalyzerPtrOutput {
+	return o
+}
+
+func (o AnalyzerPtrOutput) ToAnalyzerPtrOutputWithContext(ctx context.Context) AnalyzerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AnalyzerOutput{})
+	pulumi.RegisterOutputType(AnalyzerPtrOutput{})
 }

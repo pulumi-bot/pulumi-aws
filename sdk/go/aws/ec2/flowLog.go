@@ -304,6 +304,13 @@ type FlowLogInput interface {
 	ToFlowLogOutputWithContext(ctx context.Context) FlowLogOutput
 }
 
+type FlowLogPtrInput interface {
+	pulumi.Input
+
+	ToFlowLogPtrOutput() FlowLogPtrOutput
+	ToFlowLogPtrOutputWithContext(ctx context.Context) FlowLogPtrOutput
+}
+
 func (FlowLog) ElementType() reflect.Type {
 	return reflect.TypeOf((*FlowLog)(nil)).Elem()
 }
@@ -314,6 +321,14 @@ func (i FlowLog) ToFlowLogOutput() FlowLogOutput {
 
 func (i FlowLog) ToFlowLogOutputWithContext(ctx context.Context) FlowLogOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlowLogOutput)
+}
+
+func (i FlowLog) ToFlowLogPtrOutput() FlowLogPtrOutput {
+	return i.ToFlowLogPtrOutputWithContext(context.Background())
+}
+
+func (i FlowLog) ToFlowLogPtrOutputWithContext(ctx context.Context) FlowLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlowLogPtrOutput)
 }
 
 type FlowLogOutput struct {
@@ -332,6 +347,23 @@ func (o FlowLogOutput) ToFlowLogOutputWithContext(ctx context.Context) FlowLogOu
 	return o
 }
 
+type FlowLogPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FlowLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlowLog)(nil)).Elem()
+}
+
+func (o FlowLogPtrOutput) ToFlowLogPtrOutput() FlowLogPtrOutput {
+	return o
+}
+
+func (o FlowLogPtrOutput) ToFlowLogPtrOutputWithContext(ctx context.Context) FlowLogPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(FlowLogOutput{})
+	pulumi.RegisterOutputType(FlowLogPtrOutput{})
 }

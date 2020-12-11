@@ -88,7 +88,7 @@ func (i BudgetCostTypesArgs) ToBudgetCostTypesPtrOutput() BudgetCostTypesPtrOutp
 }
 
 func (i BudgetCostTypesArgs) ToBudgetCostTypesPtrOutputWithContext(ctx context.Context) BudgetCostTypesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BudgetCostTypesOutput).ToBudgetCostTypesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetCostTypesOutput).ToBudgetCostTypesPtrOutput()
 }
 
 // BudgetCostTypesPtrInput is an input type that accepts BudgetCostTypesArgs, BudgetCostTypesPtr and BudgetCostTypesPtrOutput values.
@@ -121,7 +121,7 @@ func (i *budgetCostTypesPtrType) ToBudgetCostTypesPtrOutput() BudgetCostTypesPtr
 }
 
 func (i *budgetCostTypesPtrType) ToBudgetCostTypesPtrOutputWithContext(ctx context.Context) BudgetCostTypesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BudgetCostTypesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetCostTypesOutput).ToBudgetCostTypesPtrOutput()
 }
 
 type BudgetCostTypesOutput struct{ *pulumi.OutputState }

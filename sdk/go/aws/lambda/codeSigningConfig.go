@@ -166,6 +166,13 @@ type CodeSigningConfigInput interface {
 	ToCodeSigningConfigOutputWithContext(ctx context.Context) CodeSigningConfigOutput
 }
 
+type CodeSigningConfigPtrInput interface {
+	pulumi.Input
+
+	ToCodeSigningConfigPtrOutput() CodeSigningConfigPtrOutput
+	ToCodeSigningConfigPtrOutputWithContext(ctx context.Context) CodeSigningConfigPtrOutput
+}
+
 func (CodeSigningConfig) ElementType() reflect.Type {
 	return reflect.TypeOf((*CodeSigningConfig)(nil)).Elem()
 }
@@ -176,6 +183,14 @@ func (i CodeSigningConfig) ToCodeSigningConfigOutput() CodeSigningConfigOutput {
 
 func (i CodeSigningConfig) ToCodeSigningConfigOutputWithContext(ctx context.Context) CodeSigningConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CodeSigningConfigOutput)
+}
+
+func (i CodeSigningConfig) ToCodeSigningConfigPtrOutput() CodeSigningConfigPtrOutput {
+	return i.ToCodeSigningConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CodeSigningConfig) ToCodeSigningConfigPtrOutputWithContext(ctx context.Context) CodeSigningConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CodeSigningConfigPtrOutput)
 }
 
 type CodeSigningConfigOutput struct {
@@ -194,6 +209,23 @@ func (o CodeSigningConfigOutput) ToCodeSigningConfigOutputWithContext(ctx contex
 	return o
 }
 
+type CodeSigningConfigPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CodeSigningConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CodeSigningConfig)(nil)).Elem()
+}
+
+func (o CodeSigningConfigPtrOutput) ToCodeSigningConfigPtrOutput() CodeSigningConfigPtrOutput {
+	return o
+}
+
+func (o CodeSigningConfigPtrOutput) ToCodeSigningConfigPtrOutputWithContext(ctx context.Context) CodeSigningConfigPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CodeSigningConfigOutput{})
+	pulumi.RegisterOutputType(CodeSigningConfigPtrOutput{})
 }

@@ -482,6 +482,13 @@ type TrailInput interface {
 	ToTrailOutputWithContext(ctx context.Context) TrailOutput
 }
 
+type TrailPtrInput interface {
+	pulumi.Input
+
+	ToTrailPtrOutput() TrailPtrOutput
+	ToTrailPtrOutputWithContext(ctx context.Context) TrailPtrOutput
+}
+
 func (Trail) ElementType() reflect.Type {
 	return reflect.TypeOf((*Trail)(nil)).Elem()
 }
@@ -492,6 +499,14 @@ func (i Trail) ToTrailOutput() TrailOutput {
 
 func (i Trail) ToTrailOutputWithContext(ctx context.Context) TrailOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrailOutput)
+}
+
+func (i Trail) ToTrailPtrOutput() TrailPtrOutput {
+	return i.ToTrailPtrOutputWithContext(context.Background())
+}
+
+func (i Trail) ToTrailPtrOutputWithContext(ctx context.Context) TrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrailPtrOutput)
 }
 
 type TrailOutput struct {
@@ -510,6 +525,23 @@ func (o TrailOutput) ToTrailOutputWithContext(ctx context.Context) TrailOutput {
 	return o
 }
 
+type TrailPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TrailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Trail)(nil)).Elem()
+}
+
+func (o TrailPtrOutput) ToTrailPtrOutput() TrailPtrOutput {
+	return o
+}
+
+func (o TrailPtrOutput) ToTrailPtrOutputWithContext(ctx context.Context) TrailPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TrailOutput{})
+	pulumi.RegisterOutputType(TrailPtrOutput{})
 }

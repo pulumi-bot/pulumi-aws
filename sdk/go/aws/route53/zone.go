@@ -252,6 +252,13 @@ type ZoneInput interface {
 	ToZoneOutputWithContext(ctx context.Context) ZoneOutput
 }
 
+type ZonePtrInput interface {
+	pulumi.Input
+
+	ToZonePtrOutput() ZonePtrOutput
+	ToZonePtrOutputWithContext(ctx context.Context) ZonePtrOutput
+}
+
 func (Zone) ElementType() reflect.Type {
 	return reflect.TypeOf((*Zone)(nil)).Elem()
 }
@@ -262,6 +269,14 @@ func (i Zone) ToZoneOutput() ZoneOutput {
 
 func (i Zone) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneOutput)
+}
+
+func (i Zone) ToZonePtrOutput() ZonePtrOutput {
+	return i.ToZonePtrOutputWithContext(context.Background())
+}
+
+func (i Zone) ToZonePtrOutputWithContext(ctx context.Context) ZonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZonePtrOutput)
 }
 
 type ZoneOutput struct {
@@ -280,6 +295,23 @@ func (o ZoneOutput) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
 	return o
 }
 
+type ZonePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ZonePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Zone)(nil)).Elem()
+}
+
+func (o ZonePtrOutput) ToZonePtrOutput() ZonePtrOutput {
+	return o
+}
+
+func (o ZonePtrOutput) ToZonePtrOutputWithContext(ctx context.Context) ZonePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ZoneOutput{})
+	pulumi.RegisterOutputType(ZonePtrOutput{})
 }

@@ -206,6 +206,13 @@ type ResolverEndpointInput interface {
 	ToResolverEndpointOutputWithContext(ctx context.Context) ResolverEndpointOutput
 }
 
+type ResolverEndpointPtrInput interface {
+	pulumi.Input
+
+	ToResolverEndpointPtrOutput() ResolverEndpointPtrOutput
+	ToResolverEndpointPtrOutputWithContext(ctx context.Context) ResolverEndpointPtrOutput
+}
+
 func (ResolverEndpoint) ElementType() reflect.Type {
 	return reflect.TypeOf((*ResolverEndpoint)(nil)).Elem()
 }
@@ -216,6 +223,14 @@ func (i ResolverEndpoint) ToResolverEndpointOutput() ResolverEndpointOutput {
 
 func (i ResolverEndpoint) ToResolverEndpointOutputWithContext(ctx context.Context) ResolverEndpointOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResolverEndpointOutput)
+}
+
+func (i ResolverEndpoint) ToResolverEndpointPtrOutput() ResolverEndpointPtrOutput {
+	return i.ToResolverEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i ResolverEndpoint) ToResolverEndpointPtrOutputWithContext(ctx context.Context) ResolverEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverEndpointPtrOutput)
 }
 
 type ResolverEndpointOutput struct {
@@ -234,6 +249,23 @@ func (o ResolverEndpointOutput) ToResolverEndpointOutputWithContext(ctx context.
 	return o
 }
 
+type ResolverEndpointPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResolverEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResolverEndpoint)(nil)).Elem()
+}
+
+func (o ResolverEndpointPtrOutput) ToResolverEndpointPtrOutput() ResolverEndpointPtrOutput {
+	return o
+}
+
+func (o ResolverEndpointPtrOutput) ToResolverEndpointPtrOutputWithContext(ctx context.Context) ResolverEndpointPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResolverEndpointOutput{})
+	pulumi.RegisterOutputType(ResolverEndpointPtrOutput{})
 }

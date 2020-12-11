@@ -188,6 +188,13 @@ type ReportGroupInput interface {
 	ToReportGroupOutputWithContext(ctx context.Context) ReportGroupOutput
 }
 
+type ReportGroupPtrInput interface {
+	pulumi.Input
+
+	ToReportGroupPtrOutput() ReportGroupPtrOutput
+	ToReportGroupPtrOutputWithContext(ctx context.Context) ReportGroupPtrOutput
+}
+
 func (ReportGroup) ElementType() reflect.Type {
 	return reflect.TypeOf((*ReportGroup)(nil)).Elem()
 }
@@ -198,6 +205,14 @@ func (i ReportGroup) ToReportGroupOutput() ReportGroupOutput {
 
 func (i ReportGroup) ToReportGroupOutputWithContext(ctx context.Context) ReportGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReportGroupOutput)
+}
+
+func (i ReportGroup) ToReportGroupPtrOutput() ReportGroupPtrOutput {
+	return i.ToReportGroupPtrOutputWithContext(context.Background())
+}
+
+func (i ReportGroup) ToReportGroupPtrOutputWithContext(ctx context.Context) ReportGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReportGroupPtrOutput)
 }
 
 type ReportGroupOutput struct {
@@ -216,6 +231,23 @@ func (o ReportGroupOutput) ToReportGroupOutputWithContext(ctx context.Context) R
 	return o
 }
 
+type ReportGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReportGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReportGroup)(nil)).Elem()
+}
+
+func (o ReportGroupPtrOutput) ToReportGroupPtrOutput() ReportGroupPtrOutput {
+	return o
+}
+
+func (o ReportGroupPtrOutput) ToReportGroupPtrOutputWithContext(ctx context.Context) ReportGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ReportGroupOutput{})
+	pulumi.RegisterOutputType(ReportGroupPtrOutput{})
 }

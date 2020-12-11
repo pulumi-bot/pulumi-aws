@@ -118,6 +118,13 @@ type ResourceGroupInput interface {
 	ToResourceGroupOutputWithContext(ctx context.Context) ResourceGroupOutput
 }
 
+type ResourceGroupPtrInput interface {
+	pulumi.Input
+
+	ToResourceGroupPtrOutput() ResourceGroupPtrOutput
+	ToResourceGroupPtrOutputWithContext(ctx context.Context) ResourceGroupPtrOutput
+}
+
 func (ResourceGroup) ElementType() reflect.Type {
 	return reflect.TypeOf((*ResourceGroup)(nil)).Elem()
 }
@@ -128,6 +135,14 @@ func (i ResourceGroup) ToResourceGroupOutput() ResourceGroupOutput {
 
 func (i ResourceGroup) ToResourceGroupOutputWithContext(ctx context.Context) ResourceGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupOutput)
+}
+
+func (i ResourceGroup) ToResourceGroupPtrOutput() ResourceGroupPtrOutput {
+	return i.ToResourceGroupPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceGroup) ToResourceGroupPtrOutputWithContext(ctx context.Context) ResourceGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupPtrOutput)
 }
 
 type ResourceGroupOutput struct {
@@ -146,6 +161,23 @@ func (o ResourceGroupOutput) ToResourceGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
+type ResourceGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourceGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceGroup)(nil)).Elem()
+}
+
+func (o ResourceGroupPtrOutput) ToResourceGroupPtrOutput() ResourceGroupPtrOutput {
+	return o
+}
+
+func (o ResourceGroupPtrOutput) ToResourceGroupPtrOutputWithContext(ctx context.Context) ResourceGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResourceGroupOutput{})
+	pulumi.RegisterOutputType(ResourceGroupPtrOutput{})
 }

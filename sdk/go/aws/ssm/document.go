@@ -308,6 +308,13 @@ type DocumentInput interface {
 	ToDocumentOutputWithContext(ctx context.Context) DocumentOutput
 }
 
+type DocumentPtrInput interface {
+	pulumi.Input
+
+	ToDocumentPtrOutput() DocumentPtrOutput
+	ToDocumentPtrOutputWithContext(ctx context.Context) DocumentPtrOutput
+}
+
 func (Document) ElementType() reflect.Type {
 	return reflect.TypeOf((*Document)(nil)).Elem()
 }
@@ -318,6 +325,14 @@ func (i Document) ToDocumentOutput() DocumentOutput {
 
 func (i Document) ToDocumentOutputWithContext(ctx context.Context) DocumentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentOutput)
+}
+
+func (i Document) ToDocumentPtrOutput() DocumentPtrOutput {
+	return i.ToDocumentPtrOutputWithContext(context.Background())
+}
+
+func (i Document) ToDocumentPtrOutputWithContext(ctx context.Context) DocumentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DocumentPtrOutput)
 }
 
 type DocumentOutput struct {
@@ -336,6 +351,23 @@ func (o DocumentOutput) ToDocumentOutputWithContext(ctx context.Context) Documen
 	return o
 }
 
+type DocumentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DocumentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Document)(nil)).Elem()
+}
+
+func (o DocumentPtrOutput) ToDocumentPtrOutput() DocumentPtrOutput {
+	return o
+}
+
+func (o DocumentPtrOutput) ToDocumentPtrOutputWithContext(ctx context.Context) DocumentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DocumentOutput{})
+	pulumi.RegisterOutputType(DocumentPtrOutput{})
 }

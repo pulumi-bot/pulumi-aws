@@ -185,6 +185,13 @@ type RouteTableInput interface {
 	ToRouteTableOutputWithContext(ctx context.Context) RouteTableOutput
 }
 
+type RouteTablePtrInput interface {
+	pulumi.Input
+
+	ToRouteTablePtrOutput() RouteTablePtrOutput
+	ToRouteTablePtrOutputWithContext(ctx context.Context) RouteTablePtrOutput
+}
+
 func (RouteTable) ElementType() reflect.Type {
 	return reflect.TypeOf((*RouteTable)(nil)).Elem()
 }
@@ -195,6 +202,14 @@ func (i RouteTable) ToRouteTableOutput() RouteTableOutput {
 
 func (i RouteTable) ToRouteTableOutputWithContext(ctx context.Context) RouteTableOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouteTableOutput)
+}
+
+func (i RouteTable) ToRouteTablePtrOutput() RouteTablePtrOutput {
+	return i.ToRouteTablePtrOutputWithContext(context.Background())
+}
+
+func (i RouteTable) ToRouteTablePtrOutputWithContext(ctx context.Context) RouteTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteTablePtrOutput)
 }
 
 type RouteTableOutput struct {
@@ -213,6 +228,23 @@ func (o RouteTableOutput) ToRouteTableOutputWithContext(ctx context.Context) Rou
 	return o
 }
 
+type RouteTablePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouteTablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteTable)(nil)).Elem()
+}
+
+func (o RouteTablePtrOutput) ToRouteTablePtrOutput() RouteTablePtrOutput {
+	return o
+}
+
+func (o RouteTablePtrOutput) ToRouteTablePtrOutputWithContext(ctx context.Context) RouteTablePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RouteTableOutput{})
+	pulumi.RegisterOutputType(RouteTablePtrOutput{})
 }

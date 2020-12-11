@@ -280,6 +280,13 @@ type ParameterInput interface {
 	ToParameterOutputWithContext(ctx context.Context) ParameterOutput
 }
 
+type ParameterPtrInput interface {
+	pulumi.Input
+
+	ToParameterPtrOutput() ParameterPtrOutput
+	ToParameterPtrOutputWithContext(ctx context.Context) ParameterPtrOutput
+}
+
 func (Parameter) ElementType() reflect.Type {
 	return reflect.TypeOf((*Parameter)(nil)).Elem()
 }
@@ -290,6 +297,14 @@ func (i Parameter) ToParameterOutput() ParameterOutput {
 
 func (i Parameter) ToParameterOutputWithContext(ctx context.Context) ParameterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterOutput)
+}
+
+func (i Parameter) ToParameterPtrOutput() ParameterPtrOutput {
+	return i.ToParameterPtrOutputWithContext(context.Background())
+}
+
+func (i Parameter) ToParameterPtrOutputWithContext(ctx context.Context) ParameterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterPtrOutput)
 }
 
 type ParameterOutput struct {
@@ -308,6 +323,23 @@ func (o ParameterOutput) ToParameterOutputWithContext(ctx context.Context) Param
 	return o
 }
 
+type ParameterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ParameterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Parameter)(nil)).Elem()
+}
+
+func (o ParameterPtrOutput) ToParameterPtrOutput() ParameterPtrOutput {
+	return o
+}
+
+func (o ParameterPtrOutput) ToParameterPtrOutputWithContext(ctx context.Context) ParameterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ParameterOutput{})
+	pulumi.RegisterOutputType(ParameterPtrOutput{})
 }

@@ -123,6 +123,13 @@ type StaticIpInput interface {
 	ToStaticIpOutputWithContext(ctx context.Context) StaticIpOutput
 }
 
+type StaticIpPtrInput interface {
+	pulumi.Input
+
+	ToStaticIpPtrOutput() StaticIpPtrOutput
+	ToStaticIpPtrOutputWithContext(ctx context.Context) StaticIpPtrOutput
+}
+
 func (StaticIp) ElementType() reflect.Type {
 	return reflect.TypeOf((*StaticIp)(nil)).Elem()
 }
@@ -133,6 +140,14 @@ func (i StaticIp) ToStaticIpOutput() StaticIpOutput {
 
 func (i StaticIp) ToStaticIpOutputWithContext(ctx context.Context) StaticIpOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StaticIpOutput)
+}
+
+func (i StaticIp) ToStaticIpPtrOutput() StaticIpPtrOutput {
+	return i.ToStaticIpPtrOutputWithContext(context.Background())
+}
+
+func (i StaticIp) ToStaticIpPtrOutputWithContext(ctx context.Context) StaticIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StaticIpPtrOutput)
 }
 
 type StaticIpOutput struct {
@@ -151,6 +166,23 @@ func (o StaticIpOutput) ToStaticIpOutputWithContext(ctx context.Context) StaticI
 	return o
 }
 
+type StaticIpPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (StaticIpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StaticIp)(nil)).Elem()
+}
+
+func (o StaticIpPtrOutput) ToStaticIpPtrOutput() StaticIpPtrOutput {
+	return o
+}
+
+func (o StaticIpPtrOutput) ToStaticIpPtrOutputWithContext(ctx context.Context) StaticIpPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(StaticIpOutput{})
+	pulumi.RegisterOutputType(StaticIpPtrOutput{})
 }

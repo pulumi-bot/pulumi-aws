@@ -56,7 +56,7 @@ func (i GatewayRouteSpecArgs) ToGatewayRouteSpecPtrOutput() GatewayRouteSpecPtrO
 }
 
 func (i GatewayRouteSpecArgs) ToGatewayRouteSpecPtrOutputWithContext(ctx context.Context) GatewayRouteSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecOutput).ToGatewayRouteSpecPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecOutput).ToGatewayRouteSpecPtrOutput()
 }
 
 // GatewayRouteSpecPtrInput is an input type that accepts GatewayRouteSpecArgs, GatewayRouteSpecPtr and GatewayRouteSpecPtrOutput values.
@@ -89,7 +89,7 @@ func (i *gatewayRouteSpecPtrType) ToGatewayRouteSpecPtrOutput() GatewayRouteSpec
 }
 
 func (i *gatewayRouteSpecPtrType) ToGatewayRouteSpecPtrOutputWithContext(ctx context.Context) GatewayRouteSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecOutput).ToGatewayRouteSpecPtrOutput()
 }
 
 type GatewayRouteSpecOutput struct{ *pulumi.OutputState }
@@ -221,7 +221,7 @@ func (i GatewayRouteSpecGrpcRouteArgs) ToGatewayRouteSpecGrpcRoutePtrOutput() Ga
 }
 
 func (i GatewayRouteSpecGrpcRouteArgs) ToGatewayRouteSpecGrpcRoutePtrOutputWithContext(ctx context.Context) GatewayRouteSpecGrpcRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecGrpcRouteOutput).ToGatewayRouteSpecGrpcRoutePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecGrpcRouteOutput).ToGatewayRouteSpecGrpcRoutePtrOutput()
 }
 
 // GatewayRouteSpecGrpcRoutePtrInput is an input type that accepts GatewayRouteSpecGrpcRouteArgs, GatewayRouteSpecGrpcRoutePtr and GatewayRouteSpecGrpcRoutePtrOutput values.
@@ -254,7 +254,7 @@ func (i *gatewayRouteSpecGrpcRoutePtrType) ToGatewayRouteSpecGrpcRoutePtrOutput(
 }
 
 func (i *gatewayRouteSpecGrpcRoutePtrType) ToGatewayRouteSpecGrpcRoutePtrOutputWithContext(ctx context.Context) GatewayRouteSpecGrpcRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecGrpcRoutePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecGrpcRouteOutput).ToGatewayRouteSpecGrpcRoutePtrOutput()
 }
 
 type GatewayRouteSpecGrpcRouteOutput struct{ *pulumi.OutputState }
@@ -367,7 +367,7 @@ func (i GatewayRouteSpecGrpcRouteActionArgs) ToGatewayRouteSpecGrpcRouteActionPt
 }
 
 func (i GatewayRouteSpecGrpcRouteActionArgs) ToGatewayRouteSpecGrpcRouteActionPtrOutputWithContext(ctx context.Context) GatewayRouteSpecGrpcRouteActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecGrpcRouteActionOutput).ToGatewayRouteSpecGrpcRouteActionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecGrpcRouteActionOutput).ToGatewayRouteSpecGrpcRouteActionPtrOutput()
 }
 
 // GatewayRouteSpecGrpcRouteActionPtrInput is an input type that accepts GatewayRouteSpecGrpcRouteActionArgs, GatewayRouteSpecGrpcRouteActionPtr and GatewayRouteSpecGrpcRouteActionPtrOutput values.
@@ -400,7 +400,7 @@ func (i *gatewayRouteSpecGrpcRouteActionPtrType) ToGatewayRouteSpecGrpcRouteActi
 }
 
 func (i *gatewayRouteSpecGrpcRouteActionPtrType) ToGatewayRouteSpecGrpcRouteActionPtrOutputWithContext(ctx context.Context) GatewayRouteSpecGrpcRouteActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecGrpcRouteActionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecGrpcRouteActionOutput).ToGatewayRouteSpecGrpcRouteActionPtrOutput()
 }
 
 type GatewayRouteSpecGrpcRouteActionOutput struct{ *pulumi.OutputState }
@@ -498,7 +498,7 @@ func (i GatewayRouteSpecGrpcRouteActionTargetArgs) ToGatewayRouteSpecGrpcRouteAc
 }
 
 func (i GatewayRouteSpecGrpcRouteActionTargetArgs) ToGatewayRouteSpecGrpcRouteActionTargetPtrOutputWithContext(ctx context.Context) GatewayRouteSpecGrpcRouteActionTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecGrpcRouteActionTargetOutput).ToGatewayRouteSpecGrpcRouteActionTargetPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecGrpcRouteActionTargetOutput).ToGatewayRouteSpecGrpcRouteActionTargetPtrOutput()
 }
 
 // GatewayRouteSpecGrpcRouteActionTargetPtrInput is an input type that accepts GatewayRouteSpecGrpcRouteActionTargetArgs, GatewayRouteSpecGrpcRouteActionTargetPtr and GatewayRouteSpecGrpcRouteActionTargetPtrOutput values.
@@ -531,7 +531,7 @@ func (i *gatewayRouteSpecGrpcRouteActionTargetPtrType) ToGatewayRouteSpecGrpcRou
 }
 
 func (i *gatewayRouteSpecGrpcRouteActionTargetPtrType) ToGatewayRouteSpecGrpcRouteActionTargetPtrOutputWithContext(ctx context.Context) GatewayRouteSpecGrpcRouteActionTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecGrpcRouteActionTargetPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecGrpcRouteActionTargetOutput).ToGatewayRouteSpecGrpcRouteActionTargetPtrOutput()
 }
 
 type GatewayRouteSpecGrpcRouteActionTargetOutput struct{ *pulumi.OutputState }
@@ -631,7 +631,7 @@ func (i GatewayRouteSpecGrpcRouteActionTargetVirtualServiceArgs) ToGatewayRouteS
 }
 
 func (i GatewayRouteSpecGrpcRouteActionTargetVirtualServiceArgs) ToGatewayRouteSpecGrpcRouteActionTargetVirtualServicePtrOutputWithContext(ctx context.Context) GatewayRouteSpecGrpcRouteActionTargetVirtualServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecGrpcRouteActionTargetVirtualServiceOutput).ToGatewayRouteSpecGrpcRouteActionTargetVirtualServicePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecGrpcRouteActionTargetVirtualServiceOutput).ToGatewayRouteSpecGrpcRouteActionTargetVirtualServicePtrOutput()
 }
 
 // GatewayRouteSpecGrpcRouteActionTargetVirtualServicePtrInput is an input type that accepts GatewayRouteSpecGrpcRouteActionTargetVirtualServiceArgs, GatewayRouteSpecGrpcRouteActionTargetVirtualServicePtr and GatewayRouteSpecGrpcRouteActionTargetVirtualServicePtrOutput values.
@@ -664,7 +664,7 @@ func (i *gatewayRouteSpecGrpcRouteActionTargetVirtualServicePtrType) ToGatewayRo
 }
 
 func (i *gatewayRouteSpecGrpcRouteActionTargetVirtualServicePtrType) ToGatewayRouteSpecGrpcRouteActionTargetVirtualServicePtrOutputWithContext(ctx context.Context) GatewayRouteSpecGrpcRouteActionTargetVirtualServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecGrpcRouteActionTargetVirtualServicePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecGrpcRouteActionTargetVirtualServiceOutput).ToGatewayRouteSpecGrpcRouteActionTargetVirtualServicePtrOutput()
 }
 
 type GatewayRouteSpecGrpcRouteActionTargetVirtualServiceOutput struct{ *pulumi.OutputState }
@@ -764,7 +764,7 @@ func (i GatewayRouteSpecGrpcRouteMatchArgs) ToGatewayRouteSpecGrpcRouteMatchPtrO
 }
 
 func (i GatewayRouteSpecGrpcRouteMatchArgs) ToGatewayRouteSpecGrpcRouteMatchPtrOutputWithContext(ctx context.Context) GatewayRouteSpecGrpcRouteMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecGrpcRouteMatchOutput).ToGatewayRouteSpecGrpcRouteMatchPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecGrpcRouteMatchOutput).ToGatewayRouteSpecGrpcRouteMatchPtrOutput()
 }
 
 // GatewayRouteSpecGrpcRouteMatchPtrInput is an input type that accepts GatewayRouteSpecGrpcRouteMatchArgs, GatewayRouteSpecGrpcRouteMatchPtr and GatewayRouteSpecGrpcRouteMatchPtrOutput values.
@@ -797,7 +797,7 @@ func (i *gatewayRouteSpecGrpcRouteMatchPtrType) ToGatewayRouteSpecGrpcRouteMatch
 }
 
 func (i *gatewayRouteSpecGrpcRouteMatchPtrType) ToGatewayRouteSpecGrpcRouteMatchPtrOutputWithContext(ctx context.Context) GatewayRouteSpecGrpcRouteMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecGrpcRouteMatchPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecGrpcRouteMatchOutput).ToGatewayRouteSpecGrpcRouteMatchPtrOutput()
 }
 
 type GatewayRouteSpecGrpcRouteMatchOutput struct{ *pulumi.OutputState }
@@ -899,7 +899,7 @@ func (i GatewayRouteSpecHttp2RouteArgs) ToGatewayRouteSpecHttp2RoutePtrOutput() 
 }
 
 func (i GatewayRouteSpecHttp2RouteArgs) ToGatewayRouteSpecHttp2RoutePtrOutputWithContext(ctx context.Context) GatewayRouteSpecHttp2RoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttp2RouteOutput).ToGatewayRouteSpecHttp2RoutePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttp2RouteOutput).ToGatewayRouteSpecHttp2RoutePtrOutput()
 }
 
 // GatewayRouteSpecHttp2RoutePtrInput is an input type that accepts GatewayRouteSpecHttp2RouteArgs, GatewayRouteSpecHttp2RoutePtr and GatewayRouteSpecHttp2RoutePtrOutput values.
@@ -932,7 +932,7 @@ func (i *gatewayRouteSpecHttp2RoutePtrType) ToGatewayRouteSpecHttp2RoutePtrOutpu
 }
 
 func (i *gatewayRouteSpecHttp2RoutePtrType) ToGatewayRouteSpecHttp2RoutePtrOutputWithContext(ctx context.Context) GatewayRouteSpecHttp2RoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttp2RoutePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttp2RouteOutput).ToGatewayRouteSpecHttp2RoutePtrOutput()
 }
 
 type GatewayRouteSpecHttp2RouteOutput struct{ *pulumi.OutputState }
@@ -1045,7 +1045,7 @@ func (i GatewayRouteSpecHttp2RouteActionArgs) ToGatewayRouteSpecHttp2RouteAction
 }
 
 func (i GatewayRouteSpecHttp2RouteActionArgs) ToGatewayRouteSpecHttp2RouteActionPtrOutputWithContext(ctx context.Context) GatewayRouteSpecHttp2RouteActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttp2RouteActionOutput).ToGatewayRouteSpecHttp2RouteActionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttp2RouteActionOutput).ToGatewayRouteSpecHttp2RouteActionPtrOutput()
 }
 
 // GatewayRouteSpecHttp2RouteActionPtrInput is an input type that accepts GatewayRouteSpecHttp2RouteActionArgs, GatewayRouteSpecHttp2RouteActionPtr and GatewayRouteSpecHttp2RouteActionPtrOutput values.
@@ -1078,7 +1078,7 @@ func (i *gatewayRouteSpecHttp2RouteActionPtrType) ToGatewayRouteSpecHttp2RouteAc
 }
 
 func (i *gatewayRouteSpecHttp2RouteActionPtrType) ToGatewayRouteSpecHttp2RouteActionPtrOutputWithContext(ctx context.Context) GatewayRouteSpecHttp2RouteActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttp2RouteActionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttp2RouteActionOutput).ToGatewayRouteSpecHttp2RouteActionPtrOutput()
 }
 
 type GatewayRouteSpecHttp2RouteActionOutput struct{ *pulumi.OutputState }
@@ -1176,7 +1176,7 @@ func (i GatewayRouteSpecHttp2RouteActionTargetArgs) ToGatewayRouteSpecHttp2Route
 }
 
 func (i GatewayRouteSpecHttp2RouteActionTargetArgs) ToGatewayRouteSpecHttp2RouteActionTargetPtrOutputWithContext(ctx context.Context) GatewayRouteSpecHttp2RouteActionTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttp2RouteActionTargetOutput).ToGatewayRouteSpecHttp2RouteActionTargetPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttp2RouteActionTargetOutput).ToGatewayRouteSpecHttp2RouteActionTargetPtrOutput()
 }
 
 // GatewayRouteSpecHttp2RouteActionTargetPtrInput is an input type that accepts GatewayRouteSpecHttp2RouteActionTargetArgs, GatewayRouteSpecHttp2RouteActionTargetPtr and GatewayRouteSpecHttp2RouteActionTargetPtrOutput values.
@@ -1209,7 +1209,7 @@ func (i *gatewayRouteSpecHttp2RouteActionTargetPtrType) ToGatewayRouteSpecHttp2R
 }
 
 func (i *gatewayRouteSpecHttp2RouteActionTargetPtrType) ToGatewayRouteSpecHttp2RouteActionTargetPtrOutputWithContext(ctx context.Context) GatewayRouteSpecHttp2RouteActionTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttp2RouteActionTargetPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttp2RouteActionTargetOutput).ToGatewayRouteSpecHttp2RouteActionTargetPtrOutput()
 }
 
 type GatewayRouteSpecHttp2RouteActionTargetOutput struct{ *pulumi.OutputState }
@@ -1309,7 +1309,7 @@ func (i GatewayRouteSpecHttp2RouteActionTargetVirtualServiceArgs) ToGatewayRoute
 }
 
 func (i GatewayRouteSpecHttp2RouteActionTargetVirtualServiceArgs) ToGatewayRouteSpecHttp2RouteActionTargetVirtualServicePtrOutputWithContext(ctx context.Context) GatewayRouteSpecHttp2RouteActionTargetVirtualServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttp2RouteActionTargetVirtualServiceOutput).ToGatewayRouteSpecHttp2RouteActionTargetVirtualServicePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttp2RouteActionTargetVirtualServiceOutput).ToGatewayRouteSpecHttp2RouteActionTargetVirtualServicePtrOutput()
 }
 
 // GatewayRouteSpecHttp2RouteActionTargetVirtualServicePtrInput is an input type that accepts GatewayRouteSpecHttp2RouteActionTargetVirtualServiceArgs, GatewayRouteSpecHttp2RouteActionTargetVirtualServicePtr and GatewayRouteSpecHttp2RouteActionTargetVirtualServicePtrOutput values.
@@ -1342,7 +1342,7 @@ func (i *gatewayRouteSpecHttp2RouteActionTargetVirtualServicePtrType) ToGatewayR
 }
 
 func (i *gatewayRouteSpecHttp2RouteActionTargetVirtualServicePtrType) ToGatewayRouteSpecHttp2RouteActionTargetVirtualServicePtrOutputWithContext(ctx context.Context) GatewayRouteSpecHttp2RouteActionTargetVirtualServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttp2RouteActionTargetVirtualServicePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttp2RouteActionTargetVirtualServiceOutput).ToGatewayRouteSpecHttp2RouteActionTargetVirtualServicePtrOutput()
 }
 
 type GatewayRouteSpecHttp2RouteActionTargetVirtualServiceOutput struct{ *pulumi.OutputState }
@@ -1442,7 +1442,7 @@ func (i GatewayRouteSpecHttp2RouteMatchArgs) ToGatewayRouteSpecHttp2RouteMatchPt
 }
 
 func (i GatewayRouteSpecHttp2RouteMatchArgs) ToGatewayRouteSpecHttp2RouteMatchPtrOutputWithContext(ctx context.Context) GatewayRouteSpecHttp2RouteMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttp2RouteMatchOutput).ToGatewayRouteSpecHttp2RouteMatchPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttp2RouteMatchOutput).ToGatewayRouteSpecHttp2RouteMatchPtrOutput()
 }
 
 // GatewayRouteSpecHttp2RouteMatchPtrInput is an input type that accepts GatewayRouteSpecHttp2RouteMatchArgs, GatewayRouteSpecHttp2RouteMatchPtr and GatewayRouteSpecHttp2RouteMatchPtrOutput values.
@@ -1475,7 +1475,7 @@ func (i *gatewayRouteSpecHttp2RouteMatchPtrType) ToGatewayRouteSpecHttp2RouteMat
 }
 
 func (i *gatewayRouteSpecHttp2RouteMatchPtrType) ToGatewayRouteSpecHttp2RouteMatchPtrOutputWithContext(ctx context.Context) GatewayRouteSpecHttp2RouteMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttp2RouteMatchPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttp2RouteMatchOutput).ToGatewayRouteSpecHttp2RouteMatchPtrOutput()
 }
 
 type GatewayRouteSpecHttp2RouteMatchOutput struct{ *pulumi.OutputState }
@@ -1577,7 +1577,7 @@ func (i GatewayRouteSpecHttpRouteArgs) ToGatewayRouteSpecHttpRoutePtrOutput() Ga
 }
 
 func (i GatewayRouteSpecHttpRouteArgs) ToGatewayRouteSpecHttpRoutePtrOutputWithContext(ctx context.Context) GatewayRouteSpecHttpRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttpRouteOutput).ToGatewayRouteSpecHttpRoutePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttpRouteOutput).ToGatewayRouteSpecHttpRoutePtrOutput()
 }
 
 // GatewayRouteSpecHttpRoutePtrInput is an input type that accepts GatewayRouteSpecHttpRouteArgs, GatewayRouteSpecHttpRoutePtr and GatewayRouteSpecHttpRoutePtrOutput values.
@@ -1610,7 +1610,7 @@ func (i *gatewayRouteSpecHttpRoutePtrType) ToGatewayRouteSpecHttpRoutePtrOutput(
 }
 
 func (i *gatewayRouteSpecHttpRoutePtrType) ToGatewayRouteSpecHttpRoutePtrOutputWithContext(ctx context.Context) GatewayRouteSpecHttpRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttpRoutePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttpRouteOutput).ToGatewayRouteSpecHttpRoutePtrOutput()
 }
 
 type GatewayRouteSpecHttpRouteOutput struct{ *pulumi.OutputState }
@@ -1723,7 +1723,7 @@ func (i GatewayRouteSpecHttpRouteActionArgs) ToGatewayRouteSpecHttpRouteActionPt
 }
 
 func (i GatewayRouteSpecHttpRouteActionArgs) ToGatewayRouteSpecHttpRouteActionPtrOutputWithContext(ctx context.Context) GatewayRouteSpecHttpRouteActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttpRouteActionOutput).ToGatewayRouteSpecHttpRouteActionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttpRouteActionOutput).ToGatewayRouteSpecHttpRouteActionPtrOutput()
 }
 
 // GatewayRouteSpecHttpRouteActionPtrInput is an input type that accepts GatewayRouteSpecHttpRouteActionArgs, GatewayRouteSpecHttpRouteActionPtr and GatewayRouteSpecHttpRouteActionPtrOutput values.
@@ -1756,7 +1756,7 @@ func (i *gatewayRouteSpecHttpRouteActionPtrType) ToGatewayRouteSpecHttpRouteActi
 }
 
 func (i *gatewayRouteSpecHttpRouteActionPtrType) ToGatewayRouteSpecHttpRouteActionPtrOutputWithContext(ctx context.Context) GatewayRouteSpecHttpRouteActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttpRouteActionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttpRouteActionOutput).ToGatewayRouteSpecHttpRouteActionPtrOutput()
 }
 
 type GatewayRouteSpecHttpRouteActionOutput struct{ *pulumi.OutputState }
@@ -1854,7 +1854,7 @@ func (i GatewayRouteSpecHttpRouteActionTargetArgs) ToGatewayRouteSpecHttpRouteAc
 }
 
 func (i GatewayRouteSpecHttpRouteActionTargetArgs) ToGatewayRouteSpecHttpRouteActionTargetPtrOutputWithContext(ctx context.Context) GatewayRouteSpecHttpRouteActionTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttpRouteActionTargetOutput).ToGatewayRouteSpecHttpRouteActionTargetPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttpRouteActionTargetOutput).ToGatewayRouteSpecHttpRouteActionTargetPtrOutput()
 }
 
 // GatewayRouteSpecHttpRouteActionTargetPtrInput is an input type that accepts GatewayRouteSpecHttpRouteActionTargetArgs, GatewayRouteSpecHttpRouteActionTargetPtr and GatewayRouteSpecHttpRouteActionTargetPtrOutput values.
@@ -1887,7 +1887,7 @@ func (i *gatewayRouteSpecHttpRouteActionTargetPtrType) ToGatewayRouteSpecHttpRou
 }
 
 func (i *gatewayRouteSpecHttpRouteActionTargetPtrType) ToGatewayRouteSpecHttpRouteActionTargetPtrOutputWithContext(ctx context.Context) GatewayRouteSpecHttpRouteActionTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttpRouteActionTargetPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttpRouteActionTargetOutput).ToGatewayRouteSpecHttpRouteActionTargetPtrOutput()
 }
 
 type GatewayRouteSpecHttpRouteActionTargetOutput struct{ *pulumi.OutputState }
@@ -1987,7 +1987,7 @@ func (i GatewayRouteSpecHttpRouteActionTargetVirtualServiceArgs) ToGatewayRouteS
 }
 
 func (i GatewayRouteSpecHttpRouteActionTargetVirtualServiceArgs) ToGatewayRouteSpecHttpRouteActionTargetVirtualServicePtrOutputWithContext(ctx context.Context) GatewayRouteSpecHttpRouteActionTargetVirtualServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttpRouteActionTargetVirtualServiceOutput).ToGatewayRouteSpecHttpRouteActionTargetVirtualServicePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttpRouteActionTargetVirtualServiceOutput).ToGatewayRouteSpecHttpRouteActionTargetVirtualServicePtrOutput()
 }
 
 // GatewayRouteSpecHttpRouteActionTargetVirtualServicePtrInput is an input type that accepts GatewayRouteSpecHttpRouteActionTargetVirtualServiceArgs, GatewayRouteSpecHttpRouteActionTargetVirtualServicePtr and GatewayRouteSpecHttpRouteActionTargetVirtualServicePtrOutput values.
@@ -2020,7 +2020,7 @@ func (i *gatewayRouteSpecHttpRouteActionTargetVirtualServicePtrType) ToGatewayRo
 }
 
 func (i *gatewayRouteSpecHttpRouteActionTargetVirtualServicePtrType) ToGatewayRouteSpecHttpRouteActionTargetVirtualServicePtrOutputWithContext(ctx context.Context) GatewayRouteSpecHttpRouteActionTargetVirtualServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttpRouteActionTargetVirtualServicePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttpRouteActionTargetVirtualServiceOutput).ToGatewayRouteSpecHttpRouteActionTargetVirtualServicePtrOutput()
 }
 
 type GatewayRouteSpecHttpRouteActionTargetVirtualServiceOutput struct{ *pulumi.OutputState }
@@ -2120,7 +2120,7 @@ func (i GatewayRouteSpecHttpRouteMatchArgs) ToGatewayRouteSpecHttpRouteMatchPtrO
 }
 
 func (i GatewayRouteSpecHttpRouteMatchArgs) ToGatewayRouteSpecHttpRouteMatchPtrOutputWithContext(ctx context.Context) GatewayRouteSpecHttpRouteMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttpRouteMatchOutput).ToGatewayRouteSpecHttpRouteMatchPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttpRouteMatchOutput).ToGatewayRouteSpecHttpRouteMatchPtrOutput()
 }
 
 // GatewayRouteSpecHttpRouteMatchPtrInput is an input type that accepts GatewayRouteSpecHttpRouteMatchArgs, GatewayRouteSpecHttpRouteMatchPtr and GatewayRouteSpecHttpRouteMatchPtrOutput values.
@@ -2153,7 +2153,7 @@ func (i *gatewayRouteSpecHttpRouteMatchPtrType) ToGatewayRouteSpecHttpRouteMatch
 }
 
 func (i *gatewayRouteSpecHttpRouteMatchPtrType) ToGatewayRouteSpecHttpRouteMatchPtrOutputWithContext(ctx context.Context) GatewayRouteSpecHttpRouteMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttpRouteMatchPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteSpecHttpRouteMatchOutput).ToGatewayRouteSpecHttpRouteMatchPtrOutput()
 }
 
 type GatewayRouteSpecHttpRouteMatchOutput struct{ *pulumi.OutputState }
@@ -2251,7 +2251,7 @@ func (i MeshSpecArgs) ToMeshSpecPtrOutput() MeshSpecPtrOutput {
 }
 
 func (i MeshSpecArgs) ToMeshSpecPtrOutputWithContext(ctx context.Context) MeshSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MeshSpecOutput).ToMeshSpecPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(MeshSpecOutput).ToMeshSpecPtrOutput()
 }
 
 // MeshSpecPtrInput is an input type that accepts MeshSpecArgs, MeshSpecPtr and MeshSpecPtrOutput values.
@@ -2284,7 +2284,7 @@ func (i *meshSpecPtrType) ToMeshSpecPtrOutput() MeshSpecPtrOutput {
 }
 
 func (i *meshSpecPtrType) ToMeshSpecPtrOutputWithContext(ctx context.Context) MeshSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MeshSpecPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(MeshSpecOutput).ToMeshSpecPtrOutput()
 }
 
 type MeshSpecOutput struct{ *pulumi.OutputState }
@@ -2384,7 +2384,7 @@ func (i MeshSpecEgressFilterArgs) ToMeshSpecEgressFilterPtrOutput() MeshSpecEgre
 }
 
 func (i MeshSpecEgressFilterArgs) ToMeshSpecEgressFilterPtrOutputWithContext(ctx context.Context) MeshSpecEgressFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MeshSpecEgressFilterOutput).ToMeshSpecEgressFilterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(MeshSpecEgressFilterOutput).ToMeshSpecEgressFilterPtrOutput()
 }
 
 // MeshSpecEgressFilterPtrInput is an input type that accepts MeshSpecEgressFilterArgs, MeshSpecEgressFilterPtr and MeshSpecEgressFilterPtrOutput values.
@@ -2417,7 +2417,7 @@ func (i *meshSpecEgressFilterPtrType) ToMeshSpecEgressFilterPtrOutput() MeshSpec
 }
 
 func (i *meshSpecEgressFilterPtrType) ToMeshSpecEgressFilterPtrOutputWithContext(ctx context.Context) MeshSpecEgressFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MeshSpecEgressFilterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(MeshSpecEgressFilterOutput).ToMeshSpecEgressFilterPtrOutput()
 }
 
 type MeshSpecEgressFilterOutput struct{ *pulumi.OutputState }
@@ -2535,7 +2535,7 @@ func (i RouteSpecArgs) ToRouteSpecPtrOutput() RouteSpecPtrOutput {
 }
 
 func (i RouteSpecArgs) ToRouteSpecPtrOutputWithContext(ctx context.Context) RouteSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecOutput).ToRouteSpecPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecOutput).ToRouteSpecPtrOutput()
 }
 
 // RouteSpecPtrInput is an input type that accepts RouteSpecArgs, RouteSpecPtr and RouteSpecPtrOutput values.
@@ -2568,7 +2568,7 @@ func (i *routeSpecPtrType) ToRouteSpecPtrOutput() RouteSpecPtrOutput {
 }
 
 func (i *routeSpecPtrType) ToRouteSpecPtrOutputWithContext(ctx context.Context) RouteSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecOutput).ToRouteSpecPtrOutput()
 }
 
 type RouteSpecOutput struct{ *pulumi.OutputState }
@@ -2740,7 +2740,7 @@ func (i RouteSpecGrpcRouteArgs) ToRouteSpecGrpcRoutePtrOutput() RouteSpecGrpcRou
 }
 
 func (i RouteSpecGrpcRouteArgs) ToRouteSpecGrpcRoutePtrOutputWithContext(ctx context.Context) RouteSpecGrpcRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteOutput).ToRouteSpecGrpcRoutePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteOutput).ToRouteSpecGrpcRoutePtrOutput()
 }
 
 // RouteSpecGrpcRoutePtrInput is an input type that accepts RouteSpecGrpcRouteArgs, RouteSpecGrpcRoutePtr and RouteSpecGrpcRoutePtrOutput values.
@@ -2773,7 +2773,7 @@ func (i *routeSpecGrpcRoutePtrType) ToRouteSpecGrpcRoutePtrOutput() RouteSpecGrp
 }
 
 func (i *routeSpecGrpcRoutePtrType) ToRouteSpecGrpcRoutePtrOutputWithContext(ctx context.Context) RouteSpecGrpcRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRoutePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteOutput).ToRouteSpecGrpcRoutePtrOutput()
 }
 
 type RouteSpecGrpcRouteOutput struct{ *pulumi.OutputState }
@@ -2918,7 +2918,7 @@ func (i RouteSpecGrpcRouteActionArgs) ToRouteSpecGrpcRouteActionPtrOutput() Rout
 }
 
 func (i RouteSpecGrpcRouteActionArgs) ToRouteSpecGrpcRouteActionPtrOutputWithContext(ctx context.Context) RouteSpecGrpcRouteActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteActionOutput).ToRouteSpecGrpcRouteActionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteActionOutput).ToRouteSpecGrpcRouteActionPtrOutput()
 }
 
 // RouteSpecGrpcRouteActionPtrInput is an input type that accepts RouteSpecGrpcRouteActionArgs, RouteSpecGrpcRouteActionPtr and RouteSpecGrpcRouteActionPtrOutput values.
@@ -2951,7 +2951,7 @@ func (i *routeSpecGrpcRouteActionPtrType) ToRouteSpecGrpcRouteActionPtrOutput() 
 }
 
 func (i *routeSpecGrpcRouteActionPtrType) ToRouteSpecGrpcRouteActionPtrOutputWithContext(ctx context.Context) RouteSpecGrpcRouteActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteActionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteActionOutput).ToRouteSpecGrpcRouteActionPtrOutput()
 }
 
 type RouteSpecGrpcRouteActionOutput struct{ *pulumi.OutputState }
@@ -3171,7 +3171,7 @@ func (i RouteSpecGrpcRouteMatchArgs) ToRouteSpecGrpcRouteMatchPtrOutput() RouteS
 }
 
 func (i RouteSpecGrpcRouteMatchArgs) ToRouteSpecGrpcRouteMatchPtrOutputWithContext(ctx context.Context) RouteSpecGrpcRouteMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteMatchOutput).ToRouteSpecGrpcRouteMatchPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteMatchOutput).ToRouteSpecGrpcRouteMatchPtrOutput()
 }
 
 // RouteSpecGrpcRouteMatchPtrInput is an input type that accepts RouteSpecGrpcRouteMatchArgs, RouteSpecGrpcRouteMatchPtr and RouteSpecGrpcRouteMatchPtrOutput values.
@@ -3204,7 +3204,7 @@ func (i *routeSpecGrpcRouteMatchPtrType) ToRouteSpecGrpcRouteMatchPtrOutput() Ro
 }
 
 func (i *routeSpecGrpcRouteMatchPtrType) ToRouteSpecGrpcRouteMatchPtrOutputWithContext(ctx context.Context) RouteSpecGrpcRouteMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteMatchPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteMatchOutput).ToRouteSpecGrpcRouteMatchPtrOutput()
 }
 
 type RouteSpecGrpcRouteMatchOutput struct{ *pulumi.OutputState }
@@ -3482,7 +3482,7 @@ func (i RouteSpecGrpcRouteMatchMetadataMatchArgs) ToRouteSpecGrpcRouteMatchMetad
 }
 
 func (i RouteSpecGrpcRouteMatchMetadataMatchArgs) ToRouteSpecGrpcRouteMatchMetadataMatchPtrOutputWithContext(ctx context.Context) RouteSpecGrpcRouteMatchMetadataMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteMatchMetadataMatchOutput).ToRouteSpecGrpcRouteMatchMetadataMatchPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteMatchMetadataMatchOutput).ToRouteSpecGrpcRouteMatchMetadataMatchPtrOutput()
 }
 
 // RouteSpecGrpcRouteMatchMetadataMatchPtrInput is an input type that accepts RouteSpecGrpcRouteMatchMetadataMatchArgs, RouteSpecGrpcRouteMatchMetadataMatchPtr and RouteSpecGrpcRouteMatchMetadataMatchPtrOutput values.
@@ -3515,7 +3515,7 @@ func (i *routeSpecGrpcRouteMatchMetadataMatchPtrType) ToRouteSpecGrpcRouteMatchM
 }
 
 func (i *routeSpecGrpcRouteMatchMetadataMatchPtrType) ToRouteSpecGrpcRouteMatchMetadataMatchPtrOutputWithContext(ctx context.Context) RouteSpecGrpcRouteMatchMetadataMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteMatchMetadataMatchPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteMatchMetadataMatchOutput).ToRouteSpecGrpcRouteMatchMetadataMatchPtrOutput()
 }
 
 type RouteSpecGrpcRouteMatchMetadataMatchOutput struct{ *pulumi.OutputState }
@@ -3681,7 +3681,7 @@ func (i RouteSpecGrpcRouteMatchMetadataMatchRangeArgs) ToRouteSpecGrpcRouteMatch
 }
 
 func (i RouteSpecGrpcRouteMatchMetadataMatchRangeArgs) ToRouteSpecGrpcRouteMatchMetadataMatchRangePtrOutputWithContext(ctx context.Context) RouteSpecGrpcRouteMatchMetadataMatchRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteMatchMetadataMatchRangeOutput).ToRouteSpecGrpcRouteMatchMetadataMatchRangePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteMatchMetadataMatchRangeOutput).ToRouteSpecGrpcRouteMatchMetadataMatchRangePtrOutput()
 }
 
 // RouteSpecGrpcRouteMatchMetadataMatchRangePtrInput is an input type that accepts RouteSpecGrpcRouteMatchMetadataMatchRangeArgs, RouteSpecGrpcRouteMatchMetadataMatchRangePtr and RouteSpecGrpcRouteMatchMetadataMatchRangePtrOutput values.
@@ -3714,7 +3714,7 @@ func (i *routeSpecGrpcRouteMatchMetadataMatchRangePtrType) ToRouteSpecGrpcRouteM
 }
 
 func (i *routeSpecGrpcRouteMatchMetadataMatchRangePtrType) ToRouteSpecGrpcRouteMatchMetadataMatchRangePtrOutputWithContext(ctx context.Context) RouteSpecGrpcRouteMatchMetadataMatchRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteMatchMetadataMatchRangePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteMatchMetadataMatchRangeOutput).ToRouteSpecGrpcRouteMatchMetadataMatchRangePtrOutput()
 }
 
 type RouteSpecGrpcRouteMatchMetadataMatchRangeOutput struct{ *pulumi.OutputState }
@@ -3851,7 +3851,7 @@ func (i RouteSpecGrpcRouteRetryPolicyArgs) ToRouteSpecGrpcRouteRetryPolicyPtrOut
 }
 
 func (i RouteSpecGrpcRouteRetryPolicyArgs) ToRouteSpecGrpcRouteRetryPolicyPtrOutputWithContext(ctx context.Context) RouteSpecGrpcRouteRetryPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteRetryPolicyOutput).ToRouteSpecGrpcRouteRetryPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteRetryPolicyOutput).ToRouteSpecGrpcRouteRetryPolicyPtrOutput()
 }
 
 // RouteSpecGrpcRouteRetryPolicyPtrInput is an input type that accepts RouteSpecGrpcRouteRetryPolicyArgs, RouteSpecGrpcRouteRetryPolicyPtr and RouteSpecGrpcRouteRetryPolicyPtrOutput values.
@@ -3884,7 +3884,7 @@ func (i *routeSpecGrpcRouteRetryPolicyPtrType) ToRouteSpecGrpcRouteRetryPolicyPt
 }
 
 func (i *routeSpecGrpcRouteRetryPolicyPtrType) ToRouteSpecGrpcRouteRetryPolicyPtrOutputWithContext(ctx context.Context) RouteSpecGrpcRouteRetryPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteRetryPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteRetryPolicyOutput).ToRouteSpecGrpcRouteRetryPolicyPtrOutput()
 }
 
 type RouteSpecGrpcRouteRetryPolicyOutput struct{ *pulumi.OutputState }
@@ -4054,7 +4054,7 @@ func (i RouteSpecGrpcRouteRetryPolicyPerRetryTimeoutArgs) ToRouteSpecGrpcRouteRe
 }
 
 func (i RouteSpecGrpcRouteRetryPolicyPerRetryTimeoutArgs) ToRouteSpecGrpcRouteRetryPolicyPerRetryTimeoutPtrOutputWithContext(ctx context.Context) RouteSpecGrpcRouteRetryPolicyPerRetryTimeoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteRetryPolicyPerRetryTimeoutOutput).ToRouteSpecGrpcRouteRetryPolicyPerRetryTimeoutPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteRetryPolicyPerRetryTimeoutOutput).ToRouteSpecGrpcRouteRetryPolicyPerRetryTimeoutPtrOutput()
 }
 
 // RouteSpecGrpcRouteRetryPolicyPerRetryTimeoutPtrInput is an input type that accepts RouteSpecGrpcRouteRetryPolicyPerRetryTimeoutArgs, RouteSpecGrpcRouteRetryPolicyPerRetryTimeoutPtr and RouteSpecGrpcRouteRetryPolicyPerRetryTimeoutPtrOutput values.
@@ -4087,7 +4087,7 @@ func (i *routeSpecGrpcRouteRetryPolicyPerRetryTimeoutPtrType) ToRouteSpecGrpcRou
 }
 
 func (i *routeSpecGrpcRouteRetryPolicyPerRetryTimeoutPtrType) ToRouteSpecGrpcRouteRetryPolicyPerRetryTimeoutPtrOutputWithContext(ctx context.Context) RouteSpecGrpcRouteRetryPolicyPerRetryTimeoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteRetryPolicyPerRetryTimeoutPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteRetryPolicyPerRetryTimeoutOutput).ToRouteSpecGrpcRouteRetryPolicyPerRetryTimeoutPtrOutput()
 }
 
 type RouteSpecGrpcRouteRetryPolicyPerRetryTimeoutOutput struct{ *pulumi.OutputState }
@@ -4206,7 +4206,7 @@ func (i RouteSpecGrpcRouteTimeoutArgs) ToRouteSpecGrpcRouteTimeoutPtrOutput() Ro
 }
 
 func (i RouteSpecGrpcRouteTimeoutArgs) ToRouteSpecGrpcRouteTimeoutPtrOutputWithContext(ctx context.Context) RouteSpecGrpcRouteTimeoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteTimeoutOutput).ToRouteSpecGrpcRouteTimeoutPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteTimeoutOutput).ToRouteSpecGrpcRouteTimeoutPtrOutput()
 }
 
 // RouteSpecGrpcRouteTimeoutPtrInput is an input type that accepts RouteSpecGrpcRouteTimeoutArgs, RouteSpecGrpcRouteTimeoutPtr and RouteSpecGrpcRouteTimeoutPtrOutput values.
@@ -4239,7 +4239,7 @@ func (i *routeSpecGrpcRouteTimeoutPtrType) ToRouteSpecGrpcRouteTimeoutPtrOutput(
 }
 
 func (i *routeSpecGrpcRouteTimeoutPtrType) ToRouteSpecGrpcRouteTimeoutPtrOutputWithContext(ctx context.Context) RouteSpecGrpcRouteTimeoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteTimeoutPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteTimeoutOutput).ToRouteSpecGrpcRouteTimeoutPtrOutput()
 }
 
 type RouteSpecGrpcRouteTimeoutOutput struct{ *pulumi.OutputState }
@@ -4356,7 +4356,7 @@ func (i RouteSpecGrpcRouteTimeoutIdleArgs) ToRouteSpecGrpcRouteTimeoutIdlePtrOut
 }
 
 func (i RouteSpecGrpcRouteTimeoutIdleArgs) ToRouteSpecGrpcRouteTimeoutIdlePtrOutputWithContext(ctx context.Context) RouteSpecGrpcRouteTimeoutIdlePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteTimeoutIdleOutput).ToRouteSpecGrpcRouteTimeoutIdlePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteTimeoutIdleOutput).ToRouteSpecGrpcRouteTimeoutIdlePtrOutput()
 }
 
 // RouteSpecGrpcRouteTimeoutIdlePtrInput is an input type that accepts RouteSpecGrpcRouteTimeoutIdleArgs, RouteSpecGrpcRouteTimeoutIdlePtr and RouteSpecGrpcRouteTimeoutIdlePtrOutput values.
@@ -4389,7 +4389,7 @@ func (i *routeSpecGrpcRouteTimeoutIdlePtrType) ToRouteSpecGrpcRouteTimeoutIdlePt
 }
 
 func (i *routeSpecGrpcRouteTimeoutIdlePtrType) ToRouteSpecGrpcRouteTimeoutIdlePtrOutputWithContext(ctx context.Context) RouteSpecGrpcRouteTimeoutIdlePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteTimeoutIdlePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteTimeoutIdleOutput).ToRouteSpecGrpcRouteTimeoutIdlePtrOutput()
 }
 
 type RouteSpecGrpcRouteTimeoutIdleOutput struct{ *pulumi.OutputState }
@@ -4506,7 +4506,7 @@ func (i RouteSpecGrpcRouteTimeoutPerRequestArgs) ToRouteSpecGrpcRouteTimeoutPerR
 }
 
 func (i RouteSpecGrpcRouteTimeoutPerRequestArgs) ToRouteSpecGrpcRouteTimeoutPerRequestPtrOutputWithContext(ctx context.Context) RouteSpecGrpcRouteTimeoutPerRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteTimeoutPerRequestOutput).ToRouteSpecGrpcRouteTimeoutPerRequestPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteTimeoutPerRequestOutput).ToRouteSpecGrpcRouteTimeoutPerRequestPtrOutput()
 }
 
 // RouteSpecGrpcRouteTimeoutPerRequestPtrInput is an input type that accepts RouteSpecGrpcRouteTimeoutPerRequestArgs, RouteSpecGrpcRouteTimeoutPerRequestPtr and RouteSpecGrpcRouteTimeoutPerRequestPtrOutput values.
@@ -4539,7 +4539,7 @@ func (i *routeSpecGrpcRouteTimeoutPerRequestPtrType) ToRouteSpecGrpcRouteTimeout
 }
 
 func (i *routeSpecGrpcRouteTimeoutPerRequestPtrType) ToRouteSpecGrpcRouteTimeoutPerRequestPtrOutputWithContext(ctx context.Context) RouteSpecGrpcRouteTimeoutPerRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteTimeoutPerRequestPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecGrpcRouteTimeoutPerRequestOutput).ToRouteSpecGrpcRouteTimeoutPerRequestPtrOutput()
 }
 
 type RouteSpecGrpcRouteTimeoutPerRequestOutput struct{ *pulumi.OutputState }
@@ -4664,7 +4664,7 @@ func (i RouteSpecHttp2RouteArgs) ToRouteSpecHttp2RoutePtrOutput() RouteSpecHttp2
 }
 
 func (i RouteSpecHttp2RouteArgs) ToRouteSpecHttp2RoutePtrOutputWithContext(ctx context.Context) RouteSpecHttp2RoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteOutput).ToRouteSpecHttp2RoutePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteOutput).ToRouteSpecHttp2RoutePtrOutput()
 }
 
 // RouteSpecHttp2RoutePtrInput is an input type that accepts RouteSpecHttp2RouteArgs, RouteSpecHttp2RoutePtr and RouteSpecHttp2RoutePtrOutput values.
@@ -4697,7 +4697,7 @@ func (i *routeSpecHttp2RoutePtrType) ToRouteSpecHttp2RoutePtrOutput() RouteSpecH
 }
 
 func (i *routeSpecHttp2RoutePtrType) ToRouteSpecHttp2RoutePtrOutputWithContext(ctx context.Context) RouteSpecHttp2RoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RoutePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteOutput).ToRouteSpecHttp2RoutePtrOutput()
 }
 
 type RouteSpecHttp2RouteOutput struct{ *pulumi.OutputState }
@@ -4842,7 +4842,7 @@ func (i RouteSpecHttp2RouteActionArgs) ToRouteSpecHttp2RouteActionPtrOutput() Ro
 }
 
 func (i RouteSpecHttp2RouteActionArgs) ToRouteSpecHttp2RouteActionPtrOutputWithContext(ctx context.Context) RouteSpecHttp2RouteActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteActionOutput).ToRouteSpecHttp2RouteActionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteActionOutput).ToRouteSpecHttp2RouteActionPtrOutput()
 }
 
 // RouteSpecHttp2RouteActionPtrInput is an input type that accepts RouteSpecHttp2RouteActionArgs, RouteSpecHttp2RouteActionPtr and RouteSpecHttp2RouteActionPtrOutput values.
@@ -4875,7 +4875,7 @@ func (i *routeSpecHttp2RouteActionPtrType) ToRouteSpecHttp2RouteActionPtrOutput(
 }
 
 func (i *routeSpecHttp2RouteActionPtrType) ToRouteSpecHttp2RouteActionPtrOutputWithContext(ctx context.Context) RouteSpecHttp2RouteActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteActionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteActionOutput).ToRouteSpecHttp2RouteActionPtrOutput()
 }
 
 type RouteSpecHttp2RouteActionOutput struct{ *pulumi.OutputState }
@@ -5095,7 +5095,7 @@ func (i RouteSpecHttp2RouteMatchArgs) ToRouteSpecHttp2RouteMatchPtrOutput() Rout
 }
 
 func (i RouteSpecHttp2RouteMatchArgs) ToRouteSpecHttp2RouteMatchPtrOutputWithContext(ctx context.Context) RouteSpecHttp2RouteMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteMatchOutput).ToRouteSpecHttp2RouteMatchPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteMatchOutput).ToRouteSpecHttp2RouteMatchPtrOutput()
 }
 
 // RouteSpecHttp2RouteMatchPtrInput is an input type that accepts RouteSpecHttp2RouteMatchArgs, RouteSpecHttp2RouteMatchPtr and RouteSpecHttp2RouteMatchPtrOutput values.
@@ -5128,7 +5128,7 @@ func (i *routeSpecHttp2RouteMatchPtrType) ToRouteSpecHttp2RouteMatchPtrOutput() 
 }
 
 func (i *routeSpecHttp2RouteMatchPtrType) ToRouteSpecHttp2RouteMatchPtrOutputWithContext(ctx context.Context) RouteSpecHttp2RouteMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteMatchPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteMatchOutput).ToRouteSpecHttp2RouteMatchPtrOutput()
 }
 
 type RouteSpecHttp2RouteMatchOutput struct{ *pulumi.OutputState }
@@ -5406,7 +5406,7 @@ func (i RouteSpecHttp2RouteMatchHeaderMatchArgs) ToRouteSpecHttp2RouteMatchHeade
 }
 
 func (i RouteSpecHttp2RouteMatchHeaderMatchArgs) ToRouteSpecHttp2RouteMatchHeaderMatchPtrOutputWithContext(ctx context.Context) RouteSpecHttp2RouteMatchHeaderMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteMatchHeaderMatchOutput).ToRouteSpecHttp2RouteMatchHeaderMatchPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteMatchHeaderMatchOutput).ToRouteSpecHttp2RouteMatchHeaderMatchPtrOutput()
 }
 
 // RouteSpecHttp2RouteMatchHeaderMatchPtrInput is an input type that accepts RouteSpecHttp2RouteMatchHeaderMatchArgs, RouteSpecHttp2RouteMatchHeaderMatchPtr and RouteSpecHttp2RouteMatchHeaderMatchPtrOutput values.
@@ -5439,7 +5439,7 @@ func (i *routeSpecHttp2RouteMatchHeaderMatchPtrType) ToRouteSpecHttp2RouteMatchH
 }
 
 func (i *routeSpecHttp2RouteMatchHeaderMatchPtrType) ToRouteSpecHttp2RouteMatchHeaderMatchPtrOutputWithContext(ctx context.Context) RouteSpecHttp2RouteMatchHeaderMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteMatchHeaderMatchPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteMatchHeaderMatchOutput).ToRouteSpecHttp2RouteMatchHeaderMatchPtrOutput()
 }
 
 type RouteSpecHttp2RouteMatchHeaderMatchOutput struct{ *pulumi.OutputState }
@@ -5603,7 +5603,7 @@ func (i RouteSpecHttp2RouteMatchHeaderMatchRangeArgs) ToRouteSpecHttp2RouteMatch
 }
 
 func (i RouteSpecHttp2RouteMatchHeaderMatchRangeArgs) ToRouteSpecHttp2RouteMatchHeaderMatchRangePtrOutputWithContext(ctx context.Context) RouteSpecHttp2RouteMatchHeaderMatchRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteMatchHeaderMatchRangeOutput).ToRouteSpecHttp2RouteMatchHeaderMatchRangePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteMatchHeaderMatchRangeOutput).ToRouteSpecHttp2RouteMatchHeaderMatchRangePtrOutput()
 }
 
 // RouteSpecHttp2RouteMatchHeaderMatchRangePtrInput is an input type that accepts RouteSpecHttp2RouteMatchHeaderMatchRangeArgs, RouteSpecHttp2RouteMatchHeaderMatchRangePtr and RouteSpecHttp2RouteMatchHeaderMatchRangePtrOutput values.
@@ -5636,7 +5636,7 @@ func (i *routeSpecHttp2RouteMatchHeaderMatchRangePtrType) ToRouteSpecHttp2RouteM
 }
 
 func (i *routeSpecHttp2RouteMatchHeaderMatchRangePtrType) ToRouteSpecHttp2RouteMatchHeaderMatchRangePtrOutputWithContext(ctx context.Context) RouteSpecHttp2RouteMatchHeaderMatchRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteMatchHeaderMatchRangePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteMatchHeaderMatchRangeOutput).ToRouteSpecHttp2RouteMatchHeaderMatchRangePtrOutput()
 }
 
 type RouteSpecHttp2RouteMatchHeaderMatchRangeOutput struct{ *pulumi.OutputState }
@@ -5765,7 +5765,7 @@ func (i RouteSpecHttp2RouteRetryPolicyArgs) ToRouteSpecHttp2RouteRetryPolicyPtrO
 }
 
 func (i RouteSpecHttp2RouteRetryPolicyArgs) ToRouteSpecHttp2RouteRetryPolicyPtrOutputWithContext(ctx context.Context) RouteSpecHttp2RouteRetryPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteRetryPolicyOutput).ToRouteSpecHttp2RouteRetryPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteRetryPolicyOutput).ToRouteSpecHttp2RouteRetryPolicyPtrOutput()
 }
 
 // RouteSpecHttp2RouteRetryPolicyPtrInput is an input type that accepts RouteSpecHttp2RouteRetryPolicyArgs, RouteSpecHttp2RouteRetryPolicyPtr and RouteSpecHttp2RouteRetryPolicyPtrOutput values.
@@ -5798,7 +5798,7 @@ func (i *routeSpecHttp2RouteRetryPolicyPtrType) ToRouteSpecHttp2RouteRetryPolicy
 }
 
 func (i *routeSpecHttp2RouteRetryPolicyPtrType) ToRouteSpecHttp2RouteRetryPolicyPtrOutputWithContext(ctx context.Context) RouteSpecHttp2RouteRetryPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteRetryPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteRetryPolicyOutput).ToRouteSpecHttp2RouteRetryPolicyPtrOutput()
 }
 
 type RouteSpecHttp2RouteRetryPolicyOutput struct{ *pulumi.OutputState }
@@ -5951,7 +5951,7 @@ func (i RouteSpecHttp2RouteRetryPolicyPerRetryTimeoutArgs) ToRouteSpecHttp2Route
 }
 
 func (i RouteSpecHttp2RouteRetryPolicyPerRetryTimeoutArgs) ToRouteSpecHttp2RouteRetryPolicyPerRetryTimeoutPtrOutputWithContext(ctx context.Context) RouteSpecHttp2RouteRetryPolicyPerRetryTimeoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteRetryPolicyPerRetryTimeoutOutput).ToRouteSpecHttp2RouteRetryPolicyPerRetryTimeoutPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteRetryPolicyPerRetryTimeoutOutput).ToRouteSpecHttp2RouteRetryPolicyPerRetryTimeoutPtrOutput()
 }
 
 // RouteSpecHttp2RouteRetryPolicyPerRetryTimeoutPtrInput is an input type that accepts RouteSpecHttp2RouteRetryPolicyPerRetryTimeoutArgs, RouteSpecHttp2RouteRetryPolicyPerRetryTimeoutPtr and RouteSpecHttp2RouteRetryPolicyPerRetryTimeoutPtrOutput values.
@@ -5984,7 +5984,7 @@ func (i *routeSpecHttp2RouteRetryPolicyPerRetryTimeoutPtrType) ToRouteSpecHttp2R
 }
 
 func (i *routeSpecHttp2RouteRetryPolicyPerRetryTimeoutPtrType) ToRouteSpecHttp2RouteRetryPolicyPerRetryTimeoutPtrOutputWithContext(ctx context.Context) RouteSpecHttp2RouteRetryPolicyPerRetryTimeoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteRetryPolicyPerRetryTimeoutPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteRetryPolicyPerRetryTimeoutOutput).ToRouteSpecHttp2RouteRetryPolicyPerRetryTimeoutPtrOutput()
 }
 
 type RouteSpecHttp2RouteRetryPolicyPerRetryTimeoutOutput struct{ *pulumi.OutputState }
@@ -6103,7 +6103,7 @@ func (i RouteSpecHttp2RouteTimeoutArgs) ToRouteSpecHttp2RouteTimeoutPtrOutput() 
 }
 
 func (i RouteSpecHttp2RouteTimeoutArgs) ToRouteSpecHttp2RouteTimeoutPtrOutputWithContext(ctx context.Context) RouteSpecHttp2RouteTimeoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteTimeoutOutput).ToRouteSpecHttp2RouteTimeoutPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteTimeoutOutput).ToRouteSpecHttp2RouteTimeoutPtrOutput()
 }
 
 // RouteSpecHttp2RouteTimeoutPtrInput is an input type that accepts RouteSpecHttp2RouteTimeoutArgs, RouteSpecHttp2RouteTimeoutPtr and RouteSpecHttp2RouteTimeoutPtrOutput values.
@@ -6136,7 +6136,7 @@ func (i *routeSpecHttp2RouteTimeoutPtrType) ToRouteSpecHttp2RouteTimeoutPtrOutpu
 }
 
 func (i *routeSpecHttp2RouteTimeoutPtrType) ToRouteSpecHttp2RouteTimeoutPtrOutputWithContext(ctx context.Context) RouteSpecHttp2RouteTimeoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteTimeoutPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteTimeoutOutput).ToRouteSpecHttp2RouteTimeoutPtrOutput()
 }
 
 type RouteSpecHttp2RouteTimeoutOutput struct{ *pulumi.OutputState }
@@ -6253,7 +6253,7 @@ func (i RouteSpecHttp2RouteTimeoutIdleArgs) ToRouteSpecHttp2RouteTimeoutIdlePtrO
 }
 
 func (i RouteSpecHttp2RouteTimeoutIdleArgs) ToRouteSpecHttp2RouteTimeoutIdlePtrOutputWithContext(ctx context.Context) RouteSpecHttp2RouteTimeoutIdlePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteTimeoutIdleOutput).ToRouteSpecHttp2RouteTimeoutIdlePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteTimeoutIdleOutput).ToRouteSpecHttp2RouteTimeoutIdlePtrOutput()
 }
 
 // RouteSpecHttp2RouteTimeoutIdlePtrInput is an input type that accepts RouteSpecHttp2RouteTimeoutIdleArgs, RouteSpecHttp2RouteTimeoutIdlePtr and RouteSpecHttp2RouteTimeoutIdlePtrOutput values.
@@ -6286,7 +6286,7 @@ func (i *routeSpecHttp2RouteTimeoutIdlePtrType) ToRouteSpecHttp2RouteTimeoutIdle
 }
 
 func (i *routeSpecHttp2RouteTimeoutIdlePtrType) ToRouteSpecHttp2RouteTimeoutIdlePtrOutputWithContext(ctx context.Context) RouteSpecHttp2RouteTimeoutIdlePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteTimeoutIdlePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteTimeoutIdleOutput).ToRouteSpecHttp2RouteTimeoutIdlePtrOutput()
 }
 
 type RouteSpecHttp2RouteTimeoutIdleOutput struct{ *pulumi.OutputState }
@@ -6403,7 +6403,7 @@ func (i RouteSpecHttp2RouteTimeoutPerRequestArgs) ToRouteSpecHttp2RouteTimeoutPe
 }
 
 func (i RouteSpecHttp2RouteTimeoutPerRequestArgs) ToRouteSpecHttp2RouteTimeoutPerRequestPtrOutputWithContext(ctx context.Context) RouteSpecHttp2RouteTimeoutPerRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteTimeoutPerRequestOutput).ToRouteSpecHttp2RouteTimeoutPerRequestPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteTimeoutPerRequestOutput).ToRouteSpecHttp2RouteTimeoutPerRequestPtrOutput()
 }
 
 // RouteSpecHttp2RouteTimeoutPerRequestPtrInput is an input type that accepts RouteSpecHttp2RouteTimeoutPerRequestArgs, RouteSpecHttp2RouteTimeoutPerRequestPtr and RouteSpecHttp2RouteTimeoutPerRequestPtrOutput values.
@@ -6436,7 +6436,7 @@ func (i *routeSpecHttp2RouteTimeoutPerRequestPtrType) ToRouteSpecHttp2RouteTimeo
 }
 
 func (i *routeSpecHttp2RouteTimeoutPerRequestPtrType) ToRouteSpecHttp2RouteTimeoutPerRequestPtrOutputWithContext(ctx context.Context) RouteSpecHttp2RouteTimeoutPerRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteTimeoutPerRequestPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttp2RouteTimeoutPerRequestOutput).ToRouteSpecHttp2RouteTimeoutPerRequestPtrOutput()
 }
 
 type RouteSpecHttp2RouteTimeoutPerRequestOutput struct{ *pulumi.OutputState }
@@ -6561,7 +6561,7 @@ func (i RouteSpecHttpRouteArgs) ToRouteSpecHttpRoutePtrOutput() RouteSpecHttpRou
 }
 
 func (i RouteSpecHttpRouteArgs) ToRouteSpecHttpRoutePtrOutputWithContext(ctx context.Context) RouteSpecHttpRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteOutput).ToRouteSpecHttpRoutePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteOutput).ToRouteSpecHttpRoutePtrOutput()
 }
 
 // RouteSpecHttpRoutePtrInput is an input type that accepts RouteSpecHttpRouteArgs, RouteSpecHttpRoutePtr and RouteSpecHttpRoutePtrOutput values.
@@ -6594,7 +6594,7 @@ func (i *routeSpecHttpRoutePtrType) ToRouteSpecHttpRoutePtrOutput() RouteSpecHtt
 }
 
 func (i *routeSpecHttpRoutePtrType) ToRouteSpecHttpRoutePtrOutputWithContext(ctx context.Context) RouteSpecHttpRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRoutePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteOutput).ToRouteSpecHttpRoutePtrOutput()
 }
 
 type RouteSpecHttpRouteOutput struct{ *pulumi.OutputState }
@@ -6739,7 +6739,7 @@ func (i RouteSpecHttpRouteActionArgs) ToRouteSpecHttpRouteActionPtrOutput() Rout
 }
 
 func (i RouteSpecHttpRouteActionArgs) ToRouteSpecHttpRouteActionPtrOutputWithContext(ctx context.Context) RouteSpecHttpRouteActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteActionOutput).ToRouteSpecHttpRouteActionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteActionOutput).ToRouteSpecHttpRouteActionPtrOutput()
 }
 
 // RouteSpecHttpRouteActionPtrInput is an input type that accepts RouteSpecHttpRouteActionArgs, RouteSpecHttpRouteActionPtr and RouteSpecHttpRouteActionPtrOutput values.
@@ -6772,7 +6772,7 @@ func (i *routeSpecHttpRouteActionPtrType) ToRouteSpecHttpRouteActionPtrOutput() 
 }
 
 func (i *routeSpecHttpRouteActionPtrType) ToRouteSpecHttpRouteActionPtrOutputWithContext(ctx context.Context) RouteSpecHttpRouteActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteActionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteActionOutput).ToRouteSpecHttpRouteActionPtrOutput()
 }
 
 type RouteSpecHttpRouteActionOutput struct{ *pulumi.OutputState }
@@ -6992,7 +6992,7 @@ func (i RouteSpecHttpRouteMatchArgs) ToRouteSpecHttpRouteMatchPtrOutput() RouteS
 }
 
 func (i RouteSpecHttpRouteMatchArgs) ToRouteSpecHttpRouteMatchPtrOutputWithContext(ctx context.Context) RouteSpecHttpRouteMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteMatchOutput).ToRouteSpecHttpRouteMatchPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteMatchOutput).ToRouteSpecHttpRouteMatchPtrOutput()
 }
 
 // RouteSpecHttpRouteMatchPtrInput is an input type that accepts RouteSpecHttpRouteMatchArgs, RouteSpecHttpRouteMatchPtr and RouteSpecHttpRouteMatchPtrOutput values.
@@ -7025,7 +7025,7 @@ func (i *routeSpecHttpRouteMatchPtrType) ToRouteSpecHttpRouteMatchPtrOutput() Ro
 }
 
 func (i *routeSpecHttpRouteMatchPtrType) ToRouteSpecHttpRouteMatchPtrOutputWithContext(ctx context.Context) RouteSpecHttpRouteMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteMatchPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteMatchOutput).ToRouteSpecHttpRouteMatchPtrOutput()
 }
 
 type RouteSpecHttpRouteMatchOutput struct{ *pulumi.OutputState }
@@ -7303,7 +7303,7 @@ func (i RouteSpecHttpRouteMatchHeaderMatchArgs) ToRouteSpecHttpRouteMatchHeaderM
 }
 
 func (i RouteSpecHttpRouteMatchHeaderMatchArgs) ToRouteSpecHttpRouteMatchHeaderMatchPtrOutputWithContext(ctx context.Context) RouteSpecHttpRouteMatchHeaderMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteMatchHeaderMatchOutput).ToRouteSpecHttpRouteMatchHeaderMatchPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteMatchHeaderMatchOutput).ToRouteSpecHttpRouteMatchHeaderMatchPtrOutput()
 }
 
 // RouteSpecHttpRouteMatchHeaderMatchPtrInput is an input type that accepts RouteSpecHttpRouteMatchHeaderMatchArgs, RouteSpecHttpRouteMatchHeaderMatchPtr and RouteSpecHttpRouteMatchHeaderMatchPtrOutput values.
@@ -7336,7 +7336,7 @@ func (i *routeSpecHttpRouteMatchHeaderMatchPtrType) ToRouteSpecHttpRouteMatchHea
 }
 
 func (i *routeSpecHttpRouteMatchHeaderMatchPtrType) ToRouteSpecHttpRouteMatchHeaderMatchPtrOutputWithContext(ctx context.Context) RouteSpecHttpRouteMatchHeaderMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteMatchHeaderMatchPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteMatchHeaderMatchOutput).ToRouteSpecHttpRouteMatchHeaderMatchPtrOutput()
 }
 
 type RouteSpecHttpRouteMatchHeaderMatchOutput struct{ *pulumi.OutputState }
@@ -7500,7 +7500,7 @@ func (i RouteSpecHttpRouteMatchHeaderMatchRangeArgs) ToRouteSpecHttpRouteMatchHe
 }
 
 func (i RouteSpecHttpRouteMatchHeaderMatchRangeArgs) ToRouteSpecHttpRouteMatchHeaderMatchRangePtrOutputWithContext(ctx context.Context) RouteSpecHttpRouteMatchHeaderMatchRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteMatchHeaderMatchRangeOutput).ToRouteSpecHttpRouteMatchHeaderMatchRangePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteMatchHeaderMatchRangeOutput).ToRouteSpecHttpRouteMatchHeaderMatchRangePtrOutput()
 }
 
 // RouteSpecHttpRouteMatchHeaderMatchRangePtrInput is an input type that accepts RouteSpecHttpRouteMatchHeaderMatchRangeArgs, RouteSpecHttpRouteMatchHeaderMatchRangePtr and RouteSpecHttpRouteMatchHeaderMatchRangePtrOutput values.
@@ -7533,7 +7533,7 @@ func (i *routeSpecHttpRouteMatchHeaderMatchRangePtrType) ToRouteSpecHttpRouteMat
 }
 
 func (i *routeSpecHttpRouteMatchHeaderMatchRangePtrType) ToRouteSpecHttpRouteMatchHeaderMatchRangePtrOutputWithContext(ctx context.Context) RouteSpecHttpRouteMatchHeaderMatchRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteMatchHeaderMatchRangePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteMatchHeaderMatchRangeOutput).ToRouteSpecHttpRouteMatchHeaderMatchRangePtrOutput()
 }
 
 type RouteSpecHttpRouteMatchHeaderMatchRangeOutput struct{ *pulumi.OutputState }
@@ -7662,7 +7662,7 @@ func (i RouteSpecHttpRouteRetryPolicyArgs) ToRouteSpecHttpRouteRetryPolicyPtrOut
 }
 
 func (i RouteSpecHttpRouteRetryPolicyArgs) ToRouteSpecHttpRouteRetryPolicyPtrOutputWithContext(ctx context.Context) RouteSpecHttpRouteRetryPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteRetryPolicyOutput).ToRouteSpecHttpRouteRetryPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteRetryPolicyOutput).ToRouteSpecHttpRouteRetryPolicyPtrOutput()
 }
 
 // RouteSpecHttpRouteRetryPolicyPtrInput is an input type that accepts RouteSpecHttpRouteRetryPolicyArgs, RouteSpecHttpRouteRetryPolicyPtr and RouteSpecHttpRouteRetryPolicyPtrOutput values.
@@ -7695,7 +7695,7 @@ func (i *routeSpecHttpRouteRetryPolicyPtrType) ToRouteSpecHttpRouteRetryPolicyPt
 }
 
 func (i *routeSpecHttpRouteRetryPolicyPtrType) ToRouteSpecHttpRouteRetryPolicyPtrOutputWithContext(ctx context.Context) RouteSpecHttpRouteRetryPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteRetryPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteRetryPolicyOutput).ToRouteSpecHttpRouteRetryPolicyPtrOutput()
 }
 
 type RouteSpecHttpRouteRetryPolicyOutput struct{ *pulumi.OutputState }
@@ -7848,7 +7848,7 @@ func (i RouteSpecHttpRouteRetryPolicyPerRetryTimeoutArgs) ToRouteSpecHttpRouteRe
 }
 
 func (i RouteSpecHttpRouteRetryPolicyPerRetryTimeoutArgs) ToRouteSpecHttpRouteRetryPolicyPerRetryTimeoutPtrOutputWithContext(ctx context.Context) RouteSpecHttpRouteRetryPolicyPerRetryTimeoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteRetryPolicyPerRetryTimeoutOutput).ToRouteSpecHttpRouteRetryPolicyPerRetryTimeoutPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteRetryPolicyPerRetryTimeoutOutput).ToRouteSpecHttpRouteRetryPolicyPerRetryTimeoutPtrOutput()
 }
 
 // RouteSpecHttpRouteRetryPolicyPerRetryTimeoutPtrInput is an input type that accepts RouteSpecHttpRouteRetryPolicyPerRetryTimeoutArgs, RouteSpecHttpRouteRetryPolicyPerRetryTimeoutPtr and RouteSpecHttpRouteRetryPolicyPerRetryTimeoutPtrOutput values.
@@ -7881,7 +7881,7 @@ func (i *routeSpecHttpRouteRetryPolicyPerRetryTimeoutPtrType) ToRouteSpecHttpRou
 }
 
 func (i *routeSpecHttpRouteRetryPolicyPerRetryTimeoutPtrType) ToRouteSpecHttpRouteRetryPolicyPerRetryTimeoutPtrOutputWithContext(ctx context.Context) RouteSpecHttpRouteRetryPolicyPerRetryTimeoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteRetryPolicyPerRetryTimeoutPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteRetryPolicyPerRetryTimeoutOutput).ToRouteSpecHttpRouteRetryPolicyPerRetryTimeoutPtrOutput()
 }
 
 type RouteSpecHttpRouteRetryPolicyPerRetryTimeoutOutput struct{ *pulumi.OutputState }
@@ -8000,7 +8000,7 @@ func (i RouteSpecHttpRouteTimeoutArgs) ToRouteSpecHttpRouteTimeoutPtrOutput() Ro
 }
 
 func (i RouteSpecHttpRouteTimeoutArgs) ToRouteSpecHttpRouteTimeoutPtrOutputWithContext(ctx context.Context) RouteSpecHttpRouteTimeoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteTimeoutOutput).ToRouteSpecHttpRouteTimeoutPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteTimeoutOutput).ToRouteSpecHttpRouteTimeoutPtrOutput()
 }
 
 // RouteSpecHttpRouteTimeoutPtrInput is an input type that accepts RouteSpecHttpRouteTimeoutArgs, RouteSpecHttpRouteTimeoutPtr and RouteSpecHttpRouteTimeoutPtrOutput values.
@@ -8033,7 +8033,7 @@ func (i *routeSpecHttpRouteTimeoutPtrType) ToRouteSpecHttpRouteTimeoutPtrOutput(
 }
 
 func (i *routeSpecHttpRouteTimeoutPtrType) ToRouteSpecHttpRouteTimeoutPtrOutputWithContext(ctx context.Context) RouteSpecHttpRouteTimeoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteTimeoutPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteTimeoutOutput).ToRouteSpecHttpRouteTimeoutPtrOutput()
 }
 
 type RouteSpecHttpRouteTimeoutOutput struct{ *pulumi.OutputState }
@@ -8150,7 +8150,7 @@ func (i RouteSpecHttpRouteTimeoutIdleArgs) ToRouteSpecHttpRouteTimeoutIdlePtrOut
 }
 
 func (i RouteSpecHttpRouteTimeoutIdleArgs) ToRouteSpecHttpRouteTimeoutIdlePtrOutputWithContext(ctx context.Context) RouteSpecHttpRouteTimeoutIdlePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteTimeoutIdleOutput).ToRouteSpecHttpRouteTimeoutIdlePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteTimeoutIdleOutput).ToRouteSpecHttpRouteTimeoutIdlePtrOutput()
 }
 
 // RouteSpecHttpRouteTimeoutIdlePtrInput is an input type that accepts RouteSpecHttpRouteTimeoutIdleArgs, RouteSpecHttpRouteTimeoutIdlePtr and RouteSpecHttpRouteTimeoutIdlePtrOutput values.
@@ -8183,7 +8183,7 @@ func (i *routeSpecHttpRouteTimeoutIdlePtrType) ToRouteSpecHttpRouteTimeoutIdlePt
 }
 
 func (i *routeSpecHttpRouteTimeoutIdlePtrType) ToRouteSpecHttpRouteTimeoutIdlePtrOutputWithContext(ctx context.Context) RouteSpecHttpRouteTimeoutIdlePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteTimeoutIdlePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteTimeoutIdleOutput).ToRouteSpecHttpRouteTimeoutIdlePtrOutput()
 }
 
 type RouteSpecHttpRouteTimeoutIdleOutput struct{ *pulumi.OutputState }
@@ -8300,7 +8300,7 @@ func (i RouteSpecHttpRouteTimeoutPerRequestArgs) ToRouteSpecHttpRouteTimeoutPerR
 }
 
 func (i RouteSpecHttpRouteTimeoutPerRequestArgs) ToRouteSpecHttpRouteTimeoutPerRequestPtrOutputWithContext(ctx context.Context) RouteSpecHttpRouteTimeoutPerRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteTimeoutPerRequestOutput).ToRouteSpecHttpRouteTimeoutPerRequestPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteTimeoutPerRequestOutput).ToRouteSpecHttpRouteTimeoutPerRequestPtrOutput()
 }
 
 // RouteSpecHttpRouteTimeoutPerRequestPtrInput is an input type that accepts RouteSpecHttpRouteTimeoutPerRequestArgs, RouteSpecHttpRouteTimeoutPerRequestPtr and RouteSpecHttpRouteTimeoutPerRequestPtrOutput values.
@@ -8333,7 +8333,7 @@ func (i *routeSpecHttpRouteTimeoutPerRequestPtrType) ToRouteSpecHttpRouteTimeout
 }
 
 func (i *routeSpecHttpRouteTimeoutPerRequestPtrType) ToRouteSpecHttpRouteTimeoutPerRequestPtrOutputWithContext(ctx context.Context) RouteSpecHttpRouteTimeoutPerRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteTimeoutPerRequestPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecHttpRouteTimeoutPerRequestOutput).ToRouteSpecHttpRouteTimeoutPerRequestPtrOutput()
 }
 
 type RouteSpecHttpRouteTimeoutPerRequestOutput struct{ *pulumi.OutputState }
@@ -8450,7 +8450,7 @@ func (i RouteSpecTcpRouteArgs) ToRouteSpecTcpRoutePtrOutput() RouteSpecTcpRouteP
 }
 
 func (i RouteSpecTcpRouteArgs) ToRouteSpecTcpRoutePtrOutputWithContext(ctx context.Context) RouteSpecTcpRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecTcpRouteOutput).ToRouteSpecTcpRoutePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecTcpRouteOutput).ToRouteSpecTcpRoutePtrOutput()
 }
 
 // RouteSpecTcpRoutePtrInput is an input type that accepts RouteSpecTcpRouteArgs, RouteSpecTcpRoutePtr and RouteSpecTcpRoutePtrOutput values.
@@ -8483,7 +8483,7 @@ func (i *routeSpecTcpRoutePtrType) ToRouteSpecTcpRoutePtrOutput() RouteSpecTcpRo
 }
 
 func (i *routeSpecTcpRoutePtrType) ToRouteSpecTcpRoutePtrOutputWithContext(ctx context.Context) RouteSpecTcpRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecTcpRoutePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecTcpRouteOutput).ToRouteSpecTcpRoutePtrOutput()
 }
 
 type RouteSpecTcpRouteOutput struct{ *pulumi.OutputState }
@@ -8598,7 +8598,7 @@ func (i RouteSpecTcpRouteActionArgs) ToRouteSpecTcpRouteActionPtrOutput() RouteS
 }
 
 func (i RouteSpecTcpRouteActionArgs) ToRouteSpecTcpRouteActionPtrOutputWithContext(ctx context.Context) RouteSpecTcpRouteActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecTcpRouteActionOutput).ToRouteSpecTcpRouteActionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecTcpRouteActionOutput).ToRouteSpecTcpRouteActionPtrOutput()
 }
 
 // RouteSpecTcpRouteActionPtrInput is an input type that accepts RouteSpecTcpRouteActionArgs, RouteSpecTcpRouteActionPtr and RouteSpecTcpRouteActionPtrOutput values.
@@ -8631,7 +8631,7 @@ func (i *routeSpecTcpRouteActionPtrType) ToRouteSpecTcpRouteActionPtrOutput() Ro
 }
 
 func (i *routeSpecTcpRouteActionPtrType) ToRouteSpecTcpRouteActionPtrOutputWithContext(ctx context.Context) RouteSpecTcpRouteActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecTcpRouteActionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecTcpRouteActionOutput).ToRouteSpecTcpRouteActionPtrOutput()
 }
 
 type RouteSpecTcpRouteActionOutput struct{ *pulumi.OutputState }
@@ -8837,7 +8837,7 @@ func (i RouteSpecTcpRouteTimeoutArgs) ToRouteSpecTcpRouteTimeoutPtrOutput() Rout
 }
 
 func (i RouteSpecTcpRouteTimeoutArgs) ToRouteSpecTcpRouteTimeoutPtrOutputWithContext(ctx context.Context) RouteSpecTcpRouteTimeoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecTcpRouteTimeoutOutput).ToRouteSpecTcpRouteTimeoutPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecTcpRouteTimeoutOutput).ToRouteSpecTcpRouteTimeoutPtrOutput()
 }
 
 // RouteSpecTcpRouteTimeoutPtrInput is an input type that accepts RouteSpecTcpRouteTimeoutArgs, RouteSpecTcpRouteTimeoutPtr and RouteSpecTcpRouteTimeoutPtrOutput values.
@@ -8870,7 +8870,7 @@ func (i *routeSpecTcpRouteTimeoutPtrType) ToRouteSpecTcpRouteTimeoutPtrOutput() 
 }
 
 func (i *routeSpecTcpRouteTimeoutPtrType) ToRouteSpecTcpRouteTimeoutPtrOutputWithContext(ctx context.Context) RouteSpecTcpRouteTimeoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecTcpRouteTimeoutPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecTcpRouteTimeoutOutput).ToRouteSpecTcpRouteTimeoutPtrOutput()
 }
 
 type RouteSpecTcpRouteTimeoutOutput struct{ *pulumi.OutputState }
@@ -8972,7 +8972,7 @@ func (i RouteSpecTcpRouteTimeoutIdleArgs) ToRouteSpecTcpRouteTimeoutIdlePtrOutpu
 }
 
 func (i RouteSpecTcpRouteTimeoutIdleArgs) ToRouteSpecTcpRouteTimeoutIdlePtrOutputWithContext(ctx context.Context) RouteSpecTcpRouteTimeoutIdlePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecTcpRouteTimeoutIdleOutput).ToRouteSpecTcpRouteTimeoutIdlePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecTcpRouteTimeoutIdleOutput).ToRouteSpecTcpRouteTimeoutIdlePtrOutput()
 }
 
 // RouteSpecTcpRouteTimeoutIdlePtrInput is an input type that accepts RouteSpecTcpRouteTimeoutIdleArgs, RouteSpecTcpRouteTimeoutIdlePtr and RouteSpecTcpRouteTimeoutIdlePtrOutput values.
@@ -9005,7 +9005,7 @@ func (i *routeSpecTcpRouteTimeoutIdlePtrType) ToRouteSpecTcpRouteTimeoutIdlePtrO
 }
 
 func (i *routeSpecTcpRouteTimeoutIdlePtrType) ToRouteSpecTcpRouteTimeoutIdlePtrOutputWithContext(ctx context.Context) RouteSpecTcpRouteTimeoutIdlePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecTcpRouteTimeoutIdlePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RouteSpecTcpRouteTimeoutIdleOutput).ToRouteSpecTcpRouteTimeoutIdlePtrOutput()
 }
 
 type RouteSpecTcpRouteTimeoutIdleOutput struct{ *pulumi.OutputState }
@@ -9126,7 +9126,7 @@ func (i VirtualGatewaySpecArgs) ToVirtualGatewaySpecPtrOutput() VirtualGatewaySp
 }
 
 func (i VirtualGatewaySpecArgs) ToVirtualGatewaySpecPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecOutput).ToVirtualGatewaySpecPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecOutput).ToVirtualGatewaySpecPtrOutput()
 }
 
 // VirtualGatewaySpecPtrInput is an input type that accepts VirtualGatewaySpecArgs, VirtualGatewaySpecPtr and VirtualGatewaySpecPtrOutput values.
@@ -9159,7 +9159,7 @@ func (i *virtualGatewaySpecPtrType) ToVirtualGatewaySpecPtrOutput() VirtualGatew
 }
 
 func (i *virtualGatewaySpecPtrType) ToVirtualGatewaySpecPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecOutput).ToVirtualGatewaySpecPtrOutput()
 }
 
 type VirtualGatewaySpecOutput struct{ *pulumi.OutputState }
@@ -9287,7 +9287,7 @@ func (i VirtualGatewaySpecBackendDefaultsArgs) ToVirtualGatewaySpecBackendDefaul
 }
 
 func (i VirtualGatewaySpecBackendDefaultsArgs) ToVirtualGatewaySpecBackendDefaultsPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecBackendDefaultsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsOutput).ToVirtualGatewaySpecBackendDefaultsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsOutput).ToVirtualGatewaySpecBackendDefaultsPtrOutput()
 }
 
 // VirtualGatewaySpecBackendDefaultsPtrInput is an input type that accepts VirtualGatewaySpecBackendDefaultsArgs, VirtualGatewaySpecBackendDefaultsPtr and VirtualGatewaySpecBackendDefaultsPtrOutput values.
@@ -9320,7 +9320,7 @@ func (i *virtualGatewaySpecBackendDefaultsPtrType) ToVirtualGatewaySpecBackendDe
 }
 
 func (i *virtualGatewaySpecBackendDefaultsPtrType) ToVirtualGatewaySpecBackendDefaultsPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecBackendDefaultsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsOutput).ToVirtualGatewaySpecBackendDefaultsPtrOutput()
 }
 
 type VirtualGatewaySpecBackendDefaultsOutput struct{ *pulumi.OutputState }
@@ -9420,7 +9420,7 @@ func (i VirtualGatewaySpecBackendDefaultsClientPolicyArgs) ToVirtualGatewaySpecB
 }
 
 func (i VirtualGatewaySpecBackendDefaultsClientPolicyArgs) ToVirtualGatewaySpecBackendDefaultsClientPolicyPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecBackendDefaultsClientPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyOutput).ToVirtualGatewaySpecBackendDefaultsClientPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyOutput).ToVirtualGatewaySpecBackendDefaultsClientPolicyPtrOutput()
 }
 
 // VirtualGatewaySpecBackendDefaultsClientPolicyPtrInput is an input type that accepts VirtualGatewaySpecBackendDefaultsClientPolicyArgs, VirtualGatewaySpecBackendDefaultsClientPolicyPtr and VirtualGatewaySpecBackendDefaultsClientPolicyPtrOutput values.
@@ -9453,7 +9453,7 @@ func (i *virtualGatewaySpecBackendDefaultsClientPolicyPtrType) ToVirtualGatewayS
 }
 
 func (i *virtualGatewaySpecBackendDefaultsClientPolicyPtrType) ToVirtualGatewaySpecBackendDefaultsClientPolicyPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecBackendDefaultsClientPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyOutput).ToVirtualGatewaySpecBackendDefaultsClientPolicyPtrOutput()
 }
 
 type VirtualGatewaySpecBackendDefaultsClientPolicyOutput struct{ *pulumi.OutputState }
@@ -9561,7 +9561,7 @@ func (i VirtualGatewaySpecBackendDefaultsClientPolicyTlsArgs) ToVirtualGatewaySp
 }
 
 func (i VirtualGatewaySpecBackendDefaultsClientPolicyTlsArgs) ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecBackendDefaultsClientPolicyTlsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyTlsOutput).ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyTlsOutput).ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsPtrOutput()
 }
 
 // VirtualGatewaySpecBackendDefaultsClientPolicyTlsPtrInput is an input type that accepts VirtualGatewaySpecBackendDefaultsClientPolicyTlsArgs, VirtualGatewaySpecBackendDefaultsClientPolicyTlsPtr and VirtualGatewaySpecBackendDefaultsClientPolicyTlsPtrOutput values.
@@ -9594,7 +9594,7 @@ func (i *virtualGatewaySpecBackendDefaultsClientPolicyTlsPtrType) ToVirtualGatew
 }
 
 func (i *virtualGatewaySpecBackendDefaultsClientPolicyTlsPtrType) ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecBackendDefaultsClientPolicyTlsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyTlsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyTlsOutput).ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsPtrOutput()
 }
 
 type VirtualGatewaySpecBackendDefaultsClientPolicyTlsOutput struct{ *pulumi.OutputState }
@@ -9723,7 +9723,7 @@ func (i VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationArgs) ToVirtua
 }
 
 func (i VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationArgs) ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationOutput).ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationOutput).ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationPtrOutput()
 }
 
 // VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationPtrInput is an input type that accepts VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationArgs, VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationPtr and VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationPtrOutput values.
@@ -9756,7 +9756,7 @@ func (i *virtualGatewaySpecBackendDefaultsClientPolicyTlsValidationPtrType) ToVi
 }
 
 func (i *virtualGatewaySpecBackendDefaultsClientPolicyTlsValidationPtrType) ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationOutput).ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationPtrOutput()
 }
 
 type VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationOutput struct{ *pulumi.OutputState }
@@ -9862,7 +9862,7 @@ func (i VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustArgs) ToV
 }
 
 func (i VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustArgs) ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustOutput).ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustOutput).ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustPtrOutput()
 }
 
 // VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustPtrInput is an input type that accepts VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustArgs, VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustPtr and VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustPtrOutput values.
@@ -9895,7 +9895,7 @@ func (i *virtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustPtrType)
 }
 
 func (i *virtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustPtrType) ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustOutput).ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustPtrOutput()
 }
 
 type VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustOutput struct{ *pulumi.OutputState }
@@ -10014,7 +10014,7 @@ func (i VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmArgs) 
 }
 
 func (i VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmArgs) ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmOutput).ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmOutput).ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrOutput()
 }
 
 // VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrInput is an input type that accepts VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmArgs, VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtr and VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrOutput values.
@@ -10047,7 +10047,7 @@ func (i *virtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrTy
 }
 
 func (i *virtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrType) ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmOutput).ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrOutput()
 }
 
 type VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmOutput struct{ *pulumi.OutputState }
@@ -10149,7 +10149,7 @@ func (i VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFileArgs)
 }
 
 func (i VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFileArgs) ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrOutputWithContext(ctx context.Context) VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFileOutput).ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFileOutput).ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrOutput()
 }
 
 // VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrInput is an input type that accepts VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFileArgs, VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFilePtr and VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrOutput values.
@@ -10182,7 +10182,7 @@ func (i *virtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrT
 }
 
 func (i *virtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrType) ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrOutputWithContext(ctx context.Context) VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFileOutput).ToVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrOutput()
 }
 
 type VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFileOutput struct{ *pulumi.OutputState }
@@ -10296,7 +10296,7 @@ func (i VirtualGatewaySpecListenerArgs) ToVirtualGatewaySpecListenerPtrOutput() 
 }
 
 func (i VirtualGatewaySpecListenerArgs) ToVirtualGatewaySpecListenerPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerOutput).ToVirtualGatewaySpecListenerPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerOutput).ToVirtualGatewaySpecListenerPtrOutput()
 }
 
 // VirtualGatewaySpecListenerPtrInput is an input type that accepts VirtualGatewaySpecListenerArgs, VirtualGatewaySpecListenerPtr and VirtualGatewaySpecListenerPtrOutput values.
@@ -10329,7 +10329,7 @@ func (i *virtualGatewaySpecListenerPtrType) ToVirtualGatewaySpecListenerPtrOutpu
 }
 
 func (i *virtualGatewaySpecListenerPtrType) ToVirtualGatewaySpecListenerPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerOutput).ToVirtualGatewaySpecListenerPtrOutput()
 }
 
 type VirtualGatewaySpecListenerOutput struct{ *pulumi.OutputState }
@@ -10480,7 +10480,7 @@ func (i VirtualGatewaySpecListenerConnectionPoolArgs) ToVirtualGatewaySpecListen
 }
 
 func (i VirtualGatewaySpecListenerConnectionPoolArgs) ToVirtualGatewaySpecListenerConnectionPoolPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerConnectionPoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerConnectionPoolOutput).ToVirtualGatewaySpecListenerConnectionPoolPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerConnectionPoolOutput).ToVirtualGatewaySpecListenerConnectionPoolPtrOutput()
 }
 
 // VirtualGatewaySpecListenerConnectionPoolPtrInput is an input type that accepts VirtualGatewaySpecListenerConnectionPoolArgs, VirtualGatewaySpecListenerConnectionPoolPtr and VirtualGatewaySpecListenerConnectionPoolPtrOutput values.
@@ -10513,7 +10513,7 @@ func (i *virtualGatewaySpecListenerConnectionPoolPtrType) ToVirtualGatewaySpecLi
 }
 
 func (i *virtualGatewaySpecListenerConnectionPoolPtrType) ToVirtualGatewaySpecListenerConnectionPoolPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerConnectionPoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerConnectionPoolPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerConnectionPoolOutput).ToVirtualGatewaySpecListenerConnectionPoolPtrOutput()
 }
 
 type VirtualGatewaySpecListenerConnectionPoolOutput struct{ *pulumi.OutputState }
@@ -10647,7 +10647,7 @@ func (i VirtualGatewaySpecListenerConnectionPoolGrpcArgs) ToVirtualGatewaySpecLi
 }
 
 func (i VirtualGatewaySpecListenerConnectionPoolGrpcArgs) ToVirtualGatewaySpecListenerConnectionPoolGrpcPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerConnectionPoolGrpcPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerConnectionPoolGrpcOutput).ToVirtualGatewaySpecListenerConnectionPoolGrpcPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerConnectionPoolGrpcOutput).ToVirtualGatewaySpecListenerConnectionPoolGrpcPtrOutput()
 }
 
 // VirtualGatewaySpecListenerConnectionPoolGrpcPtrInput is an input type that accepts VirtualGatewaySpecListenerConnectionPoolGrpcArgs, VirtualGatewaySpecListenerConnectionPoolGrpcPtr and VirtualGatewaySpecListenerConnectionPoolGrpcPtrOutput values.
@@ -10680,7 +10680,7 @@ func (i *virtualGatewaySpecListenerConnectionPoolGrpcPtrType) ToVirtualGatewaySp
 }
 
 func (i *virtualGatewaySpecListenerConnectionPoolGrpcPtrType) ToVirtualGatewaySpecListenerConnectionPoolGrpcPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerConnectionPoolGrpcPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerConnectionPoolGrpcPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerConnectionPoolGrpcOutput).ToVirtualGatewaySpecListenerConnectionPoolGrpcPtrOutput()
 }
 
 type VirtualGatewaySpecListenerConnectionPoolGrpcOutput struct{ *pulumi.OutputState }
@@ -10780,7 +10780,7 @@ func (i VirtualGatewaySpecListenerConnectionPoolHttp2Args) ToVirtualGatewaySpecL
 }
 
 func (i VirtualGatewaySpecListenerConnectionPoolHttp2Args) ToVirtualGatewaySpecListenerConnectionPoolHttp2PtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerConnectionPoolHttp2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerConnectionPoolHttp2Output).ToVirtualGatewaySpecListenerConnectionPoolHttp2PtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerConnectionPoolHttp2Output).ToVirtualGatewaySpecListenerConnectionPoolHttp2PtrOutput()
 }
 
 // VirtualGatewaySpecListenerConnectionPoolHttp2PtrInput is an input type that accepts VirtualGatewaySpecListenerConnectionPoolHttp2Args, VirtualGatewaySpecListenerConnectionPoolHttp2Ptr and VirtualGatewaySpecListenerConnectionPoolHttp2PtrOutput values.
@@ -10813,7 +10813,7 @@ func (i *virtualGatewaySpecListenerConnectionPoolHttp2PtrType) ToVirtualGatewayS
 }
 
 func (i *virtualGatewaySpecListenerConnectionPoolHttp2PtrType) ToVirtualGatewaySpecListenerConnectionPoolHttp2PtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerConnectionPoolHttp2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerConnectionPoolHttp2PtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerConnectionPoolHttp2Output).ToVirtualGatewaySpecListenerConnectionPoolHttp2PtrOutput()
 }
 
 type VirtualGatewaySpecListenerConnectionPoolHttp2Output struct{ *pulumi.OutputState }
@@ -10917,7 +10917,7 @@ func (i VirtualGatewaySpecListenerConnectionPoolHttpArgs) ToVirtualGatewaySpecLi
 }
 
 func (i VirtualGatewaySpecListenerConnectionPoolHttpArgs) ToVirtualGatewaySpecListenerConnectionPoolHttpPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerConnectionPoolHttpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerConnectionPoolHttpOutput).ToVirtualGatewaySpecListenerConnectionPoolHttpPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerConnectionPoolHttpOutput).ToVirtualGatewaySpecListenerConnectionPoolHttpPtrOutput()
 }
 
 // VirtualGatewaySpecListenerConnectionPoolHttpPtrInput is an input type that accepts VirtualGatewaySpecListenerConnectionPoolHttpArgs, VirtualGatewaySpecListenerConnectionPoolHttpPtr and VirtualGatewaySpecListenerConnectionPoolHttpPtrOutput values.
@@ -10950,7 +10950,7 @@ func (i *virtualGatewaySpecListenerConnectionPoolHttpPtrType) ToVirtualGatewaySp
 }
 
 func (i *virtualGatewaySpecListenerConnectionPoolHttpPtrType) ToVirtualGatewaySpecListenerConnectionPoolHttpPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerConnectionPoolHttpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerConnectionPoolHttpPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerConnectionPoolHttpOutput).ToVirtualGatewaySpecListenerConnectionPoolHttpPtrOutput()
 }
 
 type VirtualGatewaySpecListenerConnectionPoolHttpOutput struct{ *pulumi.OutputState }
@@ -11089,7 +11089,7 @@ func (i VirtualGatewaySpecListenerHealthCheckArgs) ToVirtualGatewaySpecListenerH
 }
 
 func (i VirtualGatewaySpecListenerHealthCheckArgs) ToVirtualGatewaySpecListenerHealthCheckPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerHealthCheckOutput).ToVirtualGatewaySpecListenerHealthCheckPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerHealthCheckOutput).ToVirtualGatewaySpecListenerHealthCheckPtrOutput()
 }
 
 // VirtualGatewaySpecListenerHealthCheckPtrInput is an input type that accepts VirtualGatewaySpecListenerHealthCheckArgs, VirtualGatewaySpecListenerHealthCheckPtr and VirtualGatewaySpecListenerHealthCheckPtrOutput values.
@@ -11122,7 +11122,7 @@ func (i *virtualGatewaySpecListenerHealthCheckPtrType) ToVirtualGatewaySpecListe
 }
 
 func (i *virtualGatewaySpecListenerHealthCheckPtrType) ToVirtualGatewaySpecListenerHealthCheckPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerHealthCheckPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerHealthCheckOutput).ToVirtualGatewaySpecListenerHealthCheckPtrOutput()
 }
 
 type VirtualGatewaySpecListenerHealthCheckOutput struct{ *pulumi.OutputState }
@@ -11314,7 +11314,7 @@ func (i VirtualGatewaySpecListenerPortMappingArgs) ToVirtualGatewaySpecListenerP
 }
 
 func (i VirtualGatewaySpecListenerPortMappingArgs) ToVirtualGatewaySpecListenerPortMappingPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerPortMappingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerPortMappingOutput).ToVirtualGatewaySpecListenerPortMappingPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerPortMappingOutput).ToVirtualGatewaySpecListenerPortMappingPtrOutput()
 }
 
 // VirtualGatewaySpecListenerPortMappingPtrInput is an input type that accepts VirtualGatewaySpecListenerPortMappingArgs, VirtualGatewaySpecListenerPortMappingPtr and VirtualGatewaySpecListenerPortMappingPtrOutput values.
@@ -11347,7 +11347,7 @@ func (i *virtualGatewaySpecListenerPortMappingPtrType) ToVirtualGatewaySpecListe
 }
 
 func (i *virtualGatewaySpecListenerPortMappingPtrType) ToVirtualGatewaySpecListenerPortMappingPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerPortMappingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerPortMappingPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerPortMappingOutput).ToVirtualGatewaySpecListenerPortMappingPtrOutput()
 }
 
 type VirtualGatewaySpecListenerPortMappingOutput struct{ *pulumi.OutputState }
@@ -11464,7 +11464,7 @@ func (i VirtualGatewaySpecListenerTlsArgs) ToVirtualGatewaySpecListenerTlsPtrOut
 }
 
 func (i VirtualGatewaySpecListenerTlsArgs) ToVirtualGatewaySpecListenerTlsPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerTlsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerTlsOutput).ToVirtualGatewaySpecListenerTlsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerTlsOutput).ToVirtualGatewaySpecListenerTlsPtrOutput()
 }
 
 // VirtualGatewaySpecListenerTlsPtrInput is an input type that accepts VirtualGatewaySpecListenerTlsArgs, VirtualGatewaySpecListenerTlsPtr and VirtualGatewaySpecListenerTlsPtrOutput values.
@@ -11497,7 +11497,7 @@ func (i *virtualGatewaySpecListenerTlsPtrType) ToVirtualGatewaySpecListenerTlsPt
 }
 
 func (i *virtualGatewaySpecListenerTlsPtrType) ToVirtualGatewaySpecListenerTlsPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerTlsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerTlsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerTlsOutput).ToVirtualGatewaySpecListenerTlsPtrOutput()
 }
 
 type VirtualGatewaySpecListenerTlsOutput struct{ *pulumi.OutputState }
@@ -11614,7 +11614,7 @@ func (i VirtualGatewaySpecListenerTlsCertificateArgs) ToVirtualGatewaySpecListen
 }
 
 func (i VirtualGatewaySpecListenerTlsCertificateArgs) ToVirtualGatewaySpecListenerTlsCertificatePtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerTlsCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerTlsCertificateOutput).ToVirtualGatewaySpecListenerTlsCertificatePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerTlsCertificateOutput).ToVirtualGatewaySpecListenerTlsCertificatePtrOutput()
 }
 
 // VirtualGatewaySpecListenerTlsCertificatePtrInput is an input type that accepts VirtualGatewaySpecListenerTlsCertificateArgs, VirtualGatewaySpecListenerTlsCertificatePtr and VirtualGatewaySpecListenerTlsCertificatePtrOutput values.
@@ -11647,7 +11647,7 @@ func (i *virtualGatewaySpecListenerTlsCertificatePtrType) ToVirtualGatewaySpecLi
 }
 
 func (i *virtualGatewaySpecListenerTlsCertificatePtrType) ToVirtualGatewaySpecListenerTlsCertificatePtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerTlsCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerTlsCertificatePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerTlsCertificateOutput).ToVirtualGatewaySpecListenerTlsCertificatePtrOutput()
 }
 
 type VirtualGatewaySpecListenerTlsCertificateOutput struct{ *pulumi.OutputState }
@@ -11764,7 +11764,7 @@ func (i VirtualGatewaySpecListenerTlsCertificateAcmArgs) ToVirtualGatewaySpecLis
 }
 
 func (i VirtualGatewaySpecListenerTlsCertificateAcmArgs) ToVirtualGatewaySpecListenerTlsCertificateAcmPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerTlsCertificateAcmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerTlsCertificateAcmOutput).ToVirtualGatewaySpecListenerTlsCertificateAcmPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerTlsCertificateAcmOutput).ToVirtualGatewaySpecListenerTlsCertificateAcmPtrOutput()
 }
 
 // VirtualGatewaySpecListenerTlsCertificateAcmPtrInput is an input type that accepts VirtualGatewaySpecListenerTlsCertificateAcmArgs, VirtualGatewaySpecListenerTlsCertificateAcmPtr and VirtualGatewaySpecListenerTlsCertificateAcmPtrOutput values.
@@ -11797,7 +11797,7 @@ func (i *virtualGatewaySpecListenerTlsCertificateAcmPtrType) ToVirtualGatewaySpe
 }
 
 func (i *virtualGatewaySpecListenerTlsCertificateAcmPtrType) ToVirtualGatewaySpecListenerTlsCertificateAcmPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerTlsCertificateAcmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerTlsCertificateAcmPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerTlsCertificateAcmOutput).ToVirtualGatewaySpecListenerTlsCertificateAcmPtrOutput()
 }
 
 type VirtualGatewaySpecListenerTlsCertificateAcmOutput struct{ *pulumi.OutputState }
@@ -11901,7 +11901,7 @@ func (i VirtualGatewaySpecListenerTlsCertificateFileArgs) ToVirtualGatewaySpecLi
 }
 
 func (i VirtualGatewaySpecListenerTlsCertificateFileArgs) ToVirtualGatewaySpecListenerTlsCertificateFilePtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerTlsCertificateFilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerTlsCertificateFileOutput).ToVirtualGatewaySpecListenerTlsCertificateFilePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerTlsCertificateFileOutput).ToVirtualGatewaySpecListenerTlsCertificateFilePtrOutput()
 }
 
 // VirtualGatewaySpecListenerTlsCertificateFilePtrInput is an input type that accepts VirtualGatewaySpecListenerTlsCertificateFileArgs, VirtualGatewaySpecListenerTlsCertificateFilePtr and VirtualGatewaySpecListenerTlsCertificateFilePtrOutput values.
@@ -11934,7 +11934,7 @@ func (i *virtualGatewaySpecListenerTlsCertificateFilePtrType) ToVirtualGatewaySp
 }
 
 func (i *virtualGatewaySpecListenerTlsCertificateFilePtrType) ToVirtualGatewaySpecListenerTlsCertificateFilePtrOutputWithContext(ctx context.Context) VirtualGatewaySpecListenerTlsCertificateFilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerTlsCertificateFilePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecListenerTlsCertificateFileOutput).ToVirtualGatewaySpecListenerTlsCertificateFilePtrOutput()
 }
 
 type VirtualGatewaySpecListenerTlsCertificateFileOutput struct{ *pulumi.OutputState }
@@ -12049,7 +12049,7 @@ func (i VirtualGatewaySpecLoggingArgs) ToVirtualGatewaySpecLoggingPtrOutput() Vi
 }
 
 func (i VirtualGatewaySpecLoggingArgs) ToVirtualGatewaySpecLoggingPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecLoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecLoggingOutput).ToVirtualGatewaySpecLoggingPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecLoggingOutput).ToVirtualGatewaySpecLoggingPtrOutput()
 }
 
 // VirtualGatewaySpecLoggingPtrInput is an input type that accepts VirtualGatewaySpecLoggingArgs, VirtualGatewaySpecLoggingPtr and VirtualGatewaySpecLoggingPtrOutput values.
@@ -12082,7 +12082,7 @@ func (i *virtualGatewaySpecLoggingPtrType) ToVirtualGatewaySpecLoggingPtrOutput(
 }
 
 func (i *virtualGatewaySpecLoggingPtrType) ToVirtualGatewaySpecLoggingPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecLoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecLoggingPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecLoggingOutput).ToVirtualGatewaySpecLoggingPtrOutput()
 }
 
 type VirtualGatewaySpecLoggingOutput struct{ *pulumi.OutputState }
@@ -12180,7 +12180,7 @@ func (i VirtualGatewaySpecLoggingAccessLogArgs) ToVirtualGatewaySpecLoggingAcces
 }
 
 func (i VirtualGatewaySpecLoggingAccessLogArgs) ToVirtualGatewaySpecLoggingAccessLogPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecLoggingAccessLogPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecLoggingAccessLogOutput).ToVirtualGatewaySpecLoggingAccessLogPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecLoggingAccessLogOutput).ToVirtualGatewaySpecLoggingAccessLogPtrOutput()
 }
 
 // VirtualGatewaySpecLoggingAccessLogPtrInput is an input type that accepts VirtualGatewaySpecLoggingAccessLogArgs, VirtualGatewaySpecLoggingAccessLogPtr and VirtualGatewaySpecLoggingAccessLogPtrOutput values.
@@ -12213,7 +12213,7 @@ func (i *virtualGatewaySpecLoggingAccessLogPtrType) ToVirtualGatewaySpecLoggingA
 }
 
 func (i *virtualGatewaySpecLoggingAccessLogPtrType) ToVirtualGatewaySpecLoggingAccessLogPtrOutputWithContext(ctx context.Context) VirtualGatewaySpecLoggingAccessLogPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecLoggingAccessLogPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecLoggingAccessLogOutput).ToVirtualGatewaySpecLoggingAccessLogPtrOutput()
 }
 
 type VirtualGatewaySpecLoggingAccessLogOutput struct{ *pulumi.OutputState }
@@ -12311,7 +12311,7 @@ func (i VirtualGatewaySpecLoggingAccessLogFileArgs) ToVirtualGatewaySpecLoggingA
 }
 
 func (i VirtualGatewaySpecLoggingAccessLogFileArgs) ToVirtualGatewaySpecLoggingAccessLogFilePtrOutputWithContext(ctx context.Context) VirtualGatewaySpecLoggingAccessLogFilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecLoggingAccessLogFileOutput).ToVirtualGatewaySpecLoggingAccessLogFilePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecLoggingAccessLogFileOutput).ToVirtualGatewaySpecLoggingAccessLogFilePtrOutput()
 }
 
 // VirtualGatewaySpecLoggingAccessLogFilePtrInput is an input type that accepts VirtualGatewaySpecLoggingAccessLogFileArgs, VirtualGatewaySpecLoggingAccessLogFilePtr and VirtualGatewaySpecLoggingAccessLogFilePtrOutput values.
@@ -12344,7 +12344,7 @@ func (i *virtualGatewaySpecLoggingAccessLogFilePtrType) ToVirtualGatewaySpecLogg
 }
 
 func (i *virtualGatewaySpecLoggingAccessLogFilePtrType) ToVirtualGatewaySpecLoggingAccessLogFilePtrOutputWithContext(ctx context.Context) VirtualGatewaySpecLoggingAccessLogFilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecLoggingAccessLogFilePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewaySpecLoggingAccessLogFileOutput).ToVirtualGatewaySpecLoggingAccessLogFilePtrOutput()
 }
 
 type VirtualGatewaySpecLoggingAccessLogFileOutput struct{ *pulumi.OutputState }
@@ -12458,7 +12458,7 @@ func (i VirtualNodeSpecArgs) ToVirtualNodeSpecPtrOutput() VirtualNodeSpecPtrOutp
 }
 
 func (i VirtualNodeSpecArgs) ToVirtualNodeSpecPtrOutputWithContext(ctx context.Context) VirtualNodeSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecOutput).ToVirtualNodeSpecPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecOutput).ToVirtualNodeSpecPtrOutput()
 }
 
 // VirtualNodeSpecPtrInput is an input type that accepts VirtualNodeSpecArgs, VirtualNodeSpecPtr and VirtualNodeSpecPtrOutput values.
@@ -12491,7 +12491,7 @@ func (i *virtualNodeSpecPtrType) ToVirtualNodeSpecPtrOutput() VirtualNodeSpecPtr
 }
 
 func (i *virtualNodeSpecPtrType) ToVirtualNodeSpecPtrOutputWithContext(ctx context.Context) VirtualNodeSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecOutput).ToVirtualNodeSpecPtrOutput()
 }
 
 type VirtualNodeSpecOutput struct{ *pulumi.OutputState }
@@ -12746,7 +12746,7 @@ func (i VirtualNodeSpecBackendDefaultsArgs) ToVirtualNodeSpecBackendDefaultsPtrO
 }
 
 func (i VirtualNodeSpecBackendDefaultsArgs) ToVirtualNodeSpecBackendDefaultsPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendDefaultsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsOutput).ToVirtualNodeSpecBackendDefaultsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsOutput).ToVirtualNodeSpecBackendDefaultsPtrOutput()
 }
 
 // VirtualNodeSpecBackendDefaultsPtrInput is an input type that accepts VirtualNodeSpecBackendDefaultsArgs, VirtualNodeSpecBackendDefaultsPtr and VirtualNodeSpecBackendDefaultsPtrOutput values.
@@ -12779,7 +12779,7 @@ func (i *virtualNodeSpecBackendDefaultsPtrType) ToVirtualNodeSpecBackendDefaults
 }
 
 func (i *virtualNodeSpecBackendDefaultsPtrType) ToVirtualNodeSpecBackendDefaultsPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendDefaultsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsOutput).ToVirtualNodeSpecBackendDefaultsPtrOutput()
 }
 
 type VirtualNodeSpecBackendDefaultsOutput struct{ *pulumi.OutputState }
@@ -12879,7 +12879,7 @@ func (i VirtualNodeSpecBackendDefaultsClientPolicyArgs) ToVirtualNodeSpecBackend
 }
 
 func (i VirtualNodeSpecBackendDefaultsClientPolicyArgs) ToVirtualNodeSpecBackendDefaultsClientPolicyPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendDefaultsClientPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyOutput).ToVirtualNodeSpecBackendDefaultsClientPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyOutput).ToVirtualNodeSpecBackendDefaultsClientPolicyPtrOutput()
 }
 
 // VirtualNodeSpecBackendDefaultsClientPolicyPtrInput is an input type that accepts VirtualNodeSpecBackendDefaultsClientPolicyArgs, VirtualNodeSpecBackendDefaultsClientPolicyPtr and VirtualNodeSpecBackendDefaultsClientPolicyPtrOutput values.
@@ -12912,7 +12912,7 @@ func (i *virtualNodeSpecBackendDefaultsClientPolicyPtrType) ToVirtualNodeSpecBac
 }
 
 func (i *virtualNodeSpecBackendDefaultsClientPolicyPtrType) ToVirtualNodeSpecBackendDefaultsClientPolicyPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendDefaultsClientPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyOutput).ToVirtualNodeSpecBackendDefaultsClientPolicyPtrOutput()
 }
 
 type VirtualNodeSpecBackendDefaultsClientPolicyOutput struct{ *pulumi.OutputState }
@@ -13020,7 +13020,7 @@ func (i VirtualNodeSpecBackendDefaultsClientPolicyTlsArgs) ToVirtualNodeSpecBack
 }
 
 func (i VirtualNodeSpecBackendDefaultsClientPolicyTlsArgs) ToVirtualNodeSpecBackendDefaultsClientPolicyTlsPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendDefaultsClientPolicyTlsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyTlsOutput).ToVirtualNodeSpecBackendDefaultsClientPolicyTlsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyTlsOutput).ToVirtualNodeSpecBackendDefaultsClientPolicyTlsPtrOutput()
 }
 
 // VirtualNodeSpecBackendDefaultsClientPolicyTlsPtrInput is an input type that accepts VirtualNodeSpecBackendDefaultsClientPolicyTlsArgs, VirtualNodeSpecBackendDefaultsClientPolicyTlsPtr and VirtualNodeSpecBackendDefaultsClientPolicyTlsPtrOutput values.
@@ -13053,7 +13053,7 @@ func (i *virtualNodeSpecBackendDefaultsClientPolicyTlsPtrType) ToVirtualNodeSpec
 }
 
 func (i *virtualNodeSpecBackendDefaultsClientPolicyTlsPtrType) ToVirtualNodeSpecBackendDefaultsClientPolicyTlsPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendDefaultsClientPolicyTlsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyTlsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyTlsOutput).ToVirtualNodeSpecBackendDefaultsClientPolicyTlsPtrOutput()
 }
 
 type VirtualNodeSpecBackendDefaultsClientPolicyTlsOutput struct{ *pulumi.OutputState }
@@ -13182,7 +13182,7 @@ func (i VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationArgs) ToVirtualNo
 }
 
 func (i VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationArgs) ToVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationOutput).ToVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationOutput).ToVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationPtrOutput()
 }
 
 // VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationPtrInput is an input type that accepts VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationArgs, VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationPtr and VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationPtrOutput values.
@@ -13215,7 +13215,7 @@ func (i *virtualNodeSpecBackendDefaultsClientPolicyTlsValidationPtrType) ToVirtu
 }
 
 func (i *virtualNodeSpecBackendDefaultsClientPolicyTlsValidationPtrType) ToVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationOutput).ToVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationPtrOutput()
 }
 
 type VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationOutput struct{ *pulumi.OutputState }
@@ -13321,7 +13321,7 @@ func (i VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustArgs) ToVirt
 }
 
 func (i VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustArgs) ToVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustOutput).ToVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustOutput).ToVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustPtrOutput()
 }
 
 // VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustPtrInput is an input type that accepts VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustArgs, VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustPtr and VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustPtrOutput values.
@@ -13354,7 +13354,7 @@ func (i *virtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustPtrType) To
 }
 
 func (i *virtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustPtrType) ToVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustOutput).ToVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustPtrOutput()
 }
 
 type VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustOutput struct{ *pulumi.OutputState }
@@ -13473,7 +13473,7 @@ func (i VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcmArgs) ToV
 }
 
 func (i VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcmArgs) ToVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcmOutput).ToVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcmOutput).ToVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrOutput()
 }
 
 // VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrInput is an input type that accepts VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcmArgs, VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtr and VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrOutput values.
@@ -13506,7 +13506,7 @@ func (i *virtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrType)
 }
 
 func (i *virtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrType) ToVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcmOutput).ToVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcmPtrOutput()
 }
 
 type VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcmOutput struct{ *pulumi.OutputState }
@@ -13608,7 +13608,7 @@ func (i VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFileArgs) To
 }
 
 func (i VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFileArgs) ToVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFileOutput).ToVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFileOutput).ToVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrOutput()
 }
 
 // VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrInput is an input type that accepts VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFileArgs, VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFilePtr and VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrOutput values.
@@ -13641,7 +13641,7 @@ func (i *virtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrType
 }
 
 func (i *virtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrType) ToVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFileOutput).ToVirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFilePtrOutput()
 }
 
 type VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustFileOutput struct{ *pulumi.OutputState }
@@ -13806,7 +13806,7 @@ func (i VirtualNodeSpecBackendVirtualServiceClientPolicyArgs) ToVirtualNodeSpecB
 }
 
 func (i VirtualNodeSpecBackendVirtualServiceClientPolicyArgs) ToVirtualNodeSpecBackendVirtualServiceClientPolicyPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendVirtualServiceClientPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyOutput).ToVirtualNodeSpecBackendVirtualServiceClientPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyOutput).ToVirtualNodeSpecBackendVirtualServiceClientPolicyPtrOutput()
 }
 
 // VirtualNodeSpecBackendVirtualServiceClientPolicyPtrInput is an input type that accepts VirtualNodeSpecBackendVirtualServiceClientPolicyArgs, VirtualNodeSpecBackendVirtualServiceClientPolicyPtr and VirtualNodeSpecBackendVirtualServiceClientPolicyPtrOutput values.
@@ -13839,7 +13839,7 @@ func (i *virtualNodeSpecBackendVirtualServiceClientPolicyPtrType) ToVirtualNodeS
 }
 
 func (i *virtualNodeSpecBackendVirtualServiceClientPolicyPtrType) ToVirtualNodeSpecBackendVirtualServiceClientPolicyPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendVirtualServiceClientPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyOutput).ToVirtualNodeSpecBackendVirtualServiceClientPolicyPtrOutput()
 }
 
 type VirtualNodeSpecBackendVirtualServiceClientPolicyOutput struct{ *pulumi.OutputState }
@@ -13947,7 +13947,7 @@ func (i VirtualNodeSpecBackendVirtualServiceClientPolicyTlsArgs) ToVirtualNodeSp
 }
 
 func (i VirtualNodeSpecBackendVirtualServiceClientPolicyTlsArgs) ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendVirtualServiceClientPolicyTlsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyTlsOutput).ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyTlsOutput).ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsPtrOutput()
 }
 
 // VirtualNodeSpecBackendVirtualServiceClientPolicyTlsPtrInput is an input type that accepts VirtualNodeSpecBackendVirtualServiceClientPolicyTlsArgs, VirtualNodeSpecBackendVirtualServiceClientPolicyTlsPtr and VirtualNodeSpecBackendVirtualServiceClientPolicyTlsPtrOutput values.
@@ -13980,7 +13980,7 @@ func (i *virtualNodeSpecBackendVirtualServiceClientPolicyTlsPtrType) ToVirtualNo
 }
 
 func (i *virtualNodeSpecBackendVirtualServiceClientPolicyTlsPtrType) ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendVirtualServiceClientPolicyTlsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyTlsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyTlsOutput).ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsPtrOutput()
 }
 
 type VirtualNodeSpecBackendVirtualServiceClientPolicyTlsOutput struct{ *pulumi.OutputState }
@@ -14109,7 +14109,7 @@ func (i VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationArgs) ToVir
 }
 
 func (i VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationArgs) ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationOutput).ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationOutput).ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationPtrOutput()
 }
 
 // VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationPtrInput is an input type that accepts VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationArgs, VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationPtr and VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationPtrOutput values.
@@ -14142,7 +14142,7 @@ func (i *virtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationPtrType) T
 }
 
 func (i *virtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationPtrType) ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationOutput).ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationPtrOutput()
 }
 
 type VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationOutput struct{ *pulumi.OutputState }
@@ -14248,7 +14248,7 @@ func (i VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustArgs) 
 }
 
 func (i VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustArgs) ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustOutput).ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustOutput).ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustPtrOutput()
 }
 
 // VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustPtrInput is an input type that accepts VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustArgs, VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustPtr and VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustPtrOutput values.
@@ -14281,7 +14281,7 @@ func (i *virtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustPtrTy
 }
 
 func (i *virtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustPtrType) ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustOutput).ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustPtrOutput()
 }
 
 type VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustOutput struct{ *pulumi.OutputState }
@@ -14400,7 +14400,7 @@ func (i VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcmArg
 }
 
 func (i VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcmArgs) ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcmPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcmOutput).ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcmPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcmOutput).ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcmPtrOutput()
 }
 
 // VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcmPtrInput is an input type that accepts VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcmArgs, VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcmPtr and VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcmPtrOutput values.
@@ -14433,7 +14433,7 @@ func (i *virtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcmPt
 }
 
 func (i *virtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcmPtrType) ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcmPtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcmPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcmOutput).ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcmPtrOutput()
 }
 
 type VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcmOutput struct{ *pulumi.OutputState }
@@ -14535,7 +14535,7 @@ func (i VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFileAr
 }
 
 func (i VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFileArgs) ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFilePtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFileOutput).ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFilePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFileOutput).ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFilePtrOutput()
 }
 
 // VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFilePtrInput is an input type that accepts VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFileArgs, VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFilePtr and VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFilePtrOutput values.
@@ -14568,7 +14568,7 @@ func (i *virtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFileP
 }
 
 func (i *virtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFilePtrType) ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFilePtrOutputWithContext(ctx context.Context) VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFilePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFileOutput).ToVirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFilePtrOutput()
 }
 
 type VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFileOutput struct{ *pulumi.OutputState }
@@ -14682,7 +14682,7 @@ func (i VirtualNodeSpecListenerArgs) ToVirtualNodeSpecListenerPtrOutput() Virtua
 }
 
 func (i VirtualNodeSpecListenerArgs) ToVirtualNodeSpecListenerPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerOutput).ToVirtualNodeSpecListenerPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerOutput).ToVirtualNodeSpecListenerPtrOutput()
 }
 
 // VirtualNodeSpecListenerPtrInput is an input type that accepts VirtualNodeSpecListenerArgs, VirtualNodeSpecListenerPtr and VirtualNodeSpecListenerPtrOutput values.
@@ -14715,7 +14715,7 @@ func (i *virtualNodeSpecListenerPtrType) ToVirtualNodeSpecListenerPtrOutput() Vi
 }
 
 func (i *virtualNodeSpecListenerPtrType) ToVirtualNodeSpecListenerPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerOutput).ToVirtualNodeSpecListenerPtrOutput()
 }
 
 type VirtualNodeSpecListenerOutput struct{ *pulumi.OutputState }
@@ -14882,7 +14882,7 @@ func (i VirtualNodeSpecListenerHealthCheckArgs) ToVirtualNodeSpecListenerHealthC
 }
 
 func (i VirtualNodeSpecListenerHealthCheckArgs) ToVirtualNodeSpecListenerHealthCheckPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerHealthCheckOutput).ToVirtualNodeSpecListenerHealthCheckPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerHealthCheckOutput).ToVirtualNodeSpecListenerHealthCheckPtrOutput()
 }
 
 // VirtualNodeSpecListenerHealthCheckPtrInput is an input type that accepts VirtualNodeSpecListenerHealthCheckArgs, VirtualNodeSpecListenerHealthCheckPtr and VirtualNodeSpecListenerHealthCheckPtrOutput values.
@@ -14915,7 +14915,7 @@ func (i *virtualNodeSpecListenerHealthCheckPtrType) ToVirtualNodeSpecListenerHea
 }
 
 func (i *virtualNodeSpecListenerHealthCheckPtrType) ToVirtualNodeSpecListenerHealthCheckPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerHealthCheckPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerHealthCheckOutput).ToVirtualNodeSpecListenerHealthCheckPtrOutput()
 }
 
 type VirtualNodeSpecListenerHealthCheckOutput struct{ *pulumi.OutputState }
@@ -15107,7 +15107,7 @@ func (i VirtualNodeSpecListenerPortMappingArgs) ToVirtualNodeSpecListenerPortMap
 }
 
 func (i VirtualNodeSpecListenerPortMappingArgs) ToVirtualNodeSpecListenerPortMappingPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerPortMappingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerPortMappingOutput).ToVirtualNodeSpecListenerPortMappingPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerPortMappingOutput).ToVirtualNodeSpecListenerPortMappingPtrOutput()
 }
 
 // VirtualNodeSpecListenerPortMappingPtrInput is an input type that accepts VirtualNodeSpecListenerPortMappingArgs, VirtualNodeSpecListenerPortMappingPtr and VirtualNodeSpecListenerPortMappingPtrOutput values.
@@ -15140,7 +15140,7 @@ func (i *virtualNodeSpecListenerPortMappingPtrType) ToVirtualNodeSpecListenerPor
 }
 
 func (i *virtualNodeSpecListenerPortMappingPtrType) ToVirtualNodeSpecListenerPortMappingPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerPortMappingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerPortMappingPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerPortMappingOutput).ToVirtualNodeSpecListenerPortMappingPtrOutput()
 }
 
 type VirtualNodeSpecListenerPortMappingOutput struct{ *pulumi.OutputState }
@@ -15265,7 +15265,7 @@ func (i VirtualNodeSpecListenerTimeoutArgs) ToVirtualNodeSpecListenerTimeoutPtrO
 }
 
 func (i VirtualNodeSpecListenerTimeoutArgs) ToVirtualNodeSpecListenerTimeoutPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutOutput).ToVirtualNodeSpecListenerTimeoutPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutOutput).ToVirtualNodeSpecListenerTimeoutPtrOutput()
 }
 
 // VirtualNodeSpecListenerTimeoutPtrInput is an input type that accepts VirtualNodeSpecListenerTimeoutArgs, VirtualNodeSpecListenerTimeoutPtr and VirtualNodeSpecListenerTimeoutPtrOutput values.
@@ -15298,7 +15298,7 @@ func (i *virtualNodeSpecListenerTimeoutPtrType) ToVirtualNodeSpecListenerTimeout
 }
 
 func (i *virtualNodeSpecListenerTimeoutPtrType) ToVirtualNodeSpecListenerTimeoutPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutOutput).ToVirtualNodeSpecListenerTimeoutPtrOutput()
 }
 
 type VirtualNodeSpecListenerTimeoutOutput struct{ *pulumi.OutputState }
@@ -15445,7 +15445,7 @@ func (i VirtualNodeSpecListenerTimeoutGrpcArgs) ToVirtualNodeSpecListenerTimeout
 }
 
 func (i VirtualNodeSpecListenerTimeoutGrpcArgs) ToVirtualNodeSpecListenerTimeoutGrpcPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutGrpcPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutGrpcOutput).ToVirtualNodeSpecListenerTimeoutGrpcPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutGrpcOutput).ToVirtualNodeSpecListenerTimeoutGrpcPtrOutput()
 }
 
 // VirtualNodeSpecListenerTimeoutGrpcPtrInput is an input type that accepts VirtualNodeSpecListenerTimeoutGrpcArgs, VirtualNodeSpecListenerTimeoutGrpcPtr and VirtualNodeSpecListenerTimeoutGrpcPtrOutput values.
@@ -15478,7 +15478,7 @@ func (i *virtualNodeSpecListenerTimeoutGrpcPtrType) ToVirtualNodeSpecListenerTim
 }
 
 func (i *virtualNodeSpecListenerTimeoutGrpcPtrType) ToVirtualNodeSpecListenerTimeoutGrpcPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutGrpcPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutGrpcPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutGrpcOutput).ToVirtualNodeSpecListenerTimeoutGrpcPtrOutput()
 }
 
 type VirtualNodeSpecListenerTimeoutGrpcOutput struct{ *pulumi.OutputState }
@@ -15597,7 +15597,7 @@ func (i VirtualNodeSpecListenerTimeoutGrpcIdleArgs) ToVirtualNodeSpecListenerTim
 }
 
 func (i VirtualNodeSpecListenerTimeoutGrpcIdleArgs) ToVirtualNodeSpecListenerTimeoutGrpcIdlePtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutGrpcIdlePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutGrpcIdleOutput).ToVirtualNodeSpecListenerTimeoutGrpcIdlePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutGrpcIdleOutput).ToVirtualNodeSpecListenerTimeoutGrpcIdlePtrOutput()
 }
 
 // VirtualNodeSpecListenerTimeoutGrpcIdlePtrInput is an input type that accepts VirtualNodeSpecListenerTimeoutGrpcIdleArgs, VirtualNodeSpecListenerTimeoutGrpcIdlePtr and VirtualNodeSpecListenerTimeoutGrpcIdlePtrOutput values.
@@ -15630,7 +15630,7 @@ func (i *virtualNodeSpecListenerTimeoutGrpcIdlePtrType) ToVirtualNodeSpecListene
 }
 
 func (i *virtualNodeSpecListenerTimeoutGrpcIdlePtrType) ToVirtualNodeSpecListenerTimeoutGrpcIdlePtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutGrpcIdlePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutGrpcIdlePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutGrpcIdleOutput).ToVirtualNodeSpecListenerTimeoutGrpcIdlePtrOutput()
 }
 
 type VirtualNodeSpecListenerTimeoutGrpcIdleOutput struct{ *pulumi.OutputState }
@@ -15747,7 +15747,7 @@ func (i VirtualNodeSpecListenerTimeoutGrpcPerRequestArgs) ToVirtualNodeSpecListe
 }
 
 func (i VirtualNodeSpecListenerTimeoutGrpcPerRequestArgs) ToVirtualNodeSpecListenerTimeoutGrpcPerRequestPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutGrpcPerRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutGrpcPerRequestOutput).ToVirtualNodeSpecListenerTimeoutGrpcPerRequestPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutGrpcPerRequestOutput).ToVirtualNodeSpecListenerTimeoutGrpcPerRequestPtrOutput()
 }
 
 // VirtualNodeSpecListenerTimeoutGrpcPerRequestPtrInput is an input type that accepts VirtualNodeSpecListenerTimeoutGrpcPerRequestArgs, VirtualNodeSpecListenerTimeoutGrpcPerRequestPtr and VirtualNodeSpecListenerTimeoutGrpcPerRequestPtrOutput values.
@@ -15780,7 +15780,7 @@ func (i *virtualNodeSpecListenerTimeoutGrpcPerRequestPtrType) ToVirtualNodeSpecL
 }
 
 func (i *virtualNodeSpecListenerTimeoutGrpcPerRequestPtrType) ToVirtualNodeSpecListenerTimeoutGrpcPerRequestPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutGrpcPerRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutGrpcPerRequestPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutGrpcPerRequestOutput).ToVirtualNodeSpecListenerTimeoutGrpcPerRequestPtrOutput()
 }
 
 type VirtualNodeSpecListenerTimeoutGrpcPerRequestOutput struct{ *pulumi.OutputState }
@@ -15899,7 +15899,7 @@ func (i VirtualNodeSpecListenerTimeoutHttp2Args) ToVirtualNodeSpecListenerTimeou
 }
 
 func (i VirtualNodeSpecListenerTimeoutHttp2Args) ToVirtualNodeSpecListenerTimeoutHttp2PtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutHttp2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttp2Output).ToVirtualNodeSpecListenerTimeoutHttp2PtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttp2Output).ToVirtualNodeSpecListenerTimeoutHttp2PtrOutput()
 }
 
 // VirtualNodeSpecListenerTimeoutHttp2PtrInput is an input type that accepts VirtualNodeSpecListenerTimeoutHttp2Args, VirtualNodeSpecListenerTimeoutHttp2Ptr and VirtualNodeSpecListenerTimeoutHttp2PtrOutput values.
@@ -15932,7 +15932,7 @@ func (i *virtualNodeSpecListenerTimeoutHttp2PtrType) ToVirtualNodeSpecListenerTi
 }
 
 func (i *virtualNodeSpecListenerTimeoutHttp2PtrType) ToVirtualNodeSpecListenerTimeoutHttp2PtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutHttp2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttp2PtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttp2Output).ToVirtualNodeSpecListenerTimeoutHttp2PtrOutput()
 }
 
 type VirtualNodeSpecListenerTimeoutHttp2Output struct{ *pulumi.OutputState }
@@ -16051,7 +16051,7 @@ func (i VirtualNodeSpecListenerTimeoutHttp2IdleArgs) ToVirtualNodeSpecListenerTi
 }
 
 func (i VirtualNodeSpecListenerTimeoutHttp2IdleArgs) ToVirtualNodeSpecListenerTimeoutHttp2IdlePtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutHttp2IdlePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttp2IdleOutput).ToVirtualNodeSpecListenerTimeoutHttp2IdlePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttp2IdleOutput).ToVirtualNodeSpecListenerTimeoutHttp2IdlePtrOutput()
 }
 
 // VirtualNodeSpecListenerTimeoutHttp2IdlePtrInput is an input type that accepts VirtualNodeSpecListenerTimeoutHttp2IdleArgs, VirtualNodeSpecListenerTimeoutHttp2IdlePtr and VirtualNodeSpecListenerTimeoutHttp2IdlePtrOutput values.
@@ -16084,7 +16084,7 @@ func (i *virtualNodeSpecListenerTimeoutHttp2IdlePtrType) ToVirtualNodeSpecListen
 }
 
 func (i *virtualNodeSpecListenerTimeoutHttp2IdlePtrType) ToVirtualNodeSpecListenerTimeoutHttp2IdlePtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutHttp2IdlePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttp2IdlePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttp2IdleOutput).ToVirtualNodeSpecListenerTimeoutHttp2IdlePtrOutput()
 }
 
 type VirtualNodeSpecListenerTimeoutHttp2IdleOutput struct{ *pulumi.OutputState }
@@ -16201,7 +16201,7 @@ func (i VirtualNodeSpecListenerTimeoutHttp2PerRequestArgs) ToVirtualNodeSpecList
 }
 
 func (i VirtualNodeSpecListenerTimeoutHttp2PerRequestArgs) ToVirtualNodeSpecListenerTimeoutHttp2PerRequestPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutHttp2PerRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttp2PerRequestOutput).ToVirtualNodeSpecListenerTimeoutHttp2PerRequestPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttp2PerRequestOutput).ToVirtualNodeSpecListenerTimeoutHttp2PerRequestPtrOutput()
 }
 
 // VirtualNodeSpecListenerTimeoutHttp2PerRequestPtrInput is an input type that accepts VirtualNodeSpecListenerTimeoutHttp2PerRequestArgs, VirtualNodeSpecListenerTimeoutHttp2PerRequestPtr and VirtualNodeSpecListenerTimeoutHttp2PerRequestPtrOutput values.
@@ -16234,7 +16234,7 @@ func (i *virtualNodeSpecListenerTimeoutHttp2PerRequestPtrType) ToVirtualNodeSpec
 }
 
 func (i *virtualNodeSpecListenerTimeoutHttp2PerRequestPtrType) ToVirtualNodeSpecListenerTimeoutHttp2PerRequestPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutHttp2PerRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttp2PerRequestPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttp2PerRequestOutput).ToVirtualNodeSpecListenerTimeoutHttp2PerRequestPtrOutput()
 }
 
 type VirtualNodeSpecListenerTimeoutHttp2PerRequestOutput struct{ *pulumi.OutputState }
@@ -16353,7 +16353,7 @@ func (i VirtualNodeSpecListenerTimeoutHttpArgs) ToVirtualNodeSpecListenerTimeout
 }
 
 func (i VirtualNodeSpecListenerTimeoutHttpArgs) ToVirtualNodeSpecListenerTimeoutHttpPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutHttpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttpOutput).ToVirtualNodeSpecListenerTimeoutHttpPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttpOutput).ToVirtualNodeSpecListenerTimeoutHttpPtrOutput()
 }
 
 // VirtualNodeSpecListenerTimeoutHttpPtrInput is an input type that accepts VirtualNodeSpecListenerTimeoutHttpArgs, VirtualNodeSpecListenerTimeoutHttpPtr and VirtualNodeSpecListenerTimeoutHttpPtrOutput values.
@@ -16386,7 +16386,7 @@ func (i *virtualNodeSpecListenerTimeoutHttpPtrType) ToVirtualNodeSpecListenerTim
 }
 
 func (i *virtualNodeSpecListenerTimeoutHttpPtrType) ToVirtualNodeSpecListenerTimeoutHttpPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutHttpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttpPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttpOutput).ToVirtualNodeSpecListenerTimeoutHttpPtrOutput()
 }
 
 type VirtualNodeSpecListenerTimeoutHttpOutput struct{ *pulumi.OutputState }
@@ -16505,7 +16505,7 @@ func (i VirtualNodeSpecListenerTimeoutHttpIdleArgs) ToVirtualNodeSpecListenerTim
 }
 
 func (i VirtualNodeSpecListenerTimeoutHttpIdleArgs) ToVirtualNodeSpecListenerTimeoutHttpIdlePtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutHttpIdlePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttpIdleOutput).ToVirtualNodeSpecListenerTimeoutHttpIdlePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttpIdleOutput).ToVirtualNodeSpecListenerTimeoutHttpIdlePtrOutput()
 }
 
 // VirtualNodeSpecListenerTimeoutHttpIdlePtrInput is an input type that accepts VirtualNodeSpecListenerTimeoutHttpIdleArgs, VirtualNodeSpecListenerTimeoutHttpIdlePtr and VirtualNodeSpecListenerTimeoutHttpIdlePtrOutput values.
@@ -16538,7 +16538,7 @@ func (i *virtualNodeSpecListenerTimeoutHttpIdlePtrType) ToVirtualNodeSpecListene
 }
 
 func (i *virtualNodeSpecListenerTimeoutHttpIdlePtrType) ToVirtualNodeSpecListenerTimeoutHttpIdlePtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutHttpIdlePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttpIdlePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttpIdleOutput).ToVirtualNodeSpecListenerTimeoutHttpIdlePtrOutput()
 }
 
 type VirtualNodeSpecListenerTimeoutHttpIdleOutput struct{ *pulumi.OutputState }
@@ -16655,7 +16655,7 @@ func (i VirtualNodeSpecListenerTimeoutHttpPerRequestArgs) ToVirtualNodeSpecListe
 }
 
 func (i VirtualNodeSpecListenerTimeoutHttpPerRequestArgs) ToVirtualNodeSpecListenerTimeoutHttpPerRequestPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutHttpPerRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttpPerRequestOutput).ToVirtualNodeSpecListenerTimeoutHttpPerRequestPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttpPerRequestOutput).ToVirtualNodeSpecListenerTimeoutHttpPerRequestPtrOutput()
 }
 
 // VirtualNodeSpecListenerTimeoutHttpPerRequestPtrInput is an input type that accepts VirtualNodeSpecListenerTimeoutHttpPerRequestArgs, VirtualNodeSpecListenerTimeoutHttpPerRequestPtr and VirtualNodeSpecListenerTimeoutHttpPerRequestPtrOutput values.
@@ -16688,7 +16688,7 @@ func (i *virtualNodeSpecListenerTimeoutHttpPerRequestPtrType) ToVirtualNodeSpecL
 }
 
 func (i *virtualNodeSpecListenerTimeoutHttpPerRequestPtrType) ToVirtualNodeSpecListenerTimeoutHttpPerRequestPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutHttpPerRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttpPerRequestPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutHttpPerRequestOutput).ToVirtualNodeSpecListenerTimeoutHttpPerRequestPtrOutput()
 }
 
 type VirtualNodeSpecListenerTimeoutHttpPerRequestOutput struct{ *pulumi.OutputState }
@@ -16803,7 +16803,7 @@ func (i VirtualNodeSpecListenerTimeoutTcpArgs) ToVirtualNodeSpecListenerTimeoutT
 }
 
 func (i VirtualNodeSpecListenerTimeoutTcpArgs) ToVirtualNodeSpecListenerTimeoutTcpPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutTcpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutTcpOutput).ToVirtualNodeSpecListenerTimeoutTcpPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutTcpOutput).ToVirtualNodeSpecListenerTimeoutTcpPtrOutput()
 }
 
 // VirtualNodeSpecListenerTimeoutTcpPtrInput is an input type that accepts VirtualNodeSpecListenerTimeoutTcpArgs, VirtualNodeSpecListenerTimeoutTcpPtr and VirtualNodeSpecListenerTimeoutTcpPtrOutput values.
@@ -16836,7 +16836,7 @@ func (i *virtualNodeSpecListenerTimeoutTcpPtrType) ToVirtualNodeSpecListenerTime
 }
 
 func (i *virtualNodeSpecListenerTimeoutTcpPtrType) ToVirtualNodeSpecListenerTimeoutTcpPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutTcpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutTcpPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutTcpOutput).ToVirtualNodeSpecListenerTimeoutTcpPtrOutput()
 }
 
 type VirtualNodeSpecListenerTimeoutTcpOutput struct{ *pulumi.OutputState }
@@ -16938,7 +16938,7 @@ func (i VirtualNodeSpecListenerTimeoutTcpIdleArgs) ToVirtualNodeSpecListenerTime
 }
 
 func (i VirtualNodeSpecListenerTimeoutTcpIdleArgs) ToVirtualNodeSpecListenerTimeoutTcpIdlePtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutTcpIdlePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutTcpIdleOutput).ToVirtualNodeSpecListenerTimeoutTcpIdlePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutTcpIdleOutput).ToVirtualNodeSpecListenerTimeoutTcpIdlePtrOutput()
 }
 
 // VirtualNodeSpecListenerTimeoutTcpIdlePtrInput is an input type that accepts VirtualNodeSpecListenerTimeoutTcpIdleArgs, VirtualNodeSpecListenerTimeoutTcpIdlePtr and VirtualNodeSpecListenerTimeoutTcpIdlePtrOutput values.
@@ -16971,7 +16971,7 @@ func (i *virtualNodeSpecListenerTimeoutTcpIdlePtrType) ToVirtualNodeSpecListener
 }
 
 func (i *virtualNodeSpecListenerTimeoutTcpIdlePtrType) ToVirtualNodeSpecListenerTimeoutTcpIdlePtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTimeoutTcpIdlePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutTcpIdlePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTimeoutTcpIdleOutput).ToVirtualNodeSpecListenerTimeoutTcpIdlePtrOutput()
 }
 
 type VirtualNodeSpecListenerTimeoutTcpIdleOutput struct{ *pulumi.OutputState }
@@ -17088,7 +17088,7 @@ func (i VirtualNodeSpecListenerTlsArgs) ToVirtualNodeSpecListenerTlsPtrOutput() 
 }
 
 func (i VirtualNodeSpecListenerTlsArgs) ToVirtualNodeSpecListenerTlsPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTlsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTlsOutput).ToVirtualNodeSpecListenerTlsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTlsOutput).ToVirtualNodeSpecListenerTlsPtrOutput()
 }
 
 // VirtualNodeSpecListenerTlsPtrInput is an input type that accepts VirtualNodeSpecListenerTlsArgs, VirtualNodeSpecListenerTlsPtr and VirtualNodeSpecListenerTlsPtrOutput values.
@@ -17121,7 +17121,7 @@ func (i *virtualNodeSpecListenerTlsPtrType) ToVirtualNodeSpecListenerTlsPtrOutpu
 }
 
 func (i *virtualNodeSpecListenerTlsPtrType) ToVirtualNodeSpecListenerTlsPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTlsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTlsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTlsOutput).ToVirtualNodeSpecListenerTlsPtrOutput()
 }
 
 type VirtualNodeSpecListenerTlsOutput struct{ *pulumi.OutputState }
@@ -17238,7 +17238,7 @@ func (i VirtualNodeSpecListenerTlsCertificateArgs) ToVirtualNodeSpecListenerTlsC
 }
 
 func (i VirtualNodeSpecListenerTlsCertificateArgs) ToVirtualNodeSpecListenerTlsCertificatePtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTlsCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTlsCertificateOutput).ToVirtualNodeSpecListenerTlsCertificatePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTlsCertificateOutput).ToVirtualNodeSpecListenerTlsCertificatePtrOutput()
 }
 
 // VirtualNodeSpecListenerTlsCertificatePtrInput is an input type that accepts VirtualNodeSpecListenerTlsCertificateArgs, VirtualNodeSpecListenerTlsCertificatePtr and VirtualNodeSpecListenerTlsCertificatePtrOutput values.
@@ -17271,7 +17271,7 @@ func (i *virtualNodeSpecListenerTlsCertificatePtrType) ToVirtualNodeSpecListener
 }
 
 func (i *virtualNodeSpecListenerTlsCertificatePtrType) ToVirtualNodeSpecListenerTlsCertificatePtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTlsCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTlsCertificatePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTlsCertificateOutput).ToVirtualNodeSpecListenerTlsCertificatePtrOutput()
 }
 
 type VirtualNodeSpecListenerTlsCertificateOutput struct{ *pulumi.OutputState }
@@ -17386,7 +17386,7 @@ func (i VirtualNodeSpecListenerTlsCertificateAcmArgs) ToVirtualNodeSpecListenerT
 }
 
 func (i VirtualNodeSpecListenerTlsCertificateAcmArgs) ToVirtualNodeSpecListenerTlsCertificateAcmPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTlsCertificateAcmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTlsCertificateAcmOutput).ToVirtualNodeSpecListenerTlsCertificateAcmPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTlsCertificateAcmOutput).ToVirtualNodeSpecListenerTlsCertificateAcmPtrOutput()
 }
 
 // VirtualNodeSpecListenerTlsCertificateAcmPtrInput is an input type that accepts VirtualNodeSpecListenerTlsCertificateAcmArgs, VirtualNodeSpecListenerTlsCertificateAcmPtr and VirtualNodeSpecListenerTlsCertificateAcmPtrOutput values.
@@ -17419,7 +17419,7 @@ func (i *virtualNodeSpecListenerTlsCertificateAcmPtrType) ToVirtualNodeSpecListe
 }
 
 func (i *virtualNodeSpecListenerTlsCertificateAcmPtrType) ToVirtualNodeSpecListenerTlsCertificateAcmPtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTlsCertificateAcmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTlsCertificateAcmPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTlsCertificateAcmOutput).ToVirtualNodeSpecListenerTlsCertificateAcmPtrOutput()
 }
 
 type VirtualNodeSpecListenerTlsCertificateAcmOutput struct{ *pulumi.OutputState }
@@ -17521,7 +17521,7 @@ func (i VirtualNodeSpecListenerTlsCertificateFileArgs) ToVirtualNodeSpecListener
 }
 
 func (i VirtualNodeSpecListenerTlsCertificateFileArgs) ToVirtualNodeSpecListenerTlsCertificateFilePtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTlsCertificateFilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTlsCertificateFileOutput).ToVirtualNodeSpecListenerTlsCertificateFilePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTlsCertificateFileOutput).ToVirtualNodeSpecListenerTlsCertificateFilePtrOutput()
 }
 
 // VirtualNodeSpecListenerTlsCertificateFilePtrInput is an input type that accepts VirtualNodeSpecListenerTlsCertificateFileArgs, VirtualNodeSpecListenerTlsCertificateFilePtr and VirtualNodeSpecListenerTlsCertificateFilePtrOutput values.
@@ -17554,7 +17554,7 @@ func (i *virtualNodeSpecListenerTlsCertificateFilePtrType) ToVirtualNodeSpecList
 }
 
 func (i *virtualNodeSpecListenerTlsCertificateFilePtrType) ToVirtualNodeSpecListenerTlsCertificateFilePtrOutputWithContext(ctx context.Context) VirtualNodeSpecListenerTlsCertificateFilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTlsCertificateFilePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecListenerTlsCertificateFileOutput).ToVirtualNodeSpecListenerTlsCertificateFilePtrOutput()
 }
 
 type VirtualNodeSpecListenerTlsCertificateFileOutput struct{ *pulumi.OutputState }
@@ -17669,7 +17669,7 @@ func (i VirtualNodeSpecLoggingArgs) ToVirtualNodeSpecLoggingPtrOutput() VirtualN
 }
 
 func (i VirtualNodeSpecLoggingArgs) ToVirtualNodeSpecLoggingPtrOutputWithContext(ctx context.Context) VirtualNodeSpecLoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecLoggingOutput).ToVirtualNodeSpecLoggingPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecLoggingOutput).ToVirtualNodeSpecLoggingPtrOutput()
 }
 
 // VirtualNodeSpecLoggingPtrInput is an input type that accepts VirtualNodeSpecLoggingArgs, VirtualNodeSpecLoggingPtr and VirtualNodeSpecLoggingPtrOutput values.
@@ -17702,7 +17702,7 @@ func (i *virtualNodeSpecLoggingPtrType) ToVirtualNodeSpecLoggingPtrOutput() Virt
 }
 
 func (i *virtualNodeSpecLoggingPtrType) ToVirtualNodeSpecLoggingPtrOutputWithContext(ctx context.Context) VirtualNodeSpecLoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecLoggingPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecLoggingOutput).ToVirtualNodeSpecLoggingPtrOutput()
 }
 
 type VirtualNodeSpecLoggingOutput struct{ *pulumi.OutputState }
@@ -17800,7 +17800,7 @@ func (i VirtualNodeSpecLoggingAccessLogArgs) ToVirtualNodeSpecLoggingAccessLogPt
 }
 
 func (i VirtualNodeSpecLoggingAccessLogArgs) ToVirtualNodeSpecLoggingAccessLogPtrOutputWithContext(ctx context.Context) VirtualNodeSpecLoggingAccessLogPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecLoggingAccessLogOutput).ToVirtualNodeSpecLoggingAccessLogPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecLoggingAccessLogOutput).ToVirtualNodeSpecLoggingAccessLogPtrOutput()
 }
 
 // VirtualNodeSpecLoggingAccessLogPtrInput is an input type that accepts VirtualNodeSpecLoggingAccessLogArgs, VirtualNodeSpecLoggingAccessLogPtr and VirtualNodeSpecLoggingAccessLogPtrOutput values.
@@ -17833,7 +17833,7 @@ func (i *virtualNodeSpecLoggingAccessLogPtrType) ToVirtualNodeSpecLoggingAccessL
 }
 
 func (i *virtualNodeSpecLoggingAccessLogPtrType) ToVirtualNodeSpecLoggingAccessLogPtrOutputWithContext(ctx context.Context) VirtualNodeSpecLoggingAccessLogPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecLoggingAccessLogPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecLoggingAccessLogOutput).ToVirtualNodeSpecLoggingAccessLogPtrOutput()
 }
 
 type VirtualNodeSpecLoggingAccessLogOutput struct{ *pulumi.OutputState }
@@ -17931,7 +17931,7 @@ func (i VirtualNodeSpecLoggingAccessLogFileArgs) ToVirtualNodeSpecLoggingAccessL
 }
 
 func (i VirtualNodeSpecLoggingAccessLogFileArgs) ToVirtualNodeSpecLoggingAccessLogFilePtrOutputWithContext(ctx context.Context) VirtualNodeSpecLoggingAccessLogFilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecLoggingAccessLogFileOutput).ToVirtualNodeSpecLoggingAccessLogFilePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecLoggingAccessLogFileOutput).ToVirtualNodeSpecLoggingAccessLogFilePtrOutput()
 }
 
 // VirtualNodeSpecLoggingAccessLogFilePtrInput is an input type that accepts VirtualNodeSpecLoggingAccessLogFileArgs, VirtualNodeSpecLoggingAccessLogFilePtr and VirtualNodeSpecLoggingAccessLogFilePtrOutput values.
@@ -17964,7 +17964,7 @@ func (i *virtualNodeSpecLoggingAccessLogFilePtrType) ToVirtualNodeSpecLoggingAcc
 }
 
 func (i *virtualNodeSpecLoggingAccessLogFilePtrType) ToVirtualNodeSpecLoggingAccessLogFilePtrOutputWithContext(ctx context.Context) VirtualNodeSpecLoggingAccessLogFilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecLoggingAccessLogFilePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecLoggingAccessLogFileOutput).ToVirtualNodeSpecLoggingAccessLogFilePtrOutput()
 }
 
 type VirtualNodeSpecLoggingAccessLogFileOutput struct{ *pulumi.OutputState }
@@ -18066,7 +18066,7 @@ func (i VirtualNodeSpecServiceDiscoveryArgs) ToVirtualNodeSpecServiceDiscoveryPt
 }
 
 func (i VirtualNodeSpecServiceDiscoveryArgs) ToVirtualNodeSpecServiceDiscoveryPtrOutputWithContext(ctx context.Context) VirtualNodeSpecServiceDiscoveryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecServiceDiscoveryOutput).ToVirtualNodeSpecServiceDiscoveryPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecServiceDiscoveryOutput).ToVirtualNodeSpecServiceDiscoveryPtrOutput()
 }
 
 // VirtualNodeSpecServiceDiscoveryPtrInput is an input type that accepts VirtualNodeSpecServiceDiscoveryArgs, VirtualNodeSpecServiceDiscoveryPtr and VirtualNodeSpecServiceDiscoveryPtrOutput values.
@@ -18099,7 +18099,7 @@ func (i *virtualNodeSpecServiceDiscoveryPtrType) ToVirtualNodeSpecServiceDiscove
 }
 
 func (i *virtualNodeSpecServiceDiscoveryPtrType) ToVirtualNodeSpecServiceDiscoveryPtrOutputWithContext(ctx context.Context) VirtualNodeSpecServiceDiscoveryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecServiceDiscoveryPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecServiceDiscoveryOutput).ToVirtualNodeSpecServiceDiscoveryPtrOutput()
 }
 
 type VirtualNodeSpecServiceDiscoveryOutput struct{ *pulumi.OutputState }
@@ -18224,7 +18224,7 @@ func (i VirtualNodeSpecServiceDiscoveryAwsCloudMapArgs) ToVirtualNodeSpecService
 }
 
 func (i VirtualNodeSpecServiceDiscoveryAwsCloudMapArgs) ToVirtualNodeSpecServiceDiscoveryAwsCloudMapPtrOutputWithContext(ctx context.Context) VirtualNodeSpecServiceDiscoveryAwsCloudMapPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecServiceDiscoveryAwsCloudMapOutput).ToVirtualNodeSpecServiceDiscoveryAwsCloudMapPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecServiceDiscoveryAwsCloudMapOutput).ToVirtualNodeSpecServiceDiscoveryAwsCloudMapPtrOutput()
 }
 
 // VirtualNodeSpecServiceDiscoveryAwsCloudMapPtrInput is an input type that accepts VirtualNodeSpecServiceDiscoveryAwsCloudMapArgs, VirtualNodeSpecServiceDiscoveryAwsCloudMapPtr and VirtualNodeSpecServiceDiscoveryAwsCloudMapPtrOutput values.
@@ -18257,7 +18257,7 @@ func (i *virtualNodeSpecServiceDiscoveryAwsCloudMapPtrType) ToVirtualNodeSpecSer
 }
 
 func (i *virtualNodeSpecServiceDiscoveryAwsCloudMapPtrType) ToVirtualNodeSpecServiceDiscoveryAwsCloudMapPtrOutputWithContext(ctx context.Context) VirtualNodeSpecServiceDiscoveryAwsCloudMapPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecServiceDiscoveryAwsCloudMapPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecServiceDiscoveryAwsCloudMapOutput).ToVirtualNodeSpecServiceDiscoveryAwsCloudMapPtrOutput()
 }
 
 type VirtualNodeSpecServiceDiscoveryAwsCloudMapOutput struct{ *pulumi.OutputState }
@@ -18389,7 +18389,7 @@ func (i VirtualNodeSpecServiceDiscoveryDnsArgs) ToVirtualNodeSpecServiceDiscover
 }
 
 func (i VirtualNodeSpecServiceDiscoveryDnsArgs) ToVirtualNodeSpecServiceDiscoveryDnsPtrOutputWithContext(ctx context.Context) VirtualNodeSpecServiceDiscoveryDnsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecServiceDiscoveryDnsOutput).ToVirtualNodeSpecServiceDiscoveryDnsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecServiceDiscoveryDnsOutput).ToVirtualNodeSpecServiceDiscoveryDnsPtrOutput()
 }
 
 // VirtualNodeSpecServiceDiscoveryDnsPtrInput is an input type that accepts VirtualNodeSpecServiceDiscoveryDnsArgs, VirtualNodeSpecServiceDiscoveryDnsPtr and VirtualNodeSpecServiceDiscoveryDnsPtrOutput values.
@@ -18422,7 +18422,7 @@ func (i *virtualNodeSpecServiceDiscoveryDnsPtrType) ToVirtualNodeSpecServiceDisc
 }
 
 func (i *virtualNodeSpecServiceDiscoveryDnsPtrType) ToVirtualNodeSpecServiceDiscoveryDnsPtrOutputWithContext(ctx context.Context) VirtualNodeSpecServiceDiscoveryDnsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecServiceDiscoveryDnsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeSpecServiceDiscoveryDnsOutput).ToVirtualNodeSpecServiceDiscoveryDnsPtrOutput()
 }
 
 type VirtualNodeSpecServiceDiscoveryDnsOutput struct{ *pulumi.OutputState }
@@ -18522,7 +18522,7 @@ func (i VirtualRouterSpecArgs) ToVirtualRouterSpecPtrOutput() VirtualRouterSpecP
 }
 
 func (i VirtualRouterSpecArgs) ToVirtualRouterSpecPtrOutputWithContext(ctx context.Context) VirtualRouterSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualRouterSpecOutput).ToVirtualRouterSpecPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualRouterSpecOutput).ToVirtualRouterSpecPtrOutput()
 }
 
 // VirtualRouterSpecPtrInput is an input type that accepts VirtualRouterSpecArgs, VirtualRouterSpecPtr and VirtualRouterSpecPtrOutput values.
@@ -18555,7 +18555,7 @@ func (i *virtualRouterSpecPtrType) ToVirtualRouterSpecPtrOutput() VirtualRouterS
 }
 
 func (i *virtualRouterSpecPtrType) ToVirtualRouterSpecPtrOutputWithContext(ctx context.Context) VirtualRouterSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualRouterSpecPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualRouterSpecOutput).ToVirtualRouterSpecPtrOutput()
 }
 
 type VirtualRouterSpecOutput struct{ *pulumi.OutputState }
@@ -18655,7 +18655,7 @@ func (i VirtualRouterSpecListenerArgs) ToVirtualRouterSpecListenerPtrOutput() Vi
 }
 
 func (i VirtualRouterSpecListenerArgs) ToVirtualRouterSpecListenerPtrOutputWithContext(ctx context.Context) VirtualRouterSpecListenerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualRouterSpecListenerOutput).ToVirtualRouterSpecListenerPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualRouterSpecListenerOutput).ToVirtualRouterSpecListenerPtrOutput()
 }
 
 // VirtualRouterSpecListenerPtrInput is an input type that accepts VirtualRouterSpecListenerArgs, VirtualRouterSpecListenerPtr and VirtualRouterSpecListenerPtrOutput values.
@@ -18688,7 +18688,7 @@ func (i *virtualRouterSpecListenerPtrType) ToVirtualRouterSpecListenerPtrOutput(
 }
 
 func (i *virtualRouterSpecListenerPtrType) ToVirtualRouterSpecListenerPtrOutputWithContext(ctx context.Context) VirtualRouterSpecListenerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualRouterSpecListenerPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualRouterSpecListenerOutput).ToVirtualRouterSpecListenerPtrOutput()
 }
 
 type VirtualRouterSpecListenerOutput struct{ *pulumi.OutputState }
@@ -18790,7 +18790,7 @@ func (i VirtualRouterSpecListenerPortMappingArgs) ToVirtualRouterSpecListenerPor
 }
 
 func (i VirtualRouterSpecListenerPortMappingArgs) ToVirtualRouterSpecListenerPortMappingPtrOutputWithContext(ctx context.Context) VirtualRouterSpecListenerPortMappingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualRouterSpecListenerPortMappingOutput).ToVirtualRouterSpecListenerPortMappingPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualRouterSpecListenerPortMappingOutput).ToVirtualRouterSpecListenerPortMappingPtrOutput()
 }
 
 // VirtualRouterSpecListenerPortMappingPtrInput is an input type that accepts VirtualRouterSpecListenerPortMappingArgs, VirtualRouterSpecListenerPortMappingPtr and VirtualRouterSpecListenerPortMappingPtrOutput values.
@@ -18823,7 +18823,7 @@ func (i *virtualRouterSpecListenerPortMappingPtrType) ToVirtualRouterSpecListene
 }
 
 func (i *virtualRouterSpecListenerPortMappingPtrType) ToVirtualRouterSpecListenerPortMappingPtrOutputWithContext(ctx context.Context) VirtualRouterSpecListenerPortMappingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualRouterSpecListenerPortMappingPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualRouterSpecListenerPortMappingOutput).ToVirtualRouterSpecListenerPortMappingPtrOutput()
 }
 
 type VirtualRouterSpecListenerPortMappingOutput struct{ *pulumi.OutputState }
@@ -18936,7 +18936,7 @@ func (i VirtualServiceSpecArgs) ToVirtualServiceSpecPtrOutput() VirtualServiceSp
 }
 
 func (i VirtualServiceSpecArgs) ToVirtualServiceSpecPtrOutputWithContext(ctx context.Context) VirtualServiceSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualServiceSpecOutput).ToVirtualServiceSpecPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualServiceSpecOutput).ToVirtualServiceSpecPtrOutput()
 }
 
 // VirtualServiceSpecPtrInput is an input type that accepts VirtualServiceSpecArgs, VirtualServiceSpecPtr and VirtualServiceSpecPtrOutput values.
@@ -18969,7 +18969,7 @@ func (i *virtualServiceSpecPtrType) ToVirtualServiceSpecPtrOutput() VirtualServi
 }
 
 func (i *virtualServiceSpecPtrType) ToVirtualServiceSpecPtrOutputWithContext(ctx context.Context) VirtualServiceSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualServiceSpecPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualServiceSpecOutput).ToVirtualServiceSpecPtrOutput()
 }
 
 type VirtualServiceSpecOutput struct{ *pulumi.OutputState }
@@ -19071,7 +19071,7 @@ func (i VirtualServiceSpecProviderArgs) ToVirtualServiceSpecProviderPtrOutput() 
 }
 
 func (i VirtualServiceSpecProviderArgs) ToVirtualServiceSpecProviderPtrOutputWithContext(ctx context.Context) VirtualServiceSpecProviderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualServiceSpecProviderOutput).ToVirtualServiceSpecProviderPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualServiceSpecProviderOutput).ToVirtualServiceSpecProviderPtrOutput()
 }
 
 // VirtualServiceSpecProviderPtrInput is an input type that accepts VirtualServiceSpecProviderArgs, VirtualServiceSpecProviderPtr and VirtualServiceSpecProviderPtrOutput values.
@@ -19104,7 +19104,7 @@ func (i *virtualServiceSpecProviderPtrType) ToVirtualServiceSpecProviderPtrOutpu
 }
 
 func (i *virtualServiceSpecProviderPtrType) ToVirtualServiceSpecProviderPtrOutputWithContext(ctx context.Context) VirtualServiceSpecProviderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualServiceSpecProviderPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualServiceSpecProviderOutput).ToVirtualServiceSpecProviderPtrOutput()
 }
 
 type VirtualServiceSpecProviderOutput struct{ *pulumi.OutputState }
@@ -19217,7 +19217,7 @@ func (i VirtualServiceSpecProviderVirtualNodeArgs) ToVirtualServiceSpecProviderV
 }
 
 func (i VirtualServiceSpecProviderVirtualNodeArgs) ToVirtualServiceSpecProviderVirtualNodePtrOutputWithContext(ctx context.Context) VirtualServiceSpecProviderVirtualNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualServiceSpecProviderVirtualNodeOutput).ToVirtualServiceSpecProviderVirtualNodePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualServiceSpecProviderVirtualNodeOutput).ToVirtualServiceSpecProviderVirtualNodePtrOutput()
 }
 
 // VirtualServiceSpecProviderVirtualNodePtrInput is an input type that accepts VirtualServiceSpecProviderVirtualNodeArgs, VirtualServiceSpecProviderVirtualNodePtr and VirtualServiceSpecProviderVirtualNodePtrOutput values.
@@ -19250,7 +19250,7 @@ func (i *virtualServiceSpecProviderVirtualNodePtrType) ToVirtualServiceSpecProvi
 }
 
 func (i *virtualServiceSpecProviderVirtualNodePtrType) ToVirtualServiceSpecProviderVirtualNodePtrOutputWithContext(ctx context.Context) VirtualServiceSpecProviderVirtualNodePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualServiceSpecProviderVirtualNodePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualServiceSpecProviderVirtualNodeOutput).ToVirtualServiceSpecProviderVirtualNodePtrOutput()
 }
 
 type VirtualServiceSpecProviderVirtualNodeOutput struct{ *pulumi.OutputState }
@@ -19348,7 +19348,7 @@ func (i VirtualServiceSpecProviderVirtualRouterArgs) ToVirtualServiceSpecProvide
 }
 
 func (i VirtualServiceSpecProviderVirtualRouterArgs) ToVirtualServiceSpecProviderVirtualRouterPtrOutputWithContext(ctx context.Context) VirtualServiceSpecProviderVirtualRouterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualServiceSpecProviderVirtualRouterOutput).ToVirtualServiceSpecProviderVirtualRouterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualServiceSpecProviderVirtualRouterOutput).ToVirtualServiceSpecProviderVirtualRouterPtrOutput()
 }
 
 // VirtualServiceSpecProviderVirtualRouterPtrInput is an input type that accepts VirtualServiceSpecProviderVirtualRouterArgs, VirtualServiceSpecProviderVirtualRouterPtr and VirtualServiceSpecProviderVirtualRouterPtrOutput values.
@@ -19381,7 +19381,7 @@ func (i *virtualServiceSpecProviderVirtualRouterPtrType) ToVirtualServiceSpecPro
 }
 
 func (i *virtualServiceSpecProviderVirtualRouterPtrType) ToVirtualServiceSpecProviderVirtualRouterPtrOutputWithContext(ctx context.Context) VirtualServiceSpecProviderVirtualRouterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualServiceSpecProviderVirtualRouterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualServiceSpecProviderVirtualRouterOutput).ToVirtualServiceSpecProviderVirtualRouterPtrOutput()
 }
 
 type VirtualServiceSpecProviderVirtualRouterOutput struct{ *pulumi.OutputState }

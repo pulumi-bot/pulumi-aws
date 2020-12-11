@@ -169,6 +169,13 @@ type RouteResponseInput interface {
 	ToRouteResponseOutputWithContext(ctx context.Context) RouteResponseOutput
 }
 
+type RouteResponsePtrInput interface {
+	pulumi.Input
+
+	ToRouteResponsePtrOutput() RouteResponsePtrOutput
+	ToRouteResponsePtrOutputWithContext(ctx context.Context) RouteResponsePtrOutput
+}
+
 func (RouteResponse) ElementType() reflect.Type {
 	return reflect.TypeOf((*RouteResponse)(nil)).Elem()
 }
@@ -179,6 +186,14 @@ func (i RouteResponse) ToRouteResponseOutput() RouteResponseOutput {
 
 func (i RouteResponse) ToRouteResponseOutputWithContext(ctx context.Context) RouteResponseOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouteResponseOutput)
+}
+
+func (i RouteResponse) ToRouteResponsePtrOutput() RouteResponsePtrOutput {
+	return i.ToRouteResponsePtrOutputWithContext(context.Background())
+}
+
+func (i RouteResponse) ToRouteResponsePtrOutputWithContext(ctx context.Context) RouteResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteResponsePtrOutput)
 }
 
 type RouteResponseOutput struct {
@@ -197,6 +212,23 @@ func (o RouteResponseOutput) ToRouteResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
+type RouteResponsePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouteResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteResponse)(nil)).Elem()
+}
+
+func (o RouteResponsePtrOutput) ToRouteResponsePtrOutput() RouteResponsePtrOutput {
+	return o
+}
+
+func (o RouteResponsePtrOutput) ToRouteResponsePtrOutputWithContext(ctx context.Context) RouteResponsePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RouteResponseOutput{})
+	pulumi.RegisterOutputType(RouteResponsePtrOutput{})
 }

@@ -167,6 +167,13 @@ type ServiceLinkedRoleInput interface {
 	ToServiceLinkedRoleOutputWithContext(ctx context.Context) ServiceLinkedRoleOutput
 }
 
+type ServiceLinkedRolePtrInput interface {
+	pulumi.Input
+
+	ToServiceLinkedRolePtrOutput() ServiceLinkedRolePtrOutput
+	ToServiceLinkedRolePtrOutputWithContext(ctx context.Context) ServiceLinkedRolePtrOutput
+}
+
 func (ServiceLinkedRole) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceLinkedRole)(nil)).Elem()
 }
@@ -177,6 +184,14 @@ func (i ServiceLinkedRole) ToServiceLinkedRoleOutput() ServiceLinkedRoleOutput {
 
 func (i ServiceLinkedRole) ToServiceLinkedRoleOutputWithContext(ctx context.Context) ServiceLinkedRoleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceLinkedRoleOutput)
+}
+
+func (i ServiceLinkedRole) ToServiceLinkedRolePtrOutput() ServiceLinkedRolePtrOutput {
+	return i.ToServiceLinkedRolePtrOutputWithContext(context.Background())
+}
+
+func (i ServiceLinkedRole) ToServiceLinkedRolePtrOutputWithContext(ctx context.Context) ServiceLinkedRolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLinkedRolePtrOutput)
 }
 
 type ServiceLinkedRoleOutput struct {
@@ -195,6 +210,23 @@ func (o ServiceLinkedRoleOutput) ToServiceLinkedRoleOutputWithContext(ctx contex
 	return o
 }
 
+type ServiceLinkedRolePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServiceLinkedRolePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceLinkedRole)(nil)).Elem()
+}
+
+func (o ServiceLinkedRolePtrOutput) ToServiceLinkedRolePtrOutput() ServiceLinkedRolePtrOutput {
+	return o
+}
+
+func (o ServiceLinkedRolePtrOutput) ToServiceLinkedRolePtrOutputWithContext(ctx context.Context) ServiceLinkedRolePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServiceLinkedRoleOutput{})
+	pulumi.RegisterOutputType(ServiceLinkedRolePtrOutput{})
 }

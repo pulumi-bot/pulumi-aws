@@ -142,6 +142,13 @@ type MainRouteTableAssociationInput interface {
 	ToMainRouteTableAssociationOutputWithContext(ctx context.Context) MainRouteTableAssociationOutput
 }
 
+type MainRouteTableAssociationPtrInput interface {
+	pulumi.Input
+
+	ToMainRouteTableAssociationPtrOutput() MainRouteTableAssociationPtrOutput
+	ToMainRouteTableAssociationPtrOutputWithContext(ctx context.Context) MainRouteTableAssociationPtrOutput
+}
+
 func (MainRouteTableAssociation) ElementType() reflect.Type {
 	return reflect.TypeOf((*MainRouteTableAssociation)(nil)).Elem()
 }
@@ -152,6 +159,14 @@ func (i MainRouteTableAssociation) ToMainRouteTableAssociationOutput() MainRoute
 
 func (i MainRouteTableAssociation) ToMainRouteTableAssociationOutputWithContext(ctx context.Context) MainRouteTableAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MainRouteTableAssociationOutput)
+}
+
+func (i MainRouteTableAssociation) ToMainRouteTableAssociationPtrOutput() MainRouteTableAssociationPtrOutput {
+	return i.ToMainRouteTableAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i MainRouteTableAssociation) ToMainRouteTableAssociationPtrOutputWithContext(ctx context.Context) MainRouteTableAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MainRouteTableAssociationPtrOutput)
 }
 
 type MainRouteTableAssociationOutput struct {
@@ -170,6 +185,23 @@ func (o MainRouteTableAssociationOutput) ToMainRouteTableAssociationOutputWithCo
 	return o
 }
 
+type MainRouteTableAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MainRouteTableAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MainRouteTableAssociation)(nil)).Elem()
+}
+
+func (o MainRouteTableAssociationPtrOutput) ToMainRouteTableAssociationPtrOutput() MainRouteTableAssociationPtrOutput {
+	return o
+}
+
+func (o MainRouteTableAssociationPtrOutput) ToMainRouteTableAssociationPtrOutputWithContext(ctx context.Context) MainRouteTableAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MainRouteTableAssociationOutput{})
+	pulumi.RegisterOutputType(MainRouteTableAssociationPtrOutput{})
 }

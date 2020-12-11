@@ -493,6 +493,13 @@ type MetricAlarmInput interface {
 	ToMetricAlarmOutputWithContext(ctx context.Context) MetricAlarmOutput
 }
 
+type MetricAlarmPtrInput interface {
+	pulumi.Input
+
+	ToMetricAlarmPtrOutput() MetricAlarmPtrOutput
+	ToMetricAlarmPtrOutputWithContext(ctx context.Context) MetricAlarmPtrOutput
+}
+
 func (MetricAlarm) ElementType() reflect.Type {
 	return reflect.TypeOf((*MetricAlarm)(nil)).Elem()
 }
@@ -503,6 +510,14 @@ func (i MetricAlarm) ToMetricAlarmOutput() MetricAlarmOutput {
 
 func (i MetricAlarm) ToMetricAlarmOutputWithContext(ctx context.Context) MetricAlarmOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetricAlarmOutput)
+}
+
+func (i MetricAlarm) ToMetricAlarmPtrOutput() MetricAlarmPtrOutput {
+	return i.ToMetricAlarmPtrOutputWithContext(context.Background())
+}
+
+func (i MetricAlarm) ToMetricAlarmPtrOutputWithContext(ctx context.Context) MetricAlarmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricAlarmPtrOutput)
 }
 
 type MetricAlarmOutput struct {
@@ -521,6 +536,23 @@ func (o MetricAlarmOutput) ToMetricAlarmOutputWithContext(ctx context.Context) M
 	return o
 }
 
+type MetricAlarmPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MetricAlarmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricAlarm)(nil)).Elem()
+}
+
+func (o MetricAlarmPtrOutput) ToMetricAlarmPtrOutput() MetricAlarmPtrOutput {
+	return o
+}
+
+func (o MetricAlarmPtrOutput) ToMetricAlarmPtrOutputWithContext(ctx context.Context) MetricAlarmPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MetricAlarmOutput{})
+	pulumi.RegisterOutputType(MetricAlarmPtrOutput{})
 }

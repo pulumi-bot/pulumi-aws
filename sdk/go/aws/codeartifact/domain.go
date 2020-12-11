@@ -178,6 +178,13 @@ type DomainInput interface {
 	ToDomainOutputWithContext(ctx context.Context) DomainOutput
 }
 
+type DomainPtrInput interface {
+	pulumi.Input
+
+	ToDomainPtrOutput() DomainPtrOutput
+	ToDomainPtrOutputWithContext(ctx context.Context) DomainPtrOutput
+}
+
 func (Domain) ElementType() reflect.Type {
 	return reflect.TypeOf((*Domain)(nil)).Elem()
 }
@@ -188,6 +195,14 @@ func (i Domain) ToDomainOutput() DomainOutput {
 
 func (i Domain) ToDomainOutputWithContext(ctx context.Context) DomainOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainOutput)
+}
+
+func (i Domain) ToDomainPtrOutput() DomainPtrOutput {
+	return i.ToDomainPtrOutputWithContext(context.Background())
+}
+
+func (i Domain) ToDomainPtrOutputWithContext(ctx context.Context) DomainPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainPtrOutput)
 }
 
 type DomainOutput struct {
@@ -206,6 +221,23 @@ func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutpu
 	return o
 }
 
+type DomainPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Domain)(nil)).Elem()
+}
+
+func (o DomainPtrOutput) ToDomainPtrOutput() DomainPtrOutput {
+	return o
+}
+
+func (o DomainPtrOutput) ToDomainPtrOutputWithContext(ctx context.Context) DomainPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DomainOutput{})
+	pulumi.RegisterOutputType(DomainPtrOutput{})
 }

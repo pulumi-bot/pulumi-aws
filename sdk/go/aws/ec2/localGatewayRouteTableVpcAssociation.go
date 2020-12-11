@@ -157,6 +157,13 @@ type LocalGatewayRouteTableVpcAssociationInput interface {
 	ToLocalGatewayRouteTableVpcAssociationOutputWithContext(ctx context.Context) LocalGatewayRouteTableVpcAssociationOutput
 }
 
+type LocalGatewayRouteTableVpcAssociationPtrInput interface {
+	pulumi.Input
+
+	ToLocalGatewayRouteTableVpcAssociationPtrOutput() LocalGatewayRouteTableVpcAssociationPtrOutput
+	ToLocalGatewayRouteTableVpcAssociationPtrOutputWithContext(ctx context.Context) LocalGatewayRouteTableVpcAssociationPtrOutput
+}
+
 func (LocalGatewayRouteTableVpcAssociation) ElementType() reflect.Type {
 	return reflect.TypeOf((*LocalGatewayRouteTableVpcAssociation)(nil)).Elem()
 }
@@ -167,6 +174,14 @@ func (i LocalGatewayRouteTableVpcAssociation) ToLocalGatewayRouteTableVpcAssocia
 
 func (i LocalGatewayRouteTableVpcAssociation) ToLocalGatewayRouteTableVpcAssociationOutputWithContext(ctx context.Context) LocalGatewayRouteTableVpcAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LocalGatewayRouteTableVpcAssociationOutput)
+}
+
+func (i LocalGatewayRouteTableVpcAssociation) ToLocalGatewayRouteTableVpcAssociationPtrOutput() LocalGatewayRouteTableVpcAssociationPtrOutput {
+	return i.ToLocalGatewayRouteTableVpcAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i LocalGatewayRouteTableVpcAssociation) ToLocalGatewayRouteTableVpcAssociationPtrOutputWithContext(ctx context.Context) LocalGatewayRouteTableVpcAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocalGatewayRouteTableVpcAssociationPtrOutput)
 }
 
 type LocalGatewayRouteTableVpcAssociationOutput struct {
@@ -185,6 +200,23 @@ func (o LocalGatewayRouteTableVpcAssociationOutput) ToLocalGatewayRouteTableVpcA
 	return o
 }
 
+type LocalGatewayRouteTableVpcAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LocalGatewayRouteTableVpcAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocalGatewayRouteTableVpcAssociation)(nil)).Elem()
+}
+
+func (o LocalGatewayRouteTableVpcAssociationPtrOutput) ToLocalGatewayRouteTableVpcAssociationPtrOutput() LocalGatewayRouteTableVpcAssociationPtrOutput {
+	return o
+}
+
+func (o LocalGatewayRouteTableVpcAssociationPtrOutput) ToLocalGatewayRouteTableVpcAssociationPtrOutputWithContext(ctx context.Context) LocalGatewayRouteTableVpcAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LocalGatewayRouteTableVpcAssociationOutput{})
+	pulumi.RegisterOutputType(LocalGatewayRouteTableVpcAssociationPtrOutput{})
 }

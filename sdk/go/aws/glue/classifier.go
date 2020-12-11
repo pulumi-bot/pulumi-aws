@@ -240,6 +240,13 @@ type ClassifierInput interface {
 	ToClassifierOutputWithContext(ctx context.Context) ClassifierOutput
 }
 
+type ClassifierPtrInput interface {
+	pulumi.Input
+
+	ToClassifierPtrOutput() ClassifierPtrOutput
+	ToClassifierPtrOutputWithContext(ctx context.Context) ClassifierPtrOutput
+}
+
 func (Classifier) ElementType() reflect.Type {
 	return reflect.TypeOf((*Classifier)(nil)).Elem()
 }
@@ -250,6 +257,14 @@ func (i Classifier) ToClassifierOutput() ClassifierOutput {
 
 func (i Classifier) ToClassifierOutputWithContext(ctx context.Context) ClassifierOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClassifierOutput)
+}
+
+func (i Classifier) ToClassifierPtrOutput() ClassifierPtrOutput {
+	return i.ToClassifierPtrOutputWithContext(context.Background())
+}
+
+func (i Classifier) ToClassifierPtrOutputWithContext(ctx context.Context) ClassifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClassifierPtrOutput)
 }
 
 type ClassifierOutput struct {
@@ -268,6 +283,23 @@ func (o ClassifierOutput) ToClassifierOutputWithContext(ctx context.Context) Cla
 	return o
 }
 
+type ClassifierPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClassifierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Classifier)(nil)).Elem()
+}
+
+func (o ClassifierPtrOutput) ToClassifierPtrOutput() ClassifierPtrOutput {
+	return o
+}
+
+func (o ClassifierPtrOutput) ToClassifierPtrOutputWithContext(ctx context.Context) ClassifierPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClassifierOutput{})
+	pulumi.RegisterOutputType(ClassifierPtrOutput{})
 }

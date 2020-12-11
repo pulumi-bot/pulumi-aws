@@ -188,6 +188,13 @@ type AppCookieStickinessPolicyInput interface {
 	ToAppCookieStickinessPolicyOutputWithContext(ctx context.Context) AppCookieStickinessPolicyOutput
 }
 
+type AppCookieStickinessPolicyPtrInput interface {
+	pulumi.Input
+
+	ToAppCookieStickinessPolicyPtrOutput() AppCookieStickinessPolicyPtrOutput
+	ToAppCookieStickinessPolicyPtrOutputWithContext(ctx context.Context) AppCookieStickinessPolicyPtrOutput
+}
+
 func (AppCookieStickinessPolicy) ElementType() reflect.Type {
 	return reflect.TypeOf((*AppCookieStickinessPolicy)(nil)).Elem()
 }
@@ -198,6 +205,14 @@ func (i AppCookieStickinessPolicy) ToAppCookieStickinessPolicyOutput() AppCookie
 
 func (i AppCookieStickinessPolicy) ToAppCookieStickinessPolicyOutputWithContext(ctx context.Context) AppCookieStickinessPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppCookieStickinessPolicyOutput)
+}
+
+func (i AppCookieStickinessPolicy) ToAppCookieStickinessPolicyPtrOutput() AppCookieStickinessPolicyPtrOutput {
+	return i.ToAppCookieStickinessPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i AppCookieStickinessPolicy) ToAppCookieStickinessPolicyPtrOutputWithContext(ctx context.Context) AppCookieStickinessPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppCookieStickinessPolicyPtrOutput)
 }
 
 type AppCookieStickinessPolicyOutput struct {
@@ -216,6 +231,23 @@ func (o AppCookieStickinessPolicyOutput) ToAppCookieStickinessPolicyOutputWithCo
 	return o
 }
 
+type AppCookieStickinessPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AppCookieStickinessPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppCookieStickinessPolicy)(nil)).Elem()
+}
+
+func (o AppCookieStickinessPolicyPtrOutput) ToAppCookieStickinessPolicyPtrOutput() AppCookieStickinessPolicyPtrOutput {
+	return o
+}
+
+func (o AppCookieStickinessPolicyPtrOutput) ToAppCookieStickinessPolicyPtrOutputWithContext(ctx context.Context) AppCookieStickinessPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AppCookieStickinessPolicyOutput{})
+	pulumi.RegisterOutputType(AppCookieStickinessPolicyPtrOutput{})
 }

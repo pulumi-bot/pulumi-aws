@@ -266,6 +266,13 @@ type TransitVirtualInterfaceInput interface {
 	ToTransitVirtualInterfaceOutputWithContext(ctx context.Context) TransitVirtualInterfaceOutput
 }
 
+type TransitVirtualInterfacePtrInput interface {
+	pulumi.Input
+
+	ToTransitVirtualInterfacePtrOutput() TransitVirtualInterfacePtrOutput
+	ToTransitVirtualInterfacePtrOutputWithContext(ctx context.Context) TransitVirtualInterfacePtrOutput
+}
+
 func (TransitVirtualInterface) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransitVirtualInterface)(nil)).Elem()
 }
@@ -276,6 +283,14 @@ func (i TransitVirtualInterface) ToTransitVirtualInterfaceOutput() TransitVirtua
 
 func (i TransitVirtualInterface) ToTransitVirtualInterfaceOutputWithContext(ctx context.Context) TransitVirtualInterfaceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransitVirtualInterfaceOutput)
+}
+
+func (i TransitVirtualInterface) ToTransitVirtualInterfacePtrOutput() TransitVirtualInterfacePtrOutput {
+	return i.ToTransitVirtualInterfacePtrOutputWithContext(context.Background())
+}
+
+func (i TransitVirtualInterface) ToTransitVirtualInterfacePtrOutputWithContext(ctx context.Context) TransitVirtualInterfacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitVirtualInterfacePtrOutput)
 }
 
 type TransitVirtualInterfaceOutput struct {
@@ -294,6 +309,23 @@ func (o TransitVirtualInterfaceOutput) ToTransitVirtualInterfaceOutputWithContex
 	return o
 }
 
+type TransitVirtualInterfacePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TransitVirtualInterfacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransitVirtualInterface)(nil)).Elem()
+}
+
+func (o TransitVirtualInterfacePtrOutput) ToTransitVirtualInterfacePtrOutput() TransitVirtualInterfacePtrOutput {
+	return o
+}
+
+func (o TransitVirtualInterfacePtrOutput) ToTransitVirtualInterfacePtrOutputWithContext(ctx context.Context) TransitVirtualInterfacePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TransitVirtualInterfaceOutput{})
+	pulumi.RegisterOutputType(TransitVirtualInterfacePtrOutput{})
 }

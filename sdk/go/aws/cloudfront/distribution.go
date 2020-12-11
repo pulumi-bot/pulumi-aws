@@ -512,6 +512,13 @@ type DistributionInput interface {
 	ToDistributionOutputWithContext(ctx context.Context) DistributionOutput
 }
 
+type DistributionPtrInput interface {
+	pulumi.Input
+
+	ToDistributionPtrOutput() DistributionPtrOutput
+	ToDistributionPtrOutputWithContext(ctx context.Context) DistributionPtrOutput
+}
+
 func (Distribution) ElementType() reflect.Type {
 	return reflect.TypeOf((*Distribution)(nil)).Elem()
 }
@@ -522,6 +529,14 @@ func (i Distribution) ToDistributionOutput() DistributionOutput {
 
 func (i Distribution) ToDistributionOutputWithContext(ctx context.Context) DistributionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DistributionOutput)
+}
+
+func (i Distribution) ToDistributionPtrOutput() DistributionPtrOutput {
+	return i.ToDistributionPtrOutputWithContext(context.Background())
+}
+
+func (i Distribution) ToDistributionPtrOutputWithContext(ctx context.Context) DistributionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionPtrOutput)
 }
 
 type DistributionOutput struct {
@@ -540,6 +555,23 @@ func (o DistributionOutput) ToDistributionOutputWithContext(ctx context.Context)
 	return o
 }
 
+type DistributionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DistributionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Distribution)(nil)).Elem()
+}
+
+func (o DistributionPtrOutput) ToDistributionPtrOutput() DistributionPtrOutput {
+	return o
+}
+
+func (o DistributionPtrOutput) ToDistributionPtrOutputWithContext(ctx context.Context) DistributionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DistributionOutput{})
+	pulumi.RegisterOutputType(DistributionPtrOutput{})
 }

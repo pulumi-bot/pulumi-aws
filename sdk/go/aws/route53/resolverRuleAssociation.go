@@ -141,6 +141,13 @@ type ResolverRuleAssociationInput interface {
 	ToResolverRuleAssociationOutputWithContext(ctx context.Context) ResolverRuleAssociationOutput
 }
 
+type ResolverRuleAssociationPtrInput interface {
+	pulumi.Input
+
+	ToResolverRuleAssociationPtrOutput() ResolverRuleAssociationPtrOutput
+	ToResolverRuleAssociationPtrOutputWithContext(ctx context.Context) ResolverRuleAssociationPtrOutput
+}
+
 func (ResolverRuleAssociation) ElementType() reflect.Type {
 	return reflect.TypeOf((*ResolverRuleAssociation)(nil)).Elem()
 }
@@ -151,6 +158,14 @@ func (i ResolverRuleAssociation) ToResolverRuleAssociationOutput() ResolverRuleA
 
 func (i ResolverRuleAssociation) ToResolverRuleAssociationOutputWithContext(ctx context.Context) ResolverRuleAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResolverRuleAssociationOutput)
+}
+
+func (i ResolverRuleAssociation) ToResolverRuleAssociationPtrOutput() ResolverRuleAssociationPtrOutput {
+	return i.ToResolverRuleAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i ResolverRuleAssociation) ToResolverRuleAssociationPtrOutputWithContext(ctx context.Context) ResolverRuleAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverRuleAssociationPtrOutput)
 }
 
 type ResolverRuleAssociationOutput struct {
@@ -169,6 +184,23 @@ func (o ResolverRuleAssociationOutput) ToResolverRuleAssociationOutputWithContex
 	return o
 }
 
+type ResolverRuleAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResolverRuleAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResolverRuleAssociation)(nil)).Elem()
+}
+
+func (o ResolverRuleAssociationPtrOutput) ToResolverRuleAssociationPtrOutput() ResolverRuleAssociationPtrOutput {
+	return o
+}
+
+func (o ResolverRuleAssociationPtrOutput) ToResolverRuleAssociationPtrOutputWithContext(ctx context.Context) ResolverRuleAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResolverRuleAssociationOutput{})
+	pulumi.RegisterOutputType(ResolverRuleAssociationPtrOutput{})
 }

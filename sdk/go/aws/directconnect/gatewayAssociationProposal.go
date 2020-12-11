@@ -167,6 +167,13 @@ type GatewayAssociationProposalInput interface {
 	ToGatewayAssociationProposalOutputWithContext(ctx context.Context) GatewayAssociationProposalOutput
 }
 
+type GatewayAssociationProposalPtrInput interface {
+	pulumi.Input
+
+	ToGatewayAssociationProposalPtrOutput() GatewayAssociationProposalPtrOutput
+	ToGatewayAssociationProposalPtrOutputWithContext(ctx context.Context) GatewayAssociationProposalPtrOutput
+}
+
 func (GatewayAssociationProposal) ElementType() reflect.Type {
 	return reflect.TypeOf((*GatewayAssociationProposal)(nil)).Elem()
 }
@@ -177,6 +184,14 @@ func (i GatewayAssociationProposal) ToGatewayAssociationProposalOutput() Gateway
 
 func (i GatewayAssociationProposal) ToGatewayAssociationProposalOutputWithContext(ctx context.Context) GatewayAssociationProposalOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayAssociationProposalOutput)
+}
+
+func (i GatewayAssociationProposal) ToGatewayAssociationProposalPtrOutput() GatewayAssociationProposalPtrOutput {
+	return i.ToGatewayAssociationProposalPtrOutputWithContext(context.Background())
+}
+
+func (i GatewayAssociationProposal) ToGatewayAssociationProposalPtrOutputWithContext(ctx context.Context) GatewayAssociationProposalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayAssociationProposalPtrOutput)
 }
 
 type GatewayAssociationProposalOutput struct {
@@ -195,6 +210,23 @@ func (o GatewayAssociationProposalOutput) ToGatewayAssociationProposalOutputWith
 	return o
 }
 
+type GatewayAssociationProposalPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GatewayAssociationProposalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayAssociationProposal)(nil)).Elem()
+}
+
+func (o GatewayAssociationProposalPtrOutput) ToGatewayAssociationProposalPtrOutput() GatewayAssociationProposalPtrOutput {
+	return o
+}
+
+func (o GatewayAssociationProposalPtrOutput) ToGatewayAssociationProposalPtrOutputWithContext(ctx context.Context) GatewayAssociationProposalPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(GatewayAssociationProposalOutput{})
+	pulumi.RegisterOutputType(GatewayAssociationProposalPtrOutput{})
 }

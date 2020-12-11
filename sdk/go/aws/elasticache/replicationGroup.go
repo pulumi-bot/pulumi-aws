@@ -555,6 +555,13 @@ type ReplicationGroupInput interface {
 	ToReplicationGroupOutputWithContext(ctx context.Context) ReplicationGroupOutput
 }
 
+type ReplicationGroupPtrInput interface {
+	pulumi.Input
+
+	ToReplicationGroupPtrOutput() ReplicationGroupPtrOutput
+	ToReplicationGroupPtrOutputWithContext(ctx context.Context) ReplicationGroupPtrOutput
+}
+
 func (ReplicationGroup) ElementType() reflect.Type {
 	return reflect.TypeOf((*ReplicationGroup)(nil)).Elem()
 }
@@ -565,6 +572,14 @@ func (i ReplicationGroup) ToReplicationGroupOutput() ReplicationGroupOutput {
 
 func (i ReplicationGroup) ToReplicationGroupOutputWithContext(ctx context.Context) ReplicationGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationGroupOutput)
+}
+
+func (i ReplicationGroup) ToReplicationGroupPtrOutput() ReplicationGroupPtrOutput {
+	return i.ToReplicationGroupPtrOutputWithContext(context.Background())
+}
+
+func (i ReplicationGroup) ToReplicationGroupPtrOutputWithContext(ctx context.Context) ReplicationGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationGroupPtrOutput)
 }
 
 type ReplicationGroupOutput struct {
@@ -583,6 +598,23 @@ func (o ReplicationGroupOutput) ToReplicationGroupOutputWithContext(ctx context.
 	return o
 }
 
+type ReplicationGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReplicationGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplicationGroup)(nil)).Elem()
+}
+
+func (o ReplicationGroupPtrOutput) ToReplicationGroupPtrOutput() ReplicationGroupPtrOutput {
+	return o
+}
+
+func (o ReplicationGroupPtrOutput) ToReplicationGroupPtrOutputWithContext(ctx context.Context) ReplicationGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ReplicationGroupOutput{})
+	pulumi.RegisterOutputType(ReplicationGroupPtrOutput{})
 }

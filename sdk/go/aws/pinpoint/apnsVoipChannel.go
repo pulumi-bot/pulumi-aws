@@ -191,6 +191,13 @@ type ApnsVoipChannelInput interface {
 	ToApnsVoipChannelOutputWithContext(ctx context.Context) ApnsVoipChannelOutput
 }
 
+type ApnsVoipChannelPtrInput interface {
+	pulumi.Input
+
+	ToApnsVoipChannelPtrOutput() ApnsVoipChannelPtrOutput
+	ToApnsVoipChannelPtrOutputWithContext(ctx context.Context) ApnsVoipChannelPtrOutput
+}
+
 func (ApnsVoipChannel) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApnsVoipChannel)(nil)).Elem()
 }
@@ -201,6 +208,14 @@ func (i ApnsVoipChannel) ToApnsVoipChannelOutput() ApnsVoipChannelOutput {
 
 func (i ApnsVoipChannel) ToApnsVoipChannelOutputWithContext(ctx context.Context) ApnsVoipChannelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApnsVoipChannelOutput)
+}
+
+func (i ApnsVoipChannel) ToApnsVoipChannelPtrOutput() ApnsVoipChannelPtrOutput {
+	return i.ToApnsVoipChannelPtrOutputWithContext(context.Background())
+}
+
+func (i ApnsVoipChannel) ToApnsVoipChannelPtrOutputWithContext(ctx context.Context) ApnsVoipChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApnsVoipChannelPtrOutput)
 }
 
 type ApnsVoipChannelOutput struct {
@@ -219,6 +234,23 @@ func (o ApnsVoipChannelOutput) ToApnsVoipChannelOutputWithContext(ctx context.Co
 	return o
 }
 
+type ApnsVoipChannelPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApnsVoipChannelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApnsVoipChannel)(nil)).Elem()
+}
+
+func (o ApnsVoipChannelPtrOutput) ToApnsVoipChannelPtrOutput() ApnsVoipChannelPtrOutput {
+	return o
+}
+
+func (o ApnsVoipChannelPtrOutput) ToApnsVoipChannelPtrOutputWithContext(ctx context.Context) ApnsVoipChannelPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApnsVoipChannelOutput{})
+	pulumi.RegisterOutputType(ApnsVoipChannelPtrOutput{})
 }

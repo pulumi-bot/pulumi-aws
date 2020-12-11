@@ -303,6 +303,13 @@ type VpcInput interface {
 	ToVpcOutputWithContext(ctx context.Context) VpcOutput
 }
 
+type VpcPtrInput interface {
+	pulumi.Input
+
+	ToVpcPtrOutput() VpcPtrOutput
+	ToVpcPtrOutputWithContext(ctx context.Context) VpcPtrOutput
+}
+
 func (Vpc) ElementType() reflect.Type {
 	return reflect.TypeOf((*Vpc)(nil)).Elem()
 }
@@ -313,6 +320,14 @@ func (i Vpc) ToVpcOutput() VpcOutput {
 
 func (i Vpc) ToVpcOutputWithContext(ctx context.Context) VpcOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcOutput)
+}
+
+func (i Vpc) ToVpcPtrOutput() VpcPtrOutput {
+	return i.ToVpcPtrOutputWithContext(context.Background())
+}
+
+func (i Vpc) ToVpcPtrOutputWithContext(ctx context.Context) VpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcPtrOutput)
 }
 
 type VpcOutput struct {
@@ -331,6 +346,23 @@ func (o VpcOutput) ToVpcOutputWithContext(ctx context.Context) VpcOutput {
 	return o
 }
 
+type VpcPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vpc)(nil)).Elem()
+}
+
+func (o VpcPtrOutput) ToVpcPtrOutput() VpcPtrOutput {
+	return o
+}
+
+func (o VpcPtrOutput) ToVpcPtrOutputWithContext(ctx context.Context) VpcPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VpcOutput{})
+	pulumi.RegisterOutputType(VpcPtrOutput{})
 }

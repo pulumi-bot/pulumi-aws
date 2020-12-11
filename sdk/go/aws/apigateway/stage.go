@@ -366,6 +366,13 @@ type StageInput interface {
 	ToStageOutputWithContext(ctx context.Context) StageOutput
 }
 
+type StagePtrInput interface {
+	pulumi.Input
+
+	ToStagePtrOutput() StagePtrOutput
+	ToStagePtrOutputWithContext(ctx context.Context) StagePtrOutput
+}
+
 func (Stage) ElementType() reflect.Type {
 	return reflect.TypeOf((*Stage)(nil)).Elem()
 }
@@ -376,6 +383,14 @@ func (i Stage) ToStageOutput() StageOutput {
 
 func (i Stage) ToStageOutputWithContext(ctx context.Context) StageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StageOutput)
+}
+
+func (i Stage) ToStagePtrOutput() StagePtrOutput {
+	return i.ToStagePtrOutputWithContext(context.Background())
+}
+
+func (i Stage) ToStagePtrOutputWithContext(ctx context.Context) StagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StagePtrOutput)
 }
 
 type StageOutput struct {
@@ -394,6 +409,23 @@ func (o StageOutput) ToStageOutputWithContext(ctx context.Context) StageOutput {
 	return o
 }
 
+type StagePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (StagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Stage)(nil)).Elem()
+}
+
+func (o StagePtrOutput) ToStagePtrOutput() StagePtrOutput {
+	return o
+}
+
+func (o StagePtrOutput) ToStagePtrOutputWithContext(ctx context.Context) StagePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(StageOutput{})
+	pulumi.RegisterOutputType(StagePtrOutput{})
 }

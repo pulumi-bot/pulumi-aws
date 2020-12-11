@@ -133,6 +133,13 @@ type ResourceAssociationInput interface {
 	ToResourceAssociationOutputWithContext(ctx context.Context) ResourceAssociationOutput
 }
 
+type ResourceAssociationPtrInput interface {
+	pulumi.Input
+
+	ToResourceAssociationPtrOutput() ResourceAssociationPtrOutput
+	ToResourceAssociationPtrOutputWithContext(ctx context.Context) ResourceAssociationPtrOutput
+}
+
 func (ResourceAssociation) ElementType() reflect.Type {
 	return reflect.TypeOf((*ResourceAssociation)(nil)).Elem()
 }
@@ -143,6 +150,14 @@ func (i ResourceAssociation) ToResourceAssociationOutput() ResourceAssociationOu
 
 func (i ResourceAssociation) ToResourceAssociationOutputWithContext(ctx context.Context) ResourceAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAssociationOutput)
+}
+
+func (i ResourceAssociation) ToResourceAssociationPtrOutput() ResourceAssociationPtrOutput {
+	return i.ToResourceAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceAssociation) ToResourceAssociationPtrOutputWithContext(ctx context.Context) ResourceAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAssociationPtrOutput)
 }
 
 type ResourceAssociationOutput struct {
@@ -161,6 +176,23 @@ func (o ResourceAssociationOutput) ToResourceAssociationOutputWithContext(ctx co
 	return o
 }
 
+type ResourceAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourceAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAssociation)(nil)).Elem()
+}
+
+func (o ResourceAssociationPtrOutput) ToResourceAssociationPtrOutput() ResourceAssociationPtrOutput {
+	return o
+}
+
+func (o ResourceAssociationPtrOutput) ToResourceAssociationPtrOutputWithContext(ctx context.Context) ResourceAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResourceAssociationOutput{})
+	pulumi.RegisterOutputType(ResourceAssociationPtrOutput{})
 }

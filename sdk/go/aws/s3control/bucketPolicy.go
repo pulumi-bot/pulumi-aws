@@ -149,6 +149,13 @@ type BucketPolicyInput interface {
 	ToBucketPolicyOutputWithContext(ctx context.Context) BucketPolicyOutput
 }
 
+type BucketPolicyPtrInput interface {
+	pulumi.Input
+
+	ToBucketPolicyPtrOutput() BucketPolicyPtrOutput
+	ToBucketPolicyPtrOutputWithContext(ctx context.Context) BucketPolicyPtrOutput
+}
+
 func (BucketPolicy) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketPolicy)(nil)).Elem()
 }
@@ -159,6 +166,14 @@ func (i BucketPolicy) ToBucketPolicyOutput() BucketPolicyOutput {
 
 func (i BucketPolicy) ToBucketPolicyOutputWithContext(ctx context.Context) BucketPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketPolicyOutput)
+}
+
+func (i BucketPolicy) ToBucketPolicyPtrOutput() BucketPolicyPtrOutput {
+	return i.ToBucketPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i BucketPolicy) ToBucketPolicyPtrOutputWithContext(ctx context.Context) BucketPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketPolicyPtrOutput)
 }
 
 type BucketPolicyOutput struct {
@@ -177,6 +192,23 @@ func (o BucketPolicyOutput) ToBucketPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
+type BucketPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BucketPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketPolicy)(nil)).Elem()
+}
+
+func (o BucketPolicyPtrOutput) ToBucketPolicyPtrOutput() BucketPolicyPtrOutput {
+	return o
+}
+
+func (o BucketPolicyPtrOutput) ToBucketPolicyPtrOutputWithContext(ctx context.Context) BucketPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(BucketPolicyOutput{})
+	pulumi.RegisterOutputType(BucketPolicyPtrOutput{})
 }

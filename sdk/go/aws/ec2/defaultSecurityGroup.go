@@ -271,6 +271,13 @@ type DefaultSecurityGroupInput interface {
 	ToDefaultSecurityGroupOutputWithContext(ctx context.Context) DefaultSecurityGroupOutput
 }
 
+type DefaultSecurityGroupPtrInput interface {
+	pulumi.Input
+
+	ToDefaultSecurityGroupPtrOutput() DefaultSecurityGroupPtrOutput
+	ToDefaultSecurityGroupPtrOutputWithContext(ctx context.Context) DefaultSecurityGroupPtrOutput
+}
+
 func (DefaultSecurityGroup) ElementType() reflect.Type {
 	return reflect.TypeOf((*DefaultSecurityGroup)(nil)).Elem()
 }
@@ -281,6 +288,14 @@ func (i DefaultSecurityGroup) ToDefaultSecurityGroupOutput() DefaultSecurityGrou
 
 func (i DefaultSecurityGroup) ToDefaultSecurityGroupOutputWithContext(ctx context.Context) DefaultSecurityGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultSecurityGroupOutput)
+}
+
+func (i DefaultSecurityGroup) ToDefaultSecurityGroupPtrOutput() DefaultSecurityGroupPtrOutput {
+	return i.ToDefaultSecurityGroupPtrOutputWithContext(context.Background())
+}
+
+func (i DefaultSecurityGroup) ToDefaultSecurityGroupPtrOutputWithContext(ctx context.Context) DefaultSecurityGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultSecurityGroupPtrOutput)
 }
 
 type DefaultSecurityGroupOutput struct {
@@ -299,6 +314,23 @@ func (o DefaultSecurityGroupOutput) ToDefaultSecurityGroupOutputWithContext(ctx 
 	return o
 }
 
+type DefaultSecurityGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DefaultSecurityGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultSecurityGroup)(nil)).Elem()
+}
+
+func (o DefaultSecurityGroupPtrOutput) ToDefaultSecurityGroupPtrOutput() DefaultSecurityGroupPtrOutput {
+	return o
+}
+
+func (o DefaultSecurityGroupPtrOutput) ToDefaultSecurityGroupPtrOutputWithContext(ctx context.Context) DefaultSecurityGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DefaultSecurityGroupOutput{})
+	pulumi.RegisterOutputType(DefaultSecurityGroupPtrOutput{})
 }

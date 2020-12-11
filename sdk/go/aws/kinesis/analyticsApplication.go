@@ -262,6 +262,13 @@ type AnalyticsApplicationInput interface {
 	ToAnalyticsApplicationOutputWithContext(ctx context.Context) AnalyticsApplicationOutput
 }
 
+type AnalyticsApplicationPtrInput interface {
+	pulumi.Input
+
+	ToAnalyticsApplicationPtrOutput() AnalyticsApplicationPtrOutput
+	ToAnalyticsApplicationPtrOutputWithContext(ctx context.Context) AnalyticsApplicationPtrOutput
+}
+
 func (AnalyticsApplication) ElementType() reflect.Type {
 	return reflect.TypeOf((*AnalyticsApplication)(nil)).Elem()
 }
@@ -272,6 +279,14 @@ func (i AnalyticsApplication) ToAnalyticsApplicationOutput() AnalyticsApplicatio
 
 func (i AnalyticsApplication) ToAnalyticsApplicationOutputWithContext(ctx context.Context) AnalyticsApplicationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationOutput)
+}
+
+func (i AnalyticsApplication) ToAnalyticsApplicationPtrOutput() AnalyticsApplicationPtrOutput {
+	return i.ToAnalyticsApplicationPtrOutputWithContext(context.Background())
+}
+
+func (i AnalyticsApplication) ToAnalyticsApplicationPtrOutputWithContext(ctx context.Context) AnalyticsApplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationPtrOutput)
 }
 
 type AnalyticsApplicationOutput struct {
@@ -290,6 +305,23 @@ func (o AnalyticsApplicationOutput) ToAnalyticsApplicationOutputWithContext(ctx 
 	return o
 }
 
+type AnalyticsApplicationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AnalyticsApplicationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnalyticsApplication)(nil)).Elem()
+}
+
+func (o AnalyticsApplicationPtrOutput) ToAnalyticsApplicationPtrOutput() AnalyticsApplicationPtrOutput {
+	return o
+}
+
+func (o AnalyticsApplicationPtrOutput) ToAnalyticsApplicationPtrOutputWithContext(ctx context.Context) AnalyticsApplicationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AnalyticsApplicationOutput{})
+	pulumi.RegisterOutputType(AnalyticsApplicationPtrOutput{})
 }

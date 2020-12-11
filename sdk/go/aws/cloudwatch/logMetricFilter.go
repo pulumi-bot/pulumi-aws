@@ -168,6 +168,13 @@ type LogMetricFilterInput interface {
 	ToLogMetricFilterOutputWithContext(ctx context.Context) LogMetricFilterOutput
 }
 
+type LogMetricFilterPtrInput interface {
+	pulumi.Input
+
+	ToLogMetricFilterPtrOutput() LogMetricFilterPtrOutput
+	ToLogMetricFilterPtrOutputWithContext(ctx context.Context) LogMetricFilterPtrOutput
+}
+
 func (LogMetricFilter) ElementType() reflect.Type {
 	return reflect.TypeOf((*LogMetricFilter)(nil)).Elem()
 }
@@ -178,6 +185,14 @@ func (i LogMetricFilter) ToLogMetricFilterOutput() LogMetricFilterOutput {
 
 func (i LogMetricFilter) ToLogMetricFilterOutputWithContext(ctx context.Context) LogMetricFilterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogMetricFilterOutput)
+}
+
+func (i LogMetricFilter) ToLogMetricFilterPtrOutput() LogMetricFilterPtrOutput {
+	return i.ToLogMetricFilterPtrOutputWithContext(context.Background())
+}
+
+func (i LogMetricFilter) ToLogMetricFilterPtrOutputWithContext(ctx context.Context) LogMetricFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogMetricFilterPtrOutput)
 }
 
 type LogMetricFilterOutput struct {
@@ -196,6 +211,23 @@ func (o LogMetricFilterOutput) ToLogMetricFilterOutputWithContext(ctx context.Co
 	return o
 }
 
+type LogMetricFilterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogMetricFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogMetricFilter)(nil)).Elem()
+}
+
+func (o LogMetricFilterPtrOutput) ToLogMetricFilterPtrOutput() LogMetricFilterPtrOutput {
+	return o
+}
+
+func (o LogMetricFilterPtrOutput) ToLogMetricFilterPtrOutputWithContext(ctx context.Context) LogMetricFilterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LogMetricFilterOutput{})
+	pulumi.RegisterOutputType(LogMetricFilterPtrOutput{})
 }

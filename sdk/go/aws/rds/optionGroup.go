@@ -221,6 +221,13 @@ type OptionGroupInput interface {
 	ToOptionGroupOutputWithContext(ctx context.Context) OptionGroupOutput
 }
 
+type OptionGroupPtrInput interface {
+	pulumi.Input
+
+	ToOptionGroupPtrOutput() OptionGroupPtrOutput
+	ToOptionGroupPtrOutputWithContext(ctx context.Context) OptionGroupPtrOutput
+}
+
 func (OptionGroup) ElementType() reflect.Type {
 	return reflect.TypeOf((*OptionGroup)(nil)).Elem()
 }
@@ -231,6 +238,14 @@ func (i OptionGroup) ToOptionGroupOutput() OptionGroupOutput {
 
 func (i OptionGroup) ToOptionGroupOutputWithContext(ctx context.Context) OptionGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OptionGroupOutput)
+}
+
+func (i OptionGroup) ToOptionGroupPtrOutput() OptionGroupPtrOutput {
+	return i.ToOptionGroupPtrOutputWithContext(context.Background())
+}
+
+func (i OptionGroup) ToOptionGroupPtrOutputWithContext(ctx context.Context) OptionGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionGroupPtrOutput)
 }
 
 type OptionGroupOutput struct {
@@ -249,6 +264,23 @@ func (o OptionGroupOutput) ToOptionGroupOutputWithContext(ctx context.Context) O
 	return o
 }
 
+type OptionGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OptionGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OptionGroup)(nil)).Elem()
+}
+
+func (o OptionGroupPtrOutput) ToOptionGroupPtrOutput() OptionGroupPtrOutput {
+	return o
+}
+
+func (o OptionGroupPtrOutput) ToOptionGroupPtrOutputWithContext(ctx context.Context) OptionGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(OptionGroupOutput{})
+	pulumi.RegisterOutputType(OptionGroupPtrOutput{})
 }

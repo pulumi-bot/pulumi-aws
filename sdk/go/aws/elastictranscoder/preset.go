@@ -260,6 +260,13 @@ type PresetInput interface {
 	ToPresetOutputWithContext(ctx context.Context) PresetOutput
 }
 
+type PresetPtrInput interface {
+	pulumi.Input
+
+	ToPresetPtrOutput() PresetPtrOutput
+	ToPresetPtrOutputWithContext(ctx context.Context) PresetPtrOutput
+}
+
 func (Preset) ElementType() reflect.Type {
 	return reflect.TypeOf((*Preset)(nil)).Elem()
 }
@@ -270,6 +277,14 @@ func (i Preset) ToPresetOutput() PresetOutput {
 
 func (i Preset) ToPresetOutputWithContext(ctx context.Context) PresetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PresetOutput)
+}
+
+func (i Preset) ToPresetPtrOutput() PresetPtrOutput {
+	return i.ToPresetPtrOutputWithContext(context.Background())
+}
+
+func (i Preset) ToPresetPtrOutputWithContext(ctx context.Context) PresetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PresetPtrOutput)
 }
 
 type PresetOutput struct {
@@ -288,6 +303,23 @@ func (o PresetOutput) ToPresetOutputWithContext(ctx context.Context) PresetOutpu
 	return o
 }
 
+type PresetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PresetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Preset)(nil)).Elem()
+}
+
+func (o PresetPtrOutput) ToPresetPtrOutput() PresetPtrOutput {
+	return o
+}
+
+func (o PresetPtrOutput) ToPresetPtrOutputWithContext(ctx context.Context) PresetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PresetOutput{})
+	pulumi.RegisterOutputType(PresetPtrOutput{})
 }

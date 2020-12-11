@@ -153,6 +153,13 @@ type IdentityNotificationTopicInput interface {
 	ToIdentityNotificationTopicOutputWithContext(ctx context.Context) IdentityNotificationTopicOutput
 }
 
+type IdentityNotificationTopicPtrInput interface {
+	pulumi.Input
+
+	ToIdentityNotificationTopicPtrOutput() IdentityNotificationTopicPtrOutput
+	ToIdentityNotificationTopicPtrOutputWithContext(ctx context.Context) IdentityNotificationTopicPtrOutput
+}
+
 func (IdentityNotificationTopic) ElementType() reflect.Type {
 	return reflect.TypeOf((*IdentityNotificationTopic)(nil)).Elem()
 }
@@ -163,6 +170,14 @@ func (i IdentityNotificationTopic) ToIdentityNotificationTopicOutput() IdentityN
 
 func (i IdentityNotificationTopic) ToIdentityNotificationTopicOutputWithContext(ctx context.Context) IdentityNotificationTopicOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityNotificationTopicOutput)
+}
+
+func (i IdentityNotificationTopic) ToIdentityNotificationTopicPtrOutput() IdentityNotificationTopicPtrOutput {
+	return i.ToIdentityNotificationTopicPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityNotificationTopic) ToIdentityNotificationTopicPtrOutputWithContext(ctx context.Context) IdentityNotificationTopicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityNotificationTopicPtrOutput)
 }
 
 type IdentityNotificationTopicOutput struct {
@@ -181,6 +196,23 @@ func (o IdentityNotificationTopicOutput) ToIdentityNotificationTopicOutputWithCo
 	return o
 }
 
+type IdentityNotificationTopicPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityNotificationTopicPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityNotificationTopic)(nil)).Elem()
+}
+
+func (o IdentityNotificationTopicPtrOutput) ToIdentityNotificationTopicPtrOutput() IdentityNotificationTopicPtrOutput {
+	return o
+}
+
+func (o IdentityNotificationTopicPtrOutput) ToIdentityNotificationTopicPtrOutputWithContext(ctx context.Context) IdentityNotificationTopicPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(IdentityNotificationTopicOutput{})
+	pulumi.RegisterOutputType(IdentityNotificationTopicPtrOutput{})
 }

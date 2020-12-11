@@ -183,6 +183,13 @@ type AccountPublicAccessBlockInput interface {
 	ToAccountPublicAccessBlockOutputWithContext(ctx context.Context) AccountPublicAccessBlockOutput
 }
 
+type AccountPublicAccessBlockPtrInput interface {
+	pulumi.Input
+
+	ToAccountPublicAccessBlockPtrOutput() AccountPublicAccessBlockPtrOutput
+	ToAccountPublicAccessBlockPtrOutputWithContext(ctx context.Context) AccountPublicAccessBlockPtrOutput
+}
+
 func (AccountPublicAccessBlock) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccountPublicAccessBlock)(nil)).Elem()
 }
@@ -193,6 +200,14 @@ func (i AccountPublicAccessBlock) ToAccountPublicAccessBlockOutput() AccountPubl
 
 func (i AccountPublicAccessBlock) ToAccountPublicAccessBlockOutputWithContext(ctx context.Context) AccountPublicAccessBlockOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountPublicAccessBlockOutput)
+}
+
+func (i AccountPublicAccessBlock) ToAccountPublicAccessBlockPtrOutput() AccountPublicAccessBlockPtrOutput {
+	return i.ToAccountPublicAccessBlockPtrOutputWithContext(context.Background())
+}
+
+func (i AccountPublicAccessBlock) ToAccountPublicAccessBlockPtrOutputWithContext(ctx context.Context) AccountPublicAccessBlockPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountPublicAccessBlockPtrOutput)
 }
 
 type AccountPublicAccessBlockOutput struct {
@@ -211,6 +226,23 @@ func (o AccountPublicAccessBlockOutput) ToAccountPublicAccessBlockOutputWithCont
 	return o
 }
 
+type AccountPublicAccessBlockPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccountPublicAccessBlockPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountPublicAccessBlock)(nil)).Elem()
+}
+
+func (o AccountPublicAccessBlockPtrOutput) ToAccountPublicAccessBlockPtrOutput() AccountPublicAccessBlockPtrOutput {
+	return o
+}
+
+func (o AccountPublicAccessBlockPtrOutput) ToAccountPublicAccessBlockPtrOutputWithContext(ctx context.Context) AccountPublicAccessBlockPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccountPublicAccessBlockOutput{})
+	pulumi.RegisterOutputType(AccountPublicAccessBlockPtrOutput{})
 }

@@ -178,6 +178,13 @@ type MailFromInput interface {
 	ToMailFromOutputWithContext(ctx context.Context) MailFromOutput
 }
 
+type MailFromPtrInput interface {
+	pulumi.Input
+
+	ToMailFromPtrOutput() MailFromPtrOutput
+	ToMailFromPtrOutputWithContext(ctx context.Context) MailFromPtrOutput
+}
+
 func (MailFrom) ElementType() reflect.Type {
 	return reflect.TypeOf((*MailFrom)(nil)).Elem()
 }
@@ -188,6 +195,14 @@ func (i MailFrom) ToMailFromOutput() MailFromOutput {
 
 func (i MailFrom) ToMailFromOutputWithContext(ctx context.Context) MailFromOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MailFromOutput)
+}
+
+func (i MailFrom) ToMailFromPtrOutput() MailFromPtrOutput {
+	return i.ToMailFromPtrOutputWithContext(context.Background())
+}
+
+func (i MailFrom) ToMailFromPtrOutputWithContext(ctx context.Context) MailFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MailFromPtrOutput)
 }
 
 type MailFromOutput struct {
@@ -206,6 +221,23 @@ func (o MailFromOutput) ToMailFromOutputWithContext(ctx context.Context) MailFro
 	return o
 }
 
+type MailFromPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MailFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MailFrom)(nil)).Elem()
+}
+
+func (o MailFromPtrOutput) ToMailFromPtrOutput() MailFromPtrOutput {
+	return o
+}
+
+func (o MailFromPtrOutput) ToMailFromPtrOutputWithContext(ctx context.Context) MailFromPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MailFromOutput{})
+	pulumi.RegisterOutputType(MailFromPtrOutput{})
 }

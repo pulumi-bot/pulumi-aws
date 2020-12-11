@@ -147,6 +147,13 @@ type RegexMatchSetInput interface {
 	ToRegexMatchSetOutputWithContext(ctx context.Context) RegexMatchSetOutput
 }
 
+type RegexMatchSetPtrInput interface {
+	pulumi.Input
+
+	ToRegexMatchSetPtrOutput() RegexMatchSetPtrOutput
+	ToRegexMatchSetPtrOutputWithContext(ctx context.Context) RegexMatchSetPtrOutput
+}
+
 func (RegexMatchSet) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegexMatchSet)(nil)).Elem()
 }
@@ -157,6 +164,14 @@ func (i RegexMatchSet) ToRegexMatchSetOutput() RegexMatchSetOutput {
 
 func (i RegexMatchSet) ToRegexMatchSetOutputWithContext(ctx context.Context) RegexMatchSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegexMatchSetOutput)
+}
+
+func (i RegexMatchSet) ToRegexMatchSetPtrOutput() RegexMatchSetPtrOutput {
+	return i.ToRegexMatchSetPtrOutputWithContext(context.Background())
+}
+
+func (i RegexMatchSet) ToRegexMatchSetPtrOutputWithContext(ctx context.Context) RegexMatchSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegexMatchSetPtrOutput)
 }
 
 type RegexMatchSetOutput struct {
@@ -175,6 +190,23 @@ func (o RegexMatchSetOutput) ToRegexMatchSetOutputWithContext(ctx context.Contex
 	return o
 }
 
+type RegexMatchSetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegexMatchSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegexMatchSet)(nil)).Elem()
+}
+
+func (o RegexMatchSetPtrOutput) ToRegexMatchSetPtrOutput() RegexMatchSetPtrOutput {
+	return o
+}
+
+func (o RegexMatchSetPtrOutput) ToRegexMatchSetPtrOutputWithContext(ctx context.Context) RegexMatchSetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RegexMatchSetOutput{})
+	pulumi.RegisterOutputType(RegexMatchSetPtrOutput{})
 }

@@ -204,6 +204,13 @@ type NetworkInterfaceInput interface {
 	ToNetworkInterfaceOutputWithContext(ctx context.Context) NetworkInterfaceOutput
 }
 
+type NetworkInterfacePtrInput interface {
+	pulumi.Input
+
+	ToNetworkInterfacePtrOutput() NetworkInterfacePtrOutput
+	ToNetworkInterfacePtrOutputWithContext(ctx context.Context) NetworkInterfacePtrOutput
+}
+
 func (NetworkInterface) ElementType() reflect.Type {
 	return reflect.TypeOf((*NetworkInterface)(nil)).Elem()
 }
@@ -214,6 +221,14 @@ func (i NetworkInterface) ToNetworkInterfaceOutput() NetworkInterfaceOutput {
 
 func (i NetworkInterface) ToNetworkInterfaceOutputWithContext(ctx context.Context) NetworkInterfaceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceOutput)
+}
+
+func (i NetworkInterface) ToNetworkInterfacePtrOutput() NetworkInterfacePtrOutput {
+	return i.ToNetworkInterfacePtrOutputWithContext(context.Background())
+}
+
+func (i NetworkInterface) ToNetworkInterfacePtrOutputWithContext(ctx context.Context) NetworkInterfacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfacePtrOutput)
 }
 
 type NetworkInterfaceOutput struct {
@@ -232,6 +247,23 @@ func (o NetworkInterfaceOutput) ToNetworkInterfaceOutputWithContext(ctx context.
 	return o
 }
 
+type NetworkInterfacePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkInterfacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkInterface)(nil)).Elem()
+}
+
+func (o NetworkInterfacePtrOutput) ToNetworkInterfacePtrOutput() NetworkInterfacePtrOutput {
+	return o
+}
+
+func (o NetworkInterfacePtrOutput) ToNetworkInterfacePtrOutputWithContext(ctx context.Context) NetworkInterfacePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(NetworkInterfacePtrOutput{})
 }

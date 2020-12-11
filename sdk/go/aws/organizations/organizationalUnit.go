@@ -139,6 +139,13 @@ type OrganizationalUnitInput interface {
 	ToOrganizationalUnitOutputWithContext(ctx context.Context) OrganizationalUnitOutput
 }
 
+type OrganizationalUnitPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationalUnitPtrOutput() OrganizationalUnitPtrOutput
+	ToOrganizationalUnitPtrOutputWithContext(ctx context.Context) OrganizationalUnitPtrOutput
+}
+
 func (OrganizationalUnit) ElementType() reflect.Type {
 	return reflect.TypeOf((*OrganizationalUnit)(nil)).Elem()
 }
@@ -149,6 +156,14 @@ func (i OrganizationalUnit) ToOrganizationalUnitOutput() OrganizationalUnitOutpu
 
 func (i OrganizationalUnit) ToOrganizationalUnitOutputWithContext(ctx context.Context) OrganizationalUnitOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationalUnitOutput)
+}
+
+func (i OrganizationalUnit) ToOrganizationalUnitPtrOutput() OrganizationalUnitPtrOutput {
+	return i.ToOrganizationalUnitPtrOutputWithContext(context.Background())
+}
+
+func (i OrganizationalUnit) ToOrganizationalUnitPtrOutputWithContext(ctx context.Context) OrganizationalUnitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationalUnitPtrOutput)
 }
 
 type OrganizationalUnitOutput struct {
@@ -167,6 +182,23 @@ func (o OrganizationalUnitOutput) ToOrganizationalUnitOutputWithContext(ctx cont
 	return o
 }
 
+type OrganizationalUnitPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationalUnitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationalUnit)(nil)).Elem()
+}
+
+func (o OrganizationalUnitPtrOutput) ToOrganizationalUnitPtrOutput() OrganizationalUnitPtrOutput {
+	return o
+}
+
+func (o OrganizationalUnitPtrOutput) ToOrganizationalUnitPtrOutputWithContext(ctx context.Context) OrganizationalUnitPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(OrganizationalUnitOutput{})
+	pulumi.RegisterOutputType(OrganizationalUnitPtrOutput{})
 }

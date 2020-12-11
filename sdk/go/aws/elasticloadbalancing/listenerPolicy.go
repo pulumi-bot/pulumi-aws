@@ -241,6 +241,13 @@ type ListenerPolicyInput interface {
 	ToListenerPolicyOutputWithContext(ctx context.Context) ListenerPolicyOutput
 }
 
+type ListenerPolicyPtrInput interface {
+	pulumi.Input
+
+	ToListenerPolicyPtrOutput() ListenerPolicyPtrOutput
+	ToListenerPolicyPtrOutputWithContext(ctx context.Context) ListenerPolicyPtrOutput
+}
+
 func (ListenerPolicy) ElementType() reflect.Type {
 	return reflect.TypeOf((*ListenerPolicy)(nil)).Elem()
 }
@@ -251,6 +258,14 @@ func (i ListenerPolicy) ToListenerPolicyOutput() ListenerPolicyOutput {
 
 func (i ListenerPolicy) ToListenerPolicyOutputWithContext(ctx context.Context) ListenerPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ListenerPolicyOutput)
+}
+
+func (i ListenerPolicy) ToListenerPolicyPtrOutput() ListenerPolicyPtrOutput {
+	return i.ToListenerPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ListenerPolicy) ToListenerPolicyPtrOutputWithContext(ctx context.Context) ListenerPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerPolicyPtrOutput)
 }
 
 type ListenerPolicyOutput struct {
@@ -269,6 +284,23 @@ func (o ListenerPolicyOutput) ToListenerPolicyOutputWithContext(ctx context.Cont
 	return o
 }
 
+type ListenerPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ListenerPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListenerPolicy)(nil)).Elem()
+}
+
+func (o ListenerPolicyPtrOutput) ToListenerPolicyPtrOutput() ListenerPolicyPtrOutput {
+	return o
+}
+
+func (o ListenerPolicyPtrOutput) ToListenerPolicyPtrOutputWithContext(ctx context.Context) ListenerPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ListenerPolicyOutput{})
+	pulumi.RegisterOutputType(ListenerPolicyPtrOutput{})
 }

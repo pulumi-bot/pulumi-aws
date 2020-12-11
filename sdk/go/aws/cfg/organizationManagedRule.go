@@ -229,6 +229,13 @@ type OrganizationManagedRuleInput interface {
 	ToOrganizationManagedRuleOutputWithContext(ctx context.Context) OrganizationManagedRuleOutput
 }
 
+type OrganizationManagedRulePtrInput interface {
+	pulumi.Input
+
+	ToOrganizationManagedRulePtrOutput() OrganizationManagedRulePtrOutput
+	ToOrganizationManagedRulePtrOutputWithContext(ctx context.Context) OrganizationManagedRulePtrOutput
+}
+
 func (OrganizationManagedRule) ElementType() reflect.Type {
 	return reflect.TypeOf((*OrganizationManagedRule)(nil)).Elem()
 }
@@ -239,6 +246,14 @@ func (i OrganizationManagedRule) ToOrganizationManagedRuleOutput() OrganizationM
 
 func (i OrganizationManagedRule) ToOrganizationManagedRuleOutputWithContext(ctx context.Context) OrganizationManagedRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationManagedRuleOutput)
+}
+
+func (i OrganizationManagedRule) ToOrganizationManagedRulePtrOutput() OrganizationManagedRulePtrOutput {
+	return i.ToOrganizationManagedRulePtrOutputWithContext(context.Background())
+}
+
+func (i OrganizationManagedRule) ToOrganizationManagedRulePtrOutputWithContext(ctx context.Context) OrganizationManagedRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationManagedRulePtrOutput)
 }
 
 type OrganizationManagedRuleOutput struct {
@@ -257,6 +272,23 @@ func (o OrganizationManagedRuleOutput) ToOrganizationManagedRuleOutputWithContex
 	return o
 }
 
+type OrganizationManagedRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationManagedRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationManagedRule)(nil)).Elem()
+}
+
+func (o OrganizationManagedRulePtrOutput) ToOrganizationManagedRulePtrOutput() OrganizationManagedRulePtrOutput {
+	return o
+}
+
+func (o OrganizationManagedRulePtrOutput) ToOrganizationManagedRulePtrOutputWithContext(ctx context.Context) OrganizationManagedRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(OrganizationManagedRuleOutput{})
+	pulumi.RegisterOutputType(OrganizationManagedRulePtrOutput{})
 }

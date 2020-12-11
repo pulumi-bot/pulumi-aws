@@ -113,6 +113,13 @@ type MemberAccountAssociationInput interface {
 	ToMemberAccountAssociationOutputWithContext(ctx context.Context) MemberAccountAssociationOutput
 }
 
+type MemberAccountAssociationPtrInput interface {
+	pulumi.Input
+
+	ToMemberAccountAssociationPtrOutput() MemberAccountAssociationPtrOutput
+	ToMemberAccountAssociationPtrOutputWithContext(ctx context.Context) MemberAccountAssociationPtrOutput
+}
+
 func (MemberAccountAssociation) ElementType() reflect.Type {
 	return reflect.TypeOf((*MemberAccountAssociation)(nil)).Elem()
 }
@@ -123,6 +130,14 @@ func (i MemberAccountAssociation) ToMemberAccountAssociationOutput() MemberAccou
 
 func (i MemberAccountAssociation) ToMemberAccountAssociationOutputWithContext(ctx context.Context) MemberAccountAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MemberAccountAssociationOutput)
+}
+
+func (i MemberAccountAssociation) ToMemberAccountAssociationPtrOutput() MemberAccountAssociationPtrOutput {
+	return i.ToMemberAccountAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i MemberAccountAssociation) ToMemberAccountAssociationPtrOutputWithContext(ctx context.Context) MemberAccountAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MemberAccountAssociationPtrOutput)
 }
 
 type MemberAccountAssociationOutput struct {
@@ -141,6 +156,23 @@ func (o MemberAccountAssociationOutput) ToMemberAccountAssociationOutputWithCont
 	return o
 }
 
+type MemberAccountAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MemberAccountAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MemberAccountAssociation)(nil)).Elem()
+}
+
+func (o MemberAccountAssociationPtrOutput) ToMemberAccountAssociationPtrOutput() MemberAccountAssociationPtrOutput {
+	return o
+}
+
+func (o MemberAccountAssociationPtrOutput) ToMemberAccountAssociationPtrOutputWithContext(ctx context.Context) MemberAccountAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MemberAccountAssociationOutput{})
+	pulumi.RegisterOutputType(MemberAccountAssociationPtrOutput{})
 }

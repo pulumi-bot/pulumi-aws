@@ -279,6 +279,13 @@ type TaskDefinitionInput interface {
 	ToTaskDefinitionOutputWithContext(ctx context.Context) TaskDefinitionOutput
 }
 
+type TaskDefinitionPtrInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionPtrOutput() TaskDefinitionPtrOutput
+	ToTaskDefinitionPtrOutputWithContext(ctx context.Context) TaskDefinitionPtrOutput
+}
+
 func (TaskDefinition) ElementType() reflect.Type {
 	return reflect.TypeOf((*TaskDefinition)(nil)).Elem()
 }
@@ -289,6 +296,14 @@ func (i TaskDefinition) ToTaskDefinitionOutput() TaskDefinitionOutput {
 
 func (i TaskDefinition) ToTaskDefinitionOutputWithContext(ctx context.Context) TaskDefinitionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionOutput)
+}
+
+func (i TaskDefinition) ToTaskDefinitionPtrOutput() TaskDefinitionPtrOutput {
+	return i.ToTaskDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i TaskDefinition) ToTaskDefinitionPtrOutputWithContext(ctx context.Context) TaskDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionPtrOutput)
 }
 
 type TaskDefinitionOutput struct {
@@ -307,6 +322,23 @@ func (o TaskDefinitionOutput) ToTaskDefinitionOutputWithContext(ctx context.Cont
 	return o
 }
 
+type TaskDefinitionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TaskDefinitionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskDefinition)(nil)).Elem()
+}
+
+func (o TaskDefinitionPtrOutput) ToTaskDefinitionPtrOutput() TaskDefinitionPtrOutput {
+	return o
+}
+
+func (o TaskDefinitionPtrOutput) ToTaskDefinitionPtrOutputWithContext(ctx context.Context) TaskDefinitionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TaskDefinitionOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionPtrOutput{})
 }

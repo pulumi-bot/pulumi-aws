@@ -133,6 +133,13 @@ type ByteMatchSetInput interface {
 	ToByteMatchSetOutputWithContext(ctx context.Context) ByteMatchSetOutput
 }
 
+type ByteMatchSetPtrInput interface {
+	pulumi.Input
+
+	ToByteMatchSetPtrOutput() ByteMatchSetPtrOutput
+	ToByteMatchSetPtrOutputWithContext(ctx context.Context) ByteMatchSetPtrOutput
+}
+
 func (ByteMatchSet) ElementType() reflect.Type {
 	return reflect.TypeOf((*ByteMatchSet)(nil)).Elem()
 }
@@ -143,6 +150,14 @@ func (i ByteMatchSet) ToByteMatchSetOutput() ByteMatchSetOutput {
 
 func (i ByteMatchSet) ToByteMatchSetOutputWithContext(ctx context.Context) ByteMatchSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ByteMatchSetOutput)
+}
+
+func (i ByteMatchSet) ToByteMatchSetPtrOutput() ByteMatchSetPtrOutput {
+	return i.ToByteMatchSetPtrOutputWithContext(context.Background())
+}
+
+func (i ByteMatchSet) ToByteMatchSetPtrOutputWithContext(ctx context.Context) ByteMatchSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ByteMatchSetPtrOutput)
 }
 
 type ByteMatchSetOutput struct {
@@ -161,6 +176,23 @@ func (o ByteMatchSetOutput) ToByteMatchSetOutputWithContext(ctx context.Context)
 	return o
 }
 
+type ByteMatchSetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ByteMatchSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ByteMatchSet)(nil)).Elem()
+}
+
+func (o ByteMatchSetPtrOutput) ToByteMatchSetPtrOutput() ByteMatchSetPtrOutput {
+	return o
+}
+
+func (o ByteMatchSetPtrOutput) ToByteMatchSetPtrOutputWithContext(ctx context.Context) ByteMatchSetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ByteMatchSetOutput{})
+	pulumi.RegisterOutputType(ByteMatchSetPtrOutput{})
 }

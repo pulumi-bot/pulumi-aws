@@ -150,6 +150,13 @@ type OrganizationInput interface {
 	ToOrganizationOutputWithContext(ctx context.Context) OrganizationOutput
 }
 
+type OrganizationPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationPtrOutput() OrganizationPtrOutput
+	ToOrganizationPtrOutputWithContext(ctx context.Context) OrganizationPtrOutput
+}
+
 func (Organization) ElementType() reflect.Type {
 	return reflect.TypeOf((*Organization)(nil)).Elem()
 }
@@ -160,6 +167,14 @@ func (i Organization) ToOrganizationOutput() OrganizationOutput {
 
 func (i Organization) ToOrganizationOutputWithContext(ctx context.Context) OrganizationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationOutput)
+}
+
+func (i Organization) ToOrganizationPtrOutput() OrganizationPtrOutput {
+	return i.ToOrganizationPtrOutputWithContext(context.Background())
+}
+
+func (i Organization) ToOrganizationPtrOutputWithContext(ctx context.Context) OrganizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPtrOutput)
 }
 
 type OrganizationOutput struct {
@@ -178,6 +193,23 @@ func (o OrganizationOutput) ToOrganizationOutputWithContext(ctx context.Context)
 	return o
 }
 
+type OrganizationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Organization)(nil)).Elem()
+}
+
+func (o OrganizationPtrOutput) ToOrganizationPtrOutput() OrganizationPtrOutput {
+	return o
+}
+
+func (o OrganizationPtrOutput) ToOrganizationPtrOutputWithContext(ctx context.Context) OrganizationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(OrganizationOutput{})
+	pulumi.RegisterOutputType(OrganizationPtrOutput{})
 }

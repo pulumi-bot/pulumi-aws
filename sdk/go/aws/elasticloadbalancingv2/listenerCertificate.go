@@ -142,6 +142,13 @@ type ListenerCertificateInput interface {
 	ToListenerCertificateOutputWithContext(ctx context.Context) ListenerCertificateOutput
 }
 
+type ListenerCertificatePtrInput interface {
+	pulumi.Input
+
+	ToListenerCertificatePtrOutput() ListenerCertificatePtrOutput
+	ToListenerCertificatePtrOutputWithContext(ctx context.Context) ListenerCertificatePtrOutput
+}
+
 func (ListenerCertificate) ElementType() reflect.Type {
 	return reflect.TypeOf((*ListenerCertificate)(nil)).Elem()
 }
@@ -152,6 +159,14 @@ func (i ListenerCertificate) ToListenerCertificateOutput() ListenerCertificateOu
 
 func (i ListenerCertificate) ToListenerCertificateOutputWithContext(ctx context.Context) ListenerCertificateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ListenerCertificateOutput)
+}
+
+func (i ListenerCertificate) ToListenerCertificatePtrOutput() ListenerCertificatePtrOutput {
+	return i.ToListenerCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i ListenerCertificate) ToListenerCertificatePtrOutputWithContext(ctx context.Context) ListenerCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerCertificatePtrOutput)
 }
 
 type ListenerCertificateOutput struct {
@@ -170,6 +185,23 @@ func (o ListenerCertificateOutput) ToListenerCertificateOutputWithContext(ctx co
 	return o
 }
 
+type ListenerCertificatePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ListenerCertificatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListenerCertificate)(nil)).Elem()
+}
+
+func (o ListenerCertificatePtrOutput) ToListenerCertificatePtrOutput() ListenerCertificatePtrOutput {
+	return o
+}
+
+func (o ListenerCertificatePtrOutput) ToListenerCertificatePtrOutputWithContext(ctx context.Context) ListenerCertificatePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ListenerCertificateOutput{})
+	pulumi.RegisterOutputType(ListenerCertificatePtrOutput{})
 }

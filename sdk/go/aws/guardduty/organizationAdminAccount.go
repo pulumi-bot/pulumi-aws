@@ -133,6 +133,13 @@ type OrganizationAdminAccountInput interface {
 	ToOrganizationAdminAccountOutputWithContext(ctx context.Context) OrganizationAdminAccountOutput
 }
 
+type OrganizationAdminAccountPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationAdminAccountPtrOutput() OrganizationAdminAccountPtrOutput
+	ToOrganizationAdminAccountPtrOutputWithContext(ctx context.Context) OrganizationAdminAccountPtrOutput
+}
+
 func (OrganizationAdminAccount) ElementType() reflect.Type {
 	return reflect.TypeOf((*OrganizationAdminAccount)(nil)).Elem()
 }
@@ -143,6 +150,14 @@ func (i OrganizationAdminAccount) ToOrganizationAdminAccountOutput() Organizatio
 
 func (i OrganizationAdminAccount) ToOrganizationAdminAccountOutputWithContext(ctx context.Context) OrganizationAdminAccountOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationAdminAccountOutput)
+}
+
+func (i OrganizationAdminAccount) ToOrganizationAdminAccountPtrOutput() OrganizationAdminAccountPtrOutput {
+	return i.ToOrganizationAdminAccountPtrOutputWithContext(context.Background())
+}
+
+func (i OrganizationAdminAccount) ToOrganizationAdminAccountPtrOutputWithContext(ctx context.Context) OrganizationAdminAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationAdminAccountPtrOutput)
 }
 
 type OrganizationAdminAccountOutput struct {
@@ -161,6 +176,23 @@ func (o OrganizationAdminAccountOutput) ToOrganizationAdminAccountOutputWithCont
 	return o
 }
 
+type OrganizationAdminAccountPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationAdminAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationAdminAccount)(nil)).Elem()
+}
+
+func (o OrganizationAdminAccountPtrOutput) ToOrganizationAdminAccountPtrOutput() OrganizationAdminAccountPtrOutput {
+	return o
+}
+
+func (o OrganizationAdminAccountPtrOutput) ToOrganizationAdminAccountPtrOutputWithContext(ctx context.Context) OrganizationAdminAccountPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(OrganizationAdminAccountOutput{})
+	pulumi.RegisterOutputType(OrganizationAdminAccountPtrOutput{})
 }

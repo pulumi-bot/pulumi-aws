@@ -199,6 +199,13 @@ type LicenseConfigurationInput interface {
 	ToLicenseConfigurationOutputWithContext(ctx context.Context) LicenseConfigurationOutput
 }
 
+type LicenseConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToLicenseConfigurationPtrOutput() LicenseConfigurationPtrOutput
+	ToLicenseConfigurationPtrOutputWithContext(ctx context.Context) LicenseConfigurationPtrOutput
+}
+
 func (LicenseConfiguration) ElementType() reflect.Type {
 	return reflect.TypeOf((*LicenseConfiguration)(nil)).Elem()
 }
@@ -209,6 +216,14 @@ func (i LicenseConfiguration) ToLicenseConfigurationOutput() LicenseConfiguratio
 
 func (i LicenseConfiguration) ToLicenseConfigurationOutputWithContext(ctx context.Context) LicenseConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LicenseConfigurationOutput)
+}
+
+func (i LicenseConfiguration) ToLicenseConfigurationPtrOutput() LicenseConfigurationPtrOutput {
+	return i.ToLicenseConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i LicenseConfiguration) ToLicenseConfigurationPtrOutputWithContext(ctx context.Context) LicenseConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LicenseConfigurationPtrOutput)
 }
 
 type LicenseConfigurationOutput struct {
@@ -227,6 +242,23 @@ func (o LicenseConfigurationOutput) ToLicenseConfigurationOutputWithContext(ctx 
 	return o
 }
 
+type LicenseConfigurationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LicenseConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LicenseConfiguration)(nil)).Elem()
+}
+
+func (o LicenseConfigurationPtrOutput) ToLicenseConfigurationPtrOutput() LicenseConfigurationPtrOutput {
+	return o
+}
+
+func (o LicenseConfigurationPtrOutput) ToLicenseConfigurationPtrOutputWithContext(ctx context.Context) LicenseConfigurationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LicenseConfigurationOutput{})
+	pulumi.RegisterOutputType(LicenseConfigurationPtrOutput{})
 }

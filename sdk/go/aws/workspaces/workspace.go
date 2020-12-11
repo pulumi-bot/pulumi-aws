@@ -235,6 +235,13 @@ type WorkspaceInput interface {
 	ToWorkspaceOutputWithContext(ctx context.Context) WorkspaceOutput
 }
 
+type WorkspacePtrInput interface {
+	pulumi.Input
+
+	ToWorkspacePtrOutput() WorkspacePtrOutput
+	ToWorkspacePtrOutputWithContext(ctx context.Context) WorkspacePtrOutput
+}
+
 func (Workspace) ElementType() reflect.Type {
 	return reflect.TypeOf((*Workspace)(nil)).Elem()
 }
@@ -245,6 +252,14 @@ func (i Workspace) ToWorkspaceOutput() WorkspaceOutput {
 
 func (i Workspace) ToWorkspaceOutputWithContext(ctx context.Context) WorkspaceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceOutput)
+}
+
+func (i Workspace) ToWorkspacePtrOutput() WorkspacePtrOutput {
+	return i.ToWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i Workspace) ToWorkspacePtrOutputWithContext(ctx context.Context) WorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspacePtrOutput)
 }
 
 type WorkspaceOutput struct {
@@ -263,6 +278,23 @@ func (o WorkspaceOutput) ToWorkspaceOutputWithContext(ctx context.Context) Works
 	return o
 }
 
+type WorkspacePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WorkspacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Workspace)(nil)).Elem()
+}
+
+func (o WorkspacePtrOutput) ToWorkspacePtrOutput() WorkspacePtrOutput {
+	return o
+}
+
+func (o WorkspacePtrOutput) ToWorkspacePtrOutputWithContext(ctx context.Context) WorkspacePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(WorkspaceOutput{})
+	pulumi.RegisterOutputType(WorkspacePtrOutput{})
 }

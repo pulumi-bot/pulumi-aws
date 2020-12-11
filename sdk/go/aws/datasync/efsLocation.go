@@ -167,6 +167,13 @@ type EfsLocationInput interface {
 	ToEfsLocationOutputWithContext(ctx context.Context) EfsLocationOutput
 }
 
+type EfsLocationPtrInput interface {
+	pulumi.Input
+
+	ToEfsLocationPtrOutput() EfsLocationPtrOutput
+	ToEfsLocationPtrOutputWithContext(ctx context.Context) EfsLocationPtrOutput
+}
+
 func (EfsLocation) ElementType() reflect.Type {
 	return reflect.TypeOf((*EfsLocation)(nil)).Elem()
 }
@@ -177,6 +184,14 @@ func (i EfsLocation) ToEfsLocationOutput() EfsLocationOutput {
 
 func (i EfsLocation) ToEfsLocationOutputWithContext(ctx context.Context) EfsLocationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EfsLocationOutput)
+}
+
+func (i EfsLocation) ToEfsLocationPtrOutput() EfsLocationPtrOutput {
+	return i.ToEfsLocationPtrOutputWithContext(context.Background())
+}
+
+func (i EfsLocation) ToEfsLocationPtrOutputWithContext(ctx context.Context) EfsLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EfsLocationPtrOutput)
 }
 
 type EfsLocationOutput struct {
@@ -195,6 +210,23 @@ func (o EfsLocationOutput) ToEfsLocationOutputWithContext(ctx context.Context) E
 	return o
 }
 
+type EfsLocationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EfsLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EfsLocation)(nil)).Elem()
+}
+
+func (o EfsLocationPtrOutput) ToEfsLocationPtrOutput() EfsLocationPtrOutput {
+	return o
+}
+
+func (o EfsLocationPtrOutput) ToEfsLocationPtrOutputWithContext(ctx context.Context) EfsLocationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EfsLocationOutput{})
+	pulumi.RegisterOutputType(EfsLocationPtrOutput{})
 }

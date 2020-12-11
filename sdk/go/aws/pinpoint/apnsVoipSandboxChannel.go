@@ -191,6 +191,13 @@ type ApnsVoipSandboxChannelInput interface {
 	ToApnsVoipSandboxChannelOutputWithContext(ctx context.Context) ApnsVoipSandboxChannelOutput
 }
 
+type ApnsVoipSandboxChannelPtrInput interface {
+	pulumi.Input
+
+	ToApnsVoipSandboxChannelPtrOutput() ApnsVoipSandboxChannelPtrOutput
+	ToApnsVoipSandboxChannelPtrOutputWithContext(ctx context.Context) ApnsVoipSandboxChannelPtrOutput
+}
+
 func (ApnsVoipSandboxChannel) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApnsVoipSandboxChannel)(nil)).Elem()
 }
@@ -201,6 +208,14 @@ func (i ApnsVoipSandboxChannel) ToApnsVoipSandboxChannelOutput() ApnsVoipSandbox
 
 func (i ApnsVoipSandboxChannel) ToApnsVoipSandboxChannelOutputWithContext(ctx context.Context) ApnsVoipSandboxChannelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApnsVoipSandboxChannelOutput)
+}
+
+func (i ApnsVoipSandboxChannel) ToApnsVoipSandboxChannelPtrOutput() ApnsVoipSandboxChannelPtrOutput {
+	return i.ToApnsVoipSandboxChannelPtrOutputWithContext(context.Background())
+}
+
+func (i ApnsVoipSandboxChannel) ToApnsVoipSandboxChannelPtrOutputWithContext(ctx context.Context) ApnsVoipSandboxChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApnsVoipSandboxChannelPtrOutput)
 }
 
 type ApnsVoipSandboxChannelOutput struct {
@@ -219,6 +234,23 @@ func (o ApnsVoipSandboxChannelOutput) ToApnsVoipSandboxChannelOutputWithContext(
 	return o
 }
 
+type ApnsVoipSandboxChannelPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApnsVoipSandboxChannelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApnsVoipSandboxChannel)(nil)).Elem()
+}
+
+func (o ApnsVoipSandboxChannelPtrOutput) ToApnsVoipSandboxChannelPtrOutput() ApnsVoipSandboxChannelPtrOutput {
+	return o
+}
+
+func (o ApnsVoipSandboxChannelPtrOutput) ToApnsVoipSandboxChannelPtrOutputWithContext(ctx context.Context) ApnsVoipSandboxChannelPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApnsVoipSandboxChannelOutput{})
+	pulumi.RegisterOutputType(ApnsVoipSandboxChannelPtrOutput{})
 }

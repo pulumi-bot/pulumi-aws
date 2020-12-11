@@ -133,6 +133,13 @@ type WorkingStorageInput interface {
 	ToWorkingStorageOutputWithContext(ctx context.Context) WorkingStorageOutput
 }
 
+type WorkingStoragePtrInput interface {
+	pulumi.Input
+
+	ToWorkingStoragePtrOutput() WorkingStoragePtrOutput
+	ToWorkingStoragePtrOutputWithContext(ctx context.Context) WorkingStoragePtrOutput
+}
+
 func (WorkingStorage) ElementType() reflect.Type {
 	return reflect.TypeOf((*WorkingStorage)(nil)).Elem()
 }
@@ -143,6 +150,14 @@ func (i WorkingStorage) ToWorkingStorageOutput() WorkingStorageOutput {
 
 func (i WorkingStorage) ToWorkingStorageOutputWithContext(ctx context.Context) WorkingStorageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkingStorageOutput)
+}
+
+func (i WorkingStorage) ToWorkingStoragePtrOutput() WorkingStoragePtrOutput {
+	return i.ToWorkingStoragePtrOutputWithContext(context.Background())
+}
+
+func (i WorkingStorage) ToWorkingStoragePtrOutputWithContext(ctx context.Context) WorkingStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkingStoragePtrOutput)
 }
 
 type WorkingStorageOutput struct {
@@ -161,6 +176,23 @@ func (o WorkingStorageOutput) ToWorkingStorageOutputWithContext(ctx context.Cont
 	return o
 }
 
+type WorkingStoragePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WorkingStoragePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkingStorage)(nil)).Elem()
+}
+
+func (o WorkingStoragePtrOutput) ToWorkingStoragePtrOutput() WorkingStoragePtrOutput {
+	return o
+}
+
+func (o WorkingStoragePtrOutput) ToWorkingStoragePtrOutputWithContext(ctx context.Context) WorkingStoragePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(WorkingStorageOutput{})
+	pulumi.RegisterOutputType(WorkingStoragePtrOutput{})
 }

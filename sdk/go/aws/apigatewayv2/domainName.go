@@ -172,6 +172,13 @@ type DomainNameInput interface {
 	ToDomainNameOutputWithContext(ctx context.Context) DomainNameOutput
 }
 
+type DomainNamePtrInput interface {
+	pulumi.Input
+
+	ToDomainNamePtrOutput() DomainNamePtrOutput
+	ToDomainNamePtrOutputWithContext(ctx context.Context) DomainNamePtrOutput
+}
+
 func (DomainName) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainName)(nil)).Elem()
 }
@@ -182,6 +189,14 @@ func (i DomainName) ToDomainNameOutput() DomainNameOutput {
 
 func (i DomainName) ToDomainNameOutputWithContext(ctx context.Context) DomainNameOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainNameOutput)
+}
+
+func (i DomainName) ToDomainNamePtrOutput() DomainNamePtrOutput {
+	return i.ToDomainNamePtrOutputWithContext(context.Background())
+}
+
+func (i DomainName) ToDomainNamePtrOutputWithContext(ctx context.Context) DomainNamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainNamePtrOutput)
 }
 
 type DomainNameOutput struct {
@@ -200,6 +215,23 @@ func (o DomainNameOutput) ToDomainNameOutputWithContext(ctx context.Context) Dom
 	return o
 }
 
+type DomainNamePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainNamePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainName)(nil)).Elem()
+}
+
+func (o DomainNamePtrOutput) ToDomainNamePtrOutput() DomainNamePtrOutput {
+	return o
+}
+
+func (o DomainNamePtrOutput) ToDomainNamePtrOutputWithContext(ctx context.Context) DomainNamePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DomainNameOutput{})
+	pulumi.RegisterOutputType(DomainNamePtrOutput{})
 }

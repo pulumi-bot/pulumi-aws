@@ -66,7 +66,7 @@ func (i DirectoryConnectSettingsArgs) ToDirectoryConnectSettingsPtrOutput() Dire
 }
 
 func (i DirectoryConnectSettingsArgs) ToDirectoryConnectSettingsPtrOutputWithContext(ctx context.Context) DirectoryConnectSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DirectoryConnectSettingsOutput).ToDirectoryConnectSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryConnectSettingsOutput).ToDirectoryConnectSettingsPtrOutput()
 }
 
 // DirectoryConnectSettingsPtrInput is an input type that accepts DirectoryConnectSettingsArgs, DirectoryConnectSettingsPtr and DirectoryConnectSettingsPtrOutput values.
@@ -99,7 +99,7 @@ func (i *directoryConnectSettingsPtrType) ToDirectoryConnectSettingsPtrOutput() 
 }
 
 func (i *directoryConnectSettingsPtrType) ToDirectoryConnectSettingsPtrOutputWithContext(ctx context.Context) DirectoryConnectSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DirectoryConnectSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryConnectSettingsOutput).ToDirectoryConnectSettingsPtrOutput()
 }
 
 type DirectoryConnectSettingsOutput struct{ *pulumi.OutputState }
@@ -275,7 +275,7 @@ func (i DirectoryVpcSettingsArgs) ToDirectoryVpcSettingsPtrOutput() DirectoryVpc
 }
 
 func (i DirectoryVpcSettingsArgs) ToDirectoryVpcSettingsPtrOutputWithContext(ctx context.Context) DirectoryVpcSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DirectoryVpcSettingsOutput).ToDirectoryVpcSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryVpcSettingsOutput).ToDirectoryVpcSettingsPtrOutput()
 }
 
 // DirectoryVpcSettingsPtrInput is an input type that accepts DirectoryVpcSettingsArgs, DirectoryVpcSettingsPtr and DirectoryVpcSettingsPtrOutput values.
@@ -308,7 +308,7 @@ func (i *directoryVpcSettingsPtrType) ToDirectoryVpcSettingsPtrOutput() Director
 }
 
 func (i *directoryVpcSettingsPtrType) ToDirectoryVpcSettingsPtrOutputWithContext(ctx context.Context) DirectoryVpcSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DirectoryVpcSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryVpcSettingsOutput).ToDirectoryVpcSettingsPtrOutput()
 }
 
 type DirectoryVpcSettingsOutput struct{ *pulumi.OutputState }

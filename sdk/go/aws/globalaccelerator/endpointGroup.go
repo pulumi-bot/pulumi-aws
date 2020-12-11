@@ -209,6 +209,13 @@ type EndpointGroupInput interface {
 	ToEndpointGroupOutputWithContext(ctx context.Context) EndpointGroupOutput
 }
 
+type EndpointGroupPtrInput interface {
+	pulumi.Input
+
+	ToEndpointGroupPtrOutput() EndpointGroupPtrOutput
+	ToEndpointGroupPtrOutputWithContext(ctx context.Context) EndpointGroupPtrOutput
+}
+
 func (EndpointGroup) ElementType() reflect.Type {
 	return reflect.TypeOf((*EndpointGroup)(nil)).Elem()
 }
@@ -219,6 +226,14 @@ func (i EndpointGroup) ToEndpointGroupOutput() EndpointGroupOutput {
 
 func (i EndpointGroup) ToEndpointGroupOutputWithContext(ctx context.Context) EndpointGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointGroupOutput)
+}
+
+func (i EndpointGroup) ToEndpointGroupPtrOutput() EndpointGroupPtrOutput {
+	return i.ToEndpointGroupPtrOutputWithContext(context.Background())
+}
+
+func (i EndpointGroup) ToEndpointGroupPtrOutputWithContext(ctx context.Context) EndpointGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointGroupPtrOutput)
 }
 
 type EndpointGroupOutput struct {
@@ -237,6 +252,23 @@ func (o EndpointGroupOutput) ToEndpointGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
+type EndpointGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EndpointGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointGroup)(nil)).Elem()
+}
+
+func (o EndpointGroupPtrOutput) ToEndpointGroupPtrOutput() EndpointGroupPtrOutput {
+	return o
+}
+
+func (o EndpointGroupPtrOutput) ToEndpointGroupPtrOutputWithContext(ctx context.Context) EndpointGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EndpointGroupOutput{})
+	pulumi.RegisterOutputType(EndpointGroupPtrOutput{})
 }

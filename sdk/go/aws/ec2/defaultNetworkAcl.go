@@ -313,6 +313,13 @@ type DefaultNetworkAclInput interface {
 	ToDefaultNetworkAclOutputWithContext(ctx context.Context) DefaultNetworkAclOutput
 }
 
+type DefaultNetworkAclPtrInput interface {
+	pulumi.Input
+
+	ToDefaultNetworkAclPtrOutput() DefaultNetworkAclPtrOutput
+	ToDefaultNetworkAclPtrOutputWithContext(ctx context.Context) DefaultNetworkAclPtrOutput
+}
+
 func (DefaultNetworkAcl) ElementType() reflect.Type {
 	return reflect.TypeOf((*DefaultNetworkAcl)(nil)).Elem()
 }
@@ -323,6 +330,14 @@ func (i DefaultNetworkAcl) ToDefaultNetworkAclOutput() DefaultNetworkAclOutput {
 
 func (i DefaultNetworkAcl) ToDefaultNetworkAclOutputWithContext(ctx context.Context) DefaultNetworkAclOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultNetworkAclOutput)
+}
+
+func (i DefaultNetworkAcl) ToDefaultNetworkAclPtrOutput() DefaultNetworkAclPtrOutput {
+	return i.ToDefaultNetworkAclPtrOutputWithContext(context.Background())
+}
+
+func (i DefaultNetworkAcl) ToDefaultNetworkAclPtrOutputWithContext(ctx context.Context) DefaultNetworkAclPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultNetworkAclPtrOutput)
 }
 
 type DefaultNetworkAclOutput struct {
@@ -341,6 +356,23 @@ func (o DefaultNetworkAclOutput) ToDefaultNetworkAclOutputWithContext(ctx contex
 	return o
 }
 
+type DefaultNetworkAclPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DefaultNetworkAclPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultNetworkAcl)(nil)).Elem()
+}
+
+func (o DefaultNetworkAclPtrOutput) ToDefaultNetworkAclPtrOutput() DefaultNetworkAclPtrOutput {
+	return o
+}
+
+func (o DefaultNetworkAclPtrOutput) ToDefaultNetworkAclPtrOutputWithContext(ctx context.Context) DefaultNetworkAclPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DefaultNetworkAclOutput{})
+	pulumi.RegisterOutputType(DefaultNetworkAclPtrOutput{})
 }

@@ -186,6 +186,13 @@ type SourceCredentialInput interface {
 	ToSourceCredentialOutputWithContext(ctx context.Context) SourceCredentialOutput
 }
 
+type SourceCredentialPtrInput interface {
+	pulumi.Input
+
+	ToSourceCredentialPtrOutput() SourceCredentialPtrOutput
+	ToSourceCredentialPtrOutputWithContext(ctx context.Context) SourceCredentialPtrOutput
+}
+
 func (SourceCredential) ElementType() reflect.Type {
 	return reflect.TypeOf((*SourceCredential)(nil)).Elem()
 }
@@ -196,6 +203,14 @@ func (i SourceCredential) ToSourceCredentialOutput() SourceCredentialOutput {
 
 func (i SourceCredential) ToSourceCredentialOutputWithContext(ctx context.Context) SourceCredentialOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SourceCredentialOutput)
+}
+
+func (i SourceCredential) ToSourceCredentialPtrOutput() SourceCredentialPtrOutput {
+	return i.ToSourceCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i SourceCredential) ToSourceCredentialPtrOutputWithContext(ctx context.Context) SourceCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceCredentialPtrOutput)
 }
 
 type SourceCredentialOutput struct {
@@ -214,6 +229,23 @@ func (o SourceCredentialOutput) ToSourceCredentialOutputWithContext(ctx context.
 	return o
 }
 
+type SourceCredentialPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SourceCredentialPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceCredential)(nil)).Elem()
+}
+
+func (o SourceCredentialPtrOutput) ToSourceCredentialPtrOutput() SourceCredentialPtrOutput {
+	return o
+}
+
+func (o SourceCredentialPtrOutput) ToSourceCredentialPtrOutputWithContext(ctx context.Context) SourceCredentialPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SourceCredentialOutput{})
+	pulumi.RegisterOutputType(SourceCredentialPtrOutput{})
 }

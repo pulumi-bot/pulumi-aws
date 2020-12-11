@@ -136,6 +136,13 @@ type VpcEndpointServiceAllowedPrincipleInput interface {
 	ToVpcEndpointServiceAllowedPrincipleOutputWithContext(ctx context.Context) VpcEndpointServiceAllowedPrincipleOutput
 }
 
+type VpcEndpointServiceAllowedPrinciplePtrInput interface {
+	pulumi.Input
+
+	ToVpcEndpointServiceAllowedPrinciplePtrOutput() VpcEndpointServiceAllowedPrinciplePtrOutput
+	ToVpcEndpointServiceAllowedPrinciplePtrOutputWithContext(ctx context.Context) VpcEndpointServiceAllowedPrinciplePtrOutput
+}
+
 func (VpcEndpointServiceAllowedPrinciple) ElementType() reflect.Type {
 	return reflect.TypeOf((*VpcEndpointServiceAllowedPrinciple)(nil)).Elem()
 }
@@ -146,6 +153,14 @@ func (i VpcEndpointServiceAllowedPrinciple) ToVpcEndpointServiceAllowedPrinciple
 
 func (i VpcEndpointServiceAllowedPrinciple) ToVpcEndpointServiceAllowedPrincipleOutputWithContext(ctx context.Context) VpcEndpointServiceAllowedPrincipleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceAllowedPrincipleOutput)
+}
+
+func (i VpcEndpointServiceAllowedPrinciple) ToVpcEndpointServiceAllowedPrinciplePtrOutput() VpcEndpointServiceAllowedPrinciplePtrOutput {
+	return i.ToVpcEndpointServiceAllowedPrinciplePtrOutputWithContext(context.Background())
+}
+
+func (i VpcEndpointServiceAllowedPrinciple) ToVpcEndpointServiceAllowedPrinciplePtrOutputWithContext(ctx context.Context) VpcEndpointServiceAllowedPrinciplePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointServiceAllowedPrinciplePtrOutput)
 }
 
 type VpcEndpointServiceAllowedPrincipleOutput struct {
@@ -164,6 +179,23 @@ func (o VpcEndpointServiceAllowedPrincipleOutput) ToVpcEndpointServiceAllowedPri
 	return o
 }
 
+type VpcEndpointServiceAllowedPrinciplePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcEndpointServiceAllowedPrinciplePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcEndpointServiceAllowedPrinciple)(nil)).Elem()
+}
+
+func (o VpcEndpointServiceAllowedPrinciplePtrOutput) ToVpcEndpointServiceAllowedPrinciplePtrOutput() VpcEndpointServiceAllowedPrinciplePtrOutput {
+	return o
+}
+
+func (o VpcEndpointServiceAllowedPrinciplePtrOutput) ToVpcEndpointServiceAllowedPrinciplePtrOutputWithContext(ctx context.Context) VpcEndpointServiceAllowedPrinciplePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VpcEndpointServiceAllowedPrincipleOutput{})
+	pulumi.RegisterOutputType(VpcEndpointServiceAllowedPrinciplePtrOutput{})
 }

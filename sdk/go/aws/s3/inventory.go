@@ -264,6 +264,13 @@ type InventoryInput interface {
 	ToInventoryOutputWithContext(ctx context.Context) InventoryOutput
 }
 
+type InventoryPtrInput interface {
+	pulumi.Input
+
+	ToInventoryPtrOutput() InventoryPtrOutput
+	ToInventoryPtrOutputWithContext(ctx context.Context) InventoryPtrOutput
+}
+
 func (Inventory) ElementType() reflect.Type {
 	return reflect.TypeOf((*Inventory)(nil)).Elem()
 }
@@ -274,6 +281,14 @@ func (i Inventory) ToInventoryOutput() InventoryOutput {
 
 func (i Inventory) ToInventoryOutputWithContext(ctx context.Context) InventoryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InventoryOutput)
+}
+
+func (i Inventory) ToInventoryPtrOutput() InventoryPtrOutput {
+	return i.ToInventoryPtrOutputWithContext(context.Background())
+}
+
+func (i Inventory) ToInventoryPtrOutputWithContext(ctx context.Context) InventoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InventoryPtrOutput)
 }
 
 type InventoryOutput struct {
@@ -292,6 +307,23 @@ func (o InventoryOutput) ToInventoryOutputWithContext(ctx context.Context) Inven
 	return o
 }
 
+type InventoryPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (InventoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Inventory)(nil)).Elem()
+}
+
+func (o InventoryPtrOutput) ToInventoryPtrOutput() InventoryPtrOutput {
+	return o
+}
+
+func (o InventoryPtrOutput) ToInventoryPtrOutputWithContext(ctx context.Context) InventoryPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(InventoryOutput{})
+	pulumi.RegisterOutputType(InventoryPtrOutput{})
 }

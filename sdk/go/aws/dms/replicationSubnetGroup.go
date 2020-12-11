@@ -169,6 +169,13 @@ type ReplicationSubnetGroupInput interface {
 	ToReplicationSubnetGroupOutputWithContext(ctx context.Context) ReplicationSubnetGroupOutput
 }
 
+type ReplicationSubnetGroupPtrInput interface {
+	pulumi.Input
+
+	ToReplicationSubnetGroupPtrOutput() ReplicationSubnetGroupPtrOutput
+	ToReplicationSubnetGroupPtrOutputWithContext(ctx context.Context) ReplicationSubnetGroupPtrOutput
+}
+
 func (ReplicationSubnetGroup) ElementType() reflect.Type {
 	return reflect.TypeOf((*ReplicationSubnetGroup)(nil)).Elem()
 }
@@ -179,6 +186,14 @@ func (i ReplicationSubnetGroup) ToReplicationSubnetGroupOutput() ReplicationSubn
 
 func (i ReplicationSubnetGroup) ToReplicationSubnetGroupOutputWithContext(ctx context.Context) ReplicationSubnetGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationSubnetGroupOutput)
+}
+
+func (i ReplicationSubnetGroup) ToReplicationSubnetGroupPtrOutput() ReplicationSubnetGroupPtrOutput {
+	return i.ToReplicationSubnetGroupPtrOutputWithContext(context.Background())
+}
+
+func (i ReplicationSubnetGroup) ToReplicationSubnetGroupPtrOutputWithContext(ctx context.Context) ReplicationSubnetGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationSubnetGroupPtrOutput)
 }
 
 type ReplicationSubnetGroupOutput struct {
@@ -197,6 +212,23 @@ func (o ReplicationSubnetGroupOutput) ToReplicationSubnetGroupOutputWithContext(
 	return o
 }
 
+type ReplicationSubnetGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReplicationSubnetGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplicationSubnetGroup)(nil)).Elem()
+}
+
+func (o ReplicationSubnetGroupPtrOutput) ToReplicationSubnetGroupPtrOutput() ReplicationSubnetGroupPtrOutput {
+	return o
+}
+
+func (o ReplicationSubnetGroupPtrOutput) ToReplicationSubnetGroupPtrOutputWithContext(ctx context.Context) ReplicationSubnetGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ReplicationSubnetGroupOutput{})
+	pulumi.RegisterOutputType(ReplicationSubnetGroupPtrOutput{})
 }

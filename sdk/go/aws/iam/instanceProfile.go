@@ -170,6 +170,13 @@ type InstanceProfileInput interface {
 	ToInstanceProfileOutputWithContext(ctx context.Context) InstanceProfileOutput
 }
 
+type InstanceProfilePtrInput interface {
+	pulumi.Input
+
+	ToInstanceProfilePtrOutput() InstanceProfilePtrOutput
+	ToInstanceProfilePtrOutputWithContext(ctx context.Context) InstanceProfilePtrOutput
+}
+
 func (InstanceProfile) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceProfile)(nil)).Elem()
 }
@@ -180,6 +187,14 @@ func (i InstanceProfile) ToInstanceProfileOutput() InstanceProfileOutput {
 
 func (i InstanceProfile) ToInstanceProfileOutputWithContext(ctx context.Context) InstanceProfileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceProfileOutput)
+}
+
+func (i InstanceProfile) ToInstanceProfilePtrOutput() InstanceProfilePtrOutput {
+	return i.ToInstanceProfilePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceProfile) ToInstanceProfilePtrOutputWithContext(ctx context.Context) InstanceProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceProfilePtrOutput)
 }
 
 type InstanceProfileOutput struct {
@@ -198,6 +213,23 @@ func (o InstanceProfileOutput) ToInstanceProfileOutputWithContext(ctx context.Co
 	return o
 }
 
+type InstanceProfilePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceProfile)(nil)).Elem()
+}
+
+func (o InstanceProfilePtrOutput) ToInstanceProfilePtrOutput() InstanceProfilePtrOutput {
+	return o
+}
+
+func (o InstanceProfilePtrOutput) ToInstanceProfilePtrOutputWithContext(ctx context.Context) InstanceProfilePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(InstanceProfileOutput{})
+	pulumi.RegisterOutputType(InstanceProfilePtrOutput{})
 }

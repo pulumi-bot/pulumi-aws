@@ -244,6 +244,13 @@ type PublishingDestinationInput interface {
 	ToPublishingDestinationOutputWithContext(ctx context.Context) PublishingDestinationOutput
 }
 
+type PublishingDestinationPtrInput interface {
+	pulumi.Input
+
+	ToPublishingDestinationPtrOutput() PublishingDestinationPtrOutput
+	ToPublishingDestinationPtrOutputWithContext(ctx context.Context) PublishingDestinationPtrOutput
+}
+
 func (PublishingDestination) ElementType() reflect.Type {
 	return reflect.TypeOf((*PublishingDestination)(nil)).Elem()
 }
@@ -254,6 +261,14 @@ func (i PublishingDestination) ToPublishingDestinationOutput() PublishingDestina
 
 func (i PublishingDestination) ToPublishingDestinationOutputWithContext(ctx context.Context) PublishingDestinationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PublishingDestinationOutput)
+}
+
+func (i PublishingDestination) ToPublishingDestinationPtrOutput() PublishingDestinationPtrOutput {
+	return i.ToPublishingDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i PublishingDestination) ToPublishingDestinationPtrOutputWithContext(ctx context.Context) PublishingDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublishingDestinationPtrOutput)
 }
 
 type PublishingDestinationOutput struct {
@@ -272,6 +287,23 @@ func (o PublishingDestinationOutput) ToPublishingDestinationOutputWithContext(ct
 	return o
 }
 
+type PublishingDestinationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PublishingDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublishingDestination)(nil)).Elem()
+}
+
+func (o PublishingDestinationPtrOutput) ToPublishingDestinationPtrOutput() PublishingDestinationPtrOutput {
+	return o
+}
+
+func (o PublishingDestinationPtrOutput) ToPublishingDestinationPtrOutputWithContext(ctx context.Context) PublishingDestinationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PublishingDestinationOutput{})
+	pulumi.RegisterOutputType(PublishingDestinationPtrOutput{})
 }

@@ -1761,7 +1761,7 @@ func (i FleetLaunchTemplateConfigArgs) ToFleetLaunchTemplateConfigPtrOutput() Fl
 }
 
 func (i FleetLaunchTemplateConfigArgs) ToFleetLaunchTemplateConfigPtrOutputWithContext(ctx context.Context) FleetLaunchTemplateConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetLaunchTemplateConfigOutput).ToFleetLaunchTemplateConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetLaunchTemplateConfigOutput).ToFleetLaunchTemplateConfigPtrOutput()
 }
 
 // FleetLaunchTemplateConfigPtrInput is an input type that accepts FleetLaunchTemplateConfigArgs, FleetLaunchTemplateConfigPtr and FleetLaunchTemplateConfigPtrOutput values.
@@ -1794,7 +1794,7 @@ func (i *fleetLaunchTemplateConfigPtrType) ToFleetLaunchTemplateConfigPtrOutput(
 }
 
 func (i *fleetLaunchTemplateConfigPtrType) ToFleetLaunchTemplateConfigPtrOutputWithContext(ctx context.Context) FleetLaunchTemplateConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetLaunchTemplateConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetLaunchTemplateConfigOutput).ToFleetLaunchTemplateConfigPtrOutput()
 }
 
 type FleetLaunchTemplateConfigOutput struct{ *pulumi.OutputState }
@@ -1917,7 +1917,7 @@ func (i FleetLaunchTemplateConfigLaunchTemplateSpecificationArgs) ToFleetLaunchT
 }
 
 func (i FleetLaunchTemplateConfigLaunchTemplateSpecificationArgs) ToFleetLaunchTemplateConfigLaunchTemplateSpecificationPtrOutputWithContext(ctx context.Context) FleetLaunchTemplateConfigLaunchTemplateSpecificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetLaunchTemplateConfigLaunchTemplateSpecificationOutput).ToFleetLaunchTemplateConfigLaunchTemplateSpecificationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetLaunchTemplateConfigLaunchTemplateSpecificationOutput).ToFleetLaunchTemplateConfigLaunchTemplateSpecificationPtrOutput()
 }
 
 // FleetLaunchTemplateConfigLaunchTemplateSpecificationPtrInput is an input type that accepts FleetLaunchTemplateConfigLaunchTemplateSpecificationArgs, FleetLaunchTemplateConfigLaunchTemplateSpecificationPtr and FleetLaunchTemplateConfigLaunchTemplateSpecificationPtrOutput values.
@@ -1950,7 +1950,7 @@ func (i *fleetLaunchTemplateConfigLaunchTemplateSpecificationPtrType) ToFleetLau
 }
 
 func (i *fleetLaunchTemplateConfigLaunchTemplateSpecificationPtrType) ToFleetLaunchTemplateConfigLaunchTemplateSpecificationPtrOutputWithContext(ctx context.Context) FleetLaunchTemplateConfigLaunchTemplateSpecificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetLaunchTemplateConfigLaunchTemplateSpecificationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetLaunchTemplateConfigLaunchTemplateSpecificationOutput).ToFleetLaunchTemplateConfigLaunchTemplateSpecificationPtrOutput()
 }
 
 type FleetLaunchTemplateConfigLaunchTemplateSpecificationOutput struct{ *pulumi.OutputState }
@@ -2222,7 +2222,7 @@ func (i FleetOnDemandOptionsArgs) ToFleetOnDemandOptionsPtrOutput() FleetOnDeman
 }
 
 func (i FleetOnDemandOptionsArgs) ToFleetOnDemandOptionsPtrOutputWithContext(ctx context.Context) FleetOnDemandOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetOnDemandOptionsOutput).ToFleetOnDemandOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetOnDemandOptionsOutput).ToFleetOnDemandOptionsPtrOutput()
 }
 
 // FleetOnDemandOptionsPtrInput is an input type that accepts FleetOnDemandOptionsArgs, FleetOnDemandOptionsPtr and FleetOnDemandOptionsPtrOutput values.
@@ -2255,7 +2255,7 @@ func (i *fleetOnDemandOptionsPtrType) ToFleetOnDemandOptionsPtrOutput() FleetOnD
 }
 
 func (i *fleetOnDemandOptionsPtrType) ToFleetOnDemandOptionsPtrOutputWithContext(ctx context.Context) FleetOnDemandOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetOnDemandOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetOnDemandOptionsOutput).ToFleetOnDemandOptionsPtrOutput()
 }
 
 type FleetOnDemandOptionsOutput struct{ *pulumi.OutputState }
@@ -2365,7 +2365,7 @@ func (i FleetSpotOptionsArgs) ToFleetSpotOptionsPtrOutput() FleetSpotOptionsPtrO
 }
 
 func (i FleetSpotOptionsArgs) ToFleetSpotOptionsPtrOutputWithContext(ctx context.Context) FleetSpotOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetSpotOptionsOutput).ToFleetSpotOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetSpotOptionsOutput).ToFleetSpotOptionsPtrOutput()
 }
 
 // FleetSpotOptionsPtrInput is an input type that accepts FleetSpotOptionsArgs, FleetSpotOptionsPtr and FleetSpotOptionsPtrOutput values.
@@ -2398,7 +2398,7 @@ func (i *fleetSpotOptionsPtrType) ToFleetSpotOptionsPtrOutput() FleetSpotOptions
 }
 
 func (i *fleetSpotOptionsPtrType) ToFleetSpotOptionsPtrOutputWithContext(ctx context.Context) FleetSpotOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetSpotOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetSpotOptionsOutput).ToFleetSpotOptionsPtrOutput()
 }
 
 type FleetSpotOptionsOutput struct{ *pulumi.OutputState }
@@ -2541,7 +2541,7 @@ func (i FleetSpotOptionsMaintenanceStrategiesArgs) ToFleetSpotOptionsMaintenance
 }
 
 func (i FleetSpotOptionsMaintenanceStrategiesArgs) ToFleetSpotOptionsMaintenanceStrategiesPtrOutputWithContext(ctx context.Context) FleetSpotOptionsMaintenanceStrategiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetSpotOptionsMaintenanceStrategiesOutput).ToFleetSpotOptionsMaintenanceStrategiesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetSpotOptionsMaintenanceStrategiesOutput).ToFleetSpotOptionsMaintenanceStrategiesPtrOutput()
 }
 
 // FleetSpotOptionsMaintenanceStrategiesPtrInput is an input type that accepts FleetSpotOptionsMaintenanceStrategiesArgs, FleetSpotOptionsMaintenanceStrategiesPtr and FleetSpotOptionsMaintenanceStrategiesPtrOutput values.
@@ -2574,7 +2574,7 @@ func (i *fleetSpotOptionsMaintenanceStrategiesPtrType) ToFleetSpotOptionsMainten
 }
 
 func (i *fleetSpotOptionsMaintenanceStrategiesPtrType) ToFleetSpotOptionsMaintenanceStrategiesPtrOutputWithContext(ctx context.Context) FleetSpotOptionsMaintenanceStrategiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetSpotOptionsMaintenanceStrategiesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetSpotOptionsMaintenanceStrategiesOutput).ToFleetSpotOptionsMaintenanceStrategiesPtrOutput()
 }
 
 type FleetSpotOptionsMaintenanceStrategiesOutput struct{ *pulumi.OutputState }
@@ -2674,7 +2674,7 @@ func (i FleetSpotOptionsMaintenanceStrategiesCapacityRebalanceArgs) ToFleetSpotO
 }
 
 func (i FleetSpotOptionsMaintenanceStrategiesCapacityRebalanceArgs) ToFleetSpotOptionsMaintenanceStrategiesCapacityRebalancePtrOutputWithContext(ctx context.Context) FleetSpotOptionsMaintenanceStrategiesCapacityRebalancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetSpotOptionsMaintenanceStrategiesCapacityRebalanceOutput).ToFleetSpotOptionsMaintenanceStrategiesCapacityRebalancePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetSpotOptionsMaintenanceStrategiesCapacityRebalanceOutput).ToFleetSpotOptionsMaintenanceStrategiesCapacityRebalancePtrOutput()
 }
 
 // FleetSpotOptionsMaintenanceStrategiesCapacityRebalancePtrInput is an input type that accepts FleetSpotOptionsMaintenanceStrategiesCapacityRebalanceArgs, FleetSpotOptionsMaintenanceStrategiesCapacityRebalancePtr and FleetSpotOptionsMaintenanceStrategiesCapacityRebalancePtrOutput values.
@@ -2707,7 +2707,7 @@ func (i *fleetSpotOptionsMaintenanceStrategiesCapacityRebalancePtrType) ToFleetS
 }
 
 func (i *fleetSpotOptionsMaintenanceStrategiesCapacityRebalancePtrType) ToFleetSpotOptionsMaintenanceStrategiesCapacityRebalancePtrOutputWithContext(ctx context.Context) FleetSpotOptionsMaintenanceStrategiesCapacityRebalancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetSpotOptionsMaintenanceStrategiesCapacityRebalancePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetSpotOptionsMaintenanceStrategiesCapacityRebalanceOutput).ToFleetSpotOptionsMaintenanceStrategiesCapacityRebalancePtrOutput()
 }
 
 type FleetSpotOptionsMaintenanceStrategiesCapacityRebalanceOutput struct{ *pulumi.OutputState }
@@ -2819,7 +2819,7 @@ func (i FleetTargetCapacitySpecificationArgs) ToFleetTargetCapacitySpecification
 }
 
 func (i FleetTargetCapacitySpecificationArgs) ToFleetTargetCapacitySpecificationPtrOutputWithContext(ctx context.Context) FleetTargetCapacitySpecificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetTargetCapacitySpecificationOutput).ToFleetTargetCapacitySpecificationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetTargetCapacitySpecificationOutput).ToFleetTargetCapacitySpecificationPtrOutput()
 }
 
 // FleetTargetCapacitySpecificationPtrInput is an input type that accepts FleetTargetCapacitySpecificationArgs, FleetTargetCapacitySpecificationPtr and FleetTargetCapacitySpecificationPtrOutput values.
@@ -2852,7 +2852,7 @@ func (i *fleetTargetCapacitySpecificationPtrType) ToFleetTargetCapacitySpecifica
 }
 
 func (i *fleetTargetCapacitySpecificationPtrType) ToFleetTargetCapacitySpecificationPtrOutputWithContext(ctx context.Context) FleetTargetCapacitySpecificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetTargetCapacitySpecificationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetTargetCapacitySpecificationOutput).ToFleetTargetCapacitySpecificationPtrOutput()
 }
 
 type FleetTargetCapacitySpecificationOutput struct{ *pulumi.OutputState }
@@ -2995,7 +2995,7 @@ func (i InstanceCreditSpecificationArgs) ToInstanceCreditSpecificationPtrOutput(
 }
 
 func (i InstanceCreditSpecificationArgs) ToInstanceCreditSpecificationPtrOutputWithContext(ctx context.Context) InstanceCreditSpecificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceCreditSpecificationOutput).ToInstanceCreditSpecificationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCreditSpecificationOutput).ToInstanceCreditSpecificationPtrOutput()
 }
 
 // InstanceCreditSpecificationPtrInput is an input type that accepts InstanceCreditSpecificationArgs, InstanceCreditSpecificationPtr and InstanceCreditSpecificationPtrOutput values.
@@ -3028,7 +3028,7 @@ func (i *instanceCreditSpecificationPtrType) ToInstanceCreditSpecificationPtrOut
 }
 
 func (i *instanceCreditSpecificationPtrType) ToInstanceCreditSpecificationPtrOutputWithContext(ctx context.Context) InstanceCreditSpecificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceCreditSpecificationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceCreditSpecificationOutput).ToInstanceCreditSpecificationPtrOutput()
 }
 
 type InstanceCreditSpecificationOutput struct{ *pulumi.OutputState }
@@ -3439,7 +3439,7 @@ func (i InstanceMetadataOptionsArgs) ToInstanceMetadataOptionsPtrOutput() Instan
 }
 
 func (i InstanceMetadataOptionsArgs) ToInstanceMetadataOptionsPtrOutputWithContext(ctx context.Context) InstanceMetadataOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceMetadataOptionsOutput).ToInstanceMetadataOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMetadataOptionsOutput).ToInstanceMetadataOptionsPtrOutput()
 }
 
 // InstanceMetadataOptionsPtrInput is an input type that accepts InstanceMetadataOptionsArgs, InstanceMetadataOptionsPtr and InstanceMetadataOptionsPtrOutput values.
@@ -3472,7 +3472,7 @@ func (i *instanceMetadataOptionsPtrType) ToInstanceMetadataOptionsPtrOutput() In
 }
 
 func (i *instanceMetadataOptionsPtrType) ToInstanceMetadataOptionsPtrOutputWithContext(ctx context.Context) InstanceMetadataOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceMetadataOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMetadataOptionsOutput).ToInstanceMetadataOptionsPtrOutput()
 }
 
 type InstanceMetadataOptionsOutput struct{ *pulumi.OutputState }
@@ -3749,7 +3749,7 @@ func (i InstanceRootBlockDeviceArgs) ToInstanceRootBlockDevicePtrOutput() Instan
 }
 
 func (i InstanceRootBlockDeviceArgs) ToInstanceRootBlockDevicePtrOutputWithContext(ctx context.Context) InstanceRootBlockDevicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceRootBlockDeviceOutput).ToInstanceRootBlockDevicePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceRootBlockDeviceOutput).ToInstanceRootBlockDevicePtrOutput()
 }
 
 // InstanceRootBlockDevicePtrInput is an input type that accepts InstanceRootBlockDeviceArgs, InstanceRootBlockDevicePtr and InstanceRootBlockDevicePtrOutput values.
@@ -3782,7 +3782,7 @@ func (i *instanceRootBlockDevicePtrType) ToInstanceRootBlockDevicePtrOutput() In
 }
 
 func (i *instanceRootBlockDevicePtrType) ToInstanceRootBlockDevicePtrOutputWithContext(ctx context.Context) InstanceRootBlockDevicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceRootBlockDevicePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceRootBlockDeviceOutput).ToInstanceRootBlockDevicePtrOutput()
 }
 
 type InstanceRootBlockDeviceOutput struct{ *pulumi.OutputState }
@@ -4233,7 +4233,7 @@ func (i LaunchConfigurationRootBlockDeviceArgs) ToLaunchConfigurationRootBlockDe
 }
 
 func (i LaunchConfigurationRootBlockDeviceArgs) ToLaunchConfigurationRootBlockDevicePtrOutputWithContext(ctx context.Context) LaunchConfigurationRootBlockDevicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchConfigurationRootBlockDeviceOutput).ToLaunchConfigurationRootBlockDevicePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchConfigurationRootBlockDeviceOutput).ToLaunchConfigurationRootBlockDevicePtrOutput()
 }
 
 // LaunchConfigurationRootBlockDevicePtrInput is an input type that accepts LaunchConfigurationRootBlockDeviceArgs, LaunchConfigurationRootBlockDevicePtr and LaunchConfigurationRootBlockDevicePtrOutput values.
@@ -4266,7 +4266,7 @@ func (i *launchConfigurationRootBlockDevicePtrType) ToLaunchConfigurationRootBlo
 }
 
 func (i *launchConfigurationRootBlockDevicePtrType) ToLaunchConfigurationRootBlockDevicePtrOutputWithContext(ctx context.Context) LaunchConfigurationRootBlockDevicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchConfigurationRootBlockDevicePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchConfigurationRootBlockDeviceOutput).ToLaunchConfigurationRootBlockDevicePtrOutput()
 }
 
 type LaunchConfigurationRootBlockDeviceOutput struct{ *pulumi.OutputState }
@@ -4575,7 +4575,7 @@ func (i LaunchTemplateBlockDeviceMappingEbsArgs) ToLaunchTemplateBlockDeviceMapp
 }
 
 func (i LaunchTemplateBlockDeviceMappingEbsArgs) ToLaunchTemplateBlockDeviceMappingEbsPtrOutputWithContext(ctx context.Context) LaunchTemplateBlockDeviceMappingEbsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateBlockDeviceMappingEbsOutput).ToLaunchTemplateBlockDeviceMappingEbsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateBlockDeviceMappingEbsOutput).ToLaunchTemplateBlockDeviceMappingEbsPtrOutput()
 }
 
 // LaunchTemplateBlockDeviceMappingEbsPtrInput is an input type that accepts LaunchTemplateBlockDeviceMappingEbsArgs, LaunchTemplateBlockDeviceMappingEbsPtr and LaunchTemplateBlockDeviceMappingEbsPtrOutput values.
@@ -4608,7 +4608,7 @@ func (i *launchTemplateBlockDeviceMappingEbsPtrType) ToLaunchTemplateBlockDevice
 }
 
 func (i *launchTemplateBlockDeviceMappingEbsPtrType) ToLaunchTemplateBlockDeviceMappingEbsPtrOutputWithContext(ctx context.Context) LaunchTemplateBlockDeviceMappingEbsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateBlockDeviceMappingEbsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateBlockDeviceMappingEbsOutput).ToLaunchTemplateBlockDeviceMappingEbsPtrOutput()
 }
 
 type LaunchTemplateBlockDeviceMappingEbsOutput struct{ *pulumi.OutputState }
@@ -4808,7 +4808,7 @@ func (i LaunchTemplateCapacityReservationSpecificationArgs) ToLaunchTemplateCapa
 }
 
 func (i LaunchTemplateCapacityReservationSpecificationArgs) ToLaunchTemplateCapacityReservationSpecificationPtrOutputWithContext(ctx context.Context) LaunchTemplateCapacityReservationSpecificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateCapacityReservationSpecificationOutput).ToLaunchTemplateCapacityReservationSpecificationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateCapacityReservationSpecificationOutput).ToLaunchTemplateCapacityReservationSpecificationPtrOutput()
 }
 
 // LaunchTemplateCapacityReservationSpecificationPtrInput is an input type that accepts LaunchTemplateCapacityReservationSpecificationArgs, LaunchTemplateCapacityReservationSpecificationPtr and LaunchTemplateCapacityReservationSpecificationPtrOutput values.
@@ -4841,7 +4841,7 @@ func (i *launchTemplateCapacityReservationSpecificationPtrType) ToLaunchTemplate
 }
 
 func (i *launchTemplateCapacityReservationSpecificationPtrType) ToLaunchTemplateCapacityReservationSpecificationPtrOutputWithContext(ctx context.Context) LaunchTemplateCapacityReservationSpecificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateCapacityReservationSpecificationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateCapacityReservationSpecificationOutput).ToLaunchTemplateCapacityReservationSpecificationPtrOutput()
 }
 
 type LaunchTemplateCapacityReservationSpecificationOutput struct{ *pulumi.OutputState }
@@ -4958,7 +4958,7 @@ func (i LaunchTemplateCapacityReservationSpecificationCapacityReservationTargetA
 }
 
 func (i LaunchTemplateCapacityReservationSpecificationCapacityReservationTargetArgs) ToLaunchTemplateCapacityReservationSpecificationCapacityReservationTargetPtrOutputWithContext(ctx context.Context) LaunchTemplateCapacityReservationSpecificationCapacityReservationTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateCapacityReservationSpecificationCapacityReservationTargetOutput).ToLaunchTemplateCapacityReservationSpecificationCapacityReservationTargetPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateCapacityReservationSpecificationCapacityReservationTargetOutput).ToLaunchTemplateCapacityReservationSpecificationCapacityReservationTargetPtrOutput()
 }
 
 // LaunchTemplateCapacityReservationSpecificationCapacityReservationTargetPtrInput is an input type that accepts LaunchTemplateCapacityReservationSpecificationCapacityReservationTargetArgs, LaunchTemplateCapacityReservationSpecificationCapacityReservationTargetPtr and LaunchTemplateCapacityReservationSpecificationCapacityReservationTargetPtrOutput values.
@@ -4991,7 +4991,7 @@ func (i *launchTemplateCapacityReservationSpecificationCapacityReservationTarget
 }
 
 func (i *launchTemplateCapacityReservationSpecificationCapacityReservationTargetPtrType) ToLaunchTemplateCapacityReservationSpecificationCapacityReservationTargetPtrOutputWithContext(ctx context.Context) LaunchTemplateCapacityReservationSpecificationCapacityReservationTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateCapacityReservationSpecificationCapacityReservationTargetPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateCapacityReservationSpecificationCapacityReservationTargetOutput).ToLaunchTemplateCapacityReservationSpecificationCapacityReservationTargetPtrOutput()
 }
 
 type LaunchTemplateCapacityReservationSpecificationCapacityReservationTargetOutput struct{ *pulumi.OutputState }
@@ -5099,7 +5099,7 @@ func (i LaunchTemplateCpuOptionsArgs) ToLaunchTemplateCpuOptionsPtrOutput() Laun
 }
 
 func (i LaunchTemplateCpuOptionsArgs) ToLaunchTemplateCpuOptionsPtrOutputWithContext(ctx context.Context) LaunchTemplateCpuOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateCpuOptionsOutput).ToLaunchTemplateCpuOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateCpuOptionsOutput).ToLaunchTemplateCpuOptionsPtrOutput()
 }
 
 // LaunchTemplateCpuOptionsPtrInput is an input type that accepts LaunchTemplateCpuOptionsArgs, LaunchTemplateCpuOptionsPtr and LaunchTemplateCpuOptionsPtrOutput values.
@@ -5132,7 +5132,7 @@ func (i *launchTemplateCpuOptionsPtrType) ToLaunchTemplateCpuOptionsPtrOutput() 
 }
 
 func (i *launchTemplateCpuOptionsPtrType) ToLaunchTemplateCpuOptionsPtrOutputWithContext(ctx context.Context) LaunchTemplateCpuOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateCpuOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateCpuOptionsOutput).ToLaunchTemplateCpuOptionsPtrOutput()
 }
 
 type LaunchTemplateCpuOptionsOutput struct{ *pulumi.OutputState }
@@ -5247,7 +5247,7 @@ func (i LaunchTemplateCreditSpecificationArgs) ToLaunchTemplateCreditSpecificati
 }
 
 func (i LaunchTemplateCreditSpecificationArgs) ToLaunchTemplateCreditSpecificationPtrOutputWithContext(ctx context.Context) LaunchTemplateCreditSpecificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateCreditSpecificationOutput).ToLaunchTemplateCreditSpecificationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateCreditSpecificationOutput).ToLaunchTemplateCreditSpecificationPtrOutput()
 }
 
 // LaunchTemplateCreditSpecificationPtrInput is an input type that accepts LaunchTemplateCreditSpecificationArgs, LaunchTemplateCreditSpecificationPtr and LaunchTemplateCreditSpecificationPtrOutput values.
@@ -5280,7 +5280,7 @@ func (i *launchTemplateCreditSpecificationPtrType) ToLaunchTemplateCreditSpecifi
 }
 
 func (i *launchTemplateCreditSpecificationPtrType) ToLaunchTemplateCreditSpecificationPtrOutputWithContext(ctx context.Context) LaunchTemplateCreditSpecificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateCreditSpecificationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateCreditSpecificationOutput).ToLaunchTemplateCreditSpecificationPtrOutput()
 }
 
 type LaunchTemplateCreditSpecificationOutput struct{ *pulumi.OutputState }
@@ -5475,7 +5475,7 @@ func (i LaunchTemplateElasticInferenceAcceleratorArgs) ToLaunchTemplateElasticIn
 }
 
 func (i LaunchTemplateElasticInferenceAcceleratorArgs) ToLaunchTemplateElasticInferenceAcceleratorPtrOutputWithContext(ctx context.Context) LaunchTemplateElasticInferenceAcceleratorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateElasticInferenceAcceleratorOutput).ToLaunchTemplateElasticInferenceAcceleratorPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateElasticInferenceAcceleratorOutput).ToLaunchTemplateElasticInferenceAcceleratorPtrOutput()
 }
 
 // LaunchTemplateElasticInferenceAcceleratorPtrInput is an input type that accepts LaunchTemplateElasticInferenceAcceleratorArgs, LaunchTemplateElasticInferenceAcceleratorPtr and LaunchTemplateElasticInferenceAcceleratorPtrOutput values.
@@ -5508,7 +5508,7 @@ func (i *launchTemplateElasticInferenceAcceleratorPtrType) ToLaunchTemplateElast
 }
 
 func (i *launchTemplateElasticInferenceAcceleratorPtrType) ToLaunchTemplateElasticInferenceAcceleratorPtrOutputWithContext(ctx context.Context) LaunchTemplateElasticInferenceAcceleratorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateElasticInferenceAcceleratorPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateElasticInferenceAcceleratorOutput).ToLaunchTemplateElasticInferenceAcceleratorPtrOutput()
 }
 
 type LaunchTemplateElasticInferenceAcceleratorOutput struct{ *pulumi.OutputState }
@@ -5608,7 +5608,7 @@ func (i LaunchTemplateHibernationOptionsArgs) ToLaunchTemplateHibernationOptions
 }
 
 func (i LaunchTemplateHibernationOptionsArgs) ToLaunchTemplateHibernationOptionsPtrOutputWithContext(ctx context.Context) LaunchTemplateHibernationOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateHibernationOptionsOutput).ToLaunchTemplateHibernationOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateHibernationOptionsOutput).ToLaunchTemplateHibernationOptionsPtrOutput()
 }
 
 // LaunchTemplateHibernationOptionsPtrInput is an input type that accepts LaunchTemplateHibernationOptionsArgs, LaunchTemplateHibernationOptionsPtr and LaunchTemplateHibernationOptionsPtrOutput values.
@@ -5641,7 +5641,7 @@ func (i *launchTemplateHibernationOptionsPtrType) ToLaunchTemplateHibernationOpt
 }
 
 func (i *launchTemplateHibernationOptionsPtrType) ToLaunchTemplateHibernationOptionsPtrOutputWithContext(ctx context.Context) LaunchTemplateHibernationOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateHibernationOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateHibernationOptionsOutput).ToLaunchTemplateHibernationOptionsPtrOutput()
 }
 
 type LaunchTemplateHibernationOptionsOutput struct{ *pulumi.OutputState }
@@ -5743,7 +5743,7 @@ func (i LaunchTemplateIamInstanceProfileArgs) ToLaunchTemplateIamInstanceProfile
 }
 
 func (i LaunchTemplateIamInstanceProfileArgs) ToLaunchTemplateIamInstanceProfilePtrOutputWithContext(ctx context.Context) LaunchTemplateIamInstanceProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateIamInstanceProfileOutput).ToLaunchTemplateIamInstanceProfilePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateIamInstanceProfileOutput).ToLaunchTemplateIamInstanceProfilePtrOutput()
 }
 
 // LaunchTemplateIamInstanceProfilePtrInput is an input type that accepts LaunchTemplateIamInstanceProfileArgs, LaunchTemplateIamInstanceProfilePtr and LaunchTemplateIamInstanceProfilePtrOutput values.
@@ -5776,7 +5776,7 @@ func (i *launchTemplateIamInstanceProfilePtrType) ToLaunchTemplateIamInstancePro
 }
 
 func (i *launchTemplateIamInstanceProfilePtrType) ToLaunchTemplateIamInstanceProfilePtrOutputWithContext(ctx context.Context) LaunchTemplateIamInstanceProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateIamInstanceProfilePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateIamInstanceProfileOutput).ToLaunchTemplateIamInstanceProfilePtrOutput()
 }
 
 type LaunchTemplateIamInstanceProfileOutput struct{ *pulumi.OutputState }
@@ -5893,7 +5893,7 @@ func (i LaunchTemplateInstanceMarketOptionsArgs) ToLaunchTemplateInstanceMarketO
 }
 
 func (i LaunchTemplateInstanceMarketOptionsArgs) ToLaunchTemplateInstanceMarketOptionsPtrOutputWithContext(ctx context.Context) LaunchTemplateInstanceMarketOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateInstanceMarketOptionsOutput).ToLaunchTemplateInstanceMarketOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateInstanceMarketOptionsOutput).ToLaunchTemplateInstanceMarketOptionsPtrOutput()
 }
 
 // LaunchTemplateInstanceMarketOptionsPtrInput is an input type that accepts LaunchTemplateInstanceMarketOptionsArgs, LaunchTemplateInstanceMarketOptionsPtr and LaunchTemplateInstanceMarketOptionsPtrOutput values.
@@ -5926,7 +5926,7 @@ func (i *launchTemplateInstanceMarketOptionsPtrType) ToLaunchTemplateInstanceMar
 }
 
 func (i *launchTemplateInstanceMarketOptionsPtrType) ToLaunchTemplateInstanceMarketOptionsPtrOutputWithContext(ctx context.Context) LaunchTemplateInstanceMarketOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateInstanceMarketOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateInstanceMarketOptionsOutput).ToLaunchTemplateInstanceMarketOptionsPtrOutput()
 }
 
 type LaunchTemplateInstanceMarketOptionsOutput struct{ *pulumi.OutputState }
@@ -6059,7 +6059,7 @@ func (i LaunchTemplateInstanceMarketOptionsSpotOptionsArgs) ToLaunchTemplateInst
 }
 
 func (i LaunchTemplateInstanceMarketOptionsSpotOptionsArgs) ToLaunchTemplateInstanceMarketOptionsSpotOptionsPtrOutputWithContext(ctx context.Context) LaunchTemplateInstanceMarketOptionsSpotOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateInstanceMarketOptionsSpotOptionsOutput).ToLaunchTemplateInstanceMarketOptionsSpotOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateInstanceMarketOptionsSpotOptionsOutput).ToLaunchTemplateInstanceMarketOptionsSpotOptionsPtrOutput()
 }
 
 // LaunchTemplateInstanceMarketOptionsSpotOptionsPtrInput is an input type that accepts LaunchTemplateInstanceMarketOptionsSpotOptionsArgs, LaunchTemplateInstanceMarketOptionsSpotOptionsPtr and LaunchTemplateInstanceMarketOptionsSpotOptionsPtrOutput values.
@@ -6092,7 +6092,7 @@ func (i *launchTemplateInstanceMarketOptionsSpotOptionsPtrType) ToLaunchTemplate
 }
 
 func (i *launchTemplateInstanceMarketOptionsSpotOptionsPtrType) ToLaunchTemplateInstanceMarketOptionsSpotOptionsPtrOutputWithContext(ctx context.Context) LaunchTemplateInstanceMarketOptionsSpotOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateInstanceMarketOptionsSpotOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateInstanceMarketOptionsSpotOptionsOutput).ToLaunchTemplateInstanceMarketOptionsSpotOptionsPtrOutput()
 }
 
 type LaunchTemplateInstanceMarketOptionsSpotOptionsOutput struct{ *pulumi.OutputState }
@@ -6359,7 +6359,7 @@ func (i LaunchTemplateMetadataOptionsArgs) ToLaunchTemplateMetadataOptionsPtrOut
 }
 
 func (i LaunchTemplateMetadataOptionsArgs) ToLaunchTemplateMetadataOptionsPtrOutputWithContext(ctx context.Context) LaunchTemplateMetadataOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateMetadataOptionsOutput).ToLaunchTemplateMetadataOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateMetadataOptionsOutput).ToLaunchTemplateMetadataOptionsPtrOutput()
 }
 
 // LaunchTemplateMetadataOptionsPtrInput is an input type that accepts LaunchTemplateMetadataOptionsArgs, LaunchTemplateMetadataOptionsPtr and LaunchTemplateMetadataOptionsPtrOutput values.
@@ -6392,7 +6392,7 @@ func (i *launchTemplateMetadataOptionsPtrType) ToLaunchTemplateMetadataOptionsPt
 }
 
 func (i *launchTemplateMetadataOptionsPtrType) ToLaunchTemplateMetadataOptionsPtrOutputWithContext(ctx context.Context) LaunchTemplateMetadataOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateMetadataOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateMetadataOptionsOutput).ToLaunchTemplateMetadataOptionsPtrOutput()
 }
 
 type LaunchTemplateMetadataOptionsOutput struct{ *pulumi.OutputState }
@@ -6520,7 +6520,7 @@ func (i LaunchTemplateMonitoringArgs) ToLaunchTemplateMonitoringPtrOutput() Laun
 }
 
 func (i LaunchTemplateMonitoringArgs) ToLaunchTemplateMonitoringPtrOutputWithContext(ctx context.Context) LaunchTemplateMonitoringPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateMonitoringOutput).ToLaunchTemplateMonitoringPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateMonitoringOutput).ToLaunchTemplateMonitoringPtrOutput()
 }
 
 // LaunchTemplateMonitoringPtrInput is an input type that accepts LaunchTemplateMonitoringArgs, LaunchTemplateMonitoringPtr and LaunchTemplateMonitoringPtrOutput values.
@@ -6553,7 +6553,7 @@ func (i *launchTemplateMonitoringPtrType) ToLaunchTemplateMonitoringPtrOutput() 
 }
 
 func (i *launchTemplateMonitoringPtrType) ToLaunchTemplateMonitoringPtrOutputWithContext(ctx context.Context) LaunchTemplateMonitoringPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateMonitoringPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateMonitoringOutput).ToLaunchTemplateMonitoringPtrOutput()
 }
 
 type LaunchTemplateMonitoringOutput struct{ *pulumi.OutputState }
@@ -6871,7 +6871,7 @@ func (i LaunchTemplatePlacementArgs) ToLaunchTemplatePlacementPtrOutput() Launch
 }
 
 func (i LaunchTemplatePlacementArgs) ToLaunchTemplatePlacementPtrOutputWithContext(ctx context.Context) LaunchTemplatePlacementPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplatePlacementOutput).ToLaunchTemplatePlacementPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplatePlacementOutput).ToLaunchTemplatePlacementPtrOutput()
 }
 
 // LaunchTemplatePlacementPtrInput is an input type that accepts LaunchTemplatePlacementArgs, LaunchTemplatePlacementPtr and LaunchTemplatePlacementPtrOutput values.
@@ -6904,7 +6904,7 @@ func (i *launchTemplatePlacementPtrType) ToLaunchTemplatePlacementPtrOutput() La
 }
 
 func (i *launchTemplatePlacementPtrType) ToLaunchTemplatePlacementPtrOutputWithContext(ctx context.Context) LaunchTemplatePlacementPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplatePlacementPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplatePlacementOutput).ToLaunchTemplatePlacementPtrOutput()
 }
 
 type LaunchTemplatePlacementOutput struct{ *pulumi.OutputState }
@@ -7678,7 +7678,7 @@ func (i PeeringConnectionOptionsAccepterArgs) ToPeeringConnectionOptionsAccepter
 }
 
 func (i PeeringConnectionOptionsAccepterArgs) ToPeeringConnectionOptionsAccepterPtrOutputWithContext(ctx context.Context) PeeringConnectionOptionsAccepterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PeeringConnectionOptionsAccepterOutput).ToPeeringConnectionOptionsAccepterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PeeringConnectionOptionsAccepterOutput).ToPeeringConnectionOptionsAccepterPtrOutput()
 }
 
 // PeeringConnectionOptionsAccepterPtrInput is an input type that accepts PeeringConnectionOptionsAccepterArgs, PeeringConnectionOptionsAccepterPtr and PeeringConnectionOptionsAccepterPtrOutput values.
@@ -7711,7 +7711,7 @@ func (i *peeringConnectionOptionsAccepterPtrType) ToPeeringConnectionOptionsAcce
 }
 
 func (i *peeringConnectionOptionsAccepterPtrType) ToPeeringConnectionOptionsAccepterPtrOutputWithContext(ctx context.Context) PeeringConnectionOptionsAccepterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PeeringConnectionOptionsAccepterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PeeringConnectionOptionsAccepterOutput).ToPeeringConnectionOptionsAccepterPtrOutput()
 }
 
 type PeeringConnectionOptionsAccepterOutput struct{ *pulumi.OutputState }
@@ -7867,7 +7867,7 @@ func (i PeeringConnectionOptionsRequesterArgs) ToPeeringConnectionOptionsRequest
 }
 
 func (i PeeringConnectionOptionsRequesterArgs) ToPeeringConnectionOptionsRequesterPtrOutputWithContext(ctx context.Context) PeeringConnectionOptionsRequesterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PeeringConnectionOptionsRequesterOutput).ToPeeringConnectionOptionsRequesterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PeeringConnectionOptionsRequesterOutput).ToPeeringConnectionOptionsRequesterPtrOutput()
 }
 
 // PeeringConnectionOptionsRequesterPtrInput is an input type that accepts PeeringConnectionOptionsRequesterArgs, PeeringConnectionOptionsRequesterPtr and PeeringConnectionOptionsRequesterPtrOutput values.
@@ -7900,7 +7900,7 @@ func (i *peeringConnectionOptionsRequesterPtrType) ToPeeringConnectionOptionsReq
 }
 
 func (i *peeringConnectionOptionsRequesterPtrType) ToPeeringConnectionOptionsRequesterPtrOutputWithContext(ctx context.Context) PeeringConnectionOptionsRequesterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PeeringConnectionOptionsRequesterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PeeringConnectionOptionsRequesterOutput).ToPeeringConnectionOptionsRequesterPtrOutput()
 }
 
 type PeeringConnectionOptionsRequesterOutput struct{ *pulumi.OutputState }
@@ -9495,7 +9495,7 @@ func (i SpotFleetRequestSpotMaintenanceStrategiesArgs) ToSpotFleetRequestSpotMai
 }
 
 func (i SpotFleetRequestSpotMaintenanceStrategiesArgs) ToSpotFleetRequestSpotMaintenanceStrategiesPtrOutputWithContext(ctx context.Context) SpotFleetRequestSpotMaintenanceStrategiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpotFleetRequestSpotMaintenanceStrategiesOutput).ToSpotFleetRequestSpotMaintenanceStrategiesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SpotFleetRequestSpotMaintenanceStrategiesOutput).ToSpotFleetRequestSpotMaintenanceStrategiesPtrOutput()
 }
 
 // SpotFleetRequestSpotMaintenanceStrategiesPtrInput is an input type that accepts SpotFleetRequestSpotMaintenanceStrategiesArgs, SpotFleetRequestSpotMaintenanceStrategiesPtr and SpotFleetRequestSpotMaintenanceStrategiesPtrOutput values.
@@ -9528,7 +9528,7 @@ func (i *spotFleetRequestSpotMaintenanceStrategiesPtrType) ToSpotFleetRequestSpo
 }
 
 func (i *spotFleetRequestSpotMaintenanceStrategiesPtrType) ToSpotFleetRequestSpotMaintenanceStrategiesPtrOutputWithContext(ctx context.Context) SpotFleetRequestSpotMaintenanceStrategiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpotFleetRequestSpotMaintenanceStrategiesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SpotFleetRequestSpotMaintenanceStrategiesOutput).ToSpotFleetRequestSpotMaintenanceStrategiesPtrOutput()
 }
 
 type SpotFleetRequestSpotMaintenanceStrategiesOutput struct{ *pulumi.OutputState }
@@ -9630,7 +9630,7 @@ func (i SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalanceArgs) ToSpotFl
 }
 
 func (i SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalanceArgs) ToSpotFleetRequestSpotMaintenanceStrategiesCapacityRebalancePtrOutputWithContext(ctx context.Context) SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalanceOutput).ToSpotFleetRequestSpotMaintenanceStrategiesCapacityRebalancePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalanceOutput).ToSpotFleetRequestSpotMaintenanceStrategiesCapacityRebalancePtrOutput()
 }
 
 // SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalancePtrInput is an input type that accepts SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalanceArgs, SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalancePtr and SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalancePtrOutput values.
@@ -9663,7 +9663,7 @@ func (i *spotFleetRequestSpotMaintenanceStrategiesCapacityRebalancePtrType) ToSp
 }
 
 func (i *spotFleetRequestSpotMaintenanceStrategiesCapacityRebalancePtrType) ToSpotFleetRequestSpotMaintenanceStrategiesCapacityRebalancePtrOutputWithContext(ctx context.Context) SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalancePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalanceOutput).ToSpotFleetRequestSpotMaintenanceStrategiesCapacityRebalancePtrOutput()
 }
 
 type SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalanceOutput struct{ *pulumi.OutputState }
@@ -9765,7 +9765,7 @@ func (i SpotInstanceRequestCreditSpecificationArgs) ToSpotInstanceRequestCreditS
 }
 
 func (i SpotInstanceRequestCreditSpecificationArgs) ToSpotInstanceRequestCreditSpecificationPtrOutputWithContext(ctx context.Context) SpotInstanceRequestCreditSpecificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpotInstanceRequestCreditSpecificationOutput).ToSpotInstanceRequestCreditSpecificationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SpotInstanceRequestCreditSpecificationOutput).ToSpotInstanceRequestCreditSpecificationPtrOutput()
 }
 
 // SpotInstanceRequestCreditSpecificationPtrInput is an input type that accepts SpotInstanceRequestCreditSpecificationArgs, SpotInstanceRequestCreditSpecificationPtr and SpotInstanceRequestCreditSpecificationPtrOutput values.
@@ -9798,7 +9798,7 @@ func (i *spotInstanceRequestCreditSpecificationPtrType) ToSpotInstanceRequestCre
 }
 
 func (i *spotInstanceRequestCreditSpecificationPtrType) ToSpotInstanceRequestCreditSpecificationPtrOutputWithContext(ctx context.Context) SpotInstanceRequestCreditSpecificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpotInstanceRequestCreditSpecificationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SpotInstanceRequestCreditSpecificationOutput).ToSpotInstanceRequestCreditSpecificationPtrOutput()
 }
 
 type SpotInstanceRequestCreditSpecificationOutput struct{ *pulumi.OutputState }
@@ -10209,7 +10209,7 @@ func (i SpotInstanceRequestMetadataOptionsArgs) ToSpotInstanceRequestMetadataOpt
 }
 
 func (i SpotInstanceRequestMetadataOptionsArgs) ToSpotInstanceRequestMetadataOptionsPtrOutputWithContext(ctx context.Context) SpotInstanceRequestMetadataOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpotInstanceRequestMetadataOptionsOutput).ToSpotInstanceRequestMetadataOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SpotInstanceRequestMetadataOptionsOutput).ToSpotInstanceRequestMetadataOptionsPtrOutput()
 }
 
 // SpotInstanceRequestMetadataOptionsPtrInput is an input type that accepts SpotInstanceRequestMetadataOptionsArgs, SpotInstanceRequestMetadataOptionsPtr and SpotInstanceRequestMetadataOptionsPtrOutput values.
@@ -10242,7 +10242,7 @@ func (i *spotInstanceRequestMetadataOptionsPtrType) ToSpotInstanceRequestMetadat
 }
 
 func (i *spotInstanceRequestMetadataOptionsPtrType) ToSpotInstanceRequestMetadataOptionsPtrOutputWithContext(ctx context.Context) SpotInstanceRequestMetadataOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpotInstanceRequestMetadataOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SpotInstanceRequestMetadataOptionsOutput).ToSpotInstanceRequestMetadataOptionsPtrOutput()
 }
 
 type SpotInstanceRequestMetadataOptionsOutput struct{ *pulumi.OutputState }
@@ -10519,7 +10519,7 @@ func (i SpotInstanceRequestRootBlockDeviceArgs) ToSpotInstanceRequestRootBlockDe
 }
 
 func (i SpotInstanceRequestRootBlockDeviceArgs) ToSpotInstanceRequestRootBlockDevicePtrOutputWithContext(ctx context.Context) SpotInstanceRequestRootBlockDevicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpotInstanceRequestRootBlockDeviceOutput).ToSpotInstanceRequestRootBlockDevicePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SpotInstanceRequestRootBlockDeviceOutput).ToSpotInstanceRequestRootBlockDevicePtrOutput()
 }
 
 // SpotInstanceRequestRootBlockDevicePtrInput is an input type that accepts SpotInstanceRequestRootBlockDeviceArgs, SpotInstanceRequestRootBlockDevicePtr and SpotInstanceRequestRootBlockDevicePtrOutput values.
@@ -10552,7 +10552,7 @@ func (i *spotInstanceRequestRootBlockDevicePtrType) ToSpotInstanceRequestRootBlo
 }
 
 func (i *spotInstanceRequestRootBlockDevicePtrType) ToSpotInstanceRequestRootBlockDevicePtrOutputWithContext(ctx context.Context) SpotInstanceRequestRootBlockDevicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpotInstanceRequestRootBlockDevicePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SpotInstanceRequestRootBlockDeviceOutput).ToSpotInstanceRequestRootBlockDevicePtrOutput()
 }
 
 type SpotInstanceRequestRootBlockDeviceOutput struct{ *pulumi.OutputState }
@@ -10765,7 +10765,7 @@ func (i TrafficMirrorFilterRuleDestinationPortRangeArgs) ToTrafficMirrorFilterRu
 }
 
 func (i TrafficMirrorFilterRuleDestinationPortRangeArgs) ToTrafficMirrorFilterRuleDestinationPortRangePtrOutputWithContext(ctx context.Context) TrafficMirrorFilterRuleDestinationPortRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorFilterRuleDestinationPortRangeOutput).ToTrafficMirrorFilterRuleDestinationPortRangePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorFilterRuleDestinationPortRangeOutput).ToTrafficMirrorFilterRuleDestinationPortRangePtrOutput()
 }
 
 // TrafficMirrorFilterRuleDestinationPortRangePtrInput is an input type that accepts TrafficMirrorFilterRuleDestinationPortRangeArgs, TrafficMirrorFilterRuleDestinationPortRangePtr and TrafficMirrorFilterRuleDestinationPortRangePtrOutput values.
@@ -10798,7 +10798,7 @@ func (i *trafficMirrorFilterRuleDestinationPortRangePtrType) ToTrafficMirrorFilt
 }
 
 func (i *trafficMirrorFilterRuleDestinationPortRangePtrType) ToTrafficMirrorFilterRuleDestinationPortRangePtrOutputWithContext(ctx context.Context) TrafficMirrorFilterRuleDestinationPortRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorFilterRuleDestinationPortRangePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorFilterRuleDestinationPortRangeOutput).ToTrafficMirrorFilterRuleDestinationPortRangePtrOutput()
 }
 
 type TrafficMirrorFilterRuleDestinationPortRangeOutput struct{ *pulumi.OutputState }
@@ -10917,7 +10917,7 @@ func (i TrafficMirrorFilterRuleSourcePortRangeArgs) ToTrafficMirrorFilterRuleSou
 }
 
 func (i TrafficMirrorFilterRuleSourcePortRangeArgs) ToTrafficMirrorFilterRuleSourcePortRangePtrOutputWithContext(ctx context.Context) TrafficMirrorFilterRuleSourcePortRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorFilterRuleSourcePortRangeOutput).ToTrafficMirrorFilterRuleSourcePortRangePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorFilterRuleSourcePortRangeOutput).ToTrafficMirrorFilterRuleSourcePortRangePtrOutput()
 }
 
 // TrafficMirrorFilterRuleSourcePortRangePtrInput is an input type that accepts TrafficMirrorFilterRuleSourcePortRangeArgs, TrafficMirrorFilterRuleSourcePortRangePtr and TrafficMirrorFilterRuleSourcePortRangePtrOutput values.
@@ -10950,7 +10950,7 @@ func (i *trafficMirrorFilterRuleSourcePortRangePtrType) ToTrafficMirrorFilterRul
 }
 
 func (i *trafficMirrorFilterRuleSourcePortRangePtrType) ToTrafficMirrorFilterRuleSourcePortRangePtrOutputWithContext(ctx context.Context) TrafficMirrorFilterRuleSourcePortRangePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorFilterRuleSourcePortRangePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorFilterRuleSourcePortRangeOutput).ToTrafficMirrorFilterRuleSourcePortRangePtrOutput()
 }
 
 type TrafficMirrorFilterRuleSourcePortRangeOutput struct{ *pulumi.OutputState }
@@ -11191,7 +11191,7 @@ func (i VpcPeeringConnectionAccepterTypeArgs) ToVpcPeeringConnectionAccepterType
 }
 
 func (i VpcPeeringConnectionAccepterTypeArgs) ToVpcPeeringConnectionAccepterTypePtrOutputWithContext(ctx context.Context) VpcPeeringConnectionAccepterTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionAccepterTypeOutput).ToVpcPeeringConnectionAccepterTypePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionAccepterTypeOutput).ToVpcPeeringConnectionAccepterTypePtrOutput()
 }
 
 // VpcPeeringConnectionAccepterTypePtrInput is an input type that accepts VpcPeeringConnectionAccepterTypeArgs, VpcPeeringConnectionAccepterTypePtr and VpcPeeringConnectionAccepterTypePtrOutput values.
@@ -11224,7 +11224,7 @@ func (i *vpcPeeringConnectionAccepterTypePtrType) ToVpcPeeringConnectionAccepter
 }
 
 func (i *vpcPeeringConnectionAccepterTypePtrType) ToVpcPeeringConnectionAccepterTypePtrOutputWithContext(ctx context.Context) VpcPeeringConnectionAccepterTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionAccepterTypePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionAccepterTypeOutput).ToVpcPeeringConnectionAccepterTypePtrOutput()
 }
 
 type VpcPeeringConnectionAccepterTypeOutput struct{ *pulumi.OutputState }
@@ -11380,7 +11380,7 @@ func (i VpcPeeringConnectionAccepterAccepterArgs) ToVpcPeeringConnectionAccepter
 }
 
 func (i VpcPeeringConnectionAccepterAccepterArgs) ToVpcPeeringConnectionAccepterAccepterPtrOutputWithContext(ctx context.Context) VpcPeeringConnectionAccepterAccepterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionAccepterAccepterOutput).ToVpcPeeringConnectionAccepterAccepterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionAccepterAccepterOutput).ToVpcPeeringConnectionAccepterAccepterPtrOutput()
 }
 
 // VpcPeeringConnectionAccepterAccepterPtrInput is an input type that accepts VpcPeeringConnectionAccepterAccepterArgs, VpcPeeringConnectionAccepterAccepterPtr and VpcPeeringConnectionAccepterAccepterPtrOutput values.
@@ -11413,7 +11413,7 @@ func (i *vpcPeeringConnectionAccepterAccepterPtrType) ToVpcPeeringConnectionAcce
 }
 
 func (i *vpcPeeringConnectionAccepterAccepterPtrType) ToVpcPeeringConnectionAccepterAccepterPtrOutputWithContext(ctx context.Context) VpcPeeringConnectionAccepterAccepterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionAccepterAccepterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionAccepterAccepterOutput).ToVpcPeeringConnectionAccepterAccepterPtrOutput()
 }
 
 type VpcPeeringConnectionAccepterAccepterOutput struct{ *pulumi.OutputState }
@@ -11561,7 +11561,7 @@ func (i VpcPeeringConnectionAccepterRequesterArgs) ToVpcPeeringConnectionAccepte
 }
 
 func (i VpcPeeringConnectionAccepterRequesterArgs) ToVpcPeeringConnectionAccepterRequesterPtrOutputWithContext(ctx context.Context) VpcPeeringConnectionAccepterRequesterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionAccepterRequesterOutput).ToVpcPeeringConnectionAccepterRequesterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionAccepterRequesterOutput).ToVpcPeeringConnectionAccepterRequesterPtrOutput()
 }
 
 // VpcPeeringConnectionAccepterRequesterPtrInput is an input type that accepts VpcPeeringConnectionAccepterRequesterArgs, VpcPeeringConnectionAccepterRequesterPtr and VpcPeeringConnectionAccepterRequesterPtrOutput values.
@@ -11594,7 +11594,7 @@ func (i *vpcPeeringConnectionAccepterRequesterPtrType) ToVpcPeeringConnectionAcc
 }
 
 func (i *vpcPeeringConnectionAccepterRequesterPtrType) ToVpcPeeringConnectionAccepterRequesterPtrOutputWithContext(ctx context.Context) VpcPeeringConnectionAccepterRequesterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionAccepterRequesterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionAccepterRequesterOutput).ToVpcPeeringConnectionAccepterRequesterPtrOutput()
 }
 
 type VpcPeeringConnectionAccepterRequesterOutput struct{ *pulumi.OutputState }
@@ -11750,7 +11750,7 @@ func (i VpcPeeringConnectionRequesterArgs) ToVpcPeeringConnectionRequesterPtrOut
 }
 
 func (i VpcPeeringConnectionRequesterArgs) ToVpcPeeringConnectionRequesterPtrOutputWithContext(ctx context.Context) VpcPeeringConnectionRequesterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionRequesterOutput).ToVpcPeeringConnectionRequesterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionRequesterOutput).ToVpcPeeringConnectionRequesterPtrOutput()
 }
 
 // VpcPeeringConnectionRequesterPtrInput is an input type that accepts VpcPeeringConnectionRequesterArgs, VpcPeeringConnectionRequesterPtr and VpcPeeringConnectionRequesterPtrOutput values.
@@ -11783,7 +11783,7 @@ func (i *vpcPeeringConnectionRequesterPtrType) ToVpcPeeringConnectionRequesterPt
 }
 
 func (i *vpcPeeringConnectionRequesterPtrType) ToVpcPeeringConnectionRequesterPtrOutputWithContext(ctx context.Context) VpcPeeringConnectionRequesterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionRequesterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConnectionRequesterOutput).ToVpcPeeringConnectionRequesterPtrOutput()
 }
 
 type VpcPeeringConnectionRequesterOutput struct{ *pulumi.OutputState }

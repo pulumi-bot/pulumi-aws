@@ -115,6 +115,13 @@ type LoadBalancerBackendServerPolicyInput interface {
 	ToLoadBalancerBackendServerPolicyOutputWithContext(ctx context.Context) LoadBalancerBackendServerPolicyOutput
 }
 
+type LoadBalancerBackendServerPolicyPtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerBackendServerPolicyPtrOutput() LoadBalancerBackendServerPolicyPtrOutput
+	ToLoadBalancerBackendServerPolicyPtrOutputWithContext(ctx context.Context) LoadBalancerBackendServerPolicyPtrOutput
+}
+
 func (LoadBalancerBackendServerPolicy) ElementType() reflect.Type {
 	return reflect.TypeOf((*LoadBalancerBackendServerPolicy)(nil)).Elem()
 }
@@ -125,6 +132,14 @@ func (i LoadBalancerBackendServerPolicy) ToLoadBalancerBackendServerPolicyOutput
 
 func (i LoadBalancerBackendServerPolicy) ToLoadBalancerBackendServerPolicyOutputWithContext(ctx context.Context) LoadBalancerBackendServerPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerBackendServerPolicyOutput)
+}
+
+func (i LoadBalancerBackendServerPolicy) ToLoadBalancerBackendServerPolicyPtrOutput() LoadBalancerBackendServerPolicyPtrOutput {
+	return i.ToLoadBalancerBackendServerPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerBackendServerPolicy) ToLoadBalancerBackendServerPolicyPtrOutputWithContext(ctx context.Context) LoadBalancerBackendServerPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerBackendServerPolicyPtrOutput)
 }
 
 type LoadBalancerBackendServerPolicyOutput struct {
@@ -143,6 +158,23 @@ func (o LoadBalancerBackendServerPolicyOutput) ToLoadBalancerBackendServerPolicy
 	return o
 }
 
+type LoadBalancerBackendServerPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LoadBalancerBackendServerPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerBackendServerPolicy)(nil)).Elem()
+}
+
+func (o LoadBalancerBackendServerPolicyPtrOutput) ToLoadBalancerBackendServerPolicyPtrOutput() LoadBalancerBackendServerPolicyPtrOutput {
+	return o
+}
+
+func (o LoadBalancerBackendServerPolicyPtrOutput) ToLoadBalancerBackendServerPolicyPtrOutputWithContext(ctx context.Context) LoadBalancerBackendServerPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LoadBalancerBackendServerPolicyOutput{})
+	pulumi.RegisterOutputType(LoadBalancerBackendServerPolicyPtrOutput{})
 }

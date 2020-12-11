@@ -147,6 +147,13 @@ type DetectorInput interface {
 	ToDetectorOutputWithContext(ctx context.Context) DetectorOutput
 }
 
+type DetectorPtrInput interface {
+	pulumi.Input
+
+	ToDetectorPtrOutput() DetectorPtrOutput
+	ToDetectorPtrOutputWithContext(ctx context.Context) DetectorPtrOutput
+}
+
 func (Detector) ElementType() reflect.Type {
 	return reflect.TypeOf((*Detector)(nil)).Elem()
 }
@@ -157,6 +164,14 @@ func (i Detector) ToDetectorOutput() DetectorOutput {
 
 func (i Detector) ToDetectorOutputWithContext(ctx context.Context) DetectorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DetectorOutput)
+}
+
+func (i Detector) ToDetectorPtrOutput() DetectorPtrOutput {
+	return i.ToDetectorPtrOutputWithContext(context.Background())
+}
+
+func (i Detector) ToDetectorPtrOutputWithContext(ctx context.Context) DetectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DetectorPtrOutput)
 }
 
 type DetectorOutput struct {
@@ -175,6 +190,23 @@ func (o DetectorOutput) ToDetectorOutputWithContext(ctx context.Context) Detecto
 	return o
 }
 
+type DetectorPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DetectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Detector)(nil)).Elem()
+}
+
+func (o DetectorPtrOutput) ToDetectorPtrOutput() DetectorPtrOutput {
+	return o
+}
+
+func (o DetectorPtrOutput) ToDetectorPtrOutputWithContext(ctx context.Context) DetectorPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DetectorOutput{})
+	pulumi.RegisterOutputType(DetectorPtrOutput{})
 }

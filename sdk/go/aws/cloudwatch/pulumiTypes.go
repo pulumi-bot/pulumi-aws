@@ -56,7 +56,7 @@ func (i EventPermissionConditionArgs) ToEventPermissionConditionPtrOutput() Even
 }
 
 func (i EventPermissionConditionArgs) ToEventPermissionConditionPtrOutputWithContext(ctx context.Context) EventPermissionConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventPermissionConditionOutput).ToEventPermissionConditionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventPermissionConditionOutput).ToEventPermissionConditionPtrOutput()
 }
 
 // EventPermissionConditionPtrInput is an input type that accepts EventPermissionConditionArgs, EventPermissionConditionPtr and EventPermissionConditionPtrOutput values.
@@ -89,7 +89,7 @@ func (i *eventPermissionConditionPtrType) ToEventPermissionConditionPtrOutput() 
 }
 
 func (i *eventPermissionConditionPtrType) ToEventPermissionConditionPtrOutputWithContext(ctx context.Context) EventPermissionConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventPermissionConditionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventPermissionConditionOutput).ToEventPermissionConditionPtrOutput()
 }
 
 type EventPermissionConditionOutput struct{ *pulumi.OutputState }
@@ -229,7 +229,7 @@ func (i EventTargetBatchTargetArgs) ToEventTargetBatchTargetPtrOutput() EventTar
 }
 
 func (i EventTargetBatchTargetArgs) ToEventTargetBatchTargetPtrOutputWithContext(ctx context.Context) EventTargetBatchTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventTargetBatchTargetOutput).ToEventTargetBatchTargetPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventTargetBatchTargetOutput).ToEventTargetBatchTargetPtrOutput()
 }
 
 // EventTargetBatchTargetPtrInput is an input type that accepts EventTargetBatchTargetArgs, EventTargetBatchTargetPtr and EventTargetBatchTargetPtrOutput values.
@@ -262,7 +262,7 @@ func (i *eventTargetBatchTargetPtrType) ToEventTargetBatchTargetPtrOutput() Even
 }
 
 func (i *eventTargetBatchTargetPtrType) ToEventTargetBatchTargetPtrOutputWithContext(ctx context.Context) EventTargetBatchTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventTargetBatchTargetPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventTargetBatchTargetOutput).ToEventTargetBatchTargetPtrOutput()
 }
 
 type EventTargetBatchTargetOutput struct{ *pulumi.OutputState }
@@ -425,7 +425,7 @@ func (i EventTargetEcsTargetArgs) ToEventTargetEcsTargetPtrOutput() EventTargetE
 }
 
 func (i EventTargetEcsTargetArgs) ToEventTargetEcsTargetPtrOutputWithContext(ctx context.Context) EventTargetEcsTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventTargetEcsTargetOutput).ToEventTargetEcsTargetPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventTargetEcsTargetOutput).ToEventTargetEcsTargetPtrOutput()
 }
 
 // EventTargetEcsTargetPtrInput is an input type that accepts EventTargetEcsTargetArgs, EventTargetEcsTargetPtr and EventTargetEcsTargetPtrOutput values.
@@ -458,7 +458,7 @@ func (i *eventTargetEcsTargetPtrType) ToEventTargetEcsTargetPtrOutput() EventTar
 }
 
 func (i *eventTargetEcsTargetPtrType) ToEventTargetEcsTargetPtrOutputWithContext(ctx context.Context) EventTargetEcsTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventTargetEcsTargetPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventTargetEcsTargetOutput).ToEventTargetEcsTargetPtrOutput()
 }
 
 type EventTargetEcsTargetOutput struct{ *pulumi.OutputState }
@@ -639,7 +639,7 @@ func (i EventTargetEcsTargetNetworkConfigurationArgs) ToEventTargetEcsTargetNetw
 }
 
 func (i EventTargetEcsTargetNetworkConfigurationArgs) ToEventTargetEcsTargetNetworkConfigurationPtrOutputWithContext(ctx context.Context) EventTargetEcsTargetNetworkConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventTargetEcsTargetNetworkConfigurationOutput).ToEventTargetEcsTargetNetworkConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventTargetEcsTargetNetworkConfigurationOutput).ToEventTargetEcsTargetNetworkConfigurationPtrOutput()
 }
 
 // EventTargetEcsTargetNetworkConfigurationPtrInput is an input type that accepts EventTargetEcsTargetNetworkConfigurationArgs, EventTargetEcsTargetNetworkConfigurationPtr and EventTargetEcsTargetNetworkConfigurationPtrOutput values.
@@ -672,7 +672,7 @@ func (i *eventTargetEcsTargetNetworkConfigurationPtrType) ToEventTargetEcsTarget
 }
 
 func (i *eventTargetEcsTargetNetworkConfigurationPtrType) ToEventTargetEcsTargetNetworkConfigurationPtrOutputWithContext(ctx context.Context) EventTargetEcsTargetNetworkConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventTargetEcsTargetNetworkConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventTargetEcsTargetNetworkConfigurationOutput).ToEventTargetEcsTargetNetworkConfigurationPtrOutput()
 }
 
 type EventTargetEcsTargetNetworkConfigurationOutput struct{ *pulumi.OutputState }
@@ -808,7 +808,7 @@ func (i EventTargetInputTransformerArgs) ToEventTargetInputTransformerPtrOutput(
 }
 
 func (i EventTargetInputTransformerArgs) ToEventTargetInputTransformerPtrOutputWithContext(ctx context.Context) EventTargetInputTransformerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventTargetInputTransformerOutput).ToEventTargetInputTransformerPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventTargetInputTransformerOutput).ToEventTargetInputTransformerPtrOutput()
 }
 
 // EventTargetInputTransformerPtrInput is an input type that accepts EventTargetInputTransformerArgs, EventTargetInputTransformerPtr and EventTargetInputTransformerPtrOutput values.
@@ -841,7 +841,7 @@ func (i *eventTargetInputTransformerPtrType) ToEventTargetInputTransformerPtrOut
 }
 
 func (i *eventTargetInputTransformerPtrType) ToEventTargetInputTransformerPtrOutputWithContext(ctx context.Context) EventTargetInputTransformerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventTargetInputTransformerPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventTargetInputTransformerOutput).ToEventTargetInputTransformerPtrOutput()
 }
 
 type EventTargetInputTransformerOutput struct{ *pulumi.OutputState }
@@ -958,7 +958,7 @@ func (i EventTargetKinesisTargetArgs) ToEventTargetKinesisTargetPtrOutput() Even
 }
 
 func (i EventTargetKinesisTargetArgs) ToEventTargetKinesisTargetPtrOutputWithContext(ctx context.Context) EventTargetKinesisTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventTargetKinesisTargetOutput).ToEventTargetKinesisTargetPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventTargetKinesisTargetOutput).ToEventTargetKinesisTargetPtrOutput()
 }
 
 // EventTargetKinesisTargetPtrInput is an input type that accepts EventTargetKinesisTargetArgs, EventTargetKinesisTargetPtr and EventTargetKinesisTargetPtrOutput values.
@@ -991,7 +991,7 @@ func (i *eventTargetKinesisTargetPtrType) ToEventTargetKinesisTargetPtrOutput() 
 }
 
 func (i *eventTargetKinesisTargetPtrType) ToEventTargetKinesisTargetPtrOutputWithContext(ctx context.Context) EventTargetKinesisTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventTargetKinesisTargetPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventTargetKinesisTargetOutput).ToEventTargetKinesisTargetPtrOutput()
 }
 
 type EventTargetKinesisTargetOutput struct{ *pulumi.OutputState }
@@ -1195,7 +1195,7 @@ func (i EventTargetSqsTargetArgs) ToEventTargetSqsTargetPtrOutput() EventTargetS
 }
 
 func (i EventTargetSqsTargetArgs) ToEventTargetSqsTargetPtrOutputWithContext(ctx context.Context) EventTargetSqsTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventTargetSqsTargetOutput).ToEventTargetSqsTargetPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventTargetSqsTargetOutput).ToEventTargetSqsTargetPtrOutput()
 }
 
 // EventTargetSqsTargetPtrInput is an input type that accepts EventTargetSqsTargetArgs, EventTargetSqsTargetPtr and EventTargetSqsTargetPtrOutput values.
@@ -1228,7 +1228,7 @@ func (i *eventTargetSqsTargetPtrType) ToEventTargetSqsTargetPtrOutput() EventTar
 }
 
 func (i *eventTargetSqsTargetPtrType) ToEventTargetSqsTargetPtrOutputWithContext(ctx context.Context) EventTargetSqsTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventTargetSqsTargetPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventTargetSqsTargetOutput).ToEventTargetSqsTargetPtrOutput()
 }
 
 type EventTargetSqsTargetOutput struct{ *pulumi.OutputState }
@@ -1338,7 +1338,7 @@ func (i LogMetricFilterMetricTransformationArgs) ToLogMetricFilterMetricTransfor
 }
 
 func (i LogMetricFilterMetricTransformationArgs) ToLogMetricFilterMetricTransformationPtrOutputWithContext(ctx context.Context) LogMetricFilterMetricTransformationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogMetricFilterMetricTransformationOutput).ToLogMetricFilterMetricTransformationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LogMetricFilterMetricTransformationOutput).ToLogMetricFilterMetricTransformationPtrOutput()
 }
 
 // LogMetricFilterMetricTransformationPtrInput is an input type that accepts LogMetricFilterMetricTransformationArgs, LogMetricFilterMetricTransformationPtr and LogMetricFilterMetricTransformationPtrOutput values.
@@ -1371,7 +1371,7 @@ func (i *logMetricFilterMetricTransformationPtrType) ToLogMetricFilterMetricTran
 }
 
 func (i *logMetricFilterMetricTransformationPtrType) ToLogMetricFilterMetricTransformationPtrOutputWithContext(ctx context.Context) LogMetricFilterMetricTransformationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogMetricFilterMetricTransformationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LogMetricFilterMetricTransformationOutput).ToLogMetricFilterMetricTransformationPtrOutput()
 }
 
 type LogMetricFilterMetricTransformationOutput struct{ *pulumi.OutputState }
@@ -1673,7 +1673,7 @@ func (i MetricAlarmMetricQueryMetricArgs) ToMetricAlarmMetricQueryMetricPtrOutpu
 }
 
 func (i MetricAlarmMetricQueryMetricArgs) ToMetricAlarmMetricQueryMetricPtrOutputWithContext(ctx context.Context) MetricAlarmMetricQueryMetricPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetricAlarmMetricQueryMetricOutput).ToMetricAlarmMetricQueryMetricPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(MetricAlarmMetricQueryMetricOutput).ToMetricAlarmMetricQueryMetricPtrOutput()
 }
 
 // MetricAlarmMetricQueryMetricPtrInput is an input type that accepts MetricAlarmMetricQueryMetricArgs, MetricAlarmMetricQueryMetricPtr and MetricAlarmMetricQueryMetricPtrOutput values.
@@ -1706,7 +1706,7 @@ func (i *metricAlarmMetricQueryMetricPtrType) ToMetricAlarmMetricQueryMetricPtrO
 }
 
 func (i *metricAlarmMetricQueryMetricPtrType) ToMetricAlarmMetricQueryMetricPtrOutputWithContext(ctx context.Context) MetricAlarmMetricQueryMetricPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetricAlarmMetricQueryMetricPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(MetricAlarmMetricQueryMetricOutput).ToMetricAlarmMetricQueryMetricPtrOutput()
 }
 
 type MetricAlarmMetricQueryMetricOutput struct{ *pulumi.OutputState }

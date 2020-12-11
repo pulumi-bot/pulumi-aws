@@ -173,6 +173,13 @@ type ApplicationInput interface {
 	ToApplicationOutputWithContext(ctx context.Context) ApplicationOutput
 }
 
+type ApplicationPtrInput interface {
+	pulumi.Input
+
+	ToApplicationPtrOutput() ApplicationPtrOutput
+	ToApplicationPtrOutputWithContext(ctx context.Context) ApplicationPtrOutput
+}
+
 func (Application) ElementType() reflect.Type {
 	return reflect.TypeOf((*Application)(nil)).Elem()
 }
@@ -183,6 +190,14 @@ func (i Application) ToApplicationOutput() ApplicationOutput {
 
 func (i Application) ToApplicationOutputWithContext(ctx context.Context) ApplicationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOutput)
+}
+
+func (i Application) ToApplicationPtrOutput() ApplicationPtrOutput {
+	return i.ToApplicationPtrOutputWithContext(context.Background())
+}
+
+func (i Application) ToApplicationPtrOutputWithContext(ctx context.Context) ApplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPtrOutput)
 }
 
 type ApplicationOutput struct {
@@ -201,6 +216,23 @@ func (o ApplicationOutput) ToApplicationOutputWithContext(ctx context.Context) A
 	return o
 }
 
+type ApplicationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApplicationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Application)(nil)).Elem()
+}
+
+func (o ApplicationPtrOutput) ToApplicationPtrOutput() ApplicationPtrOutput {
+	return o
+}
+
+func (o ApplicationPtrOutput) ToApplicationPtrOutputWithContext(ctx context.Context) ApplicationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApplicationOutput{})
+	pulumi.RegisterOutputType(ApplicationPtrOutput{})
 }

@@ -105,6 +105,13 @@ type BucketLifecycleConfigurationInput interface {
 	ToBucketLifecycleConfigurationOutputWithContext(ctx context.Context) BucketLifecycleConfigurationOutput
 }
 
+type BucketLifecycleConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToBucketLifecycleConfigurationPtrOutput() BucketLifecycleConfigurationPtrOutput
+	ToBucketLifecycleConfigurationPtrOutputWithContext(ctx context.Context) BucketLifecycleConfigurationPtrOutput
+}
+
 func (BucketLifecycleConfiguration) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketLifecycleConfiguration)(nil)).Elem()
 }
@@ -115,6 +122,14 @@ func (i BucketLifecycleConfiguration) ToBucketLifecycleConfigurationOutput() Buc
 
 func (i BucketLifecycleConfiguration) ToBucketLifecycleConfigurationOutputWithContext(ctx context.Context) BucketLifecycleConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleConfigurationOutput)
+}
+
+func (i BucketLifecycleConfiguration) ToBucketLifecycleConfigurationPtrOutput() BucketLifecycleConfigurationPtrOutput {
+	return i.ToBucketLifecycleConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i BucketLifecycleConfiguration) ToBucketLifecycleConfigurationPtrOutputWithContext(ctx context.Context) BucketLifecycleConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleConfigurationPtrOutput)
 }
 
 type BucketLifecycleConfigurationOutput struct {
@@ -133,6 +148,23 @@ func (o BucketLifecycleConfigurationOutput) ToBucketLifecycleConfigurationOutput
 	return o
 }
 
+type BucketLifecycleConfigurationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BucketLifecycleConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketLifecycleConfiguration)(nil)).Elem()
+}
+
+func (o BucketLifecycleConfigurationPtrOutput) ToBucketLifecycleConfigurationPtrOutput() BucketLifecycleConfigurationPtrOutput {
+	return o
+}
+
+func (o BucketLifecycleConfigurationPtrOutput) ToBucketLifecycleConfigurationPtrOutputWithContext(ctx context.Context) BucketLifecycleConfigurationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(BucketLifecycleConfigurationOutput{})
+	pulumi.RegisterOutputType(BucketLifecycleConfigurationPtrOutput{})
 }

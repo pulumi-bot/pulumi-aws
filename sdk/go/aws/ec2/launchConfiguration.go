@@ -563,6 +563,13 @@ type LaunchConfigurationInput interface {
 	ToLaunchConfigurationOutputWithContext(ctx context.Context) LaunchConfigurationOutput
 }
 
+type LaunchConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToLaunchConfigurationPtrOutput() LaunchConfigurationPtrOutput
+	ToLaunchConfigurationPtrOutputWithContext(ctx context.Context) LaunchConfigurationPtrOutput
+}
+
 func (LaunchConfiguration) ElementType() reflect.Type {
 	return reflect.TypeOf((*LaunchConfiguration)(nil)).Elem()
 }
@@ -573,6 +580,14 @@ func (i LaunchConfiguration) ToLaunchConfigurationOutput() LaunchConfigurationOu
 
 func (i LaunchConfiguration) ToLaunchConfigurationOutputWithContext(ctx context.Context) LaunchConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LaunchConfigurationOutput)
+}
+
+func (i LaunchConfiguration) ToLaunchConfigurationPtrOutput() LaunchConfigurationPtrOutput {
+	return i.ToLaunchConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i LaunchConfiguration) ToLaunchConfigurationPtrOutputWithContext(ctx context.Context) LaunchConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LaunchConfigurationPtrOutput)
 }
 
 type LaunchConfigurationOutput struct {
@@ -591,6 +606,23 @@ func (o LaunchConfigurationOutput) ToLaunchConfigurationOutputWithContext(ctx co
 	return o
 }
 
+type LaunchConfigurationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LaunchConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LaunchConfiguration)(nil)).Elem()
+}
+
+func (o LaunchConfigurationPtrOutput) ToLaunchConfigurationPtrOutput() LaunchConfigurationPtrOutput {
+	return o
+}
+
+func (o LaunchConfigurationPtrOutput) ToLaunchConfigurationPtrOutputWithContext(ctx context.Context) LaunchConfigurationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LaunchConfigurationOutput{})
+	pulumi.RegisterOutputType(LaunchConfigurationPtrOutput{})
 }

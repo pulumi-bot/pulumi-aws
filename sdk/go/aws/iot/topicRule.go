@@ -304,6 +304,13 @@ type TopicRuleInput interface {
 	ToTopicRuleOutputWithContext(ctx context.Context) TopicRuleOutput
 }
 
+type TopicRulePtrInput interface {
+	pulumi.Input
+
+	ToTopicRulePtrOutput() TopicRulePtrOutput
+	ToTopicRulePtrOutputWithContext(ctx context.Context) TopicRulePtrOutput
+}
+
 func (TopicRule) ElementType() reflect.Type {
 	return reflect.TypeOf((*TopicRule)(nil)).Elem()
 }
@@ -314,6 +321,14 @@ func (i TopicRule) ToTopicRuleOutput() TopicRuleOutput {
 
 func (i TopicRule) ToTopicRuleOutputWithContext(ctx context.Context) TopicRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleOutput)
+}
+
+func (i TopicRule) ToTopicRulePtrOutput() TopicRulePtrOutput {
+	return i.ToTopicRulePtrOutputWithContext(context.Background())
+}
+
+func (i TopicRule) ToTopicRulePtrOutputWithContext(ctx context.Context) TopicRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRulePtrOutput)
 }
 
 type TopicRuleOutput struct {
@@ -332,6 +347,23 @@ func (o TopicRuleOutput) ToTopicRuleOutputWithContext(ctx context.Context) Topic
 	return o
 }
 
+type TopicRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TopicRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicRule)(nil)).Elem()
+}
+
+func (o TopicRulePtrOutput) ToTopicRulePtrOutput() TopicRulePtrOutput {
+	return o
+}
+
+func (o TopicRulePtrOutput) ToTopicRulePtrOutputWithContext(ctx context.Context) TopicRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TopicRuleOutput{})
+	pulumi.RegisterOutputType(TopicRulePtrOutput{})
 }

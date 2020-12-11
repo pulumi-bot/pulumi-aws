@@ -147,6 +147,13 @@ type TemplateInput interface {
 	ToTemplateOutputWithContext(ctx context.Context) TemplateOutput
 }
 
+type TemplatePtrInput interface {
+	pulumi.Input
+
+	ToTemplatePtrOutput() TemplatePtrOutput
+	ToTemplatePtrOutputWithContext(ctx context.Context) TemplatePtrOutput
+}
+
 func (Template) ElementType() reflect.Type {
 	return reflect.TypeOf((*Template)(nil)).Elem()
 }
@@ -157,6 +164,14 @@ func (i Template) ToTemplateOutput() TemplateOutput {
 
 func (i Template) ToTemplateOutputWithContext(ctx context.Context) TemplateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateOutput)
+}
+
+func (i Template) ToTemplatePtrOutput() TemplatePtrOutput {
+	return i.ToTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i Template) ToTemplatePtrOutputWithContext(ctx context.Context) TemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplatePtrOutput)
 }
 
 type TemplateOutput struct {
@@ -175,6 +190,23 @@ func (o TemplateOutput) ToTemplateOutputWithContext(ctx context.Context) Templat
 	return o
 }
 
+type TemplatePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Template)(nil)).Elem()
+}
+
+func (o TemplatePtrOutput) ToTemplatePtrOutput() TemplatePtrOutput {
+	return o
+}
+
+func (o TemplatePtrOutput) ToTemplatePtrOutputWithContext(ctx context.Context) TemplatePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TemplateOutput{})
+	pulumi.RegisterOutputType(TemplatePtrOutput{})
 }

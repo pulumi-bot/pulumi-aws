@@ -164,6 +164,13 @@ type UserGroupMembershipInput interface {
 	ToUserGroupMembershipOutputWithContext(ctx context.Context) UserGroupMembershipOutput
 }
 
+type UserGroupMembershipPtrInput interface {
+	pulumi.Input
+
+	ToUserGroupMembershipPtrOutput() UserGroupMembershipPtrOutput
+	ToUserGroupMembershipPtrOutputWithContext(ctx context.Context) UserGroupMembershipPtrOutput
+}
+
 func (UserGroupMembership) ElementType() reflect.Type {
 	return reflect.TypeOf((*UserGroupMembership)(nil)).Elem()
 }
@@ -174,6 +181,14 @@ func (i UserGroupMembership) ToUserGroupMembershipOutput() UserGroupMembershipOu
 
 func (i UserGroupMembership) ToUserGroupMembershipOutputWithContext(ctx context.Context) UserGroupMembershipOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserGroupMembershipOutput)
+}
+
+func (i UserGroupMembership) ToUserGroupMembershipPtrOutput() UserGroupMembershipPtrOutput {
+	return i.ToUserGroupMembershipPtrOutputWithContext(context.Background())
+}
+
+func (i UserGroupMembership) ToUserGroupMembershipPtrOutputWithContext(ctx context.Context) UserGroupMembershipPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserGroupMembershipPtrOutput)
 }
 
 type UserGroupMembershipOutput struct {
@@ -192,6 +207,23 @@ func (o UserGroupMembershipOutput) ToUserGroupMembershipOutputWithContext(ctx co
 	return o
 }
 
+type UserGroupMembershipPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserGroupMembershipPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserGroupMembership)(nil)).Elem()
+}
+
+func (o UserGroupMembershipPtrOutput) ToUserGroupMembershipPtrOutput() UserGroupMembershipPtrOutput {
+	return o
+}
+
+func (o UserGroupMembershipPtrOutput) ToUserGroupMembershipPtrOutputWithContext(ctx context.Context) UserGroupMembershipPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(UserGroupMembershipOutput{})
+	pulumi.RegisterOutputType(UserGroupMembershipPtrOutput{})
 }

@@ -176,6 +176,13 @@ type AssessmentTemplateInput interface {
 	ToAssessmentTemplateOutputWithContext(ctx context.Context) AssessmentTemplateOutput
 }
 
+type AssessmentTemplatePtrInput interface {
+	pulumi.Input
+
+	ToAssessmentTemplatePtrOutput() AssessmentTemplatePtrOutput
+	ToAssessmentTemplatePtrOutputWithContext(ctx context.Context) AssessmentTemplatePtrOutput
+}
+
 func (AssessmentTemplate) ElementType() reflect.Type {
 	return reflect.TypeOf((*AssessmentTemplate)(nil)).Elem()
 }
@@ -186,6 +193,14 @@ func (i AssessmentTemplate) ToAssessmentTemplateOutput() AssessmentTemplateOutpu
 
 func (i AssessmentTemplate) ToAssessmentTemplateOutputWithContext(ctx context.Context) AssessmentTemplateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AssessmentTemplateOutput)
+}
+
+func (i AssessmentTemplate) ToAssessmentTemplatePtrOutput() AssessmentTemplatePtrOutput {
+	return i.ToAssessmentTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i AssessmentTemplate) ToAssessmentTemplatePtrOutputWithContext(ctx context.Context) AssessmentTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssessmentTemplatePtrOutput)
 }
 
 type AssessmentTemplateOutput struct {
@@ -204,6 +219,23 @@ func (o AssessmentTemplateOutput) ToAssessmentTemplateOutputWithContext(ctx cont
 	return o
 }
 
+type AssessmentTemplatePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AssessmentTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssessmentTemplate)(nil)).Elem()
+}
+
+func (o AssessmentTemplatePtrOutput) ToAssessmentTemplatePtrOutput() AssessmentTemplatePtrOutput {
+	return o
+}
+
+func (o AssessmentTemplatePtrOutput) ToAssessmentTemplatePtrOutputWithContext(ctx context.Context) AssessmentTemplatePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AssessmentTemplateOutput{})
+	pulumi.RegisterOutputType(AssessmentTemplatePtrOutput{})
 }

@@ -139,6 +139,13 @@ type DelegationSetInput interface {
 	ToDelegationSetOutputWithContext(ctx context.Context) DelegationSetOutput
 }
 
+type DelegationSetPtrInput interface {
+	pulumi.Input
+
+	ToDelegationSetPtrOutput() DelegationSetPtrOutput
+	ToDelegationSetPtrOutputWithContext(ctx context.Context) DelegationSetPtrOutput
+}
+
 func (DelegationSet) ElementType() reflect.Type {
 	return reflect.TypeOf((*DelegationSet)(nil)).Elem()
 }
@@ -149,6 +156,14 @@ func (i DelegationSet) ToDelegationSetOutput() DelegationSetOutput {
 
 func (i DelegationSet) ToDelegationSetOutputWithContext(ctx context.Context) DelegationSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DelegationSetOutput)
+}
+
+func (i DelegationSet) ToDelegationSetPtrOutput() DelegationSetPtrOutput {
+	return i.ToDelegationSetPtrOutputWithContext(context.Background())
+}
+
+func (i DelegationSet) ToDelegationSetPtrOutputWithContext(ctx context.Context) DelegationSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DelegationSetPtrOutput)
 }
 
 type DelegationSetOutput struct {
@@ -167,6 +182,23 @@ func (o DelegationSetOutput) ToDelegationSetOutputWithContext(ctx context.Contex
 	return o
 }
 
+type DelegationSetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DelegationSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DelegationSet)(nil)).Elem()
+}
+
+func (o DelegationSetPtrOutput) ToDelegationSetPtrOutput() DelegationSetPtrOutput {
+	return o
+}
+
+func (o DelegationSetPtrOutput) ToDelegationSetPtrOutputWithContext(ctx context.Context) DelegationSetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DelegationSetOutput{})
+	pulumi.RegisterOutputType(DelegationSetPtrOutput{})
 }

@@ -119,6 +119,13 @@ type AccountAliasInput interface {
 	ToAccountAliasOutputWithContext(ctx context.Context) AccountAliasOutput
 }
 
+type AccountAliasPtrInput interface {
+	pulumi.Input
+
+	ToAccountAliasPtrOutput() AccountAliasPtrOutput
+	ToAccountAliasPtrOutputWithContext(ctx context.Context) AccountAliasPtrOutput
+}
+
 func (AccountAlias) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccountAlias)(nil)).Elem()
 }
@@ -129,6 +136,14 @@ func (i AccountAlias) ToAccountAliasOutput() AccountAliasOutput {
 
 func (i AccountAlias) ToAccountAliasOutputWithContext(ctx context.Context) AccountAliasOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountAliasOutput)
+}
+
+func (i AccountAlias) ToAccountAliasPtrOutput() AccountAliasPtrOutput {
+	return i.ToAccountAliasPtrOutputWithContext(context.Background())
+}
+
+func (i AccountAlias) ToAccountAliasPtrOutputWithContext(ctx context.Context) AccountAliasPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountAliasPtrOutput)
 }
 
 type AccountAliasOutput struct {
@@ -147,6 +162,23 @@ func (o AccountAliasOutput) ToAccountAliasOutputWithContext(ctx context.Context)
 	return o
 }
 
+type AccountAliasPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccountAliasPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountAlias)(nil)).Elem()
+}
+
+func (o AccountAliasPtrOutput) ToAccountAliasPtrOutput() AccountAliasPtrOutput {
+	return o
+}
+
+func (o AccountAliasPtrOutput) ToAccountAliasPtrOutputWithContext(ctx context.Context) AccountAliasPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccountAliasOutput{})
+	pulumi.RegisterOutputType(AccountAliasPtrOutput{})
 }

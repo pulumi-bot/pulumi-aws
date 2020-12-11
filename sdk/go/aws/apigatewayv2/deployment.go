@@ -150,6 +150,13 @@ type DeploymentInput interface {
 	ToDeploymentOutputWithContext(ctx context.Context) DeploymentOutput
 }
 
+type DeploymentPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentPtrOutput() DeploymentPtrOutput
+	ToDeploymentPtrOutputWithContext(ctx context.Context) DeploymentPtrOutput
+}
+
 func (Deployment) ElementType() reflect.Type {
 	return reflect.TypeOf((*Deployment)(nil)).Elem()
 }
@@ -160,6 +167,14 @@ func (i Deployment) ToDeploymentOutput() DeploymentOutput {
 
 func (i Deployment) ToDeploymentOutputWithContext(ctx context.Context) DeploymentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentOutput)
+}
+
+func (i Deployment) ToDeploymentPtrOutput() DeploymentPtrOutput {
+	return i.ToDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i Deployment) ToDeploymentPtrOutputWithContext(ctx context.Context) DeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentPtrOutput)
 }
 
 type DeploymentOutput struct {
@@ -178,6 +193,23 @@ func (o DeploymentOutput) ToDeploymentOutputWithContext(ctx context.Context) Dep
 	return o
 }
 
+type DeploymentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Deployment)(nil)).Elem()
+}
+
+func (o DeploymentPtrOutput) ToDeploymentPtrOutput() DeploymentPtrOutput {
+	return o
+}
+
+func (o DeploymentPtrOutput) ToDeploymentPtrOutputWithContext(ctx context.Context) DeploymentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DeploymentOutput{})
+	pulumi.RegisterOutputType(DeploymentPtrOutput{})
 }

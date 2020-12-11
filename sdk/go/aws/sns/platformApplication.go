@@ -252,6 +252,13 @@ type PlatformApplicationInput interface {
 	ToPlatformApplicationOutputWithContext(ctx context.Context) PlatformApplicationOutput
 }
 
+type PlatformApplicationPtrInput interface {
+	pulumi.Input
+
+	ToPlatformApplicationPtrOutput() PlatformApplicationPtrOutput
+	ToPlatformApplicationPtrOutputWithContext(ctx context.Context) PlatformApplicationPtrOutput
+}
+
 func (PlatformApplication) ElementType() reflect.Type {
 	return reflect.TypeOf((*PlatformApplication)(nil)).Elem()
 }
@@ -262,6 +269,14 @@ func (i PlatformApplication) ToPlatformApplicationOutput() PlatformApplicationOu
 
 func (i PlatformApplication) ToPlatformApplicationOutputWithContext(ctx context.Context) PlatformApplicationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PlatformApplicationOutput)
+}
+
+func (i PlatformApplication) ToPlatformApplicationPtrOutput() PlatformApplicationPtrOutput {
+	return i.ToPlatformApplicationPtrOutputWithContext(context.Background())
+}
+
+func (i PlatformApplication) ToPlatformApplicationPtrOutputWithContext(ctx context.Context) PlatformApplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlatformApplicationPtrOutput)
 }
 
 type PlatformApplicationOutput struct {
@@ -280,6 +295,23 @@ func (o PlatformApplicationOutput) ToPlatformApplicationOutputWithContext(ctx co
 	return o
 }
 
+type PlatformApplicationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PlatformApplicationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlatformApplication)(nil)).Elem()
+}
+
+func (o PlatformApplicationPtrOutput) ToPlatformApplicationPtrOutput() PlatformApplicationPtrOutput {
+	return o
+}
+
+func (o PlatformApplicationPtrOutput) ToPlatformApplicationPtrOutputWithContext(ctx context.Context) PlatformApplicationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PlatformApplicationOutput{})
+	pulumi.RegisterOutputType(PlatformApplicationPtrOutput{})
 }

@@ -358,6 +358,13 @@ type EventSourceMappingInput interface {
 	ToEventSourceMappingOutputWithContext(ctx context.Context) EventSourceMappingOutput
 }
 
+type EventSourceMappingPtrInput interface {
+	pulumi.Input
+
+	ToEventSourceMappingPtrOutput() EventSourceMappingPtrOutput
+	ToEventSourceMappingPtrOutputWithContext(ctx context.Context) EventSourceMappingPtrOutput
+}
+
 func (EventSourceMapping) ElementType() reflect.Type {
 	return reflect.TypeOf((*EventSourceMapping)(nil)).Elem()
 }
@@ -368,6 +375,14 @@ func (i EventSourceMapping) ToEventSourceMappingOutput() EventSourceMappingOutpu
 
 func (i EventSourceMapping) ToEventSourceMappingOutputWithContext(ctx context.Context) EventSourceMappingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingOutput)
+}
+
+func (i EventSourceMapping) ToEventSourceMappingPtrOutput() EventSourceMappingPtrOutput {
+	return i.ToEventSourceMappingPtrOutputWithContext(context.Background())
+}
+
+func (i EventSourceMapping) ToEventSourceMappingPtrOutputWithContext(ctx context.Context) EventSourceMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingPtrOutput)
 }
 
 type EventSourceMappingOutput struct {
@@ -386,6 +401,23 @@ func (o EventSourceMappingOutput) ToEventSourceMappingOutputWithContext(ctx cont
 	return o
 }
 
+type EventSourceMappingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventSourceMappingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceMapping)(nil)).Elem()
+}
+
+func (o EventSourceMappingPtrOutput) ToEventSourceMappingPtrOutput() EventSourceMappingPtrOutput {
+	return o
+}
+
+func (o EventSourceMappingPtrOutput) ToEventSourceMappingPtrOutputWithContext(ctx context.Context) EventSourceMappingPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EventSourceMappingOutput{})
+	pulumi.RegisterOutputType(EventSourceMappingPtrOutput{})
 }

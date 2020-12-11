@@ -77,6 +77,13 @@ type ConfgurationSetInput interface {
 	ToConfgurationSetOutputWithContext(ctx context.Context) ConfgurationSetOutput
 }
 
+type ConfgurationSetPtrInput interface {
+	pulumi.Input
+
+	ToConfgurationSetPtrOutput() ConfgurationSetPtrOutput
+	ToConfgurationSetPtrOutputWithContext(ctx context.Context) ConfgurationSetPtrOutput
+}
+
 func (ConfgurationSet) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConfgurationSet)(nil)).Elem()
 }
@@ -87,6 +94,14 @@ func (i ConfgurationSet) ToConfgurationSetOutput() ConfgurationSetOutput {
 
 func (i ConfgurationSet) ToConfgurationSetOutputWithContext(ctx context.Context) ConfgurationSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfgurationSetOutput)
+}
+
+func (i ConfgurationSet) ToConfgurationSetPtrOutput() ConfgurationSetPtrOutput {
+	return i.ToConfgurationSetPtrOutputWithContext(context.Background())
+}
+
+func (i ConfgurationSet) ToConfgurationSetPtrOutputWithContext(ctx context.Context) ConfgurationSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfgurationSetPtrOutput)
 }
 
 type ConfgurationSetOutput struct {
@@ -105,6 +120,23 @@ func (o ConfgurationSetOutput) ToConfgurationSetOutputWithContext(ctx context.Co
 	return o
 }
 
+type ConfgurationSetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConfgurationSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfgurationSet)(nil)).Elem()
+}
+
+func (o ConfgurationSetPtrOutput) ToConfgurationSetPtrOutput() ConfgurationSetPtrOutput {
+	return o
+}
+
+func (o ConfgurationSetPtrOutput) ToConfgurationSetPtrOutputWithContext(ctx context.Context) ConfgurationSetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ConfgurationSetOutput{})
+	pulumi.RegisterOutputType(ConfgurationSetPtrOutput{})
 }

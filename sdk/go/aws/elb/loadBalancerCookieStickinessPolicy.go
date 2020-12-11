@@ -186,6 +186,13 @@ type LoadBalancerCookieStickinessPolicyInput interface {
 	ToLoadBalancerCookieStickinessPolicyOutputWithContext(ctx context.Context) LoadBalancerCookieStickinessPolicyOutput
 }
 
+type LoadBalancerCookieStickinessPolicyPtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerCookieStickinessPolicyPtrOutput() LoadBalancerCookieStickinessPolicyPtrOutput
+	ToLoadBalancerCookieStickinessPolicyPtrOutputWithContext(ctx context.Context) LoadBalancerCookieStickinessPolicyPtrOutput
+}
+
 func (LoadBalancerCookieStickinessPolicy) ElementType() reflect.Type {
 	return reflect.TypeOf((*LoadBalancerCookieStickinessPolicy)(nil)).Elem()
 }
@@ -196,6 +203,14 @@ func (i LoadBalancerCookieStickinessPolicy) ToLoadBalancerCookieStickinessPolicy
 
 func (i LoadBalancerCookieStickinessPolicy) ToLoadBalancerCookieStickinessPolicyOutputWithContext(ctx context.Context) LoadBalancerCookieStickinessPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerCookieStickinessPolicyOutput)
+}
+
+func (i LoadBalancerCookieStickinessPolicy) ToLoadBalancerCookieStickinessPolicyPtrOutput() LoadBalancerCookieStickinessPolicyPtrOutput {
+	return i.ToLoadBalancerCookieStickinessPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerCookieStickinessPolicy) ToLoadBalancerCookieStickinessPolicyPtrOutputWithContext(ctx context.Context) LoadBalancerCookieStickinessPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerCookieStickinessPolicyPtrOutput)
 }
 
 type LoadBalancerCookieStickinessPolicyOutput struct {
@@ -214,6 +229,23 @@ func (o LoadBalancerCookieStickinessPolicyOutput) ToLoadBalancerCookieStickiness
 	return o
 }
 
+type LoadBalancerCookieStickinessPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LoadBalancerCookieStickinessPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerCookieStickinessPolicy)(nil)).Elem()
+}
+
+func (o LoadBalancerCookieStickinessPolicyPtrOutput) ToLoadBalancerCookieStickinessPolicyPtrOutput() LoadBalancerCookieStickinessPolicyPtrOutput {
+	return o
+}
+
+func (o LoadBalancerCookieStickinessPolicyPtrOutput) ToLoadBalancerCookieStickinessPolicyPtrOutputWithContext(ctx context.Context) LoadBalancerCookieStickinessPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LoadBalancerCookieStickinessPolicyOutput{})
+	pulumi.RegisterOutputType(LoadBalancerCookieStickinessPolicyPtrOutput{})
 }

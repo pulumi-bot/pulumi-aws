@@ -159,6 +159,13 @@ type DefaultVpcDhcpOptionsInput interface {
 	ToDefaultVpcDhcpOptionsOutputWithContext(ctx context.Context) DefaultVpcDhcpOptionsOutput
 }
 
+type DefaultVpcDhcpOptionsPtrInput interface {
+	pulumi.Input
+
+	ToDefaultVpcDhcpOptionsPtrOutput() DefaultVpcDhcpOptionsPtrOutput
+	ToDefaultVpcDhcpOptionsPtrOutputWithContext(ctx context.Context) DefaultVpcDhcpOptionsPtrOutput
+}
+
 func (DefaultVpcDhcpOptions) ElementType() reflect.Type {
 	return reflect.TypeOf((*DefaultVpcDhcpOptions)(nil)).Elem()
 }
@@ -169,6 +176,14 @@ func (i DefaultVpcDhcpOptions) ToDefaultVpcDhcpOptionsOutput() DefaultVpcDhcpOpt
 
 func (i DefaultVpcDhcpOptions) ToDefaultVpcDhcpOptionsOutputWithContext(ctx context.Context) DefaultVpcDhcpOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultVpcDhcpOptionsOutput)
+}
+
+func (i DefaultVpcDhcpOptions) ToDefaultVpcDhcpOptionsPtrOutput() DefaultVpcDhcpOptionsPtrOutput {
+	return i.ToDefaultVpcDhcpOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i DefaultVpcDhcpOptions) ToDefaultVpcDhcpOptionsPtrOutputWithContext(ctx context.Context) DefaultVpcDhcpOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultVpcDhcpOptionsPtrOutput)
 }
 
 type DefaultVpcDhcpOptionsOutput struct {
@@ -187,6 +202,23 @@ func (o DefaultVpcDhcpOptionsOutput) ToDefaultVpcDhcpOptionsOutputWithContext(ct
 	return o
 }
 
+type DefaultVpcDhcpOptionsPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DefaultVpcDhcpOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultVpcDhcpOptions)(nil)).Elem()
+}
+
+func (o DefaultVpcDhcpOptionsPtrOutput) ToDefaultVpcDhcpOptionsPtrOutput() DefaultVpcDhcpOptionsPtrOutput {
+	return o
+}
+
+func (o DefaultVpcDhcpOptionsPtrOutput) ToDefaultVpcDhcpOptionsPtrOutputWithContext(ctx context.Context) DefaultVpcDhcpOptionsPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DefaultVpcDhcpOptionsOutput{})
+	pulumi.RegisterOutputType(DefaultVpcDhcpOptionsPtrOutput{})
 }

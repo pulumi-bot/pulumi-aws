@@ -137,6 +137,13 @@ type LogStreamInput interface {
 	ToLogStreamOutputWithContext(ctx context.Context) LogStreamOutput
 }
 
+type LogStreamPtrInput interface {
+	pulumi.Input
+
+	ToLogStreamPtrOutput() LogStreamPtrOutput
+	ToLogStreamPtrOutputWithContext(ctx context.Context) LogStreamPtrOutput
+}
+
 func (LogStream) ElementType() reflect.Type {
 	return reflect.TypeOf((*LogStream)(nil)).Elem()
 }
@@ -147,6 +154,14 @@ func (i LogStream) ToLogStreamOutput() LogStreamOutput {
 
 func (i LogStream) ToLogStreamOutputWithContext(ctx context.Context) LogStreamOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogStreamOutput)
+}
+
+func (i LogStream) ToLogStreamPtrOutput() LogStreamPtrOutput {
+	return i.ToLogStreamPtrOutputWithContext(context.Background())
+}
+
+func (i LogStream) ToLogStreamPtrOutputWithContext(ctx context.Context) LogStreamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogStreamPtrOutput)
 }
 
 type LogStreamOutput struct {
@@ -165,6 +180,23 @@ func (o LogStreamOutput) ToLogStreamOutputWithContext(ctx context.Context) LogSt
 	return o
 }
 
+type LogStreamPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogStreamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogStream)(nil)).Elem()
+}
+
+func (o LogStreamPtrOutput) ToLogStreamPtrOutput() LogStreamPtrOutput {
+	return o
+}
+
+func (o LogStreamPtrOutput) ToLogStreamPtrOutputWithContext(ctx context.Context) LogStreamPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LogStreamOutput{})
+	pulumi.RegisterOutputType(LogStreamPtrOutput{})
 }

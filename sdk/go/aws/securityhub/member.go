@@ -160,6 +160,13 @@ type MemberInput interface {
 	ToMemberOutputWithContext(ctx context.Context) MemberOutput
 }
 
+type MemberPtrInput interface {
+	pulumi.Input
+
+	ToMemberPtrOutput() MemberPtrOutput
+	ToMemberPtrOutputWithContext(ctx context.Context) MemberPtrOutput
+}
+
 func (Member) ElementType() reflect.Type {
 	return reflect.TypeOf((*Member)(nil)).Elem()
 }
@@ -170,6 +177,14 @@ func (i Member) ToMemberOutput() MemberOutput {
 
 func (i Member) ToMemberOutputWithContext(ctx context.Context) MemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MemberOutput)
+}
+
+func (i Member) ToMemberPtrOutput() MemberPtrOutput {
+	return i.ToMemberPtrOutputWithContext(context.Background())
+}
+
+func (i Member) ToMemberPtrOutputWithContext(ctx context.Context) MemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MemberPtrOutput)
 }
 
 type MemberOutput struct {
@@ -188,6 +203,23 @@ func (o MemberOutput) ToMemberOutputWithContext(ctx context.Context) MemberOutpu
 	return o
 }
 
+type MemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Member)(nil)).Elem()
+}
+
+func (o MemberPtrOutput) ToMemberPtrOutput() MemberPtrOutput {
+	return o
+}
+
+func (o MemberPtrOutput) ToMemberPtrOutputWithContext(ctx context.Context) MemberPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MemberOutput{})
+	pulumi.RegisterOutputType(MemberPtrOutput{})
 }

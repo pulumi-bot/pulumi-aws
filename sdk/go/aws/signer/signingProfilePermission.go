@@ -199,6 +199,13 @@ type SigningProfilePermissionInput interface {
 	ToSigningProfilePermissionOutputWithContext(ctx context.Context) SigningProfilePermissionOutput
 }
 
+type SigningProfilePermissionPtrInput interface {
+	pulumi.Input
+
+	ToSigningProfilePermissionPtrOutput() SigningProfilePermissionPtrOutput
+	ToSigningProfilePermissionPtrOutputWithContext(ctx context.Context) SigningProfilePermissionPtrOutput
+}
+
 func (SigningProfilePermission) ElementType() reflect.Type {
 	return reflect.TypeOf((*SigningProfilePermission)(nil)).Elem()
 }
@@ -209,6 +216,14 @@ func (i SigningProfilePermission) ToSigningProfilePermissionOutput() SigningProf
 
 func (i SigningProfilePermission) ToSigningProfilePermissionOutputWithContext(ctx context.Context) SigningProfilePermissionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SigningProfilePermissionOutput)
+}
+
+func (i SigningProfilePermission) ToSigningProfilePermissionPtrOutput() SigningProfilePermissionPtrOutput {
+	return i.ToSigningProfilePermissionPtrOutputWithContext(context.Background())
+}
+
+func (i SigningProfilePermission) ToSigningProfilePermissionPtrOutputWithContext(ctx context.Context) SigningProfilePermissionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SigningProfilePermissionPtrOutput)
 }
 
 type SigningProfilePermissionOutput struct {
@@ -227,6 +242,23 @@ func (o SigningProfilePermissionOutput) ToSigningProfilePermissionOutputWithCont
 	return o
 }
 
+type SigningProfilePermissionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SigningProfilePermissionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SigningProfilePermission)(nil)).Elem()
+}
+
+func (o SigningProfilePermissionPtrOutput) ToSigningProfilePermissionPtrOutput() SigningProfilePermissionPtrOutput {
+	return o
+}
+
+func (o SigningProfilePermissionPtrOutput) ToSigningProfilePermissionPtrOutputWithContext(ctx context.Context) SigningProfilePermissionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SigningProfilePermissionOutput{})
+	pulumi.RegisterOutputType(SigningProfilePermissionPtrOutput{})
 }

@@ -189,6 +189,13 @@ type QueryLogInput interface {
 	ToQueryLogOutputWithContext(ctx context.Context) QueryLogOutput
 }
 
+type QueryLogPtrInput interface {
+	pulumi.Input
+
+	ToQueryLogPtrOutput() QueryLogPtrOutput
+	ToQueryLogPtrOutputWithContext(ctx context.Context) QueryLogPtrOutput
+}
+
 func (QueryLog) ElementType() reflect.Type {
 	return reflect.TypeOf((*QueryLog)(nil)).Elem()
 }
@@ -199,6 +206,14 @@ func (i QueryLog) ToQueryLogOutput() QueryLogOutput {
 
 func (i QueryLog) ToQueryLogOutputWithContext(ctx context.Context) QueryLogOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QueryLogOutput)
+}
+
+func (i QueryLog) ToQueryLogPtrOutput() QueryLogPtrOutput {
+	return i.ToQueryLogPtrOutputWithContext(context.Background())
+}
+
+func (i QueryLog) ToQueryLogPtrOutputWithContext(ctx context.Context) QueryLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryLogPtrOutput)
 }
 
 type QueryLogOutput struct {
@@ -217,6 +232,23 @@ func (o QueryLogOutput) ToQueryLogOutputWithContext(ctx context.Context) QueryLo
 	return o
 }
 
+type QueryLogPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (QueryLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueryLog)(nil)).Elem()
+}
+
+func (o QueryLogPtrOutput) ToQueryLogPtrOutput() QueryLogPtrOutput {
+	return o
+}
+
+func (o QueryLogPtrOutput) ToQueryLogPtrOutputWithContext(ctx context.Context) QueryLogPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(QueryLogOutput{})
+	pulumi.RegisterOutputType(QueryLogPtrOutput{})
 }

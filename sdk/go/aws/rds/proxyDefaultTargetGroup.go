@@ -114,6 +114,13 @@ type ProxyDefaultTargetGroupInput interface {
 	ToProxyDefaultTargetGroupOutputWithContext(ctx context.Context) ProxyDefaultTargetGroupOutput
 }
 
+type ProxyDefaultTargetGroupPtrInput interface {
+	pulumi.Input
+
+	ToProxyDefaultTargetGroupPtrOutput() ProxyDefaultTargetGroupPtrOutput
+	ToProxyDefaultTargetGroupPtrOutputWithContext(ctx context.Context) ProxyDefaultTargetGroupPtrOutput
+}
+
 func (ProxyDefaultTargetGroup) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProxyDefaultTargetGroup)(nil)).Elem()
 }
@@ -124,6 +131,14 @@ func (i ProxyDefaultTargetGroup) ToProxyDefaultTargetGroupOutput() ProxyDefaultT
 
 func (i ProxyDefaultTargetGroup) ToProxyDefaultTargetGroupOutputWithContext(ctx context.Context) ProxyDefaultTargetGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProxyDefaultTargetGroupOutput)
+}
+
+func (i ProxyDefaultTargetGroup) ToProxyDefaultTargetGroupPtrOutput() ProxyDefaultTargetGroupPtrOutput {
+	return i.ToProxyDefaultTargetGroupPtrOutputWithContext(context.Background())
+}
+
+func (i ProxyDefaultTargetGroup) ToProxyDefaultTargetGroupPtrOutputWithContext(ctx context.Context) ProxyDefaultTargetGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProxyDefaultTargetGroupPtrOutput)
 }
 
 type ProxyDefaultTargetGroupOutput struct {
@@ -142,6 +157,23 @@ func (o ProxyDefaultTargetGroupOutput) ToProxyDefaultTargetGroupOutputWithContex
 	return o
 }
 
+type ProxyDefaultTargetGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProxyDefaultTargetGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProxyDefaultTargetGroup)(nil)).Elem()
+}
+
+func (o ProxyDefaultTargetGroupPtrOutput) ToProxyDefaultTargetGroupPtrOutput() ProxyDefaultTargetGroupPtrOutput {
+	return o
+}
+
+func (o ProxyDefaultTargetGroupPtrOutput) ToProxyDefaultTargetGroupPtrOutputWithContext(ctx context.Context) ProxyDefaultTargetGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProxyDefaultTargetGroupOutput{})
+	pulumi.RegisterOutputType(ProxyDefaultTargetGroupPtrOutput{})
 }

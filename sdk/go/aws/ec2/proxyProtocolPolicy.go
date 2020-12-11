@@ -159,6 +159,13 @@ type ProxyProtocolPolicyInput interface {
 	ToProxyProtocolPolicyOutputWithContext(ctx context.Context) ProxyProtocolPolicyOutput
 }
 
+type ProxyProtocolPolicyPtrInput interface {
+	pulumi.Input
+
+	ToProxyProtocolPolicyPtrOutput() ProxyProtocolPolicyPtrOutput
+	ToProxyProtocolPolicyPtrOutputWithContext(ctx context.Context) ProxyProtocolPolicyPtrOutput
+}
+
 func (ProxyProtocolPolicy) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProxyProtocolPolicy)(nil)).Elem()
 }
@@ -169,6 +176,14 @@ func (i ProxyProtocolPolicy) ToProxyProtocolPolicyOutput() ProxyProtocolPolicyOu
 
 func (i ProxyProtocolPolicy) ToProxyProtocolPolicyOutputWithContext(ctx context.Context) ProxyProtocolPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProxyProtocolPolicyOutput)
+}
+
+func (i ProxyProtocolPolicy) ToProxyProtocolPolicyPtrOutput() ProxyProtocolPolicyPtrOutput {
+	return i.ToProxyProtocolPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ProxyProtocolPolicy) ToProxyProtocolPolicyPtrOutputWithContext(ctx context.Context) ProxyProtocolPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProxyProtocolPolicyPtrOutput)
 }
 
 type ProxyProtocolPolicyOutput struct {
@@ -187,6 +202,23 @@ func (o ProxyProtocolPolicyOutput) ToProxyProtocolPolicyOutputWithContext(ctx co
 	return o
 }
 
+type ProxyProtocolPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProxyProtocolPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProxyProtocolPolicy)(nil)).Elem()
+}
+
+func (o ProxyProtocolPolicyPtrOutput) ToProxyProtocolPolicyPtrOutput() ProxyProtocolPolicyPtrOutput {
+	return o
+}
+
+func (o ProxyProtocolPolicyPtrOutput) ToProxyProtocolPolicyPtrOutputWithContext(ctx context.Context) ProxyProtocolPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProxyProtocolPolicyOutput{})
+	pulumi.RegisterOutputType(ProxyProtocolPolicyPtrOutput{})
 }

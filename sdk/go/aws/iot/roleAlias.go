@@ -156,6 +156,13 @@ type RoleAliasInput interface {
 	ToRoleAliasOutputWithContext(ctx context.Context) RoleAliasOutput
 }
 
+type RoleAliasPtrInput interface {
+	pulumi.Input
+
+	ToRoleAliasPtrOutput() RoleAliasPtrOutput
+	ToRoleAliasPtrOutputWithContext(ctx context.Context) RoleAliasPtrOutput
+}
+
 func (RoleAlias) ElementType() reflect.Type {
 	return reflect.TypeOf((*RoleAlias)(nil)).Elem()
 }
@@ -166,6 +173,14 @@ func (i RoleAlias) ToRoleAliasOutput() RoleAliasOutput {
 
 func (i RoleAlias) ToRoleAliasOutputWithContext(ctx context.Context) RoleAliasOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoleAliasOutput)
+}
+
+func (i RoleAlias) ToRoleAliasPtrOutput() RoleAliasPtrOutput {
+	return i.ToRoleAliasPtrOutputWithContext(context.Background())
+}
+
+func (i RoleAlias) ToRoleAliasPtrOutputWithContext(ctx context.Context) RoleAliasPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleAliasPtrOutput)
 }
 
 type RoleAliasOutput struct {
@@ -184,6 +199,23 @@ func (o RoleAliasOutput) ToRoleAliasOutputWithContext(ctx context.Context) RoleA
 	return o
 }
 
+type RoleAliasPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RoleAliasPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoleAlias)(nil)).Elem()
+}
+
+func (o RoleAliasPtrOutput) ToRoleAliasPtrOutput() RoleAliasPtrOutput {
+	return o
+}
+
+func (o RoleAliasPtrOutput) ToRoleAliasPtrOutputWithContext(ctx context.Context) RoleAliasPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RoleAliasOutput{})
+	pulumi.RegisterOutputType(RoleAliasPtrOutput{})
 }

@@ -138,6 +138,13 @@ type InternetGatewayInput interface {
 	ToInternetGatewayOutputWithContext(ctx context.Context) InternetGatewayOutput
 }
 
+type InternetGatewayPtrInput interface {
+	pulumi.Input
+
+	ToInternetGatewayPtrOutput() InternetGatewayPtrOutput
+	ToInternetGatewayPtrOutputWithContext(ctx context.Context) InternetGatewayPtrOutput
+}
+
 func (InternetGateway) ElementType() reflect.Type {
 	return reflect.TypeOf((*InternetGateway)(nil)).Elem()
 }
@@ -148,6 +155,14 @@ func (i InternetGateway) ToInternetGatewayOutput() InternetGatewayOutput {
 
 func (i InternetGateway) ToInternetGatewayOutputWithContext(ctx context.Context) InternetGatewayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InternetGatewayOutput)
+}
+
+func (i InternetGateway) ToInternetGatewayPtrOutput() InternetGatewayPtrOutput {
+	return i.ToInternetGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i InternetGateway) ToInternetGatewayPtrOutputWithContext(ctx context.Context) InternetGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InternetGatewayPtrOutput)
 }
 
 type InternetGatewayOutput struct {
@@ -166,6 +181,23 @@ func (o InternetGatewayOutput) ToInternetGatewayOutputWithContext(ctx context.Co
 	return o
 }
 
+type InternetGatewayPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (InternetGatewayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InternetGateway)(nil)).Elem()
+}
+
+func (o InternetGatewayPtrOutput) ToInternetGatewayPtrOutput() InternetGatewayPtrOutput {
+	return o
+}
+
+func (o InternetGatewayPtrOutput) ToInternetGatewayPtrOutputWithContext(ctx context.Context) InternetGatewayPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(InternetGatewayOutput{})
+	pulumi.RegisterOutputType(InternetGatewayPtrOutput{})
 }

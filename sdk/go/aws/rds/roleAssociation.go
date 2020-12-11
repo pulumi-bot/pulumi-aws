@@ -150,6 +150,13 @@ type RoleAssociationInput interface {
 	ToRoleAssociationOutputWithContext(ctx context.Context) RoleAssociationOutput
 }
 
+type RoleAssociationPtrInput interface {
+	pulumi.Input
+
+	ToRoleAssociationPtrOutput() RoleAssociationPtrOutput
+	ToRoleAssociationPtrOutputWithContext(ctx context.Context) RoleAssociationPtrOutput
+}
+
 func (RoleAssociation) ElementType() reflect.Type {
 	return reflect.TypeOf((*RoleAssociation)(nil)).Elem()
 }
@@ -160,6 +167,14 @@ func (i RoleAssociation) ToRoleAssociationOutput() RoleAssociationOutput {
 
 func (i RoleAssociation) ToRoleAssociationOutputWithContext(ctx context.Context) RoleAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoleAssociationOutput)
+}
+
+func (i RoleAssociation) ToRoleAssociationPtrOutput() RoleAssociationPtrOutput {
+	return i.ToRoleAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i RoleAssociation) ToRoleAssociationPtrOutputWithContext(ctx context.Context) RoleAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleAssociationPtrOutput)
 }
 
 type RoleAssociationOutput struct {
@@ -178,6 +193,23 @@ func (o RoleAssociationOutput) ToRoleAssociationOutputWithContext(ctx context.Co
 	return o
 }
 
+type RoleAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RoleAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoleAssociation)(nil)).Elem()
+}
+
+func (o RoleAssociationPtrOutput) ToRoleAssociationPtrOutput() RoleAssociationPtrOutput {
+	return o
+}
+
+func (o RoleAssociationPtrOutput) ToRoleAssociationPtrOutputWithContext(ctx context.Context) RoleAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RoleAssociationOutput{})
+	pulumi.RegisterOutputType(RoleAssociationPtrOutput{})
 }

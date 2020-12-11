@@ -136,6 +136,13 @@ type GameSessionQueueInput interface {
 	ToGameSessionQueueOutputWithContext(ctx context.Context) GameSessionQueueOutput
 }
 
+type GameSessionQueuePtrInput interface {
+	pulumi.Input
+
+	ToGameSessionQueuePtrOutput() GameSessionQueuePtrOutput
+	ToGameSessionQueuePtrOutputWithContext(ctx context.Context) GameSessionQueuePtrOutput
+}
+
 func (GameSessionQueue) ElementType() reflect.Type {
 	return reflect.TypeOf((*GameSessionQueue)(nil)).Elem()
 }
@@ -146,6 +153,14 @@ func (i GameSessionQueue) ToGameSessionQueueOutput() GameSessionQueueOutput {
 
 func (i GameSessionQueue) ToGameSessionQueueOutputWithContext(ctx context.Context) GameSessionQueueOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GameSessionQueueOutput)
+}
+
+func (i GameSessionQueue) ToGameSessionQueuePtrOutput() GameSessionQueuePtrOutput {
+	return i.ToGameSessionQueuePtrOutputWithContext(context.Background())
+}
+
+func (i GameSessionQueue) ToGameSessionQueuePtrOutputWithContext(ctx context.Context) GameSessionQueuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameSessionQueuePtrOutput)
 }
 
 type GameSessionQueueOutput struct {
@@ -164,6 +179,23 @@ func (o GameSessionQueueOutput) ToGameSessionQueueOutputWithContext(ctx context.
 	return o
 }
 
+type GameSessionQueuePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GameSessionQueuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GameSessionQueue)(nil)).Elem()
+}
+
+func (o GameSessionQueuePtrOutput) ToGameSessionQueuePtrOutput() GameSessionQueuePtrOutput {
+	return o
+}
+
+func (o GameSessionQueuePtrOutput) ToGameSessionQueuePtrOutputWithContext(ctx context.Context) GameSessionQueuePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(GameSessionQueueOutput{})
+	pulumi.RegisterOutputType(GameSessionQueuePtrOutput{})
 }

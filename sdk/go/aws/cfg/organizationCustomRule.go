@@ -255,6 +255,13 @@ type OrganizationCustomRuleInput interface {
 	ToOrganizationCustomRuleOutputWithContext(ctx context.Context) OrganizationCustomRuleOutput
 }
 
+type OrganizationCustomRulePtrInput interface {
+	pulumi.Input
+
+	ToOrganizationCustomRulePtrOutput() OrganizationCustomRulePtrOutput
+	ToOrganizationCustomRulePtrOutputWithContext(ctx context.Context) OrganizationCustomRulePtrOutput
+}
+
 func (OrganizationCustomRule) ElementType() reflect.Type {
 	return reflect.TypeOf((*OrganizationCustomRule)(nil)).Elem()
 }
@@ -265,6 +272,14 @@ func (i OrganizationCustomRule) ToOrganizationCustomRuleOutput() OrganizationCus
 
 func (i OrganizationCustomRule) ToOrganizationCustomRuleOutputWithContext(ctx context.Context) OrganizationCustomRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationCustomRuleOutput)
+}
+
+func (i OrganizationCustomRule) ToOrganizationCustomRulePtrOutput() OrganizationCustomRulePtrOutput {
+	return i.ToOrganizationCustomRulePtrOutputWithContext(context.Background())
+}
+
+func (i OrganizationCustomRule) ToOrganizationCustomRulePtrOutputWithContext(ctx context.Context) OrganizationCustomRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationCustomRulePtrOutput)
 }
 
 type OrganizationCustomRuleOutput struct {
@@ -283,6 +298,23 @@ func (o OrganizationCustomRuleOutput) ToOrganizationCustomRuleOutputWithContext(
 	return o
 }
 
+type OrganizationCustomRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationCustomRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationCustomRule)(nil)).Elem()
+}
+
+func (o OrganizationCustomRulePtrOutput) ToOrganizationCustomRulePtrOutput() OrganizationCustomRulePtrOutput {
+	return o
+}
+
+func (o OrganizationCustomRulePtrOutput) ToOrganizationCustomRulePtrOutputWithContext(ctx context.Context) OrganizationCustomRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(OrganizationCustomRuleOutput{})
+	pulumi.RegisterOutputType(OrganizationCustomRulePtrOutput{})
 }

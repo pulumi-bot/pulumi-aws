@@ -147,6 +147,13 @@ type LogDestinationInput interface {
 	ToLogDestinationOutputWithContext(ctx context.Context) LogDestinationOutput
 }
 
+type LogDestinationPtrInput interface {
+	pulumi.Input
+
+	ToLogDestinationPtrOutput() LogDestinationPtrOutput
+	ToLogDestinationPtrOutputWithContext(ctx context.Context) LogDestinationPtrOutput
+}
+
 func (LogDestination) ElementType() reflect.Type {
 	return reflect.TypeOf((*LogDestination)(nil)).Elem()
 }
@@ -157,6 +164,14 @@ func (i LogDestination) ToLogDestinationOutput() LogDestinationOutput {
 
 func (i LogDestination) ToLogDestinationOutputWithContext(ctx context.Context) LogDestinationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogDestinationOutput)
+}
+
+func (i LogDestination) ToLogDestinationPtrOutput() LogDestinationPtrOutput {
+	return i.ToLogDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i LogDestination) ToLogDestinationPtrOutputWithContext(ctx context.Context) LogDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogDestinationPtrOutput)
 }
 
 type LogDestinationOutput struct {
@@ -175,6 +190,23 @@ func (o LogDestinationOutput) ToLogDestinationOutputWithContext(ctx context.Cont
 	return o
 }
 
+type LogDestinationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogDestination)(nil)).Elem()
+}
+
+func (o LogDestinationPtrOutput) ToLogDestinationPtrOutput() LogDestinationPtrOutput {
+	return o
+}
+
+func (o LogDestinationPtrOutput) ToLogDestinationPtrOutputWithContext(ctx context.Context) LogDestinationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LogDestinationOutput{})
+	pulumi.RegisterOutputType(LogDestinationPtrOutput{})
 }

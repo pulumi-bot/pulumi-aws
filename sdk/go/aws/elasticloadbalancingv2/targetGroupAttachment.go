@@ -206,6 +206,13 @@ type TargetGroupAttachmentInput interface {
 	ToTargetGroupAttachmentOutputWithContext(ctx context.Context) TargetGroupAttachmentOutput
 }
 
+type TargetGroupAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToTargetGroupAttachmentPtrOutput() TargetGroupAttachmentPtrOutput
+	ToTargetGroupAttachmentPtrOutputWithContext(ctx context.Context) TargetGroupAttachmentPtrOutput
+}
+
 func (TargetGroupAttachment) ElementType() reflect.Type {
 	return reflect.TypeOf((*TargetGroupAttachment)(nil)).Elem()
 }
@@ -216,6 +223,14 @@ func (i TargetGroupAttachment) ToTargetGroupAttachmentOutput() TargetGroupAttach
 
 func (i TargetGroupAttachment) ToTargetGroupAttachmentOutputWithContext(ctx context.Context) TargetGroupAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TargetGroupAttachmentOutput)
+}
+
+func (i TargetGroupAttachment) ToTargetGroupAttachmentPtrOutput() TargetGroupAttachmentPtrOutput {
+	return i.ToTargetGroupAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i TargetGroupAttachment) ToTargetGroupAttachmentPtrOutputWithContext(ctx context.Context) TargetGroupAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetGroupAttachmentPtrOutput)
 }
 
 type TargetGroupAttachmentOutput struct {
@@ -234,6 +249,23 @@ func (o TargetGroupAttachmentOutput) ToTargetGroupAttachmentOutputWithContext(ct
 	return o
 }
 
+type TargetGroupAttachmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TargetGroupAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetGroupAttachment)(nil)).Elem()
+}
+
+func (o TargetGroupAttachmentPtrOutput) ToTargetGroupAttachmentPtrOutput() TargetGroupAttachmentPtrOutput {
+	return o
+}
+
+func (o TargetGroupAttachmentPtrOutput) ToTargetGroupAttachmentPtrOutputWithContext(ctx context.Context) TargetGroupAttachmentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TargetGroupAttachmentOutput{})
+	pulumi.RegisterOutputType(TargetGroupAttachmentPtrOutput{})
 }

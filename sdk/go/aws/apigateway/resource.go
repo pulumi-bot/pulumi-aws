@@ -157,6 +157,13 @@ type ResourceInput interface {
 	ToResourceOutputWithContext(ctx context.Context) ResourceOutput
 }
 
+type ResourcePtrInput interface {
+	pulumi.Input
+
+	ToResourcePtrOutput() ResourcePtrOutput
+	ToResourcePtrOutputWithContext(ctx context.Context) ResourcePtrOutput
+}
+
 func (Resource) ElementType() reflect.Type {
 	return reflect.TypeOf((*Resource)(nil)).Elem()
 }
@@ -167,6 +174,14 @@ func (i Resource) ToResourceOutput() ResourceOutput {
 
 func (i Resource) ToResourceOutputWithContext(ctx context.Context) ResourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceOutput)
+}
+
+func (i Resource) ToResourcePtrOutput() ResourcePtrOutput {
+	return i.ToResourcePtrOutputWithContext(context.Background())
+}
+
+func (i Resource) ToResourcePtrOutputWithContext(ctx context.Context) ResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePtrOutput)
 }
 
 type ResourceOutput struct {
@@ -185,6 +200,23 @@ func (o ResourceOutput) ToResourceOutputWithContext(ctx context.Context) Resourc
 	return o
 }
 
+type ResourcePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Resource)(nil)).Elem()
+}
+
+func (o ResourcePtrOutput) ToResourcePtrOutput() ResourcePtrOutput {
+	return o
+}
+
+func (o ResourcePtrOutput) ToResourcePtrOutputWithContext(ctx context.Context) ResourcePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResourceOutput{})
+	pulumi.RegisterOutputType(ResourcePtrOutput{})
 }

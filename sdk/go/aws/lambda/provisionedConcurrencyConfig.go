@@ -170,6 +170,13 @@ type ProvisionedConcurrencyConfigInput interface {
 	ToProvisionedConcurrencyConfigOutputWithContext(ctx context.Context) ProvisionedConcurrencyConfigOutput
 }
 
+type ProvisionedConcurrencyConfigPtrInput interface {
+	pulumi.Input
+
+	ToProvisionedConcurrencyConfigPtrOutput() ProvisionedConcurrencyConfigPtrOutput
+	ToProvisionedConcurrencyConfigPtrOutputWithContext(ctx context.Context) ProvisionedConcurrencyConfigPtrOutput
+}
+
 func (ProvisionedConcurrencyConfig) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProvisionedConcurrencyConfig)(nil)).Elem()
 }
@@ -180,6 +187,14 @@ func (i ProvisionedConcurrencyConfig) ToProvisionedConcurrencyConfigOutput() Pro
 
 func (i ProvisionedConcurrencyConfig) ToProvisionedConcurrencyConfigOutputWithContext(ctx context.Context) ProvisionedConcurrencyConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProvisionedConcurrencyConfigOutput)
+}
+
+func (i ProvisionedConcurrencyConfig) ToProvisionedConcurrencyConfigPtrOutput() ProvisionedConcurrencyConfigPtrOutput {
+	return i.ToProvisionedConcurrencyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ProvisionedConcurrencyConfig) ToProvisionedConcurrencyConfigPtrOutputWithContext(ctx context.Context) ProvisionedConcurrencyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProvisionedConcurrencyConfigPtrOutput)
 }
 
 type ProvisionedConcurrencyConfigOutput struct {
@@ -198,6 +213,23 @@ func (o ProvisionedConcurrencyConfigOutput) ToProvisionedConcurrencyConfigOutput
 	return o
 }
 
+type ProvisionedConcurrencyConfigPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProvisionedConcurrencyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProvisionedConcurrencyConfig)(nil)).Elem()
+}
+
+func (o ProvisionedConcurrencyConfigPtrOutput) ToProvisionedConcurrencyConfigPtrOutput() ProvisionedConcurrencyConfigPtrOutput {
+	return o
+}
+
+func (o ProvisionedConcurrencyConfigPtrOutput) ToProvisionedConcurrencyConfigPtrOutputWithContext(ctx context.Context) ProvisionedConcurrencyConfigPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProvisionedConcurrencyConfigOutput{})
+	pulumi.RegisterOutputType(ProvisionedConcurrencyConfigPtrOutput{})
 }

@@ -191,6 +191,13 @@ type UserLoginProfileInput interface {
 	ToUserLoginProfileOutputWithContext(ctx context.Context) UserLoginProfileOutput
 }
 
+type UserLoginProfilePtrInput interface {
+	pulumi.Input
+
+	ToUserLoginProfilePtrOutput() UserLoginProfilePtrOutput
+	ToUserLoginProfilePtrOutputWithContext(ctx context.Context) UserLoginProfilePtrOutput
+}
+
 func (UserLoginProfile) ElementType() reflect.Type {
 	return reflect.TypeOf((*UserLoginProfile)(nil)).Elem()
 }
@@ -201,6 +208,14 @@ func (i UserLoginProfile) ToUserLoginProfileOutput() UserLoginProfileOutput {
 
 func (i UserLoginProfile) ToUserLoginProfileOutputWithContext(ctx context.Context) UserLoginProfileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserLoginProfileOutput)
+}
+
+func (i UserLoginProfile) ToUserLoginProfilePtrOutput() UserLoginProfilePtrOutput {
+	return i.ToUserLoginProfilePtrOutputWithContext(context.Background())
+}
+
+func (i UserLoginProfile) ToUserLoginProfilePtrOutputWithContext(ctx context.Context) UserLoginProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserLoginProfilePtrOutput)
 }
 
 type UserLoginProfileOutput struct {
@@ -219,6 +234,23 @@ func (o UserLoginProfileOutput) ToUserLoginProfileOutputWithContext(ctx context.
 	return o
 }
 
+type UserLoginProfilePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserLoginProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserLoginProfile)(nil)).Elem()
+}
+
+func (o UserLoginProfilePtrOutput) ToUserLoginProfilePtrOutput() UserLoginProfilePtrOutput {
+	return o
+}
+
+func (o UserLoginProfilePtrOutput) ToUserLoginProfilePtrOutputWithContext(ctx context.Context) UserLoginProfilePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(UserLoginProfileOutput{})
+	pulumi.RegisterOutputType(UserLoginProfilePtrOutput{})
 }

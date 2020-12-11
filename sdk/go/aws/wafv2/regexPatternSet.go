@@ -179,6 +179,13 @@ type RegexPatternSetInput interface {
 	ToRegexPatternSetOutputWithContext(ctx context.Context) RegexPatternSetOutput
 }
 
+type RegexPatternSetPtrInput interface {
+	pulumi.Input
+
+	ToRegexPatternSetPtrOutput() RegexPatternSetPtrOutput
+	ToRegexPatternSetPtrOutputWithContext(ctx context.Context) RegexPatternSetPtrOutput
+}
+
 func (RegexPatternSet) ElementType() reflect.Type {
 	return reflect.TypeOf((*RegexPatternSet)(nil)).Elem()
 }
@@ -189,6 +196,14 @@ func (i RegexPatternSet) ToRegexPatternSetOutput() RegexPatternSetOutput {
 
 func (i RegexPatternSet) ToRegexPatternSetOutputWithContext(ctx context.Context) RegexPatternSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegexPatternSetOutput)
+}
+
+func (i RegexPatternSet) ToRegexPatternSetPtrOutput() RegexPatternSetPtrOutput {
+	return i.ToRegexPatternSetPtrOutputWithContext(context.Background())
+}
+
+func (i RegexPatternSet) ToRegexPatternSetPtrOutputWithContext(ctx context.Context) RegexPatternSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegexPatternSetPtrOutput)
 }
 
 type RegexPatternSetOutput struct {
@@ -207,6 +222,23 @@ func (o RegexPatternSetOutput) ToRegexPatternSetOutputWithContext(ctx context.Co
 	return o
 }
 
+type RegexPatternSetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegexPatternSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegexPatternSet)(nil)).Elem()
+}
+
+func (o RegexPatternSetPtrOutput) ToRegexPatternSetPtrOutput() RegexPatternSetPtrOutput {
+	return o
+}
+
+func (o RegexPatternSetPtrOutput) ToRegexPatternSetPtrOutputWithContext(ctx context.Context) RegexPatternSetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RegexPatternSetOutput{})
+	pulumi.RegisterOutputType(RegexPatternSetPtrOutput{})
 }

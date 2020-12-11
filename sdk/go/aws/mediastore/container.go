@@ -133,6 +133,13 @@ type ContainerInput interface {
 	ToContainerOutputWithContext(ctx context.Context) ContainerOutput
 }
 
+type ContainerPtrInput interface {
+	pulumi.Input
+
+	ToContainerPtrOutput() ContainerPtrOutput
+	ToContainerPtrOutputWithContext(ctx context.Context) ContainerPtrOutput
+}
+
 func (Container) ElementType() reflect.Type {
 	return reflect.TypeOf((*Container)(nil)).Elem()
 }
@@ -143,6 +150,14 @@ func (i Container) ToContainerOutput() ContainerOutput {
 
 func (i Container) ToContainerOutputWithContext(ctx context.Context) ContainerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerOutput)
+}
+
+func (i Container) ToContainerPtrOutput() ContainerPtrOutput {
+	return i.ToContainerPtrOutputWithContext(context.Background())
+}
+
+func (i Container) ToContainerPtrOutputWithContext(ctx context.Context) ContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerPtrOutput)
 }
 
 type ContainerOutput struct {
@@ -161,6 +176,23 @@ func (o ContainerOutput) ToContainerOutputWithContext(ctx context.Context) Conta
 	return o
 }
 
+type ContainerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ContainerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Container)(nil)).Elem()
+}
+
+func (o ContainerPtrOutput) ToContainerPtrOutput() ContainerPtrOutput {
+	return o
+}
+
+func (o ContainerPtrOutput) ToContainerPtrOutputWithContext(ctx context.Context) ContainerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ContainerOutput{})
+	pulumi.RegisterOutputType(ContainerPtrOutput{})
 }

@@ -245,6 +245,13 @@ type HostedTransitVirtualInterfaceInput interface {
 	ToHostedTransitVirtualInterfaceOutputWithContext(ctx context.Context) HostedTransitVirtualInterfaceOutput
 }
 
+type HostedTransitVirtualInterfacePtrInput interface {
+	pulumi.Input
+
+	ToHostedTransitVirtualInterfacePtrOutput() HostedTransitVirtualInterfacePtrOutput
+	ToHostedTransitVirtualInterfacePtrOutputWithContext(ctx context.Context) HostedTransitVirtualInterfacePtrOutput
+}
+
 func (HostedTransitVirtualInterface) ElementType() reflect.Type {
 	return reflect.TypeOf((*HostedTransitVirtualInterface)(nil)).Elem()
 }
@@ -255,6 +262,14 @@ func (i HostedTransitVirtualInterface) ToHostedTransitVirtualInterfaceOutput() H
 
 func (i HostedTransitVirtualInterface) ToHostedTransitVirtualInterfaceOutputWithContext(ctx context.Context) HostedTransitVirtualInterfaceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostedTransitVirtualInterfaceOutput)
+}
+
+func (i HostedTransitVirtualInterface) ToHostedTransitVirtualInterfacePtrOutput() HostedTransitVirtualInterfacePtrOutput {
+	return i.ToHostedTransitVirtualInterfacePtrOutputWithContext(context.Background())
+}
+
+func (i HostedTransitVirtualInterface) ToHostedTransitVirtualInterfacePtrOutputWithContext(ctx context.Context) HostedTransitVirtualInterfacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostedTransitVirtualInterfacePtrOutput)
 }
 
 type HostedTransitVirtualInterfaceOutput struct {
@@ -273,6 +288,23 @@ func (o HostedTransitVirtualInterfaceOutput) ToHostedTransitVirtualInterfaceOutp
 	return o
 }
 
+type HostedTransitVirtualInterfacePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (HostedTransitVirtualInterfacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HostedTransitVirtualInterface)(nil)).Elem()
+}
+
+func (o HostedTransitVirtualInterfacePtrOutput) ToHostedTransitVirtualInterfacePtrOutput() HostedTransitVirtualInterfacePtrOutput {
+	return o
+}
+
+func (o HostedTransitVirtualInterfacePtrOutput) ToHostedTransitVirtualInterfacePtrOutputWithContext(ctx context.Context) HostedTransitVirtualInterfacePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(HostedTransitVirtualInterfaceOutput{})
+	pulumi.RegisterOutputType(HostedTransitVirtualInterfacePtrOutput{})
 }

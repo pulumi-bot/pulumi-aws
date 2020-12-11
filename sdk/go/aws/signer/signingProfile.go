@@ -203,6 +203,13 @@ type SigningProfileInput interface {
 	ToSigningProfileOutputWithContext(ctx context.Context) SigningProfileOutput
 }
 
+type SigningProfilePtrInput interface {
+	pulumi.Input
+
+	ToSigningProfilePtrOutput() SigningProfilePtrOutput
+	ToSigningProfilePtrOutputWithContext(ctx context.Context) SigningProfilePtrOutput
+}
+
 func (SigningProfile) ElementType() reflect.Type {
 	return reflect.TypeOf((*SigningProfile)(nil)).Elem()
 }
@@ -213,6 +220,14 @@ func (i SigningProfile) ToSigningProfileOutput() SigningProfileOutput {
 
 func (i SigningProfile) ToSigningProfileOutputWithContext(ctx context.Context) SigningProfileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SigningProfileOutput)
+}
+
+func (i SigningProfile) ToSigningProfilePtrOutput() SigningProfilePtrOutput {
+	return i.ToSigningProfilePtrOutputWithContext(context.Background())
+}
+
+func (i SigningProfile) ToSigningProfilePtrOutputWithContext(ctx context.Context) SigningProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SigningProfilePtrOutput)
 }
 
 type SigningProfileOutput struct {
@@ -231,6 +246,23 @@ func (o SigningProfileOutput) ToSigningProfileOutputWithContext(ctx context.Cont
 	return o
 }
 
+type SigningProfilePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SigningProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SigningProfile)(nil)).Elem()
+}
+
+func (o SigningProfilePtrOutput) ToSigningProfilePtrOutput() SigningProfilePtrOutput {
+	return o
+}
+
+func (o SigningProfilePtrOutput) ToSigningProfilePtrOutputWithContext(ctx context.Context) SigningProfilePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SigningProfileOutput{})
+	pulumi.RegisterOutputType(SigningProfilePtrOutput{})
 }

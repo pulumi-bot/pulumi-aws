@@ -199,6 +199,13 @@ type NamedQueryInput interface {
 	ToNamedQueryOutputWithContext(ctx context.Context) NamedQueryOutput
 }
 
+type NamedQueryPtrInput interface {
+	pulumi.Input
+
+	ToNamedQueryPtrOutput() NamedQueryPtrOutput
+	ToNamedQueryPtrOutputWithContext(ctx context.Context) NamedQueryPtrOutput
+}
+
 func (NamedQuery) ElementType() reflect.Type {
 	return reflect.TypeOf((*NamedQuery)(nil)).Elem()
 }
@@ -209,6 +216,14 @@ func (i NamedQuery) ToNamedQueryOutput() NamedQueryOutput {
 
 func (i NamedQuery) ToNamedQueryOutputWithContext(ctx context.Context) NamedQueryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamedQueryOutput)
+}
+
+func (i NamedQuery) ToNamedQueryPtrOutput() NamedQueryPtrOutput {
+	return i.ToNamedQueryPtrOutputWithContext(context.Background())
+}
+
+func (i NamedQuery) ToNamedQueryPtrOutputWithContext(ctx context.Context) NamedQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamedQueryPtrOutput)
 }
 
 type NamedQueryOutput struct {
@@ -227,6 +242,23 @@ func (o NamedQueryOutput) ToNamedQueryOutputWithContext(ctx context.Context) Nam
 	return o
 }
 
+type NamedQueryPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NamedQueryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamedQuery)(nil)).Elem()
+}
+
+func (o NamedQueryPtrOutput) ToNamedQueryPtrOutput() NamedQueryPtrOutput {
+	return o
+}
+
+func (o NamedQueryPtrOutput) ToNamedQueryPtrOutputWithContext(ctx context.Context) NamedQueryPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NamedQueryOutput{})
+	pulumi.RegisterOutputType(NamedQueryPtrOutput{})
 }

@@ -156,6 +156,13 @@ type ResourcePolicyInput interface {
 	ToResourcePolicyOutputWithContext(ctx context.Context) ResourcePolicyOutput
 }
 
+type ResourcePolicyPtrInput interface {
+	pulumi.Input
+
+	ToResourcePolicyPtrOutput() ResourcePolicyPtrOutput
+	ToResourcePolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyPtrOutput
+}
+
 func (ResourcePolicy) ElementType() reflect.Type {
 	return reflect.TypeOf((*ResourcePolicy)(nil)).Elem()
 }
@@ -166,6 +173,14 @@ func (i ResourcePolicy) ToResourcePolicyOutput() ResourcePolicyOutput {
 
 func (i ResourcePolicy) ToResourcePolicyOutputWithContext(ctx context.Context) ResourcePolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyOutput)
+}
+
+func (i ResourcePolicy) ToResourcePolicyPtrOutput() ResourcePolicyPtrOutput {
+	return i.ToResourcePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicy) ToResourcePolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyPtrOutput)
 }
 
 type ResourcePolicyOutput struct {
@@ -184,6 +199,23 @@ func (o ResourcePolicyOutput) ToResourcePolicyOutputWithContext(ctx context.Cont
 	return o
 }
 
+type ResourcePolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourcePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicy)(nil)).Elem()
+}
+
+func (o ResourcePolicyPtrOutput) ToResourcePolicyPtrOutput() ResourcePolicyPtrOutput {
+	return o
+}
+
+func (o ResourcePolicyPtrOutput) ToResourcePolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResourcePolicyOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyPtrOutput{})
 }

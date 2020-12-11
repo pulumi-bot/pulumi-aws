@@ -209,6 +209,13 @@ type LocationFsxWindowsInput interface {
 	ToLocationFsxWindowsOutputWithContext(ctx context.Context) LocationFsxWindowsOutput
 }
 
+type LocationFsxWindowsPtrInput interface {
+	pulumi.Input
+
+	ToLocationFsxWindowsPtrOutput() LocationFsxWindowsPtrOutput
+	ToLocationFsxWindowsPtrOutputWithContext(ctx context.Context) LocationFsxWindowsPtrOutput
+}
+
 func (LocationFsxWindows) ElementType() reflect.Type {
 	return reflect.TypeOf((*LocationFsxWindows)(nil)).Elem()
 }
@@ -219,6 +226,14 @@ func (i LocationFsxWindows) ToLocationFsxWindowsOutput() LocationFsxWindowsOutpu
 
 func (i LocationFsxWindows) ToLocationFsxWindowsOutputWithContext(ctx context.Context) LocationFsxWindowsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LocationFsxWindowsOutput)
+}
+
+func (i LocationFsxWindows) ToLocationFsxWindowsPtrOutput() LocationFsxWindowsPtrOutput {
+	return i.ToLocationFsxWindowsPtrOutputWithContext(context.Background())
+}
+
+func (i LocationFsxWindows) ToLocationFsxWindowsPtrOutputWithContext(ctx context.Context) LocationFsxWindowsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationFsxWindowsPtrOutput)
 }
 
 type LocationFsxWindowsOutput struct {
@@ -237,6 +252,23 @@ func (o LocationFsxWindowsOutput) ToLocationFsxWindowsOutputWithContext(ctx cont
 	return o
 }
 
+type LocationFsxWindowsPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LocationFsxWindowsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationFsxWindows)(nil)).Elem()
+}
+
+func (o LocationFsxWindowsPtrOutput) ToLocationFsxWindowsPtrOutput() LocationFsxWindowsPtrOutput {
+	return o
+}
+
+func (o LocationFsxWindowsPtrOutput) ToLocationFsxWindowsPtrOutputWithContext(ctx context.Context) LocationFsxWindowsPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LocationFsxWindowsOutput{})
+	pulumi.RegisterOutputType(LocationFsxWindowsPtrOutput{})
 }

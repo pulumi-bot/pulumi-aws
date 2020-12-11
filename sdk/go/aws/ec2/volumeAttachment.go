@@ -229,6 +229,13 @@ type VolumeAttachmentInput interface {
 	ToVolumeAttachmentOutputWithContext(ctx context.Context) VolumeAttachmentOutput
 }
 
+type VolumeAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToVolumeAttachmentPtrOutput() VolumeAttachmentPtrOutput
+	ToVolumeAttachmentPtrOutputWithContext(ctx context.Context) VolumeAttachmentPtrOutput
+}
+
 func (VolumeAttachment) ElementType() reflect.Type {
 	return reflect.TypeOf((*VolumeAttachment)(nil)).Elem()
 }
@@ -239,6 +246,14 @@ func (i VolumeAttachment) ToVolumeAttachmentOutput() VolumeAttachmentOutput {
 
 func (i VolumeAttachment) ToVolumeAttachmentOutputWithContext(ctx context.Context) VolumeAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachmentOutput)
+}
+
+func (i VolumeAttachment) ToVolumeAttachmentPtrOutput() VolumeAttachmentPtrOutput {
+	return i.ToVolumeAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i VolumeAttachment) ToVolumeAttachmentPtrOutputWithContext(ctx context.Context) VolumeAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachmentPtrOutput)
 }
 
 type VolumeAttachmentOutput struct {
@@ -257,6 +272,23 @@ func (o VolumeAttachmentOutput) ToVolumeAttachmentOutputWithContext(ctx context.
 	return o
 }
 
+type VolumeAttachmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VolumeAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeAttachment)(nil)).Elem()
+}
+
+func (o VolumeAttachmentPtrOutput) ToVolumeAttachmentPtrOutput() VolumeAttachmentPtrOutput {
+	return o
+}
+
+func (o VolumeAttachmentPtrOutput) ToVolumeAttachmentPtrOutputWithContext(ctx context.Context) VolumeAttachmentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VolumeAttachmentOutput{})
+	pulumi.RegisterOutputType(VolumeAttachmentPtrOutput{})
 }

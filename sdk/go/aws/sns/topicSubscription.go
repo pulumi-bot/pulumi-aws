@@ -451,6 +451,13 @@ type TopicSubscriptionInput interface {
 	ToTopicSubscriptionOutputWithContext(ctx context.Context) TopicSubscriptionOutput
 }
 
+type TopicSubscriptionPtrInput interface {
+	pulumi.Input
+
+	ToTopicSubscriptionPtrOutput() TopicSubscriptionPtrOutput
+	ToTopicSubscriptionPtrOutputWithContext(ctx context.Context) TopicSubscriptionPtrOutput
+}
+
 func (TopicSubscription) ElementType() reflect.Type {
 	return reflect.TypeOf((*TopicSubscription)(nil)).Elem()
 }
@@ -461,6 +468,14 @@ func (i TopicSubscription) ToTopicSubscriptionOutput() TopicSubscriptionOutput {
 
 func (i TopicSubscription) ToTopicSubscriptionOutputWithContext(ctx context.Context) TopicSubscriptionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TopicSubscriptionOutput)
+}
+
+func (i TopicSubscription) ToTopicSubscriptionPtrOutput() TopicSubscriptionPtrOutput {
+	return i.ToTopicSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i TopicSubscription) ToTopicSubscriptionPtrOutputWithContext(ctx context.Context) TopicSubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicSubscriptionPtrOutput)
 }
 
 type TopicSubscriptionOutput struct {
@@ -479,6 +494,23 @@ func (o TopicSubscriptionOutput) ToTopicSubscriptionOutputWithContext(ctx contex
 	return o
 }
 
+type TopicSubscriptionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TopicSubscriptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicSubscription)(nil)).Elem()
+}
+
+func (o TopicSubscriptionPtrOutput) ToTopicSubscriptionPtrOutput() TopicSubscriptionPtrOutput {
+	return o
+}
+
+func (o TopicSubscriptionPtrOutput) ToTopicSubscriptionPtrOutputWithContext(ctx context.Context) TopicSubscriptionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TopicSubscriptionOutput{})
+	pulumi.RegisterOutputType(TopicSubscriptionPtrOutput{})
 }

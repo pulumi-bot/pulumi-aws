@@ -382,6 +382,13 @@ type StackInput interface {
 	ToStackOutputWithContext(ctx context.Context) StackOutput
 }
 
+type StackPtrInput interface {
+	pulumi.Input
+
+	ToStackPtrOutput() StackPtrOutput
+	ToStackPtrOutputWithContext(ctx context.Context) StackPtrOutput
+}
+
 func (Stack) ElementType() reflect.Type {
 	return reflect.TypeOf((*Stack)(nil)).Elem()
 }
@@ -392,6 +399,14 @@ func (i Stack) ToStackOutput() StackOutput {
 
 func (i Stack) ToStackOutputWithContext(ctx context.Context) StackOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StackOutput)
+}
+
+func (i Stack) ToStackPtrOutput() StackPtrOutput {
+	return i.ToStackPtrOutputWithContext(context.Background())
+}
+
+func (i Stack) ToStackPtrOutputWithContext(ctx context.Context) StackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackPtrOutput)
 }
 
 type StackOutput struct {
@@ -410,6 +425,23 @@ func (o StackOutput) ToStackOutputWithContext(ctx context.Context) StackOutput {
 	return o
 }
 
+type StackPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (StackPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Stack)(nil)).Elem()
+}
+
+func (o StackPtrOutput) ToStackPtrOutput() StackPtrOutput {
+	return o
+}
+
+func (o StackPtrOutput) ToStackPtrOutputWithContext(ctx context.Context) StackPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(StackOutput{})
+	pulumi.RegisterOutputType(StackPtrOutput{})
 }

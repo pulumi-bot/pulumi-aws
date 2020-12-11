@@ -131,6 +131,13 @@ type ResolverQueryLogConfigAssociationInput interface {
 	ToResolverQueryLogConfigAssociationOutputWithContext(ctx context.Context) ResolverQueryLogConfigAssociationOutput
 }
 
+type ResolverQueryLogConfigAssociationPtrInput interface {
+	pulumi.Input
+
+	ToResolverQueryLogConfigAssociationPtrOutput() ResolverQueryLogConfigAssociationPtrOutput
+	ToResolverQueryLogConfigAssociationPtrOutputWithContext(ctx context.Context) ResolverQueryLogConfigAssociationPtrOutput
+}
+
 func (ResolverQueryLogConfigAssociation) ElementType() reflect.Type {
 	return reflect.TypeOf((*ResolverQueryLogConfigAssociation)(nil)).Elem()
 }
@@ -141,6 +148,14 @@ func (i ResolverQueryLogConfigAssociation) ToResolverQueryLogConfigAssociationOu
 
 func (i ResolverQueryLogConfigAssociation) ToResolverQueryLogConfigAssociationOutputWithContext(ctx context.Context) ResolverQueryLogConfigAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResolverQueryLogConfigAssociationOutput)
+}
+
+func (i ResolverQueryLogConfigAssociation) ToResolverQueryLogConfigAssociationPtrOutput() ResolverQueryLogConfigAssociationPtrOutput {
+	return i.ToResolverQueryLogConfigAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i ResolverQueryLogConfigAssociation) ToResolverQueryLogConfigAssociationPtrOutputWithContext(ctx context.Context) ResolverQueryLogConfigAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverQueryLogConfigAssociationPtrOutput)
 }
 
 type ResolverQueryLogConfigAssociationOutput struct {
@@ -159,6 +174,23 @@ func (o ResolverQueryLogConfigAssociationOutput) ToResolverQueryLogConfigAssocia
 	return o
 }
 
+type ResolverQueryLogConfigAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResolverQueryLogConfigAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResolverQueryLogConfigAssociation)(nil)).Elem()
+}
+
+func (o ResolverQueryLogConfigAssociationPtrOutput) ToResolverQueryLogConfigAssociationPtrOutput() ResolverQueryLogConfigAssociationPtrOutput {
+	return o
+}
+
+func (o ResolverQueryLogConfigAssociationPtrOutput) ToResolverQueryLogConfigAssociationPtrOutputWithContext(ctx context.Context) ResolverQueryLogConfigAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResolverQueryLogConfigAssociationOutput{})
+	pulumi.RegisterOutputType(ResolverQueryLogConfigAssociationPtrOutput{})
 }

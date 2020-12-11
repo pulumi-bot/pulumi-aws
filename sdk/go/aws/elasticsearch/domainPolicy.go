@@ -133,6 +133,13 @@ type DomainPolicyInput interface {
 	ToDomainPolicyOutputWithContext(ctx context.Context) DomainPolicyOutput
 }
 
+type DomainPolicyPtrInput interface {
+	pulumi.Input
+
+	ToDomainPolicyPtrOutput() DomainPolicyPtrOutput
+	ToDomainPolicyPtrOutputWithContext(ctx context.Context) DomainPolicyPtrOutput
+}
+
 func (DomainPolicy) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainPolicy)(nil)).Elem()
 }
@@ -143,6 +150,14 @@ func (i DomainPolicy) ToDomainPolicyOutput() DomainPolicyOutput {
 
 func (i DomainPolicy) ToDomainPolicyOutputWithContext(ctx context.Context) DomainPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainPolicyOutput)
+}
+
+func (i DomainPolicy) ToDomainPolicyPtrOutput() DomainPolicyPtrOutput {
+	return i.ToDomainPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i DomainPolicy) ToDomainPolicyPtrOutputWithContext(ctx context.Context) DomainPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainPolicyPtrOutput)
 }
 
 type DomainPolicyOutput struct {
@@ -161,6 +176,23 @@ func (o DomainPolicyOutput) ToDomainPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
+type DomainPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainPolicy)(nil)).Elem()
+}
+
+func (o DomainPolicyPtrOutput) ToDomainPolicyPtrOutput() DomainPolicyPtrOutput {
+	return o
+}
+
+func (o DomainPolicyPtrOutput) ToDomainPolicyPtrOutputWithContext(ctx context.Context) DomainPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DomainPolicyOutput{})
+	pulumi.RegisterOutputType(DomainPolicyPtrOutput{})
 }

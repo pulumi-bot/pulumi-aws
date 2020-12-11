@@ -180,6 +180,13 @@ type DistributionConfigurationInput interface {
 	ToDistributionConfigurationOutputWithContext(ctx context.Context) DistributionConfigurationOutput
 }
 
+type DistributionConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToDistributionConfigurationPtrOutput() DistributionConfigurationPtrOutput
+	ToDistributionConfigurationPtrOutputWithContext(ctx context.Context) DistributionConfigurationPtrOutput
+}
+
 func (DistributionConfiguration) ElementType() reflect.Type {
 	return reflect.TypeOf((*DistributionConfiguration)(nil)).Elem()
 }
@@ -190,6 +197,14 @@ func (i DistributionConfiguration) ToDistributionConfigurationOutput() Distribut
 
 func (i DistributionConfiguration) ToDistributionConfigurationOutputWithContext(ctx context.Context) DistributionConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DistributionConfigurationOutput)
+}
+
+func (i DistributionConfiguration) ToDistributionConfigurationPtrOutput() DistributionConfigurationPtrOutput {
+	return i.ToDistributionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i DistributionConfiguration) ToDistributionConfigurationPtrOutputWithContext(ctx context.Context) DistributionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionConfigurationPtrOutput)
 }
 
 type DistributionConfigurationOutput struct {
@@ -208,6 +223,23 @@ func (o DistributionConfigurationOutput) ToDistributionConfigurationOutputWithCo
 	return o
 }
 
+type DistributionConfigurationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DistributionConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DistributionConfiguration)(nil)).Elem()
+}
+
+func (o DistributionConfigurationPtrOutput) ToDistributionConfigurationPtrOutput() DistributionConfigurationPtrOutput {
+	return o
+}
+
+func (o DistributionConfigurationPtrOutput) ToDistributionConfigurationPtrOutputWithContext(ctx context.Context) DistributionConfigurationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DistributionConfigurationOutput{})
+	pulumi.RegisterOutputType(DistributionConfigurationPtrOutput{})
 }

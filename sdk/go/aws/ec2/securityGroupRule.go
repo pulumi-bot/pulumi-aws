@@ -306,6 +306,13 @@ type SecurityGroupRuleInput interface {
 	ToSecurityGroupRuleOutputWithContext(ctx context.Context) SecurityGroupRuleOutput
 }
 
+type SecurityGroupRulePtrInput interface {
+	pulumi.Input
+
+	ToSecurityGroupRulePtrOutput() SecurityGroupRulePtrOutput
+	ToSecurityGroupRulePtrOutputWithContext(ctx context.Context) SecurityGroupRulePtrOutput
+}
+
 func (SecurityGroupRule) ElementType() reflect.Type {
 	return reflect.TypeOf((*SecurityGroupRule)(nil)).Elem()
 }
@@ -316,6 +323,14 @@ func (i SecurityGroupRule) ToSecurityGroupRuleOutput() SecurityGroupRuleOutput {
 
 func (i SecurityGroupRule) ToSecurityGroupRuleOutputWithContext(ctx context.Context) SecurityGroupRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupRuleOutput)
+}
+
+func (i SecurityGroupRule) ToSecurityGroupRulePtrOutput() SecurityGroupRulePtrOutput {
+	return i.ToSecurityGroupRulePtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGroupRule) ToSecurityGroupRulePtrOutputWithContext(ctx context.Context) SecurityGroupRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupRulePtrOutput)
 }
 
 type SecurityGroupRuleOutput struct {
@@ -334,6 +349,23 @@ func (o SecurityGroupRuleOutput) ToSecurityGroupRuleOutputWithContext(ctx contex
 	return o
 }
 
+type SecurityGroupRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecurityGroupRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGroupRule)(nil)).Elem()
+}
+
+func (o SecurityGroupRulePtrOutput) ToSecurityGroupRulePtrOutput() SecurityGroupRulePtrOutput {
+	return o
+}
+
+func (o SecurityGroupRulePtrOutput) ToSecurityGroupRulePtrOutputWithContext(ctx context.Context) SecurityGroupRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SecurityGroupRuleOutput{})
+	pulumi.RegisterOutputType(SecurityGroupRulePtrOutput{})
 }

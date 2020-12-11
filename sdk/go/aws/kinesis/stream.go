@@ -215,6 +215,13 @@ type StreamInput interface {
 	ToStreamOutputWithContext(ctx context.Context) StreamOutput
 }
 
+type StreamPtrInput interface {
+	pulumi.Input
+
+	ToStreamPtrOutput() StreamPtrOutput
+	ToStreamPtrOutputWithContext(ctx context.Context) StreamPtrOutput
+}
+
 func (Stream) ElementType() reflect.Type {
 	return reflect.TypeOf((*Stream)(nil)).Elem()
 }
@@ -225,6 +232,14 @@ func (i Stream) ToStreamOutput() StreamOutput {
 
 func (i Stream) ToStreamOutputWithContext(ctx context.Context) StreamOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StreamOutput)
+}
+
+func (i Stream) ToStreamPtrOutput() StreamPtrOutput {
+	return i.ToStreamPtrOutputWithContext(context.Background())
+}
+
+func (i Stream) ToStreamPtrOutputWithContext(ctx context.Context) StreamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamPtrOutput)
 }
 
 type StreamOutput struct {
@@ -243,6 +258,23 @@ func (o StreamOutput) ToStreamOutputWithContext(ctx context.Context) StreamOutpu
 	return o
 }
 
+type StreamPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (StreamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Stream)(nil)).Elem()
+}
+
+func (o StreamPtrOutput) ToStreamPtrOutput() StreamPtrOutput {
+	return o
+}
+
+func (o StreamPtrOutput) ToStreamPtrOutputWithContext(ctx context.Context) StreamPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(StreamOutput{})
+	pulumi.RegisterOutputType(StreamPtrOutput{})
 }

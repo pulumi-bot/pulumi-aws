@@ -255,6 +255,13 @@ type WebAclInput interface {
 	ToWebAclOutputWithContext(ctx context.Context) WebAclOutput
 }
 
+type WebAclPtrInput interface {
+	pulumi.Input
+
+	ToWebAclPtrOutput() WebAclPtrOutput
+	ToWebAclPtrOutputWithContext(ctx context.Context) WebAclPtrOutput
+}
+
 func (WebAcl) ElementType() reflect.Type {
 	return reflect.TypeOf((*WebAcl)(nil)).Elem()
 }
@@ -265,6 +272,14 @@ func (i WebAcl) ToWebAclOutput() WebAclOutput {
 
 func (i WebAcl) ToWebAclOutputWithContext(ctx context.Context) WebAclOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebAclOutput)
+}
+
+func (i WebAcl) ToWebAclPtrOutput() WebAclPtrOutput {
+	return i.ToWebAclPtrOutputWithContext(context.Background())
+}
+
+func (i WebAcl) ToWebAclPtrOutputWithContext(ctx context.Context) WebAclPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclPtrOutput)
 }
 
 type WebAclOutput struct {
@@ -283,6 +298,23 @@ func (o WebAclOutput) ToWebAclOutputWithContext(ctx context.Context) WebAclOutpu
 	return o
 }
 
+type WebAclPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WebAclPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAcl)(nil)).Elem()
+}
+
+func (o WebAclPtrOutput) ToWebAclPtrOutput() WebAclPtrOutput {
+	return o
+}
+
+func (o WebAclPtrOutput) ToWebAclPtrOutputWithContext(ctx context.Context) WebAclPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(WebAclOutput{})
+	pulumi.RegisterOutputType(WebAclPtrOutput{})
 }

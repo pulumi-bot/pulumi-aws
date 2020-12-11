@@ -177,6 +177,13 @@ type IntegrationResponseInput interface {
 	ToIntegrationResponseOutputWithContext(ctx context.Context) IntegrationResponseOutput
 }
 
+type IntegrationResponsePtrInput interface {
+	pulumi.Input
+
+	ToIntegrationResponsePtrOutput() IntegrationResponsePtrOutput
+	ToIntegrationResponsePtrOutputWithContext(ctx context.Context) IntegrationResponsePtrOutput
+}
+
 func (IntegrationResponse) ElementType() reflect.Type {
 	return reflect.TypeOf((*IntegrationResponse)(nil)).Elem()
 }
@@ -187,6 +194,14 @@ func (i IntegrationResponse) ToIntegrationResponseOutput() IntegrationResponseOu
 
 func (i IntegrationResponse) ToIntegrationResponseOutputWithContext(ctx context.Context) IntegrationResponseOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationResponseOutput)
+}
+
+func (i IntegrationResponse) ToIntegrationResponsePtrOutput() IntegrationResponsePtrOutput {
+	return i.ToIntegrationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i IntegrationResponse) ToIntegrationResponsePtrOutputWithContext(ctx context.Context) IntegrationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationResponsePtrOutput)
 }
 
 type IntegrationResponseOutput struct {
@@ -205,6 +220,23 @@ func (o IntegrationResponseOutput) ToIntegrationResponseOutputWithContext(ctx co
 	return o
 }
 
+type IntegrationResponsePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IntegrationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationResponse)(nil)).Elem()
+}
+
+func (o IntegrationResponsePtrOutput) ToIntegrationResponsePtrOutput() IntegrationResponsePtrOutput {
+	return o
+}
+
+func (o IntegrationResponsePtrOutput) ToIntegrationResponsePtrOutputWithContext(ctx context.Context) IntegrationResponsePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(IntegrationResponseOutput{})
+	pulumi.RegisterOutputType(IntegrationResponsePtrOutput{})
 }

@@ -136,6 +136,13 @@ type AttachmentInput interface {
 	ToAttachmentOutputWithContext(ctx context.Context) AttachmentOutput
 }
 
+type AttachmentPtrInput interface {
+	pulumi.Input
+
+	ToAttachmentPtrOutput() AttachmentPtrOutput
+	ToAttachmentPtrOutputWithContext(ctx context.Context) AttachmentPtrOutput
+}
+
 func (Attachment) ElementType() reflect.Type {
 	return reflect.TypeOf((*Attachment)(nil)).Elem()
 }
@@ -146,6 +153,14 @@ func (i Attachment) ToAttachmentOutput() AttachmentOutput {
 
 func (i Attachment) ToAttachmentOutputWithContext(ctx context.Context) AttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AttachmentOutput)
+}
+
+func (i Attachment) ToAttachmentPtrOutput() AttachmentPtrOutput {
+	return i.ToAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i Attachment) ToAttachmentPtrOutputWithContext(ctx context.Context) AttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachmentPtrOutput)
 }
 
 type AttachmentOutput struct {
@@ -164,6 +179,23 @@ func (o AttachmentOutput) ToAttachmentOutputWithContext(ctx context.Context) Att
 	return o
 }
 
+type AttachmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Attachment)(nil)).Elem()
+}
+
+func (o AttachmentPtrOutput) ToAttachmentPtrOutput() AttachmentPtrOutput {
+	return o
+}
+
+func (o AttachmentPtrOutput) ToAttachmentPtrOutputWithContext(ctx context.Context) AttachmentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AttachmentOutput{})
+	pulumi.RegisterOutputType(AttachmentPtrOutput{})
 }

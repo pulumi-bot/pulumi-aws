@@ -280,6 +280,13 @@ type PeeringConnectionOptionsInput interface {
 	ToPeeringConnectionOptionsOutputWithContext(ctx context.Context) PeeringConnectionOptionsOutput
 }
 
+type PeeringConnectionOptionsPtrInput interface {
+	pulumi.Input
+
+	ToPeeringConnectionOptionsPtrOutput() PeeringConnectionOptionsPtrOutput
+	ToPeeringConnectionOptionsPtrOutputWithContext(ctx context.Context) PeeringConnectionOptionsPtrOutput
+}
+
 func (PeeringConnectionOptions) ElementType() reflect.Type {
 	return reflect.TypeOf((*PeeringConnectionOptions)(nil)).Elem()
 }
@@ -290,6 +297,14 @@ func (i PeeringConnectionOptions) ToPeeringConnectionOptionsOutput() PeeringConn
 
 func (i PeeringConnectionOptions) ToPeeringConnectionOptionsOutputWithContext(ctx context.Context) PeeringConnectionOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringConnectionOptionsOutput)
+}
+
+func (i PeeringConnectionOptions) ToPeeringConnectionOptionsPtrOutput() PeeringConnectionOptionsPtrOutput {
+	return i.ToPeeringConnectionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i PeeringConnectionOptions) ToPeeringConnectionOptionsPtrOutputWithContext(ctx context.Context) PeeringConnectionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PeeringConnectionOptionsPtrOutput)
 }
 
 type PeeringConnectionOptionsOutput struct {
@@ -308,6 +323,23 @@ func (o PeeringConnectionOptionsOutput) ToPeeringConnectionOptionsOutputWithCont
 	return o
 }
 
+type PeeringConnectionOptionsPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PeeringConnectionOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PeeringConnectionOptions)(nil)).Elem()
+}
+
+func (o PeeringConnectionOptionsPtrOutput) ToPeeringConnectionOptionsPtrOutput() PeeringConnectionOptionsPtrOutput {
+	return o
+}
+
+func (o PeeringConnectionOptionsPtrOutput) ToPeeringConnectionOptionsPtrOutputWithContext(ctx context.Context) PeeringConnectionOptionsPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PeeringConnectionOptionsOutput{})
+	pulumi.RegisterOutputType(PeeringConnectionOptionsPtrOutput{})
 }

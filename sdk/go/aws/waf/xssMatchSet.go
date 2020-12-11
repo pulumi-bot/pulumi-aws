@@ -142,6 +142,13 @@ type XssMatchSetInput interface {
 	ToXssMatchSetOutputWithContext(ctx context.Context) XssMatchSetOutput
 }
 
+type XssMatchSetPtrInput interface {
+	pulumi.Input
+
+	ToXssMatchSetPtrOutput() XssMatchSetPtrOutput
+	ToXssMatchSetPtrOutputWithContext(ctx context.Context) XssMatchSetPtrOutput
+}
+
 func (XssMatchSet) ElementType() reflect.Type {
 	return reflect.TypeOf((*XssMatchSet)(nil)).Elem()
 }
@@ -152,6 +159,14 @@ func (i XssMatchSet) ToXssMatchSetOutput() XssMatchSetOutput {
 
 func (i XssMatchSet) ToXssMatchSetOutputWithContext(ctx context.Context) XssMatchSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(XssMatchSetOutput)
+}
+
+func (i XssMatchSet) ToXssMatchSetPtrOutput() XssMatchSetPtrOutput {
+	return i.ToXssMatchSetPtrOutputWithContext(context.Background())
+}
+
+func (i XssMatchSet) ToXssMatchSetPtrOutputWithContext(ctx context.Context) XssMatchSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(XssMatchSetPtrOutput)
 }
 
 type XssMatchSetOutput struct {
@@ -170,6 +185,23 @@ func (o XssMatchSetOutput) ToXssMatchSetOutputWithContext(ctx context.Context) X
 	return o
 }
 
+type XssMatchSetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (XssMatchSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**XssMatchSet)(nil)).Elem()
+}
+
+func (o XssMatchSetPtrOutput) ToXssMatchSetPtrOutput() XssMatchSetPtrOutput {
+	return o
+}
+
+func (o XssMatchSetPtrOutput) ToXssMatchSetPtrOutputWithContext(ctx context.Context) XssMatchSetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(XssMatchSetOutput{})
+	pulumi.RegisterOutputType(XssMatchSetPtrOutput{})
 }

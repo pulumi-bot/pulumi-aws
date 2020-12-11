@@ -312,6 +312,13 @@ type CustomLayerInput interface {
 	ToCustomLayerOutputWithContext(ctx context.Context) CustomLayerOutput
 }
 
+type CustomLayerPtrInput interface {
+	pulumi.Input
+
+	ToCustomLayerPtrOutput() CustomLayerPtrOutput
+	ToCustomLayerPtrOutputWithContext(ctx context.Context) CustomLayerPtrOutput
+}
+
 func (CustomLayer) ElementType() reflect.Type {
 	return reflect.TypeOf((*CustomLayer)(nil)).Elem()
 }
@@ -322,6 +329,14 @@ func (i CustomLayer) ToCustomLayerOutput() CustomLayerOutput {
 
 func (i CustomLayer) ToCustomLayerOutputWithContext(ctx context.Context) CustomLayerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomLayerOutput)
+}
+
+func (i CustomLayer) ToCustomLayerPtrOutput() CustomLayerPtrOutput {
+	return i.ToCustomLayerPtrOutputWithContext(context.Background())
+}
+
+func (i CustomLayer) ToCustomLayerPtrOutputWithContext(ctx context.Context) CustomLayerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomLayerPtrOutput)
 }
 
 type CustomLayerOutput struct {
@@ -340,6 +355,23 @@ func (o CustomLayerOutput) ToCustomLayerOutputWithContext(ctx context.Context) C
 	return o
 }
 
+type CustomLayerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CustomLayerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomLayer)(nil)).Elem()
+}
+
+func (o CustomLayerPtrOutput) ToCustomLayerPtrOutput() CustomLayerPtrOutput {
+	return o
+}
+
+func (o CustomLayerPtrOutput) ToCustomLayerPtrOutputWithContext(ctx context.Context) CustomLayerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CustomLayerOutput{})
+	pulumi.RegisterOutputType(CustomLayerPtrOutput{})
 }

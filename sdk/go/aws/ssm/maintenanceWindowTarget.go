@@ -237,6 +237,13 @@ type MaintenanceWindowTargetInput interface {
 	ToMaintenanceWindowTargetOutputWithContext(ctx context.Context) MaintenanceWindowTargetOutput
 }
 
+type MaintenanceWindowTargetPtrInput interface {
+	pulumi.Input
+
+	ToMaintenanceWindowTargetPtrOutput() MaintenanceWindowTargetPtrOutput
+	ToMaintenanceWindowTargetPtrOutputWithContext(ctx context.Context) MaintenanceWindowTargetPtrOutput
+}
+
 func (MaintenanceWindowTarget) ElementType() reflect.Type {
 	return reflect.TypeOf((*MaintenanceWindowTarget)(nil)).Elem()
 }
@@ -247,6 +254,14 @@ func (i MaintenanceWindowTarget) ToMaintenanceWindowTargetOutput() MaintenanceWi
 
 func (i MaintenanceWindowTarget) ToMaintenanceWindowTargetOutputWithContext(ctx context.Context) MaintenanceWindowTargetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowTargetOutput)
+}
+
+func (i MaintenanceWindowTarget) ToMaintenanceWindowTargetPtrOutput() MaintenanceWindowTargetPtrOutput {
+	return i.ToMaintenanceWindowTargetPtrOutputWithContext(context.Background())
+}
+
+func (i MaintenanceWindowTarget) ToMaintenanceWindowTargetPtrOutputWithContext(ctx context.Context) MaintenanceWindowTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowTargetPtrOutput)
 }
 
 type MaintenanceWindowTargetOutput struct {
@@ -265,6 +280,23 @@ func (o MaintenanceWindowTargetOutput) ToMaintenanceWindowTargetOutputWithContex
 	return o
 }
 
+type MaintenanceWindowTargetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MaintenanceWindowTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenanceWindowTarget)(nil)).Elem()
+}
+
+func (o MaintenanceWindowTargetPtrOutput) ToMaintenanceWindowTargetPtrOutput() MaintenanceWindowTargetPtrOutput {
+	return o
+}
+
+func (o MaintenanceWindowTargetPtrOutput) ToMaintenanceWindowTargetPtrOutputWithContext(ctx context.Context) MaintenanceWindowTargetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MaintenanceWindowTargetOutput{})
+	pulumi.RegisterOutputType(MaintenanceWindowTargetPtrOutput{})
 }

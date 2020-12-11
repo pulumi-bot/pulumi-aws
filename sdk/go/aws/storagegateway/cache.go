@@ -133,6 +133,13 @@ type CacheInput interface {
 	ToCacheOutputWithContext(ctx context.Context) CacheOutput
 }
 
+type CachePtrInput interface {
+	pulumi.Input
+
+	ToCachePtrOutput() CachePtrOutput
+	ToCachePtrOutputWithContext(ctx context.Context) CachePtrOutput
+}
+
 func (Cache) ElementType() reflect.Type {
 	return reflect.TypeOf((*Cache)(nil)).Elem()
 }
@@ -143,6 +150,14 @@ func (i Cache) ToCacheOutput() CacheOutput {
 
 func (i Cache) ToCacheOutputWithContext(ctx context.Context) CacheOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CacheOutput)
+}
+
+func (i Cache) ToCachePtrOutput() CachePtrOutput {
+	return i.ToCachePtrOutputWithContext(context.Background())
+}
+
+func (i Cache) ToCachePtrOutputWithContext(ctx context.Context) CachePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CachePtrOutput)
 }
 
 type CacheOutput struct {
@@ -161,6 +176,23 @@ func (o CacheOutput) ToCacheOutputWithContext(ctx context.Context) CacheOutput {
 	return o
 }
 
+type CachePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CachePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Cache)(nil)).Elem()
+}
+
+func (o CachePtrOutput) ToCachePtrOutput() CachePtrOutput {
+	return o
+}
+
+func (o CachePtrOutput) ToCachePtrOutputWithContext(ctx context.Context) CachePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CacheOutput{})
+	pulumi.RegisterOutputType(CachePtrOutput{})
 }

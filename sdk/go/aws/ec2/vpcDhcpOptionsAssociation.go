@@ -135,6 +135,13 @@ type VpcDhcpOptionsAssociationInput interface {
 	ToVpcDhcpOptionsAssociationOutputWithContext(ctx context.Context) VpcDhcpOptionsAssociationOutput
 }
 
+type VpcDhcpOptionsAssociationPtrInput interface {
+	pulumi.Input
+
+	ToVpcDhcpOptionsAssociationPtrOutput() VpcDhcpOptionsAssociationPtrOutput
+	ToVpcDhcpOptionsAssociationPtrOutputWithContext(ctx context.Context) VpcDhcpOptionsAssociationPtrOutput
+}
+
 func (VpcDhcpOptionsAssociation) ElementType() reflect.Type {
 	return reflect.TypeOf((*VpcDhcpOptionsAssociation)(nil)).Elem()
 }
@@ -145,6 +152,14 @@ func (i VpcDhcpOptionsAssociation) ToVpcDhcpOptionsAssociationOutput() VpcDhcpOp
 
 func (i VpcDhcpOptionsAssociation) ToVpcDhcpOptionsAssociationOutputWithContext(ctx context.Context) VpcDhcpOptionsAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcDhcpOptionsAssociationOutput)
+}
+
+func (i VpcDhcpOptionsAssociation) ToVpcDhcpOptionsAssociationPtrOutput() VpcDhcpOptionsAssociationPtrOutput {
+	return i.ToVpcDhcpOptionsAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i VpcDhcpOptionsAssociation) ToVpcDhcpOptionsAssociationPtrOutputWithContext(ctx context.Context) VpcDhcpOptionsAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcDhcpOptionsAssociationPtrOutput)
 }
 
 type VpcDhcpOptionsAssociationOutput struct {
@@ -163,6 +178,23 @@ func (o VpcDhcpOptionsAssociationOutput) ToVpcDhcpOptionsAssociationOutputWithCo
 	return o
 }
 
+type VpcDhcpOptionsAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcDhcpOptionsAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcDhcpOptionsAssociation)(nil)).Elem()
+}
+
+func (o VpcDhcpOptionsAssociationPtrOutput) ToVpcDhcpOptionsAssociationPtrOutput() VpcDhcpOptionsAssociationPtrOutput {
+	return o
+}
+
+func (o VpcDhcpOptionsAssociationPtrOutput) ToVpcDhcpOptionsAssociationPtrOutputWithContext(ctx context.Context) VpcDhcpOptionsAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VpcDhcpOptionsAssociationOutput{})
+	pulumi.RegisterOutputType(VpcDhcpOptionsAssociationPtrOutput{})
 }

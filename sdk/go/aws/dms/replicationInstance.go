@@ -355,6 +355,13 @@ type ReplicationInstanceInput interface {
 	ToReplicationInstanceOutputWithContext(ctx context.Context) ReplicationInstanceOutput
 }
 
+type ReplicationInstancePtrInput interface {
+	pulumi.Input
+
+	ToReplicationInstancePtrOutput() ReplicationInstancePtrOutput
+	ToReplicationInstancePtrOutputWithContext(ctx context.Context) ReplicationInstancePtrOutput
+}
+
 func (ReplicationInstance) ElementType() reflect.Type {
 	return reflect.TypeOf((*ReplicationInstance)(nil)).Elem()
 }
@@ -365,6 +372,14 @@ func (i ReplicationInstance) ToReplicationInstanceOutput() ReplicationInstanceOu
 
 func (i ReplicationInstance) ToReplicationInstanceOutputWithContext(ctx context.Context) ReplicationInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationInstanceOutput)
+}
+
+func (i ReplicationInstance) ToReplicationInstancePtrOutput() ReplicationInstancePtrOutput {
+	return i.ToReplicationInstancePtrOutputWithContext(context.Background())
+}
+
+func (i ReplicationInstance) ToReplicationInstancePtrOutputWithContext(ctx context.Context) ReplicationInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationInstancePtrOutput)
 }
 
 type ReplicationInstanceOutput struct {
@@ -383,6 +398,23 @@ func (o ReplicationInstanceOutput) ToReplicationInstanceOutputWithContext(ctx co
 	return o
 }
 
+type ReplicationInstancePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReplicationInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplicationInstance)(nil)).Elem()
+}
+
+func (o ReplicationInstancePtrOutput) ToReplicationInstancePtrOutput() ReplicationInstancePtrOutput {
+	return o
+}
+
+func (o ReplicationInstancePtrOutput) ToReplicationInstancePtrOutputWithContext(ctx context.Context) ReplicationInstancePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ReplicationInstanceOutput{})
+	pulumi.RegisterOutputType(ReplicationInstancePtrOutput{})
 }

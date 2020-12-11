@@ -208,6 +208,13 @@ type UserDefinedFunctionInput interface {
 	ToUserDefinedFunctionOutputWithContext(ctx context.Context) UserDefinedFunctionOutput
 }
 
+type UserDefinedFunctionPtrInput interface {
+	pulumi.Input
+
+	ToUserDefinedFunctionPtrOutput() UserDefinedFunctionPtrOutput
+	ToUserDefinedFunctionPtrOutputWithContext(ctx context.Context) UserDefinedFunctionPtrOutput
+}
+
 func (UserDefinedFunction) ElementType() reflect.Type {
 	return reflect.TypeOf((*UserDefinedFunction)(nil)).Elem()
 }
@@ -218,6 +225,14 @@ func (i UserDefinedFunction) ToUserDefinedFunctionOutput() UserDefinedFunctionOu
 
 func (i UserDefinedFunction) ToUserDefinedFunctionOutputWithContext(ctx context.Context) UserDefinedFunctionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserDefinedFunctionOutput)
+}
+
+func (i UserDefinedFunction) ToUserDefinedFunctionPtrOutput() UserDefinedFunctionPtrOutput {
+	return i.ToUserDefinedFunctionPtrOutputWithContext(context.Background())
+}
+
+func (i UserDefinedFunction) ToUserDefinedFunctionPtrOutputWithContext(ctx context.Context) UserDefinedFunctionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserDefinedFunctionPtrOutput)
 }
 
 type UserDefinedFunctionOutput struct {
@@ -236,6 +251,23 @@ func (o UserDefinedFunctionOutput) ToUserDefinedFunctionOutputWithContext(ctx co
 	return o
 }
 
+type UserDefinedFunctionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserDefinedFunctionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserDefinedFunction)(nil)).Elem()
+}
+
+func (o UserDefinedFunctionPtrOutput) ToUserDefinedFunctionPtrOutput() UserDefinedFunctionPtrOutput {
+	return o
+}
+
+func (o UserDefinedFunctionPtrOutput) ToUserDefinedFunctionPtrOutputWithContext(ctx context.Context) UserDefinedFunctionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(UserDefinedFunctionOutput{})
+	pulumi.RegisterOutputType(UserDefinedFunctionPtrOutput{})
 }

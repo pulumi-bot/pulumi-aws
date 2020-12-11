@@ -213,6 +213,13 @@ type InstanceGroupInput interface {
 	ToInstanceGroupOutputWithContext(ctx context.Context) InstanceGroupOutput
 }
 
+type InstanceGroupPtrInput interface {
+	pulumi.Input
+
+	ToInstanceGroupPtrOutput() InstanceGroupPtrOutput
+	ToInstanceGroupPtrOutputWithContext(ctx context.Context) InstanceGroupPtrOutput
+}
+
 func (InstanceGroup) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceGroup)(nil)).Elem()
 }
@@ -223,6 +230,14 @@ func (i InstanceGroup) ToInstanceGroupOutput() InstanceGroupOutput {
 
 func (i InstanceGroup) ToInstanceGroupOutputWithContext(ctx context.Context) InstanceGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupOutput)
+}
+
+func (i InstanceGroup) ToInstanceGroupPtrOutput() InstanceGroupPtrOutput {
+	return i.ToInstanceGroupPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceGroup) ToInstanceGroupPtrOutputWithContext(ctx context.Context) InstanceGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupPtrOutput)
 }
 
 type InstanceGroupOutput struct {
@@ -241,6 +256,23 @@ func (o InstanceGroupOutput) ToInstanceGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
+type InstanceGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGroup)(nil)).Elem()
+}
+
+func (o InstanceGroupPtrOutput) ToInstanceGroupPtrOutput() InstanceGroupPtrOutput {
+	return o
+}
+
+func (o InstanceGroupPtrOutput) ToInstanceGroupPtrOutputWithContext(ctx context.Context) InstanceGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(InstanceGroupOutput{})
+	pulumi.RegisterOutputType(InstanceGroupPtrOutput{})
 }

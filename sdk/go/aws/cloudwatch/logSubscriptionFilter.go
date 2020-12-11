@@ -177,6 +177,13 @@ type LogSubscriptionFilterInput interface {
 	ToLogSubscriptionFilterOutputWithContext(ctx context.Context) LogSubscriptionFilterOutput
 }
 
+type LogSubscriptionFilterPtrInput interface {
+	pulumi.Input
+
+	ToLogSubscriptionFilterPtrOutput() LogSubscriptionFilterPtrOutput
+	ToLogSubscriptionFilterPtrOutputWithContext(ctx context.Context) LogSubscriptionFilterPtrOutput
+}
+
 func (LogSubscriptionFilter) ElementType() reflect.Type {
 	return reflect.TypeOf((*LogSubscriptionFilter)(nil)).Elem()
 }
@@ -187,6 +194,14 @@ func (i LogSubscriptionFilter) ToLogSubscriptionFilterOutput() LogSubscriptionFi
 
 func (i LogSubscriptionFilter) ToLogSubscriptionFilterOutputWithContext(ctx context.Context) LogSubscriptionFilterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogSubscriptionFilterOutput)
+}
+
+func (i LogSubscriptionFilter) ToLogSubscriptionFilterPtrOutput() LogSubscriptionFilterPtrOutput {
+	return i.ToLogSubscriptionFilterPtrOutputWithContext(context.Background())
+}
+
+func (i LogSubscriptionFilter) ToLogSubscriptionFilterPtrOutputWithContext(ctx context.Context) LogSubscriptionFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogSubscriptionFilterPtrOutput)
 }
 
 type LogSubscriptionFilterOutput struct {
@@ -205,6 +220,23 @@ func (o LogSubscriptionFilterOutput) ToLogSubscriptionFilterOutputWithContext(ct
 	return o
 }
 
+type LogSubscriptionFilterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogSubscriptionFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogSubscriptionFilter)(nil)).Elem()
+}
+
+func (o LogSubscriptionFilterPtrOutput) ToLogSubscriptionFilterPtrOutput() LogSubscriptionFilterPtrOutput {
+	return o
+}
+
+func (o LogSubscriptionFilterPtrOutput) ToLogSubscriptionFilterPtrOutputWithContext(ctx context.Context) LogSubscriptionFilterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LogSubscriptionFilterOutput{})
+	pulumi.RegisterOutputType(LogSubscriptionFilterPtrOutput{})
 }

@@ -409,6 +409,13 @@ type UserPoolInput interface {
 	ToUserPoolOutputWithContext(ctx context.Context) UserPoolOutput
 }
 
+type UserPoolPtrInput interface {
+	pulumi.Input
+
+	ToUserPoolPtrOutput() UserPoolPtrOutput
+	ToUserPoolPtrOutputWithContext(ctx context.Context) UserPoolPtrOutput
+}
+
 func (UserPool) ElementType() reflect.Type {
 	return reflect.TypeOf((*UserPool)(nil)).Elem()
 }
@@ -419,6 +426,14 @@ func (i UserPool) ToUserPoolOutput() UserPoolOutput {
 
 func (i UserPool) ToUserPoolOutputWithContext(ctx context.Context) UserPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserPoolOutput)
+}
+
+func (i UserPool) ToUserPoolPtrOutput() UserPoolPtrOutput {
+	return i.ToUserPoolPtrOutputWithContext(context.Background())
+}
+
+func (i UserPool) ToUserPoolPtrOutputWithContext(ctx context.Context) UserPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolPtrOutput)
 }
 
 type UserPoolOutput struct {
@@ -437,6 +452,23 @@ func (o UserPoolOutput) ToUserPoolOutputWithContext(ctx context.Context) UserPoo
 	return o
 }
 
+type UserPoolPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserPoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPool)(nil)).Elem()
+}
+
+func (o UserPoolPtrOutput) ToUserPoolPtrOutput() UserPoolPtrOutput {
+	return o
+}
+
+func (o UserPoolPtrOutput) ToUserPoolPtrOutputWithContext(ctx context.Context) UserPoolPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(UserPoolOutput{})
+	pulumi.RegisterOutputType(UserPoolPtrOutput{})
 }

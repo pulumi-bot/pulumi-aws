@@ -324,6 +324,13 @@ type GangliaLayerInput interface {
 	ToGangliaLayerOutputWithContext(ctx context.Context) GangliaLayerOutput
 }
 
+type GangliaLayerPtrInput interface {
+	pulumi.Input
+
+	ToGangliaLayerPtrOutput() GangliaLayerPtrOutput
+	ToGangliaLayerPtrOutputWithContext(ctx context.Context) GangliaLayerPtrOutput
+}
+
 func (GangliaLayer) ElementType() reflect.Type {
 	return reflect.TypeOf((*GangliaLayer)(nil)).Elem()
 }
@@ -334,6 +341,14 @@ func (i GangliaLayer) ToGangliaLayerOutput() GangliaLayerOutput {
 
 func (i GangliaLayer) ToGangliaLayerOutputWithContext(ctx context.Context) GangliaLayerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GangliaLayerOutput)
+}
+
+func (i GangliaLayer) ToGangliaLayerPtrOutput() GangliaLayerPtrOutput {
+	return i.ToGangliaLayerPtrOutputWithContext(context.Background())
+}
+
+func (i GangliaLayer) ToGangliaLayerPtrOutputWithContext(ctx context.Context) GangliaLayerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GangliaLayerPtrOutput)
 }
 
 type GangliaLayerOutput struct {
@@ -352,6 +367,23 @@ func (o GangliaLayerOutput) ToGangliaLayerOutputWithContext(ctx context.Context)
 	return o
 }
 
+type GangliaLayerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GangliaLayerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GangliaLayer)(nil)).Elem()
+}
+
+func (o GangliaLayerPtrOutput) ToGangliaLayerPtrOutput() GangliaLayerPtrOutput {
+	return o
+}
+
+func (o GangliaLayerPtrOutput) ToGangliaLayerPtrOutputWithContext(ctx context.Context) GangliaLayerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(GangliaLayerOutput{})
+	pulumi.RegisterOutputType(GangliaLayerPtrOutput{})
 }

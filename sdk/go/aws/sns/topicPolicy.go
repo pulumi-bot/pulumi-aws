@@ -140,6 +140,13 @@ type TopicPolicyInput interface {
 	ToTopicPolicyOutputWithContext(ctx context.Context) TopicPolicyOutput
 }
 
+type TopicPolicyPtrInput interface {
+	pulumi.Input
+
+	ToTopicPolicyPtrOutput() TopicPolicyPtrOutput
+	ToTopicPolicyPtrOutputWithContext(ctx context.Context) TopicPolicyPtrOutput
+}
+
 func (TopicPolicy) ElementType() reflect.Type {
 	return reflect.TypeOf((*TopicPolicy)(nil)).Elem()
 }
@@ -150,6 +157,14 @@ func (i TopicPolicy) ToTopicPolicyOutput() TopicPolicyOutput {
 
 func (i TopicPolicy) ToTopicPolicyOutputWithContext(ctx context.Context) TopicPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TopicPolicyOutput)
+}
+
+func (i TopicPolicy) ToTopicPolicyPtrOutput() TopicPolicyPtrOutput {
+	return i.ToTopicPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i TopicPolicy) ToTopicPolicyPtrOutputWithContext(ctx context.Context) TopicPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicPolicyPtrOutput)
 }
 
 type TopicPolicyOutput struct {
@@ -168,6 +183,23 @@ func (o TopicPolicyOutput) ToTopicPolicyOutputWithContext(ctx context.Context) T
 	return o
 }
 
+type TopicPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TopicPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicPolicy)(nil)).Elem()
+}
+
+func (o TopicPolicyPtrOutput) ToTopicPolicyPtrOutput() TopicPolicyPtrOutput {
+	return o
+}
+
+func (o TopicPolicyPtrOutput) ToTopicPolicyPtrOutputWithContext(ctx context.Context) TopicPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TopicPolicyOutput{})
+	pulumi.RegisterOutputType(TopicPolicyPtrOutput{})
 }

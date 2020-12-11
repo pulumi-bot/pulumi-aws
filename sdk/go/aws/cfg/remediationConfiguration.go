@@ -212,6 +212,13 @@ type RemediationConfigurationInput interface {
 	ToRemediationConfigurationOutputWithContext(ctx context.Context) RemediationConfigurationOutput
 }
 
+type RemediationConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToRemediationConfigurationPtrOutput() RemediationConfigurationPtrOutput
+	ToRemediationConfigurationPtrOutputWithContext(ctx context.Context) RemediationConfigurationPtrOutput
+}
+
 func (RemediationConfiguration) ElementType() reflect.Type {
 	return reflect.TypeOf((*RemediationConfiguration)(nil)).Elem()
 }
@@ -222,6 +229,14 @@ func (i RemediationConfiguration) ToRemediationConfigurationOutput() Remediation
 
 func (i RemediationConfiguration) ToRemediationConfigurationOutputWithContext(ctx context.Context) RemediationConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RemediationConfigurationOutput)
+}
+
+func (i RemediationConfiguration) ToRemediationConfigurationPtrOutput() RemediationConfigurationPtrOutput {
+	return i.ToRemediationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i RemediationConfiguration) ToRemediationConfigurationPtrOutputWithContext(ctx context.Context) RemediationConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemediationConfigurationPtrOutput)
 }
 
 type RemediationConfigurationOutput struct {
@@ -240,6 +255,23 @@ func (o RemediationConfigurationOutput) ToRemediationConfigurationOutputWithCont
 	return o
 }
 
+type RemediationConfigurationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RemediationConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RemediationConfiguration)(nil)).Elem()
+}
+
+func (o RemediationConfigurationPtrOutput) ToRemediationConfigurationPtrOutput() RemediationConfigurationPtrOutput {
+	return o
+}
+
+func (o RemediationConfigurationPtrOutput) ToRemediationConfigurationPtrOutputWithContext(ctx context.Context) RemediationConfigurationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RemediationConfigurationOutput{})
+	pulumi.RegisterOutputType(RemediationConfigurationPtrOutput{})
 }

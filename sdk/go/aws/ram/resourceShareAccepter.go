@@ -191,6 +191,13 @@ type ResourceShareAccepterInput interface {
 	ToResourceShareAccepterOutputWithContext(ctx context.Context) ResourceShareAccepterOutput
 }
 
+type ResourceShareAccepterPtrInput interface {
+	pulumi.Input
+
+	ToResourceShareAccepterPtrOutput() ResourceShareAccepterPtrOutput
+	ToResourceShareAccepterPtrOutputWithContext(ctx context.Context) ResourceShareAccepterPtrOutput
+}
+
 func (ResourceShareAccepter) ElementType() reflect.Type {
 	return reflect.TypeOf((*ResourceShareAccepter)(nil)).Elem()
 }
@@ -201,6 +208,14 @@ func (i ResourceShareAccepter) ToResourceShareAccepterOutput() ResourceShareAcce
 
 func (i ResourceShareAccepter) ToResourceShareAccepterOutputWithContext(ctx context.Context) ResourceShareAccepterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceShareAccepterOutput)
+}
+
+func (i ResourceShareAccepter) ToResourceShareAccepterPtrOutput() ResourceShareAccepterPtrOutput {
+	return i.ToResourceShareAccepterPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceShareAccepter) ToResourceShareAccepterPtrOutputWithContext(ctx context.Context) ResourceShareAccepterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceShareAccepterPtrOutput)
 }
 
 type ResourceShareAccepterOutput struct {
@@ -219,6 +234,23 @@ func (o ResourceShareAccepterOutput) ToResourceShareAccepterOutputWithContext(ct
 	return o
 }
 
+type ResourceShareAccepterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourceShareAccepterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceShareAccepter)(nil)).Elem()
+}
+
+func (o ResourceShareAccepterPtrOutput) ToResourceShareAccepterPtrOutput() ResourceShareAccepterPtrOutput {
+	return o
+}
+
+func (o ResourceShareAccepterPtrOutput) ToResourceShareAccepterPtrOutputWithContext(ctx context.Context) ResourceShareAccepterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResourceShareAccepterOutput{})
+	pulumi.RegisterOutputType(ResourceShareAccepterPtrOutput{})
 }

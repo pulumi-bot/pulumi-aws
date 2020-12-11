@@ -157,6 +157,13 @@ type AliasInput interface {
 	ToAliasOutputWithContext(ctx context.Context) AliasOutput
 }
 
+type AliasPtrInput interface {
+	pulumi.Input
+
+	ToAliasPtrOutput() AliasPtrOutput
+	ToAliasPtrOutputWithContext(ctx context.Context) AliasPtrOutput
+}
+
 func (Alias) ElementType() reflect.Type {
 	return reflect.TypeOf((*Alias)(nil)).Elem()
 }
@@ -167,6 +174,14 @@ func (i Alias) ToAliasOutput() AliasOutput {
 
 func (i Alias) ToAliasOutputWithContext(ctx context.Context) AliasOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AliasOutput)
+}
+
+func (i Alias) ToAliasPtrOutput() AliasPtrOutput {
+	return i.ToAliasPtrOutputWithContext(context.Background())
+}
+
+func (i Alias) ToAliasPtrOutputWithContext(ctx context.Context) AliasPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AliasPtrOutput)
 }
 
 type AliasOutput struct {
@@ -185,6 +200,23 @@ func (o AliasOutput) ToAliasOutputWithContext(ctx context.Context) AliasOutput {
 	return o
 }
 
+type AliasPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AliasPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Alias)(nil)).Elem()
+}
+
+func (o AliasPtrOutput) ToAliasPtrOutput() AliasPtrOutput {
+	return o
+}
+
+func (o AliasPtrOutput) ToAliasPtrOutputWithContext(ctx context.Context) AliasPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AliasOutput{})
+	pulumi.RegisterOutputType(AliasPtrOutput{})
 }

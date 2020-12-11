@@ -247,6 +247,13 @@ type HostedPublicVirtualInterfaceInput interface {
 	ToHostedPublicVirtualInterfaceOutputWithContext(ctx context.Context) HostedPublicVirtualInterfaceOutput
 }
 
+type HostedPublicVirtualInterfacePtrInput interface {
+	pulumi.Input
+
+	ToHostedPublicVirtualInterfacePtrOutput() HostedPublicVirtualInterfacePtrOutput
+	ToHostedPublicVirtualInterfacePtrOutputWithContext(ctx context.Context) HostedPublicVirtualInterfacePtrOutput
+}
+
 func (HostedPublicVirtualInterface) ElementType() reflect.Type {
 	return reflect.TypeOf((*HostedPublicVirtualInterface)(nil)).Elem()
 }
@@ -257,6 +264,14 @@ func (i HostedPublicVirtualInterface) ToHostedPublicVirtualInterfaceOutput() Hos
 
 func (i HostedPublicVirtualInterface) ToHostedPublicVirtualInterfaceOutputWithContext(ctx context.Context) HostedPublicVirtualInterfaceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostedPublicVirtualInterfaceOutput)
+}
+
+func (i HostedPublicVirtualInterface) ToHostedPublicVirtualInterfacePtrOutput() HostedPublicVirtualInterfacePtrOutput {
+	return i.ToHostedPublicVirtualInterfacePtrOutputWithContext(context.Background())
+}
+
+func (i HostedPublicVirtualInterface) ToHostedPublicVirtualInterfacePtrOutputWithContext(ctx context.Context) HostedPublicVirtualInterfacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostedPublicVirtualInterfacePtrOutput)
 }
 
 type HostedPublicVirtualInterfaceOutput struct {
@@ -275,6 +290,23 @@ func (o HostedPublicVirtualInterfaceOutput) ToHostedPublicVirtualInterfaceOutput
 	return o
 }
 
+type HostedPublicVirtualInterfacePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (HostedPublicVirtualInterfacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HostedPublicVirtualInterface)(nil)).Elem()
+}
+
+func (o HostedPublicVirtualInterfacePtrOutput) ToHostedPublicVirtualInterfacePtrOutput() HostedPublicVirtualInterfacePtrOutput {
+	return o
+}
+
+func (o HostedPublicVirtualInterfacePtrOutput) ToHostedPublicVirtualInterfacePtrOutputWithContext(ctx context.Context) HostedPublicVirtualInterfacePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(HostedPublicVirtualInterfaceOutput{})
+	pulumi.RegisterOutputType(HostedPublicVirtualInterfacePtrOutput{})
 }

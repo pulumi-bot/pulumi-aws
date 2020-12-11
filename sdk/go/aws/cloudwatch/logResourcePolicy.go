@@ -206,6 +206,13 @@ type LogResourcePolicyInput interface {
 	ToLogResourcePolicyOutputWithContext(ctx context.Context) LogResourcePolicyOutput
 }
 
+type LogResourcePolicyPtrInput interface {
+	pulumi.Input
+
+	ToLogResourcePolicyPtrOutput() LogResourcePolicyPtrOutput
+	ToLogResourcePolicyPtrOutputWithContext(ctx context.Context) LogResourcePolicyPtrOutput
+}
+
 func (LogResourcePolicy) ElementType() reflect.Type {
 	return reflect.TypeOf((*LogResourcePolicy)(nil)).Elem()
 }
@@ -216,6 +223,14 @@ func (i LogResourcePolicy) ToLogResourcePolicyOutput() LogResourcePolicyOutput {
 
 func (i LogResourcePolicy) ToLogResourcePolicyOutputWithContext(ctx context.Context) LogResourcePolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogResourcePolicyOutput)
+}
+
+func (i LogResourcePolicy) ToLogResourcePolicyPtrOutput() LogResourcePolicyPtrOutput {
+	return i.ToLogResourcePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i LogResourcePolicy) ToLogResourcePolicyPtrOutputWithContext(ctx context.Context) LogResourcePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogResourcePolicyPtrOutput)
 }
 
 type LogResourcePolicyOutput struct {
@@ -234,6 +249,23 @@ func (o LogResourcePolicyOutput) ToLogResourcePolicyOutputWithContext(ctx contex
 	return o
 }
 
+type LogResourcePolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogResourcePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogResourcePolicy)(nil)).Elem()
+}
+
+func (o LogResourcePolicyPtrOutput) ToLogResourcePolicyPtrOutput() LogResourcePolicyPtrOutput {
+	return o
+}
+
+func (o LogResourcePolicyPtrOutput) ToLogResourcePolicyPtrOutputWithContext(ctx context.Context) LogResourcePolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LogResourcePolicyOutput{})
+	pulumi.RegisterOutputType(LogResourcePolicyPtrOutput{})
 }

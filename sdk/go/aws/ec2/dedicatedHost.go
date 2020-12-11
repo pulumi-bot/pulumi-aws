@@ -166,6 +166,13 @@ type DedicatedHostInput interface {
 	ToDedicatedHostOutputWithContext(ctx context.Context) DedicatedHostOutput
 }
 
+type DedicatedHostPtrInput interface {
+	pulumi.Input
+
+	ToDedicatedHostPtrOutput() DedicatedHostPtrOutput
+	ToDedicatedHostPtrOutputWithContext(ctx context.Context) DedicatedHostPtrOutput
+}
+
 func (DedicatedHost) ElementType() reflect.Type {
 	return reflect.TypeOf((*DedicatedHost)(nil)).Elem()
 }
@@ -176,6 +183,14 @@ func (i DedicatedHost) ToDedicatedHostOutput() DedicatedHostOutput {
 
 func (i DedicatedHost) ToDedicatedHostOutputWithContext(ctx context.Context) DedicatedHostOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostOutput)
+}
+
+func (i DedicatedHost) ToDedicatedHostPtrOutput() DedicatedHostPtrOutput {
+	return i.ToDedicatedHostPtrOutputWithContext(context.Background())
+}
+
+func (i DedicatedHost) ToDedicatedHostPtrOutputWithContext(ctx context.Context) DedicatedHostPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHostPtrOutput)
 }
 
 type DedicatedHostOutput struct {
@@ -194,6 +209,23 @@ func (o DedicatedHostOutput) ToDedicatedHostOutputWithContext(ctx context.Contex
 	return o
 }
 
+type DedicatedHostPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DedicatedHostPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DedicatedHost)(nil)).Elem()
+}
+
+func (o DedicatedHostPtrOutput) ToDedicatedHostPtrOutput() DedicatedHostPtrOutput {
+	return o
+}
+
+func (o DedicatedHostPtrOutput) ToDedicatedHostPtrOutputWithContext(ctx context.Context) DedicatedHostPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DedicatedHostOutput{})
+	pulumi.RegisterOutputType(DedicatedHostPtrOutput{})
 }

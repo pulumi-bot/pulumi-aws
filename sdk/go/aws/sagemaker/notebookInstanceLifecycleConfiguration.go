@@ -116,6 +116,13 @@ type NotebookInstanceLifecycleConfigurationInput interface {
 	ToNotebookInstanceLifecycleConfigurationOutputWithContext(ctx context.Context) NotebookInstanceLifecycleConfigurationOutput
 }
 
+type NotebookInstanceLifecycleConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToNotebookInstanceLifecycleConfigurationPtrOutput() NotebookInstanceLifecycleConfigurationPtrOutput
+	ToNotebookInstanceLifecycleConfigurationPtrOutputWithContext(ctx context.Context) NotebookInstanceLifecycleConfigurationPtrOutput
+}
+
 func (NotebookInstanceLifecycleConfiguration) ElementType() reflect.Type {
 	return reflect.TypeOf((*NotebookInstanceLifecycleConfiguration)(nil)).Elem()
 }
@@ -126,6 +133,14 @@ func (i NotebookInstanceLifecycleConfiguration) ToNotebookInstanceLifecycleConfi
 
 func (i NotebookInstanceLifecycleConfiguration) ToNotebookInstanceLifecycleConfigurationOutputWithContext(ctx context.Context) NotebookInstanceLifecycleConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NotebookInstanceLifecycleConfigurationOutput)
+}
+
+func (i NotebookInstanceLifecycleConfiguration) ToNotebookInstanceLifecycleConfigurationPtrOutput() NotebookInstanceLifecycleConfigurationPtrOutput {
+	return i.ToNotebookInstanceLifecycleConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i NotebookInstanceLifecycleConfiguration) ToNotebookInstanceLifecycleConfigurationPtrOutputWithContext(ctx context.Context) NotebookInstanceLifecycleConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookInstanceLifecycleConfigurationPtrOutput)
 }
 
 type NotebookInstanceLifecycleConfigurationOutput struct {
@@ -144,6 +159,23 @@ func (o NotebookInstanceLifecycleConfigurationOutput) ToNotebookInstanceLifecycl
 	return o
 }
 
+type NotebookInstanceLifecycleConfigurationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NotebookInstanceLifecycleConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookInstanceLifecycleConfiguration)(nil)).Elem()
+}
+
+func (o NotebookInstanceLifecycleConfigurationPtrOutput) ToNotebookInstanceLifecycleConfigurationPtrOutput() NotebookInstanceLifecycleConfigurationPtrOutput {
+	return o
+}
+
+func (o NotebookInstanceLifecycleConfigurationPtrOutput) ToNotebookInstanceLifecycleConfigurationPtrOutputWithContext(ctx context.Context) NotebookInstanceLifecycleConfigurationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NotebookInstanceLifecycleConfigurationOutput{})
+	pulumi.RegisterOutputType(NotebookInstanceLifecycleConfigurationPtrOutput{})
 }

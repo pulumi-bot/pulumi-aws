@@ -145,6 +145,13 @@ type LocalGatewayRouteInput interface {
 	ToLocalGatewayRouteOutputWithContext(ctx context.Context) LocalGatewayRouteOutput
 }
 
+type LocalGatewayRoutePtrInput interface {
+	pulumi.Input
+
+	ToLocalGatewayRoutePtrOutput() LocalGatewayRoutePtrOutput
+	ToLocalGatewayRoutePtrOutputWithContext(ctx context.Context) LocalGatewayRoutePtrOutput
+}
+
 func (LocalGatewayRoute) ElementType() reflect.Type {
 	return reflect.TypeOf((*LocalGatewayRoute)(nil)).Elem()
 }
@@ -155,6 +162,14 @@ func (i LocalGatewayRoute) ToLocalGatewayRouteOutput() LocalGatewayRouteOutput {
 
 func (i LocalGatewayRoute) ToLocalGatewayRouteOutputWithContext(ctx context.Context) LocalGatewayRouteOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LocalGatewayRouteOutput)
+}
+
+func (i LocalGatewayRoute) ToLocalGatewayRoutePtrOutput() LocalGatewayRoutePtrOutput {
+	return i.ToLocalGatewayRoutePtrOutputWithContext(context.Background())
+}
+
+func (i LocalGatewayRoute) ToLocalGatewayRoutePtrOutputWithContext(ctx context.Context) LocalGatewayRoutePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocalGatewayRoutePtrOutput)
 }
 
 type LocalGatewayRouteOutput struct {
@@ -173,6 +188,23 @@ func (o LocalGatewayRouteOutput) ToLocalGatewayRouteOutputWithContext(ctx contex
 	return o
 }
 
+type LocalGatewayRoutePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LocalGatewayRoutePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocalGatewayRoute)(nil)).Elem()
+}
+
+func (o LocalGatewayRoutePtrOutput) ToLocalGatewayRoutePtrOutput() LocalGatewayRoutePtrOutput {
+	return o
+}
+
+func (o LocalGatewayRoutePtrOutput) ToLocalGatewayRoutePtrOutputWithContext(ctx context.Context) LocalGatewayRoutePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LocalGatewayRouteOutput{})
+	pulumi.RegisterOutputType(LocalGatewayRoutePtrOutput{})
 }

@@ -157,6 +157,13 @@ type ApiMappingInput interface {
 	ToApiMappingOutputWithContext(ctx context.Context) ApiMappingOutput
 }
 
+type ApiMappingPtrInput interface {
+	pulumi.Input
+
+	ToApiMappingPtrOutput() ApiMappingPtrOutput
+	ToApiMappingPtrOutputWithContext(ctx context.Context) ApiMappingPtrOutput
+}
+
 func (ApiMapping) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApiMapping)(nil)).Elem()
 }
@@ -167,6 +174,14 @@ func (i ApiMapping) ToApiMappingOutput() ApiMappingOutput {
 
 func (i ApiMapping) ToApiMappingOutputWithContext(ctx context.Context) ApiMappingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiMappingOutput)
+}
+
+func (i ApiMapping) ToApiMappingPtrOutput() ApiMappingPtrOutput {
+	return i.ToApiMappingPtrOutputWithContext(context.Background())
+}
+
+func (i ApiMapping) ToApiMappingPtrOutputWithContext(ctx context.Context) ApiMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiMappingPtrOutput)
 }
 
 type ApiMappingOutput struct {
@@ -185,6 +200,23 @@ func (o ApiMappingOutput) ToApiMappingOutputWithContext(ctx context.Context) Api
 	return o
 }
 
+type ApiMappingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApiMappingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiMapping)(nil)).Elem()
+}
+
+func (o ApiMappingPtrOutput) ToApiMappingPtrOutput() ApiMappingPtrOutput {
+	return o
+}
+
+func (o ApiMappingPtrOutput) ToApiMappingPtrOutputWithContext(ctx context.Context) ApiMappingPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApiMappingOutput{})
+	pulumi.RegisterOutputType(ApiMappingPtrOutput{})
 }

@@ -150,6 +150,13 @@ type VpnGatewayAttachmentInput interface {
 	ToVpnGatewayAttachmentOutputWithContext(ctx context.Context) VpnGatewayAttachmentOutput
 }
 
+type VpnGatewayAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToVpnGatewayAttachmentPtrOutput() VpnGatewayAttachmentPtrOutput
+	ToVpnGatewayAttachmentPtrOutputWithContext(ctx context.Context) VpnGatewayAttachmentPtrOutput
+}
+
 func (VpnGatewayAttachment) ElementType() reflect.Type {
 	return reflect.TypeOf((*VpnGatewayAttachment)(nil)).Elem()
 }
@@ -160,6 +167,14 @@ func (i VpnGatewayAttachment) ToVpnGatewayAttachmentOutput() VpnGatewayAttachmen
 
 func (i VpnGatewayAttachment) ToVpnGatewayAttachmentOutputWithContext(ctx context.Context) VpnGatewayAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayAttachmentOutput)
+}
+
+func (i VpnGatewayAttachment) ToVpnGatewayAttachmentPtrOutput() VpnGatewayAttachmentPtrOutput {
+	return i.ToVpnGatewayAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i VpnGatewayAttachment) ToVpnGatewayAttachmentPtrOutputWithContext(ctx context.Context) VpnGatewayAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayAttachmentPtrOutput)
 }
 
 type VpnGatewayAttachmentOutput struct {
@@ -178,6 +193,23 @@ func (o VpnGatewayAttachmentOutput) ToVpnGatewayAttachmentOutputWithContext(ctx 
 	return o
 }
 
+type VpnGatewayAttachmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpnGatewayAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnGatewayAttachment)(nil)).Elem()
+}
+
+func (o VpnGatewayAttachmentPtrOutput) ToVpnGatewayAttachmentPtrOutput() VpnGatewayAttachmentPtrOutput {
+	return o
+}
+
+func (o VpnGatewayAttachmentPtrOutput) ToVpnGatewayAttachmentPtrOutputWithContext(ctx context.Context) VpnGatewayAttachmentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VpnGatewayAttachmentOutput{})
+	pulumi.RegisterOutputType(VpnGatewayAttachmentPtrOutput{})
 }

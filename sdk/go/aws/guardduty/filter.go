@@ -220,6 +220,13 @@ type FilterInput interface {
 	ToFilterOutputWithContext(ctx context.Context) FilterOutput
 }
 
+type FilterPtrInput interface {
+	pulumi.Input
+
+	ToFilterPtrOutput() FilterPtrOutput
+	ToFilterPtrOutputWithContext(ctx context.Context) FilterPtrOutput
+}
+
 func (Filter) ElementType() reflect.Type {
 	return reflect.TypeOf((*Filter)(nil)).Elem()
 }
@@ -230,6 +237,14 @@ func (i Filter) ToFilterOutput() FilterOutput {
 
 func (i Filter) ToFilterOutputWithContext(ctx context.Context) FilterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FilterOutput)
+}
+
+func (i Filter) ToFilterPtrOutput() FilterPtrOutput {
+	return i.ToFilterPtrOutputWithContext(context.Background())
+}
+
+func (i Filter) ToFilterPtrOutputWithContext(ctx context.Context) FilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilterPtrOutput)
 }
 
 type FilterOutput struct {
@@ -248,6 +263,23 @@ func (o FilterOutput) ToFilterOutputWithContext(ctx context.Context) FilterOutpu
 	return o
 }
 
+type FilterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Filter)(nil)).Elem()
+}
+
+func (o FilterPtrOutput) ToFilterPtrOutput() FilterPtrOutput {
+	return o
+}
+
+func (o FilterPtrOutput) ToFilterPtrOutputWithContext(ctx context.Context) FilterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(FilterOutput{})
+	pulumi.RegisterOutputType(FilterPtrOutput{})
 }

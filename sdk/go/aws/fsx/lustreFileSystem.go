@@ -336,6 +336,13 @@ type LustreFileSystemInput interface {
 	ToLustreFileSystemOutputWithContext(ctx context.Context) LustreFileSystemOutput
 }
 
+type LustreFileSystemPtrInput interface {
+	pulumi.Input
+
+	ToLustreFileSystemPtrOutput() LustreFileSystemPtrOutput
+	ToLustreFileSystemPtrOutputWithContext(ctx context.Context) LustreFileSystemPtrOutput
+}
+
 func (LustreFileSystem) ElementType() reflect.Type {
 	return reflect.TypeOf((*LustreFileSystem)(nil)).Elem()
 }
@@ -346,6 +353,14 @@ func (i LustreFileSystem) ToLustreFileSystemOutput() LustreFileSystemOutput {
 
 func (i LustreFileSystem) ToLustreFileSystemOutputWithContext(ctx context.Context) LustreFileSystemOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LustreFileSystemOutput)
+}
+
+func (i LustreFileSystem) ToLustreFileSystemPtrOutput() LustreFileSystemPtrOutput {
+	return i.ToLustreFileSystemPtrOutputWithContext(context.Background())
+}
+
+func (i LustreFileSystem) ToLustreFileSystemPtrOutputWithContext(ctx context.Context) LustreFileSystemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LustreFileSystemPtrOutput)
 }
 
 type LustreFileSystemOutput struct {
@@ -364,6 +379,23 @@ func (o LustreFileSystemOutput) ToLustreFileSystemOutputWithContext(ctx context.
 	return o
 }
 
+type LustreFileSystemPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LustreFileSystemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LustreFileSystem)(nil)).Elem()
+}
+
+func (o LustreFileSystemPtrOutput) ToLustreFileSystemPtrOutput() LustreFileSystemPtrOutput {
+	return o
+}
+
+func (o LustreFileSystemPtrOutput) ToLustreFileSystemPtrOutputWithContext(ctx context.Context) LustreFileSystemPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LustreFileSystemOutput{})
+	pulumi.RegisterOutputType(LustreFileSystemPtrOutput{})
 }

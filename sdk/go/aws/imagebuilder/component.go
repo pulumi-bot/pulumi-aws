@@ -242,6 +242,13 @@ type ComponentInput interface {
 	ToComponentOutputWithContext(ctx context.Context) ComponentOutput
 }
 
+type ComponentPtrInput interface {
+	pulumi.Input
+
+	ToComponentPtrOutput() ComponentPtrOutput
+	ToComponentPtrOutputWithContext(ctx context.Context) ComponentPtrOutput
+}
+
 func (Component) ElementType() reflect.Type {
 	return reflect.TypeOf((*Component)(nil)).Elem()
 }
@@ -252,6 +259,14 @@ func (i Component) ToComponentOutput() ComponentOutput {
 
 func (i Component) ToComponentOutputWithContext(ctx context.Context) ComponentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ComponentOutput)
+}
+
+func (i Component) ToComponentPtrOutput() ComponentPtrOutput {
+	return i.ToComponentPtrOutputWithContext(context.Background())
+}
+
+func (i Component) ToComponentPtrOutputWithContext(ctx context.Context) ComponentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComponentPtrOutput)
 }
 
 type ComponentOutput struct {
@@ -270,6 +285,23 @@ func (o ComponentOutput) ToComponentOutputWithContext(ctx context.Context) Compo
 	return o
 }
 
+type ComponentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ComponentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Component)(nil)).Elem()
+}
+
+func (o ComponentPtrOutput) ToComponentPtrOutput() ComponentPtrOutput {
+	return o
+}
+
+func (o ComponentPtrOutput) ToComponentPtrOutputWithContext(ctx context.Context) ComponentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ComponentOutput{})
+	pulumi.RegisterOutputType(ComponentPtrOutput{})
 }

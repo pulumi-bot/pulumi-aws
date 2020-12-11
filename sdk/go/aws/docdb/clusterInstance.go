@@ -366,6 +366,13 @@ type ClusterInstanceInput interface {
 	ToClusterInstanceOutputWithContext(ctx context.Context) ClusterInstanceOutput
 }
 
+type ClusterInstancePtrInput interface {
+	pulumi.Input
+
+	ToClusterInstancePtrOutput() ClusterInstancePtrOutput
+	ToClusterInstancePtrOutputWithContext(ctx context.Context) ClusterInstancePtrOutput
+}
+
 func (ClusterInstance) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterInstance)(nil)).Elem()
 }
@@ -376,6 +383,14 @@ func (i ClusterInstance) ToClusterInstanceOutput() ClusterInstanceOutput {
 
 func (i ClusterInstance) ToClusterInstanceOutputWithContext(ctx context.Context) ClusterInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterInstanceOutput)
+}
+
+func (i ClusterInstance) ToClusterInstancePtrOutput() ClusterInstancePtrOutput {
+	return i.ToClusterInstancePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterInstance) ToClusterInstancePtrOutputWithContext(ctx context.Context) ClusterInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterInstancePtrOutput)
 }
 
 type ClusterInstanceOutput struct {
@@ -394,6 +409,23 @@ func (o ClusterInstanceOutput) ToClusterInstanceOutputWithContext(ctx context.Co
 	return o
 }
 
+type ClusterInstancePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterInstance)(nil)).Elem()
+}
+
+func (o ClusterInstancePtrOutput) ToClusterInstancePtrOutput() ClusterInstancePtrOutput {
+	return o
+}
+
+func (o ClusterInstancePtrOutput) ToClusterInstancePtrOutputWithContext(ctx context.Context) ClusterInstancePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClusterInstanceOutput{})
+	pulumi.RegisterOutputType(ClusterInstancePtrOutput{})
 }

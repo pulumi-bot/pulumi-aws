@@ -288,6 +288,13 @@ type AmiFromInstanceInput interface {
 	ToAmiFromInstanceOutputWithContext(ctx context.Context) AmiFromInstanceOutput
 }
 
+type AmiFromInstancePtrInput interface {
+	pulumi.Input
+
+	ToAmiFromInstancePtrOutput() AmiFromInstancePtrOutput
+	ToAmiFromInstancePtrOutputWithContext(ctx context.Context) AmiFromInstancePtrOutput
+}
+
 func (AmiFromInstance) ElementType() reflect.Type {
 	return reflect.TypeOf((*AmiFromInstance)(nil)).Elem()
 }
@@ -298,6 +305,14 @@ func (i AmiFromInstance) ToAmiFromInstanceOutput() AmiFromInstanceOutput {
 
 func (i AmiFromInstance) ToAmiFromInstanceOutputWithContext(ctx context.Context) AmiFromInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AmiFromInstanceOutput)
+}
+
+func (i AmiFromInstance) ToAmiFromInstancePtrOutput() AmiFromInstancePtrOutput {
+	return i.ToAmiFromInstancePtrOutputWithContext(context.Background())
+}
+
+func (i AmiFromInstance) ToAmiFromInstancePtrOutputWithContext(ctx context.Context) AmiFromInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AmiFromInstancePtrOutput)
 }
 
 type AmiFromInstanceOutput struct {
@@ -316,6 +331,23 @@ func (o AmiFromInstanceOutput) ToAmiFromInstanceOutputWithContext(ctx context.Co
 	return o
 }
 
+type AmiFromInstancePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AmiFromInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AmiFromInstance)(nil)).Elem()
+}
+
+func (o AmiFromInstancePtrOutput) ToAmiFromInstancePtrOutput() AmiFromInstancePtrOutput {
+	return o
+}
+
+func (o AmiFromInstancePtrOutput) ToAmiFromInstancePtrOutputWithContext(ctx context.Context) AmiFromInstancePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AmiFromInstanceOutput{})
+	pulumi.RegisterOutputType(AmiFromInstancePtrOutput{})
 }

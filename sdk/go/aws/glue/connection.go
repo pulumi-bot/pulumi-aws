@@ -188,6 +188,13 @@ type ConnectionInput interface {
 	ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput
 }
 
+type ConnectionPtrInput interface {
+	pulumi.Input
+
+	ToConnectionPtrOutput() ConnectionPtrOutput
+	ToConnectionPtrOutputWithContext(ctx context.Context) ConnectionPtrOutput
+}
+
 func (Connection) ElementType() reflect.Type {
 	return reflect.TypeOf((*Connection)(nil)).Elem()
 }
@@ -198,6 +205,14 @@ func (i Connection) ToConnectionOutput() ConnectionOutput {
 
 func (i Connection) ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOutput)
+}
+
+func (i Connection) ToConnectionPtrOutput() ConnectionPtrOutput {
+	return i.ToConnectionPtrOutputWithContext(context.Background())
+}
+
+func (i Connection) ToConnectionPtrOutputWithContext(ctx context.Context) ConnectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionPtrOutput)
 }
 
 type ConnectionOutput struct {
@@ -216,6 +231,23 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 	return o
 }
 
+type ConnectionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConnectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Connection)(nil)).Elem()
+}
+
+func (o ConnectionPtrOutput) ToConnectionPtrOutput() ConnectionPtrOutput {
+	return o
+}
+
+func (o ConnectionPtrOutput) ToConnectionPtrOutputWithContext(ctx context.Context) ConnectionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ConnectionOutput{})
+	pulumi.RegisterOutputType(ConnectionPtrOutput{})
 }

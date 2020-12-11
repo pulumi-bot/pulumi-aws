@@ -353,6 +353,13 @@ type BrokerInput interface {
 	ToBrokerOutputWithContext(ctx context.Context) BrokerOutput
 }
 
+type BrokerPtrInput interface {
+	pulumi.Input
+
+	ToBrokerPtrOutput() BrokerPtrOutput
+	ToBrokerPtrOutputWithContext(ctx context.Context) BrokerPtrOutput
+}
+
 func (Broker) ElementType() reflect.Type {
 	return reflect.TypeOf((*Broker)(nil)).Elem()
 }
@@ -363,6 +370,14 @@ func (i Broker) ToBrokerOutput() BrokerOutput {
 
 func (i Broker) ToBrokerOutputWithContext(ctx context.Context) BrokerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerOutput)
+}
+
+func (i Broker) ToBrokerPtrOutput() BrokerPtrOutput {
+	return i.ToBrokerPtrOutputWithContext(context.Background())
+}
+
+func (i Broker) ToBrokerPtrOutputWithContext(ctx context.Context) BrokerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrokerPtrOutput)
 }
 
 type BrokerOutput struct {
@@ -381,6 +396,23 @@ func (o BrokerOutput) ToBrokerOutputWithContext(ctx context.Context) BrokerOutpu
 	return o
 }
 
+type BrokerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BrokerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Broker)(nil)).Elem()
+}
+
+func (o BrokerPtrOutput) ToBrokerPtrOutput() BrokerPtrOutput {
+	return o
+}
+
+func (o BrokerPtrOutput) ToBrokerPtrOutputWithContext(ctx context.Context) BrokerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(BrokerOutput{})
+	pulumi.RegisterOutputType(BrokerPtrOutput{})
 }

@@ -175,6 +175,13 @@ type DomainPermissionsInput interface {
 	ToDomainPermissionsOutputWithContext(ctx context.Context) DomainPermissionsOutput
 }
 
+type DomainPermissionsPtrInput interface {
+	pulumi.Input
+
+	ToDomainPermissionsPtrOutput() DomainPermissionsPtrOutput
+	ToDomainPermissionsPtrOutputWithContext(ctx context.Context) DomainPermissionsPtrOutput
+}
+
 func (DomainPermissions) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainPermissions)(nil)).Elem()
 }
@@ -185,6 +192,14 @@ func (i DomainPermissions) ToDomainPermissionsOutput() DomainPermissionsOutput {
 
 func (i DomainPermissions) ToDomainPermissionsOutputWithContext(ctx context.Context) DomainPermissionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainPermissionsOutput)
+}
+
+func (i DomainPermissions) ToDomainPermissionsPtrOutput() DomainPermissionsPtrOutput {
+	return i.ToDomainPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (i DomainPermissions) ToDomainPermissionsPtrOutputWithContext(ctx context.Context) DomainPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainPermissionsPtrOutput)
 }
 
 type DomainPermissionsOutput struct {
@@ -203,6 +218,23 @@ func (o DomainPermissionsOutput) ToDomainPermissionsOutputWithContext(ctx contex
 	return o
 }
 
+type DomainPermissionsPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainPermissionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainPermissions)(nil)).Elem()
+}
+
+func (o DomainPermissionsPtrOutput) ToDomainPermissionsPtrOutput() DomainPermissionsPtrOutput {
+	return o
+}
+
+func (o DomainPermissionsPtrOutput) ToDomainPermissionsPtrOutputWithContext(ctx context.Context) DomainPermissionsPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DomainPermissionsOutput{})
+	pulumi.RegisterOutputType(DomainPermissionsPtrOutput{})
 }

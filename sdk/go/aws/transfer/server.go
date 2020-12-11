@@ -232,6 +232,13 @@ type ServerInput interface {
 	ToServerOutputWithContext(ctx context.Context) ServerOutput
 }
 
+type ServerPtrInput interface {
+	pulumi.Input
+
+	ToServerPtrOutput() ServerPtrOutput
+	ToServerPtrOutputWithContext(ctx context.Context) ServerPtrOutput
+}
+
 func (Server) ElementType() reflect.Type {
 	return reflect.TypeOf((*Server)(nil)).Elem()
 }
@@ -242,6 +249,14 @@ func (i Server) ToServerOutput() ServerOutput {
 
 func (i Server) ToServerOutputWithContext(ctx context.Context) ServerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerOutput)
+}
+
+func (i Server) ToServerPtrOutput() ServerPtrOutput {
+	return i.ToServerPtrOutputWithContext(context.Background())
+}
+
+func (i Server) ToServerPtrOutputWithContext(ctx context.Context) ServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerPtrOutput)
 }
 
 type ServerOutput struct {
@@ -260,6 +275,23 @@ func (o ServerOutput) ToServerOutputWithContext(ctx context.Context) ServerOutpu
 	return o
 }
 
+type ServerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Server)(nil)).Elem()
+}
+
+func (o ServerPtrOutput) ToServerPtrOutput() ServerPtrOutput {
+	return o
+}
+
+func (o ServerPtrOutput) ToServerPtrOutputWithContext(ctx context.Context) ServerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServerOutput{})
+	pulumi.RegisterOutputType(ServerPtrOutput{})
 }

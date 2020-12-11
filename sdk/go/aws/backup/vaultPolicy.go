@@ -145,6 +145,13 @@ type VaultPolicyInput interface {
 	ToVaultPolicyOutputWithContext(ctx context.Context) VaultPolicyOutput
 }
 
+type VaultPolicyPtrInput interface {
+	pulumi.Input
+
+	ToVaultPolicyPtrOutput() VaultPolicyPtrOutput
+	ToVaultPolicyPtrOutputWithContext(ctx context.Context) VaultPolicyPtrOutput
+}
+
 func (VaultPolicy) ElementType() reflect.Type {
 	return reflect.TypeOf((*VaultPolicy)(nil)).Elem()
 }
@@ -155,6 +162,14 @@ func (i VaultPolicy) ToVaultPolicyOutput() VaultPolicyOutput {
 
 func (i VaultPolicy) ToVaultPolicyOutputWithContext(ctx context.Context) VaultPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VaultPolicyOutput)
+}
+
+func (i VaultPolicy) ToVaultPolicyPtrOutput() VaultPolicyPtrOutput {
+	return i.ToVaultPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i VaultPolicy) ToVaultPolicyPtrOutputWithContext(ctx context.Context) VaultPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VaultPolicyPtrOutput)
 }
 
 type VaultPolicyOutput struct {
@@ -173,6 +188,23 @@ func (o VaultPolicyOutput) ToVaultPolicyOutputWithContext(ctx context.Context) V
 	return o
 }
 
+type VaultPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VaultPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VaultPolicy)(nil)).Elem()
+}
+
+func (o VaultPolicyPtrOutput) ToVaultPolicyPtrOutput() VaultPolicyPtrOutput {
+	return o
+}
+
+func (o VaultPolicyPtrOutput) ToVaultPolicyPtrOutputWithContext(ctx context.Context) VaultPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VaultPolicyOutput{})
+	pulumi.RegisterOutputType(VaultPolicyPtrOutput{})
 }

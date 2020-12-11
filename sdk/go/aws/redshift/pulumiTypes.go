@@ -58,7 +58,7 @@ func (i ClusterLoggingArgs) ToClusterLoggingPtrOutput() ClusterLoggingPtrOutput 
 }
 
 func (i ClusterLoggingArgs) ToClusterLoggingPtrOutputWithContext(ctx context.Context) ClusterLoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingOutput).ToClusterLoggingPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingOutput).ToClusterLoggingPtrOutput()
 }
 
 // ClusterLoggingPtrInput is an input type that accepts ClusterLoggingArgs, ClusterLoggingPtr and ClusterLoggingPtrOutput values.
@@ -91,7 +91,7 @@ func (i *clusterLoggingPtrType) ToClusterLoggingPtrOutput() ClusterLoggingPtrOut
 }
 
 func (i *clusterLoggingPtrType) ToClusterLoggingPtrOutputWithContext(ctx context.Context) ClusterLoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingOutput).ToClusterLoggingPtrOutput()
 }
 
 type ClusterLoggingOutput struct{ *pulumi.OutputState }
@@ -229,7 +229,7 @@ func (i ClusterSnapshotCopyArgs) ToClusterSnapshotCopyPtrOutput() ClusterSnapsho
 }
 
 func (i ClusterSnapshotCopyArgs) ToClusterSnapshotCopyPtrOutputWithContext(ctx context.Context) ClusterSnapshotCopyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterSnapshotCopyOutput).ToClusterSnapshotCopyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSnapshotCopyOutput).ToClusterSnapshotCopyPtrOutput()
 }
 
 // ClusterSnapshotCopyPtrInput is an input type that accepts ClusterSnapshotCopyArgs, ClusterSnapshotCopyPtr and ClusterSnapshotCopyPtrOutput values.
@@ -262,7 +262,7 @@ func (i *clusterSnapshotCopyPtrType) ToClusterSnapshotCopyPtrOutput() ClusterSna
 }
 
 func (i *clusterSnapshotCopyPtrType) ToClusterSnapshotCopyPtrOutputWithContext(ctx context.Context) ClusterSnapshotCopyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterSnapshotCopyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSnapshotCopyOutput).ToClusterSnapshotCopyPtrOutput()
 }
 
 type ClusterSnapshotCopyOutput struct{ *pulumi.OutputState }

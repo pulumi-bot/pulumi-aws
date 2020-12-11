@@ -225,6 +225,13 @@ type ImageRecipeInput interface {
 	ToImageRecipeOutputWithContext(ctx context.Context) ImageRecipeOutput
 }
 
+type ImageRecipePtrInput interface {
+	pulumi.Input
+
+	ToImageRecipePtrOutput() ImageRecipePtrOutput
+	ToImageRecipePtrOutputWithContext(ctx context.Context) ImageRecipePtrOutput
+}
+
 func (ImageRecipe) ElementType() reflect.Type {
 	return reflect.TypeOf((*ImageRecipe)(nil)).Elem()
 }
@@ -235,6 +242,14 @@ func (i ImageRecipe) ToImageRecipeOutput() ImageRecipeOutput {
 
 func (i ImageRecipe) ToImageRecipeOutputWithContext(ctx context.Context) ImageRecipeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageRecipeOutput)
+}
+
+func (i ImageRecipe) ToImageRecipePtrOutput() ImageRecipePtrOutput {
+	return i.ToImageRecipePtrOutputWithContext(context.Background())
+}
+
+func (i ImageRecipe) ToImageRecipePtrOutputWithContext(ctx context.Context) ImageRecipePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageRecipePtrOutput)
 }
 
 type ImageRecipeOutput struct {
@@ -253,6 +268,23 @@ func (o ImageRecipeOutput) ToImageRecipeOutputWithContext(ctx context.Context) I
 	return o
 }
 
+type ImageRecipePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ImageRecipePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageRecipe)(nil)).Elem()
+}
+
+func (o ImageRecipePtrOutput) ToImageRecipePtrOutput() ImageRecipePtrOutput {
+	return o
+}
+
+func (o ImageRecipePtrOutput) ToImageRecipePtrOutputWithContext(ctx context.Context) ImageRecipePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ImageRecipeOutput{})
+	pulumi.RegisterOutputType(ImageRecipePtrOutput{})
 }

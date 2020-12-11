@@ -200,6 +200,13 @@ type ConfigurationAggregatorInput interface {
 	ToConfigurationAggregatorOutputWithContext(ctx context.Context) ConfigurationAggregatorOutput
 }
 
+type ConfigurationAggregatorPtrInput interface {
+	pulumi.Input
+
+	ToConfigurationAggregatorPtrOutput() ConfigurationAggregatorPtrOutput
+	ToConfigurationAggregatorPtrOutputWithContext(ctx context.Context) ConfigurationAggregatorPtrOutput
+}
+
 func (ConfigurationAggregator) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConfigurationAggregator)(nil)).Elem()
 }
@@ -210,6 +217,14 @@ func (i ConfigurationAggregator) ToConfigurationAggregatorOutput() Configuration
 
 func (i ConfigurationAggregator) ToConfigurationAggregatorOutputWithContext(ctx context.Context) ConfigurationAggregatorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationAggregatorOutput)
+}
+
+func (i ConfigurationAggregator) ToConfigurationAggregatorPtrOutput() ConfigurationAggregatorPtrOutput {
+	return i.ToConfigurationAggregatorPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigurationAggregator) ToConfigurationAggregatorPtrOutputWithContext(ctx context.Context) ConfigurationAggregatorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationAggregatorPtrOutput)
 }
 
 type ConfigurationAggregatorOutput struct {
@@ -228,6 +243,23 @@ func (o ConfigurationAggregatorOutput) ToConfigurationAggregatorOutputWithContex
 	return o
 }
 
+type ConfigurationAggregatorPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConfigurationAggregatorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigurationAggregator)(nil)).Elem()
+}
+
+func (o ConfigurationAggregatorPtrOutput) ToConfigurationAggregatorPtrOutput() ConfigurationAggregatorPtrOutput {
+	return o
+}
+
+func (o ConfigurationAggregatorPtrOutput) ToConfigurationAggregatorPtrOutputWithContext(ctx context.Context) ConfigurationAggregatorPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ConfigurationAggregatorOutput{})
+	pulumi.RegisterOutputType(ConfigurationAggregatorPtrOutput{})
 }

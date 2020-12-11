@@ -146,6 +146,13 @@ type DomainIdentityVerificationInput interface {
 	ToDomainIdentityVerificationOutputWithContext(ctx context.Context) DomainIdentityVerificationOutput
 }
 
+type DomainIdentityVerificationPtrInput interface {
+	pulumi.Input
+
+	ToDomainIdentityVerificationPtrOutput() DomainIdentityVerificationPtrOutput
+	ToDomainIdentityVerificationPtrOutputWithContext(ctx context.Context) DomainIdentityVerificationPtrOutput
+}
+
 func (DomainIdentityVerification) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainIdentityVerification)(nil)).Elem()
 }
@@ -156,6 +163,14 @@ func (i DomainIdentityVerification) ToDomainIdentityVerificationOutput() DomainI
 
 func (i DomainIdentityVerification) ToDomainIdentityVerificationOutputWithContext(ctx context.Context) DomainIdentityVerificationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainIdentityVerificationOutput)
+}
+
+func (i DomainIdentityVerification) ToDomainIdentityVerificationPtrOutput() DomainIdentityVerificationPtrOutput {
+	return i.ToDomainIdentityVerificationPtrOutputWithContext(context.Background())
+}
+
+func (i DomainIdentityVerification) ToDomainIdentityVerificationPtrOutputWithContext(ctx context.Context) DomainIdentityVerificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainIdentityVerificationPtrOutput)
 }
 
 type DomainIdentityVerificationOutput struct {
@@ -174,6 +189,23 @@ func (o DomainIdentityVerificationOutput) ToDomainIdentityVerificationOutputWith
 	return o
 }
 
+type DomainIdentityVerificationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainIdentityVerificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainIdentityVerification)(nil)).Elem()
+}
+
+func (o DomainIdentityVerificationPtrOutput) ToDomainIdentityVerificationPtrOutput() DomainIdentityVerificationPtrOutput {
+	return o
+}
+
+func (o DomainIdentityVerificationPtrOutput) ToDomainIdentityVerificationPtrOutputWithContext(ctx context.Context) DomainIdentityVerificationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DomainIdentityVerificationOutput{})
+	pulumi.RegisterOutputType(DomainIdentityVerificationPtrOutput{})
 }

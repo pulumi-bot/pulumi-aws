@@ -257,6 +257,13 @@ type SigningJobInput interface {
 	ToSigningJobOutputWithContext(ctx context.Context) SigningJobOutput
 }
 
+type SigningJobPtrInput interface {
+	pulumi.Input
+
+	ToSigningJobPtrOutput() SigningJobPtrOutput
+	ToSigningJobPtrOutputWithContext(ctx context.Context) SigningJobPtrOutput
+}
+
 func (SigningJob) ElementType() reflect.Type {
 	return reflect.TypeOf((*SigningJob)(nil)).Elem()
 }
@@ -267,6 +274,14 @@ func (i SigningJob) ToSigningJobOutput() SigningJobOutput {
 
 func (i SigningJob) ToSigningJobOutputWithContext(ctx context.Context) SigningJobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SigningJobOutput)
+}
+
+func (i SigningJob) ToSigningJobPtrOutput() SigningJobPtrOutput {
+	return i.ToSigningJobPtrOutputWithContext(context.Background())
+}
+
+func (i SigningJob) ToSigningJobPtrOutputWithContext(ctx context.Context) SigningJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SigningJobPtrOutput)
 }
 
 type SigningJobOutput struct {
@@ -285,6 +300,23 @@ func (o SigningJobOutput) ToSigningJobOutputWithContext(ctx context.Context) Sig
 	return o
 }
 
+type SigningJobPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SigningJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SigningJob)(nil)).Elem()
+}
+
+func (o SigningJobPtrOutput) ToSigningJobPtrOutput() SigningJobPtrOutput {
+	return o
+}
+
+func (o SigningJobPtrOutput) ToSigningJobPtrOutputWithContext(ctx context.Context) SigningJobPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SigningJobOutput{})
+	pulumi.RegisterOutputType(SigningJobPtrOutput{})
 }

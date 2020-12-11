@@ -227,7 +227,7 @@ func (i ListenerDefaultActionAuthenticateCognitoArgs) ToListenerDefaultActionAut
 }
 
 func (i ListenerDefaultActionAuthenticateCognitoArgs) ToListenerDefaultActionAuthenticateCognitoPtrOutputWithContext(ctx context.Context) ListenerDefaultActionAuthenticateCognitoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionAuthenticateCognitoOutput).ToListenerDefaultActionAuthenticateCognitoPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionAuthenticateCognitoOutput).ToListenerDefaultActionAuthenticateCognitoPtrOutput()
 }
 
 // ListenerDefaultActionAuthenticateCognitoPtrInput is an input type that accepts ListenerDefaultActionAuthenticateCognitoArgs, ListenerDefaultActionAuthenticateCognitoPtr and ListenerDefaultActionAuthenticateCognitoPtrOutput values.
@@ -260,7 +260,7 @@ func (i *listenerDefaultActionAuthenticateCognitoPtrType) ToListenerDefaultActio
 }
 
 func (i *listenerDefaultActionAuthenticateCognitoPtrType) ToListenerDefaultActionAuthenticateCognitoPtrOutputWithContext(ctx context.Context) ListenerDefaultActionAuthenticateCognitoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionAuthenticateCognitoPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionAuthenticateCognitoOutput).ToListenerDefaultActionAuthenticateCognitoPtrOutput()
 }
 
 type ListenerDefaultActionAuthenticateCognitoOutput struct{ *pulumi.OutputState }
@@ -505,7 +505,7 @@ func (i ListenerDefaultActionAuthenticateOidcArgs) ToListenerDefaultActionAuthen
 }
 
 func (i ListenerDefaultActionAuthenticateOidcArgs) ToListenerDefaultActionAuthenticateOidcPtrOutputWithContext(ctx context.Context) ListenerDefaultActionAuthenticateOidcPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionAuthenticateOidcOutput).ToListenerDefaultActionAuthenticateOidcPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionAuthenticateOidcOutput).ToListenerDefaultActionAuthenticateOidcPtrOutput()
 }
 
 // ListenerDefaultActionAuthenticateOidcPtrInput is an input type that accepts ListenerDefaultActionAuthenticateOidcArgs, ListenerDefaultActionAuthenticateOidcPtr and ListenerDefaultActionAuthenticateOidcPtrOutput values.
@@ -538,7 +538,7 @@ func (i *listenerDefaultActionAuthenticateOidcPtrType) ToListenerDefaultActionAu
 }
 
 func (i *listenerDefaultActionAuthenticateOidcPtrType) ToListenerDefaultActionAuthenticateOidcPtrOutputWithContext(ctx context.Context) ListenerDefaultActionAuthenticateOidcPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionAuthenticateOidcPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionAuthenticateOidcOutput).ToListenerDefaultActionAuthenticateOidcPtrOutput()
 }
 
 type ListenerDefaultActionAuthenticateOidcOutput struct{ *pulumi.OutputState }
@@ -796,7 +796,7 @@ func (i ListenerDefaultActionFixedResponseArgs) ToListenerDefaultActionFixedResp
 }
 
 func (i ListenerDefaultActionFixedResponseArgs) ToListenerDefaultActionFixedResponsePtrOutputWithContext(ctx context.Context) ListenerDefaultActionFixedResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionFixedResponseOutput).ToListenerDefaultActionFixedResponsePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionFixedResponseOutput).ToListenerDefaultActionFixedResponsePtrOutput()
 }
 
 // ListenerDefaultActionFixedResponsePtrInput is an input type that accepts ListenerDefaultActionFixedResponseArgs, ListenerDefaultActionFixedResponsePtr and ListenerDefaultActionFixedResponsePtrOutput values.
@@ -829,7 +829,7 @@ func (i *listenerDefaultActionFixedResponsePtrType) ToListenerDefaultActionFixed
 }
 
 func (i *listenerDefaultActionFixedResponsePtrType) ToListenerDefaultActionFixedResponsePtrOutputWithContext(ctx context.Context) ListenerDefaultActionFixedResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionFixedResponsePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionFixedResponseOutput).ToListenerDefaultActionFixedResponsePtrOutput()
 }
 
 type ListenerDefaultActionFixedResponseOutput struct{ *pulumi.OutputState }
@@ -961,7 +961,7 @@ func (i ListenerDefaultActionForwardArgs) ToListenerDefaultActionForwardPtrOutpu
 }
 
 func (i ListenerDefaultActionForwardArgs) ToListenerDefaultActionForwardPtrOutputWithContext(ctx context.Context) ListenerDefaultActionForwardPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionForwardOutput).ToListenerDefaultActionForwardPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionForwardOutput).ToListenerDefaultActionForwardPtrOutput()
 }
 
 // ListenerDefaultActionForwardPtrInput is an input type that accepts ListenerDefaultActionForwardArgs, ListenerDefaultActionForwardPtr and ListenerDefaultActionForwardPtrOutput values.
@@ -994,7 +994,7 @@ func (i *listenerDefaultActionForwardPtrType) ToListenerDefaultActionForwardPtrO
 }
 
 func (i *listenerDefaultActionForwardPtrType) ToListenerDefaultActionForwardPtrOutputWithContext(ctx context.Context) ListenerDefaultActionForwardPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionForwardPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionForwardOutput).ToListenerDefaultActionForwardPtrOutput()
 }
 
 type ListenerDefaultActionForwardOutput struct{ *pulumi.OutputState }
@@ -1111,7 +1111,7 @@ func (i ListenerDefaultActionForwardStickinessArgs) ToListenerDefaultActionForwa
 }
 
 func (i ListenerDefaultActionForwardStickinessArgs) ToListenerDefaultActionForwardStickinessPtrOutputWithContext(ctx context.Context) ListenerDefaultActionForwardStickinessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionForwardStickinessOutput).ToListenerDefaultActionForwardStickinessPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionForwardStickinessOutput).ToListenerDefaultActionForwardStickinessPtrOutput()
 }
 
 // ListenerDefaultActionForwardStickinessPtrInput is an input type that accepts ListenerDefaultActionForwardStickinessArgs, ListenerDefaultActionForwardStickinessPtr and ListenerDefaultActionForwardStickinessPtrOutput values.
@@ -1144,7 +1144,7 @@ func (i *listenerDefaultActionForwardStickinessPtrType) ToListenerDefaultActionF
 }
 
 func (i *listenerDefaultActionForwardStickinessPtrType) ToListenerDefaultActionForwardStickinessPtrOutputWithContext(ctx context.Context) ListenerDefaultActionForwardStickinessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionForwardStickinessPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionForwardStickinessOutput).ToListenerDefaultActionForwardStickinessPtrOutput()
 }
 
 type ListenerDefaultActionForwardStickinessOutput struct{ *pulumi.OutputState }
@@ -1383,7 +1383,7 @@ func (i ListenerDefaultActionRedirectArgs) ToListenerDefaultActionRedirectPtrOut
 }
 
 func (i ListenerDefaultActionRedirectArgs) ToListenerDefaultActionRedirectPtrOutputWithContext(ctx context.Context) ListenerDefaultActionRedirectPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionRedirectOutput).ToListenerDefaultActionRedirectPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionRedirectOutput).ToListenerDefaultActionRedirectPtrOutput()
 }
 
 // ListenerDefaultActionRedirectPtrInput is an input type that accepts ListenerDefaultActionRedirectArgs, ListenerDefaultActionRedirectPtr and ListenerDefaultActionRedirectPtrOutput values.
@@ -1416,7 +1416,7 @@ func (i *listenerDefaultActionRedirectPtrType) ToListenerDefaultActionRedirectPt
 }
 
 func (i *listenerDefaultActionRedirectPtrType) ToListenerDefaultActionRedirectPtrOutputWithContext(ctx context.Context) ListenerDefaultActionRedirectPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionRedirectPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerDefaultActionRedirectOutput).ToListenerDefaultActionRedirectPtrOutput()
 }
 
 type ListenerDefaultActionRedirectOutput struct{ *pulumi.OutputState }
@@ -1774,7 +1774,7 @@ func (i ListenerRuleActionAuthenticateCognitoArgs) ToListenerRuleActionAuthentic
 }
 
 func (i ListenerRuleActionAuthenticateCognitoArgs) ToListenerRuleActionAuthenticateCognitoPtrOutputWithContext(ctx context.Context) ListenerRuleActionAuthenticateCognitoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionAuthenticateCognitoOutput).ToListenerRuleActionAuthenticateCognitoPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionAuthenticateCognitoOutput).ToListenerRuleActionAuthenticateCognitoPtrOutput()
 }
 
 // ListenerRuleActionAuthenticateCognitoPtrInput is an input type that accepts ListenerRuleActionAuthenticateCognitoArgs, ListenerRuleActionAuthenticateCognitoPtr and ListenerRuleActionAuthenticateCognitoPtrOutput values.
@@ -1807,7 +1807,7 @@ func (i *listenerRuleActionAuthenticateCognitoPtrType) ToListenerRuleActionAuthe
 }
 
 func (i *listenerRuleActionAuthenticateCognitoPtrType) ToListenerRuleActionAuthenticateCognitoPtrOutputWithContext(ctx context.Context) ListenerRuleActionAuthenticateCognitoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionAuthenticateCognitoPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionAuthenticateCognitoOutput).ToListenerRuleActionAuthenticateCognitoPtrOutput()
 }
 
 type ListenerRuleActionAuthenticateCognitoOutput struct{ *pulumi.OutputState }
@@ -2052,7 +2052,7 @@ func (i ListenerRuleActionAuthenticateOidcArgs) ToListenerRuleActionAuthenticate
 }
 
 func (i ListenerRuleActionAuthenticateOidcArgs) ToListenerRuleActionAuthenticateOidcPtrOutputWithContext(ctx context.Context) ListenerRuleActionAuthenticateOidcPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionAuthenticateOidcOutput).ToListenerRuleActionAuthenticateOidcPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionAuthenticateOidcOutput).ToListenerRuleActionAuthenticateOidcPtrOutput()
 }
 
 // ListenerRuleActionAuthenticateOidcPtrInput is an input type that accepts ListenerRuleActionAuthenticateOidcArgs, ListenerRuleActionAuthenticateOidcPtr and ListenerRuleActionAuthenticateOidcPtrOutput values.
@@ -2085,7 +2085,7 @@ func (i *listenerRuleActionAuthenticateOidcPtrType) ToListenerRuleActionAuthenti
 }
 
 func (i *listenerRuleActionAuthenticateOidcPtrType) ToListenerRuleActionAuthenticateOidcPtrOutputWithContext(ctx context.Context) ListenerRuleActionAuthenticateOidcPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionAuthenticateOidcPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionAuthenticateOidcOutput).ToListenerRuleActionAuthenticateOidcPtrOutput()
 }
 
 type ListenerRuleActionAuthenticateOidcOutput struct{ *pulumi.OutputState }
@@ -2343,7 +2343,7 @@ func (i ListenerRuleActionFixedResponseArgs) ToListenerRuleActionFixedResponsePt
 }
 
 func (i ListenerRuleActionFixedResponseArgs) ToListenerRuleActionFixedResponsePtrOutputWithContext(ctx context.Context) ListenerRuleActionFixedResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionFixedResponseOutput).ToListenerRuleActionFixedResponsePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionFixedResponseOutput).ToListenerRuleActionFixedResponsePtrOutput()
 }
 
 // ListenerRuleActionFixedResponsePtrInput is an input type that accepts ListenerRuleActionFixedResponseArgs, ListenerRuleActionFixedResponsePtr and ListenerRuleActionFixedResponsePtrOutput values.
@@ -2376,7 +2376,7 @@ func (i *listenerRuleActionFixedResponsePtrType) ToListenerRuleActionFixedRespon
 }
 
 func (i *listenerRuleActionFixedResponsePtrType) ToListenerRuleActionFixedResponsePtrOutputWithContext(ctx context.Context) ListenerRuleActionFixedResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionFixedResponsePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionFixedResponseOutput).ToListenerRuleActionFixedResponsePtrOutput()
 }
 
 type ListenerRuleActionFixedResponseOutput struct{ *pulumi.OutputState }
@@ -2508,7 +2508,7 @@ func (i ListenerRuleActionForwardArgs) ToListenerRuleActionForwardPtrOutput() Li
 }
 
 func (i ListenerRuleActionForwardArgs) ToListenerRuleActionForwardPtrOutputWithContext(ctx context.Context) ListenerRuleActionForwardPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionForwardOutput).ToListenerRuleActionForwardPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionForwardOutput).ToListenerRuleActionForwardPtrOutput()
 }
 
 // ListenerRuleActionForwardPtrInput is an input type that accepts ListenerRuleActionForwardArgs, ListenerRuleActionForwardPtr and ListenerRuleActionForwardPtrOutput values.
@@ -2541,7 +2541,7 @@ func (i *listenerRuleActionForwardPtrType) ToListenerRuleActionForwardPtrOutput(
 }
 
 func (i *listenerRuleActionForwardPtrType) ToListenerRuleActionForwardPtrOutputWithContext(ctx context.Context) ListenerRuleActionForwardPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionForwardPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionForwardOutput).ToListenerRuleActionForwardPtrOutput()
 }
 
 type ListenerRuleActionForwardOutput struct{ *pulumi.OutputState }
@@ -2658,7 +2658,7 @@ func (i ListenerRuleActionForwardStickinessArgs) ToListenerRuleActionForwardStic
 }
 
 func (i ListenerRuleActionForwardStickinessArgs) ToListenerRuleActionForwardStickinessPtrOutputWithContext(ctx context.Context) ListenerRuleActionForwardStickinessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionForwardStickinessOutput).ToListenerRuleActionForwardStickinessPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionForwardStickinessOutput).ToListenerRuleActionForwardStickinessPtrOutput()
 }
 
 // ListenerRuleActionForwardStickinessPtrInput is an input type that accepts ListenerRuleActionForwardStickinessArgs, ListenerRuleActionForwardStickinessPtr and ListenerRuleActionForwardStickinessPtrOutput values.
@@ -2691,7 +2691,7 @@ func (i *listenerRuleActionForwardStickinessPtrType) ToListenerRuleActionForward
 }
 
 func (i *listenerRuleActionForwardStickinessPtrType) ToListenerRuleActionForwardStickinessPtrOutputWithContext(ctx context.Context) ListenerRuleActionForwardStickinessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionForwardStickinessPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionForwardStickinessOutput).ToListenerRuleActionForwardStickinessPtrOutput()
 }
 
 type ListenerRuleActionForwardStickinessOutput struct{ *pulumi.OutputState }
@@ -2930,7 +2930,7 @@ func (i ListenerRuleActionRedirectArgs) ToListenerRuleActionRedirectPtrOutput() 
 }
 
 func (i ListenerRuleActionRedirectArgs) ToListenerRuleActionRedirectPtrOutputWithContext(ctx context.Context) ListenerRuleActionRedirectPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionRedirectOutput).ToListenerRuleActionRedirectPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionRedirectOutput).ToListenerRuleActionRedirectPtrOutput()
 }
 
 // ListenerRuleActionRedirectPtrInput is an input type that accepts ListenerRuleActionRedirectArgs, ListenerRuleActionRedirectPtr and ListenerRuleActionRedirectPtrOutput values.
@@ -2963,7 +2963,7 @@ func (i *listenerRuleActionRedirectPtrType) ToListenerRuleActionRedirectPtrOutpu
 }
 
 func (i *listenerRuleActionRedirectPtrType) ToListenerRuleActionRedirectPtrOutputWithContext(ctx context.Context) ListenerRuleActionRedirectPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionRedirectPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleActionRedirectOutput).ToListenerRuleActionRedirectPtrOutput()
 }
 
 type ListenerRuleActionRedirectOutput struct{ *pulumi.OutputState }
@@ -3278,7 +3278,7 @@ func (i ListenerRuleConditionHostHeaderArgs) ToListenerRuleConditionHostHeaderPt
 }
 
 func (i ListenerRuleConditionHostHeaderArgs) ToListenerRuleConditionHostHeaderPtrOutputWithContext(ctx context.Context) ListenerRuleConditionHostHeaderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleConditionHostHeaderOutput).ToListenerRuleConditionHostHeaderPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleConditionHostHeaderOutput).ToListenerRuleConditionHostHeaderPtrOutput()
 }
 
 // ListenerRuleConditionHostHeaderPtrInput is an input type that accepts ListenerRuleConditionHostHeaderArgs, ListenerRuleConditionHostHeaderPtr and ListenerRuleConditionHostHeaderPtrOutput values.
@@ -3311,7 +3311,7 @@ func (i *listenerRuleConditionHostHeaderPtrType) ToListenerRuleConditionHostHead
 }
 
 func (i *listenerRuleConditionHostHeaderPtrType) ToListenerRuleConditionHostHeaderPtrOutputWithContext(ctx context.Context) ListenerRuleConditionHostHeaderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleConditionHostHeaderPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleConditionHostHeaderOutput).ToListenerRuleConditionHostHeaderPtrOutput()
 }
 
 type ListenerRuleConditionHostHeaderOutput struct{ *pulumi.OutputState }
@@ -3413,7 +3413,7 @@ func (i ListenerRuleConditionHttpHeaderArgs) ToListenerRuleConditionHttpHeaderPt
 }
 
 func (i ListenerRuleConditionHttpHeaderArgs) ToListenerRuleConditionHttpHeaderPtrOutputWithContext(ctx context.Context) ListenerRuleConditionHttpHeaderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleConditionHttpHeaderOutput).ToListenerRuleConditionHttpHeaderPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleConditionHttpHeaderOutput).ToListenerRuleConditionHttpHeaderPtrOutput()
 }
 
 // ListenerRuleConditionHttpHeaderPtrInput is an input type that accepts ListenerRuleConditionHttpHeaderArgs, ListenerRuleConditionHttpHeaderPtr and ListenerRuleConditionHttpHeaderPtrOutput values.
@@ -3446,7 +3446,7 @@ func (i *listenerRuleConditionHttpHeaderPtrType) ToListenerRuleConditionHttpHead
 }
 
 func (i *listenerRuleConditionHttpHeaderPtrType) ToListenerRuleConditionHttpHeaderPtrOutputWithContext(ctx context.Context) ListenerRuleConditionHttpHeaderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleConditionHttpHeaderPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleConditionHttpHeaderOutput).ToListenerRuleConditionHttpHeaderPtrOutput()
 }
 
 type ListenerRuleConditionHttpHeaderOutput struct{ *pulumi.OutputState }
@@ -3559,7 +3559,7 @@ func (i ListenerRuleConditionHttpRequestMethodArgs) ToListenerRuleConditionHttpR
 }
 
 func (i ListenerRuleConditionHttpRequestMethodArgs) ToListenerRuleConditionHttpRequestMethodPtrOutputWithContext(ctx context.Context) ListenerRuleConditionHttpRequestMethodPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleConditionHttpRequestMethodOutput).ToListenerRuleConditionHttpRequestMethodPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleConditionHttpRequestMethodOutput).ToListenerRuleConditionHttpRequestMethodPtrOutput()
 }
 
 // ListenerRuleConditionHttpRequestMethodPtrInput is an input type that accepts ListenerRuleConditionHttpRequestMethodArgs, ListenerRuleConditionHttpRequestMethodPtr and ListenerRuleConditionHttpRequestMethodPtrOutput values.
@@ -3592,7 +3592,7 @@ func (i *listenerRuleConditionHttpRequestMethodPtrType) ToListenerRuleConditionH
 }
 
 func (i *listenerRuleConditionHttpRequestMethodPtrType) ToListenerRuleConditionHttpRequestMethodPtrOutputWithContext(ctx context.Context) ListenerRuleConditionHttpRequestMethodPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleConditionHttpRequestMethodPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleConditionHttpRequestMethodOutput).ToListenerRuleConditionHttpRequestMethodPtrOutput()
 }
 
 type ListenerRuleConditionHttpRequestMethodOutput struct{ *pulumi.OutputState }
@@ -3690,7 +3690,7 @@ func (i ListenerRuleConditionPathPatternArgs) ToListenerRuleConditionPathPattern
 }
 
 func (i ListenerRuleConditionPathPatternArgs) ToListenerRuleConditionPathPatternPtrOutputWithContext(ctx context.Context) ListenerRuleConditionPathPatternPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleConditionPathPatternOutput).ToListenerRuleConditionPathPatternPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleConditionPathPatternOutput).ToListenerRuleConditionPathPatternPtrOutput()
 }
 
 // ListenerRuleConditionPathPatternPtrInput is an input type that accepts ListenerRuleConditionPathPatternArgs, ListenerRuleConditionPathPatternPtr and ListenerRuleConditionPathPatternPtrOutput values.
@@ -3723,7 +3723,7 @@ func (i *listenerRuleConditionPathPatternPtrType) ToListenerRuleConditionPathPat
 }
 
 func (i *listenerRuleConditionPathPatternPtrType) ToListenerRuleConditionPathPatternPtrOutputWithContext(ctx context.Context) ListenerRuleConditionPathPatternPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleConditionPathPatternPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleConditionPathPatternOutput).ToListenerRuleConditionPathPatternPtrOutput()
 }
 
 type ListenerRuleConditionPathPatternOutput struct{ *pulumi.OutputState }
@@ -3927,7 +3927,7 @@ func (i ListenerRuleConditionSourceIpArgs) ToListenerRuleConditionSourceIpPtrOut
 }
 
 func (i ListenerRuleConditionSourceIpArgs) ToListenerRuleConditionSourceIpPtrOutputWithContext(ctx context.Context) ListenerRuleConditionSourceIpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleConditionSourceIpOutput).ToListenerRuleConditionSourceIpPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleConditionSourceIpOutput).ToListenerRuleConditionSourceIpPtrOutput()
 }
 
 // ListenerRuleConditionSourceIpPtrInput is an input type that accepts ListenerRuleConditionSourceIpArgs, ListenerRuleConditionSourceIpPtr and ListenerRuleConditionSourceIpPtrOutput values.
@@ -3960,7 +3960,7 @@ func (i *listenerRuleConditionSourceIpPtrType) ToListenerRuleConditionSourceIpPt
 }
 
 func (i *listenerRuleConditionSourceIpPtrType) ToListenerRuleConditionSourceIpPtrOutputWithContext(ctx context.Context) ListenerRuleConditionSourceIpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleConditionSourceIpPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerRuleConditionSourceIpOutput).ToListenerRuleConditionSourceIpPtrOutput()
 }
 
 type ListenerRuleConditionSourceIpOutput struct{ *pulumi.OutputState }
@@ -4066,7 +4066,7 @@ func (i LoadBalancerAccessLogsArgs) ToLoadBalancerAccessLogsPtrOutput() LoadBala
 }
 
 func (i LoadBalancerAccessLogsArgs) ToLoadBalancerAccessLogsPtrOutputWithContext(ctx context.Context) LoadBalancerAccessLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerAccessLogsOutput).ToLoadBalancerAccessLogsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerAccessLogsOutput).ToLoadBalancerAccessLogsPtrOutput()
 }
 
 // LoadBalancerAccessLogsPtrInput is an input type that accepts LoadBalancerAccessLogsArgs, LoadBalancerAccessLogsPtr and LoadBalancerAccessLogsPtrOutput values.
@@ -4099,7 +4099,7 @@ func (i *loadBalancerAccessLogsPtrType) ToLoadBalancerAccessLogsPtrOutput() Load
 }
 
 func (i *loadBalancerAccessLogsPtrType) ToLoadBalancerAccessLogsPtrOutputWithContext(ctx context.Context) LoadBalancerAccessLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerAccessLogsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerAccessLogsOutput).ToLoadBalancerAccessLogsPtrOutput()
 }
 
 type LoadBalancerAccessLogsOutput struct{ *pulumi.OutputState }
@@ -4380,7 +4380,7 @@ func (i TargetGroupHealthCheckArgs) ToTargetGroupHealthCheckPtrOutput() TargetGr
 }
 
 func (i TargetGroupHealthCheckArgs) ToTargetGroupHealthCheckPtrOutputWithContext(ctx context.Context) TargetGroupHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetGroupHealthCheckOutput).ToTargetGroupHealthCheckPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TargetGroupHealthCheckOutput).ToTargetGroupHealthCheckPtrOutput()
 }
 
 // TargetGroupHealthCheckPtrInput is an input type that accepts TargetGroupHealthCheckArgs, TargetGroupHealthCheckPtr and TargetGroupHealthCheckPtrOutput values.
@@ -4413,7 +4413,7 @@ func (i *targetGroupHealthCheckPtrType) ToTargetGroupHealthCheckPtrOutput() Targ
 }
 
 func (i *targetGroupHealthCheckPtrType) ToTargetGroupHealthCheckPtrOutputWithContext(ctx context.Context) TargetGroupHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetGroupHealthCheckPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TargetGroupHealthCheckOutput).ToTargetGroupHealthCheckPtrOutput()
 }
 
 type TargetGroupHealthCheckOutput struct{ *pulumi.OutputState }
@@ -4639,7 +4639,7 @@ func (i TargetGroupStickinessArgs) ToTargetGroupStickinessPtrOutput() TargetGrou
 }
 
 func (i TargetGroupStickinessArgs) ToTargetGroupStickinessPtrOutputWithContext(ctx context.Context) TargetGroupStickinessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetGroupStickinessOutput).ToTargetGroupStickinessPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TargetGroupStickinessOutput).ToTargetGroupStickinessPtrOutput()
 }
 
 // TargetGroupStickinessPtrInput is an input type that accepts TargetGroupStickinessArgs, TargetGroupStickinessPtr and TargetGroupStickinessPtrOutput values.
@@ -4672,7 +4672,7 @@ func (i *targetGroupStickinessPtrType) ToTargetGroupStickinessPtrOutput() Target
 }
 
 func (i *targetGroupStickinessPtrType) ToTargetGroupStickinessPtrOutputWithContext(ctx context.Context) TargetGroupStickinessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetGroupStickinessPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TargetGroupStickinessOutput).ToTargetGroupStickinessPtrOutput()
 }
 
 type TargetGroupStickinessOutput struct{ *pulumi.OutputState }

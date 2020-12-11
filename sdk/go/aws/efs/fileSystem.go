@@ -237,6 +237,13 @@ type FileSystemInput interface {
 	ToFileSystemOutputWithContext(ctx context.Context) FileSystemOutput
 }
 
+type FileSystemPtrInput interface {
+	pulumi.Input
+
+	ToFileSystemPtrOutput() FileSystemPtrOutput
+	ToFileSystemPtrOutputWithContext(ctx context.Context) FileSystemPtrOutput
+}
+
 func (FileSystem) ElementType() reflect.Type {
 	return reflect.TypeOf((*FileSystem)(nil)).Elem()
 }
@@ -247,6 +254,14 @@ func (i FileSystem) ToFileSystemOutput() FileSystemOutput {
 
 func (i FileSystem) ToFileSystemOutputWithContext(ctx context.Context) FileSystemOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FileSystemOutput)
+}
+
+func (i FileSystem) ToFileSystemPtrOutput() FileSystemPtrOutput {
+	return i.ToFileSystemPtrOutputWithContext(context.Background())
+}
+
+func (i FileSystem) ToFileSystemPtrOutputWithContext(ctx context.Context) FileSystemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemPtrOutput)
 }
 
 type FileSystemOutput struct {
@@ -265,6 +280,23 @@ func (o FileSystemOutput) ToFileSystemOutputWithContext(ctx context.Context) Fil
 	return o
 }
 
+type FileSystemPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FileSystemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileSystem)(nil)).Elem()
+}
+
+func (o FileSystemPtrOutput) ToFileSystemPtrOutput() FileSystemPtrOutput {
+	return o
+}
+
+func (o FileSystemPtrOutput) ToFileSystemPtrOutputWithContext(ctx context.Context) FileSystemPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(FileSystemOutput{})
+	pulumi.RegisterOutputType(FileSystemPtrOutput{})
 }

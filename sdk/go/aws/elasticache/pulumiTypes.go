@@ -276,7 +276,7 @@ func (i ReplicationGroupClusterModeArgs) ToReplicationGroupClusterModePtrOutput(
 }
 
 func (i ReplicationGroupClusterModeArgs) ToReplicationGroupClusterModePtrOutputWithContext(ctx context.Context) ReplicationGroupClusterModePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReplicationGroupClusterModeOutput).ToReplicationGroupClusterModePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationGroupClusterModeOutput).ToReplicationGroupClusterModePtrOutput()
 }
 
 // ReplicationGroupClusterModePtrInput is an input type that accepts ReplicationGroupClusterModeArgs, ReplicationGroupClusterModePtr and ReplicationGroupClusterModePtrOutput values.
@@ -309,7 +309,7 @@ func (i *replicationGroupClusterModePtrType) ToReplicationGroupClusterModePtrOut
 }
 
 func (i *replicationGroupClusterModePtrType) ToReplicationGroupClusterModePtrOutputWithContext(ctx context.Context) ReplicationGroupClusterModePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReplicationGroupClusterModePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationGroupClusterModeOutput).ToReplicationGroupClusterModePtrOutput()
 }
 
 type ReplicationGroupClusterModeOutput struct{ *pulumi.OutputState }

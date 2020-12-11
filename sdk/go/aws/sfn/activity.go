@@ -127,6 +127,13 @@ type ActivityInput interface {
 	ToActivityOutputWithContext(ctx context.Context) ActivityOutput
 }
 
+type ActivityPtrInput interface {
+	pulumi.Input
+
+	ToActivityPtrOutput() ActivityPtrOutput
+	ToActivityPtrOutputWithContext(ctx context.Context) ActivityPtrOutput
+}
+
 func (Activity) ElementType() reflect.Type {
 	return reflect.TypeOf((*Activity)(nil)).Elem()
 }
@@ -137,6 +144,14 @@ func (i Activity) ToActivityOutput() ActivityOutput {
 
 func (i Activity) ToActivityOutputWithContext(ctx context.Context) ActivityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActivityOutput)
+}
+
+func (i Activity) ToActivityPtrOutput() ActivityPtrOutput {
+	return i.ToActivityPtrOutputWithContext(context.Background())
+}
+
+func (i Activity) ToActivityPtrOutputWithContext(ctx context.Context) ActivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActivityPtrOutput)
 }
 
 type ActivityOutput struct {
@@ -155,6 +170,23 @@ func (o ActivityOutput) ToActivityOutputWithContext(ctx context.Context) Activit
 	return o
 }
 
+type ActivityPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActivityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Activity)(nil)).Elem()
+}
+
+func (o ActivityPtrOutput) ToActivityPtrOutput() ActivityPtrOutput {
+	return o
+}
+
+func (o ActivityPtrOutput) ToActivityPtrOutputWithContext(ctx context.Context) ActivityPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ActivityOutput{})
+	pulumi.RegisterOutputType(ActivityPtrOutput{})
 }

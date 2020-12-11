@@ -140,6 +140,13 @@ type VpcIpv4CidrBlockAssociationInput interface {
 	ToVpcIpv4CidrBlockAssociationOutputWithContext(ctx context.Context) VpcIpv4CidrBlockAssociationOutput
 }
 
+type VpcIpv4CidrBlockAssociationPtrInput interface {
+	pulumi.Input
+
+	ToVpcIpv4CidrBlockAssociationPtrOutput() VpcIpv4CidrBlockAssociationPtrOutput
+	ToVpcIpv4CidrBlockAssociationPtrOutputWithContext(ctx context.Context) VpcIpv4CidrBlockAssociationPtrOutput
+}
+
 func (VpcIpv4CidrBlockAssociation) ElementType() reflect.Type {
 	return reflect.TypeOf((*VpcIpv4CidrBlockAssociation)(nil)).Elem()
 }
@@ -150,6 +157,14 @@ func (i VpcIpv4CidrBlockAssociation) ToVpcIpv4CidrBlockAssociationOutput() VpcIp
 
 func (i VpcIpv4CidrBlockAssociation) ToVpcIpv4CidrBlockAssociationOutputWithContext(ctx context.Context) VpcIpv4CidrBlockAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcIpv4CidrBlockAssociationOutput)
+}
+
+func (i VpcIpv4CidrBlockAssociation) ToVpcIpv4CidrBlockAssociationPtrOutput() VpcIpv4CidrBlockAssociationPtrOutput {
+	return i.ToVpcIpv4CidrBlockAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i VpcIpv4CidrBlockAssociation) ToVpcIpv4CidrBlockAssociationPtrOutputWithContext(ctx context.Context) VpcIpv4CidrBlockAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcIpv4CidrBlockAssociationPtrOutput)
 }
 
 type VpcIpv4CidrBlockAssociationOutput struct {
@@ -168,6 +183,23 @@ func (o VpcIpv4CidrBlockAssociationOutput) ToVpcIpv4CidrBlockAssociationOutputWi
 	return o
 }
 
+type VpcIpv4CidrBlockAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcIpv4CidrBlockAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcIpv4CidrBlockAssociation)(nil)).Elem()
+}
+
+func (o VpcIpv4CidrBlockAssociationPtrOutput) ToVpcIpv4CidrBlockAssociationPtrOutput() VpcIpv4CidrBlockAssociationPtrOutput {
+	return o
+}
+
+func (o VpcIpv4CidrBlockAssociationPtrOutput) ToVpcIpv4CidrBlockAssociationPtrOutputWithContext(ctx context.Context) VpcIpv4CidrBlockAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VpcIpv4CidrBlockAssociationOutput{})
+	pulumi.RegisterOutputType(VpcIpv4CidrBlockAssociationPtrOutput{})
 }

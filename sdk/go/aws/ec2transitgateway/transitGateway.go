@@ -207,6 +207,13 @@ type TransitGatewayInput interface {
 	ToTransitGatewayOutputWithContext(ctx context.Context) TransitGatewayOutput
 }
 
+type TransitGatewayPtrInput interface {
+	pulumi.Input
+
+	ToTransitGatewayPtrOutput() TransitGatewayPtrOutput
+	ToTransitGatewayPtrOutputWithContext(ctx context.Context) TransitGatewayPtrOutput
+}
+
 func (TransitGateway) ElementType() reflect.Type {
 	return reflect.TypeOf((*TransitGateway)(nil)).Elem()
 }
@@ -217,6 +224,14 @@ func (i TransitGateway) ToTransitGatewayOutput() TransitGatewayOutput {
 
 func (i TransitGateway) ToTransitGatewayOutputWithContext(ctx context.Context) TransitGatewayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransitGatewayOutput)
+}
+
+func (i TransitGateway) ToTransitGatewayPtrOutput() TransitGatewayPtrOutput {
+	return i.ToTransitGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i TransitGateway) ToTransitGatewayPtrOutputWithContext(ctx context.Context) TransitGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitGatewayPtrOutput)
 }
 
 type TransitGatewayOutput struct {
@@ -235,6 +250,23 @@ func (o TransitGatewayOutput) ToTransitGatewayOutputWithContext(ctx context.Cont
 	return o
 }
 
+type TransitGatewayPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TransitGatewayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransitGateway)(nil)).Elem()
+}
+
+func (o TransitGatewayPtrOutput) ToTransitGatewayPtrOutput() TransitGatewayPtrOutput {
+	return o
+}
+
+func (o TransitGatewayPtrOutput) ToTransitGatewayPtrOutputWithContext(ctx context.Context) TransitGatewayPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TransitGatewayOutput{})
+	pulumi.RegisterOutputType(TransitGatewayPtrOutput{})
 }

@@ -276,6 +276,13 @@ type WebhookInput interface {
 	ToWebhookOutputWithContext(ctx context.Context) WebhookOutput
 }
 
+type WebhookPtrInput interface {
+	pulumi.Input
+
+	ToWebhookPtrOutput() WebhookPtrOutput
+	ToWebhookPtrOutputWithContext(ctx context.Context) WebhookPtrOutput
+}
+
 func (Webhook) ElementType() reflect.Type {
 	return reflect.TypeOf((*Webhook)(nil)).Elem()
 }
@@ -286,6 +293,14 @@ func (i Webhook) ToWebhookOutput() WebhookOutput {
 
 func (i Webhook) ToWebhookOutputWithContext(ctx context.Context) WebhookOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookOutput)
+}
+
+func (i Webhook) ToWebhookPtrOutput() WebhookPtrOutput {
+	return i.ToWebhookPtrOutputWithContext(context.Background())
+}
+
+func (i Webhook) ToWebhookPtrOutputWithContext(ctx context.Context) WebhookPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookPtrOutput)
 }
 
 type WebhookOutput struct {
@@ -304,6 +319,23 @@ func (o WebhookOutput) ToWebhookOutputWithContext(ctx context.Context) WebhookOu
 	return o
 }
 
+type WebhookPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WebhookPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Webhook)(nil)).Elem()
+}
+
+func (o WebhookPtrOutput) ToWebhookPtrOutput() WebhookPtrOutput {
+	return o
+}
+
+func (o WebhookPtrOutput) ToWebhookPtrOutputWithContext(ctx context.Context) WebhookPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(WebhookOutput{})
+	pulumi.RegisterOutputType(WebhookPtrOutput{})
 }

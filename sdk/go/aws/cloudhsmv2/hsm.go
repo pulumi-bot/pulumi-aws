@@ -174,6 +174,13 @@ type HsmInput interface {
 	ToHsmOutputWithContext(ctx context.Context) HsmOutput
 }
 
+type HsmPtrInput interface {
+	pulumi.Input
+
+	ToHsmPtrOutput() HsmPtrOutput
+	ToHsmPtrOutputWithContext(ctx context.Context) HsmPtrOutput
+}
+
 func (Hsm) ElementType() reflect.Type {
 	return reflect.TypeOf((*Hsm)(nil)).Elem()
 }
@@ -184,6 +191,14 @@ func (i Hsm) ToHsmOutput() HsmOutput {
 
 func (i Hsm) ToHsmOutputWithContext(ctx context.Context) HsmOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HsmOutput)
+}
+
+func (i Hsm) ToHsmPtrOutput() HsmPtrOutput {
+	return i.ToHsmPtrOutputWithContext(context.Background())
+}
+
+func (i Hsm) ToHsmPtrOutputWithContext(ctx context.Context) HsmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HsmPtrOutput)
 }
 
 type HsmOutput struct {
@@ -202,6 +217,23 @@ func (o HsmOutput) ToHsmOutputWithContext(ctx context.Context) HsmOutput {
 	return o
 }
 
+type HsmPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (HsmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Hsm)(nil)).Elem()
+}
+
+func (o HsmPtrOutput) ToHsmPtrOutput() HsmPtrOutput {
+	return o
+}
+
+func (o HsmPtrOutput) ToHsmPtrOutputWithContext(ctx context.Context) HsmPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(HsmOutput{})
+	pulumi.RegisterOutputType(HsmPtrOutput{})
 }

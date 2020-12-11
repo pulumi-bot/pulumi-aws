@@ -185,6 +185,13 @@ type DefaultSubnetInput interface {
 	ToDefaultSubnetOutputWithContext(ctx context.Context) DefaultSubnetOutput
 }
 
+type DefaultSubnetPtrInput interface {
+	pulumi.Input
+
+	ToDefaultSubnetPtrOutput() DefaultSubnetPtrOutput
+	ToDefaultSubnetPtrOutputWithContext(ctx context.Context) DefaultSubnetPtrOutput
+}
+
 func (DefaultSubnet) ElementType() reflect.Type {
 	return reflect.TypeOf((*DefaultSubnet)(nil)).Elem()
 }
@@ -195,6 +202,14 @@ func (i DefaultSubnet) ToDefaultSubnetOutput() DefaultSubnetOutput {
 
 func (i DefaultSubnet) ToDefaultSubnetOutputWithContext(ctx context.Context) DefaultSubnetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultSubnetOutput)
+}
+
+func (i DefaultSubnet) ToDefaultSubnetPtrOutput() DefaultSubnetPtrOutput {
+	return i.ToDefaultSubnetPtrOutputWithContext(context.Background())
+}
+
+func (i DefaultSubnet) ToDefaultSubnetPtrOutputWithContext(ctx context.Context) DefaultSubnetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultSubnetPtrOutput)
 }
 
 type DefaultSubnetOutput struct {
@@ -213,6 +228,23 @@ func (o DefaultSubnetOutput) ToDefaultSubnetOutputWithContext(ctx context.Contex
 	return o
 }
 
+type DefaultSubnetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DefaultSubnetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultSubnet)(nil)).Elem()
+}
+
+func (o DefaultSubnetPtrOutput) ToDefaultSubnetPtrOutput() DefaultSubnetPtrOutput {
+	return o
+}
+
+func (o DefaultSubnetPtrOutput) ToDefaultSubnetPtrOutputWithContext(ctx context.Context) DefaultSubnetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DefaultSubnetOutput{})
+	pulumi.RegisterOutputType(DefaultSubnetPtrOutput{})
 }

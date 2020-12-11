@@ -137,6 +137,13 @@ type FileSystemPolicyInput interface {
 	ToFileSystemPolicyOutputWithContext(ctx context.Context) FileSystemPolicyOutput
 }
 
+type FileSystemPolicyPtrInput interface {
+	pulumi.Input
+
+	ToFileSystemPolicyPtrOutput() FileSystemPolicyPtrOutput
+	ToFileSystemPolicyPtrOutputWithContext(ctx context.Context) FileSystemPolicyPtrOutput
+}
+
 func (FileSystemPolicy) ElementType() reflect.Type {
 	return reflect.TypeOf((*FileSystemPolicy)(nil)).Elem()
 }
@@ -147,6 +154,14 @@ func (i FileSystemPolicy) ToFileSystemPolicyOutput() FileSystemPolicyOutput {
 
 func (i FileSystemPolicy) ToFileSystemPolicyOutputWithContext(ctx context.Context) FileSystemPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FileSystemPolicyOutput)
+}
+
+func (i FileSystemPolicy) ToFileSystemPolicyPtrOutput() FileSystemPolicyPtrOutput {
+	return i.ToFileSystemPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i FileSystemPolicy) ToFileSystemPolicyPtrOutputWithContext(ctx context.Context) FileSystemPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemPolicyPtrOutput)
 }
 
 type FileSystemPolicyOutput struct {
@@ -165,6 +180,23 @@ func (o FileSystemPolicyOutput) ToFileSystemPolicyOutputWithContext(ctx context.
 	return o
 }
 
+type FileSystemPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FileSystemPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileSystemPolicy)(nil)).Elem()
+}
+
+func (o FileSystemPolicyPtrOutput) ToFileSystemPolicyPtrOutput() FileSystemPolicyPtrOutput {
+	return o
+}
+
+func (o FileSystemPolicyPtrOutput) ToFileSystemPolicyPtrOutputWithContext(ctx context.Context) FileSystemPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(FileSystemPolicyOutput{})
+	pulumi.RegisterOutputType(FileSystemPolicyPtrOutput{})
 }

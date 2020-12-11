@@ -133,6 +133,13 @@ type AvailabilityZoneGroupInput interface {
 	ToAvailabilityZoneGroupOutputWithContext(ctx context.Context) AvailabilityZoneGroupOutput
 }
 
+type AvailabilityZoneGroupPtrInput interface {
+	pulumi.Input
+
+	ToAvailabilityZoneGroupPtrOutput() AvailabilityZoneGroupPtrOutput
+	ToAvailabilityZoneGroupPtrOutputWithContext(ctx context.Context) AvailabilityZoneGroupPtrOutput
+}
+
 func (AvailabilityZoneGroup) ElementType() reflect.Type {
 	return reflect.TypeOf((*AvailabilityZoneGroup)(nil)).Elem()
 }
@@ -143,6 +150,14 @@ func (i AvailabilityZoneGroup) ToAvailabilityZoneGroupOutput() AvailabilityZoneG
 
 func (i AvailabilityZoneGroup) ToAvailabilityZoneGroupOutputWithContext(ctx context.Context) AvailabilityZoneGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AvailabilityZoneGroupOutput)
+}
+
+func (i AvailabilityZoneGroup) ToAvailabilityZoneGroupPtrOutput() AvailabilityZoneGroupPtrOutput {
+	return i.ToAvailabilityZoneGroupPtrOutputWithContext(context.Background())
+}
+
+func (i AvailabilityZoneGroup) ToAvailabilityZoneGroupPtrOutputWithContext(ctx context.Context) AvailabilityZoneGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvailabilityZoneGroupPtrOutput)
 }
 
 type AvailabilityZoneGroupOutput struct {
@@ -161,6 +176,23 @@ func (o AvailabilityZoneGroupOutput) ToAvailabilityZoneGroupOutputWithContext(ct
 	return o
 }
 
+type AvailabilityZoneGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AvailabilityZoneGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvailabilityZoneGroup)(nil)).Elem()
+}
+
+func (o AvailabilityZoneGroupPtrOutput) ToAvailabilityZoneGroupPtrOutput() AvailabilityZoneGroupPtrOutput {
+	return o
+}
+
+func (o AvailabilityZoneGroupPtrOutput) ToAvailabilityZoneGroupPtrOutputWithContext(ctx context.Context) AvailabilityZoneGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AvailabilityZoneGroupOutput{})
+	pulumi.RegisterOutputType(AvailabilityZoneGroupPtrOutput{})
 }
