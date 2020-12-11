@@ -519,7 +519,7 @@ func (i UserPoolAccountRecoverySettingArgs) ToUserPoolAccountRecoverySettingPtrO
 }
 
 func (i UserPoolAccountRecoverySettingArgs) ToUserPoolAccountRecoverySettingPtrOutputWithContext(ctx context.Context) UserPoolAccountRecoverySettingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAccountRecoverySettingOutput).ToUserPoolAccountRecoverySettingPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAccountRecoverySettingOutput).ToUserPoolAccountRecoverySettingPtrOutput()
 }
 
 // UserPoolAccountRecoverySettingPtrInput is an input type that accepts UserPoolAccountRecoverySettingArgs, UserPoolAccountRecoverySettingPtr and UserPoolAccountRecoverySettingPtrOutput values.
@@ -552,7 +552,7 @@ func (i *userPoolAccountRecoverySettingPtrType) ToUserPoolAccountRecoverySetting
 }
 
 func (i *userPoolAccountRecoverySettingPtrType) ToUserPoolAccountRecoverySettingPtrOutputWithContext(ctx context.Context) UserPoolAccountRecoverySettingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAccountRecoverySettingPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAccountRecoverySettingOutput).ToUserPoolAccountRecoverySettingPtrOutput()
 }
 
 type UserPoolAccountRecoverySettingOutput struct{ *pulumi.OutputState }
@@ -762,7 +762,7 @@ func (i UserPoolAdminCreateUserConfigArgs) ToUserPoolAdminCreateUserConfigPtrOut
 }
 
 func (i UserPoolAdminCreateUserConfigArgs) ToUserPoolAdminCreateUserConfigPtrOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAdminCreateUserConfigOutput).ToUserPoolAdminCreateUserConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAdminCreateUserConfigOutput).ToUserPoolAdminCreateUserConfigPtrOutput()
 }
 
 // UserPoolAdminCreateUserConfigPtrInput is an input type that accepts UserPoolAdminCreateUserConfigArgs, UserPoolAdminCreateUserConfigPtr and UserPoolAdminCreateUserConfigPtrOutput values.
@@ -795,7 +795,7 @@ func (i *userPoolAdminCreateUserConfigPtrType) ToUserPoolAdminCreateUserConfigPt
 }
 
 func (i *userPoolAdminCreateUserConfigPtrType) ToUserPoolAdminCreateUserConfigPtrOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAdminCreateUserConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAdminCreateUserConfigOutput).ToUserPoolAdminCreateUserConfigPtrOutput()
 }
 
 type UserPoolAdminCreateUserConfigOutput struct{ *pulumi.OutputState }
@@ -918,7 +918,7 @@ func (i UserPoolAdminCreateUserConfigInviteMessageTemplateArgs) ToUserPoolAdminC
 }
 
 func (i UserPoolAdminCreateUserConfigInviteMessageTemplateArgs) ToUserPoolAdminCreateUserConfigInviteMessageTemplatePtrOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigInviteMessageTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAdminCreateUserConfigInviteMessageTemplateOutput).ToUserPoolAdminCreateUserConfigInviteMessageTemplatePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAdminCreateUserConfigInviteMessageTemplateOutput).ToUserPoolAdminCreateUserConfigInviteMessageTemplatePtrOutput()
 }
 
 // UserPoolAdminCreateUserConfigInviteMessageTemplatePtrInput is an input type that accepts UserPoolAdminCreateUserConfigInviteMessageTemplateArgs, UserPoolAdminCreateUserConfigInviteMessageTemplatePtr and UserPoolAdminCreateUserConfigInviteMessageTemplatePtrOutput values.
@@ -951,7 +951,7 @@ func (i *userPoolAdminCreateUserConfigInviteMessageTemplatePtrType) ToUserPoolAd
 }
 
 func (i *userPoolAdminCreateUserConfigInviteMessageTemplatePtrType) ToUserPoolAdminCreateUserConfigInviteMessageTemplatePtrOutputWithContext(ctx context.Context) UserPoolAdminCreateUserConfigInviteMessageTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAdminCreateUserConfigInviteMessageTemplatePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolAdminCreateUserConfigInviteMessageTemplateOutput).ToUserPoolAdminCreateUserConfigInviteMessageTemplatePtrOutput()
 }
 
 type UserPoolAdminCreateUserConfigInviteMessageTemplateOutput struct{ *pulumi.OutputState }
@@ -1093,7 +1093,7 @@ func (i UserPoolClientAnalyticsConfigurationArgs) ToUserPoolClientAnalyticsConfi
 }
 
 func (i UserPoolClientAnalyticsConfigurationArgs) ToUserPoolClientAnalyticsConfigurationPtrOutputWithContext(ctx context.Context) UserPoolClientAnalyticsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolClientAnalyticsConfigurationOutput).ToUserPoolClientAnalyticsConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolClientAnalyticsConfigurationOutput).ToUserPoolClientAnalyticsConfigurationPtrOutput()
 }
 
 // UserPoolClientAnalyticsConfigurationPtrInput is an input type that accepts UserPoolClientAnalyticsConfigurationArgs, UserPoolClientAnalyticsConfigurationPtr and UserPoolClientAnalyticsConfigurationPtrOutput values.
@@ -1126,7 +1126,7 @@ func (i *userPoolClientAnalyticsConfigurationPtrType) ToUserPoolClientAnalyticsC
 }
 
 func (i *userPoolClientAnalyticsConfigurationPtrType) ToUserPoolClientAnalyticsConfigurationPtrOutputWithContext(ctx context.Context) UserPoolClientAnalyticsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolClientAnalyticsConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolClientAnalyticsConfigurationOutput).ToUserPoolClientAnalyticsConfigurationPtrOutput()
 }
 
 type UserPoolClientAnalyticsConfigurationOutput struct{ *pulumi.OutputState }
@@ -1273,7 +1273,7 @@ func (i UserPoolDeviceConfigurationArgs) ToUserPoolDeviceConfigurationPtrOutput(
 }
 
 func (i UserPoolDeviceConfigurationArgs) ToUserPoolDeviceConfigurationPtrOutputWithContext(ctx context.Context) UserPoolDeviceConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolDeviceConfigurationOutput).ToUserPoolDeviceConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolDeviceConfigurationOutput).ToUserPoolDeviceConfigurationPtrOutput()
 }
 
 // UserPoolDeviceConfigurationPtrInput is an input type that accepts UserPoolDeviceConfigurationArgs, UserPoolDeviceConfigurationPtr and UserPoolDeviceConfigurationPtrOutput values.
@@ -1306,7 +1306,7 @@ func (i *userPoolDeviceConfigurationPtrType) ToUserPoolDeviceConfigurationPtrOut
 }
 
 func (i *userPoolDeviceConfigurationPtrType) ToUserPoolDeviceConfigurationPtrOutputWithContext(ctx context.Context) UserPoolDeviceConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolDeviceConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolDeviceConfigurationOutput).ToUserPoolDeviceConfigurationPtrOutput()
 }
 
 type UserPoolDeviceConfigurationOutput struct{ *pulumi.OutputState }
@@ -1431,7 +1431,7 @@ func (i UserPoolEmailConfigurationArgs) ToUserPoolEmailConfigurationPtrOutput() 
 }
 
 func (i UserPoolEmailConfigurationArgs) ToUserPoolEmailConfigurationPtrOutputWithContext(ctx context.Context) UserPoolEmailConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolEmailConfigurationOutput).ToUserPoolEmailConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolEmailConfigurationOutput).ToUserPoolEmailConfigurationPtrOutput()
 }
 
 // UserPoolEmailConfigurationPtrInput is an input type that accepts UserPoolEmailConfigurationArgs, UserPoolEmailConfigurationPtr and UserPoolEmailConfigurationPtrOutput values.
@@ -1464,7 +1464,7 @@ func (i *userPoolEmailConfigurationPtrType) ToUserPoolEmailConfigurationPtrOutpu
 }
 
 func (i *userPoolEmailConfigurationPtrType) ToUserPoolEmailConfigurationPtrOutputWithContext(ctx context.Context) UserPoolEmailConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolEmailConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolEmailConfigurationOutput).ToUserPoolEmailConfigurationPtrOutput()
 }
 
 type UserPoolEmailConfigurationOutput struct{ *pulumi.OutputState }
@@ -1643,7 +1643,7 @@ func (i UserPoolLambdaConfigArgs) ToUserPoolLambdaConfigPtrOutput() UserPoolLamb
 }
 
 func (i UserPoolLambdaConfigArgs) ToUserPoolLambdaConfigPtrOutputWithContext(ctx context.Context) UserPoolLambdaConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolLambdaConfigOutput).ToUserPoolLambdaConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolLambdaConfigOutput).ToUserPoolLambdaConfigPtrOutput()
 }
 
 // UserPoolLambdaConfigPtrInput is an input type that accepts UserPoolLambdaConfigArgs, UserPoolLambdaConfigPtr and UserPoolLambdaConfigPtrOutput values.
@@ -1676,7 +1676,7 @@ func (i *userPoolLambdaConfigPtrType) ToUserPoolLambdaConfigPtrOutput() UserPool
 }
 
 func (i *userPoolLambdaConfigPtrType) ToUserPoolLambdaConfigPtrOutputWithContext(ctx context.Context) UserPoolLambdaConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolLambdaConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolLambdaConfigOutput).ToUserPoolLambdaConfigPtrOutput()
 }
 
 type UserPoolLambdaConfigOutput struct{ *pulumi.OutputState }
@@ -1929,7 +1929,7 @@ func (i UserPoolPasswordPolicyArgs) ToUserPoolPasswordPolicyPtrOutput() UserPool
 }
 
 func (i UserPoolPasswordPolicyArgs) ToUserPoolPasswordPolicyPtrOutputWithContext(ctx context.Context) UserPoolPasswordPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolPasswordPolicyOutput).ToUserPoolPasswordPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolPasswordPolicyOutput).ToUserPoolPasswordPolicyPtrOutput()
 }
 
 // UserPoolPasswordPolicyPtrInput is an input type that accepts UserPoolPasswordPolicyArgs, UserPoolPasswordPolicyPtr and UserPoolPasswordPolicyPtrOutput values.
@@ -1962,7 +1962,7 @@ func (i *userPoolPasswordPolicyPtrType) ToUserPoolPasswordPolicyPtrOutput() User
 }
 
 func (i *userPoolPasswordPolicyPtrType) ToUserPoolPasswordPolicyPtrOutputWithContext(ctx context.Context) UserPoolPasswordPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolPasswordPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolPasswordPolicyOutput).ToUserPoolPasswordPolicyPtrOutput()
 }
 
 type UserPoolPasswordPolicyOutput struct{ *pulumi.OutputState }
@@ -2290,7 +2290,7 @@ func (i UserPoolSchemaNumberAttributeConstraintsArgs) ToUserPoolSchemaNumberAttr
 }
 
 func (i UserPoolSchemaNumberAttributeConstraintsArgs) ToUserPoolSchemaNumberAttributeConstraintsPtrOutputWithContext(ctx context.Context) UserPoolSchemaNumberAttributeConstraintsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaNumberAttributeConstraintsOutput).ToUserPoolSchemaNumberAttributeConstraintsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaNumberAttributeConstraintsOutput).ToUserPoolSchemaNumberAttributeConstraintsPtrOutput()
 }
 
 // UserPoolSchemaNumberAttributeConstraintsPtrInput is an input type that accepts UserPoolSchemaNumberAttributeConstraintsArgs, UserPoolSchemaNumberAttributeConstraintsPtr and UserPoolSchemaNumberAttributeConstraintsPtrOutput values.
@@ -2323,7 +2323,7 @@ func (i *userPoolSchemaNumberAttributeConstraintsPtrType) ToUserPoolSchemaNumber
 }
 
 func (i *userPoolSchemaNumberAttributeConstraintsPtrType) ToUserPoolSchemaNumberAttributeConstraintsPtrOutputWithContext(ctx context.Context) UserPoolSchemaNumberAttributeConstraintsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaNumberAttributeConstraintsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaNumberAttributeConstraintsOutput).ToUserPoolSchemaNumberAttributeConstraintsPtrOutput()
 }
 
 type UserPoolSchemaNumberAttributeConstraintsOutput struct{ *pulumi.OutputState }
@@ -2440,7 +2440,7 @@ func (i UserPoolSchemaStringAttributeConstraintsArgs) ToUserPoolSchemaStringAttr
 }
 
 func (i UserPoolSchemaStringAttributeConstraintsArgs) ToUserPoolSchemaStringAttributeConstraintsPtrOutputWithContext(ctx context.Context) UserPoolSchemaStringAttributeConstraintsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaStringAttributeConstraintsOutput).ToUserPoolSchemaStringAttributeConstraintsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaStringAttributeConstraintsOutput).ToUserPoolSchemaStringAttributeConstraintsPtrOutput()
 }
 
 // UserPoolSchemaStringAttributeConstraintsPtrInput is an input type that accepts UserPoolSchemaStringAttributeConstraintsArgs, UserPoolSchemaStringAttributeConstraintsPtr and UserPoolSchemaStringAttributeConstraintsPtrOutput values.
@@ -2473,7 +2473,7 @@ func (i *userPoolSchemaStringAttributeConstraintsPtrType) ToUserPoolSchemaString
 }
 
 func (i *userPoolSchemaStringAttributeConstraintsPtrType) ToUserPoolSchemaStringAttributeConstraintsPtrOutputWithContext(ctx context.Context) UserPoolSchemaStringAttributeConstraintsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaStringAttributeConstraintsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSchemaStringAttributeConstraintsOutput).ToUserPoolSchemaStringAttributeConstraintsPtrOutput()
 }
 
 type UserPoolSchemaStringAttributeConstraintsOutput struct{ *pulumi.OutputState }
@@ -2590,7 +2590,7 @@ func (i UserPoolSmsConfigurationArgs) ToUserPoolSmsConfigurationPtrOutput() User
 }
 
 func (i UserPoolSmsConfigurationArgs) ToUserPoolSmsConfigurationPtrOutputWithContext(ctx context.Context) UserPoolSmsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSmsConfigurationOutput).ToUserPoolSmsConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSmsConfigurationOutput).ToUserPoolSmsConfigurationPtrOutput()
 }
 
 // UserPoolSmsConfigurationPtrInput is an input type that accepts UserPoolSmsConfigurationArgs, UserPoolSmsConfigurationPtr and UserPoolSmsConfigurationPtrOutput values.
@@ -2623,7 +2623,7 @@ func (i *userPoolSmsConfigurationPtrType) ToUserPoolSmsConfigurationPtrOutput() 
 }
 
 func (i *userPoolSmsConfigurationPtrType) ToUserPoolSmsConfigurationPtrOutputWithContext(ctx context.Context) UserPoolSmsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSmsConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSmsConfigurationOutput).ToUserPoolSmsConfigurationPtrOutput()
 }
 
 type UserPoolSmsConfigurationOutput struct{ *pulumi.OutputState }
@@ -2736,7 +2736,7 @@ func (i UserPoolSoftwareTokenMfaConfigurationArgs) ToUserPoolSoftwareTokenMfaCon
 }
 
 func (i UserPoolSoftwareTokenMfaConfigurationArgs) ToUserPoolSoftwareTokenMfaConfigurationPtrOutputWithContext(ctx context.Context) UserPoolSoftwareTokenMfaConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSoftwareTokenMfaConfigurationOutput).ToUserPoolSoftwareTokenMfaConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSoftwareTokenMfaConfigurationOutput).ToUserPoolSoftwareTokenMfaConfigurationPtrOutput()
 }
 
 // UserPoolSoftwareTokenMfaConfigurationPtrInput is an input type that accepts UserPoolSoftwareTokenMfaConfigurationArgs, UserPoolSoftwareTokenMfaConfigurationPtr and UserPoolSoftwareTokenMfaConfigurationPtrOutput values.
@@ -2769,7 +2769,7 @@ func (i *userPoolSoftwareTokenMfaConfigurationPtrType) ToUserPoolSoftwareTokenMf
 }
 
 func (i *userPoolSoftwareTokenMfaConfigurationPtrType) ToUserPoolSoftwareTokenMfaConfigurationPtrOutputWithContext(ctx context.Context) UserPoolSoftwareTokenMfaConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSoftwareTokenMfaConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolSoftwareTokenMfaConfigurationOutput).ToUserPoolSoftwareTokenMfaConfigurationPtrOutput()
 }
 
 type UserPoolSoftwareTokenMfaConfigurationOutput struct{ *pulumi.OutputState }
@@ -2867,7 +2867,7 @@ func (i UserPoolUserPoolAddOnsArgs) ToUserPoolUserPoolAddOnsPtrOutput() UserPool
 }
 
 func (i UserPoolUserPoolAddOnsArgs) ToUserPoolUserPoolAddOnsPtrOutputWithContext(ctx context.Context) UserPoolUserPoolAddOnsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolUserPoolAddOnsOutput).ToUserPoolUserPoolAddOnsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolUserPoolAddOnsOutput).ToUserPoolUserPoolAddOnsPtrOutput()
 }
 
 // UserPoolUserPoolAddOnsPtrInput is an input type that accepts UserPoolUserPoolAddOnsArgs, UserPoolUserPoolAddOnsPtr and UserPoolUserPoolAddOnsPtrOutput values.
@@ -2900,7 +2900,7 @@ func (i *userPoolUserPoolAddOnsPtrType) ToUserPoolUserPoolAddOnsPtrOutput() User
 }
 
 func (i *userPoolUserPoolAddOnsPtrType) ToUserPoolUserPoolAddOnsPtrOutputWithContext(ctx context.Context) UserPoolUserPoolAddOnsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolUserPoolAddOnsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolUserPoolAddOnsOutput).ToUserPoolUserPoolAddOnsPtrOutput()
 }
 
 type UserPoolUserPoolAddOnsOutput struct{ *pulumi.OutputState }
@@ -2998,7 +2998,7 @@ func (i UserPoolUsernameConfigurationArgs) ToUserPoolUsernameConfigurationPtrOut
 }
 
 func (i UserPoolUsernameConfigurationArgs) ToUserPoolUsernameConfigurationPtrOutputWithContext(ctx context.Context) UserPoolUsernameConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolUsernameConfigurationOutput).ToUserPoolUsernameConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolUsernameConfigurationOutput).ToUserPoolUsernameConfigurationPtrOutput()
 }
 
 // UserPoolUsernameConfigurationPtrInput is an input type that accepts UserPoolUsernameConfigurationArgs, UserPoolUsernameConfigurationPtr and UserPoolUsernameConfigurationPtrOutput values.
@@ -3031,7 +3031,7 @@ func (i *userPoolUsernameConfigurationPtrType) ToUserPoolUsernameConfigurationPt
 }
 
 func (i *userPoolUsernameConfigurationPtrType) ToUserPoolUsernameConfigurationPtrOutputWithContext(ctx context.Context) UserPoolUsernameConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolUsernameConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolUsernameConfigurationOutput).ToUserPoolUsernameConfigurationPtrOutput()
 }
 
 type UserPoolUsernameConfigurationOutput struct{ *pulumi.OutputState }
@@ -3149,7 +3149,7 @@ func (i UserPoolVerificationMessageTemplateArgs) ToUserPoolVerificationMessageTe
 }
 
 func (i UserPoolVerificationMessageTemplateArgs) ToUserPoolVerificationMessageTemplatePtrOutputWithContext(ctx context.Context) UserPoolVerificationMessageTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolVerificationMessageTemplateOutput).ToUserPoolVerificationMessageTemplatePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolVerificationMessageTemplateOutput).ToUserPoolVerificationMessageTemplatePtrOutput()
 }
 
 // UserPoolVerificationMessageTemplatePtrInput is an input type that accepts UserPoolVerificationMessageTemplateArgs, UserPoolVerificationMessageTemplatePtr and UserPoolVerificationMessageTemplatePtrOutput values.
@@ -3182,7 +3182,7 @@ func (i *userPoolVerificationMessageTemplatePtrType) ToUserPoolVerificationMessa
 }
 
 func (i *userPoolVerificationMessageTemplatePtrType) ToUserPoolVerificationMessageTemplatePtrOutputWithContext(ctx context.Context) UserPoolVerificationMessageTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserPoolVerificationMessageTemplatePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolVerificationMessageTemplateOutput).ToUserPoolVerificationMessageTemplatePtrOutput()
 }
 
 type UserPoolVerificationMessageTemplateOutput struct{ *pulumi.OutputState }

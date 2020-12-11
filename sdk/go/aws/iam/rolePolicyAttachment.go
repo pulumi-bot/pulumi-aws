@@ -148,16 +148,31 @@ type RolePolicyAttachmentInput interface {
 	ToRolePolicyAttachmentOutputWithContext(ctx context.Context) RolePolicyAttachmentOutput
 }
 
-func (RolePolicyAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*RolePolicyAttachment)(nil)).Elem()
+func (*RolePolicyAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolePolicyAttachment)(nil))
 }
 
-func (i RolePolicyAttachment) ToRolePolicyAttachmentOutput() RolePolicyAttachmentOutput {
+func (i *RolePolicyAttachment) ToRolePolicyAttachmentOutput() RolePolicyAttachmentOutput {
 	return i.ToRolePolicyAttachmentOutputWithContext(context.Background())
 }
 
-func (i RolePolicyAttachment) ToRolePolicyAttachmentOutputWithContext(ctx context.Context) RolePolicyAttachmentOutput {
+func (i *RolePolicyAttachment) ToRolePolicyAttachmentOutputWithContext(ctx context.Context) RolePolicyAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RolePolicyAttachmentOutput)
+}
+
+func (i *RolePolicyAttachment) ToRolePolicyAttachmentPtrOutput() RolePolicyAttachmentPtrOutput {
+	return i.ToRolePolicyAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *RolePolicyAttachment) ToRolePolicyAttachmentPtrOutputWithContext(ctx context.Context) RolePolicyAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolePolicyAttachmentPtrOutput)
+}
+
+type RolePolicyAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToRolePolicyAttachmentPtrOutput() RolePolicyAttachmentPtrOutput
+	ToRolePolicyAttachmentPtrOutputWithContext(ctx context.Context) RolePolicyAttachmentPtrOutput
 }
 
 type RolePolicyAttachmentOutput struct {
@@ -165,7 +180,7 @@ type RolePolicyAttachmentOutput struct {
 }
 
 func (RolePolicyAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RolePolicyAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*RolePolicyAttachment)(nil))
 }
 
 func (o RolePolicyAttachmentOutput) ToRolePolicyAttachmentOutput() RolePolicyAttachmentOutput {
@@ -176,6 +191,23 @@ func (o RolePolicyAttachmentOutput) ToRolePolicyAttachmentOutputWithContext(ctx 
 	return o
 }
 
+type RolePolicyAttachmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RolePolicyAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolePolicyAttachment)(nil))
+}
+
+func (o RolePolicyAttachmentPtrOutput) ToRolePolicyAttachmentPtrOutput() RolePolicyAttachmentPtrOutput {
+	return o
+}
+
+func (o RolePolicyAttachmentPtrOutput) ToRolePolicyAttachmentPtrOutputWithContext(ctx context.Context) RolePolicyAttachmentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RolePolicyAttachmentOutput{})
+	pulumi.RegisterOutputType(RolePolicyAttachmentPtrOutput{})
 }

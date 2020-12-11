@@ -199,16 +199,31 @@ type NamedQueryInput interface {
 	ToNamedQueryOutputWithContext(ctx context.Context) NamedQueryOutput
 }
 
-func (NamedQuery) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamedQuery)(nil)).Elem()
+func (*NamedQuery) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamedQuery)(nil))
 }
 
-func (i NamedQuery) ToNamedQueryOutput() NamedQueryOutput {
+func (i *NamedQuery) ToNamedQueryOutput() NamedQueryOutput {
 	return i.ToNamedQueryOutputWithContext(context.Background())
 }
 
-func (i NamedQuery) ToNamedQueryOutputWithContext(ctx context.Context) NamedQueryOutput {
+func (i *NamedQuery) ToNamedQueryOutputWithContext(ctx context.Context) NamedQueryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamedQueryOutput)
+}
+
+func (i *NamedQuery) ToNamedQueryPtrOutput() NamedQueryPtrOutput {
+	return i.ToNamedQueryPtrOutputWithContext(context.Background())
+}
+
+func (i *NamedQuery) ToNamedQueryPtrOutputWithContext(ctx context.Context) NamedQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamedQueryPtrOutput)
+}
+
+type NamedQueryPtrInput interface {
+	pulumi.Input
+
+	ToNamedQueryPtrOutput() NamedQueryPtrOutput
+	ToNamedQueryPtrOutputWithContext(ctx context.Context) NamedQueryPtrOutput
 }
 
 type NamedQueryOutput struct {
@@ -216,7 +231,7 @@ type NamedQueryOutput struct {
 }
 
 func (NamedQueryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamedQueryOutput)(nil)).Elem()
+	return reflect.TypeOf((*NamedQuery)(nil))
 }
 
 func (o NamedQueryOutput) ToNamedQueryOutput() NamedQueryOutput {
@@ -227,6 +242,23 @@ func (o NamedQueryOutput) ToNamedQueryOutputWithContext(ctx context.Context) Nam
 	return o
 }
 
+type NamedQueryPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NamedQueryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamedQuery)(nil))
+}
+
+func (o NamedQueryPtrOutput) ToNamedQueryPtrOutput() NamedQueryPtrOutput {
+	return o
+}
+
+func (o NamedQueryPtrOutput) ToNamedQueryPtrOutputWithContext(ctx context.Context) NamedQueryPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NamedQueryOutput{})
+	pulumi.RegisterOutputType(NamedQueryPtrOutput{})
 }

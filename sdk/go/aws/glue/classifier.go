@@ -240,16 +240,31 @@ type ClassifierInput interface {
 	ToClassifierOutputWithContext(ctx context.Context) ClassifierOutput
 }
 
-func (Classifier) ElementType() reflect.Type {
-	return reflect.TypeOf((*Classifier)(nil)).Elem()
+func (*Classifier) ElementType() reflect.Type {
+	return reflect.TypeOf((*Classifier)(nil))
 }
 
-func (i Classifier) ToClassifierOutput() ClassifierOutput {
+func (i *Classifier) ToClassifierOutput() ClassifierOutput {
 	return i.ToClassifierOutputWithContext(context.Background())
 }
 
-func (i Classifier) ToClassifierOutputWithContext(ctx context.Context) ClassifierOutput {
+func (i *Classifier) ToClassifierOutputWithContext(ctx context.Context) ClassifierOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClassifierOutput)
+}
+
+func (i *Classifier) ToClassifierPtrOutput() ClassifierPtrOutput {
+	return i.ToClassifierPtrOutputWithContext(context.Background())
+}
+
+func (i *Classifier) ToClassifierPtrOutputWithContext(ctx context.Context) ClassifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClassifierPtrOutput)
+}
+
+type ClassifierPtrInput interface {
+	pulumi.Input
+
+	ToClassifierPtrOutput() ClassifierPtrOutput
+	ToClassifierPtrOutputWithContext(ctx context.Context) ClassifierPtrOutput
 }
 
 type ClassifierOutput struct {
@@ -257,7 +272,7 @@ type ClassifierOutput struct {
 }
 
 func (ClassifierOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClassifierOutput)(nil)).Elem()
+	return reflect.TypeOf((*Classifier)(nil))
 }
 
 func (o ClassifierOutput) ToClassifierOutput() ClassifierOutput {
@@ -268,6 +283,23 @@ func (o ClassifierOutput) ToClassifierOutputWithContext(ctx context.Context) Cla
 	return o
 }
 
+type ClassifierPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClassifierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Classifier)(nil))
+}
+
+func (o ClassifierPtrOutput) ToClassifierPtrOutput() ClassifierPtrOutput {
+	return o
+}
+
+func (o ClassifierPtrOutput) ToClassifierPtrOutputWithContext(ctx context.Context) ClassifierPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClassifierOutput{})
+	pulumi.RegisterOutputType(ClassifierPtrOutput{})
 }

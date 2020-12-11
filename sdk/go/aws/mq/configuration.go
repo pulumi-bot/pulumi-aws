@@ -202,16 +202,31 @@ type ConfigurationInput interface {
 	ToConfigurationOutputWithContext(ctx context.Context) ConfigurationOutput
 }
 
-func (Configuration) ElementType() reflect.Type {
-	return reflect.TypeOf((*Configuration)(nil)).Elem()
+func (*Configuration) ElementType() reflect.Type {
+	return reflect.TypeOf((*Configuration)(nil))
 }
 
-func (i Configuration) ToConfigurationOutput() ConfigurationOutput {
+func (i *Configuration) ToConfigurationOutput() ConfigurationOutput {
 	return i.ToConfigurationOutputWithContext(context.Background())
 }
 
-func (i Configuration) ToConfigurationOutputWithContext(ctx context.Context) ConfigurationOutput {
+func (i *Configuration) ToConfigurationOutputWithContext(ctx context.Context) ConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationOutput)
+}
+
+func (i *Configuration) ToConfigurationPtrOutput() ConfigurationPtrOutput {
+	return i.ToConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *Configuration) ToConfigurationPtrOutputWithContext(ctx context.Context) ConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationPtrOutput)
+}
+
+type ConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToConfigurationPtrOutput() ConfigurationPtrOutput
+	ToConfigurationPtrOutputWithContext(ctx context.Context) ConfigurationPtrOutput
 }
 
 type ConfigurationOutput struct {
@@ -219,7 +234,7 @@ type ConfigurationOutput struct {
 }
 
 func (ConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConfigurationOutput)(nil)).Elem()
+	return reflect.TypeOf((*Configuration)(nil))
 }
 
 func (o ConfigurationOutput) ToConfigurationOutput() ConfigurationOutput {
@@ -230,6 +245,23 @@ func (o ConfigurationOutput) ToConfigurationOutputWithContext(ctx context.Contex
 	return o
 }
 
+type ConfigurationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Configuration)(nil))
+}
+
+func (o ConfigurationPtrOutput) ToConfigurationPtrOutput() ConfigurationPtrOutput {
+	return o
+}
+
+func (o ConfigurationPtrOutput) ToConfigurationPtrOutputWithContext(ctx context.Context) ConfigurationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ConfigurationOutput{})
+	pulumi.RegisterOutputType(ConfigurationPtrOutput{})
 }

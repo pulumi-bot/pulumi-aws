@@ -175,16 +175,31 @@ type TableItemInput interface {
 	ToTableItemOutputWithContext(ctx context.Context) TableItemOutput
 }
 
-func (TableItem) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableItem)(nil)).Elem()
+func (*TableItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableItem)(nil))
 }
 
-func (i TableItem) ToTableItemOutput() TableItemOutput {
+func (i *TableItem) ToTableItemOutput() TableItemOutput {
 	return i.ToTableItemOutputWithContext(context.Background())
 }
 
-func (i TableItem) ToTableItemOutputWithContext(ctx context.Context) TableItemOutput {
+func (i *TableItem) ToTableItemOutputWithContext(ctx context.Context) TableItemOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TableItemOutput)
+}
+
+func (i *TableItem) ToTableItemPtrOutput() TableItemPtrOutput {
+	return i.ToTableItemPtrOutputWithContext(context.Background())
+}
+
+func (i *TableItem) ToTableItemPtrOutputWithContext(ctx context.Context) TableItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableItemPtrOutput)
+}
+
+type TableItemPtrInput interface {
+	pulumi.Input
+
+	ToTableItemPtrOutput() TableItemPtrOutput
+	ToTableItemPtrOutputWithContext(ctx context.Context) TableItemPtrOutput
 }
 
 type TableItemOutput struct {
@@ -192,7 +207,7 @@ type TableItemOutput struct {
 }
 
 func (TableItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableItemOutput)(nil)).Elem()
+	return reflect.TypeOf((*TableItem)(nil))
 }
 
 func (o TableItemOutput) ToTableItemOutput() TableItemOutput {
@@ -203,6 +218,23 @@ func (o TableItemOutput) ToTableItemOutputWithContext(ctx context.Context) Table
 	return o
 }
 
+type TableItemPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TableItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableItem)(nil))
+}
+
+func (o TableItemPtrOutput) ToTableItemPtrOutput() TableItemPtrOutput {
+	return o
+}
+
+func (o TableItemPtrOutput) ToTableItemPtrOutputWithContext(ctx context.Context) TableItemPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TableItemOutput{})
+	pulumi.RegisterOutputType(TableItemPtrOutput{})
 }

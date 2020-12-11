@@ -56,7 +56,7 @@ func (i AcceleratorAttributesArgs) ToAcceleratorAttributesPtrOutput() Accelerato
 }
 
 func (i AcceleratorAttributesArgs) ToAcceleratorAttributesPtrOutputWithContext(ctx context.Context) AcceleratorAttributesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorAttributesOutput).ToAcceleratorAttributesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorAttributesOutput).ToAcceleratorAttributesPtrOutput()
 }
 
 // AcceleratorAttributesPtrInput is an input type that accepts AcceleratorAttributesArgs, AcceleratorAttributesPtr and AcceleratorAttributesPtrOutput values.
@@ -89,7 +89,7 @@ func (i *acceleratorAttributesPtrType) ToAcceleratorAttributesPtrOutput() Accele
 }
 
 func (i *acceleratorAttributesPtrType) ToAcceleratorAttributesPtrOutputWithContext(ctx context.Context) AcceleratorAttributesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorAttributesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorAttributesOutput).ToAcceleratorAttributesPtrOutput()
 }
 
 type AcceleratorAttributesOutput struct{ *pulumi.OutputState }

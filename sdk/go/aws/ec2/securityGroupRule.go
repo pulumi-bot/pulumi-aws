@@ -306,16 +306,31 @@ type SecurityGroupRuleInput interface {
 	ToSecurityGroupRuleOutputWithContext(ctx context.Context) SecurityGroupRuleOutput
 }
 
-func (SecurityGroupRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityGroupRule)(nil)).Elem()
+func (*SecurityGroupRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroupRule)(nil))
 }
 
-func (i SecurityGroupRule) ToSecurityGroupRuleOutput() SecurityGroupRuleOutput {
+func (i *SecurityGroupRule) ToSecurityGroupRuleOutput() SecurityGroupRuleOutput {
 	return i.ToSecurityGroupRuleOutputWithContext(context.Background())
 }
 
-func (i SecurityGroupRule) ToSecurityGroupRuleOutputWithContext(ctx context.Context) SecurityGroupRuleOutput {
+func (i *SecurityGroupRule) ToSecurityGroupRuleOutputWithContext(ctx context.Context) SecurityGroupRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupRuleOutput)
+}
+
+func (i *SecurityGroupRule) ToSecurityGroupRulePtrOutput() SecurityGroupRulePtrOutput {
+	return i.ToSecurityGroupRulePtrOutputWithContext(context.Background())
+}
+
+func (i *SecurityGroupRule) ToSecurityGroupRulePtrOutputWithContext(ctx context.Context) SecurityGroupRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupRulePtrOutput)
+}
+
+type SecurityGroupRulePtrInput interface {
+	pulumi.Input
+
+	ToSecurityGroupRulePtrOutput() SecurityGroupRulePtrOutput
+	ToSecurityGroupRulePtrOutputWithContext(ctx context.Context) SecurityGroupRulePtrOutput
 }
 
 type SecurityGroupRuleOutput struct {
@@ -323,7 +338,7 @@ type SecurityGroupRuleOutput struct {
 }
 
 func (SecurityGroupRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityGroupRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*SecurityGroupRule)(nil))
 }
 
 func (o SecurityGroupRuleOutput) ToSecurityGroupRuleOutput() SecurityGroupRuleOutput {
@@ -334,6 +349,23 @@ func (o SecurityGroupRuleOutput) ToSecurityGroupRuleOutputWithContext(ctx contex
 	return o
 }
 
+type SecurityGroupRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecurityGroupRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGroupRule)(nil))
+}
+
+func (o SecurityGroupRulePtrOutput) ToSecurityGroupRulePtrOutput() SecurityGroupRulePtrOutput {
+	return o
+}
+
+func (o SecurityGroupRulePtrOutput) ToSecurityGroupRulePtrOutputWithContext(ctx context.Context) SecurityGroupRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SecurityGroupRuleOutput{})
+	pulumi.RegisterOutputType(SecurityGroupRulePtrOutput{})
 }

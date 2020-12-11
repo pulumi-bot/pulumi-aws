@@ -48,7 +48,7 @@ func (i SecretRotationRotationRulesArgs) ToSecretRotationRotationRulesPtrOutput(
 }
 
 func (i SecretRotationRotationRulesArgs) ToSecretRotationRotationRulesPtrOutputWithContext(ctx context.Context) SecretRotationRotationRulesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretRotationRotationRulesOutput).ToSecretRotationRotationRulesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SecretRotationRotationRulesOutput).ToSecretRotationRotationRulesPtrOutput()
 }
 
 // SecretRotationRotationRulesPtrInput is an input type that accepts SecretRotationRotationRulesArgs, SecretRotationRotationRulesPtr and SecretRotationRotationRulesPtrOutput values.
@@ -81,7 +81,7 @@ func (i *secretRotationRotationRulesPtrType) ToSecretRotationRotationRulesPtrOut
 }
 
 func (i *secretRotationRotationRulesPtrType) ToSecretRotationRotationRulesPtrOutputWithContext(ctx context.Context) SecretRotationRotationRulesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretRotationRotationRulesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SecretRotationRotationRulesOutput).ToSecretRotationRotationRulesPtrOutput()
 }
 
 type SecretRotationRotationRulesOutput struct{ *pulumi.OutputState }
@@ -179,7 +179,7 @@ func (i SecretRotationRulesArgs) ToSecretRotationRulesPtrOutput() SecretRotation
 }
 
 func (i SecretRotationRulesArgs) ToSecretRotationRulesPtrOutputWithContext(ctx context.Context) SecretRotationRulesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretRotationRulesOutput).ToSecretRotationRulesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SecretRotationRulesOutput).ToSecretRotationRulesPtrOutput()
 }
 
 // SecretRotationRulesPtrInput is an input type that accepts SecretRotationRulesArgs, SecretRotationRulesPtr and SecretRotationRulesPtrOutput values.
@@ -212,7 +212,7 @@ func (i *secretRotationRulesPtrType) ToSecretRotationRulesPtrOutput() SecretRota
 }
 
 func (i *secretRotationRulesPtrType) ToSecretRotationRulesPtrOutputWithContext(ctx context.Context) SecretRotationRulesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecretRotationRulesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SecretRotationRulesOutput).ToSecretRotationRulesPtrOutput()
 }
 
 type SecretRotationRulesOutput struct{ *pulumi.OutputState }

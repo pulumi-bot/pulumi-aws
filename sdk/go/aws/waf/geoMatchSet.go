@@ -138,16 +138,31 @@ type GeoMatchSetInput interface {
 	ToGeoMatchSetOutputWithContext(ctx context.Context) GeoMatchSetOutput
 }
 
-func (GeoMatchSet) ElementType() reflect.Type {
-	return reflect.TypeOf((*GeoMatchSet)(nil)).Elem()
+func (*GeoMatchSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeoMatchSet)(nil))
 }
 
-func (i GeoMatchSet) ToGeoMatchSetOutput() GeoMatchSetOutput {
+func (i *GeoMatchSet) ToGeoMatchSetOutput() GeoMatchSetOutput {
 	return i.ToGeoMatchSetOutputWithContext(context.Background())
 }
 
-func (i GeoMatchSet) ToGeoMatchSetOutputWithContext(ctx context.Context) GeoMatchSetOutput {
+func (i *GeoMatchSet) ToGeoMatchSetOutputWithContext(ctx context.Context) GeoMatchSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GeoMatchSetOutput)
+}
+
+func (i *GeoMatchSet) ToGeoMatchSetPtrOutput() GeoMatchSetPtrOutput {
+	return i.ToGeoMatchSetPtrOutputWithContext(context.Background())
+}
+
+func (i *GeoMatchSet) ToGeoMatchSetPtrOutputWithContext(ctx context.Context) GeoMatchSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeoMatchSetPtrOutput)
+}
+
+type GeoMatchSetPtrInput interface {
+	pulumi.Input
+
+	ToGeoMatchSetPtrOutput() GeoMatchSetPtrOutput
+	ToGeoMatchSetPtrOutputWithContext(ctx context.Context) GeoMatchSetPtrOutput
 }
 
 type GeoMatchSetOutput struct {
@@ -155,7 +170,7 @@ type GeoMatchSetOutput struct {
 }
 
 func (GeoMatchSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GeoMatchSetOutput)(nil)).Elem()
+	return reflect.TypeOf((*GeoMatchSet)(nil))
 }
 
 func (o GeoMatchSetOutput) ToGeoMatchSetOutput() GeoMatchSetOutput {
@@ -166,6 +181,23 @@ func (o GeoMatchSetOutput) ToGeoMatchSetOutputWithContext(ctx context.Context) G
 	return o
 }
 
+type GeoMatchSetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GeoMatchSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeoMatchSet)(nil))
+}
+
+func (o GeoMatchSetPtrOutput) ToGeoMatchSetPtrOutput() GeoMatchSetPtrOutput {
+	return o
+}
+
+func (o GeoMatchSetPtrOutput) ToGeoMatchSetPtrOutputWithContext(ctx context.Context) GeoMatchSetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(GeoMatchSetOutput{})
+	pulumi.RegisterOutputType(GeoMatchSetPtrOutput{})
 }

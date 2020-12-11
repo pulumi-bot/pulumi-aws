@@ -109,16 +109,31 @@ type AssociationInput interface {
 	ToAssociationOutputWithContext(ctx context.Context) AssociationOutput
 }
 
-func (Association) ElementType() reflect.Type {
-	return reflect.TypeOf((*Association)(nil)).Elem()
+func (*Association) ElementType() reflect.Type {
+	return reflect.TypeOf((*Association)(nil))
 }
 
-func (i Association) ToAssociationOutput() AssociationOutput {
+func (i *Association) ToAssociationOutput() AssociationOutput {
 	return i.ToAssociationOutputWithContext(context.Background())
 }
 
-func (i Association) ToAssociationOutputWithContext(ctx context.Context) AssociationOutput {
+func (i *Association) ToAssociationOutputWithContext(ctx context.Context) AssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AssociationOutput)
+}
+
+func (i *Association) ToAssociationPtrOutput() AssociationPtrOutput {
+	return i.ToAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i *Association) ToAssociationPtrOutputWithContext(ctx context.Context) AssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssociationPtrOutput)
+}
+
+type AssociationPtrInput interface {
+	pulumi.Input
+
+	ToAssociationPtrOutput() AssociationPtrOutput
+	ToAssociationPtrOutputWithContext(ctx context.Context) AssociationPtrOutput
 }
 
 type AssociationOutput struct {
@@ -126,7 +141,7 @@ type AssociationOutput struct {
 }
 
 func (AssociationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssociationOutput)(nil)).Elem()
+	return reflect.TypeOf((*Association)(nil))
 }
 
 func (o AssociationOutput) ToAssociationOutput() AssociationOutput {
@@ -137,6 +152,23 @@ func (o AssociationOutput) ToAssociationOutputWithContext(ctx context.Context) A
 	return o
 }
 
+type AssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Association)(nil))
+}
+
+func (o AssociationPtrOutput) ToAssociationPtrOutput() AssociationPtrOutput {
+	return o
+}
+
+func (o AssociationPtrOutput) ToAssociationPtrOutputWithContext(ctx context.Context) AssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AssociationOutput{})
+	pulumi.RegisterOutputType(AssociationPtrOutput{})
 }

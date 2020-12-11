@@ -379,7 +379,7 @@ func (i FirewallPolicyFirewallPolicyArgs) ToFirewallPolicyFirewallPolicyPtrOutpu
 }
 
 func (i FirewallPolicyFirewallPolicyArgs) ToFirewallPolicyFirewallPolicyPtrOutputWithContext(ctx context.Context) FirewallPolicyFirewallPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyFirewallPolicyOutput).ToFirewallPolicyFirewallPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyFirewallPolicyOutput).ToFirewallPolicyFirewallPolicyPtrOutput()
 }
 
 // FirewallPolicyFirewallPolicyPtrInput is an input type that accepts FirewallPolicyFirewallPolicyArgs, FirewallPolicyFirewallPolicyPtr and FirewallPolicyFirewallPolicyPtrOutput values.
@@ -412,7 +412,7 @@ func (i *firewallPolicyFirewallPolicyPtrType) ToFirewallPolicyFirewallPolicyPtrO
 }
 
 func (i *firewallPolicyFirewallPolicyPtrType) ToFirewallPolicyFirewallPolicyPtrOutputWithContext(ctx context.Context) FirewallPolicyFirewallPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyFirewallPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyFirewallPolicyOutput).ToFirewallPolicyFirewallPolicyPtrOutput()
 }
 
 type FirewallPolicyFirewallPolicyOutput struct{ *pulumi.OutputState }
@@ -1195,7 +1195,7 @@ func (i LoggingConfigurationLoggingConfigurationArgs) ToLoggingConfigurationLogg
 }
 
 func (i LoggingConfigurationLoggingConfigurationArgs) ToLoggingConfigurationLoggingConfigurationPtrOutputWithContext(ctx context.Context) LoggingConfigurationLoggingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigurationLoggingConfigurationOutput).ToLoggingConfigurationLoggingConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigurationLoggingConfigurationOutput).ToLoggingConfigurationLoggingConfigurationPtrOutput()
 }
 
 // LoggingConfigurationLoggingConfigurationPtrInput is an input type that accepts LoggingConfigurationLoggingConfigurationArgs, LoggingConfigurationLoggingConfigurationPtr and LoggingConfigurationLoggingConfigurationPtrOutput values.
@@ -1228,7 +1228,7 @@ func (i *loggingConfigurationLoggingConfigurationPtrType) ToLoggingConfiguration
 }
 
 func (i *loggingConfigurationLoggingConfigurationPtrType) ToLoggingConfigurationLoggingConfigurationPtrOutputWithContext(ctx context.Context) LoggingConfigurationLoggingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigurationLoggingConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigurationLoggingConfigurationOutput).ToLoggingConfigurationLoggingConfigurationPtrOutput()
 }
 
 type LoggingConfigurationLoggingConfigurationOutput struct{ *pulumi.OutputState }
@@ -1460,7 +1460,7 @@ func (i RuleGroupRuleGroupArgs) ToRuleGroupRuleGroupPtrOutput() RuleGroupRuleGro
 }
 
 func (i RuleGroupRuleGroupArgs) ToRuleGroupRuleGroupPtrOutputWithContext(ctx context.Context) RuleGroupRuleGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupRuleGroupOutput).ToRuleGroupRuleGroupPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupRuleGroupOutput).ToRuleGroupRuleGroupPtrOutput()
 }
 
 // RuleGroupRuleGroupPtrInput is an input type that accepts RuleGroupRuleGroupArgs, RuleGroupRuleGroupPtr and RuleGroupRuleGroupPtrOutput values.
@@ -1493,7 +1493,7 @@ func (i *ruleGroupRuleGroupPtrType) ToRuleGroupRuleGroupPtrOutput() RuleGroupRul
 }
 
 func (i *ruleGroupRuleGroupPtrType) ToRuleGroupRuleGroupPtrOutputWithContext(ctx context.Context) RuleGroupRuleGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupRuleGroupPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupRuleGroupOutput).ToRuleGroupRuleGroupPtrOutput()
 }
 
 type RuleGroupRuleGroupOutput struct{ *pulumi.OutputState }
@@ -1610,7 +1610,7 @@ func (i RuleGroupRuleGroupRuleVariablesArgs) ToRuleGroupRuleGroupRuleVariablesPt
 }
 
 func (i RuleGroupRuleGroupRuleVariablesArgs) ToRuleGroupRuleGroupRuleVariablesPtrOutputWithContext(ctx context.Context) RuleGroupRuleGroupRuleVariablesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupRuleGroupRuleVariablesOutput).ToRuleGroupRuleGroupRuleVariablesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupRuleGroupRuleVariablesOutput).ToRuleGroupRuleGroupRuleVariablesPtrOutput()
 }
 
 // RuleGroupRuleGroupRuleVariablesPtrInput is an input type that accepts RuleGroupRuleGroupRuleVariablesArgs, RuleGroupRuleGroupRuleVariablesPtr and RuleGroupRuleGroupRuleVariablesPtrOutput values.
@@ -1643,7 +1643,7 @@ func (i *ruleGroupRuleGroupRuleVariablesPtrType) ToRuleGroupRuleGroupRuleVariabl
 }
 
 func (i *ruleGroupRuleGroupRuleVariablesPtrType) ToRuleGroupRuleGroupRuleVariablesPtrOutputWithContext(ctx context.Context) RuleGroupRuleGroupRuleVariablesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupRuleGroupRuleVariablesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupRuleGroupRuleVariablesOutput).ToRuleGroupRuleGroupRuleVariablesPtrOutput()
 }
 
 type RuleGroupRuleGroupRuleVariablesOutput struct{ *pulumi.OutputState }
@@ -2086,7 +2086,7 @@ func (i RuleGroupRuleGroupRulesSourceArgs) ToRuleGroupRuleGroupRulesSourcePtrOut
 }
 
 func (i RuleGroupRuleGroupRulesSourceArgs) ToRuleGroupRuleGroupRulesSourcePtrOutputWithContext(ctx context.Context) RuleGroupRuleGroupRulesSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupRuleGroupRulesSourceOutput).ToRuleGroupRuleGroupRulesSourcePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupRuleGroupRulesSourceOutput).ToRuleGroupRuleGroupRulesSourcePtrOutput()
 }
 
 // RuleGroupRuleGroupRulesSourcePtrInput is an input type that accepts RuleGroupRuleGroupRulesSourceArgs, RuleGroupRuleGroupRulesSourcePtr and RuleGroupRuleGroupRulesSourcePtrOutput values.
@@ -2119,7 +2119,7 @@ func (i *ruleGroupRuleGroupRulesSourcePtrType) ToRuleGroupRuleGroupRulesSourcePt
 }
 
 func (i *ruleGroupRuleGroupRulesSourcePtrType) ToRuleGroupRuleGroupRulesSourcePtrOutputWithContext(ctx context.Context) RuleGroupRuleGroupRulesSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupRuleGroupRulesSourcePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupRuleGroupRulesSourceOutput).ToRuleGroupRuleGroupRulesSourcePtrOutput()
 }
 
 type RuleGroupRuleGroupRulesSourceOutput struct{ *pulumi.OutputState }
@@ -2276,7 +2276,7 @@ func (i RuleGroupRuleGroupRulesSourceRulesSourceListArgs) ToRuleGroupRuleGroupRu
 }
 
 func (i RuleGroupRuleGroupRulesSourceRulesSourceListArgs) ToRuleGroupRuleGroupRulesSourceRulesSourceListPtrOutputWithContext(ctx context.Context) RuleGroupRuleGroupRulesSourceRulesSourceListPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupRuleGroupRulesSourceRulesSourceListOutput).ToRuleGroupRuleGroupRulesSourceRulesSourceListPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupRuleGroupRulesSourceRulesSourceListOutput).ToRuleGroupRuleGroupRulesSourceRulesSourceListPtrOutput()
 }
 
 // RuleGroupRuleGroupRulesSourceRulesSourceListPtrInput is an input type that accepts RuleGroupRuleGroupRulesSourceRulesSourceListArgs, RuleGroupRuleGroupRulesSourceRulesSourceListPtr and RuleGroupRuleGroupRulesSourceRulesSourceListPtrOutput values.
@@ -2309,7 +2309,7 @@ func (i *ruleGroupRuleGroupRulesSourceRulesSourceListPtrType) ToRuleGroupRuleGro
 }
 
 func (i *ruleGroupRuleGroupRulesSourceRulesSourceListPtrType) ToRuleGroupRuleGroupRulesSourceRulesSourceListPtrOutputWithContext(ctx context.Context) RuleGroupRuleGroupRulesSourceRulesSourceListPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupRuleGroupRulesSourceRulesSourceListPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupRuleGroupRulesSourceRulesSourceListOutput).ToRuleGroupRuleGroupRulesSourceRulesSourceListPtrOutput()
 }
 
 type RuleGroupRuleGroupRulesSourceRulesSourceListOutput struct{ *pulumi.OutputState }
@@ -2768,7 +2768,7 @@ func (i RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsArgs) ToRuleG
 }
 
 func (i RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsArgs) ToRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsPtrOutputWithContext(ctx context.Context) RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsOutput).ToRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsOutput).ToRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsPtrOutput()
 }
 
 // RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsPtrInput is an input type that accepts RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsArgs, RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsPtr and RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsPtrOutput values.
@@ -2801,7 +2801,7 @@ func (i *ruleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsPtrType) ToR
 }
 
 func (i *ruleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsPtrType) ToRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsPtrOutputWithContext(ctx context.Context) RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsOutput).ToRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsPtrOutput()
 }
 
 type RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsOutput struct{ *pulumi.OutputState }

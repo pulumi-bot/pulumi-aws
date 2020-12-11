@@ -124,16 +124,31 @@ type LoadBalancerPolicyInput interface {
 	ToLoadBalancerPolicyOutputWithContext(ctx context.Context) LoadBalancerPolicyOutput
 }
 
-func (LoadBalancerPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadBalancerPolicy)(nil)).Elem()
+func (*LoadBalancerPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerPolicy)(nil))
 }
 
-func (i LoadBalancerPolicy) ToLoadBalancerPolicyOutput() LoadBalancerPolicyOutput {
+func (i *LoadBalancerPolicy) ToLoadBalancerPolicyOutput() LoadBalancerPolicyOutput {
 	return i.ToLoadBalancerPolicyOutputWithContext(context.Background())
 }
 
-func (i LoadBalancerPolicy) ToLoadBalancerPolicyOutputWithContext(ctx context.Context) LoadBalancerPolicyOutput {
+func (i *LoadBalancerPolicy) ToLoadBalancerPolicyOutputWithContext(ctx context.Context) LoadBalancerPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPolicyOutput)
+}
+
+func (i *LoadBalancerPolicy) ToLoadBalancerPolicyPtrOutput() LoadBalancerPolicyPtrOutput {
+	return i.ToLoadBalancerPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *LoadBalancerPolicy) ToLoadBalancerPolicyPtrOutputWithContext(ctx context.Context) LoadBalancerPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPolicyPtrOutput)
+}
+
+type LoadBalancerPolicyPtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerPolicyPtrOutput() LoadBalancerPolicyPtrOutput
+	ToLoadBalancerPolicyPtrOutputWithContext(ctx context.Context) LoadBalancerPolicyPtrOutput
 }
 
 type LoadBalancerPolicyOutput struct {
@@ -141,7 +156,7 @@ type LoadBalancerPolicyOutput struct {
 }
 
 func (LoadBalancerPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadBalancerPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*LoadBalancerPolicy)(nil))
 }
 
 func (o LoadBalancerPolicyOutput) ToLoadBalancerPolicyOutput() LoadBalancerPolicyOutput {
@@ -152,6 +167,23 @@ func (o LoadBalancerPolicyOutput) ToLoadBalancerPolicyOutputWithContext(ctx cont
 	return o
 }
 
+type LoadBalancerPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LoadBalancerPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerPolicy)(nil))
+}
+
+func (o LoadBalancerPolicyPtrOutput) ToLoadBalancerPolicyPtrOutput() LoadBalancerPolicyPtrOutput {
+	return o
+}
+
+func (o LoadBalancerPolicyPtrOutput) ToLoadBalancerPolicyPtrOutputWithContext(ctx context.Context) LoadBalancerPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LoadBalancerPolicyOutput{})
+	pulumi.RegisterOutputType(LoadBalancerPolicyPtrOutput{})
 }

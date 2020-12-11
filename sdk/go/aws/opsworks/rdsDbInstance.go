@@ -153,16 +153,31 @@ type RdsDbInstanceInput interface {
 	ToRdsDbInstanceOutputWithContext(ctx context.Context) RdsDbInstanceOutput
 }
 
-func (RdsDbInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*RdsDbInstance)(nil)).Elem()
+func (*RdsDbInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*RdsDbInstance)(nil))
 }
 
-func (i RdsDbInstance) ToRdsDbInstanceOutput() RdsDbInstanceOutput {
+func (i *RdsDbInstance) ToRdsDbInstanceOutput() RdsDbInstanceOutput {
 	return i.ToRdsDbInstanceOutputWithContext(context.Background())
 }
 
-func (i RdsDbInstance) ToRdsDbInstanceOutputWithContext(ctx context.Context) RdsDbInstanceOutput {
+func (i *RdsDbInstance) ToRdsDbInstanceOutputWithContext(ctx context.Context) RdsDbInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RdsDbInstanceOutput)
+}
+
+func (i *RdsDbInstance) ToRdsDbInstancePtrOutput() RdsDbInstancePtrOutput {
+	return i.ToRdsDbInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *RdsDbInstance) ToRdsDbInstancePtrOutputWithContext(ctx context.Context) RdsDbInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RdsDbInstancePtrOutput)
+}
+
+type RdsDbInstancePtrInput interface {
+	pulumi.Input
+
+	ToRdsDbInstancePtrOutput() RdsDbInstancePtrOutput
+	ToRdsDbInstancePtrOutputWithContext(ctx context.Context) RdsDbInstancePtrOutput
 }
 
 type RdsDbInstanceOutput struct {
@@ -170,7 +185,7 @@ type RdsDbInstanceOutput struct {
 }
 
 func (RdsDbInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RdsDbInstanceOutput)(nil)).Elem()
+	return reflect.TypeOf((*RdsDbInstance)(nil))
 }
 
 func (o RdsDbInstanceOutput) ToRdsDbInstanceOutput() RdsDbInstanceOutput {
@@ -181,6 +196,23 @@ func (o RdsDbInstanceOutput) ToRdsDbInstanceOutputWithContext(ctx context.Contex
 	return o
 }
 
+type RdsDbInstancePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RdsDbInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RdsDbInstance)(nil))
+}
+
+func (o RdsDbInstancePtrOutput) ToRdsDbInstancePtrOutput() RdsDbInstancePtrOutput {
+	return o
+}
+
+func (o RdsDbInstancePtrOutput) ToRdsDbInstancePtrOutputWithContext(ctx context.Context) RdsDbInstancePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RdsDbInstanceOutput{})
+	pulumi.RegisterOutputType(RdsDbInstancePtrOutput{})
 }

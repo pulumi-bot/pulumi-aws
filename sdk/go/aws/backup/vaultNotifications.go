@@ -169,16 +169,31 @@ type VaultNotificationsInput interface {
 	ToVaultNotificationsOutputWithContext(ctx context.Context) VaultNotificationsOutput
 }
 
-func (VaultNotifications) ElementType() reflect.Type {
-	return reflect.TypeOf((*VaultNotifications)(nil)).Elem()
+func (*VaultNotifications) ElementType() reflect.Type {
+	return reflect.TypeOf((*VaultNotifications)(nil))
 }
 
-func (i VaultNotifications) ToVaultNotificationsOutput() VaultNotificationsOutput {
+func (i *VaultNotifications) ToVaultNotificationsOutput() VaultNotificationsOutput {
 	return i.ToVaultNotificationsOutputWithContext(context.Background())
 }
 
-func (i VaultNotifications) ToVaultNotificationsOutputWithContext(ctx context.Context) VaultNotificationsOutput {
+func (i *VaultNotifications) ToVaultNotificationsOutputWithContext(ctx context.Context) VaultNotificationsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VaultNotificationsOutput)
+}
+
+func (i *VaultNotifications) ToVaultNotificationsPtrOutput() VaultNotificationsPtrOutput {
+	return i.ToVaultNotificationsPtrOutputWithContext(context.Background())
+}
+
+func (i *VaultNotifications) ToVaultNotificationsPtrOutputWithContext(ctx context.Context) VaultNotificationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VaultNotificationsPtrOutput)
+}
+
+type VaultNotificationsPtrInput interface {
+	pulumi.Input
+
+	ToVaultNotificationsPtrOutput() VaultNotificationsPtrOutput
+	ToVaultNotificationsPtrOutputWithContext(ctx context.Context) VaultNotificationsPtrOutput
 }
 
 type VaultNotificationsOutput struct {
@@ -186,7 +201,7 @@ type VaultNotificationsOutput struct {
 }
 
 func (VaultNotificationsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VaultNotificationsOutput)(nil)).Elem()
+	return reflect.TypeOf((*VaultNotifications)(nil))
 }
 
 func (o VaultNotificationsOutput) ToVaultNotificationsOutput() VaultNotificationsOutput {
@@ -197,6 +212,23 @@ func (o VaultNotificationsOutput) ToVaultNotificationsOutputWithContext(ctx cont
 	return o
 }
 
+type VaultNotificationsPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VaultNotificationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VaultNotifications)(nil))
+}
+
+func (o VaultNotificationsPtrOutput) ToVaultNotificationsPtrOutput() VaultNotificationsPtrOutput {
+	return o
+}
+
+func (o VaultNotificationsPtrOutput) ToVaultNotificationsPtrOutputWithContext(ctx context.Context) VaultNotificationsPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VaultNotificationsOutput{})
+	pulumi.RegisterOutputType(VaultNotificationsPtrOutput{})
 }

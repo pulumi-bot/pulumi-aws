@@ -237,16 +237,31 @@ type FileSystemInput interface {
 	ToFileSystemOutputWithContext(ctx context.Context) FileSystemOutput
 }
 
-func (FileSystem) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileSystem)(nil)).Elem()
+func (*FileSystem) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileSystem)(nil))
 }
 
-func (i FileSystem) ToFileSystemOutput() FileSystemOutput {
+func (i *FileSystem) ToFileSystemOutput() FileSystemOutput {
 	return i.ToFileSystemOutputWithContext(context.Background())
 }
 
-func (i FileSystem) ToFileSystemOutputWithContext(ctx context.Context) FileSystemOutput {
+func (i *FileSystem) ToFileSystemOutputWithContext(ctx context.Context) FileSystemOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FileSystemOutput)
+}
+
+func (i *FileSystem) ToFileSystemPtrOutput() FileSystemPtrOutput {
+	return i.ToFileSystemPtrOutputWithContext(context.Background())
+}
+
+func (i *FileSystem) ToFileSystemPtrOutputWithContext(ctx context.Context) FileSystemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemPtrOutput)
+}
+
+type FileSystemPtrInput interface {
+	pulumi.Input
+
+	ToFileSystemPtrOutput() FileSystemPtrOutput
+	ToFileSystemPtrOutputWithContext(ctx context.Context) FileSystemPtrOutput
 }
 
 type FileSystemOutput struct {
@@ -254,7 +269,7 @@ type FileSystemOutput struct {
 }
 
 func (FileSystemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileSystemOutput)(nil)).Elem()
+	return reflect.TypeOf((*FileSystem)(nil))
 }
 
 func (o FileSystemOutput) ToFileSystemOutput() FileSystemOutput {
@@ -265,6 +280,23 @@ func (o FileSystemOutput) ToFileSystemOutputWithContext(ctx context.Context) Fil
 	return o
 }
 
+type FileSystemPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FileSystemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileSystem)(nil))
+}
+
+func (o FileSystemPtrOutput) ToFileSystemPtrOutput() FileSystemPtrOutput {
+	return o
+}
+
+func (o FileSystemPtrOutput) ToFileSystemPtrOutputWithContext(ctx context.Context) FileSystemPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(FileSystemOutput{})
+	pulumi.RegisterOutputType(FileSystemPtrOutput{})
 }

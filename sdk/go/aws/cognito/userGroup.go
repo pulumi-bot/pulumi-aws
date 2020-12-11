@@ -173,16 +173,31 @@ type UserGroupInput interface {
 	ToUserGroupOutputWithContext(ctx context.Context) UserGroupOutput
 }
 
-func (UserGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserGroup)(nil)).Elem()
+func (*UserGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserGroup)(nil))
 }
 
-func (i UserGroup) ToUserGroupOutput() UserGroupOutput {
+func (i *UserGroup) ToUserGroupOutput() UserGroupOutput {
 	return i.ToUserGroupOutputWithContext(context.Background())
 }
 
-func (i UserGroup) ToUserGroupOutputWithContext(ctx context.Context) UserGroupOutput {
+func (i *UserGroup) ToUserGroupOutputWithContext(ctx context.Context) UserGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserGroupOutput)
+}
+
+func (i *UserGroup) ToUserGroupPtrOutput() UserGroupPtrOutput {
+	return i.ToUserGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *UserGroup) ToUserGroupPtrOutputWithContext(ctx context.Context) UserGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserGroupPtrOutput)
+}
+
+type UserGroupPtrInput interface {
+	pulumi.Input
+
+	ToUserGroupPtrOutput() UserGroupPtrOutput
+	ToUserGroupPtrOutputWithContext(ctx context.Context) UserGroupPtrOutput
 }
 
 type UserGroupOutput struct {
@@ -190,7 +205,7 @@ type UserGroupOutput struct {
 }
 
 func (UserGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*UserGroup)(nil))
 }
 
 func (o UserGroupOutput) ToUserGroupOutput() UserGroupOutput {
@@ -201,6 +216,23 @@ func (o UserGroupOutput) ToUserGroupOutputWithContext(ctx context.Context) UserG
 	return o
 }
 
+type UserGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserGroup)(nil))
+}
+
+func (o UserGroupPtrOutput) ToUserGroupPtrOutput() UserGroupPtrOutput {
+	return o
+}
+
+func (o UserGroupPtrOutput) ToUserGroupPtrOutputWithContext(ctx context.Context) UserGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(UserGroupOutput{})
+	pulumi.RegisterOutputType(UserGroupPtrOutput{})
 }

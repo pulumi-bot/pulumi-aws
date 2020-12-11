@@ -60,7 +60,7 @@ func (i LoadBalancerAccessLogsArgs) ToLoadBalancerAccessLogsPtrOutput() LoadBala
 }
 
 func (i LoadBalancerAccessLogsArgs) ToLoadBalancerAccessLogsPtrOutputWithContext(ctx context.Context) LoadBalancerAccessLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerAccessLogsOutput).ToLoadBalancerAccessLogsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerAccessLogsOutput).ToLoadBalancerAccessLogsPtrOutput()
 }
 
 // LoadBalancerAccessLogsPtrInput is an input type that accepts LoadBalancerAccessLogsArgs, LoadBalancerAccessLogsPtr and LoadBalancerAccessLogsPtrOutput values.
@@ -93,7 +93,7 @@ func (i *loadBalancerAccessLogsPtrType) ToLoadBalancerAccessLogsPtrOutput() Load
 }
 
 func (i *loadBalancerAccessLogsPtrType) ToLoadBalancerAccessLogsPtrOutputWithContext(ctx context.Context) LoadBalancerAccessLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerAccessLogsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerAccessLogsOutput).ToLoadBalancerAccessLogsPtrOutput()
 }
 
 type LoadBalancerAccessLogsOutput struct{ *pulumi.OutputState }
@@ -258,7 +258,7 @@ func (i LoadBalancerHealthCheckArgs) ToLoadBalancerHealthCheckPtrOutput() LoadBa
 }
 
 func (i LoadBalancerHealthCheckArgs) ToLoadBalancerHealthCheckPtrOutputWithContext(ctx context.Context) LoadBalancerHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerHealthCheckOutput).ToLoadBalancerHealthCheckPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerHealthCheckOutput).ToLoadBalancerHealthCheckPtrOutput()
 }
 
 // LoadBalancerHealthCheckPtrInput is an input type that accepts LoadBalancerHealthCheckArgs, LoadBalancerHealthCheckPtr and LoadBalancerHealthCheckPtrOutput values.
@@ -291,7 +291,7 @@ func (i *loadBalancerHealthCheckPtrType) ToLoadBalancerHealthCheckPtrOutput() Lo
 }
 
 func (i *loadBalancerHealthCheckPtrType) ToLoadBalancerHealthCheckPtrOutputWithContext(ctx context.Context) LoadBalancerHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerHealthCheckPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerHealthCheckOutput).ToLoadBalancerHealthCheckPtrOutput()
 }
 
 type LoadBalancerHealthCheckOutput struct{ *pulumi.OutputState }

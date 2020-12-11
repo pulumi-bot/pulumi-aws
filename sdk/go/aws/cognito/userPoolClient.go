@@ -368,16 +368,31 @@ type UserPoolClientInput interface {
 	ToUserPoolClientOutputWithContext(ctx context.Context) UserPoolClientOutput
 }
 
-func (UserPoolClient) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserPoolClient)(nil)).Elem()
+func (*UserPoolClient) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPoolClient)(nil))
 }
 
-func (i UserPoolClient) ToUserPoolClientOutput() UserPoolClientOutput {
+func (i *UserPoolClient) ToUserPoolClientOutput() UserPoolClientOutput {
 	return i.ToUserPoolClientOutputWithContext(context.Background())
 }
 
-func (i UserPoolClient) ToUserPoolClientOutputWithContext(ctx context.Context) UserPoolClientOutput {
+func (i *UserPoolClient) ToUserPoolClientOutputWithContext(ctx context.Context) UserPoolClientOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserPoolClientOutput)
+}
+
+func (i *UserPoolClient) ToUserPoolClientPtrOutput() UserPoolClientPtrOutput {
+	return i.ToUserPoolClientPtrOutputWithContext(context.Background())
+}
+
+func (i *UserPoolClient) ToUserPoolClientPtrOutputWithContext(ctx context.Context) UserPoolClientPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPoolClientPtrOutput)
+}
+
+type UserPoolClientPtrInput interface {
+	pulumi.Input
+
+	ToUserPoolClientPtrOutput() UserPoolClientPtrOutput
+	ToUserPoolClientPtrOutputWithContext(ctx context.Context) UserPoolClientPtrOutput
 }
 
 type UserPoolClientOutput struct {
@@ -385,7 +400,7 @@ type UserPoolClientOutput struct {
 }
 
 func (UserPoolClientOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserPoolClientOutput)(nil)).Elem()
+	return reflect.TypeOf((*UserPoolClient)(nil))
 }
 
 func (o UserPoolClientOutput) ToUserPoolClientOutput() UserPoolClientOutput {
@@ -396,6 +411,23 @@ func (o UserPoolClientOutput) ToUserPoolClientOutputWithContext(ctx context.Cont
 	return o
 }
 
+type UserPoolClientPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserPoolClientPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPoolClient)(nil))
+}
+
+func (o UserPoolClientPtrOutput) ToUserPoolClientPtrOutput() UserPoolClientPtrOutput {
+	return o
+}
+
+func (o UserPoolClientPtrOutput) ToUserPoolClientPtrOutputWithContext(ctx context.Context) UserPoolClientPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(UserPoolClientOutput{})
+	pulumi.RegisterOutputType(UserPoolClientPtrOutput{})
 }

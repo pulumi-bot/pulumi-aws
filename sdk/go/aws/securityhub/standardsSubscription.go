@@ -135,16 +135,31 @@ type StandardsSubscriptionInput interface {
 	ToStandardsSubscriptionOutputWithContext(ctx context.Context) StandardsSubscriptionOutput
 }
 
-func (StandardsSubscription) ElementType() reflect.Type {
-	return reflect.TypeOf((*StandardsSubscription)(nil)).Elem()
+func (*StandardsSubscription) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardsSubscription)(nil))
 }
 
-func (i StandardsSubscription) ToStandardsSubscriptionOutput() StandardsSubscriptionOutput {
+func (i *StandardsSubscription) ToStandardsSubscriptionOutput() StandardsSubscriptionOutput {
 	return i.ToStandardsSubscriptionOutputWithContext(context.Background())
 }
 
-func (i StandardsSubscription) ToStandardsSubscriptionOutputWithContext(ctx context.Context) StandardsSubscriptionOutput {
+func (i *StandardsSubscription) ToStandardsSubscriptionOutputWithContext(ctx context.Context) StandardsSubscriptionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StandardsSubscriptionOutput)
+}
+
+func (i *StandardsSubscription) ToStandardsSubscriptionPtrOutput() StandardsSubscriptionPtrOutput {
+	return i.ToStandardsSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i *StandardsSubscription) ToStandardsSubscriptionPtrOutputWithContext(ctx context.Context) StandardsSubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardsSubscriptionPtrOutput)
+}
+
+type StandardsSubscriptionPtrInput interface {
+	pulumi.Input
+
+	ToStandardsSubscriptionPtrOutput() StandardsSubscriptionPtrOutput
+	ToStandardsSubscriptionPtrOutputWithContext(ctx context.Context) StandardsSubscriptionPtrOutput
 }
 
 type StandardsSubscriptionOutput struct {
@@ -152,7 +167,7 @@ type StandardsSubscriptionOutput struct {
 }
 
 func (StandardsSubscriptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StandardsSubscriptionOutput)(nil)).Elem()
+	return reflect.TypeOf((*StandardsSubscription)(nil))
 }
 
 func (o StandardsSubscriptionOutput) ToStandardsSubscriptionOutput() StandardsSubscriptionOutput {
@@ -163,6 +178,23 @@ func (o StandardsSubscriptionOutput) ToStandardsSubscriptionOutputWithContext(ct
 	return o
 }
 
+type StandardsSubscriptionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (StandardsSubscriptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandardsSubscription)(nil))
+}
+
+func (o StandardsSubscriptionPtrOutput) ToStandardsSubscriptionPtrOutput() StandardsSubscriptionPtrOutput {
+	return o
+}
+
+func (o StandardsSubscriptionPtrOutput) ToStandardsSubscriptionPtrOutputWithContext(ctx context.Context) StandardsSubscriptionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(StandardsSubscriptionOutput{})
+	pulumi.RegisterOutputType(StandardsSubscriptionPtrOutput{})
 }

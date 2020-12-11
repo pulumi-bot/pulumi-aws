@@ -52,7 +52,7 @@ func (i RepositoryExternalConnectionsArgs) ToRepositoryExternalConnectionsPtrOut
 }
 
 func (i RepositoryExternalConnectionsArgs) ToRepositoryExternalConnectionsPtrOutputWithContext(ctx context.Context) RepositoryExternalConnectionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RepositoryExternalConnectionsOutput).ToRepositoryExternalConnectionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryExternalConnectionsOutput).ToRepositoryExternalConnectionsPtrOutput()
 }
 
 // RepositoryExternalConnectionsPtrInput is an input type that accepts RepositoryExternalConnectionsArgs, RepositoryExternalConnectionsPtr and RepositoryExternalConnectionsPtrOutput values.
@@ -85,7 +85,7 @@ func (i *repositoryExternalConnectionsPtrType) ToRepositoryExternalConnectionsPt
 }
 
 func (i *repositoryExternalConnectionsPtrType) ToRepositoryExternalConnectionsPtrOutputWithContext(ctx context.Context) RepositoryExternalConnectionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RepositoryExternalConnectionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryExternalConnectionsOutput).ToRepositoryExternalConnectionsPtrOutput()
 }
 
 type RepositoryExternalConnectionsOutput struct{ *pulumi.OutputState }

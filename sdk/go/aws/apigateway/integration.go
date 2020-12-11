@@ -355,16 +355,31 @@ type IntegrationInput interface {
 	ToIntegrationOutputWithContext(ctx context.Context) IntegrationOutput
 }
 
-func (Integration) ElementType() reflect.Type {
-	return reflect.TypeOf((*Integration)(nil)).Elem()
+func (*Integration) ElementType() reflect.Type {
+	return reflect.TypeOf((*Integration)(nil))
 }
 
-func (i Integration) ToIntegrationOutput() IntegrationOutput {
+func (i *Integration) ToIntegrationOutput() IntegrationOutput {
 	return i.ToIntegrationOutputWithContext(context.Background())
 }
 
-func (i Integration) ToIntegrationOutputWithContext(ctx context.Context) IntegrationOutput {
+func (i *Integration) ToIntegrationOutputWithContext(ctx context.Context) IntegrationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationOutput)
+}
+
+func (i *Integration) ToIntegrationPtrOutput() IntegrationPtrOutput {
+	return i.ToIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (i *Integration) ToIntegrationPtrOutputWithContext(ctx context.Context) IntegrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationPtrOutput)
+}
+
+type IntegrationPtrInput interface {
+	pulumi.Input
+
+	ToIntegrationPtrOutput() IntegrationPtrOutput
+	ToIntegrationPtrOutputWithContext(ctx context.Context) IntegrationPtrOutput
 }
 
 type IntegrationOutput struct {
@@ -372,7 +387,7 @@ type IntegrationOutput struct {
 }
 
 func (IntegrationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntegrationOutput)(nil)).Elem()
+	return reflect.TypeOf((*Integration)(nil))
 }
 
 func (o IntegrationOutput) ToIntegrationOutput() IntegrationOutput {
@@ -383,6 +398,23 @@ func (o IntegrationOutput) ToIntegrationOutputWithContext(ctx context.Context) I
 	return o
 }
 
+type IntegrationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IntegrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Integration)(nil))
+}
+
+func (o IntegrationPtrOutput) ToIntegrationPtrOutput() IntegrationPtrOutput {
+	return o
+}
+
+func (o IntegrationPtrOutput) ToIntegrationPtrOutputWithContext(ctx context.Context) IntegrationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(IntegrationOutput{})
+	pulumi.RegisterOutputType(IntegrationPtrOutput{})
 }

@@ -139,16 +139,31 @@ type OrganizationConfigurationInput interface {
 	ToOrganizationConfigurationOutputWithContext(ctx context.Context) OrganizationConfigurationOutput
 }
 
-func (OrganizationConfiguration) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationConfiguration)(nil)).Elem()
+func (*OrganizationConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationConfiguration)(nil))
 }
 
-func (i OrganizationConfiguration) ToOrganizationConfigurationOutput() OrganizationConfigurationOutput {
+func (i *OrganizationConfiguration) ToOrganizationConfigurationOutput() OrganizationConfigurationOutput {
 	return i.ToOrganizationConfigurationOutputWithContext(context.Background())
 }
 
-func (i OrganizationConfiguration) ToOrganizationConfigurationOutputWithContext(ctx context.Context) OrganizationConfigurationOutput {
+func (i *OrganizationConfiguration) ToOrganizationConfigurationOutputWithContext(ctx context.Context) OrganizationConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationConfigurationOutput)
+}
+
+func (i *OrganizationConfiguration) ToOrganizationConfigurationPtrOutput() OrganizationConfigurationPtrOutput {
+	return i.ToOrganizationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *OrganizationConfiguration) ToOrganizationConfigurationPtrOutputWithContext(ctx context.Context) OrganizationConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationConfigurationPtrOutput)
+}
+
+type OrganizationConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationConfigurationPtrOutput() OrganizationConfigurationPtrOutput
+	ToOrganizationConfigurationPtrOutputWithContext(ctx context.Context) OrganizationConfigurationPtrOutput
 }
 
 type OrganizationConfigurationOutput struct {
@@ -156,7 +171,7 @@ type OrganizationConfigurationOutput struct {
 }
 
 func (OrganizationConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationConfigurationOutput)(nil)).Elem()
+	return reflect.TypeOf((*OrganizationConfiguration)(nil))
 }
 
 func (o OrganizationConfigurationOutput) ToOrganizationConfigurationOutput() OrganizationConfigurationOutput {
@@ -167,6 +182,23 @@ func (o OrganizationConfigurationOutput) ToOrganizationConfigurationOutputWithCo
 	return o
 }
 
+type OrganizationConfigurationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationConfiguration)(nil))
+}
+
+func (o OrganizationConfigurationPtrOutput) ToOrganizationConfigurationPtrOutput() OrganizationConfigurationPtrOutput {
+	return o
+}
+
+func (o OrganizationConfigurationPtrOutput) ToOrganizationConfigurationPtrOutputWithContext(ctx context.Context) OrganizationConfigurationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(OrganizationConfigurationOutput{})
+	pulumi.RegisterOutputType(OrganizationConfigurationPtrOutput{})
 }

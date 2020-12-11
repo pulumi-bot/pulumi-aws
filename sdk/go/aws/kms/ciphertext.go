@@ -153,16 +153,31 @@ type CiphertextInput interface {
 	ToCiphertextOutputWithContext(ctx context.Context) CiphertextOutput
 }
 
-func (Ciphertext) ElementType() reflect.Type {
-	return reflect.TypeOf((*Ciphertext)(nil)).Elem()
+func (*Ciphertext) ElementType() reflect.Type {
+	return reflect.TypeOf((*Ciphertext)(nil))
 }
 
-func (i Ciphertext) ToCiphertextOutput() CiphertextOutput {
+func (i *Ciphertext) ToCiphertextOutput() CiphertextOutput {
 	return i.ToCiphertextOutputWithContext(context.Background())
 }
 
-func (i Ciphertext) ToCiphertextOutputWithContext(ctx context.Context) CiphertextOutput {
+func (i *Ciphertext) ToCiphertextOutputWithContext(ctx context.Context) CiphertextOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CiphertextOutput)
+}
+
+func (i *Ciphertext) ToCiphertextPtrOutput() CiphertextPtrOutput {
+	return i.ToCiphertextPtrOutputWithContext(context.Background())
+}
+
+func (i *Ciphertext) ToCiphertextPtrOutputWithContext(ctx context.Context) CiphertextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CiphertextPtrOutput)
+}
+
+type CiphertextPtrInput interface {
+	pulumi.Input
+
+	ToCiphertextPtrOutput() CiphertextPtrOutput
+	ToCiphertextPtrOutputWithContext(ctx context.Context) CiphertextPtrOutput
 }
 
 type CiphertextOutput struct {
@@ -170,7 +185,7 @@ type CiphertextOutput struct {
 }
 
 func (CiphertextOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CiphertextOutput)(nil)).Elem()
+	return reflect.TypeOf((*Ciphertext)(nil))
 }
 
 func (o CiphertextOutput) ToCiphertextOutput() CiphertextOutput {
@@ -181,6 +196,23 @@ func (o CiphertextOutput) ToCiphertextOutputWithContext(ctx context.Context) Cip
 	return o
 }
 
+type CiphertextPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CiphertextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Ciphertext)(nil))
+}
+
+func (o CiphertextPtrOutput) ToCiphertextPtrOutput() CiphertextPtrOutput {
+	return o
+}
+
+func (o CiphertextPtrOutput) ToCiphertextPtrOutputWithContext(ctx context.Context) CiphertextPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CiphertextOutput{})
+	pulumi.RegisterOutputType(CiphertextPtrOutput{})
 }

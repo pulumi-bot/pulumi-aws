@@ -236,16 +236,31 @@ type GrantInput interface {
 	ToGrantOutputWithContext(ctx context.Context) GrantOutput
 }
 
-func (Grant) ElementType() reflect.Type {
-	return reflect.TypeOf((*Grant)(nil)).Elem()
+func (*Grant) ElementType() reflect.Type {
+	return reflect.TypeOf((*Grant)(nil))
 }
 
-func (i Grant) ToGrantOutput() GrantOutput {
+func (i *Grant) ToGrantOutput() GrantOutput {
 	return i.ToGrantOutputWithContext(context.Background())
 }
 
-func (i Grant) ToGrantOutputWithContext(ctx context.Context) GrantOutput {
+func (i *Grant) ToGrantOutputWithContext(ctx context.Context) GrantOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GrantOutput)
+}
+
+func (i *Grant) ToGrantPtrOutput() GrantPtrOutput {
+	return i.ToGrantPtrOutputWithContext(context.Background())
+}
+
+func (i *Grant) ToGrantPtrOutputWithContext(ctx context.Context) GrantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrantPtrOutput)
+}
+
+type GrantPtrInput interface {
+	pulumi.Input
+
+	ToGrantPtrOutput() GrantPtrOutput
+	ToGrantPtrOutputWithContext(ctx context.Context) GrantPtrOutput
 }
 
 type GrantOutput struct {
@@ -253,7 +268,7 @@ type GrantOutput struct {
 }
 
 func (GrantOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GrantOutput)(nil)).Elem()
+	return reflect.TypeOf((*Grant)(nil))
 }
 
 func (o GrantOutput) ToGrantOutput() GrantOutput {
@@ -264,6 +279,23 @@ func (o GrantOutput) ToGrantOutputWithContext(ctx context.Context) GrantOutput {
 	return o
 }
 
+type GrantPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GrantPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Grant)(nil))
+}
+
+func (o GrantPtrOutput) ToGrantPtrOutput() GrantPtrOutput {
+	return o
+}
+
+func (o GrantPtrOutput) ToGrantPtrOutputWithContext(ctx context.Context) GrantPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(GrantOutput{})
+	pulumi.RegisterOutputType(GrantPtrOutput{})
 }

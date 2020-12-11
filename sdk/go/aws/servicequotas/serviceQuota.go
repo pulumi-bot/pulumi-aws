@@ -181,16 +181,31 @@ type ServiceQuotaInput interface {
 	ToServiceQuotaOutputWithContext(ctx context.Context) ServiceQuotaOutput
 }
 
-func (ServiceQuota) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceQuota)(nil)).Elem()
+func (*ServiceQuota) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceQuota)(nil))
 }
 
-func (i ServiceQuota) ToServiceQuotaOutput() ServiceQuotaOutput {
+func (i *ServiceQuota) ToServiceQuotaOutput() ServiceQuotaOutput {
 	return i.ToServiceQuotaOutputWithContext(context.Background())
 }
 
-func (i ServiceQuota) ToServiceQuotaOutputWithContext(ctx context.Context) ServiceQuotaOutput {
+func (i *ServiceQuota) ToServiceQuotaOutputWithContext(ctx context.Context) ServiceQuotaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceQuotaOutput)
+}
+
+func (i *ServiceQuota) ToServiceQuotaPtrOutput() ServiceQuotaPtrOutput {
+	return i.ToServiceQuotaPtrOutputWithContext(context.Background())
+}
+
+func (i *ServiceQuota) ToServiceQuotaPtrOutputWithContext(ctx context.Context) ServiceQuotaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceQuotaPtrOutput)
+}
+
+type ServiceQuotaPtrInput interface {
+	pulumi.Input
+
+	ToServiceQuotaPtrOutput() ServiceQuotaPtrOutput
+	ToServiceQuotaPtrOutputWithContext(ctx context.Context) ServiceQuotaPtrOutput
 }
 
 type ServiceQuotaOutput struct {
@@ -198,7 +213,7 @@ type ServiceQuotaOutput struct {
 }
 
 func (ServiceQuotaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceQuotaOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServiceQuota)(nil))
 }
 
 func (o ServiceQuotaOutput) ToServiceQuotaOutput() ServiceQuotaOutput {
@@ -209,6 +224,23 @@ func (o ServiceQuotaOutput) ToServiceQuotaOutputWithContext(ctx context.Context)
 	return o
 }
 
+type ServiceQuotaPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServiceQuotaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceQuota)(nil))
+}
+
+func (o ServiceQuotaPtrOutput) ToServiceQuotaPtrOutput() ServiceQuotaPtrOutput {
+	return o
+}
+
+func (o ServiceQuotaPtrOutput) ToServiceQuotaPtrOutputWithContext(ctx context.Context) ServiceQuotaPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServiceQuotaOutput{})
+	pulumi.RegisterOutputType(ServiceQuotaPtrOutput{})
 }

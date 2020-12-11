@@ -116,16 +116,31 @@ type SamlProviderInput interface {
 	ToSamlProviderOutputWithContext(ctx context.Context) SamlProviderOutput
 }
 
-func (SamlProvider) ElementType() reflect.Type {
-	return reflect.TypeOf((*SamlProvider)(nil)).Elem()
+func (*SamlProvider) ElementType() reflect.Type {
+	return reflect.TypeOf((*SamlProvider)(nil))
 }
 
-func (i SamlProvider) ToSamlProviderOutput() SamlProviderOutput {
+func (i *SamlProvider) ToSamlProviderOutput() SamlProviderOutput {
 	return i.ToSamlProviderOutputWithContext(context.Background())
 }
 
-func (i SamlProvider) ToSamlProviderOutputWithContext(ctx context.Context) SamlProviderOutput {
+func (i *SamlProvider) ToSamlProviderOutputWithContext(ctx context.Context) SamlProviderOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SamlProviderOutput)
+}
+
+func (i *SamlProvider) ToSamlProviderPtrOutput() SamlProviderPtrOutput {
+	return i.ToSamlProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *SamlProvider) ToSamlProviderPtrOutputWithContext(ctx context.Context) SamlProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SamlProviderPtrOutput)
+}
+
+type SamlProviderPtrInput interface {
+	pulumi.Input
+
+	ToSamlProviderPtrOutput() SamlProviderPtrOutput
+	ToSamlProviderPtrOutputWithContext(ctx context.Context) SamlProviderPtrOutput
 }
 
 type SamlProviderOutput struct {
@@ -133,7 +148,7 @@ type SamlProviderOutput struct {
 }
 
 func (SamlProviderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SamlProviderOutput)(nil)).Elem()
+	return reflect.TypeOf((*SamlProvider)(nil))
 }
 
 func (o SamlProviderOutput) ToSamlProviderOutput() SamlProviderOutput {
@@ -144,6 +159,23 @@ func (o SamlProviderOutput) ToSamlProviderOutputWithContext(ctx context.Context)
 	return o
 }
 
+type SamlProviderPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SamlProviderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SamlProvider)(nil))
+}
+
+func (o SamlProviderPtrOutput) ToSamlProviderPtrOutput() SamlProviderPtrOutput {
+	return o
+}
+
+func (o SamlProviderPtrOutput) ToSamlProviderPtrOutputWithContext(ctx context.Context) SamlProviderPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SamlProviderOutput{})
+	pulumi.RegisterOutputType(SamlProviderPtrOutput{})
 }

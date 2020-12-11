@@ -133,16 +133,31 @@ type DomainPolicyInput interface {
 	ToDomainPolicyOutputWithContext(ctx context.Context) DomainPolicyOutput
 }
 
-func (DomainPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainPolicy)(nil)).Elem()
+func (*DomainPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainPolicy)(nil))
 }
 
-func (i DomainPolicy) ToDomainPolicyOutput() DomainPolicyOutput {
+func (i *DomainPolicy) ToDomainPolicyOutput() DomainPolicyOutput {
 	return i.ToDomainPolicyOutputWithContext(context.Background())
 }
 
-func (i DomainPolicy) ToDomainPolicyOutputWithContext(ctx context.Context) DomainPolicyOutput {
+func (i *DomainPolicy) ToDomainPolicyOutputWithContext(ctx context.Context) DomainPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainPolicyOutput)
+}
+
+func (i *DomainPolicy) ToDomainPolicyPtrOutput() DomainPolicyPtrOutput {
+	return i.ToDomainPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *DomainPolicy) ToDomainPolicyPtrOutputWithContext(ctx context.Context) DomainPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainPolicyPtrOutput)
+}
+
+type DomainPolicyPtrInput interface {
+	pulumi.Input
+
+	ToDomainPolicyPtrOutput() DomainPolicyPtrOutput
+	ToDomainPolicyPtrOutputWithContext(ctx context.Context) DomainPolicyPtrOutput
 }
 
 type DomainPolicyOutput struct {
@@ -150,7 +165,7 @@ type DomainPolicyOutput struct {
 }
 
 func (DomainPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*DomainPolicy)(nil))
 }
 
 func (o DomainPolicyOutput) ToDomainPolicyOutput() DomainPolicyOutput {
@@ -161,6 +176,23 @@ func (o DomainPolicyOutput) ToDomainPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
+type DomainPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainPolicy)(nil))
+}
+
+func (o DomainPolicyPtrOutput) ToDomainPolicyPtrOutput() DomainPolicyPtrOutput {
+	return o
+}
+
+func (o DomainPolicyPtrOutput) ToDomainPolicyPtrOutputWithContext(ctx context.Context) DomainPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DomainPolicyOutput{})
+	pulumi.RegisterOutputType(DomainPolicyPtrOutput{})
 }

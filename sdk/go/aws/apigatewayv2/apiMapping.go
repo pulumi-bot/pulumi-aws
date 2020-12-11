@@ -157,16 +157,31 @@ type ApiMappingInput interface {
 	ToApiMappingOutputWithContext(ctx context.Context) ApiMappingOutput
 }
 
-func (ApiMapping) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiMapping)(nil)).Elem()
+func (*ApiMapping) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiMapping)(nil))
 }
 
-func (i ApiMapping) ToApiMappingOutput() ApiMappingOutput {
+func (i *ApiMapping) ToApiMappingOutput() ApiMappingOutput {
 	return i.ToApiMappingOutputWithContext(context.Background())
 }
 
-func (i ApiMapping) ToApiMappingOutputWithContext(ctx context.Context) ApiMappingOutput {
+func (i *ApiMapping) ToApiMappingOutputWithContext(ctx context.Context) ApiMappingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiMappingOutput)
+}
+
+func (i *ApiMapping) ToApiMappingPtrOutput() ApiMappingPtrOutput {
+	return i.ToApiMappingPtrOutputWithContext(context.Background())
+}
+
+func (i *ApiMapping) ToApiMappingPtrOutputWithContext(ctx context.Context) ApiMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiMappingPtrOutput)
+}
+
+type ApiMappingPtrInput interface {
+	pulumi.Input
+
+	ToApiMappingPtrOutput() ApiMappingPtrOutput
+	ToApiMappingPtrOutputWithContext(ctx context.Context) ApiMappingPtrOutput
 }
 
 type ApiMappingOutput struct {
@@ -174,7 +189,7 @@ type ApiMappingOutput struct {
 }
 
 func (ApiMappingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiMappingOutput)(nil)).Elem()
+	return reflect.TypeOf((*ApiMapping)(nil))
 }
 
 func (o ApiMappingOutput) ToApiMappingOutput() ApiMappingOutput {
@@ -185,6 +200,23 @@ func (o ApiMappingOutput) ToApiMappingOutputWithContext(ctx context.Context) Api
 	return o
 }
 
+type ApiMappingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApiMappingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiMapping)(nil))
+}
+
+func (o ApiMappingPtrOutput) ToApiMappingPtrOutput() ApiMappingPtrOutput {
+	return o
+}
+
+func (o ApiMappingPtrOutput) ToApiMappingPtrOutputWithContext(ctx context.Context) ApiMappingPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApiMappingOutput{})
+	pulumi.RegisterOutputType(ApiMappingPtrOutput{})
 }

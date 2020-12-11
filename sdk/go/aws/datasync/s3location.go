@@ -166,16 +166,31 @@ type S3LocationInput interface {
 	ToS3LocationOutputWithContext(ctx context.Context) S3LocationOutput
 }
 
-func (S3Location) ElementType() reflect.Type {
-	return reflect.TypeOf((*S3Location)(nil)).Elem()
+func (*S3Location) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3Location)(nil))
 }
 
-func (i S3Location) ToS3LocationOutput() S3LocationOutput {
+func (i *S3Location) ToS3LocationOutput() S3LocationOutput {
 	return i.ToS3LocationOutputWithContext(context.Background())
 }
 
-func (i S3Location) ToS3LocationOutputWithContext(ctx context.Context) S3LocationOutput {
+func (i *S3Location) ToS3LocationOutputWithContext(ctx context.Context) S3LocationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(S3LocationOutput)
+}
+
+func (i *S3Location) ToS3LocationPtrOutput() S3LocationPtrOutput {
+	return i.ToS3LocationPtrOutputWithContext(context.Background())
+}
+
+func (i *S3Location) ToS3LocationPtrOutputWithContext(ctx context.Context) S3LocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3LocationPtrOutput)
+}
+
+type S3LocationPtrInput interface {
+	pulumi.Input
+
+	ToS3LocationPtrOutput() S3LocationPtrOutput
+	ToS3LocationPtrOutputWithContext(ctx context.Context) S3LocationPtrOutput
 }
 
 type S3LocationOutput struct {
@@ -183,7 +198,7 @@ type S3LocationOutput struct {
 }
 
 func (S3LocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*S3LocationOutput)(nil)).Elem()
+	return reflect.TypeOf((*S3Location)(nil))
 }
 
 func (o S3LocationOutput) ToS3LocationOutput() S3LocationOutput {
@@ -194,6 +209,23 @@ func (o S3LocationOutput) ToS3LocationOutputWithContext(ctx context.Context) S3L
 	return o
 }
 
+type S3LocationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (S3LocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**S3Location)(nil))
+}
+
+func (o S3LocationPtrOutput) ToS3LocationPtrOutput() S3LocationPtrOutput {
+	return o
+}
+
+func (o S3LocationPtrOutput) ToS3LocationPtrOutputWithContext(ctx context.Context) S3LocationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(S3LocationOutput{})
+	pulumi.RegisterOutputType(S3LocationPtrOutput{})
 }

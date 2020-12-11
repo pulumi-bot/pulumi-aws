@@ -150,16 +150,31 @@ type PortfolioInput interface {
 	ToPortfolioOutputWithContext(ctx context.Context) PortfolioOutput
 }
 
-func (Portfolio) ElementType() reflect.Type {
-	return reflect.TypeOf((*Portfolio)(nil)).Elem()
+func (*Portfolio) ElementType() reflect.Type {
+	return reflect.TypeOf((*Portfolio)(nil))
 }
 
-func (i Portfolio) ToPortfolioOutput() PortfolioOutput {
+func (i *Portfolio) ToPortfolioOutput() PortfolioOutput {
 	return i.ToPortfolioOutputWithContext(context.Background())
 }
 
-func (i Portfolio) ToPortfolioOutputWithContext(ctx context.Context) PortfolioOutput {
+func (i *Portfolio) ToPortfolioOutputWithContext(ctx context.Context) PortfolioOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PortfolioOutput)
+}
+
+func (i *Portfolio) ToPortfolioPtrOutput() PortfolioPtrOutput {
+	return i.ToPortfolioPtrOutputWithContext(context.Background())
+}
+
+func (i *Portfolio) ToPortfolioPtrOutputWithContext(ctx context.Context) PortfolioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PortfolioPtrOutput)
+}
+
+type PortfolioPtrInput interface {
+	pulumi.Input
+
+	ToPortfolioPtrOutput() PortfolioPtrOutput
+	ToPortfolioPtrOutputWithContext(ctx context.Context) PortfolioPtrOutput
 }
 
 type PortfolioOutput struct {
@@ -167,7 +182,7 @@ type PortfolioOutput struct {
 }
 
 func (PortfolioOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PortfolioOutput)(nil)).Elem()
+	return reflect.TypeOf((*Portfolio)(nil))
 }
 
 func (o PortfolioOutput) ToPortfolioOutput() PortfolioOutput {
@@ -178,6 +193,23 @@ func (o PortfolioOutput) ToPortfolioOutputWithContext(ctx context.Context) Portf
 	return o
 }
 
+type PortfolioPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PortfolioPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Portfolio)(nil))
+}
+
+func (o PortfolioPtrOutput) ToPortfolioPtrOutput() PortfolioPtrOutput {
+	return o
+}
+
+func (o PortfolioPtrOutput) ToPortfolioPtrOutputWithContext(ctx context.Context) PortfolioPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PortfolioOutput{})
+	pulumi.RegisterOutputType(PortfolioPtrOutput{})
 }

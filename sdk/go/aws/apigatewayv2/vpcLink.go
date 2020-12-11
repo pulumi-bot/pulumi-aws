@@ -165,16 +165,31 @@ type VpcLinkInput interface {
 	ToVpcLinkOutputWithContext(ctx context.Context) VpcLinkOutput
 }
 
-func (VpcLink) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcLink)(nil)).Elem()
+func (*VpcLink) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcLink)(nil))
 }
 
-func (i VpcLink) ToVpcLinkOutput() VpcLinkOutput {
+func (i *VpcLink) ToVpcLinkOutput() VpcLinkOutput {
 	return i.ToVpcLinkOutputWithContext(context.Background())
 }
 
-func (i VpcLink) ToVpcLinkOutputWithContext(ctx context.Context) VpcLinkOutput {
+func (i *VpcLink) ToVpcLinkOutputWithContext(ctx context.Context) VpcLinkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcLinkOutput)
+}
+
+func (i *VpcLink) ToVpcLinkPtrOutput() VpcLinkPtrOutput {
+	return i.ToVpcLinkPtrOutputWithContext(context.Background())
+}
+
+func (i *VpcLink) ToVpcLinkPtrOutputWithContext(ctx context.Context) VpcLinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcLinkPtrOutput)
+}
+
+type VpcLinkPtrInput interface {
+	pulumi.Input
+
+	ToVpcLinkPtrOutput() VpcLinkPtrOutput
+	ToVpcLinkPtrOutputWithContext(ctx context.Context) VpcLinkPtrOutput
 }
 
 type VpcLinkOutput struct {
@@ -182,7 +197,7 @@ type VpcLinkOutput struct {
 }
 
 func (VpcLinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcLinkOutput)(nil)).Elem()
+	return reflect.TypeOf((*VpcLink)(nil))
 }
 
 func (o VpcLinkOutput) ToVpcLinkOutput() VpcLinkOutput {
@@ -193,6 +208,23 @@ func (o VpcLinkOutput) ToVpcLinkOutputWithContext(ctx context.Context) VpcLinkOu
 	return o
 }
 
+type VpcLinkPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcLinkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcLink)(nil))
+}
+
+func (o VpcLinkPtrOutput) ToVpcLinkPtrOutput() VpcLinkPtrOutput {
+	return o
+}
+
+func (o VpcLinkPtrOutput) ToVpcLinkPtrOutputWithContext(ctx context.Context) VpcLinkPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VpcLinkOutput{})
+	pulumi.RegisterOutputType(VpcLinkPtrOutput{})
 }

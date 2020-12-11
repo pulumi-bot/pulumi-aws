@@ -355,16 +355,31 @@ type PatchBaselineInput interface {
 	ToPatchBaselineOutputWithContext(ctx context.Context) PatchBaselineOutput
 }
 
-func (PatchBaseline) ElementType() reflect.Type {
-	return reflect.TypeOf((*PatchBaseline)(nil)).Elem()
+func (*PatchBaseline) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchBaseline)(nil))
 }
 
-func (i PatchBaseline) ToPatchBaselineOutput() PatchBaselineOutput {
+func (i *PatchBaseline) ToPatchBaselineOutput() PatchBaselineOutput {
 	return i.ToPatchBaselineOutputWithContext(context.Background())
 }
 
-func (i PatchBaseline) ToPatchBaselineOutputWithContext(ctx context.Context) PatchBaselineOutput {
+func (i *PatchBaseline) ToPatchBaselineOutputWithContext(ctx context.Context) PatchBaselineOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PatchBaselineOutput)
+}
+
+func (i *PatchBaseline) ToPatchBaselinePtrOutput() PatchBaselinePtrOutput {
+	return i.ToPatchBaselinePtrOutputWithContext(context.Background())
+}
+
+func (i *PatchBaseline) ToPatchBaselinePtrOutputWithContext(ctx context.Context) PatchBaselinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchBaselinePtrOutput)
+}
+
+type PatchBaselinePtrInput interface {
+	pulumi.Input
+
+	ToPatchBaselinePtrOutput() PatchBaselinePtrOutput
+	ToPatchBaselinePtrOutputWithContext(ctx context.Context) PatchBaselinePtrOutput
 }
 
 type PatchBaselineOutput struct {
@@ -372,7 +387,7 @@ type PatchBaselineOutput struct {
 }
 
 func (PatchBaselineOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PatchBaselineOutput)(nil)).Elem()
+	return reflect.TypeOf((*PatchBaseline)(nil))
 }
 
 func (o PatchBaselineOutput) ToPatchBaselineOutput() PatchBaselineOutput {
@@ -383,6 +398,23 @@ func (o PatchBaselineOutput) ToPatchBaselineOutputWithContext(ctx context.Contex
 	return o
 }
 
+type PatchBaselinePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PatchBaselinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PatchBaseline)(nil))
+}
+
+func (o PatchBaselinePtrOutput) ToPatchBaselinePtrOutput() PatchBaselinePtrOutput {
+	return o
+}
+
+func (o PatchBaselinePtrOutput) ToPatchBaselinePtrOutputWithContext(ctx context.Context) PatchBaselinePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PatchBaselineOutput{})
+	pulumi.RegisterOutputType(PatchBaselinePtrOutput{})
 }

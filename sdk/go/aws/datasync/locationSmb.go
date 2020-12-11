@@ -216,16 +216,31 @@ type LocationSmbInput interface {
 	ToLocationSmbOutputWithContext(ctx context.Context) LocationSmbOutput
 }
 
-func (LocationSmb) ElementType() reflect.Type {
-	return reflect.TypeOf((*LocationSmb)(nil)).Elem()
+func (*LocationSmb) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationSmb)(nil))
 }
 
-func (i LocationSmb) ToLocationSmbOutput() LocationSmbOutput {
+func (i *LocationSmb) ToLocationSmbOutput() LocationSmbOutput {
 	return i.ToLocationSmbOutputWithContext(context.Background())
 }
 
-func (i LocationSmb) ToLocationSmbOutputWithContext(ctx context.Context) LocationSmbOutput {
+func (i *LocationSmb) ToLocationSmbOutputWithContext(ctx context.Context) LocationSmbOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LocationSmbOutput)
+}
+
+func (i *LocationSmb) ToLocationSmbPtrOutput() LocationSmbPtrOutput {
+	return i.ToLocationSmbPtrOutputWithContext(context.Background())
+}
+
+func (i *LocationSmb) ToLocationSmbPtrOutputWithContext(ctx context.Context) LocationSmbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationSmbPtrOutput)
+}
+
+type LocationSmbPtrInput interface {
+	pulumi.Input
+
+	ToLocationSmbPtrOutput() LocationSmbPtrOutput
+	ToLocationSmbPtrOutputWithContext(ctx context.Context) LocationSmbPtrOutput
 }
 
 type LocationSmbOutput struct {
@@ -233,7 +248,7 @@ type LocationSmbOutput struct {
 }
 
 func (LocationSmbOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LocationSmbOutput)(nil)).Elem()
+	return reflect.TypeOf((*LocationSmb)(nil))
 }
 
 func (o LocationSmbOutput) ToLocationSmbOutput() LocationSmbOutput {
@@ -244,6 +259,23 @@ func (o LocationSmbOutput) ToLocationSmbOutputWithContext(ctx context.Context) L
 	return o
 }
 
+type LocationSmbPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LocationSmbPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationSmb)(nil))
+}
+
+func (o LocationSmbPtrOutput) ToLocationSmbPtrOutput() LocationSmbPtrOutput {
+	return o
+}
+
+func (o LocationSmbPtrOutput) ToLocationSmbPtrOutputWithContext(ctx context.Context) LocationSmbPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LocationSmbOutput{})
+	pulumi.RegisterOutputType(LocationSmbPtrOutput{})
 }

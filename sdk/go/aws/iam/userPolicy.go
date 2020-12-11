@@ -165,16 +165,31 @@ type UserPolicyInput interface {
 	ToUserPolicyOutputWithContext(ctx context.Context) UserPolicyOutput
 }
 
-func (UserPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserPolicy)(nil)).Elem()
+func (*UserPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPolicy)(nil))
 }
 
-func (i UserPolicy) ToUserPolicyOutput() UserPolicyOutput {
+func (i *UserPolicy) ToUserPolicyOutput() UserPolicyOutput {
 	return i.ToUserPolicyOutputWithContext(context.Background())
 }
 
-func (i UserPolicy) ToUserPolicyOutputWithContext(ctx context.Context) UserPolicyOutput {
+func (i *UserPolicy) ToUserPolicyOutputWithContext(ctx context.Context) UserPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserPolicyOutput)
+}
+
+func (i *UserPolicy) ToUserPolicyPtrOutput() UserPolicyPtrOutput {
+	return i.ToUserPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *UserPolicy) ToUserPolicyPtrOutputWithContext(ctx context.Context) UserPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPolicyPtrOutput)
+}
+
+type UserPolicyPtrInput interface {
+	pulumi.Input
+
+	ToUserPolicyPtrOutput() UserPolicyPtrOutput
+	ToUserPolicyPtrOutputWithContext(ctx context.Context) UserPolicyPtrOutput
 }
 
 type UserPolicyOutput struct {
@@ -182,7 +197,7 @@ type UserPolicyOutput struct {
 }
 
 func (UserPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*UserPolicy)(nil))
 }
 
 func (o UserPolicyOutput) ToUserPolicyOutput() UserPolicyOutput {
@@ -193,6 +208,23 @@ func (o UserPolicyOutput) ToUserPolicyOutputWithContext(ctx context.Context) Use
 	return o
 }
 
+type UserPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPolicy)(nil))
+}
+
+func (o UserPolicyPtrOutput) ToUserPolicyPtrOutput() UserPolicyPtrOutput {
+	return o
+}
+
+func (o UserPolicyPtrOutput) ToUserPolicyPtrOutputWithContext(ctx context.Context) UserPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(UserPolicyOutput{})
+	pulumi.RegisterOutputType(UserPolicyPtrOutput{})
 }

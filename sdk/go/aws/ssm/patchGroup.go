@@ -131,16 +131,31 @@ type PatchGroupInput interface {
 	ToPatchGroupOutputWithContext(ctx context.Context) PatchGroupOutput
 }
 
-func (PatchGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*PatchGroup)(nil)).Elem()
+func (*PatchGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchGroup)(nil))
 }
 
-func (i PatchGroup) ToPatchGroupOutput() PatchGroupOutput {
+func (i *PatchGroup) ToPatchGroupOutput() PatchGroupOutput {
 	return i.ToPatchGroupOutputWithContext(context.Background())
 }
 
-func (i PatchGroup) ToPatchGroupOutputWithContext(ctx context.Context) PatchGroupOutput {
+func (i *PatchGroup) ToPatchGroupOutputWithContext(ctx context.Context) PatchGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PatchGroupOutput)
+}
+
+func (i *PatchGroup) ToPatchGroupPtrOutput() PatchGroupPtrOutput {
+	return i.ToPatchGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *PatchGroup) ToPatchGroupPtrOutputWithContext(ctx context.Context) PatchGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchGroupPtrOutput)
+}
+
+type PatchGroupPtrInput interface {
+	pulumi.Input
+
+	ToPatchGroupPtrOutput() PatchGroupPtrOutput
+	ToPatchGroupPtrOutputWithContext(ctx context.Context) PatchGroupPtrOutput
 }
 
 type PatchGroupOutput struct {
@@ -148,7 +163,7 @@ type PatchGroupOutput struct {
 }
 
 func (PatchGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PatchGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*PatchGroup)(nil))
 }
 
 func (o PatchGroupOutput) ToPatchGroupOutput() PatchGroupOutput {
@@ -159,6 +174,23 @@ func (o PatchGroupOutput) ToPatchGroupOutputWithContext(ctx context.Context) Pat
 	return o
 }
 
+type PatchGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PatchGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PatchGroup)(nil))
+}
+
+func (o PatchGroupPtrOutput) ToPatchGroupPtrOutput() PatchGroupPtrOutput {
+	return o
+}
+
+func (o PatchGroupPtrOutput) ToPatchGroupPtrOutputWithContext(ctx context.Context) PatchGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PatchGroupOutput{})
+	pulumi.RegisterOutputType(PatchGroupPtrOutput{})
 }

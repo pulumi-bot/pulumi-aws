@@ -180,16 +180,31 @@ type VpcAssociationAuthorizationInput interface {
 	ToVpcAssociationAuthorizationOutputWithContext(ctx context.Context) VpcAssociationAuthorizationOutput
 }
 
-func (VpcAssociationAuthorization) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcAssociationAuthorization)(nil)).Elem()
+func (*VpcAssociationAuthorization) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcAssociationAuthorization)(nil))
 }
 
-func (i VpcAssociationAuthorization) ToVpcAssociationAuthorizationOutput() VpcAssociationAuthorizationOutput {
+func (i *VpcAssociationAuthorization) ToVpcAssociationAuthorizationOutput() VpcAssociationAuthorizationOutput {
 	return i.ToVpcAssociationAuthorizationOutputWithContext(context.Background())
 }
 
-func (i VpcAssociationAuthorization) ToVpcAssociationAuthorizationOutputWithContext(ctx context.Context) VpcAssociationAuthorizationOutput {
+func (i *VpcAssociationAuthorization) ToVpcAssociationAuthorizationOutputWithContext(ctx context.Context) VpcAssociationAuthorizationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcAssociationAuthorizationOutput)
+}
+
+func (i *VpcAssociationAuthorization) ToVpcAssociationAuthorizationPtrOutput() VpcAssociationAuthorizationPtrOutput {
+	return i.ToVpcAssociationAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i *VpcAssociationAuthorization) ToVpcAssociationAuthorizationPtrOutputWithContext(ctx context.Context) VpcAssociationAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcAssociationAuthorizationPtrOutput)
+}
+
+type VpcAssociationAuthorizationPtrInput interface {
+	pulumi.Input
+
+	ToVpcAssociationAuthorizationPtrOutput() VpcAssociationAuthorizationPtrOutput
+	ToVpcAssociationAuthorizationPtrOutputWithContext(ctx context.Context) VpcAssociationAuthorizationPtrOutput
 }
 
 type VpcAssociationAuthorizationOutput struct {
@@ -197,7 +212,7 @@ type VpcAssociationAuthorizationOutput struct {
 }
 
 func (VpcAssociationAuthorizationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcAssociationAuthorizationOutput)(nil)).Elem()
+	return reflect.TypeOf((*VpcAssociationAuthorization)(nil))
 }
 
 func (o VpcAssociationAuthorizationOutput) ToVpcAssociationAuthorizationOutput() VpcAssociationAuthorizationOutput {
@@ -208,6 +223,23 @@ func (o VpcAssociationAuthorizationOutput) ToVpcAssociationAuthorizationOutputWi
 	return o
 }
 
+type VpcAssociationAuthorizationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcAssociationAuthorizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcAssociationAuthorization)(nil))
+}
+
+func (o VpcAssociationAuthorizationPtrOutput) ToVpcAssociationAuthorizationPtrOutput() VpcAssociationAuthorizationPtrOutput {
+	return o
+}
+
+func (o VpcAssociationAuthorizationPtrOutput) ToVpcAssociationAuthorizationPtrOutputWithContext(ctx context.Context) VpcAssociationAuthorizationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VpcAssociationAuthorizationOutput{})
+	pulumi.RegisterOutputType(VpcAssociationAuthorizationPtrOutput{})
 }

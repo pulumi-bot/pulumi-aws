@@ -198,16 +198,31 @@ type VpcAttachmentAccepterInput interface {
 	ToVpcAttachmentAccepterOutputWithContext(ctx context.Context) VpcAttachmentAccepterOutput
 }
 
-func (VpcAttachmentAccepter) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcAttachmentAccepter)(nil)).Elem()
+func (*VpcAttachmentAccepter) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcAttachmentAccepter)(nil))
 }
 
-func (i VpcAttachmentAccepter) ToVpcAttachmentAccepterOutput() VpcAttachmentAccepterOutput {
+func (i *VpcAttachmentAccepter) ToVpcAttachmentAccepterOutput() VpcAttachmentAccepterOutput {
 	return i.ToVpcAttachmentAccepterOutputWithContext(context.Background())
 }
 
-func (i VpcAttachmentAccepter) ToVpcAttachmentAccepterOutputWithContext(ctx context.Context) VpcAttachmentAccepterOutput {
+func (i *VpcAttachmentAccepter) ToVpcAttachmentAccepterOutputWithContext(ctx context.Context) VpcAttachmentAccepterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcAttachmentAccepterOutput)
+}
+
+func (i *VpcAttachmentAccepter) ToVpcAttachmentAccepterPtrOutput() VpcAttachmentAccepterPtrOutput {
+	return i.ToVpcAttachmentAccepterPtrOutputWithContext(context.Background())
+}
+
+func (i *VpcAttachmentAccepter) ToVpcAttachmentAccepterPtrOutputWithContext(ctx context.Context) VpcAttachmentAccepterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcAttachmentAccepterPtrOutput)
+}
+
+type VpcAttachmentAccepterPtrInput interface {
+	pulumi.Input
+
+	ToVpcAttachmentAccepterPtrOutput() VpcAttachmentAccepterPtrOutput
+	ToVpcAttachmentAccepterPtrOutputWithContext(ctx context.Context) VpcAttachmentAccepterPtrOutput
 }
 
 type VpcAttachmentAccepterOutput struct {
@@ -215,7 +230,7 @@ type VpcAttachmentAccepterOutput struct {
 }
 
 func (VpcAttachmentAccepterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcAttachmentAccepterOutput)(nil)).Elem()
+	return reflect.TypeOf((*VpcAttachmentAccepter)(nil))
 }
 
 func (o VpcAttachmentAccepterOutput) ToVpcAttachmentAccepterOutput() VpcAttachmentAccepterOutput {
@@ -226,6 +241,23 @@ func (o VpcAttachmentAccepterOutput) ToVpcAttachmentAccepterOutputWithContext(ct
 	return o
 }
 
+type VpcAttachmentAccepterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcAttachmentAccepterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcAttachmentAccepter)(nil))
+}
+
+func (o VpcAttachmentAccepterPtrOutput) ToVpcAttachmentAccepterPtrOutput() VpcAttachmentAccepterPtrOutput {
+	return o
+}
+
+func (o VpcAttachmentAccepterPtrOutput) ToVpcAttachmentAccepterPtrOutputWithContext(ctx context.Context) VpcAttachmentAccepterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VpcAttachmentAccepterOutput{})
+	pulumi.RegisterOutputType(VpcAttachmentAccepterPtrOutput{})
 }

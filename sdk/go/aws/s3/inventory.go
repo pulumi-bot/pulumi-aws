@@ -264,16 +264,31 @@ type InventoryInput interface {
 	ToInventoryOutputWithContext(ctx context.Context) InventoryOutput
 }
 
-func (Inventory) ElementType() reflect.Type {
-	return reflect.TypeOf((*Inventory)(nil)).Elem()
+func (*Inventory) ElementType() reflect.Type {
+	return reflect.TypeOf((*Inventory)(nil))
 }
 
-func (i Inventory) ToInventoryOutput() InventoryOutput {
+func (i *Inventory) ToInventoryOutput() InventoryOutput {
 	return i.ToInventoryOutputWithContext(context.Background())
 }
 
-func (i Inventory) ToInventoryOutputWithContext(ctx context.Context) InventoryOutput {
+func (i *Inventory) ToInventoryOutputWithContext(ctx context.Context) InventoryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InventoryOutput)
+}
+
+func (i *Inventory) ToInventoryPtrOutput() InventoryPtrOutput {
+	return i.ToInventoryPtrOutputWithContext(context.Background())
+}
+
+func (i *Inventory) ToInventoryPtrOutputWithContext(ctx context.Context) InventoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InventoryPtrOutput)
+}
+
+type InventoryPtrInput interface {
+	pulumi.Input
+
+	ToInventoryPtrOutput() InventoryPtrOutput
+	ToInventoryPtrOutputWithContext(ctx context.Context) InventoryPtrOutput
 }
 
 type InventoryOutput struct {
@@ -281,7 +296,7 @@ type InventoryOutput struct {
 }
 
 func (InventoryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InventoryOutput)(nil)).Elem()
+	return reflect.TypeOf((*Inventory)(nil))
 }
 
 func (o InventoryOutput) ToInventoryOutput() InventoryOutput {
@@ -292,6 +307,23 @@ func (o InventoryOutput) ToInventoryOutputWithContext(ctx context.Context) Inven
 	return o
 }
 
+type InventoryPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (InventoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Inventory)(nil))
+}
+
+func (o InventoryPtrOutput) ToInventoryPtrOutput() InventoryPtrOutput {
+	return o
+}
+
+func (o InventoryPtrOutput) ToInventoryPtrOutputWithContext(ctx context.Context) InventoryPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(InventoryOutput{})
+	pulumi.RegisterOutputType(InventoryPtrOutput{})
 }

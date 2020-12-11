@@ -136,16 +136,31 @@ type SpotDatafeedSubscriptionInput interface {
 	ToSpotDatafeedSubscriptionOutputWithContext(ctx context.Context) SpotDatafeedSubscriptionOutput
 }
 
-func (SpotDatafeedSubscription) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpotDatafeedSubscription)(nil)).Elem()
+func (*SpotDatafeedSubscription) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpotDatafeedSubscription)(nil))
 }
 
-func (i SpotDatafeedSubscription) ToSpotDatafeedSubscriptionOutput() SpotDatafeedSubscriptionOutput {
+func (i *SpotDatafeedSubscription) ToSpotDatafeedSubscriptionOutput() SpotDatafeedSubscriptionOutput {
 	return i.ToSpotDatafeedSubscriptionOutputWithContext(context.Background())
 }
 
-func (i SpotDatafeedSubscription) ToSpotDatafeedSubscriptionOutputWithContext(ctx context.Context) SpotDatafeedSubscriptionOutput {
+func (i *SpotDatafeedSubscription) ToSpotDatafeedSubscriptionOutputWithContext(ctx context.Context) SpotDatafeedSubscriptionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpotDatafeedSubscriptionOutput)
+}
+
+func (i *SpotDatafeedSubscription) ToSpotDatafeedSubscriptionPtrOutput() SpotDatafeedSubscriptionPtrOutput {
+	return i.ToSpotDatafeedSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i *SpotDatafeedSubscription) ToSpotDatafeedSubscriptionPtrOutputWithContext(ctx context.Context) SpotDatafeedSubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpotDatafeedSubscriptionPtrOutput)
+}
+
+type SpotDatafeedSubscriptionPtrInput interface {
+	pulumi.Input
+
+	ToSpotDatafeedSubscriptionPtrOutput() SpotDatafeedSubscriptionPtrOutput
+	ToSpotDatafeedSubscriptionPtrOutputWithContext(ctx context.Context) SpotDatafeedSubscriptionPtrOutput
 }
 
 type SpotDatafeedSubscriptionOutput struct {
@@ -153,7 +168,7 @@ type SpotDatafeedSubscriptionOutput struct {
 }
 
 func (SpotDatafeedSubscriptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpotDatafeedSubscriptionOutput)(nil)).Elem()
+	return reflect.TypeOf((*SpotDatafeedSubscription)(nil))
 }
 
 func (o SpotDatafeedSubscriptionOutput) ToSpotDatafeedSubscriptionOutput() SpotDatafeedSubscriptionOutput {
@@ -164,6 +179,23 @@ func (o SpotDatafeedSubscriptionOutput) ToSpotDatafeedSubscriptionOutputWithCont
 	return o
 }
 
+type SpotDatafeedSubscriptionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SpotDatafeedSubscriptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpotDatafeedSubscription)(nil))
+}
+
+func (o SpotDatafeedSubscriptionPtrOutput) ToSpotDatafeedSubscriptionPtrOutput() SpotDatafeedSubscriptionPtrOutput {
+	return o
+}
+
+func (o SpotDatafeedSubscriptionPtrOutput) ToSpotDatafeedSubscriptionPtrOutputWithContext(ctx context.Context) SpotDatafeedSubscriptionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SpotDatafeedSubscriptionOutput{})
+	pulumi.RegisterOutputType(SpotDatafeedSubscriptionPtrOutput{})
 }

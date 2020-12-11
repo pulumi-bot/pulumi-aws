@@ -138,16 +138,31 @@ type AssessmentTargetInput interface {
 	ToAssessmentTargetOutputWithContext(ctx context.Context) AssessmentTargetOutput
 }
 
-func (AssessmentTarget) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssessmentTarget)(nil)).Elem()
+func (*AssessmentTarget) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssessmentTarget)(nil))
 }
 
-func (i AssessmentTarget) ToAssessmentTargetOutput() AssessmentTargetOutput {
+func (i *AssessmentTarget) ToAssessmentTargetOutput() AssessmentTargetOutput {
 	return i.ToAssessmentTargetOutputWithContext(context.Background())
 }
 
-func (i AssessmentTarget) ToAssessmentTargetOutputWithContext(ctx context.Context) AssessmentTargetOutput {
+func (i *AssessmentTarget) ToAssessmentTargetOutputWithContext(ctx context.Context) AssessmentTargetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AssessmentTargetOutput)
+}
+
+func (i *AssessmentTarget) ToAssessmentTargetPtrOutput() AssessmentTargetPtrOutput {
+	return i.ToAssessmentTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *AssessmentTarget) ToAssessmentTargetPtrOutputWithContext(ctx context.Context) AssessmentTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssessmentTargetPtrOutput)
+}
+
+type AssessmentTargetPtrInput interface {
+	pulumi.Input
+
+	ToAssessmentTargetPtrOutput() AssessmentTargetPtrOutput
+	ToAssessmentTargetPtrOutputWithContext(ctx context.Context) AssessmentTargetPtrOutput
 }
 
 type AssessmentTargetOutput struct {
@@ -155,7 +170,7 @@ type AssessmentTargetOutput struct {
 }
 
 func (AssessmentTargetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssessmentTargetOutput)(nil)).Elem()
+	return reflect.TypeOf((*AssessmentTarget)(nil))
 }
 
 func (o AssessmentTargetOutput) ToAssessmentTargetOutput() AssessmentTargetOutput {
@@ -166,6 +181,23 @@ func (o AssessmentTargetOutput) ToAssessmentTargetOutputWithContext(ctx context.
 	return o
 }
 
+type AssessmentTargetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AssessmentTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssessmentTarget)(nil))
+}
+
+func (o AssessmentTargetPtrOutput) ToAssessmentTargetPtrOutput() AssessmentTargetPtrOutput {
+	return o
+}
+
+func (o AssessmentTargetPtrOutput) ToAssessmentTargetPtrOutputWithContext(ctx context.Context) AssessmentTargetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AssessmentTargetOutput{})
+	pulumi.RegisterOutputType(AssessmentTargetPtrOutput{})
 }

@@ -123,16 +123,31 @@ type EmailIdentityInput interface {
 	ToEmailIdentityOutputWithContext(ctx context.Context) EmailIdentityOutput
 }
 
-func (EmailIdentity) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailIdentity)(nil)).Elem()
+func (*EmailIdentity) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailIdentity)(nil))
 }
 
-func (i EmailIdentity) ToEmailIdentityOutput() EmailIdentityOutput {
+func (i *EmailIdentity) ToEmailIdentityOutput() EmailIdentityOutput {
 	return i.ToEmailIdentityOutputWithContext(context.Background())
 }
 
-func (i EmailIdentity) ToEmailIdentityOutputWithContext(ctx context.Context) EmailIdentityOutput {
+func (i *EmailIdentity) ToEmailIdentityOutputWithContext(ctx context.Context) EmailIdentityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EmailIdentityOutput)
+}
+
+func (i *EmailIdentity) ToEmailIdentityPtrOutput() EmailIdentityPtrOutput {
+	return i.ToEmailIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *EmailIdentity) ToEmailIdentityPtrOutputWithContext(ctx context.Context) EmailIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailIdentityPtrOutput)
+}
+
+type EmailIdentityPtrInput interface {
+	pulumi.Input
+
+	ToEmailIdentityPtrOutput() EmailIdentityPtrOutput
+	ToEmailIdentityPtrOutputWithContext(ctx context.Context) EmailIdentityPtrOutput
 }
 
 type EmailIdentityOutput struct {
@@ -140,7 +155,7 @@ type EmailIdentityOutput struct {
 }
 
 func (EmailIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailIdentityOutput)(nil)).Elem()
+	return reflect.TypeOf((*EmailIdentity)(nil))
 }
 
 func (o EmailIdentityOutput) ToEmailIdentityOutput() EmailIdentityOutput {
@@ -151,6 +166,23 @@ func (o EmailIdentityOutput) ToEmailIdentityOutputWithContext(ctx context.Contex
 	return o
 }
 
+type EmailIdentityPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EmailIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailIdentity)(nil))
+}
+
+func (o EmailIdentityPtrOutput) ToEmailIdentityPtrOutput() EmailIdentityPtrOutput {
+	return o
+}
+
+func (o EmailIdentityPtrOutput) ToEmailIdentityPtrOutputWithContext(ctx context.Context) EmailIdentityPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EmailIdentityOutput{})
+	pulumi.RegisterOutputType(EmailIdentityPtrOutput{})
 }

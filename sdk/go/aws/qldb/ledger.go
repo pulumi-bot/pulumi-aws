@@ -139,16 +139,31 @@ type LedgerInput interface {
 	ToLedgerOutputWithContext(ctx context.Context) LedgerOutput
 }
 
-func (Ledger) ElementType() reflect.Type {
-	return reflect.TypeOf((*Ledger)(nil)).Elem()
+func (*Ledger) ElementType() reflect.Type {
+	return reflect.TypeOf((*Ledger)(nil))
 }
 
-func (i Ledger) ToLedgerOutput() LedgerOutput {
+func (i *Ledger) ToLedgerOutput() LedgerOutput {
 	return i.ToLedgerOutputWithContext(context.Background())
 }
 
-func (i Ledger) ToLedgerOutputWithContext(ctx context.Context) LedgerOutput {
+func (i *Ledger) ToLedgerOutputWithContext(ctx context.Context) LedgerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LedgerOutput)
+}
+
+func (i *Ledger) ToLedgerPtrOutput() LedgerPtrOutput {
+	return i.ToLedgerPtrOutputWithContext(context.Background())
+}
+
+func (i *Ledger) ToLedgerPtrOutputWithContext(ctx context.Context) LedgerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LedgerPtrOutput)
+}
+
+type LedgerPtrInput interface {
+	pulumi.Input
+
+	ToLedgerPtrOutput() LedgerPtrOutput
+	ToLedgerPtrOutputWithContext(ctx context.Context) LedgerPtrOutput
 }
 
 type LedgerOutput struct {
@@ -156,7 +171,7 @@ type LedgerOutput struct {
 }
 
 func (LedgerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LedgerOutput)(nil)).Elem()
+	return reflect.TypeOf((*Ledger)(nil))
 }
 
 func (o LedgerOutput) ToLedgerOutput() LedgerOutput {
@@ -167,6 +182,23 @@ func (o LedgerOutput) ToLedgerOutputWithContext(ctx context.Context) LedgerOutpu
 	return o
 }
 
+type LedgerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LedgerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Ledger)(nil))
+}
+
+func (o LedgerPtrOutput) ToLedgerPtrOutput() LedgerPtrOutput {
+	return o
+}
+
+func (o LedgerPtrOutput) ToLedgerPtrOutputWithContext(ctx context.Context) LedgerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LedgerOutput{})
+	pulumi.RegisterOutputType(LedgerPtrOutput{})
 }

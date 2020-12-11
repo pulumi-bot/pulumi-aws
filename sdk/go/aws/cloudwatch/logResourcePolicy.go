@@ -206,16 +206,31 @@ type LogResourcePolicyInput interface {
 	ToLogResourcePolicyOutputWithContext(ctx context.Context) LogResourcePolicyOutput
 }
 
-func (LogResourcePolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogResourcePolicy)(nil)).Elem()
+func (*LogResourcePolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogResourcePolicy)(nil))
 }
 
-func (i LogResourcePolicy) ToLogResourcePolicyOutput() LogResourcePolicyOutput {
+func (i *LogResourcePolicy) ToLogResourcePolicyOutput() LogResourcePolicyOutput {
 	return i.ToLogResourcePolicyOutputWithContext(context.Background())
 }
 
-func (i LogResourcePolicy) ToLogResourcePolicyOutputWithContext(ctx context.Context) LogResourcePolicyOutput {
+func (i *LogResourcePolicy) ToLogResourcePolicyOutputWithContext(ctx context.Context) LogResourcePolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogResourcePolicyOutput)
+}
+
+func (i *LogResourcePolicy) ToLogResourcePolicyPtrOutput() LogResourcePolicyPtrOutput {
+	return i.ToLogResourcePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *LogResourcePolicy) ToLogResourcePolicyPtrOutputWithContext(ctx context.Context) LogResourcePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogResourcePolicyPtrOutput)
+}
+
+type LogResourcePolicyPtrInput interface {
+	pulumi.Input
+
+	ToLogResourcePolicyPtrOutput() LogResourcePolicyPtrOutput
+	ToLogResourcePolicyPtrOutputWithContext(ctx context.Context) LogResourcePolicyPtrOutput
 }
 
 type LogResourcePolicyOutput struct {
@@ -223,7 +238,7 @@ type LogResourcePolicyOutput struct {
 }
 
 func (LogResourcePolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogResourcePolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*LogResourcePolicy)(nil))
 }
 
 func (o LogResourcePolicyOutput) ToLogResourcePolicyOutput() LogResourcePolicyOutput {
@@ -234,6 +249,23 @@ func (o LogResourcePolicyOutput) ToLogResourcePolicyOutputWithContext(ctx contex
 	return o
 }
 
+type LogResourcePolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogResourcePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogResourcePolicy)(nil))
+}
+
+func (o LogResourcePolicyPtrOutput) ToLogResourcePolicyPtrOutput() LogResourcePolicyPtrOutput {
+	return o
+}
+
+func (o LogResourcePolicyPtrOutput) ToLogResourcePolicyPtrOutputWithContext(ctx context.Context) LogResourcePolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LogResourcePolicyOutput{})
+	pulumi.RegisterOutputType(LogResourcePolicyPtrOutput{})
 }

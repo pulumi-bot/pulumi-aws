@@ -153,16 +153,31 @@ type ActionTargetInput interface {
 	ToActionTargetOutputWithContext(ctx context.Context) ActionTargetOutput
 }
 
-func (ActionTarget) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionTarget)(nil)).Elem()
+func (*ActionTarget) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionTarget)(nil))
 }
 
-func (i ActionTarget) ToActionTargetOutput() ActionTargetOutput {
+func (i *ActionTarget) ToActionTargetOutput() ActionTargetOutput {
 	return i.ToActionTargetOutputWithContext(context.Background())
 }
 
-func (i ActionTarget) ToActionTargetOutputWithContext(ctx context.Context) ActionTargetOutput {
+func (i *ActionTarget) ToActionTargetOutputWithContext(ctx context.Context) ActionTargetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionTargetOutput)
+}
+
+func (i *ActionTarget) ToActionTargetPtrOutput() ActionTargetPtrOutput {
+	return i.ToActionTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *ActionTarget) ToActionTargetPtrOutputWithContext(ctx context.Context) ActionTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionTargetPtrOutput)
+}
+
+type ActionTargetPtrInput interface {
+	pulumi.Input
+
+	ToActionTargetPtrOutput() ActionTargetPtrOutput
+	ToActionTargetPtrOutputWithContext(ctx context.Context) ActionTargetPtrOutput
 }
 
 type ActionTargetOutput struct {
@@ -170,7 +185,7 @@ type ActionTargetOutput struct {
 }
 
 func (ActionTargetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionTargetOutput)(nil)).Elem()
+	return reflect.TypeOf((*ActionTarget)(nil))
 }
 
 func (o ActionTargetOutput) ToActionTargetOutput() ActionTargetOutput {
@@ -181,6 +196,23 @@ func (o ActionTargetOutput) ToActionTargetOutputWithContext(ctx context.Context)
 	return o
 }
 
+type ActionTargetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActionTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionTarget)(nil))
+}
+
+func (o ActionTargetPtrOutput) ToActionTargetPtrOutput() ActionTargetPtrOutput {
+	return o
+}
+
+func (o ActionTargetPtrOutput) ToActionTargetPtrOutputWithContext(ctx context.Context) ActionTargetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ActionTargetOutput{})
+	pulumi.RegisterOutputType(ActionTargetPtrOutput{})
 }

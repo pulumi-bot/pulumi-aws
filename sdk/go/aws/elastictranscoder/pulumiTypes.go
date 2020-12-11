@@ -52,7 +52,7 @@ func (i PipelineContentConfigArgs) ToPipelineContentConfigPtrOutput() PipelineCo
 }
 
 func (i PipelineContentConfigArgs) ToPipelineContentConfigPtrOutputWithContext(ctx context.Context) PipelineContentConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineContentConfigOutput).ToPipelineContentConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineContentConfigOutput).ToPipelineContentConfigPtrOutput()
 }
 
 // PipelineContentConfigPtrInput is an input type that accepts PipelineContentConfigArgs, PipelineContentConfigPtr and PipelineContentConfigPtrOutput values.
@@ -85,7 +85,7 @@ func (i *pipelineContentConfigPtrType) ToPipelineContentConfigPtrOutput() Pipeli
 }
 
 func (i *pipelineContentConfigPtrType) ToPipelineContentConfigPtrOutputWithContext(ctx context.Context) PipelineContentConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineContentConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineContentConfigOutput).ToPipelineContentConfigPtrOutput()
 }
 
 type PipelineContentConfigOutput struct{ *pulumi.OutputState }
@@ -325,7 +325,7 @@ func (i PipelineNotificationsArgs) ToPipelineNotificationsPtrOutput() PipelineNo
 }
 
 func (i PipelineNotificationsArgs) ToPipelineNotificationsPtrOutputWithContext(ctx context.Context) PipelineNotificationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineNotificationsOutput).ToPipelineNotificationsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineNotificationsOutput).ToPipelineNotificationsPtrOutput()
 }
 
 // PipelineNotificationsPtrInput is an input type that accepts PipelineNotificationsArgs, PipelineNotificationsPtr and PipelineNotificationsPtrOutput values.
@@ -358,7 +358,7 @@ func (i *pipelineNotificationsPtrType) ToPipelineNotificationsPtrOutput() Pipeli
 }
 
 func (i *pipelineNotificationsPtrType) ToPipelineNotificationsPtrOutputWithContext(ctx context.Context) PipelineNotificationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineNotificationsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineNotificationsOutput).ToPipelineNotificationsPtrOutput()
 }
 
 type PipelineNotificationsOutput struct{ *pulumi.OutputState }
@@ -505,7 +505,7 @@ func (i PipelineThumbnailConfigArgs) ToPipelineThumbnailConfigPtrOutput() Pipeli
 }
 
 func (i PipelineThumbnailConfigArgs) ToPipelineThumbnailConfigPtrOutputWithContext(ctx context.Context) PipelineThumbnailConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineThumbnailConfigOutput).ToPipelineThumbnailConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineThumbnailConfigOutput).ToPipelineThumbnailConfigPtrOutput()
 }
 
 // PipelineThumbnailConfigPtrInput is an input type that accepts PipelineThumbnailConfigArgs, PipelineThumbnailConfigPtr and PipelineThumbnailConfigPtrOutput values.
@@ -538,7 +538,7 @@ func (i *pipelineThumbnailConfigPtrType) ToPipelineThumbnailConfigPtrOutput() Pi
 }
 
 func (i *pipelineThumbnailConfigPtrType) ToPipelineThumbnailConfigPtrOutputWithContext(ctx context.Context) PipelineThumbnailConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineThumbnailConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineThumbnailConfigOutput).ToPipelineThumbnailConfigPtrOutput()
 }
 
 type PipelineThumbnailConfigOutput struct{ *pulumi.OutputState }
@@ -782,7 +782,7 @@ func (i PresetAudioArgs) ToPresetAudioPtrOutput() PresetAudioPtrOutput {
 }
 
 func (i PresetAudioArgs) ToPresetAudioPtrOutputWithContext(ctx context.Context) PresetAudioPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PresetAudioOutput).ToPresetAudioPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PresetAudioOutput).ToPresetAudioPtrOutput()
 }
 
 // PresetAudioPtrInput is an input type that accepts PresetAudioArgs, PresetAudioPtr and PresetAudioPtrOutput values.
@@ -815,7 +815,7 @@ func (i *presetAudioPtrType) ToPresetAudioPtrOutput() PresetAudioPtrOutput {
 }
 
 func (i *presetAudioPtrType) ToPresetAudioPtrOutputWithContext(ctx context.Context) PresetAudioPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PresetAudioPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PresetAudioOutput).ToPresetAudioPtrOutput()
 }
 
 type PresetAudioOutput struct{ *pulumi.OutputState }
@@ -985,7 +985,7 @@ func (i PresetAudioCodecOptionsArgs) ToPresetAudioCodecOptionsPtrOutput() Preset
 }
 
 func (i PresetAudioCodecOptionsArgs) ToPresetAudioCodecOptionsPtrOutputWithContext(ctx context.Context) PresetAudioCodecOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PresetAudioCodecOptionsOutput).ToPresetAudioCodecOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PresetAudioCodecOptionsOutput).ToPresetAudioCodecOptionsPtrOutput()
 }
 
 // PresetAudioCodecOptionsPtrInput is an input type that accepts PresetAudioCodecOptionsArgs, PresetAudioCodecOptionsPtr and PresetAudioCodecOptionsPtrOutput values.
@@ -1018,7 +1018,7 @@ func (i *presetAudioCodecOptionsPtrType) ToPresetAudioCodecOptionsPtrOutput() Pr
 }
 
 func (i *presetAudioCodecOptionsPtrType) ToPresetAudioCodecOptionsPtrOutputWithContext(ctx context.Context) PresetAudioCodecOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PresetAudioCodecOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PresetAudioCodecOptionsOutput).ToPresetAudioCodecOptionsPtrOutput()
 }
 
 type PresetAudioCodecOptionsOutput struct{ *pulumi.OutputState }
@@ -1189,7 +1189,7 @@ func (i PresetThumbnailsArgs) ToPresetThumbnailsPtrOutput() PresetThumbnailsPtrO
 }
 
 func (i PresetThumbnailsArgs) ToPresetThumbnailsPtrOutputWithContext(ctx context.Context) PresetThumbnailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PresetThumbnailsOutput).ToPresetThumbnailsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PresetThumbnailsOutput).ToPresetThumbnailsPtrOutput()
 }
 
 // PresetThumbnailsPtrInput is an input type that accepts PresetThumbnailsArgs, PresetThumbnailsPtr and PresetThumbnailsPtrOutput values.
@@ -1222,7 +1222,7 @@ func (i *presetThumbnailsPtrType) ToPresetThumbnailsPtrOutput() PresetThumbnails
 }
 
 func (i *presetThumbnailsPtrType) ToPresetThumbnailsPtrOutputWithContext(ctx context.Context) PresetThumbnailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PresetThumbnailsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PresetThumbnailsOutput).ToPresetThumbnailsPtrOutput()
 }
 
 type PresetThumbnailsOutput struct{ *pulumi.OutputState }
@@ -1473,7 +1473,7 @@ func (i PresetVideoArgs) ToPresetVideoPtrOutput() PresetVideoPtrOutput {
 }
 
 func (i PresetVideoArgs) ToPresetVideoPtrOutputWithContext(ctx context.Context) PresetVideoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PresetVideoOutput).ToPresetVideoPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PresetVideoOutput).ToPresetVideoPtrOutput()
 }
 
 // PresetVideoPtrInput is an input type that accepts PresetVideoArgs, PresetVideoPtr and PresetVideoPtrOutput values.
@@ -1506,7 +1506,7 @@ func (i *presetVideoPtrType) ToPresetVideoPtrOutput() PresetVideoPtrOutput {
 }
 
 func (i *presetVideoPtrType) ToPresetVideoPtrOutputWithContext(ctx context.Context) PresetVideoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PresetVideoPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PresetVideoOutput).ToPresetVideoPtrOutput()
 }
 
 type PresetVideoOutput struct{ *pulumi.OutputState }

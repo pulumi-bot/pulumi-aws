@@ -139,16 +139,31 @@ type DelegationSetInput interface {
 	ToDelegationSetOutputWithContext(ctx context.Context) DelegationSetOutput
 }
 
-func (DelegationSet) ElementType() reflect.Type {
-	return reflect.TypeOf((*DelegationSet)(nil)).Elem()
+func (*DelegationSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*DelegationSet)(nil))
 }
 
-func (i DelegationSet) ToDelegationSetOutput() DelegationSetOutput {
+func (i *DelegationSet) ToDelegationSetOutput() DelegationSetOutput {
 	return i.ToDelegationSetOutputWithContext(context.Background())
 }
 
-func (i DelegationSet) ToDelegationSetOutputWithContext(ctx context.Context) DelegationSetOutput {
+func (i *DelegationSet) ToDelegationSetOutputWithContext(ctx context.Context) DelegationSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DelegationSetOutput)
+}
+
+func (i *DelegationSet) ToDelegationSetPtrOutput() DelegationSetPtrOutput {
+	return i.ToDelegationSetPtrOutputWithContext(context.Background())
+}
+
+func (i *DelegationSet) ToDelegationSetPtrOutputWithContext(ctx context.Context) DelegationSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DelegationSetPtrOutput)
+}
+
+type DelegationSetPtrInput interface {
+	pulumi.Input
+
+	ToDelegationSetPtrOutput() DelegationSetPtrOutput
+	ToDelegationSetPtrOutputWithContext(ctx context.Context) DelegationSetPtrOutput
 }
 
 type DelegationSetOutput struct {
@@ -156,7 +171,7 @@ type DelegationSetOutput struct {
 }
 
 func (DelegationSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DelegationSetOutput)(nil)).Elem()
+	return reflect.TypeOf((*DelegationSet)(nil))
 }
 
 func (o DelegationSetOutput) ToDelegationSetOutput() DelegationSetOutput {
@@ -167,6 +182,23 @@ func (o DelegationSetOutput) ToDelegationSetOutputWithContext(ctx context.Contex
 	return o
 }
 
+type DelegationSetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DelegationSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DelegationSet)(nil))
+}
+
+func (o DelegationSetPtrOutput) ToDelegationSetPtrOutput() DelegationSetPtrOutput {
+	return o
+}
+
+func (o DelegationSetPtrOutput) ToDelegationSetPtrOutputWithContext(ctx context.Context) DelegationSetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DelegationSetOutput{})
+	pulumi.RegisterOutputType(DelegationSetPtrOutput{})
 }

@@ -146,16 +146,31 @@ type RepositoryPermissionsPolicyInput interface {
 	ToRepositoryPermissionsPolicyOutputWithContext(ctx context.Context) RepositoryPermissionsPolicyOutput
 }
 
-func (RepositoryPermissionsPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*RepositoryPermissionsPolicy)(nil)).Elem()
+func (*RepositoryPermissionsPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryPermissionsPolicy)(nil))
 }
 
-func (i RepositoryPermissionsPolicy) ToRepositoryPermissionsPolicyOutput() RepositoryPermissionsPolicyOutput {
+func (i *RepositoryPermissionsPolicy) ToRepositoryPermissionsPolicyOutput() RepositoryPermissionsPolicyOutput {
 	return i.ToRepositoryPermissionsPolicyOutputWithContext(context.Background())
 }
 
-func (i RepositoryPermissionsPolicy) ToRepositoryPermissionsPolicyOutputWithContext(ctx context.Context) RepositoryPermissionsPolicyOutput {
+func (i *RepositoryPermissionsPolicy) ToRepositoryPermissionsPolicyOutputWithContext(ctx context.Context) RepositoryPermissionsPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryPermissionsPolicyOutput)
+}
+
+func (i *RepositoryPermissionsPolicy) ToRepositoryPermissionsPolicyPtrOutput() RepositoryPermissionsPolicyPtrOutput {
+	return i.ToRepositoryPermissionsPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *RepositoryPermissionsPolicy) ToRepositoryPermissionsPolicyPtrOutputWithContext(ctx context.Context) RepositoryPermissionsPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryPermissionsPolicyPtrOutput)
+}
+
+type RepositoryPermissionsPolicyPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryPermissionsPolicyPtrOutput() RepositoryPermissionsPolicyPtrOutput
+	ToRepositoryPermissionsPolicyPtrOutputWithContext(ctx context.Context) RepositoryPermissionsPolicyPtrOutput
 }
 
 type RepositoryPermissionsPolicyOutput struct {
@@ -163,7 +178,7 @@ type RepositoryPermissionsPolicyOutput struct {
 }
 
 func (RepositoryPermissionsPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RepositoryPermissionsPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*RepositoryPermissionsPolicy)(nil))
 }
 
 func (o RepositoryPermissionsPolicyOutput) ToRepositoryPermissionsPolicyOutput() RepositoryPermissionsPolicyOutput {
@@ -174,6 +189,23 @@ func (o RepositoryPermissionsPolicyOutput) ToRepositoryPermissionsPolicyOutputWi
 	return o
 }
 
+type RepositoryPermissionsPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RepositoryPermissionsPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryPermissionsPolicy)(nil))
+}
+
+func (o RepositoryPermissionsPolicyPtrOutput) ToRepositoryPermissionsPolicyPtrOutput() RepositoryPermissionsPolicyPtrOutput {
+	return o
+}
+
+func (o RepositoryPermissionsPolicyPtrOutput) ToRepositoryPermissionsPolicyPtrOutputWithContext(ctx context.Context) RepositoryPermissionsPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RepositoryPermissionsPolicyOutput{})
+	pulumi.RegisterOutputType(RepositoryPermissionsPolicyPtrOutput{})
 }

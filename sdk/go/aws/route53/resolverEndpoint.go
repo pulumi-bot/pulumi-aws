@@ -206,16 +206,31 @@ type ResolverEndpointInput interface {
 	ToResolverEndpointOutputWithContext(ctx context.Context) ResolverEndpointOutput
 }
 
-func (ResolverEndpoint) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResolverEndpoint)(nil)).Elem()
+func (*ResolverEndpoint) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverEndpoint)(nil))
 }
 
-func (i ResolverEndpoint) ToResolverEndpointOutput() ResolverEndpointOutput {
+func (i *ResolverEndpoint) ToResolverEndpointOutput() ResolverEndpointOutput {
 	return i.ToResolverEndpointOutputWithContext(context.Background())
 }
 
-func (i ResolverEndpoint) ToResolverEndpointOutputWithContext(ctx context.Context) ResolverEndpointOutput {
+func (i *ResolverEndpoint) ToResolverEndpointOutputWithContext(ctx context.Context) ResolverEndpointOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResolverEndpointOutput)
+}
+
+func (i *ResolverEndpoint) ToResolverEndpointPtrOutput() ResolverEndpointPtrOutput {
+	return i.ToResolverEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *ResolverEndpoint) ToResolverEndpointPtrOutputWithContext(ctx context.Context) ResolverEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverEndpointPtrOutput)
+}
+
+type ResolverEndpointPtrInput interface {
+	pulumi.Input
+
+	ToResolverEndpointPtrOutput() ResolverEndpointPtrOutput
+	ToResolverEndpointPtrOutputWithContext(ctx context.Context) ResolverEndpointPtrOutput
 }
 
 type ResolverEndpointOutput struct {
@@ -223,7 +238,7 @@ type ResolverEndpointOutput struct {
 }
 
 func (ResolverEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResolverEndpointOutput)(nil)).Elem()
+	return reflect.TypeOf((*ResolverEndpoint)(nil))
 }
 
 func (o ResolverEndpointOutput) ToResolverEndpointOutput() ResolverEndpointOutput {
@@ -234,6 +249,23 @@ func (o ResolverEndpointOutput) ToResolverEndpointOutputWithContext(ctx context.
 	return o
 }
 
+type ResolverEndpointPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResolverEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResolverEndpoint)(nil))
+}
+
+func (o ResolverEndpointPtrOutput) ToResolverEndpointPtrOutput() ResolverEndpointPtrOutput {
+	return o
+}
+
+func (o ResolverEndpointPtrOutput) ToResolverEndpointPtrOutputWithContext(ctx context.Context) ResolverEndpointPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResolverEndpointOutput{})
+	pulumi.RegisterOutputType(ResolverEndpointPtrOutput{})
 }

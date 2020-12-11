@@ -187,7 +187,7 @@ func (i ClusterCoreInstanceFleetArgs) ToClusterCoreInstanceFleetPtrOutput() Clus
 }
 
 func (i ClusterCoreInstanceFleetArgs) ToClusterCoreInstanceFleetPtrOutputWithContext(ctx context.Context) ClusterCoreInstanceFleetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterCoreInstanceFleetOutput).ToClusterCoreInstanceFleetPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCoreInstanceFleetOutput).ToClusterCoreInstanceFleetPtrOutput()
 }
 
 // ClusterCoreInstanceFleetPtrInput is an input type that accepts ClusterCoreInstanceFleetArgs, ClusterCoreInstanceFleetPtr and ClusterCoreInstanceFleetPtrOutput values.
@@ -220,7 +220,7 @@ func (i *clusterCoreInstanceFleetPtrType) ToClusterCoreInstanceFleetPtrOutput() 
 }
 
 func (i *clusterCoreInstanceFleetPtrType) ToClusterCoreInstanceFleetPtrOutputWithContext(ctx context.Context) ClusterCoreInstanceFleetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterCoreInstanceFleetPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCoreInstanceFleetOutput).ToClusterCoreInstanceFleetPtrOutput()
 }
 
 type ClusterCoreInstanceFleetOutput struct{ *pulumi.OutputState }
@@ -807,7 +807,7 @@ func (i ClusterCoreInstanceFleetLaunchSpecificationsArgs) ToClusterCoreInstanceF
 }
 
 func (i ClusterCoreInstanceFleetLaunchSpecificationsArgs) ToClusterCoreInstanceFleetLaunchSpecificationsPtrOutputWithContext(ctx context.Context) ClusterCoreInstanceFleetLaunchSpecificationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterCoreInstanceFleetLaunchSpecificationsOutput).ToClusterCoreInstanceFleetLaunchSpecificationsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCoreInstanceFleetLaunchSpecificationsOutput).ToClusterCoreInstanceFleetLaunchSpecificationsPtrOutput()
 }
 
 // ClusterCoreInstanceFleetLaunchSpecificationsPtrInput is an input type that accepts ClusterCoreInstanceFleetLaunchSpecificationsArgs, ClusterCoreInstanceFleetLaunchSpecificationsPtr and ClusterCoreInstanceFleetLaunchSpecificationsPtrOutput values.
@@ -840,7 +840,7 @@ func (i *clusterCoreInstanceFleetLaunchSpecificationsPtrType) ToClusterCoreInsta
 }
 
 func (i *clusterCoreInstanceFleetLaunchSpecificationsPtrType) ToClusterCoreInstanceFleetLaunchSpecificationsPtrOutputWithContext(ctx context.Context) ClusterCoreInstanceFleetLaunchSpecificationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterCoreInstanceFleetLaunchSpecificationsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCoreInstanceFleetLaunchSpecificationsOutput).ToClusterCoreInstanceFleetLaunchSpecificationsPtrOutput()
 }
 
 type ClusterCoreInstanceFleetLaunchSpecificationsOutput struct{ *pulumi.OutputState }
@@ -1212,7 +1212,7 @@ func (i ClusterCoreInstanceGroupArgs) ToClusterCoreInstanceGroupPtrOutput() Clus
 }
 
 func (i ClusterCoreInstanceGroupArgs) ToClusterCoreInstanceGroupPtrOutputWithContext(ctx context.Context) ClusterCoreInstanceGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterCoreInstanceGroupOutput).ToClusterCoreInstanceGroupPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCoreInstanceGroupOutput).ToClusterCoreInstanceGroupPtrOutput()
 }
 
 // ClusterCoreInstanceGroupPtrInput is an input type that accepts ClusterCoreInstanceGroupArgs, ClusterCoreInstanceGroupPtr and ClusterCoreInstanceGroupPtrOutput values.
@@ -1245,7 +1245,7 @@ func (i *clusterCoreInstanceGroupPtrType) ToClusterCoreInstanceGroupPtrOutput() 
 }
 
 func (i *clusterCoreInstanceGroupPtrType) ToClusterCoreInstanceGroupPtrOutputWithContext(ctx context.Context) ClusterCoreInstanceGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterCoreInstanceGroupPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCoreInstanceGroupOutput).ToClusterCoreInstanceGroupPtrOutput()
 }
 
 type ClusterCoreInstanceGroupOutput struct{ *pulumi.OutputState }
@@ -1585,7 +1585,7 @@ func (i ClusterEc2AttributesArgs) ToClusterEc2AttributesPtrOutput() ClusterEc2At
 }
 
 func (i ClusterEc2AttributesArgs) ToClusterEc2AttributesPtrOutputWithContext(ctx context.Context) ClusterEc2AttributesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterEc2AttributesOutput).ToClusterEc2AttributesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEc2AttributesOutput).ToClusterEc2AttributesPtrOutput()
 }
 
 // ClusterEc2AttributesPtrInput is an input type that accepts ClusterEc2AttributesArgs, ClusterEc2AttributesPtr and ClusterEc2AttributesPtrOutput values.
@@ -1618,7 +1618,7 @@ func (i *clusterEc2AttributesPtrType) ToClusterEc2AttributesPtrOutput() ClusterE
 }
 
 func (i *clusterEc2AttributesPtrType) ToClusterEc2AttributesPtrOutputWithContext(ctx context.Context) ClusterEc2AttributesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterEc2AttributesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEc2AttributesOutput).ToClusterEc2AttributesPtrOutput()
 }
 
 type ClusterEc2AttributesOutput struct{ *pulumi.OutputState }
@@ -1837,7 +1837,7 @@ func (i ClusterKerberosAttributesArgs) ToClusterKerberosAttributesPtrOutput() Cl
 }
 
 func (i ClusterKerberosAttributesArgs) ToClusterKerberosAttributesPtrOutputWithContext(ctx context.Context) ClusterKerberosAttributesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterKerberosAttributesOutput).ToClusterKerberosAttributesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterKerberosAttributesOutput).ToClusterKerberosAttributesPtrOutput()
 }
 
 // ClusterKerberosAttributesPtrInput is an input type that accepts ClusterKerberosAttributesArgs, ClusterKerberosAttributesPtr and ClusterKerberosAttributesPtrOutput values.
@@ -1870,7 +1870,7 @@ func (i *clusterKerberosAttributesPtrType) ToClusterKerberosAttributesPtrOutput(
 }
 
 func (i *clusterKerberosAttributesPtrType) ToClusterKerberosAttributesPtrOutputWithContext(ctx context.Context) ClusterKerberosAttributesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterKerberosAttributesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterKerberosAttributesOutput).ToClusterKerberosAttributesPtrOutput()
 }
 
 type ClusterKerberosAttributesOutput struct{ *pulumi.OutputState }
@@ -2052,7 +2052,7 @@ func (i ClusterMasterInstanceFleetArgs) ToClusterMasterInstanceFleetPtrOutput() 
 }
 
 func (i ClusterMasterInstanceFleetArgs) ToClusterMasterInstanceFleetPtrOutputWithContext(ctx context.Context) ClusterMasterInstanceFleetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterInstanceFleetOutput).ToClusterMasterInstanceFleetPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterInstanceFleetOutput).ToClusterMasterInstanceFleetPtrOutput()
 }
 
 // ClusterMasterInstanceFleetPtrInput is an input type that accepts ClusterMasterInstanceFleetArgs, ClusterMasterInstanceFleetPtr and ClusterMasterInstanceFleetPtrOutput values.
@@ -2085,7 +2085,7 @@ func (i *clusterMasterInstanceFleetPtrType) ToClusterMasterInstanceFleetPtrOutpu
 }
 
 func (i *clusterMasterInstanceFleetPtrType) ToClusterMasterInstanceFleetPtrOutputWithContext(ctx context.Context) ClusterMasterInstanceFleetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterInstanceFleetPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterInstanceFleetOutput).ToClusterMasterInstanceFleetPtrOutput()
 }
 
 type ClusterMasterInstanceFleetOutput struct{ *pulumi.OutputState }
@@ -2672,7 +2672,7 @@ func (i ClusterMasterInstanceFleetLaunchSpecificationsArgs) ToClusterMasterInsta
 }
 
 func (i ClusterMasterInstanceFleetLaunchSpecificationsArgs) ToClusterMasterInstanceFleetLaunchSpecificationsPtrOutputWithContext(ctx context.Context) ClusterMasterInstanceFleetLaunchSpecificationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterInstanceFleetLaunchSpecificationsOutput).ToClusterMasterInstanceFleetLaunchSpecificationsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterInstanceFleetLaunchSpecificationsOutput).ToClusterMasterInstanceFleetLaunchSpecificationsPtrOutput()
 }
 
 // ClusterMasterInstanceFleetLaunchSpecificationsPtrInput is an input type that accepts ClusterMasterInstanceFleetLaunchSpecificationsArgs, ClusterMasterInstanceFleetLaunchSpecificationsPtr and ClusterMasterInstanceFleetLaunchSpecificationsPtrOutput values.
@@ -2705,7 +2705,7 @@ func (i *clusterMasterInstanceFleetLaunchSpecificationsPtrType) ToClusterMasterI
 }
 
 func (i *clusterMasterInstanceFleetLaunchSpecificationsPtrType) ToClusterMasterInstanceFleetLaunchSpecificationsPtrOutputWithContext(ctx context.Context) ClusterMasterInstanceFleetLaunchSpecificationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterInstanceFleetLaunchSpecificationsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterInstanceFleetLaunchSpecificationsOutput).ToClusterMasterInstanceFleetLaunchSpecificationsPtrOutput()
 }
 
 type ClusterMasterInstanceFleetLaunchSpecificationsOutput struct{ *pulumi.OutputState }
@@ -3073,7 +3073,7 @@ func (i ClusterMasterInstanceGroupArgs) ToClusterMasterInstanceGroupPtrOutput() 
 }
 
 func (i ClusterMasterInstanceGroupArgs) ToClusterMasterInstanceGroupPtrOutputWithContext(ctx context.Context) ClusterMasterInstanceGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterInstanceGroupOutput).ToClusterMasterInstanceGroupPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterInstanceGroupOutput).ToClusterMasterInstanceGroupPtrOutput()
 }
 
 // ClusterMasterInstanceGroupPtrInput is an input type that accepts ClusterMasterInstanceGroupArgs, ClusterMasterInstanceGroupPtr and ClusterMasterInstanceGroupPtrOutput values.
@@ -3106,7 +3106,7 @@ func (i *clusterMasterInstanceGroupPtrType) ToClusterMasterInstanceGroupPtrOutpu
 }
 
 func (i *clusterMasterInstanceGroupPtrType) ToClusterMasterInstanceGroupPtrOutputWithContext(ctx context.Context) ClusterMasterInstanceGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterInstanceGroupPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMasterInstanceGroupOutput).ToClusterMasterInstanceGroupPtrOutput()
 }
 
 type ClusterMasterInstanceGroupOutput struct{ *pulumi.OutputState }
@@ -3977,7 +3977,7 @@ func (i InstanceFleetLaunchSpecificationsArgs) ToInstanceFleetLaunchSpecificatio
 }
 
 func (i InstanceFleetLaunchSpecificationsArgs) ToInstanceFleetLaunchSpecificationsPtrOutputWithContext(ctx context.Context) InstanceFleetLaunchSpecificationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceFleetLaunchSpecificationsOutput).ToInstanceFleetLaunchSpecificationsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFleetLaunchSpecificationsOutput).ToInstanceFleetLaunchSpecificationsPtrOutput()
 }
 
 // InstanceFleetLaunchSpecificationsPtrInput is an input type that accepts InstanceFleetLaunchSpecificationsArgs, InstanceFleetLaunchSpecificationsPtr and InstanceFleetLaunchSpecificationsPtrOutput values.
@@ -4010,7 +4010,7 @@ func (i *instanceFleetLaunchSpecificationsPtrType) ToInstanceFleetLaunchSpecific
 }
 
 func (i *instanceFleetLaunchSpecificationsPtrType) ToInstanceFleetLaunchSpecificationsPtrOutputWithContext(ctx context.Context) InstanceFleetLaunchSpecificationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceFleetLaunchSpecificationsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFleetLaunchSpecificationsOutput).ToInstanceFleetLaunchSpecificationsPtrOutput()
 }
 
 type InstanceFleetLaunchSpecificationsOutput struct{ *pulumi.OutputState }

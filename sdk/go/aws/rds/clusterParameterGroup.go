@@ -190,16 +190,31 @@ type ClusterParameterGroupInput interface {
 	ToClusterParameterGroupOutputWithContext(ctx context.Context) ClusterParameterGroupOutput
 }
 
-func (ClusterParameterGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterParameterGroup)(nil)).Elem()
+func (*ClusterParameterGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterParameterGroup)(nil))
 }
 
-func (i ClusterParameterGroup) ToClusterParameterGroupOutput() ClusterParameterGroupOutput {
+func (i *ClusterParameterGroup) ToClusterParameterGroupOutput() ClusterParameterGroupOutput {
 	return i.ToClusterParameterGroupOutputWithContext(context.Background())
 }
 
-func (i ClusterParameterGroup) ToClusterParameterGroupOutputWithContext(ctx context.Context) ClusterParameterGroupOutput {
+func (i *ClusterParameterGroup) ToClusterParameterGroupOutputWithContext(ctx context.Context) ClusterParameterGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterParameterGroupOutput)
+}
+
+func (i *ClusterParameterGroup) ToClusterParameterGroupPtrOutput() ClusterParameterGroupPtrOutput {
+	return i.ToClusterParameterGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *ClusterParameterGroup) ToClusterParameterGroupPtrOutputWithContext(ctx context.Context) ClusterParameterGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterParameterGroupPtrOutput)
+}
+
+type ClusterParameterGroupPtrInput interface {
+	pulumi.Input
+
+	ToClusterParameterGroupPtrOutput() ClusterParameterGroupPtrOutput
+	ToClusterParameterGroupPtrOutputWithContext(ctx context.Context) ClusterParameterGroupPtrOutput
 }
 
 type ClusterParameterGroupOutput struct {
@@ -207,7 +222,7 @@ type ClusterParameterGroupOutput struct {
 }
 
 func (ClusterParameterGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterParameterGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*ClusterParameterGroup)(nil))
 }
 
 func (o ClusterParameterGroupOutput) ToClusterParameterGroupOutput() ClusterParameterGroupOutput {
@@ -218,6 +233,23 @@ func (o ClusterParameterGroupOutput) ToClusterParameterGroupOutputWithContext(ct
 	return o
 }
 
+type ClusterParameterGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterParameterGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterParameterGroup)(nil))
+}
+
+func (o ClusterParameterGroupPtrOutput) ToClusterParameterGroupPtrOutput() ClusterParameterGroupPtrOutput {
+	return o
+}
+
+func (o ClusterParameterGroupPtrOutput) ToClusterParameterGroupPtrOutputWithContext(ctx context.Context) ClusterParameterGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClusterParameterGroupOutput{})
+	pulumi.RegisterOutputType(ClusterParameterGroupPtrOutput{})
 }

@@ -56,7 +56,7 @@ func (i AliasRoutingStrategyArgs) ToAliasRoutingStrategyPtrOutput() AliasRouting
 }
 
 func (i AliasRoutingStrategyArgs) ToAliasRoutingStrategyPtrOutputWithContext(ctx context.Context) AliasRoutingStrategyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AliasRoutingStrategyOutput).ToAliasRoutingStrategyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AliasRoutingStrategyOutput).ToAliasRoutingStrategyPtrOutput()
 }
 
 // AliasRoutingStrategyPtrInput is an input type that accepts AliasRoutingStrategyArgs, AliasRoutingStrategyPtr and AliasRoutingStrategyPtrOutput values.
@@ -89,7 +89,7 @@ func (i *aliasRoutingStrategyPtrType) ToAliasRoutingStrategyPtrOutput() AliasRou
 }
 
 func (i *aliasRoutingStrategyPtrType) ToAliasRoutingStrategyPtrOutputWithContext(ctx context.Context) AliasRoutingStrategyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AliasRoutingStrategyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AliasRoutingStrategyOutput).ToAliasRoutingStrategyPtrOutput()
 }
 
 type AliasRoutingStrategyOutput struct{ *pulumi.OutputState }
@@ -225,7 +225,7 @@ func (i BuildStorageLocationArgs) ToBuildStorageLocationPtrOutput() BuildStorage
 }
 
 func (i BuildStorageLocationArgs) ToBuildStorageLocationPtrOutputWithContext(ctx context.Context) BuildStorageLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildStorageLocationOutput).ToBuildStorageLocationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BuildStorageLocationOutput).ToBuildStorageLocationPtrOutput()
 }
 
 // BuildStorageLocationPtrInput is an input type that accepts BuildStorageLocationArgs, BuildStorageLocationPtr and BuildStorageLocationPtrOutput values.
@@ -258,7 +258,7 @@ func (i *buildStorageLocationPtrType) ToBuildStorageLocationPtrOutput() BuildSto
 }
 
 func (i *buildStorageLocationPtrType) ToBuildStorageLocationPtrOutputWithContext(ctx context.Context) BuildStorageLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuildStorageLocationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BuildStorageLocationOutput).ToBuildStorageLocationPtrOutput()
 }
 
 type BuildStorageLocationOutput struct{ *pulumi.OutputState }
@@ -514,7 +514,7 @@ func (i FleetResourceCreationLimitPolicyArgs) ToFleetResourceCreationLimitPolicy
 }
 
 func (i FleetResourceCreationLimitPolicyArgs) ToFleetResourceCreationLimitPolicyPtrOutputWithContext(ctx context.Context) FleetResourceCreationLimitPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetResourceCreationLimitPolicyOutput).ToFleetResourceCreationLimitPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetResourceCreationLimitPolicyOutput).ToFleetResourceCreationLimitPolicyPtrOutput()
 }
 
 // FleetResourceCreationLimitPolicyPtrInput is an input type that accepts FleetResourceCreationLimitPolicyArgs, FleetResourceCreationLimitPolicyPtr and FleetResourceCreationLimitPolicyPtrOutput values.
@@ -547,7 +547,7 @@ func (i *fleetResourceCreationLimitPolicyPtrType) ToFleetResourceCreationLimitPo
 }
 
 func (i *fleetResourceCreationLimitPolicyPtrType) ToFleetResourceCreationLimitPolicyPtrOutputWithContext(ctx context.Context) FleetResourceCreationLimitPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetResourceCreationLimitPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetResourceCreationLimitPolicyOutput).ToFleetResourceCreationLimitPolicyPtrOutput()
 }
 
 type FleetResourceCreationLimitPolicyOutput struct{ *pulumi.OutputState }
@@ -668,7 +668,7 @@ func (i FleetRuntimeConfigurationArgs) ToFleetRuntimeConfigurationPtrOutput() Fl
 }
 
 func (i FleetRuntimeConfigurationArgs) ToFleetRuntimeConfigurationPtrOutputWithContext(ctx context.Context) FleetRuntimeConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetRuntimeConfigurationOutput).ToFleetRuntimeConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetRuntimeConfigurationOutput).ToFleetRuntimeConfigurationPtrOutput()
 }
 
 // FleetRuntimeConfigurationPtrInput is an input type that accepts FleetRuntimeConfigurationArgs, FleetRuntimeConfigurationPtr and FleetRuntimeConfigurationPtrOutput values.
@@ -701,7 +701,7 @@ func (i *fleetRuntimeConfigurationPtrType) ToFleetRuntimeConfigurationPtrOutput(
 }
 
 func (i *fleetRuntimeConfigurationPtrType) ToFleetRuntimeConfigurationPtrOutputWithContext(ctx context.Context) FleetRuntimeConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetRuntimeConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetRuntimeConfigurationOutput).ToFleetRuntimeConfigurationPtrOutput()
 }
 
 type FleetRuntimeConfigurationOutput struct{ *pulumi.OutputState }

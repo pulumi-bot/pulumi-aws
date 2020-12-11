@@ -133,16 +133,31 @@ type OrganizationAdminAccountInput interface {
 	ToOrganizationAdminAccountOutputWithContext(ctx context.Context) OrganizationAdminAccountOutput
 }
 
-func (OrganizationAdminAccount) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationAdminAccount)(nil)).Elem()
+func (*OrganizationAdminAccount) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationAdminAccount)(nil))
 }
 
-func (i OrganizationAdminAccount) ToOrganizationAdminAccountOutput() OrganizationAdminAccountOutput {
+func (i *OrganizationAdminAccount) ToOrganizationAdminAccountOutput() OrganizationAdminAccountOutput {
 	return i.ToOrganizationAdminAccountOutputWithContext(context.Background())
 }
 
-func (i OrganizationAdminAccount) ToOrganizationAdminAccountOutputWithContext(ctx context.Context) OrganizationAdminAccountOutput {
+func (i *OrganizationAdminAccount) ToOrganizationAdminAccountOutputWithContext(ctx context.Context) OrganizationAdminAccountOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationAdminAccountOutput)
+}
+
+func (i *OrganizationAdminAccount) ToOrganizationAdminAccountPtrOutput() OrganizationAdminAccountPtrOutput {
+	return i.ToOrganizationAdminAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *OrganizationAdminAccount) ToOrganizationAdminAccountPtrOutputWithContext(ctx context.Context) OrganizationAdminAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationAdminAccountPtrOutput)
+}
+
+type OrganizationAdminAccountPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationAdminAccountPtrOutput() OrganizationAdminAccountPtrOutput
+	ToOrganizationAdminAccountPtrOutputWithContext(ctx context.Context) OrganizationAdminAccountPtrOutput
 }
 
 type OrganizationAdminAccountOutput struct {
@@ -150,7 +165,7 @@ type OrganizationAdminAccountOutput struct {
 }
 
 func (OrganizationAdminAccountOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationAdminAccountOutput)(nil)).Elem()
+	return reflect.TypeOf((*OrganizationAdminAccount)(nil))
 }
 
 func (o OrganizationAdminAccountOutput) ToOrganizationAdminAccountOutput() OrganizationAdminAccountOutput {
@@ -161,6 +176,23 @@ func (o OrganizationAdminAccountOutput) ToOrganizationAdminAccountOutputWithCont
 	return o
 }
 
+type OrganizationAdminAccountPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationAdminAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationAdminAccount)(nil))
+}
+
+func (o OrganizationAdminAccountPtrOutput) ToOrganizationAdminAccountPtrOutput() OrganizationAdminAccountPtrOutput {
+	return o
+}
+
+func (o OrganizationAdminAccountPtrOutput) ToOrganizationAdminAccountPtrOutputWithContext(ctx context.Context) OrganizationAdminAccountPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(OrganizationAdminAccountOutput{})
+	pulumi.RegisterOutputType(OrganizationAdminAccountPtrOutput{})
 }

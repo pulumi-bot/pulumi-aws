@@ -314,16 +314,31 @@ type MethodInput interface {
 	ToMethodOutputWithContext(ctx context.Context) MethodOutput
 }
 
-func (Method) ElementType() reflect.Type {
-	return reflect.TypeOf((*Method)(nil)).Elem()
+func (*Method) ElementType() reflect.Type {
+	return reflect.TypeOf((*Method)(nil))
 }
 
-func (i Method) ToMethodOutput() MethodOutput {
+func (i *Method) ToMethodOutput() MethodOutput {
 	return i.ToMethodOutputWithContext(context.Background())
 }
 
-func (i Method) ToMethodOutputWithContext(ctx context.Context) MethodOutput {
+func (i *Method) ToMethodOutputWithContext(ctx context.Context) MethodOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MethodOutput)
+}
+
+func (i *Method) ToMethodPtrOutput() MethodPtrOutput {
+	return i.ToMethodPtrOutputWithContext(context.Background())
+}
+
+func (i *Method) ToMethodPtrOutputWithContext(ctx context.Context) MethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MethodPtrOutput)
+}
+
+type MethodPtrInput interface {
+	pulumi.Input
+
+	ToMethodPtrOutput() MethodPtrOutput
+	ToMethodPtrOutputWithContext(ctx context.Context) MethodPtrOutput
 }
 
 type MethodOutput struct {
@@ -331,7 +346,7 @@ type MethodOutput struct {
 }
 
 func (MethodOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MethodOutput)(nil)).Elem()
+	return reflect.TypeOf((*Method)(nil))
 }
 
 func (o MethodOutput) ToMethodOutput() MethodOutput {
@@ -342,6 +357,23 @@ func (o MethodOutput) ToMethodOutputWithContext(ctx context.Context) MethodOutpu
 	return o
 }
 
+type MethodPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MethodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Method)(nil))
+}
+
+func (o MethodPtrOutput) ToMethodPtrOutput() MethodPtrOutput {
+	return o
+}
+
+func (o MethodPtrOutput) ToMethodPtrOutputWithContext(ctx context.Context) MethodPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MethodOutput{})
+	pulumi.RegisterOutputType(MethodPtrOutput{})
 }

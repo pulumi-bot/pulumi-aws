@@ -105,16 +105,31 @@ type ScramSecretAssociationInput interface {
 	ToScramSecretAssociationOutputWithContext(ctx context.Context) ScramSecretAssociationOutput
 }
 
-func (ScramSecretAssociation) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScramSecretAssociation)(nil)).Elem()
+func (*ScramSecretAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScramSecretAssociation)(nil))
 }
 
-func (i ScramSecretAssociation) ToScramSecretAssociationOutput() ScramSecretAssociationOutput {
+func (i *ScramSecretAssociation) ToScramSecretAssociationOutput() ScramSecretAssociationOutput {
 	return i.ToScramSecretAssociationOutputWithContext(context.Background())
 }
 
-func (i ScramSecretAssociation) ToScramSecretAssociationOutputWithContext(ctx context.Context) ScramSecretAssociationOutput {
+func (i *ScramSecretAssociation) ToScramSecretAssociationOutputWithContext(ctx context.Context) ScramSecretAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScramSecretAssociationOutput)
+}
+
+func (i *ScramSecretAssociation) ToScramSecretAssociationPtrOutput() ScramSecretAssociationPtrOutput {
+	return i.ToScramSecretAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i *ScramSecretAssociation) ToScramSecretAssociationPtrOutputWithContext(ctx context.Context) ScramSecretAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScramSecretAssociationPtrOutput)
+}
+
+type ScramSecretAssociationPtrInput interface {
+	pulumi.Input
+
+	ToScramSecretAssociationPtrOutput() ScramSecretAssociationPtrOutput
+	ToScramSecretAssociationPtrOutputWithContext(ctx context.Context) ScramSecretAssociationPtrOutput
 }
 
 type ScramSecretAssociationOutput struct {
@@ -122,7 +137,7 @@ type ScramSecretAssociationOutput struct {
 }
 
 func (ScramSecretAssociationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScramSecretAssociationOutput)(nil)).Elem()
+	return reflect.TypeOf((*ScramSecretAssociation)(nil))
 }
 
 func (o ScramSecretAssociationOutput) ToScramSecretAssociationOutput() ScramSecretAssociationOutput {
@@ -133,6 +148,23 @@ func (o ScramSecretAssociationOutput) ToScramSecretAssociationOutputWithContext(
 	return o
 }
 
+type ScramSecretAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ScramSecretAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScramSecretAssociation)(nil))
+}
+
+func (o ScramSecretAssociationPtrOutput) ToScramSecretAssociationPtrOutput() ScramSecretAssociationPtrOutput {
+	return o
+}
+
+func (o ScramSecretAssociationPtrOutput) ToScramSecretAssociationPtrOutputWithContext(ctx context.Context) ScramSecretAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ScramSecretAssociationOutput{})
+	pulumi.RegisterOutputType(ScramSecretAssociationPtrOutput{})
 }

@@ -223,16 +223,31 @@ type VirtualServiceInput interface {
 	ToVirtualServiceOutputWithContext(ctx context.Context) VirtualServiceOutput
 }
 
-func (VirtualService) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualService)(nil)).Elem()
+func (*VirtualService) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualService)(nil))
 }
 
-func (i VirtualService) ToVirtualServiceOutput() VirtualServiceOutput {
+func (i *VirtualService) ToVirtualServiceOutput() VirtualServiceOutput {
 	return i.ToVirtualServiceOutputWithContext(context.Background())
 }
 
-func (i VirtualService) ToVirtualServiceOutputWithContext(ctx context.Context) VirtualServiceOutput {
+func (i *VirtualService) ToVirtualServiceOutputWithContext(ctx context.Context) VirtualServiceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualServiceOutput)
+}
+
+func (i *VirtualService) ToVirtualServicePtrOutput() VirtualServicePtrOutput {
+	return i.ToVirtualServicePtrOutputWithContext(context.Background())
+}
+
+func (i *VirtualService) ToVirtualServicePtrOutputWithContext(ctx context.Context) VirtualServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualServicePtrOutput)
+}
+
+type VirtualServicePtrInput interface {
+	pulumi.Input
+
+	ToVirtualServicePtrOutput() VirtualServicePtrOutput
+	ToVirtualServicePtrOutputWithContext(ctx context.Context) VirtualServicePtrOutput
 }
 
 type VirtualServiceOutput struct {
@@ -240,7 +255,7 @@ type VirtualServiceOutput struct {
 }
 
 func (VirtualServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualServiceOutput)(nil)).Elem()
+	return reflect.TypeOf((*VirtualService)(nil))
 }
 
 func (o VirtualServiceOutput) ToVirtualServiceOutput() VirtualServiceOutput {
@@ -251,6 +266,23 @@ func (o VirtualServiceOutput) ToVirtualServiceOutputWithContext(ctx context.Cont
 	return o
 }
 
+type VirtualServicePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualService)(nil))
+}
+
+func (o VirtualServicePtrOutput) ToVirtualServicePtrOutput() VirtualServicePtrOutput {
+	return o
+}
+
+func (o VirtualServicePtrOutput) ToVirtualServicePtrOutputWithContext(ctx context.Context) VirtualServicePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VirtualServiceOutput{})
+	pulumi.RegisterOutputType(VirtualServicePtrOutput{})
 }

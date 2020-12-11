@@ -217,16 +217,31 @@ type UsagePlanInput interface {
 	ToUsagePlanOutputWithContext(ctx context.Context) UsagePlanOutput
 }
 
-func (UsagePlan) ElementType() reflect.Type {
-	return reflect.TypeOf((*UsagePlan)(nil)).Elem()
+func (*UsagePlan) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsagePlan)(nil))
 }
 
-func (i UsagePlan) ToUsagePlanOutput() UsagePlanOutput {
+func (i *UsagePlan) ToUsagePlanOutput() UsagePlanOutput {
 	return i.ToUsagePlanOutputWithContext(context.Background())
 }
 
-func (i UsagePlan) ToUsagePlanOutputWithContext(ctx context.Context) UsagePlanOutput {
+func (i *UsagePlan) ToUsagePlanOutputWithContext(ctx context.Context) UsagePlanOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanOutput)
+}
+
+func (i *UsagePlan) ToUsagePlanPtrOutput() UsagePlanPtrOutput {
+	return i.ToUsagePlanPtrOutputWithContext(context.Background())
+}
+
+func (i *UsagePlan) ToUsagePlanPtrOutputWithContext(ctx context.Context) UsagePlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanPtrOutput)
+}
+
+type UsagePlanPtrInput interface {
+	pulumi.Input
+
+	ToUsagePlanPtrOutput() UsagePlanPtrOutput
+	ToUsagePlanPtrOutputWithContext(ctx context.Context) UsagePlanPtrOutput
 }
 
 type UsagePlanOutput struct {
@@ -234,7 +249,7 @@ type UsagePlanOutput struct {
 }
 
 func (UsagePlanOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UsagePlanOutput)(nil)).Elem()
+	return reflect.TypeOf((*UsagePlan)(nil))
 }
 
 func (o UsagePlanOutput) ToUsagePlanOutput() UsagePlanOutput {
@@ -245,6 +260,23 @@ func (o UsagePlanOutput) ToUsagePlanOutputWithContext(ctx context.Context) Usage
 	return o
 }
 
+type UsagePlanPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (UsagePlanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UsagePlan)(nil))
+}
+
+func (o UsagePlanPtrOutput) ToUsagePlanPtrOutput() UsagePlanPtrOutput {
+	return o
+}
+
+func (o UsagePlanPtrOutput) ToUsagePlanPtrOutputWithContext(ctx context.Context) UsagePlanPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(UsagePlanOutput{})
+	pulumi.RegisterOutputType(UsagePlanPtrOutput{})
 }

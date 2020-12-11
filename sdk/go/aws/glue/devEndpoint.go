@@ -347,16 +347,31 @@ type DevEndpointInput interface {
 	ToDevEndpointOutputWithContext(ctx context.Context) DevEndpointOutput
 }
 
-func (DevEndpoint) ElementType() reflect.Type {
-	return reflect.TypeOf((*DevEndpoint)(nil)).Elem()
+func (*DevEndpoint) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevEndpoint)(nil))
 }
 
-func (i DevEndpoint) ToDevEndpointOutput() DevEndpointOutput {
+func (i *DevEndpoint) ToDevEndpointOutput() DevEndpointOutput {
 	return i.ToDevEndpointOutputWithContext(context.Background())
 }
 
-func (i DevEndpoint) ToDevEndpointOutputWithContext(ctx context.Context) DevEndpointOutput {
+func (i *DevEndpoint) ToDevEndpointOutputWithContext(ctx context.Context) DevEndpointOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DevEndpointOutput)
+}
+
+func (i *DevEndpoint) ToDevEndpointPtrOutput() DevEndpointPtrOutput {
+	return i.ToDevEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *DevEndpoint) ToDevEndpointPtrOutputWithContext(ctx context.Context) DevEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DevEndpointPtrOutput)
+}
+
+type DevEndpointPtrInput interface {
+	pulumi.Input
+
+	ToDevEndpointPtrOutput() DevEndpointPtrOutput
+	ToDevEndpointPtrOutputWithContext(ctx context.Context) DevEndpointPtrOutput
 }
 
 type DevEndpointOutput struct {
@@ -364,7 +379,7 @@ type DevEndpointOutput struct {
 }
 
 func (DevEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DevEndpointOutput)(nil)).Elem()
+	return reflect.TypeOf((*DevEndpoint)(nil))
 }
 
 func (o DevEndpointOutput) ToDevEndpointOutput() DevEndpointOutput {
@@ -375,6 +390,23 @@ func (o DevEndpointOutput) ToDevEndpointOutputWithContext(ctx context.Context) D
 	return o
 }
 
+type DevEndpointPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DevEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DevEndpoint)(nil))
+}
+
+func (o DevEndpointPtrOutput) ToDevEndpointPtrOutput() DevEndpointPtrOutput {
+	return o
+}
+
+func (o DevEndpointPtrOutput) ToDevEndpointPtrOutputWithContext(ctx context.Context) DevEndpointPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DevEndpointOutput{})
+	pulumi.RegisterOutputType(DevEndpointPtrOutput{})
 }

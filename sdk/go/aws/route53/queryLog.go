@@ -189,16 +189,31 @@ type QueryLogInput interface {
 	ToQueryLogOutputWithContext(ctx context.Context) QueryLogOutput
 }
 
-func (QueryLog) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueryLog)(nil)).Elem()
+func (*QueryLog) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryLog)(nil))
 }
 
-func (i QueryLog) ToQueryLogOutput() QueryLogOutput {
+func (i *QueryLog) ToQueryLogOutput() QueryLogOutput {
 	return i.ToQueryLogOutputWithContext(context.Background())
 }
 
-func (i QueryLog) ToQueryLogOutputWithContext(ctx context.Context) QueryLogOutput {
+func (i *QueryLog) ToQueryLogOutputWithContext(ctx context.Context) QueryLogOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QueryLogOutput)
+}
+
+func (i *QueryLog) ToQueryLogPtrOutput() QueryLogPtrOutput {
+	return i.ToQueryLogPtrOutputWithContext(context.Background())
+}
+
+func (i *QueryLog) ToQueryLogPtrOutputWithContext(ctx context.Context) QueryLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryLogPtrOutput)
+}
+
+type QueryLogPtrInput interface {
+	pulumi.Input
+
+	ToQueryLogPtrOutput() QueryLogPtrOutput
+	ToQueryLogPtrOutputWithContext(ctx context.Context) QueryLogPtrOutput
 }
 
 type QueryLogOutput struct {
@@ -206,7 +221,7 @@ type QueryLogOutput struct {
 }
 
 func (QueryLogOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueryLogOutput)(nil)).Elem()
+	return reflect.TypeOf((*QueryLog)(nil))
 }
 
 func (o QueryLogOutput) ToQueryLogOutput() QueryLogOutput {
@@ -217,6 +232,23 @@ func (o QueryLogOutput) ToQueryLogOutputWithContext(ctx context.Context) QueryLo
 	return o
 }
 
+type QueryLogPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (QueryLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueryLog)(nil))
+}
+
+func (o QueryLogPtrOutput) ToQueryLogPtrOutput() QueryLogPtrOutput {
+	return o
+}
+
+func (o QueryLogPtrOutput) ToQueryLogPtrOutputWithContext(ctx context.Context) QueryLogPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(QueryLogOutput{})
+	pulumi.RegisterOutputType(QueryLogPtrOutput{})
 }

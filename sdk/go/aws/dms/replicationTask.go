@@ -230,16 +230,31 @@ type ReplicationTaskInput interface {
 	ToReplicationTaskOutputWithContext(ctx context.Context) ReplicationTaskOutput
 }
 
-func (ReplicationTask) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReplicationTask)(nil)).Elem()
+func (*ReplicationTask) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationTask)(nil))
 }
 
-func (i ReplicationTask) ToReplicationTaskOutput() ReplicationTaskOutput {
+func (i *ReplicationTask) ToReplicationTaskOutput() ReplicationTaskOutput {
 	return i.ToReplicationTaskOutputWithContext(context.Background())
 }
 
-func (i ReplicationTask) ToReplicationTaskOutputWithContext(ctx context.Context) ReplicationTaskOutput {
+func (i *ReplicationTask) ToReplicationTaskOutputWithContext(ctx context.Context) ReplicationTaskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationTaskOutput)
+}
+
+func (i *ReplicationTask) ToReplicationTaskPtrOutput() ReplicationTaskPtrOutput {
+	return i.ToReplicationTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *ReplicationTask) ToReplicationTaskPtrOutputWithContext(ctx context.Context) ReplicationTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationTaskPtrOutput)
+}
+
+type ReplicationTaskPtrInput interface {
+	pulumi.Input
+
+	ToReplicationTaskPtrOutput() ReplicationTaskPtrOutput
+	ToReplicationTaskPtrOutputWithContext(ctx context.Context) ReplicationTaskPtrOutput
 }
 
 type ReplicationTaskOutput struct {
@@ -247,7 +262,7 @@ type ReplicationTaskOutput struct {
 }
 
 func (ReplicationTaskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReplicationTaskOutput)(nil)).Elem()
+	return reflect.TypeOf((*ReplicationTask)(nil))
 }
 
 func (o ReplicationTaskOutput) ToReplicationTaskOutput() ReplicationTaskOutput {
@@ -258,6 +273,23 @@ func (o ReplicationTaskOutput) ToReplicationTaskOutputWithContext(ctx context.Co
 	return o
 }
 
+type ReplicationTaskPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReplicationTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplicationTask)(nil))
+}
+
+func (o ReplicationTaskPtrOutput) ToReplicationTaskPtrOutput() ReplicationTaskPtrOutput {
+	return o
+}
+
+func (o ReplicationTaskPtrOutput) ToReplicationTaskPtrOutputWithContext(ctx context.Context) ReplicationTaskPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ReplicationTaskOutput{})
+	pulumi.RegisterOutputType(ReplicationTaskPtrOutput{})
 }

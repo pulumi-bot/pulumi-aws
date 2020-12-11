@@ -298,16 +298,31 @@ type VpcEndpointInput interface {
 	ToVpcEndpointOutputWithContext(ctx context.Context) VpcEndpointOutput
 }
 
-func (VpcEndpoint) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcEndpoint)(nil)).Elem()
+func (*VpcEndpoint) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcEndpoint)(nil))
 }
 
-func (i VpcEndpoint) ToVpcEndpointOutput() VpcEndpointOutput {
+func (i *VpcEndpoint) ToVpcEndpointOutput() VpcEndpointOutput {
 	return i.ToVpcEndpointOutputWithContext(context.Background())
 }
 
-func (i VpcEndpoint) ToVpcEndpointOutputWithContext(ctx context.Context) VpcEndpointOutput {
+func (i *VpcEndpoint) ToVpcEndpointOutputWithContext(ctx context.Context) VpcEndpointOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointOutput)
+}
+
+func (i *VpcEndpoint) ToVpcEndpointPtrOutput() VpcEndpointPtrOutput {
+	return i.ToVpcEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *VpcEndpoint) ToVpcEndpointPtrOutputWithContext(ctx context.Context) VpcEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointPtrOutput)
+}
+
+type VpcEndpointPtrInput interface {
+	pulumi.Input
+
+	ToVpcEndpointPtrOutput() VpcEndpointPtrOutput
+	ToVpcEndpointPtrOutputWithContext(ctx context.Context) VpcEndpointPtrOutput
 }
 
 type VpcEndpointOutput struct {
@@ -315,7 +330,7 @@ type VpcEndpointOutput struct {
 }
 
 func (VpcEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcEndpointOutput)(nil)).Elem()
+	return reflect.TypeOf((*VpcEndpoint)(nil))
 }
 
 func (o VpcEndpointOutput) ToVpcEndpointOutput() VpcEndpointOutput {
@@ -326,6 +341,23 @@ func (o VpcEndpointOutput) ToVpcEndpointOutputWithContext(ctx context.Context) V
 	return o
 }
 
+type VpcEndpointPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcEndpoint)(nil))
+}
+
+func (o VpcEndpointPtrOutput) ToVpcEndpointPtrOutput() VpcEndpointPtrOutput {
+	return o
+}
+
+func (o VpcEndpointPtrOutput) ToVpcEndpointPtrOutputWithContext(ctx context.Context) VpcEndpointPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VpcEndpointOutput{})
+	pulumi.RegisterOutputType(VpcEndpointPtrOutput{})
 }

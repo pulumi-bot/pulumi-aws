@@ -226,16 +226,31 @@ type EventRuleInput interface {
 	ToEventRuleOutputWithContext(ctx context.Context) EventRuleOutput
 }
 
-func (EventRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventRule)(nil)).Elem()
+func (*EventRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventRule)(nil))
 }
 
-func (i EventRule) ToEventRuleOutput() EventRuleOutput {
+func (i *EventRule) ToEventRuleOutput() EventRuleOutput {
 	return i.ToEventRuleOutputWithContext(context.Background())
 }
 
-func (i EventRule) ToEventRuleOutputWithContext(ctx context.Context) EventRuleOutput {
+func (i *EventRule) ToEventRuleOutputWithContext(ctx context.Context) EventRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EventRuleOutput)
+}
+
+func (i *EventRule) ToEventRulePtrOutput() EventRulePtrOutput {
+	return i.ToEventRulePtrOutputWithContext(context.Background())
+}
+
+func (i *EventRule) ToEventRulePtrOutputWithContext(ctx context.Context) EventRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventRulePtrOutput)
+}
+
+type EventRulePtrInput interface {
+	pulumi.Input
+
+	ToEventRulePtrOutput() EventRulePtrOutput
+	ToEventRulePtrOutputWithContext(ctx context.Context) EventRulePtrOutput
 }
 
 type EventRuleOutput struct {
@@ -243,7 +258,7 @@ type EventRuleOutput struct {
 }
 
 func (EventRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*EventRule)(nil))
 }
 
 func (o EventRuleOutput) ToEventRuleOutput() EventRuleOutput {
@@ -254,6 +269,23 @@ func (o EventRuleOutput) ToEventRuleOutputWithContext(ctx context.Context) Event
 	return o
 }
 
+type EventRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventRule)(nil))
+}
+
+func (o EventRulePtrOutput) ToEventRulePtrOutput() EventRulePtrOutput {
+	return o
+}
+
+func (o EventRulePtrOutput) ToEventRulePtrOutputWithContext(ctx context.Context) EventRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EventRuleOutput{})
+	pulumi.RegisterOutputType(EventRulePtrOutput{})
 }

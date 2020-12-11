@@ -91,16 +91,31 @@ type CodeRepositoryInput interface {
 	ToCodeRepositoryOutputWithContext(ctx context.Context) CodeRepositoryOutput
 }
 
-func (CodeRepository) ElementType() reflect.Type {
-	return reflect.TypeOf((*CodeRepository)(nil)).Elem()
+func (*CodeRepository) ElementType() reflect.Type {
+	return reflect.TypeOf((*CodeRepository)(nil))
 }
 
-func (i CodeRepository) ToCodeRepositoryOutput() CodeRepositoryOutput {
+func (i *CodeRepository) ToCodeRepositoryOutput() CodeRepositoryOutput {
 	return i.ToCodeRepositoryOutputWithContext(context.Background())
 }
 
-func (i CodeRepository) ToCodeRepositoryOutputWithContext(ctx context.Context) CodeRepositoryOutput {
+func (i *CodeRepository) ToCodeRepositoryOutputWithContext(ctx context.Context) CodeRepositoryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CodeRepositoryOutput)
+}
+
+func (i *CodeRepository) ToCodeRepositoryPtrOutput() CodeRepositoryPtrOutput {
+	return i.ToCodeRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *CodeRepository) ToCodeRepositoryPtrOutputWithContext(ctx context.Context) CodeRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CodeRepositoryPtrOutput)
+}
+
+type CodeRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToCodeRepositoryPtrOutput() CodeRepositoryPtrOutput
+	ToCodeRepositoryPtrOutputWithContext(ctx context.Context) CodeRepositoryPtrOutput
 }
 
 type CodeRepositoryOutput struct {
@@ -108,7 +123,7 @@ type CodeRepositoryOutput struct {
 }
 
 func (CodeRepositoryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CodeRepositoryOutput)(nil)).Elem()
+	return reflect.TypeOf((*CodeRepository)(nil))
 }
 
 func (o CodeRepositoryOutput) ToCodeRepositoryOutput() CodeRepositoryOutput {
@@ -119,6 +134,23 @@ func (o CodeRepositoryOutput) ToCodeRepositoryOutputWithContext(ctx context.Cont
 	return o
 }
 
+type CodeRepositoryPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CodeRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CodeRepository)(nil))
+}
+
+func (o CodeRepositoryPtrOutput) ToCodeRepositoryPtrOutput() CodeRepositoryPtrOutput {
+	return o
+}
+
+func (o CodeRepositoryPtrOutput) ToCodeRepositoryPtrOutputWithContext(ctx context.Context) CodeRepositoryPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CodeRepositoryOutput{})
+	pulumi.RegisterOutputType(CodeRepositoryPtrOutput{})
 }

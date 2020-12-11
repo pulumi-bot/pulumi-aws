@@ -277,16 +277,31 @@ type GlobalClusterInput interface {
 	ToGlobalClusterOutputWithContext(ctx context.Context) GlobalClusterOutput
 }
 
-func (GlobalCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalCluster)(nil)).Elem()
+func (*GlobalCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalCluster)(nil))
 }
 
-func (i GlobalCluster) ToGlobalClusterOutput() GlobalClusterOutput {
+func (i *GlobalCluster) ToGlobalClusterOutput() GlobalClusterOutput {
 	return i.ToGlobalClusterOutputWithContext(context.Background())
 }
 
-func (i GlobalCluster) ToGlobalClusterOutputWithContext(ctx context.Context) GlobalClusterOutput {
+func (i *GlobalCluster) ToGlobalClusterOutputWithContext(ctx context.Context) GlobalClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalClusterOutput)
+}
+
+func (i *GlobalCluster) ToGlobalClusterPtrOutput() GlobalClusterPtrOutput {
+	return i.ToGlobalClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *GlobalCluster) ToGlobalClusterPtrOutputWithContext(ctx context.Context) GlobalClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalClusterPtrOutput)
+}
+
+type GlobalClusterPtrInput interface {
+	pulumi.Input
+
+	ToGlobalClusterPtrOutput() GlobalClusterPtrOutput
+	ToGlobalClusterPtrOutputWithContext(ctx context.Context) GlobalClusterPtrOutput
 }
 
 type GlobalClusterOutput struct {
@@ -294,7 +309,7 @@ type GlobalClusterOutput struct {
 }
 
 func (GlobalClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalClusterOutput)(nil)).Elem()
+	return reflect.TypeOf((*GlobalCluster)(nil))
 }
 
 func (o GlobalClusterOutput) ToGlobalClusterOutput() GlobalClusterOutput {
@@ -305,6 +320,23 @@ func (o GlobalClusterOutput) ToGlobalClusterOutputWithContext(ctx context.Contex
 	return o
 }
 
+type GlobalClusterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GlobalClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalCluster)(nil))
+}
+
+func (o GlobalClusterPtrOutput) ToGlobalClusterPtrOutput() GlobalClusterPtrOutput {
+	return o
+}
+
+func (o GlobalClusterPtrOutput) ToGlobalClusterPtrOutputWithContext(ctx context.Context) GlobalClusterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(GlobalClusterOutput{})
+	pulumi.RegisterOutputType(GlobalClusterPtrOutput{})
 }

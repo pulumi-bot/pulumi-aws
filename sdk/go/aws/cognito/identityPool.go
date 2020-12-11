@@ -175,16 +175,31 @@ type IdentityPoolInput interface {
 	ToIdentityPoolOutputWithContext(ctx context.Context) IdentityPoolOutput
 }
 
-func (IdentityPool) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityPool)(nil)).Elem()
+func (*IdentityPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPool)(nil))
 }
 
-func (i IdentityPool) ToIdentityPoolOutput() IdentityPoolOutput {
+func (i *IdentityPool) ToIdentityPoolOutput() IdentityPoolOutput {
 	return i.ToIdentityPoolOutputWithContext(context.Background())
 }
 
-func (i IdentityPool) ToIdentityPoolOutputWithContext(ctx context.Context) IdentityPoolOutput {
+func (i *IdentityPool) ToIdentityPoolOutputWithContext(ctx context.Context) IdentityPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPoolOutput)
+}
+
+func (i *IdentityPool) ToIdentityPoolPtrOutput() IdentityPoolPtrOutput {
+	return i.ToIdentityPoolPtrOutputWithContext(context.Background())
+}
+
+func (i *IdentityPool) ToIdentityPoolPtrOutputWithContext(ctx context.Context) IdentityPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPoolPtrOutput)
+}
+
+type IdentityPoolPtrInput interface {
+	pulumi.Input
+
+	ToIdentityPoolPtrOutput() IdentityPoolPtrOutput
+	ToIdentityPoolPtrOutputWithContext(ctx context.Context) IdentityPoolPtrOutput
 }
 
 type IdentityPoolOutput struct {
@@ -192,7 +207,7 @@ type IdentityPoolOutput struct {
 }
 
 func (IdentityPoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityPoolOutput)(nil)).Elem()
+	return reflect.TypeOf((*IdentityPool)(nil))
 }
 
 func (o IdentityPoolOutput) ToIdentityPoolOutput() IdentityPoolOutput {
@@ -203,6 +218,23 @@ func (o IdentityPoolOutput) ToIdentityPoolOutputWithContext(ctx context.Context)
 	return o
 }
 
+type IdentityPoolPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityPoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityPool)(nil))
+}
+
+func (o IdentityPoolPtrOutput) ToIdentityPoolPtrOutput() IdentityPoolPtrOutput {
+	return o
+}
+
+func (o IdentityPoolPtrOutput) ToIdentityPoolPtrOutputWithContext(ctx context.Context) IdentityPoolPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(IdentityPoolOutput{})
+	pulumi.RegisterOutputType(IdentityPoolPtrOutput{})
 }

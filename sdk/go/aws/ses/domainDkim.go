@@ -117,16 +117,31 @@ type DomainDkimInput interface {
 	ToDomainDkimOutputWithContext(ctx context.Context) DomainDkimOutput
 }
 
-func (DomainDkim) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainDkim)(nil)).Elem()
+func (*DomainDkim) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainDkim)(nil))
 }
 
-func (i DomainDkim) ToDomainDkimOutput() DomainDkimOutput {
+func (i *DomainDkim) ToDomainDkimOutput() DomainDkimOutput {
 	return i.ToDomainDkimOutputWithContext(context.Background())
 }
 
-func (i DomainDkim) ToDomainDkimOutputWithContext(ctx context.Context) DomainDkimOutput {
+func (i *DomainDkim) ToDomainDkimOutputWithContext(ctx context.Context) DomainDkimOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainDkimOutput)
+}
+
+func (i *DomainDkim) ToDomainDkimPtrOutput() DomainDkimPtrOutput {
+	return i.ToDomainDkimPtrOutputWithContext(context.Background())
+}
+
+func (i *DomainDkim) ToDomainDkimPtrOutputWithContext(ctx context.Context) DomainDkimPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainDkimPtrOutput)
+}
+
+type DomainDkimPtrInput interface {
+	pulumi.Input
+
+	ToDomainDkimPtrOutput() DomainDkimPtrOutput
+	ToDomainDkimPtrOutputWithContext(ctx context.Context) DomainDkimPtrOutput
 }
 
 type DomainDkimOutput struct {
@@ -134,7 +149,7 @@ type DomainDkimOutput struct {
 }
 
 func (DomainDkimOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainDkimOutput)(nil)).Elem()
+	return reflect.TypeOf((*DomainDkim)(nil))
 }
 
 func (o DomainDkimOutput) ToDomainDkimOutput() DomainDkimOutput {
@@ -145,6 +160,23 @@ func (o DomainDkimOutput) ToDomainDkimOutputWithContext(ctx context.Context) Dom
 	return o
 }
 
+type DomainDkimPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainDkimPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainDkim)(nil))
+}
+
+func (o DomainDkimPtrOutput) ToDomainDkimPtrOutput() DomainDkimPtrOutput {
+	return o
+}
+
+func (o DomainDkimPtrOutput) ToDomainDkimPtrOutputWithContext(ctx context.Context) DomainDkimPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DomainDkimOutput{})
+	pulumi.RegisterOutputType(DomainDkimPtrOutput{})
 }

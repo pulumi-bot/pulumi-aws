@@ -220,16 +220,31 @@ type MethodSettingsInput interface {
 	ToMethodSettingsOutputWithContext(ctx context.Context) MethodSettingsOutput
 }
 
-func (MethodSettings) ElementType() reflect.Type {
-	return reflect.TypeOf((*MethodSettings)(nil)).Elem()
+func (*MethodSettings) ElementType() reflect.Type {
+	return reflect.TypeOf((*MethodSettings)(nil))
 }
 
-func (i MethodSettings) ToMethodSettingsOutput() MethodSettingsOutput {
+func (i *MethodSettings) ToMethodSettingsOutput() MethodSettingsOutput {
 	return i.ToMethodSettingsOutputWithContext(context.Background())
 }
 
-func (i MethodSettings) ToMethodSettingsOutputWithContext(ctx context.Context) MethodSettingsOutput {
+func (i *MethodSettings) ToMethodSettingsOutputWithContext(ctx context.Context) MethodSettingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MethodSettingsOutput)
+}
+
+func (i *MethodSettings) ToMethodSettingsPtrOutput() MethodSettingsPtrOutput {
+	return i.ToMethodSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *MethodSettings) ToMethodSettingsPtrOutputWithContext(ctx context.Context) MethodSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MethodSettingsPtrOutput)
+}
+
+type MethodSettingsPtrInput interface {
+	pulumi.Input
+
+	ToMethodSettingsPtrOutput() MethodSettingsPtrOutput
+	ToMethodSettingsPtrOutputWithContext(ctx context.Context) MethodSettingsPtrOutput
 }
 
 type MethodSettingsOutput struct {
@@ -237,7 +252,7 @@ type MethodSettingsOutput struct {
 }
 
 func (MethodSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MethodSettingsOutput)(nil)).Elem()
+	return reflect.TypeOf((*MethodSettings)(nil))
 }
 
 func (o MethodSettingsOutput) ToMethodSettingsOutput() MethodSettingsOutput {
@@ -248,6 +263,23 @@ func (o MethodSettingsOutput) ToMethodSettingsOutputWithContext(ctx context.Cont
 	return o
 }
 
+type MethodSettingsPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MethodSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MethodSettings)(nil))
+}
+
+func (o MethodSettingsPtrOutput) ToMethodSettingsPtrOutput() MethodSettingsPtrOutput {
+	return o
+}
+
+func (o MethodSettingsPtrOutput) ToMethodSettingsPtrOutputWithContext(ctx context.Context) MethodSettingsPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MethodSettingsOutput{})
+	pulumi.RegisterOutputType(MethodSettingsPtrOutput{})
 }

@@ -218,16 +218,31 @@ type MountTargetInput interface {
 	ToMountTargetOutputWithContext(ctx context.Context) MountTargetOutput
 }
 
-func (MountTarget) ElementType() reflect.Type {
-	return reflect.TypeOf((*MountTarget)(nil)).Elem()
+func (*MountTarget) ElementType() reflect.Type {
+	return reflect.TypeOf((*MountTarget)(nil))
 }
 
-func (i MountTarget) ToMountTargetOutput() MountTargetOutput {
+func (i *MountTarget) ToMountTargetOutput() MountTargetOutput {
 	return i.ToMountTargetOutputWithContext(context.Background())
 }
 
-func (i MountTarget) ToMountTargetOutputWithContext(ctx context.Context) MountTargetOutput {
+func (i *MountTarget) ToMountTargetOutputWithContext(ctx context.Context) MountTargetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MountTargetOutput)
+}
+
+func (i *MountTarget) ToMountTargetPtrOutput() MountTargetPtrOutput {
+	return i.ToMountTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *MountTarget) ToMountTargetPtrOutputWithContext(ctx context.Context) MountTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MountTargetPtrOutput)
+}
+
+type MountTargetPtrInput interface {
+	pulumi.Input
+
+	ToMountTargetPtrOutput() MountTargetPtrOutput
+	ToMountTargetPtrOutputWithContext(ctx context.Context) MountTargetPtrOutput
 }
 
 type MountTargetOutput struct {
@@ -235,7 +250,7 @@ type MountTargetOutput struct {
 }
 
 func (MountTargetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MountTargetOutput)(nil)).Elem()
+	return reflect.TypeOf((*MountTarget)(nil))
 }
 
 func (o MountTargetOutput) ToMountTargetOutput() MountTargetOutput {
@@ -246,6 +261,23 @@ func (o MountTargetOutput) ToMountTargetOutputWithContext(ctx context.Context) M
 	return o
 }
 
+type MountTargetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MountTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MountTarget)(nil))
+}
+
+func (o MountTargetPtrOutput) ToMountTargetPtrOutput() MountTargetPtrOutput {
+	return o
+}
+
+func (o MountTargetPtrOutput) ToMountTargetPtrOutputWithContext(ctx context.Context) MountTargetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MountTargetOutput{})
+	pulumi.RegisterOutputType(MountTargetPtrOutput{})
 }

@@ -136,16 +136,31 @@ type CertificateValidationInput interface {
 	ToCertificateValidationOutputWithContext(ctx context.Context) CertificateValidationOutput
 }
 
-func (CertificateValidation) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateValidation)(nil)).Elem()
+func (*CertificateValidation) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateValidation)(nil))
 }
 
-func (i CertificateValidation) ToCertificateValidationOutput() CertificateValidationOutput {
+func (i *CertificateValidation) ToCertificateValidationOutput() CertificateValidationOutput {
 	return i.ToCertificateValidationOutputWithContext(context.Background())
 }
 
-func (i CertificateValidation) ToCertificateValidationOutputWithContext(ctx context.Context) CertificateValidationOutput {
+func (i *CertificateValidation) ToCertificateValidationOutputWithContext(ctx context.Context) CertificateValidationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateValidationOutput)
+}
+
+func (i *CertificateValidation) ToCertificateValidationPtrOutput() CertificateValidationPtrOutput {
+	return i.ToCertificateValidationPtrOutputWithContext(context.Background())
+}
+
+func (i *CertificateValidation) ToCertificateValidationPtrOutputWithContext(ctx context.Context) CertificateValidationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateValidationPtrOutput)
+}
+
+type CertificateValidationPtrInput interface {
+	pulumi.Input
+
+	ToCertificateValidationPtrOutput() CertificateValidationPtrOutput
+	ToCertificateValidationPtrOutputWithContext(ctx context.Context) CertificateValidationPtrOutput
 }
 
 type CertificateValidationOutput struct {
@@ -153,7 +168,7 @@ type CertificateValidationOutput struct {
 }
 
 func (CertificateValidationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateValidationOutput)(nil)).Elem()
+	return reflect.TypeOf((*CertificateValidation)(nil))
 }
 
 func (o CertificateValidationOutput) ToCertificateValidationOutput() CertificateValidationOutput {
@@ -164,6 +179,23 @@ func (o CertificateValidationOutput) ToCertificateValidationOutputWithContext(ct
 	return o
 }
 
+type CertificateValidationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CertificateValidationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateValidation)(nil))
+}
+
+func (o CertificateValidationPtrOutput) ToCertificateValidationPtrOutput() CertificateValidationPtrOutput {
+	return o
+}
+
+func (o CertificateValidationPtrOutput) ToCertificateValidationPtrOutputWithContext(ctx context.Context) CertificateValidationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CertificateValidationOutput{})
+	pulumi.RegisterOutputType(CertificateValidationPtrOutput{})
 }

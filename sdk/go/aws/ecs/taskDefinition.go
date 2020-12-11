@@ -279,16 +279,31 @@ type TaskDefinitionInput interface {
 	ToTaskDefinitionOutputWithContext(ctx context.Context) TaskDefinitionOutput
 }
 
-func (TaskDefinition) ElementType() reflect.Type {
-	return reflect.TypeOf((*TaskDefinition)(nil)).Elem()
+func (*TaskDefinition) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskDefinition)(nil))
 }
 
-func (i TaskDefinition) ToTaskDefinitionOutput() TaskDefinitionOutput {
+func (i *TaskDefinition) ToTaskDefinitionOutput() TaskDefinitionOutput {
 	return i.ToTaskDefinitionOutputWithContext(context.Background())
 }
 
-func (i TaskDefinition) ToTaskDefinitionOutputWithContext(ctx context.Context) TaskDefinitionOutput {
+func (i *TaskDefinition) ToTaskDefinitionOutputWithContext(ctx context.Context) TaskDefinitionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionOutput)
+}
+
+func (i *TaskDefinition) ToTaskDefinitionPtrOutput() TaskDefinitionPtrOutput {
+	return i.ToTaskDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i *TaskDefinition) ToTaskDefinitionPtrOutputWithContext(ctx context.Context) TaskDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionPtrOutput)
+}
+
+type TaskDefinitionPtrInput interface {
+	pulumi.Input
+
+	ToTaskDefinitionPtrOutput() TaskDefinitionPtrOutput
+	ToTaskDefinitionPtrOutputWithContext(ctx context.Context) TaskDefinitionPtrOutput
 }
 
 type TaskDefinitionOutput struct {
@@ -296,7 +311,7 @@ type TaskDefinitionOutput struct {
 }
 
 func (TaskDefinitionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TaskDefinitionOutput)(nil)).Elem()
+	return reflect.TypeOf((*TaskDefinition)(nil))
 }
 
 func (o TaskDefinitionOutput) ToTaskDefinitionOutput() TaskDefinitionOutput {
@@ -307,6 +322,23 @@ func (o TaskDefinitionOutput) ToTaskDefinitionOutputWithContext(ctx context.Cont
 	return o
 }
 
+type TaskDefinitionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TaskDefinitionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskDefinition)(nil))
+}
+
+func (o TaskDefinitionPtrOutput) ToTaskDefinitionPtrOutput() TaskDefinitionPtrOutput {
+	return o
+}
+
+func (o TaskDefinitionPtrOutput) ToTaskDefinitionPtrOutputWithContext(ctx context.Context) TaskDefinitionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TaskDefinitionOutput{})
+	pulumi.RegisterOutputType(TaskDefinitionPtrOutput{})
 }

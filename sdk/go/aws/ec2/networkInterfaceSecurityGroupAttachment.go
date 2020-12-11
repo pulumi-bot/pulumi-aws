@@ -222,16 +222,31 @@ type NetworkInterfaceSecurityGroupAttachmentInput interface {
 	ToNetworkInterfaceSecurityGroupAttachmentOutputWithContext(ctx context.Context) NetworkInterfaceSecurityGroupAttachmentOutput
 }
 
-func (NetworkInterfaceSecurityGroupAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkInterfaceSecurityGroupAttachment)(nil)).Elem()
+func (*NetworkInterfaceSecurityGroupAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceSecurityGroupAttachment)(nil))
 }
 
-func (i NetworkInterfaceSecurityGroupAttachment) ToNetworkInterfaceSecurityGroupAttachmentOutput() NetworkInterfaceSecurityGroupAttachmentOutput {
+func (i *NetworkInterfaceSecurityGroupAttachment) ToNetworkInterfaceSecurityGroupAttachmentOutput() NetworkInterfaceSecurityGroupAttachmentOutput {
 	return i.ToNetworkInterfaceSecurityGroupAttachmentOutputWithContext(context.Background())
 }
 
-func (i NetworkInterfaceSecurityGroupAttachment) ToNetworkInterfaceSecurityGroupAttachmentOutputWithContext(ctx context.Context) NetworkInterfaceSecurityGroupAttachmentOutput {
+func (i *NetworkInterfaceSecurityGroupAttachment) ToNetworkInterfaceSecurityGroupAttachmentOutputWithContext(ctx context.Context) NetworkInterfaceSecurityGroupAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceSecurityGroupAttachmentOutput)
+}
+
+func (i *NetworkInterfaceSecurityGroupAttachment) ToNetworkInterfaceSecurityGroupAttachmentPtrOutput() NetworkInterfaceSecurityGroupAttachmentPtrOutput {
+	return i.ToNetworkInterfaceSecurityGroupAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *NetworkInterfaceSecurityGroupAttachment) ToNetworkInterfaceSecurityGroupAttachmentPtrOutputWithContext(ctx context.Context) NetworkInterfaceSecurityGroupAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceSecurityGroupAttachmentPtrOutput)
+}
+
+type NetworkInterfaceSecurityGroupAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToNetworkInterfaceSecurityGroupAttachmentPtrOutput() NetworkInterfaceSecurityGroupAttachmentPtrOutput
+	ToNetworkInterfaceSecurityGroupAttachmentPtrOutputWithContext(ctx context.Context) NetworkInterfaceSecurityGroupAttachmentPtrOutput
 }
 
 type NetworkInterfaceSecurityGroupAttachmentOutput struct {
@@ -239,7 +254,7 @@ type NetworkInterfaceSecurityGroupAttachmentOutput struct {
 }
 
 func (NetworkInterfaceSecurityGroupAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkInterfaceSecurityGroupAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*NetworkInterfaceSecurityGroupAttachment)(nil))
 }
 
 func (o NetworkInterfaceSecurityGroupAttachmentOutput) ToNetworkInterfaceSecurityGroupAttachmentOutput() NetworkInterfaceSecurityGroupAttachmentOutput {
@@ -250,6 +265,23 @@ func (o NetworkInterfaceSecurityGroupAttachmentOutput) ToNetworkInterfaceSecurit
 	return o
 }
 
+type NetworkInterfaceSecurityGroupAttachmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkInterfaceSecurityGroupAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkInterfaceSecurityGroupAttachment)(nil))
+}
+
+func (o NetworkInterfaceSecurityGroupAttachmentPtrOutput) ToNetworkInterfaceSecurityGroupAttachmentPtrOutput() NetworkInterfaceSecurityGroupAttachmentPtrOutput {
+	return o
+}
+
+func (o NetworkInterfaceSecurityGroupAttachmentPtrOutput) ToNetworkInterfaceSecurityGroupAttachmentPtrOutputWithContext(ctx context.Context) NetworkInterfaceSecurityGroupAttachmentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NetworkInterfaceSecurityGroupAttachmentOutput{})
+	pulumi.RegisterOutputType(NetworkInterfaceSecurityGroupAttachmentPtrOutput{})
 }

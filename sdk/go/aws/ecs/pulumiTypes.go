@@ -56,7 +56,7 @@ func (i CapacityProviderAutoScalingGroupProviderArgs) ToCapacityProviderAutoScal
 }
 
 func (i CapacityProviderAutoScalingGroupProviderArgs) ToCapacityProviderAutoScalingGroupProviderPtrOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderAutoScalingGroupProviderOutput).ToCapacityProviderAutoScalingGroupProviderPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderAutoScalingGroupProviderOutput).ToCapacityProviderAutoScalingGroupProviderPtrOutput()
 }
 
 // CapacityProviderAutoScalingGroupProviderPtrInput is an input type that accepts CapacityProviderAutoScalingGroupProviderArgs, CapacityProviderAutoScalingGroupProviderPtr and CapacityProviderAutoScalingGroupProviderPtrOutput values.
@@ -89,7 +89,7 @@ func (i *capacityProviderAutoScalingGroupProviderPtrType) ToCapacityProviderAuto
 }
 
 func (i *capacityProviderAutoScalingGroupProviderPtrType) ToCapacityProviderAutoScalingGroupProviderPtrOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderAutoScalingGroupProviderPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderAutoScalingGroupProviderOutput).ToCapacityProviderAutoScalingGroupProviderPtrOutput()
 }
 
 type CapacityProviderAutoScalingGroupProviderOutput struct{ *pulumi.OutputState }
@@ -231,7 +231,7 @@ func (i CapacityProviderAutoScalingGroupProviderManagedScalingArgs) ToCapacityPr
 }
 
 func (i CapacityProviderAutoScalingGroupProviderManagedScalingArgs) ToCapacityProviderAutoScalingGroupProviderManagedScalingPtrOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderAutoScalingGroupProviderManagedScalingOutput).ToCapacityProviderAutoScalingGroupProviderManagedScalingPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderAutoScalingGroupProviderManagedScalingOutput).ToCapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput()
 }
 
 // CapacityProviderAutoScalingGroupProviderManagedScalingPtrInput is an input type that accepts CapacityProviderAutoScalingGroupProviderManagedScalingArgs, CapacityProviderAutoScalingGroupProviderManagedScalingPtr and CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput values.
@@ -264,7 +264,7 @@ func (i *capacityProviderAutoScalingGroupProviderManagedScalingPtrType) ToCapaci
 }
 
 func (i *capacityProviderAutoScalingGroupProviderManagedScalingPtrType) ToCapacityProviderAutoScalingGroupProviderManagedScalingPtrOutputWithContext(ctx context.Context) CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CapacityProviderAutoScalingGroupProviderManagedScalingOutput).ToCapacityProviderAutoScalingGroupProviderManagedScalingPtrOutput()
 }
 
 type CapacityProviderAutoScalingGroupProviderManagedScalingOutput struct{ *pulumi.OutputState }
@@ -745,7 +745,7 @@ func (i ServiceDeploymentControllerArgs) ToServiceDeploymentControllerPtrOutput(
 }
 
 func (i ServiceDeploymentControllerArgs) ToServiceDeploymentControllerPtrOutputWithContext(ctx context.Context) ServiceDeploymentControllerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceDeploymentControllerOutput).ToServiceDeploymentControllerPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceDeploymentControllerOutput).ToServiceDeploymentControllerPtrOutput()
 }
 
 // ServiceDeploymentControllerPtrInput is an input type that accepts ServiceDeploymentControllerArgs, ServiceDeploymentControllerPtr and ServiceDeploymentControllerPtrOutput values.
@@ -778,7 +778,7 @@ func (i *serviceDeploymentControllerPtrType) ToServiceDeploymentControllerPtrOut
 }
 
 func (i *serviceDeploymentControllerPtrType) ToServiceDeploymentControllerPtrOutputWithContext(ctx context.Context) ServiceDeploymentControllerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceDeploymentControllerPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceDeploymentControllerOutput).ToServiceDeploymentControllerPtrOutput()
 }
 
 type ServiceDeploymentControllerOutput struct{ *pulumi.OutputState }
@@ -1008,7 +1008,7 @@ func (i ServiceNetworkConfigurationArgs) ToServiceNetworkConfigurationPtrOutput(
 }
 
 func (i ServiceNetworkConfigurationArgs) ToServiceNetworkConfigurationPtrOutputWithContext(ctx context.Context) ServiceNetworkConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkConfigurationOutput).ToServiceNetworkConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkConfigurationOutput).ToServiceNetworkConfigurationPtrOutput()
 }
 
 // ServiceNetworkConfigurationPtrInput is an input type that accepts ServiceNetworkConfigurationArgs, ServiceNetworkConfigurationPtr and ServiceNetworkConfigurationPtrOutput values.
@@ -1041,7 +1041,7 @@ func (i *serviceNetworkConfigurationPtrType) ToServiceNetworkConfigurationPtrOut
 }
 
 func (i *serviceNetworkConfigurationPtrType) ToServiceNetworkConfigurationPtrOutputWithContext(ctx context.Context) ServiceNetworkConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkConfigurationOutput).ToServiceNetworkConfigurationPtrOutput()
 }
 
 type ServiceNetworkConfigurationOutput struct{ *pulumi.OutputState }
@@ -1414,7 +1414,7 @@ func (i ServiceServiceRegistriesArgs) ToServiceServiceRegistriesPtrOutput() Serv
 }
 
 func (i ServiceServiceRegistriesArgs) ToServiceServiceRegistriesPtrOutputWithContext(ctx context.Context) ServiceServiceRegistriesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceServiceRegistriesOutput).ToServiceServiceRegistriesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceServiceRegistriesOutput).ToServiceServiceRegistriesPtrOutput()
 }
 
 // ServiceServiceRegistriesPtrInput is an input type that accepts ServiceServiceRegistriesArgs, ServiceServiceRegistriesPtr and ServiceServiceRegistriesPtrOutput values.
@@ -1447,7 +1447,7 @@ func (i *serviceServiceRegistriesPtrType) ToServiceServiceRegistriesPtrOutput() 
 }
 
 func (i *serviceServiceRegistriesPtrType) ToServiceServiceRegistriesPtrOutputWithContext(ctx context.Context) ServiceServiceRegistriesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceServiceRegistriesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceServiceRegistriesOutput).ToServiceServiceRegistriesPtrOutput()
 }
 
 type ServiceServiceRegistriesOutput struct{ *pulumi.OutputState }
@@ -1819,7 +1819,7 @@ func (i TaskDefinitionProxyConfigurationArgs) ToTaskDefinitionProxyConfiguration
 }
 
 func (i TaskDefinitionProxyConfigurationArgs) ToTaskDefinitionProxyConfigurationPtrOutputWithContext(ctx context.Context) TaskDefinitionProxyConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionProxyConfigurationOutput).ToTaskDefinitionProxyConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionProxyConfigurationOutput).ToTaskDefinitionProxyConfigurationPtrOutput()
 }
 
 // TaskDefinitionProxyConfigurationPtrInput is an input type that accepts TaskDefinitionProxyConfigurationArgs, TaskDefinitionProxyConfigurationPtr and TaskDefinitionProxyConfigurationPtrOutput values.
@@ -1852,7 +1852,7 @@ func (i *taskDefinitionProxyConfigurationPtrType) ToTaskDefinitionProxyConfigura
 }
 
 func (i *taskDefinitionProxyConfigurationPtrType) ToTaskDefinitionProxyConfigurationPtrOutputWithContext(ctx context.Context) TaskDefinitionProxyConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionProxyConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionProxyConfigurationOutput).ToTaskDefinitionProxyConfigurationPtrOutput()
 }
 
 type TaskDefinitionProxyConfigurationOutput struct{ *pulumi.OutputState }
@@ -2127,7 +2127,7 @@ func (i TaskDefinitionVolumeDockerVolumeConfigurationArgs) ToTaskDefinitionVolum
 }
 
 func (i TaskDefinitionVolumeDockerVolumeConfigurationArgs) ToTaskDefinitionVolumeDockerVolumeConfigurationPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeDockerVolumeConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeDockerVolumeConfigurationOutput).ToTaskDefinitionVolumeDockerVolumeConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeDockerVolumeConfigurationOutput).ToTaskDefinitionVolumeDockerVolumeConfigurationPtrOutput()
 }
 
 // TaskDefinitionVolumeDockerVolumeConfigurationPtrInput is an input type that accepts TaskDefinitionVolumeDockerVolumeConfigurationArgs, TaskDefinitionVolumeDockerVolumeConfigurationPtr and TaskDefinitionVolumeDockerVolumeConfigurationPtrOutput values.
@@ -2160,7 +2160,7 @@ func (i *taskDefinitionVolumeDockerVolumeConfigurationPtrType) ToTaskDefinitionV
 }
 
 func (i *taskDefinitionVolumeDockerVolumeConfigurationPtrType) ToTaskDefinitionVolumeDockerVolumeConfigurationPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeDockerVolumeConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeDockerVolumeConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeDockerVolumeConfigurationOutput).ToTaskDefinitionVolumeDockerVolumeConfigurationPtrOutput()
 }
 
 type TaskDefinitionVolumeDockerVolumeConfigurationOutput struct{ *pulumi.OutputState }
@@ -2336,7 +2336,7 @@ func (i TaskDefinitionVolumeEfsVolumeConfigurationArgs) ToTaskDefinitionVolumeEf
 }
 
 func (i TaskDefinitionVolumeEfsVolumeConfigurationArgs) ToTaskDefinitionVolumeEfsVolumeConfigurationPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeEfsVolumeConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeEfsVolumeConfigurationOutput).ToTaskDefinitionVolumeEfsVolumeConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeEfsVolumeConfigurationOutput).ToTaskDefinitionVolumeEfsVolumeConfigurationPtrOutput()
 }
 
 // TaskDefinitionVolumeEfsVolumeConfigurationPtrInput is an input type that accepts TaskDefinitionVolumeEfsVolumeConfigurationArgs, TaskDefinitionVolumeEfsVolumeConfigurationPtr and TaskDefinitionVolumeEfsVolumeConfigurationPtrOutput values.
@@ -2369,7 +2369,7 @@ func (i *taskDefinitionVolumeEfsVolumeConfigurationPtrType) ToTaskDefinitionVolu
 }
 
 func (i *taskDefinitionVolumeEfsVolumeConfigurationPtrType) ToTaskDefinitionVolumeEfsVolumeConfigurationPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeEfsVolumeConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeEfsVolumeConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeEfsVolumeConfigurationOutput).ToTaskDefinitionVolumeEfsVolumeConfigurationPtrOutput()
 }
 
 type TaskDefinitionVolumeEfsVolumeConfigurationOutput struct{ *pulumi.OutputState }
@@ -2535,7 +2535,7 @@ func (i TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigArgs) ToTas
 }
 
 func (i TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigArgs) ToTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigOutput).ToTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigOutput).ToTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigPtrOutput()
 }
 
 // TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigPtrInput is an input type that accepts TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigArgs, TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigPtr and TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigPtrOutput values.
@@ -2568,7 +2568,7 @@ func (i *taskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigPtrType) T
 }
 
 func (i *taskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigPtrType) ToTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigPtrOutputWithContext(ctx context.Context) TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigOutput).ToTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigPtrOutput()
 }
 
 type TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigOutput struct{ *pulumi.OutputState }

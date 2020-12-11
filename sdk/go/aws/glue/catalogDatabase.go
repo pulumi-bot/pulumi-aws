@@ -159,16 +159,31 @@ type CatalogDatabaseInput interface {
 	ToCatalogDatabaseOutputWithContext(ctx context.Context) CatalogDatabaseOutput
 }
 
-func (CatalogDatabase) ElementType() reflect.Type {
-	return reflect.TypeOf((*CatalogDatabase)(nil)).Elem()
+func (*CatalogDatabase) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogDatabase)(nil))
 }
 
-func (i CatalogDatabase) ToCatalogDatabaseOutput() CatalogDatabaseOutput {
+func (i *CatalogDatabase) ToCatalogDatabaseOutput() CatalogDatabaseOutput {
 	return i.ToCatalogDatabaseOutputWithContext(context.Background())
 }
 
-func (i CatalogDatabase) ToCatalogDatabaseOutputWithContext(ctx context.Context) CatalogDatabaseOutput {
+func (i *CatalogDatabase) ToCatalogDatabaseOutputWithContext(ctx context.Context) CatalogDatabaseOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogDatabaseOutput)
+}
+
+func (i *CatalogDatabase) ToCatalogDatabasePtrOutput() CatalogDatabasePtrOutput {
+	return i.ToCatalogDatabasePtrOutputWithContext(context.Background())
+}
+
+func (i *CatalogDatabase) ToCatalogDatabasePtrOutputWithContext(ctx context.Context) CatalogDatabasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogDatabasePtrOutput)
+}
+
+type CatalogDatabasePtrInput interface {
+	pulumi.Input
+
+	ToCatalogDatabasePtrOutput() CatalogDatabasePtrOutput
+	ToCatalogDatabasePtrOutputWithContext(ctx context.Context) CatalogDatabasePtrOutput
 }
 
 type CatalogDatabaseOutput struct {
@@ -176,7 +191,7 @@ type CatalogDatabaseOutput struct {
 }
 
 func (CatalogDatabaseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CatalogDatabaseOutput)(nil)).Elem()
+	return reflect.TypeOf((*CatalogDatabase)(nil))
 }
 
 func (o CatalogDatabaseOutput) ToCatalogDatabaseOutput() CatalogDatabaseOutput {
@@ -187,6 +202,23 @@ func (o CatalogDatabaseOutput) ToCatalogDatabaseOutputWithContext(ctx context.Co
 	return o
 }
 
+type CatalogDatabasePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CatalogDatabasePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CatalogDatabase)(nil))
+}
+
+func (o CatalogDatabasePtrOutput) ToCatalogDatabasePtrOutput() CatalogDatabasePtrOutput {
+	return o
+}
+
+func (o CatalogDatabasePtrOutput) ToCatalogDatabasePtrOutputWithContext(ctx context.Context) CatalogDatabasePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CatalogDatabaseOutput{})
+	pulumi.RegisterOutputType(CatalogDatabasePtrOutput{})
 }

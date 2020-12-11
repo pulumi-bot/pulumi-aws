@@ -52,7 +52,7 @@ func (i EfsLocationEc2ConfigArgs) ToEfsLocationEc2ConfigPtrOutput() EfsLocationE
 }
 
 func (i EfsLocationEc2ConfigArgs) ToEfsLocationEc2ConfigPtrOutputWithContext(ctx context.Context) EfsLocationEc2ConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EfsLocationEc2ConfigOutput).ToEfsLocationEc2ConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EfsLocationEc2ConfigOutput).ToEfsLocationEc2ConfigPtrOutput()
 }
 
 // EfsLocationEc2ConfigPtrInput is an input type that accepts EfsLocationEc2ConfigArgs, EfsLocationEc2ConfigPtr and EfsLocationEc2ConfigPtrOutput values.
@@ -85,7 +85,7 @@ func (i *efsLocationEc2ConfigPtrType) ToEfsLocationEc2ConfigPtrOutput() EfsLocat
 }
 
 func (i *efsLocationEc2ConfigPtrType) ToEfsLocationEc2ConfigPtrOutputWithContext(ctx context.Context) EfsLocationEc2ConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EfsLocationEc2ConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EfsLocationEc2ConfigOutput).ToEfsLocationEc2ConfigPtrOutput()
 }
 
 type EfsLocationEc2ConfigOutput struct{ *pulumi.OutputState }
@@ -198,7 +198,7 @@ func (i LocationSmbMountOptionsArgs) ToLocationSmbMountOptionsPtrOutput() Locati
 }
 
 func (i LocationSmbMountOptionsArgs) ToLocationSmbMountOptionsPtrOutputWithContext(ctx context.Context) LocationSmbMountOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationSmbMountOptionsOutput).ToLocationSmbMountOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LocationSmbMountOptionsOutput).ToLocationSmbMountOptionsPtrOutput()
 }
 
 // LocationSmbMountOptionsPtrInput is an input type that accepts LocationSmbMountOptionsArgs, LocationSmbMountOptionsPtr and LocationSmbMountOptionsPtrOutput values.
@@ -231,7 +231,7 @@ func (i *locationSmbMountOptionsPtrType) ToLocationSmbMountOptionsPtrOutput() Lo
 }
 
 func (i *locationSmbMountOptionsPtrType) ToLocationSmbMountOptionsPtrOutputWithContext(ctx context.Context) LocationSmbMountOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationSmbMountOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LocationSmbMountOptionsOutput).ToLocationSmbMountOptionsPtrOutput()
 }
 
 type LocationSmbMountOptionsOutput struct{ *pulumi.OutputState }
@@ -329,7 +329,7 @@ func (i NfsLocationOnPremConfigArgs) ToNfsLocationOnPremConfigPtrOutput() NfsLoc
 }
 
 func (i NfsLocationOnPremConfigArgs) ToNfsLocationOnPremConfigPtrOutputWithContext(ctx context.Context) NfsLocationOnPremConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NfsLocationOnPremConfigOutput).ToNfsLocationOnPremConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(NfsLocationOnPremConfigOutput).ToNfsLocationOnPremConfigPtrOutput()
 }
 
 // NfsLocationOnPremConfigPtrInput is an input type that accepts NfsLocationOnPremConfigArgs, NfsLocationOnPremConfigPtr and NfsLocationOnPremConfigPtrOutput values.
@@ -362,7 +362,7 @@ func (i *nfsLocationOnPremConfigPtrType) ToNfsLocationOnPremConfigPtrOutput() Nf
 }
 
 func (i *nfsLocationOnPremConfigPtrType) ToNfsLocationOnPremConfigPtrOutputWithContext(ctx context.Context) NfsLocationOnPremConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NfsLocationOnPremConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(NfsLocationOnPremConfigOutput).ToNfsLocationOnPremConfigPtrOutput()
 }
 
 type NfsLocationOnPremConfigOutput struct{ *pulumi.OutputState }
@@ -460,7 +460,7 @@ func (i S3LocationS3ConfigArgs) ToS3LocationS3ConfigPtrOutput() S3LocationS3Conf
 }
 
 func (i S3LocationS3ConfigArgs) ToS3LocationS3ConfigPtrOutputWithContext(ctx context.Context) S3LocationS3ConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(S3LocationS3ConfigOutput).ToS3LocationS3ConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(S3LocationS3ConfigOutput).ToS3LocationS3ConfigPtrOutput()
 }
 
 // S3LocationS3ConfigPtrInput is an input type that accepts S3LocationS3ConfigArgs, S3LocationS3ConfigPtr and S3LocationS3ConfigPtrOutput values.
@@ -493,7 +493,7 @@ func (i *s3locationS3ConfigPtrType) ToS3LocationS3ConfigPtrOutput() S3LocationS3
 }
 
 func (i *s3locationS3ConfigPtrType) ToS3LocationS3ConfigPtrOutputWithContext(ctx context.Context) S3LocationS3ConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(S3LocationS3ConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(S3LocationS3ConfigOutput).ToS3LocationS3ConfigPtrOutput()
 }
 
 type S3LocationS3ConfigOutput struct{ *pulumi.OutputState }
@@ -623,7 +623,7 @@ func (i TaskOptionsArgs) ToTaskOptionsPtrOutput() TaskOptionsPtrOutput {
 }
 
 func (i TaskOptionsArgs) ToTaskOptionsPtrOutputWithContext(ctx context.Context) TaskOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TaskOptionsOutput).ToTaskOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TaskOptionsOutput).ToTaskOptionsPtrOutput()
 }
 
 // TaskOptionsPtrInput is an input type that accepts TaskOptionsArgs, TaskOptionsPtr and TaskOptionsPtrOutput values.
@@ -656,7 +656,7 @@ func (i *taskOptionsPtrType) ToTaskOptionsPtrOutput() TaskOptionsPtrOutput {
 }
 
 func (i *taskOptionsPtrType) ToTaskOptionsPtrOutputWithContext(ctx context.Context) TaskOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TaskOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TaskOptionsOutput).ToTaskOptionsPtrOutput()
 }
 
 type TaskOptionsOutput struct{ *pulumi.OutputState }

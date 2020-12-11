@@ -68,7 +68,7 @@ func (i ApiCorsConfigurationArgs) ToApiCorsConfigurationPtrOutput() ApiCorsConfi
 }
 
 func (i ApiCorsConfigurationArgs) ToApiCorsConfigurationPtrOutputWithContext(ctx context.Context) ApiCorsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiCorsConfigurationOutput).ToApiCorsConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiCorsConfigurationOutput).ToApiCorsConfigurationPtrOutput()
 }
 
 // ApiCorsConfigurationPtrInput is an input type that accepts ApiCorsConfigurationArgs, ApiCorsConfigurationPtr and ApiCorsConfigurationPtrOutput values.
@@ -101,7 +101,7 @@ func (i *apiCorsConfigurationPtrType) ToApiCorsConfigurationPtrOutput() ApiCorsC
 }
 
 func (i *apiCorsConfigurationPtrType) ToApiCorsConfigurationPtrOutputWithContext(ctx context.Context) ApiCorsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiCorsConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ApiCorsConfigurationOutput).ToApiCorsConfigurationPtrOutput()
 }
 
 type ApiCorsConfigurationOutput struct{ *pulumi.OutputState }
@@ -278,7 +278,7 @@ func (i AuthorizerJwtConfigurationArgs) ToAuthorizerJwtConfigurationPtrOutput() 
 }
 
 func (i AuthorizerJwtConfigurationArgs) ToAuthorizerJwtConfigurationPtrOutputWithContext(ctx context.Context) AuthorizerJwtConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorizerJwtConfigurationOutput).ToAuthorizerJwtConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizerJwtConfigurationOutput).ToAuthorizerJwtConfigurationPtrOutput()
 }
 
 // AuthorizerJwtConfigurationPtrInput is an input type that accepts AuthorizerJwtConfigurationArgs, AuthorizerJwtConfigurationPtr and AuthorizerJwtConfigurationPtrOutput values.
@@ -311,7 +311,7 @@ func (i *authorizerJwtConfigurationPtrType) ToAuthorizerJwtConfigurationPtrOutpu
 }
 
 func (i *authorizerJwtConfigurationPtrType) ToAuthorizerJwtConfigurationPtrOutputWithContext(ctx context.Context) AuthorizerJwtConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthorizerJwtConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizerJwtConfigurationOutput).ToAuthorizerJwtConfigurationPtrOutput()
 }
 
 type AuthorizerJwtConfigurationOutput struct{ *pulumi.OutputState }
@@ -442,7 +442,7 @@ func (i DomainNameDomainNameConfigurationArgs) ToDomainNameDomainNameConfigurati
 }
 
 func (i DomainNameDomainNameConfigurationArgs) ToDomainNameDomainNameConfigurationPtrOutputWithContext(ctx context.Context) DomainNameDomainNameConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainNameDomainNameConfigurationOutput).ToDomainNameDomainNameConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainNameDomainNameConfigurationOutput).ToDomainNameDomainNameConfigurationPtrOutput()
 }
 
 // DomainNameDomainNameConfigurationPtrInput is an input type that accepts DomainNameDomainNameConfigurationArgs, DomainNameDomainNameConfigurationPtr and DomainNameDomainNameConfigurationPtrOutput values.
@@ -475,7 +475,7 @@ func (i *domainNameDomainNameConfigurationPtrType) ToDomainNameDomainNameConfigu
 }
 
 func (i *domainNameDomainNameConfigurationPtrType) ToDomainNameDomainNameConfigurationPtrOutputWithContext(ctx context.Context) DomainNameDomainNameConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainNameDomainNameConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainNameDomainNameConfigurationOutput).ToDomainNameDomainNameConfigurationPtrOutput()
 }
 
 type DomainNameDomainNameConfigurationOutput struct{ *pulumi.OutputState }
@@ -641,7 +641,7 @@ func (i DomainNameMutualTlsAuthenticationArgs) ToDomainNameMutualTlsAuthenticati
 }
 
 func (i DomainNameMutualTlsAuthenticationArgs) ToDomainNameMutualTlsAuthenticationPtrOutputWithContext(ctx context.Context) DomainNameMutualTlsAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainNameMutualTlsAuthenticationOutput).ToDomainNameMutualTlsAuthenticationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainNameMutualTlsAuthenticationOutput).ToDomainNameMutualTlsAuthenticationPtrOutput()
 }
 
 // DomainNameMutualTlsAuthenticationPtrInput is an input type that accepts DomainNameMutualTlsAuthenticationArgs, DomainNameMutualTlsAuthenticationPtr and DomainNameMutualTlsAuthenticationPtrOutput values.
@@ -674,7 +674,7 @@ func (i *domainNameMutualTlsAuthenticationPtrType) ToDomainNameMutualTlsAuthenti
 }
 
 func (i *domainNameMutualTlsAuthenticationPtrType) ToDomainNameMutualTlsAuthenticationPtrOutputWithContext(ctx context.Context) DomainNameMutualTlsAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainNameMutualTlsAuthenticationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainNameMutualTlsAuthenticationOutput).ToDomainNameMutualTlsAuthenticationPtrOutput()
 }
 
 type DomainNameMutualTlsAuthenticationOutput struct{ *pulumi.OutputState }
@@ -789,7 +789,7 @@ func (i IntegrationTlsConfigArgs) ToIntegrationTlsConfigPtrOutput() IntegrationT
 }
 
 func (i IntegrationTlsConfigArgs) ToIntegrationTlsConfigPtrOutputWithContext(ctx context.Context) IntegrationTlsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntegrationTlsConfigOutput).ToIntegrationTlsConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationTlsConfigOutput).ToIntegrationTlsConfigPtrOutput()
 }
 
 // IntegrationTlsConfigPtrInput is an input type that accepts IntegrationTlsConfigArgs, IntegrationTlsConfigPtr and IntegrationTlsConfigPtrOutput values.
@@ -822,7 +822,7 @@ func (i *integrationTlsConfigPtrType) ToIntegrationTlsConfigPtrOutput() Integrat
 }
 
 func (i *integrationTlsConfigPtrType) ToIntegrationTlsConfigPtrOutputWithContext(ctx context.Context) IntegrationTlsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntegrationTlsConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationTlsConfigOutput).ToIntegrationTlsConfigPtrOutput()
 }
 
 type IntegrationTlsConfigOutput struct{ *pulumi.OutputState }
@@ -924,7 +924,7 @@ func (i StageAccessLogSettingsArgs) ToStageAccessLogSettingsPtrOutput() StageAcc
 }
 
 func (i StageAccessLogSettingsArgs) ToStageAccessLogSettingsPtrOutputWithContext(ctx context.Context) StageAccessLogSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StageAccessLogSettingsOutput).ToStageAccessLogSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(StageAccessLogSettingsOutput).ToStageAccessLogSettingsPtrOutput()
 }
 
 // StageAccessLogSettingsPtrInput is an input type that accepts StageAccessLogSettingsArgs, StageAccessLogSettingsPtr and StageAccessLogSettingsPtrOutput values.
@@ -957,7 +957,7 @@ func (i *stageAccessLogSettingsPtrType) ToStageAccessLogSettingsPtrOutput() Stag
 }
 
 func (i *stageAccessLogSettingsPtrType) ToStageAccessLogSettingsPtrOutputWithContext(ctx context.Context) StageAccessLogSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StageAccessLogSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(StageAccessLogSettingsOutput).ToStageAccessLogSettingsPtrOutput()
 }
 
 type StageAccessLogSettingsOutput struct{ *pulumi.OutputState }
@@ -1090,7 +1090,7 @@ func (i StageDefaultRouteSettingsArgs) ToStageDefaultRouteSettingsPtrOutput() St
 }
 
 func (i StageDefaultRouteSettingsArgs) ToStageDefaultRouteSettingsPtrOutputWithContext(ctx context.Context) StageDefaultRouteSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StageDefaultRouteSettingsOutput).ToStageDefaultRouteSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(StageDefaultRouteSettingsOutput).ToStageDefaultRouteSettingsPtrOutput()
 }
 
 // StageDefaultRouteSettingsPtrInput is an input type that accepts StageDefaultRouteSettingsArgs, StageDefaultRouteSettingsPtr and StageDefaultRouteSettingsPtrOutput values.
@@ -1123,7 +1123,7 @@ func (i *stageDefaultRouteSettingsPtrType) ToStageDefaultRouteSettingsPtrOutput(
 }
 
 func (i *stageDefaultRouteSettingsPtrType) ToStageDefaultRouteSettingsPtrOutputWithContext(ctx context.Context) StageDefaultRouteSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StageDefaultRouteSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(StageDefaultRouteSettingsOutput).ToStageDefaultRouteSettingsPtrOutput()
 }
 
 type StageDefaultRouteSettingsOutput struct{ *pulumi.OutputState }

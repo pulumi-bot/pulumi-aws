@@ -159,16 +159,31 @@ type InviteAccepterInput interface {
 	ToInviteAccepterOutputWithContext(ctx context.Context) InviteAccepterOutput
 }
 
-func (InviteAccepter) ElementType() reflect.Type {
-	return reflect.TypeOf((*InviteAccepter)(nil)).Elem()
+func (*InviteAccepter) ElementType() reflect.Type {
+	return reflect.TypeOf((*InviteAccepter)(nil))
 }
 
-func (i InviteAccepter) ToInviteAccepterOutput() InviteAccepterOutput {
+func (i *InviteAccepter) ToInviteAccepterOutput() InviteAccepterOutput {
 	return i.ToInviteAccepterOutputWithContext(context.Background())
 }
 
-func (i InviteAccepter) ToInviteAccepterOutputWithContext(ctx context.Context) InviteAccepterOutput {
+func (i *InviteAccepter) ToInviteAccepterOutputWithContext(ctx context.Context) InviteAccepterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InviteAccepterOutput)
+}
+
+func (i *InviteAccepter) ToInviteAccepterPtrOutput() InviteAccepterPtrOutput {
+	return i.ToInviteAccepterPtrOutputWithContext(context.Background())
+}
+
+func (i *InviteAccepter) ToInviteAccepterPtrOutputWithContext(ctx context.Context) InviteAccepterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InviteAccepterPtrOutput)
+}
+
+type InviteAccepterPtrInput interface {
+	pulumi.Input
+
+	ToInviteAccepterPtrOutput() InviteAccepterPtrOutput
+	ToInviteAccepterPtrOutputWithContext(ctx context.Context) InviteAccepterPtrOutput
 }
 
 type InviteAccepterOutput struct {
@@ -176,7 +191,7 @@ type InviteAccepterOutput struct {
 }
 
 func (InviteAccepterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InviteAccepterOutput)(nil)).Elem()
+	return reflect.TypeOf((*InviteAccepter)(nil))
 }
 
 func (o InviteAccepterOutput) ToInviteAccepterOutput() InviteAccepterOutput {
@@ -187,6 +202,23 @@ func (o InviteAccepterOutput) ToInviteAccepterOutputWithContext(ctx context.Cont
 	return o
 }
 
+type InviteAccepterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (InviteAccepterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InviteAccepter)(nil))
+}
+
+func (o InviteAccepterPtrOutput) ToInviteAccepterPtrOutput() InviteAccepterPtrOutput {
+	return o
+}
+
+func (o InviteAccepterPtrOutput) ToInviteAccepterPtrOutputWithContext(ctx context.Context) InviteAccepterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(InviteAccepterOutput{})
+	pulumi.RegisterOutputType(InviteAccepterPtrOutput{})
 }

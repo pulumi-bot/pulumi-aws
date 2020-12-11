@@ -283,16 +283,31 @@ type SamplingRuleInput interface {
 	ToSamplingRuleOutputWithContext(ctx context.Context) SamplingRuleOutput
 }
 
-func (SamplingRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*SamplingRule)(nil)).Elem()
+func (*SamplingRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*SamplingRule)(nil))
 }
 
-func (i SamplingRule) ToSamplingRuleOutput() SamplingRuleOutput {
+func (i *SamplingRule) ToSamplingRuleOutput() SamplingRuleOutput {
 	return i.ToSamplingRuleOutputWithContext(context.Background())
 }
 
-func (i SamplingRule) ToSamplingRuleOutputWithContext(ctx context.Context) SamplingRuleOutput {
+func (i *SamplingRule) ToSamplingRuleOutputWithContext(ctx context.Context) SamplingRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SamplingRuleOutput)
+}
+
+func (i *SamplingRule) ToSamplingRulePtrOutput() SamplingRulePtrOutput {
+	return i.ToSamplingRulePtrOutputWithContext(context.Background())
+}
+
+func (i *SamplingRule) ToSamplingRulePtrOutputWithContext(ctx context.Context) SamplingRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SamplingRulePtrOutput)
+}
+
+type SamplingRulePtrInput interface {
+	pulumi.Input
+
+	ToSamplingRulePtrOutput() SamplingRulePtrOutput
+	ToSamplingRulePtrOutputWithContext(ctx context.Context) SamplingRulePtrOutput
 }
 
 type SamplingRuleOutput struct {
@@ -300,7 +315,7 @@ type SamplingRuleOutput struct {
 }
 
 func (SamplingRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SamplingRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*SamplingRule)(nil))
 }
 
 func (o SamplingRuleOutput) ToSamplingRuleOutput() SamplingRuleOutput {
@@ -311,6 +326,23 @@ func (o SamplingRuleOutput) ToSamplingRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
+type SamplingRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SamplingRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SamplingRule)(nil))
+}
+
+func (o SamplingRulePtrOutput) ToSamplingRulePtrOutput() SamplingRulePtrOutput {
+	return o
+}
+
+func (o SamplingRulePtrOutput) ToSamplingRulePtrOutputWithContext(ctx context.Context) SamplingRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SamplingRuleOutput{})
+	pulumi.RegisterOutputType(SamplingRulePtrOutput{})
 }

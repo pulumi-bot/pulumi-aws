@@ -143,16 +143,31 @@ type RouteTableAssociationInput interface {
 	ToRouteTableAssociationOutputWithContext(ctx context.Context) RouteTableAssociationOutput
 }
 
-func (RouteTableAssociation) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteTableAssociation)(nil)).Elem()
+func (*RouteTableAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTableAssociation)(nil))
 }
 
-func (i RouteTableAssociation) ToRouteTableAssociationOutput() RouteTableAssociationOutput {
+func (i *RouteTableAssociation) ToRouteTableAssociationOutput() RouteTableAssociationOutput {
 	return i.ToRouteTableAssociationOutputWithContext(context.Background())
 }
 
-func (i RouteTableAssociation) ToRouteTableAssociationOutputWithContext(ctx context.Context) RouteTableAssociationOutput {
+func (i *RouteTableAssociation) ToRouteTableAssociationOutputWithContext(ctx context.Context) RouteTableAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouteTableAssociationOutput)
+}
+
+func (i *RouteTableAssociation) ToRouteTableAssociationPtrOutput() RouteTableAssociationPtrOutput {
+	return i.ToRouteTableAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i *RouteTableAssociation) ToRouteTableAssociationPtrOutputWithContext(ctx context.Context) RouteTableAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteTableAssociationPtrOutput)
+}
+
+type RouteTableAssociationPtrInput interface {
+	pulumi.Input
+
+	ToRouteTableAssociationPtrOutput() RouteTableAssociationPtrOutput
+	ToRouteTableAssociationPtrOutputWithContext(ctx context.Context) RouteTableAssociationPtrOutput
 }
 
 type RouteTableAssociationOutput struct {
@@ -160,7 +175,7 @@ type RouteTableAssociationOutput struct {
 }
 
 func (RouteTableAssociationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteTableAssociationOutput)(nil)).Elem()
+	return reflect.TypeOf((*RouteTableAssociation)(nil))
 }
 
 func (o RouteTableAssociationOutput) ToRouteTableAssociationOutput() RouteTableAssociationOutput {
@@ -171,6 +186,23 @@ func (o RouteTableAssociationOutput) ToRouteTableAssociationOutputWithContext(ct
 	return o
 }
 
+type RouteTableAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouteTableAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteTableAssociation)(nil))
+}
+
+func (o RouteTableAssociationPtrOutput) ToRouteTableAssociationPtrOutput() RouteTableAssociationPtrOutput {
+	return o
+}
+
+func (o RouteTableAssociationPtrOutput) ToRouteTableAssociationPtrOutputWithContext(ctx context.Context) RouteTableAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RouteTableAssociationOutput{})
+	pulumi.RegisterOutputType(RouteTableAssociationPtrOutput{})
 }

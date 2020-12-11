@@ -168,16 +168,31 @@ type LogMetricFilterInput interface {
 	ToLogMetricFilterOutputWithContext(ctx context.Context) LogMetricFilterOutput
 }
 
-func (LogMetricFilter) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogMetricFilter)(nil)).Elem()
+func (*LogMetricFilter) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogMetricFilter)(nil))
 }
 
-func (i LogMetricFilter) ToLogMetricFilterOutput() LogMetricFilterOutput {
+func (i *LogMetricFilter) ToLogMetricFilterOutput() LogMetricFilterOutput {
 	return i.ToLogMetricFilterOutputWithContext(context.Background())
 }
 
-func (i LogMetricFilter) ToLogMetricFilterOutputWithContext(ctx context.Context) LogMetricFilterOutput {
+func (i *LogMetricFilter) ToLogMetricFilterOutputWithContext(ctx context.Context) LogMetricFilterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogMetricFilterOutput)
+}
+
+func (i *LogMetricFilter) ToLogMetricFilterPtrOutput() LogMetricFilterPtrOutput {
+	return i.ToLogMetricFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *LogMetricFilter) ToLogMetricFilterPtrOutputWithContext(ctx context.Context) LogMetricFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogMetricFilterPtrOutput)
+}
+
+type LogMetricFilterPtrInput interface {
+	pulumi.Input
+
+	ToLogMetricFilterPtrOutput() LogMetricFilterPtrOutput
+	ToLogMetricFilterPtrOutputWithContext(ctx context.Context) LogMetricFilterPtrOutput
 }
 
 type LogMetricFilterOutput struct {
@@ -185,7 +200,7 @@ type LogMetricFilterOutput struct {
 }
 
 func (LogMetricFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogMetricFilterOutput)(nil)).Elem()
+	return reflect.TypeOf((*LogMetricFilter)(nil))
 }
 
 func (o LogMetricFilterOutput) ToLogMetricFilterOutput() LogMetricFilterOutput {
@@ -196,6 +211,23 @@ func (o LogMetricFilterOutput) ToLogMetricFilterOutputWithContext(ctx context.Co
 	return o
 }
 
+type LogMetricFilterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogMetricFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogMetricFilter)(nil))
+}
+
+func (o LogMetricFilterPtrOutput) ToLogMetricFilterPtrOutput() LogMetricFilterPtrOutput {
+	return o
+}
+
+func (o LogMetricFilterPtrOutput) ToLogMetricFilterPtrOutputWithContext(ctx context.Context) LogMetricFilterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LogMetricFilterOutput{})
+	pulumi.RegisterOutputType(LogMetricFilterPtrOutput{})
 }

@@ -298,16 +298,31 @@ type PhpAppLayerInput interface {
 	ToPhpAppLayerOutputWithContext(ctx context.Context) PhpAppLayerOutput
 }
 
-func (PhpAppLayer) ElementType() reflect.Type {
-	return reflect.TypeOf((*PhpAppLayer)(nil)).Elem()
+func (*PhpAppLayer) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhpAppLayer)(nil))
 }
 
-func (i PhpAppLayer) ToPhpAppLayerOutput() PhpAppLayerOutput {
+func (i *PhpAppLayer) ToPhpAppLayerOutput() PhpAppLayerOutput {
 	return i.ToPhpAppLayerOutputWithContext(context.Background())
 }
 
-func (i PhpAppLayer) ToPhpAppLayerOutputWithContext(ctx context.Context) PhpAppLayerOutput {
+func (i *PhpAppLayer) ToPhpAppLayerOutputWithContext(ctx context.Context) PhpAppLayerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PhpAppLayerOutput)
+}
+
+func (i *PhpAppLayer) ToPhpAppLayerPtrOutput() PhpAppLayerPtrOutput {
+	return i.ToPhpAppLayerPtrOutputWithContext(context.Background())
+}
+
+func (i *PhpAppLayer) ToPhpAppLayerPtrOutputWithContext(ctx context.Context) PhpAppLayerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhpAppLayerPtrOutput)
+}
+
+type PhpAppLayerPtrInput interface {
+	pulumi.Input
+
+	ToPhpAppLayerPtrOutput() PhpAppLayerPtrOutput
+	ToPhpAppLayerPtrOutputWithContext(ctx context.Context) PhpAppLayerPtrOutput
 }
 
 type PhpAppLayerOutput struct {
@@ -315,7 +330,7 @@ type PhpAppLayerOutput struct {
 }
 
 func (PhpAppLayerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PhpAppLayerOutput)(nil)).Elem()
+	return reflect.TypeOf((*PhpAppLayer)(nil))
 }
 
 func (o PhpAppLayerOutput) ToPhpAppLayerOutput() PhpAppLayerOutput {
@@ -326,6 +341,23 @@ func (o PhpAppLayerOutput) ToPhpAppLayerOutputWithContext(ctx context.Context) P
 	return o
 }
 
+type PhpAppLayerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PhpAppLayerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PhpAppLayer)(nil))
+}
+
+func (o PhpAppLayerPtrOutput) ToPhpAppLayerPtrOutput() PhpAppLayerPtrOutput {
+	return o
+}
+
+func (o PhpAppLayerPtrOutput) ToPhpAppLayerPtrOutputWithContext(ctx context.Context) PhpAppLayerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PhpAppLayerOutput{})
+	pulumi.RegisterOutputType(PhpAppLayerPtrOutput{})
 }

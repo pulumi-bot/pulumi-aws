@@ -227,16 +227,31 @@ type MaintenanceWindowInput interface {
 	ToMaintenanceWindowOutputWithContext(ctx context.Context) MaintenanceWindowOutput
 }
 
-func (MaintenanceWindow) ElementType() reflect.Type {
-	return reflect.TypeOf((*MaintenanceWindow)(nil)).Elem()
+func (*MaintenanceWindow) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceWindow)(nil))
 }
 
-func (i MaintenanceWindow) ToMaintenanceWindowOutput() MaintenanceWindowOutput {
+func (i *MaintenanceWindow) ToMaintenanceWindowOutput() MaintenanceWindowOutput {
 	return i.ToMaintenanceWindowOutputWithContext(context.Background())
 }
 
-func (i MaintenanceWindow) ToMaintenanceWindowOutputWithContext(ctx context.Context) MaintenanceWindowOutput {
+func (i *MaintenanceWindow) ToMaintenanceWindowOutputWithContext(ctx context.Context) MaintenanceWindowOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowOutput)
+}
+
+func (i *MaintenanceWindow) ToMaintenanceWindowPtrOutput() MaintenanceWindowPtrOutput {
+	return i.ToMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *MaintenanceWindow) ToMaintenanceWindowPtrOutputWithContext(ctx context.Context) MaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowPtrOutput)
+}
+
+type MaintenanceWindowPtrInput interface {
+	pulumi.Input
+
+	ToMaintenanceWindowPtrOutput() MaintenanceWindowPtrOutput
+	ToMaintenanceWindowPtrOutputWithContext(ctx context.Context) MaintenanceWindowPtrOutput
 }
 
 type MaintenanceWindowOutput struct {
@@ -244,7 +259,7 @@ type MaintenanceWindowOutput struct {
 }
 
 func (MaintenanceWindowOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MaintenanceWindowOutput)(nil)).Elem()
+	return reflect.TypeOf((*MaintenanceWindow)(nil))
 }
 
 func (o MaintenanceWindowOutput) ToMaintenanceWindowOutput() MaintenanceWindowOutput {
@@ -255,6 +270,23 @@ func (o MaintenanceWindowOutput) ToMaintenanceWindowOutputWithContext(ctx contex
 	return o
 }
 
+type MaintenanceWindowPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MaintenanceWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenanceWindow)(nil))
+}
+
+func (o MaintenanceWindowPtrOutput) ToMaintenanceWindowPtrOutput() MaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o MaintenanceWindowPtrOutput) ToMaintenanceWindowPtrOutputWithContext(ctx context.Context) MaintenanceWindowPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(MaintenanceWindowPtrOutput{})
 }

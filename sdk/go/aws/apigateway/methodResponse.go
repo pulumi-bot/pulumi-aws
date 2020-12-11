@@ -221,16 +221,31 @@ type MethodResponseInput interface {
 	ToMethodResponseOutputWithContext(ctx context.Context) MethodResponseOutput
 }
 
-func (MethodResponse) ElementType() reflect.Type {
-	return reflect.TypeOf((*MethodResponse)(nil)).Elem()
+func (*MethodResponse) ElementType() reflect.Type {
+	return reflect.TypeOf((*MethodResponse)(nil))
 }
 
-func (i MethodResponse) ToMethodResponseOutput() MethodResponseOutput {
+func (i *MethodResponse) ToMethodResponseOutput() MethodResponseOutput {
 	return i.ToMethodResponseOutputWithContext(context.Background())
 }
 
-func (i MethodResponse) ToMethodResponseOutputWithContext(ctx context.Context) MethodResponseOutput {
+func (i *MethodResponse) ToMethodResponseOutputWithContext(ctx context.Context) MethodResponseOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MethodResponseOutput)
+}
+
+func (i *MethodResponse) ToMethodResponsePtrOutput() MethodResponsePtrOutput {
+	return i.ToMethodResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *MethodResponse) ToMethodResponsePtrOutputWithContext(ctx context.Context) MethodResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MethodResponsePtrOutput)
+}
+
+type MethodResponsePtrInput interface {
+	pulumi.Input
+
+	ToMethodResponsePtrOutput() MethodResponsePtrOutput
+	ToMethodResponsePtrOutputWithContext(ctx context.Context) MethodResponsePtrOutput
 }
 
 type MethodResponseOutput struct {
@@ -238,7 +253,7 @@ type MethodResponseOutput struct {
 }
 
 func (MethodResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MethodResponseOutput)(nil)).Elem()
+	return reflect.TypeOf((*MethodResponse)(nil))
 }
 
 func (o MethodResponseOutput) ToMethodResponseOutput() MethodResponseOutput {
@@ -249,6 +264,23 @@ func (o MethodResponseOutput) ToMethodResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
+type MethodResponsePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MethodResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MethodResponse)(nil))
+}
+
+func (o MethodResponsePtrOutput) ToMethodResponsePtrOutput() MethodResponsePtrOutput {
+	return o
+}
+
+func (o MethodResponsePtrOutput) ToMethodResponsePtrOutputWithContext(ctx context.Context) MethodResponsePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MethodResponseOutput{})
+	pulumi.RegisterOutputType(MethodResponsePtrOutput{})
 }

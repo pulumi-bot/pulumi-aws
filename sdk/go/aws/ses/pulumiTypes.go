@@ -167,7 +167,7 @@ func (i EventDestinationKinesisDestinationArgs) ToEventDestinationKinesisDestina
 }
 
 func (i EventDestinationKinesisDestinationArgs) ToEventDestinationKinesisDestinationPtrOutputWithContext(ctx context.Context) EventDestinationKinesisDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventDestinationKinesisDestinationOutput).ToEventDestinationKinesisDestinationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventDestinationKinesisDestinationOutput).ToEventDestinationKinesisDestinationPtrOutput()
 }
 
 // EventDestinationKinesisDestinationPtrInput is an input type that accepts EventDestinationKinesisDestinationArgs, EventDestinationKinesisDestinationPtr and EventDestinationKinesisDestinationPtrOutput values.
@@ -200,7 +200,7 @@ func (i *eventDestinationKinesisDestinationPtrType) ToEventDestinationKinesisDes
 }
 
 func (i *eventDestinationKinesisDestinationPtrType) ToEventDestinationKinesisDestinationPtrOutputWithContext(ctx context.Context) EventDestinationKinesisDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventDestinationKinesisDestinationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventDestinationKinesisDestinationOutput).ToEventDestinationKinesisDestinationPtrOutput()
 }
 
 type EventDestinationKinesisDestinationOutput struct{ *pulumi.OutputState }
@@ -313,7 +313,7 @@ func (i EventDestinationSnsDestinationArgs) ToEventDestinationSnsDestinationPtrO
 }
 
 func (i EventDestinationSnsDestinationArgs) ToEventDestinationSnsDestinationPtrOutputWithContext(ctx context.Context) EventDestinationSnsDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventDestinationSnsDestinationOutput).ToEventDestinationSnsDestinationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventDestinationSnsDestinationOutput).ToEventDestinationSnsDestinationPtrOutput()
 }
 
 // EventDestinationSnsDestinationPtrInput is an input type that accepts EventDestinationSnsDestinationArgs, EventDestinationSnsDestinationPtr and EventDestinationSnsDestinationPtrOutput values.
@@ -346,7 +346,7 @@ func (i *eventDestinationSnsDestinationPtrType) ToEventDestinationSnsDestination
 }
 
 func (i *eventDestinationSnsDestinationPtrType) ToEventDestinationSnsDestinationPtrOutputWithContext(ctx context.Context) EventDestinationSnsDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventDestinationSnsDestinationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventDestinationSnsDestinationOutput).ToEventDestinationSnsDestinationPtrOutput()
 }
 
 type EventDestinationSnsDestinationOutput struct{ *pulumi.OutputState }

@@ -253,16 +253,31 @@ type NetworkAclRuleInput interface {
 	ToNetworkAclRuleOutputWithContext(ctx context.Context) NetworkAclRuleOutput
 }
 
-func (NetworkAclRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkAclRule)(nil)).Elem()
+func (*NetworkAclRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAclRule)(nil))
 }
 
-func (i NetworkAclRule) ToNetworkAclRuleOutput() NetworkAclRuleOutput {
+func (i *NetworkAclRule) ToNetworkAclRuleOutput() NetworkAclRuleOutput {
 	return i.ToNetworkAclRuleOutputWithContext(context.Background())
 }
 
-func (i NetworkAclRule) ToNetworkAclRuleOutputWithContext(ctx context.Context) NetworkAclRuleOutput {
+func (i *NetworkAclRule) ToNetworkAclRuleOutputWithContext(ctx context.Context) NetworkAclRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclRuleOutput)
+}
+
+func (i *NetworkAclRule) ToNetworkAclRulePtrOutput() NetworkAclRulePtrOutput {
+	return i.ToNetworkAclRulePtrOutputWithContext(context.Background())
+}
+
+func (i *NetworkAclRule) ToNetworkAclRulePtrOutputWithContext(ctx context.Context) NetworkAclRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAclRulePtrOutput)
+}
+
+type NetworkAclRulePtrInput interface {
+	pulumi.Input
+
+	ToNetworkAclRulePtrOutput() NetworkAclRulePtrOutput
+	ToNetworkAclRulePtrOutputWithContext(ctx context.Context) NetworkAclRulePtrOutput
 }
 
 type NetworkAclRuleOutput struct {
@@ -270,7 +285,7 @@ type NetworkAclRuleOutput struct {
 }
 
 func (NetworkAclRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkAclRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*NetworkAclRule)(nil))
 }
 
 func (o NetworkAclRuleOutput) ToNetworkAclRuleOutput() NetworkAclRuleOutput {
@@ -281,6 +296,23 @@ func (o NetworkAclRuleOutput) ToNetworkAclRuleOutputWithContext(ctx context.Cont
 	return o
 }
 
+type NetworkAclRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkAclRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkAclRule)(nil))
+}
+
+func (o NetworkAclRulePtrOutput) ToNetworkAclRulePtrOutput() NetworkAclRulePtrOutput {
+	return o
+}
+
+func (o NetworkAclRulePtrOutput) ToNetworkAclRulePtrOutputWithContext(ctx context.Context) NetworkAclRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NetworkAclRuleOutput{})
+	pulumi.RegisterOutputType(NetworkAclRulePtrOutput{})
 }

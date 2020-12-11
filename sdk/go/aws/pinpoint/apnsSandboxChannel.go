@@ -191,16 +191,31 @@ type ApnsSandboxChannelInput interface {
 	ToApnsSandboxChannelOutputWithContext(ctx context.Context) ApnsSandboxChannelOutput
 }
 
-func (ApnsSandboxChannel) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApnsSandboxChannel)(nil)).Elem()
+func (*ApnsSandboxChannel) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApnsSandboxChannel)(nil))
 }
 
-func (i ApnsSandboxChannel) ToApnsSandboxChannelOutput() ApnsSandboxChannelOutput {
+func (i *ApnsSandboxChannel) ToApnsSandboxChannelOutput() ApnsSandboxChannelOutput {
 	return i.ToApnsSandboxChannelOutputWithContext(context.Background())
 }
 
-func (i ApnsSandboxChannel) ToApnsSandboxChannelOutputWithContext(ctx context.Context) ApnsSandboxChannelOutput {
+func (i *ApnsSandboxChannel) ToApnsSandboxChannelOutputWithContext(ctx context.Context) ApnsSandboxChannelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApnsSandboxChannelOutput)
+}
+
+func (i *ApnsSandboxChannel) ToApnsSandboxChannelPtrOutput() ApnsSandboxChannelPtrOutput {
+	return i.ToApnsSandboxChannelPtrOutputWithContext(context.Background())
+}
+
+func (i *ApnsSandboxChannel) ToApnsSandboxChannelPtrOutputWithContext(ctx context.Context) ApnsSandboxChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApnsSandboxChannelPtrOutput)
+}
+
+type ApnsSandboxChannelPtrInput interface {
+	pulumi.Input
+
+	ToApnsSandboxChannelPtrOutput() ApnsSandboxChannelPtrOutput
+	ToApnsSandboxChannelPtrOutputWithContext(ctx context.Context) ApnsSandboxChannelPtrOutput
 }
 
 type ApnsSandboxChannelOutput struct {
@@ -208,7 +223,7 @@ type ApnsSandboxChannelOutput struct {
 }
 
 func (ApnsSandboxChannelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApnsSandboxChannelOutput)(nil)).Elem()
+	return reflect.TypeOf((*ApnsSandboxChannel)(nil))
 }
 
 func (o ApnsSandboxChannelOutput) ToApnsSandboxChannelOutput() ApnsSandboxChannelOutput {
@@ -219,6 +234,23 @@ func (o ApnsSandboxChannelOutput) ToApnsSandboxChannelOutputWithContext(ctx cont
 	return o
 }
 
+type ApnsSandboxChannelPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApnsSandboxChannelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApnsSandboxChannel)(nil))
+}
+
+func (o ApnsSandboxChannelPtrOutput) ToApnsSandboxChannelPtrOutput() ApnsSandboxChannelPtrOutput {
+	return o
+}
+
+func (o ApnsSandboxChannelPtrOutput) ToApnsSandboxChannelPtrOutputWithContext(ctx context.Context) ApnsSandboxChannelPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApnsSandboxChannelOutput{})
+	pulumi.RegisterOutputType(ApnsSandboxChannelPtrOutput{})
 }

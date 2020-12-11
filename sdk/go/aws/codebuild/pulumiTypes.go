@@ -80,7 +80,7 @@ func (i ProjectArtifactsArgs) ToProjectArtifactsPtrOutput() ProjectArtifactsPtrO
 }
 
 func (i ProjectArtifactsArgs) ToProjectArtifactsPtrOutputWithContext(ctx context.Context) ProjectArtifactsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectArtifactsOutput).ToProjectArtifactsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectArtifactsOutput).ToProjectArtifactsPtrOutput()
 }
 
 // ProjectArtifactsPtrInput is an input type that accepts ProjectArtifactsArgs, ProjectArtifactsPtr and ProjectArtifactsPtrOutput values.
@@ -113,7 +113,7 @@ func (i *projectArtifactsPtrType) ToProjectArtifactsPtrOutput() ProjectArtifacts
 }
 
 func (i *projectArtifactsPtrType) ToProjectArtifactsPtrOutputWithContext(ctx context.Context) ProjectArtifactsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectArtifactsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectArtifactsOutput).ToProjectArtifactsPtrOutput()
 }
 
 type ProjectArtifactsOutput struct{ *pulumi.OutputState }
@@ -339,7 +339,7 @@ func (i ProjectCacheArgs) ToProjectCachePtrOutput() ProjectCachePtrOutput {
 }
 
 func (i ProjectCacheArgs) ToProjectCachePtrOutputWithContext(ctx context.Context) ProjectCachePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectCacheOutput).ToProjectCachePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectCacheOutput).ToProjectCachePtrOutput()
 }
 
 // ProjectCachePtrInput is an input type that accepts ProjectCacheArgs, ProjectCachePtr and ProjectCachePtrOutput values.
@@ -372,7 +372,7 @@ func (i *projectCachePtrType) ToProjectCachePtrOutput() ProjectCachePtrOutput {
 }
 
 func (i *projectCachePtrType) ToProjectCachePtrOutputWithContext(ctx context.Context) ProjectCachePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectCachePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectCacheOutput).ToProjectCachePtrOutput()
 }
 
 type ProjectCacheOutput struct{ *pulumi.OutputState }
@@ -528,7 +528,7 @@ func (i ProjectEnvironmentArgs) ToProjectEnvironmentPtrOutput() ProjectEnvironme
 }
 
 func (i ProjectEnvironmentArgs) ToProjectEnvironmentPtrOutputWithContext(ctx context.Context) ProjectEnvironmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectEnvironmentOutput).ToProjectEnvironmentPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectEnvironmentOutput).ToProjectEnvironmentPtrOutput()
 }
 
 // ProjectEnvironmentPtrInput is an input type that accepts ProjectEnvironmentArgs, ProjectEnvironmentPtr and ProjectEnvironmentPtrOutput values.
@@ -561,7 +561,7 @@ func (i *projectEnvironmentPtrType) ToProjectEnvironmentPtrOutput() ProjectEnvir
 }
 
 func (i *projectEnvironmentPtrType) ToProjectEnvironmentPtrOutputWithContext(ctx context.Context) ProjectEnvironmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectEnvironmentPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectEnvironmentOutput).ToProjectEnvironmentPtrOutput()
 }
 
 type ProjectEnvironmentOutput struct{ *pulumi.OutputState }
@@ -883,7 +883,7 @@ func (i ProjectEnvironmentRegistryCredentialArgs) ToProjectEnvironmentRegistryCr
 }
 
 func (i ProjectEnvironmentRegistryCredentialArgs) ToProjectEnvironmentRegistryCredentialPtrOutputWithContext(ctx context.Context) ProjectEnvironmentRegistryCredentialPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectEnvironmentRegistryCredentialOutput).ToProjectEnvironmentRegistryCredentialPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectEnvironmentRegistryCredentialOutput).ToProjectEnvironmentRegistryCredentialPtrOutput()
 }
 
 // ProjectEnvironmentRegistryCredentialPtrInput is an input type that accepts ProjectEnvironmentRegistryCredentialArgs, ProjectEnvironmentRegistryCredentialPtr and ProjectEnvironmentRegistryCredentialPtrOutput values.
@@ -916,7 +916,7 @@ func (i *projectEnvironmentRegistryCredentialPtrType) ToProjectEnvironmentRegist
 }
 
 func (i *projectEnvironmentRegistryCredentialPtrType) ToProjectEnvironmentRegistryCredentialPtrOutputWithContext(ctx context.Context) ProjectEnvironmentRegistryCredentialPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectEnvironmentRegistryCredentialPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectEnvironmentRegistryCredentialOutput).ToProjectEnvironmentRegistryCredentialPtrOutput()
 }
 
 type ProjectEnvironmentRegistryCredentialOutput struct{ *pulumi.OutputState }
@@ -1033,7 +1033,7 @@ func (i ProjectLogsConfigArgs) ToProjectLogsConfigPtrOutput() ProjectLogsConfigP
 }
 
 func (i ProjectLogsConfigArgs) ToProjectLogsConfigPtrOutputWithContext(ctx context.Context) ProjectLogsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectLogsConfigOutput).ToProjectLogsConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectLogsConfigOutput).ToProjectLogsConfigPtrOutput()
 }
 
 // ProjectLogsConfigPtrInput is an input type that accepts ProjectLogsConfigArgs, ProjectLogsConfigPtr and ProjectLogsConfigPtrOutput values.
@@ -1066,7 +1066,7 @@ func (i *projectLogsConfigPtrType) ToProjectLogsConfigPtrOutput() ProjectLogsCon
 }
 
 func (i *projectLogsConfigPtrType) ToProjectLogsConfigPtrOutputWithContext(ctx context.Context) ProjectLogsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectLogsConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectLogsConfigOutput).ToProjectLogsConfigPtrOutput()
 }
 
 type ProjectLogsConfigOutput struct{ *pulumi.OutputState }
@@ -1187,7 +1187,7 @@ func (i ProjectLogsConfigCloudwatchLogsArgs) ToProjectLogsConfigCloudwatchLogsPt
 }
 
 func (i ProjectLogsConfigCloudwatchLogsArgs) ToProjectLogsConfigCloudwatchLogsPtrOutputWithContext(ctx context.Context) ProjectLogsConfigCloudwatchLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectLogsConfigCloudwatchLogsOutput).ToProjectLogsConfigCloudwatchLogsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectLogsConfigCloudwatchLogsOutput).ToProjectLogsConfigCloudwatchLogsPtrOutput()
 }
 
 // ProjectLogsConfigCloudwatchLogsPtrInput is an input type that accepts ProjectLogsConfigCloudwatchLogsArgs, ProjectLogsConfigCloudwatchLogsPtr and ProjectLogsConfigCloudwatchLogsPtrOutput values.
@@ -1220,7 +1220,7 @@ func (i *projectLogsConfigCloudwatchLogsPtrType) ToProjectLogsConfigCloudwatchLo
 }
 
 func (i *projectLogsConfigCloudwatchLogsPtrType) ToProjectLogsConfigCloudwatchLogsPtrOutputWithContext(ctx context.Context) ProjectLogsConfigCloudwatchLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectLogsConfigCloudwatchLogsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectLogsConfigCloudwatchLogsOutput).ToProjectLogsConfigCloudwatchLogsPtrOutput()
 }
 
 type ProjectLogsConfigCloudwatchLogsOutput struct{ *pulumi.OutputState }
@@ -1356,7 +1356,7 @@ func (i ProjectLogsConfigS3LogsArgs) ToProjectLogsConfigS3LogsPtrOutput() Projec
 }
 
 func (i ProjectLogsConfigS3LogsArgs) ToProjectLogsConfigS3LogsPtrOutputWithContext(ctx context.Context) ProjectLogsConfigS3LogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectLogsConfigS3LogsOutput).ToProjectLogsConfigS3LogsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectLogsConfigS3LogsOutput).ToProjectLogsConfigS3LogsPtrOutput()
 }
 
 // ProjectLogsConfigS3LogsPtrInput is an input type that accepts ProjectLogsConfigS3LogsArgs, ProjectLogsConfigS3LogsPtr and ProjectLogsConfigS3LogsPtrOutput values.
@@ -1389,7 +1389,7 @@ func (i *projectLogsConfigS3LogsPtrType) ToProjectLogsConfigS3LogsPtrOutput() Pr
 }
 
 func (i *projectLogsConfigS3LogsPtrType) ToProjectLogsConfigS3LogsPtrOutputWithContext(ctx context.Context) ProjectLogsConfigS3LogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectLogsConfigS3LogsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectLogsConfigS3LogsOutput).ToProjectLogsConfigS3LogsPtrOutput()
 }
 
 type ProjectLogsConfigS3LogsOutput struct{ *pulumi.OutputState }
@@ -1963,7 +1963,7 @@ func (i ProjectSecondarySourceGitSubmodulesConfigArgs) ToProjectSecondarySourceG
 }
 
 func (i ProjectSecondarySourceGitSubmodulesConfigArgs) ToProjectSecondarySourceGitSubmodulesConfigPtrOutputWithContext(ctx context.Context) ProjectSecondarySourceGitSubmodulesConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectSecondarySourceGitSubmodulesConfigOutput).ToProjectSecondarySourceGitSubmodulesConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectSecondarySourceGitSubmodulesConfigOutput).ToProjectSecondarySourceGitSubmodulesConfigPtrOutput()
 }
 
 // ProjectSecondarySourceGitSubmodulesConfigPtrInput is an input type that accepts ProjectSecondarySourceGitSubmodulesConfigArgs, ProjectSecondarySourceGitSubmodulesConfigPtr and ProjectSecondarySourceGitSubmodulesConfigPtrOutput values.
@@ -1996,7 +1996,7 @@ func (i *projectSecondarySourceGitSubmodulesConfigPtrType) ToProjectSecondarySou
 }
 
 func (i *projectSecondarySourceGitSubmodulesConfigPtrType) ToProjectSecondarySourceGitSubmodulesConfigPtrOutputWithContext(ctx context.Context) ProjectSecondarySourceGitSubmodulesConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectSecondarySourceGitSubmodulesConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectSecondarySourceGitSubmodulesConfigOutput).ToProjectSecondarySourceGitSubmodulesConfigPtrOutput()
 }
 
 type ProjectSecondarySourceGitSubmodulesConfigOutput struct{ *pulumi.OutputState }
@@ -2124,7 +2124,7 @@ func (i ProjectSourceArgs) ToProjectSourcePtrOutput() ProjectSourcePtrOutput {
 }
 
 func (i ProjectSourceArgs) ToProjectSourcePtrOutputWithContext(ctx context.Context) ProjectSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectSourceOutput).ToProjectSourcePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectSourceOutput).ToProjectSourcePtrOutput()
 }
 
 // ProjectSourcePtrInput is an input type that accepts ProjectSourceArgs, ProjectSourcePtr and ProjectSourcePtrOutput values.
@@ -2157,7 +2157,7 @@ func (i *projectSourcePtrType) ToProjectSourcePtrOutput() ProjectSourcePtrOutput
 }
 
 func (i *projectSourcePtrType) ToProjectSourcePtrOutputWithContext(ctx context.Context) ProjectSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectSourcePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectSourceOutput).ToProjectSourcePtrOutput()
 }
 
 type ProjectSourceOutput struct{ *pulumi.OutputState }
@@ -2466,7 +2466,7 @@ func (i ProjectSourceGitSubmodulesConfigArgs) ToProjectSourceGitSubmodulesConfig
 }
 
 func (i ProjectSourceGitSubmodulesConfigArgs) ToProjectSourceGitSubmodulesConfigPtrOutputWithContext(ctx context.Context) ProjectSourceGitSubmodulesConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectSourceGitSubmodulesConfigOutput).ToProjectSourceGitSubmodulesConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectSourceGitSubmodulesConfigOutput).ToProjectSourceGitSubmodulesConfigPtrOutput()
 }
 
 // ProjectSourceGitSubmodulesConfigPtrInput is an input type that accepts ProjectSourceGitSubmodulesConfigArgs, ProjectSourceGitSubmodulesConfigPtr and ProjectSourceGitSubmodulesConfigPtrOutput values.
@@ -2499,7 +2499,7 @@ func (i *projectSourceGitSubmodulesConfigPtrType) ToProjectSourceGitSubmodulesCo
 }
 
 func (i *projectSourceGitSubmodulesConfigPtrType) ToProjectSourceGitSubmodulesConfigPtrOutputWithContext(ctx context.Context) ProjectSourceGitSubmodulesConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectSourceGitSubmodulesConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectSourceGitSubmodulesConfigOutput).ToProjectSourceGitSubmodulesConfigPtrOutput()
 }
 
 type ProjectSourceGitSubmodulesConfigOutput struct{ *pulumi.OutputState }
@@ -2605,7 +2605,7 @@ func (i ProjectVpcConfigArgs) ToProjectVpcConfigPtrOutput() ProjectVpcConfigPtrO
 }
 
 func (i ProjectVpcConfigArgs) ToProjectVpcConfigPtrOutputWithContext(ctx context.Context) ProjectVpcConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectVpcConfigOutput).ToProjectVpcConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectVpcConfigOutput).ToProjectVpcConfigPtrOutput()
 }
 
 // ProjectVpcConfigPtrInput is an input type that accepts ProjectVpcConfigArgs, ProjectVpcConfigPtr and ProjectVpcConfigPtrOutput values.
@@ -2638,7 +2638,7 @@ func (i *projectVpcConfigPtrType) ToProjectVpcConfigPtrOutput() ProjectVpcConfig
 }
 
 func (i *projectVpcConfigPtrType) ToProjectVpcConfigPtrOutputWithContext(ctx context.Context) ProjectVpcConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProjectVpcConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectVpcConfigOutput).ToProjectVpcConfigPtrOutput()
 }
 
 type ProjectVpcConfigOutput struct{ *pulumi.OutputState }
@@ -2770,7 +2770,7 @@ func (i ReportGroupExportConfigArgs) ToReportGroupExportConfigPtrOutput() Report
 }
 
 func (i ReportGroupExportConfigArgs) ToReportGroupExportConfigPtrOutputWithContext(ctx context.Context) ReportGroupExportConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReportGroupExportConfigOutput).ToReportGroupExportConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ReportGroupExportConfigOutput).ToReportGroupExportConfigPtrOutput()
 }
 
 // ReportGroupExportConfigPtrInput is an input type that accepts ReportGroupExportConfigArgs, ReportGroupExportConfigPtr and ReportGroupExportConfigPtrOutput values.
@@ -2803,7 +2803,7 @@ func (i *reportGroupExportConfigPtrType) ToReportGroupExportConfigPtrOutput() Re
 }
 
 func (i *reportGroupExportConfigPtrType) ToReportGroupExportConfigPtrOutputWithContext(ctx context.Context) ReportGroupExportConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReportGroupExportConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ReportGroupExportConfigOutput).ToReportGroupExportConfigPtrOutput()
 }
 
 type ReportGroupExportConfigOutput struct{ *pulumi.OutputState }
@@ -2934,7 +2934,7 @@ func (i ReportGroupExportConfigS3DestinationArgs) ToReportGroupExportConfigS3Des
 }
 
 func (i ReportGroupExportConfigS3DestinationArgs) ToReportGroupExportConfigS3DestinationPtrOutputWithContext(ctx context.Context) ReportGroupExportConfigS3DestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReportGroupExportConfigS3DestinationOutput).ToReportGroupExportConfigS3DestinationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ReportGroupExportConfigS3DestinationOutput).ToReportGroupExportConfigS3DestinationPtrOutput()
 }
 
 // ReportGroupExportConfigS3DestinationPtrInput is an input type that accepts ReportGroupExportConfigS3DestinationArgs, ReportGroupExportConfigS3DestinationPtr and ReportGroupExportConfigS3DestinationPtrOutput values.
@@ -2967,7 +2967,7 @@ func (i *reportGroupExportConfigS3DestinationPtrType) ToReportGroupExportConfigS
 }
 
 func (i *reportGroupExportConfigS3DestinationPtrType) ToReportGroupExportConfigS3DestinationPtrOutputWithContext(ctx context.Context) ReportGroupExportConfigS3DestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ReportGroupExportConfigS3DestinationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ReportGroupExportConfigS3DestinationOutput).ToReportGroupExportConfigS3DestinationPtrOutput()
 }
 
 type ReportGroupExportConfigS3DestinationOutput struct{ *pulumi.OutputState }
