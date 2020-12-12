@@ -222,16 +222,31 @@ type FunctionInput interface {
 	ToFunctionOutputWithContext(ctx context.Context) FunctionOutput
 }
 
-func (Function) ElementType() reflect.Type {
-	return reflect.TypeOf((*Function)(nil)).Elem()
+func (*Function) ElementType() reflect.Type {
+	return reflect.TypeOf((*Function)(nil))
 }
 
-func (i Function) ToFunctionOutput() FunctionOutput {
+func (i *Function) ToFunctionOutput() FunctionOutput {
 	return i.ToFunctionOutputWithContext(context.Background())
 }
 
-func (i Function) ToFunctionOutputWithContext(ctx context.Context) FunctionOutput {
+func (i *Function) ToFunctionOutputWithContext(ctx context.Context) FunctionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionOutput)
+}
+
+func (i *Function) ToFunctionPtrOutput() FunctionPtrOutput {
+	return i.ToFunctionPtrOutputWithContext(context.Background())
+}
+
+func (i *Function) ToFunctionPtrOutputWithContext(ctx context.Context) FunctionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionPtrOutput)
+}
+
+type FunctionPtrInput interface {
+	pulumi.Input
+
+	ToFunctionPtrOutput() FunctionPtrOutput
+	ToFunctionPtrOutputWithContext(ctx context.Context) FunctionPtrOutput
 }
 
 type FunctionOutput struct {
@@ -239,7 +254,7 @@ type FunctionOutput struct {
 }
 
 func (FunctionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FunctionOutput)(nil)).Elem()
+	return reflect.TypeOf((*Function)(nil))
 }
 
 func (o FunctionOutput) ToFunctionOutput() FunctionOutput {
@@ -250,6 +265,23 @@ func (o FunctionOutput) ToFunctionOutputWithContext(ctx context.Context) Functio
 	return o
 }
 
+type FunctionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FunctionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Function)(nil))
+}
+
+func (o FunctionPtrOutput) ToFunctionPtrOutput() FunctionPtrOutput {
+	return o
+}
+
+func (o FunctionPtrOutput) ToFunctionPtrOutputWithContext(ctx context.Context) FunctionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(FunctionOutput{})
+	pulumi.RegisterOutputType(FunctionPtrOutput{})
 }

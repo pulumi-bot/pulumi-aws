@@ -56,7 +56,7 @@ func (i S3BucketAssociationClassificationTypeArgs) ToS3BucketAssociationClassifi
 }
 
 func (i S3BucketAssociationClassificationTypeArgs) ToS3BucketAssociationClassificationTypePtrOutputWithContext(ctx context.Context) S3BucketAssociationClassificationTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(S3BucketAssociationClassificationTypeOutput).ToS3BucketAssociationClassificationTypePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(S3BucketAssociationClassificationTypeOutput).ToS3BucketAssociationClassificationTypePtrOutput()
 }
 
 // S3BucketAssociationClassificationTypePtrInput is an input type that accepts S3BucketAssociationClassificationTypeArgs, S3BucketAssociationClassificationTypePtr and S3BucketAssociationClassificationTypePtrOutput values.
@@ -89,7 +89,7 @@ func (i *s3bucketAssociationClassificationTypePtrType) ToS3BucketAssociationClas
 }
 
 func (i *s3bucketAssociationClassificationTypePtrType) ToS3BucketAssociationClassificationTypePtrOutputWithContext(ctx context.Context) S3BucketAssociationClassificationTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(S3BucketAssociationClassificationTypePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(S3BucketAssociationClassificationTypeOutput).ToS3BucketAssociationClassificationTypePtrOutput()
 }
 
 type S3BucketAssociationClassificationTypeOutput struct{ *pulumi.OutputState }

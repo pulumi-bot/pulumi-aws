@@ -358,16 +358,31 @@ type EventSourceMappingInput interface {
 	ToEventSourceMappingOutputWithContext(ctx context.Context) EventSourceMappingOutput
 }
 
-func (EventSourceMapping) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventSourceMapping)(nil)).Elem()
+func (*EventSourceMapping) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventSourceMapping)(nil))
 }
 
-func (i EventSourceMapping) ToEventSourceMappingOutput() EventSourceMappingOutput {
+func (i *EventSourceMapping) ToEventSourceMappingOutput() EventSourceMappingOutput {
 	return i.ToEventSourceMappingOutputWithContext(context.Background())
 }
 
-func (i EventSourceMapping) ToEventSourceMappingOutputWithContext(ctx context.Context) EventSourceMappingOutput {
+func (i *EventSourceMapping) ToEventSourceMappingOutputWithContext(ctx context.Context) EventSourceMappingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingOutput)
+}
+
+func (i *EventSourceMapping) ToEventSourceMappingPtrOutput() EventSourceMappingPtrOutput {
+	return i.ToEventSourceMappingPtrOutputWithContext(context.Background())
+}
+
+func (i *EventSourceMapping) ToEventSourceMappingPtrOutputWithContext(ctx context.Context) EventSourceMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingPtrOutput)
+}
+
+type EventSourceMappingPtrInput interface {
+	pulumi.Input
+
+	ToEventSourceMappingPtrOutput() EventSourceMappingPtrOutput
+	ToEventSourceMappingPtrOutputWithContext(ctx context.Context) EventSourceMappingPtrOutput
 }
 
 type EventSourceMappingOutput struct {
@@ -375,7 +390,7 @@ type EventSourceMappingOutput struct {
 }
 
 func (EventSourceMappingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventSourceMappingOutput)(nil)).Elem()
+	return reflect.TypeOf((*EventSourceMapping)(nil))
 }
 
 func (o EventSourceMappingOutput) ToEventSourceMappingOutput() EventSourceMappingOutput {
@@ -386,6 +401,23 @@ func (o EventSourceMappingOutput) ToEventSourceMappingOutputWithContext(ctx cont
 	return o
 }
 
+type EventSourceMappingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventSourceMappingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventSourceMapping)(nil))
+}
+
+func (o EventSourceMappingPtrOutput) ToEventSourceMappingPtrOutput() EventSourceMappingPtrOutput {
+	return o
+}
+
+func (o EventSourceMappingPtrOutput) ToEventSourceMappingPtrOutputWithContext(ctx context.Context) EventSourceMappingPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EventSourceMappingOutput{})
+	pulumi.RegisterOutputType(EventSourceMappingPtrOutput{})
 }

@@ -169,16 +169,31 @@ type RouteResponseInput interface {
 	ToRouteResponseOutputWithContext(ctx context.Context) RouteResponseOutput
 }
 
-func (RouteResponse) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteResponse)(nil)).Elem()
+func (*RouteResponse) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteResponse)(nil))
 }
 
-func (i RouteResponse) ToRouteResponseOutput() RouteResponseOutput {
+func (i *RouteResponse) ToRouteResponseOutput() RouteResponseOutput {
 	return i.ToRouteResponseOutputWithContext(context.Background())
 }
 
-func (i RouteResponse) ToRouteResponseOutputWithContext(ctx context.Context) RouteResponseOutput {
+func (i *RouteResponse) ToRouteResponseOutputWithContext(ctx context.Context) RouteResponseOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouteResponseOutput)
+}
+
+func (i *RouteResponse) ToRouteResponsePtrOutput() RouteResponsePtrOutput {
+	return i.ToRouteResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *RouteResponse) ToRouteResponsePtrOutputWithContext(ctx context.Context) RouteResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteResponsePtrOutput)
+}
+
+type RouteResponsePtrInput interface {
+	pulumi.Input
+
+	ToRouteResponsePtrOutput() RouteResponsePtrOutput
+	ToRouteResponsePtrOutputWithContext(ctx context.Context) RouteResponsePtrOutput
 }
 
 type RouteResponseOutput struct {
@@ -186,7 +201,7 @@ type RouteResponseOutput struct {
 }
 
 func (RouteResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteResponseOutput)(nil)).Elem()
+	return reflect.TypeOf((*RouteResponse)(nil))
 }
 
 func (o RouteResponseOutput) ToRouteResponseOutput() RouteResponseOutput {
@@ -197,6 +212,23 @@ func (o RouteResponseOutput) ToRouteResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
+type RouteResponsePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouteResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteResponse)(nil))
+}
+
+func (o RouteResponsePtrOutput) ToRouteResponsePtrOutput() RouteResponsePtrOutput {
+	return o
+}
+
+func (o RouteResponsePtrOutput) ToRouteResponsePtrOutputWithContext(ctx context.Context) RouteResponsePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RouteResponseOutput{})
+	pulumi.RegisterOutputType(RouteResponsePtrOutput{})
 }

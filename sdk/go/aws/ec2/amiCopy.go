@@ -315,16 +315,31 @@ type AmiCopyInput interface {
 	ToAmiCopyOutputWithContext(ctx context.Context) AmiCopyOutput
 }
 
-func (AmiCopy) ElementType() reflect.Type {
-	return reflect.TypeOf((*AmiCopy)(nil)).Elem()
+func (*AmiCopy) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmiCopy)(nil))
 }
 
-func (i AmiCopy) ToAmiCopyOutput() AmiCopyOutput {
+func (i *AmiCopy) ToAmiCopyOutput() AmiCopyOutput {
 	return i.ToAmiCopyOutputWithContext(context.Background())
 }
 
-func (i AmiCopy) ToAmiCopyOutputWithContext(ctx context.Context) AmiCopyOutput {
+func (i *AmiCopy) ToAmiCopyOutputWithContext(ctx context.Context) AmiCopyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AmiCopyOutput)
+}
+
+func (i *AmiCopy) ToAmiCopyPtrOutput() AmiCopyPtrOutput {
+	return i.ToAmiCopyPtrOutputWithContext(context.Background())
+}
+
+func (i *AmiCopy) ToAmiCopyPtrOutputWithContext(ctx context.Context) AmiCopyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AmiCopyPtrOutput)
+}
+
+type AmiCopyPtrInput interface {
+	pulumi.Input
+
+	ToAmiCopyPtrOutput() AmiCopyPtrOutput
+	ToAmiCopyPtrOutputWithContext(ctx context.Context) AmiCopyPtrOutput
 }
 
 type AmiCopyOutput struct {
@@ -332,7 +347,7 @@ type AmiCopyOutput struct {
 }
 
 func (AmiCopyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AmiCopyOutput)(nil)).Elem()
+	return reflect.TypeOf((*AmiCopy)(nil))
 }
 
 func (o AmiCopyOutput) ToAmiCopyOutput() AmiCopyOutput {
@@ -343,6 +358,23 @@ func (o AmiCopyOutput) ToAmiCopyOutputWithContext(ctx context.Context) AmiCopyOu
 	return o
 }
 
+type AmiCopyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AmiCopyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AmiCopy)(nil))
+}
+
+func (o AmiCopyPtrOutput) ToAmiCopyPtrOutput() AmiCopyPtrOutput {
+	return o
+}
+
+func (o AmiCopyPtrOutput) ToAmiCopyPtrOutputWithContext(ctx context.Context) AmiCopyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AmiCopyOutput{})
+	pulumi.RegisterOutputType(AmiCopyPtrOutput{})
 }

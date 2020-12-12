@@ -150,16 +150,31 @@ type IdentityPolicyInput interface {
 	ToIdentityPolicyOutputWithContext(ctx context.Context) IdentityPolicyOutput
 }
 
-func (IdentityPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityPolicy)(nil)).Elem()
+func (*IdentityPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPolicy)(nil))
 }
 
-func (i IdentityPolicy) ToIdentityPolicyOutput() IdentityPolicyOutput {
+func (i *IdentityPolicy) ToIdentityPolicyOutput() IdentityPolicyOutput {
 	return i.ToIdentityPolicyOutputWithContext(context.Background())
 }
 
-func (i IdentityPolicy) ToIdentityPolicyOutputWithContext(ctx context.Context) IdentityPolicyOutput {
+func (i *IdentityPolicy) ToIdentityPolicyOutputWithContext(ctx context.Context) IdentityPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPolicyOutput)
+}
+
+func (i *IdentityPolicy) ToIdentityPolicyPtrOutput() IdentityPolicyPtrOutput {
+	return i.ToIdentityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *IdentityPolicy) ToIdentityPolicyPtrOutputWithContext(ctx context.Context) IdentityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPolicyPtrOutput)
+}
+
+type IdentityPolicyPtrInput interface {
+	pulumi.Input
+
+	ToIdentityPolicyPtrOutput() IdentityPolicyPtrOutput
+	ToIdentityPolicyPtrOutputWithContext(ctx context.Context) IdentityPolicyPtrOutput
 }
 
 type IdentityPolicyOutput struct {
@@ -167,7 +182,7 @@ type IdentityPolicyOutput struct {
 }
 
 func (IdentityPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*IdentityPolicy)(nil))
 }
 
 func (o IdentityPolicyOutput) ToIdentityPolicyOutput() IdentityPolicyOutput {
@@ -178,6 +193,23 @@ func (o IdentityPolicyOutput) ToIdentityPolicyOutputWithContext(ctx context.Cont
 	return o
 }
 
+type IdentityPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityPolicy)(nil))
+}
+
+func (o IdentityPolicyPtrOutput) ToIdentityPolicyPtrOutput() IdentityPolicyPtrOutput {
+	return o
+}
+
+func (o IdentityPolicyPtrOutput) ToIdentityPolicyPtrOutputWithContext(ctx context.Context) IdentityPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(IdentityPolicyOutput{})
+	pulumi.RegisterOutputType(IdentityPolicyPtrOutput{})
 }

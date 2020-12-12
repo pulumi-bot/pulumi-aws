@@ -133,16 +133,31 @@ type ContainerInput interface {
 	ToContainerOutputWithContext(ctx context.Context) ContainerOutput
 }
 
-func (Container) ElementType() reflect.Type {
-	return reflect.TypeOf((*Container)(nil)).Elem()
+func (*Container) ElementType() reflect.Type {
+	return reflect.TypeOf((*Container)(nil))
 }
 
-func (i Container) ToContainerOutput() ContainerOutput {
+func (i *Container) ToContainerOutput() ContainerOutput {
 	return i.ToContainerOutputWithContext(context.Background())
 }
 
-func (i Container) ToContainerOutputWithContext(ctx context.Context) ContainerOutput {
+func (i *Container) ToContainerOutputWithContext(ctx context.Context) ContainerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerOutput)
+}
+
+func (i *Container) ToContainerPtrOutput() ContainerPtrOutput {
+	return i.ToContainerPtrOutputWithContext(context.Background())
+}
+
+func (i *Container) ToContainerPtrOutputWithContext(ctx context.Context) ContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerPtrOutput)
+}
+
+type ContainerPtrInput interface {
+	pulumi.Input
+
+	ToContainerPtrOutput() ContainerPtrOutput
+	ToContainerPtrOutputWithContext(ctx context.Context) ContainerPtrOutput
 }
 
 type ContainerOutput struct {
@@ -150,7 +165,7 @@ type ContainerOutput struct {
 }
 
 func (ContainerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerOutput)(nil)).Elem()
+	return reflect.TypeOf((*Container)(nil))
 }
 
 func (o ContainerOutput) ToContainerOutput() ContainerOutput {
@@ -161,6 +176,23 @@ func (o ContainerOutput) ToContainerOutputWithContext(ctx context.Context) Conta
 	return o
 }
 
+type ContainerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ContainerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Container)(nil))
+}
+
+func (o ContainerPtrOutput) ToContainerPtrOutput() ContainerPtrOutput {
+	return o
+}
+
+func (o ContainerPtrOutput) ToContainerPtrOutputWithContext(ctx context.Context) ContainerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ContainerOutput{})
+	pulumi.RegisterOutputType(ContainerPtrOutput{})
 }

@@ -175,16 +175,31 @@ type BucketMetricInput interface {
 	ToBucketMetricOutputWithContext(ctx context.Context) BucketMetricOutput
 }
 
-func (BucketMetric) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketMetric)(nil)).Elem()
+func (*BucketMetric) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketMetric)(nil))
 }
 
-func (i BucketMetric) ToBucketMetricOutput() BucketMetricOutput {
+func (i *BucketMetric) ToBucketMetricOutput() BucketMetricOutput {
 	return i.ToBucketMetricOutputWithContext(context.Background())
 }
 
-func (i BucketMetric) ToBucketMetricOutputWithContext(ctx context.Context) BucketMetricOutput {
+func (i *BucketMetric) ToBucketMetricOutputWithContext(ctx context.Context) BucketMetricOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketMetricOutput)
+}
+
+func (i *BucketMetric) ToBucketMetricPtrOutput() BucketMetricPtrOutput {
+	return i.ToBucketMetricPtrOutputWithContext(context.Background())
+}
+
+func (i *BucketMetric) ToBucketMetricPtrOutputWithContext(ctx context.Context) BucketMetricPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketMetricPtrOutput)
+}
+
+type BucketMetricPtrInput interface {
+	pulumi.Input
+
+	ToBucketMetricPtrOutput() BucketMetricPtrOutput
+	ToBucketMetricPtrOutputWithContext(ctx context.Context) BucketMetricPtrOutput
 }
 
 type BucketMetricOutput struct {
@@ -192,7 +207,7 @@ type BucketMetricOutput struct {
 }
 
 func (BucketMetricOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketMetricOutput)(nil)).Elem()
+	return reflect.TypeOf((*BucketMetric)(nil))
 }
 
 func (o BucketMetricOutput) ToBucketMetricOutput() BucketMetricOutput {
@@ -203,6 +218,23 @@ func (o BucketMetricOutput) ToBucketMetricOutputWithContext(ctx context.Context)
 	return o
 }
 
+type BucketMetricPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BucketMetricPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketMetric)(nil))
+}
+
+func (o BucketMetricPtrOutput) ToBucketMetricPtrOutput() BucketMetricPtrOutput {
+	return o
+}
+
+func (o BucketMetricPtrOutput) ToBucketMetricPtrOutputWithContext(ctx context.Context) BucketMetricPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(BucketMetricOutput{})
+	pulumi.RegisterOutputType(BucketMetricPtrOutput{})
 }

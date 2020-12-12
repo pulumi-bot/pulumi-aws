@@ -211,16 +211,31 @@ type SelectionInput interface {
 	ToSelectionOutputWithContext(ctx context.Context) SelectionOutput
 }
 
-func (Selection) ElementType() reflect.Type {
-	return reflect.TypeOf((*Selection)(nil)).Elem()
+func (*Selection) ElementType() reflect.Type {
+	return reflect.TypeOf((*Selection)(nil))
 }
 
-func (i Selection) ToSelectionOutput() SelectionOutput {
+func (i *Selection) ToSelectionOutput() SelectionOutput {
 	return i.ToSelectionOutputWithContext(context.Background())
 }
 
-func (i Selection) ToSelectionOutputWithContext(ctx context.Context) SelectionOutput {
+func (i *Selection) ToSelectionOutputWithContext(ctx context.Context) SelectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SelectionOutput)
+}
+
+func (i *Selection) ToSelectionPtrOutput() SelectionPtrOutput {
+	return i.ToSelectionPtrOutputWithContext(context.Background())
+}
+
+func (i *Selection) ToSelectionPtrOutputWithContext(ctx context.Context) SelectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SelectionPtrOutput)
+}
+
+type SelectionPtrInput interface {
+	pulumi.Input
+
+	ToSelectionPtrOutput() SelectionPtrOutput
+	ToSelectionPtrOutputWithContext(ctx context.Context) SelectionPtrOutput
 }
 
 type SelectionOutput struct {
@@ -228,7 +243,7 @@ type SelectionOutput struct {
 }
 
 func (SelectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SelectionOutput)(nil)).Elem()
+	return reflect.TypeOf((*Selection)(nil))
 }
 
 func (o SelectionOutput) ToSelectionOutput() SelectionOutput {
@@ -239,6 +254,23 @@ func (o SelectionOutput) ToSelectionOutputWithContext(ctx context.Context) Selec
 	return o
 }
 
+type SelectionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SelectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Selection)(nil))
+}
+
+func (o SelectionPtrOutput) ToSelectionPtrOutput() SelectionPtrOutput {
+	return o
+}
+
+func (o SelectionPtrOutput) ToSelectionPtrOutputWithContext(ctx context.Context) SelectionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SelectionOutput{})
+	pulumi.RegisterOutputType(SelectionPtrOutput{})
 }

@@ -64,7 +64,7 @@ func (i DirectorySelfServicePermissionsArgs) ToDirectorySelfServicePermissionsPt
 }
 
 func (i DirectorySelfServicePermissionsArgs) ToDirectorySelfServicePermissionsPtrOutputWithContext(ctx context.Context) DirectorySelfServicePermissionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DirectorySelfServicePermissionsOutput).ToDirectorySelfServicePermissionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DirectorySelfServicePermissionsOutput).ToDirectorySelfServicePermissionsPtrOutput()
 }
 
 // DirectorySelfServicePermissionsPtrInput is an input type that accepts DirectorySelfServicePermissionsArgs, DirectorySelfServicePermissionsPtr and DirectorySelfServicePermissionsPtrOutput values.
@@ -97,7 +97,7 @@ func (i *directorySelfServicePermissionsPtrType) ToDirectorySelfServicePermissio
 }
 
 func (i *directorySelfServicePermissionsPtrType) ToDirectorySelfServicePermissionsPtrOutputWithContext(ctx context.Context) DirectorySelfServicePermissionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DirectorySelfServicePermissionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DirectorySelfServicePermissionsOutput).ToDirectorySelfServicePermissionsPtrOutput()
 }
 
 type DirectorySelfServicePermissionsOutput struct{ *pulumi.OutputState }
@@ -271,7 +271,7 @@ func (i DirectoryWorkspaceCreationPropertiesArgs) ToDirectoryWorkspaceCreationPr
 }
 
 func (i DirectoryWorkspaceCreationPropertiesArgs) ToDirectoryWorkspaceCreationPropertiesPtrOutputWithContext(ctx context.Context) DirectoryWorkspaceCreationPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DirectoryWorkspaceCreationPropertiesOutput).ToDirectoryWorkspaceCreationPropertiesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryWorkspaceCreationPropertiesOutput).ToDirectoryWorkspaceCreationPropertiesPtrOutput()
 }
 
 // DirectoryWorkspaceCreationPropertiesPtrInput is an input type that accepts DirectoryWorkspaceCreationPropertiesArgs, DirectoryWorkspaceCreationPropertiesPtr and DirectoryWorkspaceCreationPropertiesPtrOutput values.
@@ -304,7 +304,7 @@ func (i *directoryWorkspaceCreationPropertiesPtrType) ToDirectoryWorkspaceCreati
 }
 
 func (i *directoryWorkspaceCreationPropertiesPtrType) ToDirectoryWorkspaceCreationPropertiesPtrOutputWithContext(ctx context.Context) DirectoryWorkspaceCreationPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DirectoryWorkspaceCreationPropertiesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryWorkspaceCreationPropertiesOutput).ToDirectoryWorkspaceCreationPropertiesPtrOutput()
 }
 
 type DirectoryWorkspaceCreationPropertiesOutput struct{ *pulumi.OutputState }
@@ -584,7 +584,7 @@ func (i WorkspaceWorkspacePropertiesArgs) ToWorkspaceWorkspacePropertiesPtrOutpu
 }
 
 func (i WorkspaceWorkspacePropertiesArgs) ToWorkspaceWorkspacePropertiesPtrOutputWithContext(ctx context.Context) WorkspaceWorkspacePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceWorkspacePropertiesOutput).ToWorkspaceWorkspacePropertiesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceWorkspacePropertiesOutput).ToWorkspaceWorkspacePropertiesPtrOutput()
 }
 
 // WorkspaceWorkspacePropertiesPtrInput is an input type that accepts WorkspaceWorkspacePropertiesArgs, WorkspaceWorkspacePropertiesPtr and WorkspaceWorkspacePropertiesPtrOutput values.
@@ -617,7 +617,7 @@ func (i *workspaceWorkspacePropertiesPtrType) ToWorkspaceWorkspacePropertiesPtrO
 }
 
 func (i *workspaceWorkspacePropertiesPtrType) ToWorkspaceWorkspacePropertiesPtrOutputWithContext(ctx context.Context) WorkspaceWorkspacePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceWorkspacePropertiesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceWorkspacePropertiesOutput).ToWorkspaceWorkspacePropertiesPtrOutput()
 }
 
 type WorkspaceWorkspacePropertiesOutput struct{ *pulumi.OutputState }

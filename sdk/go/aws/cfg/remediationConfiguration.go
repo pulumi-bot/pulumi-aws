@@ -212,16 +212,31 @@ type RemediationConfigurationInput interface {
 	ToRemediationConfigurationOutputWithContext(ctx context.Context) RemediationConfigurationOutput
 }
 
-func (RemediationConfiguration) ElementType() reflect.Type {
-	return reflect.TypeOf((*RemediationConfiguration)(nil)).Elem()
+func (*RemediationConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemediationConfiguration)(nil))
 }
 
-func (i RemediationConfiguration) ToRemediationConfigurationOutput() RemediationConfigurationOutput {
+func (i *RemediationConfiguration) ToRemediationConfigurationOutput() RemediationConfigurationOutput {
 	return i.ToRemediationConfigurationOutputWithContext(context.Background())
 }
 
-func (i RemediationConfiguration) ToRemediationConfigurationOutputWithContext(ctx context.Context) RemediationConfigurationOutput {
+func (i *RemediationConfiguration) ToRemediationConfigurationOutputWithContext(ctx context.Context) RemediationConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RemediationConfigurationOutput)
+}
+
+func (i *RemediationConfiguration) ToRemediationConfigurationPtrOutput() RemediationConfigurationPtrOutput {
+	return i.ToRemediationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *RemediationConfiguration) ToRemediationConfigurationPtrOutputWithContext(ctx context.Context) RemediationConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemediationConfigurationPtrOutput)
+}
+
+type RemediationConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToRemediationConfigurationPtrOutput() RemediationConfigurationPtrOutput
+	ToRemediationConfigurationPtrOutputWithContext(ctx context.Context) RemediationConfigurationPtrOutput
 }
 
 type RemediationConfigurationOutput struct {
@@ -229,7 +244,7 @@ type RemediationConfigurationOutput struct {
 }
 
 func (RemediationConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RemediationConfigurationOutput)(nil)).Elem()
+	return reflect.TypeOf((*RemediationConfiguration)(nil))
 }
 
 func (o RemediationConfigurationOutput) ToRemediationConfigurationOutput() RemediationConfigurationOutput {
@@ -240,6 +255,23 @@ func (o RemediationConfigurationOutput) ToRemediationConfigurationOutputWithCont
 	return o
 }
 
+type RemediationConfigurationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RemediationConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RemediationConfiguration)(nil))
+}
+
+func (o RemediationConfigurationPtrOutput) ToRemediationConfigurationPtrOutput() RemediationConfigurationPtrOutput {
+	return o
+}
+
+func (o RemediationConfigurationPtrOutput) ToRemediationConfigurationPtrOutputWithContext(ctx context.Context) RemediationConfigurationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RemediationConfigurationOutput{})
+	pulumi.RegisterOutputType(RemediationConfigurationPtrOutput{})
 }

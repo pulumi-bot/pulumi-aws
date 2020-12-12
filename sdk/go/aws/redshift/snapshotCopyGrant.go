@@ -154,16 +154,31 @@ type SnapshotCopyGrantInput interface {
 	ToSnapshotCopyGrantOutputWithContext(ctx context.Context) SnapshotCopyGrantOutput
 }
 
-func (SnapshotCopyGrant) ElementType() reflect.Type {
-	return reflect.TypeOf((*SnapshotCopyGrant)(nil)).Elem()
+func (*SnapshotCopyGrant) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotCopyGrant)(nil))
 }
 
-func (i SnapshotCopyGrant) ToSnapshotCopyGrantOutput() SnapshotCopyGrantOutput {
+func (i *SnapshotCopyGrant) ToSnapshotCopyGrantOutput() SnapshotCopyGrantOutput {
 	return i.ToSnapshotCopyGrantOutputWithContext(context.Background())
 }
 
-func (i SnapshotCopyGrant) ToSnapshotCopyGrantOutputWithContext(ctx context.Context) SnapshotCopyGrantOutput {
+func (i *SnapshotCopyGrant) ToSnapshotCopyGrantOutputWithContext(ctx context.Context) SnapshotCopyGrantOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SnapshotCopyGrantOutput)
+}
+
+func (i *SnapshotCopyGrant) ToSnapshotCopyGrantPtrOutput() SnapshotCopyGrantPtrOutput {
+	return i.ToSnapshotCopyGrantPtrOutputWithContext(context.Background())
+}
+
+func (i *SnapshotCopyGrant) ToSnapshotCopyGrantPtrOutputWithContext(ctx context.Context) SnapshotCopyGrantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotCopyGrantPtrOutput)
+}
+
+type SnapshotCopyGrantPtrInput interface {
+	pulumi.Input
+
+	ToSnapshotCopyGrantPtrOutput() SnapshotCopyGrantPtrOutput
+	ToSnapshotCopyGrantPtrOutputWithContext(ctx context.Context) SnapshotCopyGrantPtrOutput
 }
 
 type SnapshotCopyGrantOutput struct {
@@ -171,7 +186,7 @@ type SnapshotCopyGrantOutput struct {
 }
 
 func (SnapshotCopyGrantOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SnapshotCopyGrantOutput)(nil)).Elem()
+	return reflect.TypeOf((*SnapshotCopyGrant)(nil))
 }
 
 func (o SnapshotCopyGrantOutput) ToSnapshotCopyGrantOutput() SnapshotCopyGrantOutput {
@@ -182,6 +197,23 @@ func (o SnapshotCopyGrantOutput) ToSnapshotCopyGrantOutputWithContext(ctx contex
 	return o
 }
 
+type SnapshotCopyGrantPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SnapshotCopyGrantPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotCopyGrant)(nil))
+}
+
+func (o SnapshotCopyGrantPtrOutput) ToSnapshotCopyGrantPtrOutput() SnapshotCopyGrantPtrOutput {
+	return o
+}
+
+func (o SnapshotCopyGrantPtrOutput) ToSnapshotCopyGrantPtrOutputWithContext(ctx context.Context) SnapshotCopyGrantPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SnapshotCopyGrantOutput{})
+	pulumi.RegisterOutputType(SnapshotCopyGrantPtrOutput{})
 }

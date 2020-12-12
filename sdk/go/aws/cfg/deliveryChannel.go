@@ -194,16 +194,31 @@ type DeliveryChannelInput interface {
 	ToDeliveryChannelOutputWithContext(ctx context.Context) DeliveryChannelOutput
 }
 
-func (DeliveryChannel) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeliveryChannel)(nil)).Elem()
+func (*DeliveryChannel) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryChannel)(nil))
 }
 
-func (i DeliveryChannel) ToDeliveryChannelOutput() DeliveryChannelOutput {
+func (i *DeliveryChannel) ToDeliveryChannelOutput() DeliveryChannelOutput {
 	return i.ToDeliveryChannelOutputWithContext(context.Background())
 }
 
-func (i DeliveryChannel) ToDeliveryChannelOutputWithContext(ctx context.Context) DeliveryChannelOutput {
+func (i *DeliveryChannel) ToDeliveryChannelOutputWithContext(ctx context.Context) DeliveryChannelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelOutput)
+}
+
+func (i *DeliveryChannel) ToDeliveryChannelPtrOutput() DeliveryChannelPtrOutput {
+	return i.ToDeliveryChannelPtrOutputWithContext(context.Background())
+}
+
+func (i *DeliveryChannel) ToDeliveryChannelPtrOutputWithContext(ctx context.Context) DeliveryChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelPtrOutput)
+}
+
+type DeliveryChannelPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryChannelPtrOutput() DeliveryChannelPtrOutput
+	ToDeliveryChannelPtrOutputWithContext(ctx context.Context) DeliveryChannelPtrOutput
 }
 
 type DeliveryChannelOutput struct {
@@ -211,7 +226,7 @@ type DeliveryChannelOutput struct {
 }
 
 func (DeliveryChannelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeliveryChannelOutput)(nil)).Elem()
+	return reflect.TypeOf((*DeliveryChannel)(nil))
 }
 
 func (o DeliveryChannelOutput) ToDeliveryChannelOutput() DeliveryChannelOutput {
@@ -222,6 +237,23 @@ func (o DeliveryChannelOutput) ToDeliveryChannelOutputWithContext(ctx context.Co
 	return o
 }
 
+type DeliveryChannelPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DeliveryChannelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryChannel)(nil))
+}
+
+func (o DeliveryChannelPtrOutput) ToDeliveryChannelPtrOutput() DeliveryChannelPtrOutput {
+	return o
+}
+
+func (o DeliveryChannelPtrOutput) ToDeliveryChannelPtrOutputWithContext(ctx context.Context) DeliveryChannelPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DeliveryChannelOutput{})
+	pulumi.RegisterOutputType(DeliveryChannelPtrOutput{})
 }

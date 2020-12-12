@@ -150,16 +150,31 @@ type RoleAssociationInput interface {
 	ToRoleAssociationOutputWithContext(ctx context.Context) RoleAssociationOutput
 }
 
-func (RoleAssociation) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoleAssociation)(nil)).Elem()
+func (*RoleAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleAssociation)(nil))
 }
 
-func (i RoleAssociation) ToRoleAssociationOutput() RoleAssociationOutput {
+func (i *RoleAssociation) ToRoleAssociationOutput() RoleAssociationOutput {
 	return i.ToRoleAssociationOutputWithContext(context.Background())
 }
 
-func (i RoleAssociation) ToRoleAssociationOutputWithContext(ctx context.Context) RoleAssociationOutput {
+func (i *RoleAssociation) ToRoleAssociationOutputWithContext(ctx context.Context) RoleAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoleAssociationOutput)
+}
+
+func (i *RoleAssociation) ToRoleAssociationPtrOutput() RoleAssociationPtrOutput {
+	return i.ToRoleAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i *RoleAssociation) ToRoleAssociationPtrOutputWithContext(ctx context.Context) RoleAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleAssociationPtrOutput)
+}
+
+type RoleAssociationPtrInput interface {
+	pulumi.Input
+
+	ToRoleAssociationPtrOutput() RoleAssociationPtrOutput
+	ToRoleAssociationPtrOutputWithContext(ctx context.Context) RoleAssociationPtrOutput
 }
 
 type RoleAssociationOutput struct {
@@ -167,7 +182,7 @@ type RoleAssociationOutput struct {
 }
 
 func (RoleAssociationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoleAssociationOutput)(nil)).Elem()
+	return reflect.TypeOf((*RoleAssociation)(nil))
 }
 
 func (o RoleAssociationOutput) ToRoleAssociationOutput() RoleAssociationOutput {
@@ -178,6 +193,23 @@ func (o RoleAssociationOutput) ToRoleAssociationOutputWithContext(ctx context.Co
 	return o
 }
 
+type RoleAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RoleAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoleAssociation)(nil))
+}
+
+func (o RoleAssociationPtrOutput) ToRoleAssociationPtrOutput() RoleAssociationPtrOutput {
+	return o
+}
+
+func (o RoleAssociationPtrOutput) ToRoleAssociationPtrOutputWithContext(ctx context.Context) RoleAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RoleAssociationOutput{})
+	pulumi.RegisterOutputType(RoleAssociationPtrOutput{})
 }

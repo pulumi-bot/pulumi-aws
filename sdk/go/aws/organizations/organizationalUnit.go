@@ -139,16 +139,31 @@ type OrganizationalUnitInput interface {
 	ToOrganizationalUnitOutputWithContext(ctx context.Context) OrganizationalUnitOutput
 }
 
-func (OrganizationalUnit) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationalUnit)(nil)).Elem()
+func (*OrganizationalUnit) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationalUnit)(nil))
 }
 
-func (i OrganizationalUnit) ToOrganizationalUnitOutput() OrganizationalUnitOutput {
+func (i *OrganizationalUnit) ToOrganizationalUnitOutput() OrganizationalUnitOutput {
 	return i.ToOrganizationalUnitOutputWithContext(context.Background())
 }
 
-func (i OrganizationalUnit) ToOrganizationalUnitOutputWithContext(ctx context.Context) OrganizationalUnitOutput {
+func (i *OrganizationalUnit) ToOrganizationalUnitOutputWithContext(ctx context.Context) OrganizationalUnitOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationalUnitOutput)
+}
+
+func (i *OrganizationalUnit) ToOrganizationalUnitPtrOutput() OrganizationalUnitPtrOutput {
+	return i.ToOrganizationalUnitPtrOutputWithContext(context.Background())
+}
+
+func (i *OrganizationalUnit) ToOrganizationalUnitPtrOutputWithContext(ctx context.Context) OrganizationalUnitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationalUnitPtrOutput)
+}
+
+type OrganizationalUnitPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationalUnitPtrOutput() OrganizationalUnitPtrOutput
+	ToOrganizationalUnitPtrOutputWithContext(ctx context.Context) OrganizationalUnitPtrOutput
 }
 
 type OrganizationalUnitOutput struct {
@@ -156,7 +171,7 @@ type OrganizationalUnitOutput struct {
 }
 
 func (OrganizationalUnitOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationalUnitOutput)(nil)).Elem()
+	return reflect.TypeOf((*OrganizationalUnit)(nil))
 }
 
 func (o OrganizationalUnitOutput) ToOrganizationalUnitOutput() OrganizationalUnitOutput {
@@ -167,6 +182,23 @@ func (o OrganizationalUnitOutput) ToOrganizationalUnitOutputWithContext(ctx cont
 	return o
 }
 
+type OrganizationalUnitPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationalUnitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationalUnit)(nil))
+}
+
+func (o OrganizationalUnitPtrOutput) ToOrganizationalUnitPtrOutput() OrganizationalUnitPtrOutput {
+	return o
+}
+
+func (o OrganizationalUnitPtrOutput) ToOrganizationalUnitPtrOutputWithContext(ctx context.Context) OrganizationalUnitPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(OrganizationalUnitOutput{})
+	pulumi.RegisterOutputType(OrganizationalUnitPtrOutput{})
 }

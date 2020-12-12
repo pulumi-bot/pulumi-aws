@@ -252,16 +252,31 @@ type PlatformApplicationInput interface {
 	ToPlatformApplicationOutputWithContext(ctx context.Context) PlatformApplicationOutput
 }
 
-func (PlatformApplication) ElementType() reflect.Type {
-	return reflect.TypeOf((*PlatformApplication)(nil)).Elem()
+func (*PlatformApplication) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlatformApplication)(nil))
 }
 
-func (i PlatformApplication) ToPlatformApplicationOutput() PlatformApplicationOutput {
+func (i *PlatformApplication) ToPlatformApplicationOutput() PlatformApplicationOutput {
 	return i.ToPlatformApplicationOutputWithContext(context.Background())
 }
 
-func (i PlatformApplication) ToPlatformApplicationOutputWithContext(ctx context.Context) PlatformApplicationOutput {
+func (i *PlatformApplication) ToPlatformApplicationOutputWithContext(ctx context.Context) PlatformApplicationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PlatformApplicationOutput)
+}
+
+func (i *PlatformApplication) ToPlatformApplicationPtrOutput() PlatformApplicationPtrOutput {
+	return i.ToPlatformApplicationPtrOutputWithContext(context.Background())
+}
+
+func (i *PlatformApplication) ToPlatformApplicationPtrOutputWithContext(ctx context.Context) PlatformApplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlatformApplicationPtrOutput)
+}
+
+type PlatformApplicationPtrInput interface {
+	pulumi.Input
+
+	ToPlatformApplicationPtrOutput() PlatformApplicationPtrOutput
+	ToPlatformApplicationPtrOutputWithContext(ctx context.Context) PlatformApplicationPtrOutput
 }
 
 type PlatformApplicationOutput struct {
@@ -269,7 +284,7 @@ type PlatformApplicationOutput struct {
 }
 
 func (PlatformApplicationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PlatformApplicationOutput)(nil)).Elem()
+	return reflect.TypeOf((*PlatformApplication)(nil))
 }
 
 func (o PlatformApplicationOutput) ToPlatformApplicationOutput() PlatformApplicationOutput {
@@ -280,6 +295,23 @@ func (o PlatformApplicationOutput) ToPlatformApplicationOutputWithContext(ctx co
 	return o
 }
 
+type PlatformApplicationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PlatformApplicationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlatformApplication)(nil))
+}
+
+func (o PlatformApplicationPtrOutput) ToPlatformApplicationPtrOutput() PlatformApplicationPtrOutput {
+	return o
+}
+
+func (o PlatformApplicationPtrOutput) ToPlatformApplicationPtrOutputWithContext(ctx context.Context) PlatformApplicationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PlatformApplicationOutput{})
+	pulumi.RegisterOutputType(PlatformApplicationPtrOutput{})
 }

@@ -56,7 +56,7 @@ func (i DomainAdvancedSecurityOptionsArgs) ToDomainAdvancedSecurityOptionsPtrOut
 }
 
 func (i DomainAdvancedSecurityOptionsArgs) ToDomainAdvancedSecurityOptionsPtrOutputWithContext(ctx context.Context) DomainAdvancedSecurityOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainAdvancedSecurityOptionsOutput).ToDomainAdvancedSecurityOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainAdvancedSecurityOptionsOutput).ToDomainAdvancedSecurityOptionsPtrOutput()
 }
 
 // DomainAdvancedSecurityOptionsPtrInput is an input type that accepts DomainAdvancedSecurityOptionsArgs, DomainAdvancedSecurityOptionsPtr and DomainAdvancedSecurityOptionsPtrOutput values.
@@ -89,7 +89,7 @@ func (i *domainAdvancedSecurityOptionsPtrType) ToDomainAdvancedSecurityOptionsPt
 }
 
 func (i *domainAdvancedSecurityOptionsPtrType) ToDomainAdvancedSecurityOptionsPtrOutputWithContext(ctx context.Context) DomainAdvancedSecurityOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainAdvancedSecurityOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainAdvancedSecurityOptionsOutput).ToDomainAdvancedSecurityOptionsPtrOutput()
 }
 
 type DomainAdvancedSecurityOptionsOutput struct{ *pulumi.OutputState }
@@ -227,7 +227,7 @@ func (i DomainAdvancedSecurityOptionsMasterUserOptionsArgs) ToDomainAdvancedSecu
 }
 
 func (i DomainAdvancedSecurityOptionsMasterUserOptionsArgs) ToDomainAdvancedSecurityOptionsMasterUserOptionsPtrOutputWithContext(ctx context.Context) DomainAdvancedSecurityOptionsMasterUserOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainAdvancedSecurityOptionsMasterUserOptionsOutput).ToDomainAdvancedSecurityOptionsMasterUserOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainAdvancedSecurityOptionsMasterUserOptionsOutput).ToDomainAdvancedSecurityOptionsMasterUserOptionsPtrOutput()
 }
 
 // DomainAdvancedSecurityOptionsMasterUserOptionsPtrInput is an input type that accepts DomainAdvancedSecurityOptionsMasterUserOptionsArgs, DomainAdvancedSecurityOptionsMasterUserOptionsPtr and DomainAdvancedSecurityOptionsMasterUserOptionsPtrOutput values.
@@ -260,7 +260,7 @@ func (i *domainAdvancedSecurityOptionsMasterUserOptionsPtrType) ToDomainAdvanced
 }
 
 func (i *domainAdvancedSecurityOptionsMasterUserOptionsPtrType) ToDomainAdvancedSecurityOptionsMasterUserOptionsPtrOutputWithContext(ctx context.Context) DomainAdvancedSecurityOptionsMasterUserOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainAdvancedSecurityOptionsMasterUserOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainAdvancedSecurityOptionsMasterUserOptionsOutput).ToDomainAdvancedSecurityOptionsMasterUserOptionsPtrOutput()
 }
 
 type DomainAdvancedSecurityOptionsMasterUserOptionsOutput struct{ *pulumi.OutputState }
@@ -426,7 +426,7 @@ func (i DomainClusterConfigArgs) ToDomainClusterConfigPtrOutput() DomainClusterC
 }
 
 func (i DomainClusterConfigArgs) ToDomainClusterConfigPtrOutputWithContext(ctx context.Context) DomainClusterConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainClusterConfigOutput).ToDomainClusterConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainClusterConfigOutput).ToDomainClusterConfigPtrOutput()
 }
 
 // DomainClusterConfigPtrInput is an input type that accepts DomainClusterConfigArgs, DomainClusterConfigPtr and DomainClusterConfigPtrOutput values.
@@ -459,7 +459,7 @@ func (i *domainClusterConfigPtrType) ToDomainClusterConfigPtrOutput() DomainClus
 }
 
 func (i *domainClusterConfigPtrType) ToDomainClusterConfigPtrOutputWithContext(ctx context.Context) DomainClusterConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainClusterConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainClusterConfigOutput).ToDomainClusterConfigPtrOutput()
 }
 
 type DomainClusterConfigOutput struct{ *pulumi.OutputState }
@@ -692,7 +692,7 @@ func (i DomainClusterConfigZoneAwarenessConfigArgs) ToDomainClusterConfigZoneAwa
 }
 
 func (i DomainClusterConfigZoneAwarenessConfigArgs) ToDomainClusterConfigZoneAwarenessConfigPtrOutputWithContext(ctx context.Context) DomainClusterConfigZoneAwarenessConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainClusterConfigZoneAwarenessConfigOutput).ToDomainClusterConfigZoneAwarenessConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainClusterConfigZoneAwarenessConfigOutput).ToDomainClusterConfigZoneAwarenessConfigPtrOutput()
 }
 
 // DomainClusterConfigZoneAwarenessConfigPtrInput is an input type that accepts DomainClusterConfigZoneAwarenessConfigArgs, DomainClusterConfigZoneAwarenessConfigPtr and DomainClusterConfigZoneAwarenessConfigPtrOutput values.
@@ -725,7 +725,7 @@ func (i *domainClusterConfigZoneAwarenessConfigPtrType) ToDomainClusterConfigZon
 }
 
 func (i *domainClusterConfigZoneAwarenessConfigPtrType) ToDomainClusterConfigZoneAwarenessConfigPtrOutputWithContext(ctx context.Context) DomainClusterConfigZoneAwarenessConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainClusterConfigZoneAwarenessConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainClusterConfigZoneAwarenessConfigOutput).ToDomainClusterConfigZoneAwarenessConfigPtrOutput()
 }
 
 type DomainClusterConfigZoneAwarenessConfigOutput struct{ *pulumi.OutputState }
@@ -835,7 +835,7 @@ func (i DomainCognitoOptionsArgs) ToDomainCognitoOptionsPtrOutput() DomainCognit
 }
 
 func (i DomainCognitoOptionsArgs) ToDomainCognitoOptionsPtrOutputWithContext(ctx context.Context) DomainCognitoOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainCognitoOptionsOutput).ToDomainCognitoOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainCognitoOptionsOutput).ToDomainCognitoOptionsPtrOutput()
 }
 
 // DomainCognitoOptionsPtrInput is an input type that accepts DomainCognitoOptionsArgs, DomainCognitoOptionsPtr and DomainCognitoOptionsPtrOutput values.
@@ -868,7 +868,7 @@ func (i *domainCognitoOptionsPtrType) ToDomainCognitoOptionsPtrOutput() DomainCo
 }
 
 func (i *domainCognitoOptionsPtrType) ToDomainCognitoOptionsPtrOutputWithContext(ctx context.Context) DomainCognitoOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainCognitoOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainCognitoOptionsOutput).ToDomainCognitoOptionsPtrOutput()
 }
 
 type DomainCognitoOptionsOutput struct{ *pulumi.OutputState }
@@ -1015,7 +1015,7 @@ func (i DomainDomainEndpointOptionsArgs) ToDomainDomainEndpointOptionsPtrOutput(
 }
 
 func (i DomainDomainEndpointOptionsArgs) ToDomainDomainEndpointOptionsPtrOutputWithContext(ctx context.Context) DomainDomainEndpointOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainDomainEndpointOptionsOutput).ToDomainDomainEndpointOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainDomainEndpointOptionsOutput).ToDomainDomainEndpointOptionsPtrOutput()
 }
 
 // DomainDomainEndpointOptionsPtrInput is an input type that accepts DomainDomainEndpointOptionsArgs, DomainDomainEndpointOptionsPtr and DomainDomainEndpointOptionsPtrOutput values.
@@ -1048,7 +1048,7 @@ func (i *domainDomainEndpointOptionsPtrType) ToDomainDomainEndpointOptionsPtrOut
 }
 
 func (i *domainDomainEndpointOptionsPtrType) ToDomainDomainEndpointOptionsPtrOutputWithContext(ctx context.Context) DomainDomainEndpointOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainDomainEndpointOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainDomainEndpointOptionsOutput).ToDomainDomainEndpointOptionsPtrOutput()
 }
 
 type DomainDomainEndpointOptionsOutput struct{ *pulumi.OutputState }
@@ -1175,7 +1175,7 @@ func (i DomainEbsOptionsArgs) ToDomainEbsOptionsPtrOutput() DomainEbsOptionsPtrO
 }
 
 func (i DomainEbsOptionsArgs) ToDomainEbsOptionsPtrOutputWithContext(ctx context.Context) DomainEbsOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainEbsOptionsOutput).ToDomainEbsOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainEbsOptionsOutput).ToDomainEbsOptionsPtrOutput()
 }
 
 // DomainEbsOptionsPtrInput is an input type that accepts DomainEbsOptionsArgs, DomainEbsOptionsPtr and DomainEbsOptionsPtrOutput values.
@@ -1208,7 +1208,7 @@ func (i *domainEbsOptionsPtrType) ToDomainEbsOptionsPtrOutput() DomainEbsOptions
 }
 
 func (i *domainEbsOptionsPtrType) ToDomainEbsOptionsPtrOutputWithContext(ctx context.Context) DomainEbsOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainEbsOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainEbsOptionsOutput).ToDomainEbsOptionsPtrOutput()
 }
 
 type DomainEbsOptionsOutput struct{ *pulumi.OutputState }
@@ -1357,7 +1357,7 @@ func (i DomainEncryptAtRestArgs) ToDomainEncryptAtRestPtrOutput() DomainEncryptA
 }
 
 func (i DomainEncryptAtRestArgs) ToDomainEncryptAtRestPtrOutputWithContext(ctx context.Context) DomainEncryptAtRestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainEncryptAtRestOutput).ToDomainEncryptAtRestPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainEncryptAtRestOutput).ToDomainEncryptAtRestPtrOutput()
 }
 
 // DomainEncryptAtRestPtrInput is an input type that accepts DomainEncryptAtRestArgs, DomainEncryptAtRestPtr and DomainEncryptAtRestPtrOutput values.
@@ -1390,7 +1390,7 @@ func (i *domainEncryptAtRestPtrType) ToDomainEncryptAtRestPtrOutput() DomainEncr
 }
 
 func (i *domainEncryptAtRestPtrType) ToDomainEncryptAtRestPtrOutputWithContext(ctx context.Context) DomainEncryptAtRestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainEncryptAtRestPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainEncryptAtRestOutput).ToDomainEncryptAtRestPtrOutput()
 }
 
 type DomainEncryptAtRestOutput struct{ *pulumi.OutputState }
@@ -1618,7 +1618,7 @@ func (i DomainNodeToNodeEncryptionArgs) ToDomainNodeToNodeEncryptionPtrOutput() 
 }
 
 func (i DomainNodeToNodeEncryptionArgs) ToDomainNodeToNodeEncryptionPtrOutputWithContext(ctx context.Context) DomainNodeToNodeEncryptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainNodeToNodeEncryptionOutput).ToDomainNodeToNodeEncryptionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainNodeToNodeEncryptionOutput).ToDomainNodeToNodeEncryptionPtrOutput()
 }
 
 // DomainNodeToNodeEncryptionPtrInput is an input type that accepts DomainNodeToNodeEncryptionArgs, DomainNodeToNodeEncryptionPtr and DomainNodeToNodeEncryptionPtrOutput values.
@@ -1651,7 +1651,7 @@ func (i *domainNodeToNodeEncryptionPtrType) ToDomainNodeToNodeEncryptionPtrOutpu
 }
 
 func (i *domainNodeToNodeEncryptionPtrType) ToDomainNodeToNodeEncryptionPtrOutputWithContext(ctx context.Context) DomainNodeToNodeEncryptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainNodeToNodeEncryptionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainNodeToNodeEncryptionOutput).ToDomainNodeToNodeEncryptionPtrOutput()
 }
 
 type DomainNodeToNodeEncryptionOutput struct{ *pulumi.OutputState }
@@ -1749,7 +1749,7 @@ func (i DomainSnapshotOptionsArgs) ToDomainSnapshotOptionsPtrOutput() DomainSnap
 }
 
 func (i DomainSnapshotOptionsArgs) ToDomainSnapshotOptionsPtrOutputWithContext(ctx context.Context) DomainSnapshotOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainSnapshotOptionsOutput).ToDomainSnapshotOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainSnapshotOptionsOutput).ToDomainSnapshotOptionsPtrOutput()
 }
 
 // DomainSnapshotOptionsPtrInput is an input type that accepts DomainSnapshotOptionsArgs, DomainSnapshotOptionsPtr and DomainSnapshotOptionsPtrOutput values.
@@ -1782,7 +1782,7 @@ func (i *domainSnapshotOptionsPtrType) ToDomainSnapshotOptionsPtrOutput() Domain
 }
 
 func (i *domainSnapshotOptionsPtrType) ToDomainSnapshotOptionsPtrOutputWithContext(ctx context.Context) DomainSnapshotOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainSnapshotOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainSnapshotOptionsOutput).ToDomainSnapshotOptionsPtrOutput()
 }
 
 type DomainSnapshotOptionsOutput struct{ *pulumi.OutputState }
@@ -1888,7 +1888,7 @@ func (i DomainVpcOptionsArgs) ToDomainVpcOptionsPtrOutput() DomainVpcOptionsPtrO
 }
 
 func (i DomainVpcOptionsArgs) ToDomainVpcOptionsPtrOutputWithContext(ctx context.Context) DomainVpcOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainVpcOptionsOutput).ToDomainVpcOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainVpcOptionsOutput).ToDomainVpcOptionsPtrOutput()
 }
 
 // DomainVpcOptionsPtrInput is an input type that accepts DomainVpcOptionsArgs, DomainVpcOptionsPtr and DomainVpcOptionsPtrOutput values.
@@ -1921,7 +1921,7 @@ func (i *domainVpcOptionsPtrType) ToDomainVpcOptionsPtrOutput() DomainVpcOptions
 }
 
 func (i *domainVpcOptionsPtrType) ToDomainVpcOptionsPtrOutputWithContext(ctx context.Context) DomainVpcOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainVpcOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainVpcOptionsOutput).ToDomainVpcOptionsPtrOutput()
 }
 
 type DomainVpcOptionsOutput struct{ *pulumi.OutputState }

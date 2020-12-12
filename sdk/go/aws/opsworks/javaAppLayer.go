@@ -340,16 +340,31 @@ type JavaAppLayerInput interface {
 	ToJavaAppLayerOutputWithContext(ctx context.Context) JavaAppLayerOutput
 }
 
-func (JavaAppLayer) ElementType() reflect.Type {
-	return reflect.TypeOf((*JavaAppLayer)(nil)).Elem()
+func (*JavaAppLayer) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaAppLayer)(nil))
 }
 
-func (i JavaAppLayer) ToJavaAppLayerOutput() JavaAppLayerOutput {
+func (i *JavaAppLayer) ToJavaAppLayerOutput() JavaAppLayerOutput {
 	return i.ToJavaAppLayerOutputWithContext(context.Background())
 }
 
-func (i JavaAppLayer) ToJavaAppLayerOutputWithContext(ctx context.Context) JavaAppLayerOutput {
+func (i *JavaAppLayer) ToJavaAppLayerOutputWithContext(ctx context.Context) JavaAppLayerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JavaAppLayerOutput)
+}
+
+func (i *JavaAppLayer) ToJavaAppLayerPtrOutput() JavaAppLayerPtrOutput {
+	return i.ToJavaAppLayerPtrOutputWithContext(context.Background())
+}
+
+func (i *JavaAppLayer) ToJavaAppLayerPtrOutputWithContext(ctx context.Context) JavaAppLayerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JavaAppLayerPtrOutput)
+}
+
+type JavaAppLayerPtrInput interface {
+	pulumi.Input
+
+	ToJavaAppLayerPtrOutput() JavaAppLayerPtrOutput
+	ToJavaAppLayerPtrOutputWithContext(ctx context.Context) JavaAppLayerPtrOutput
 }
 
 type JavaAppLayerOutput struct {
@@ -357,7 +372,7 @@ type JavaAppLayerOutput struct {
 }
 
 func (JavaAppLayerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JavaAppLayerOutput)(nil)).Elem()
+	return reflect.TypeOf((*JavaAppLayer)(nil))
 }
 
 func (o JavaAppLayerOutput) ToJavaAppLayerOutput() JavaAppLayerOutput {
@@ -368,6 +383,23 @@ func (o JavaAppLayerOutput) ToJavaAppLayerOutputWithContext(ctx context.Context)
 	return o
 }
 
+type JavaAppLayerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (JavaAppLayerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JavaAppLayer)(nil))
+}
+
+func (o JavaAppLayerPtrOutput) ToJavaAppLayerPtrOutput() JavaAppLayerPtrOutput {
+	return o
+}
+
+func (o JavaAppLayerPtrOutput) ToJavaAppLayerPtrOutputWithContext(ctx context.Context) JavaAppLayerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(JavaAppLayerOutput{})
+	pulumi.RegisterOutputType(JavaAppLayerPtrOutput{})
 }

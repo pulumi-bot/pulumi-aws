@@ -202,16 +202,31 @@ type EmailChannelInput interface {
 	ToEmailChannelOutputWithContext(ctx context.Context) EmailChannelOutput
 }
 
-func (EmailChannel) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailChannel)(nil)).Elem()
+func (*EmailChannel) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailChannel)(nil))
 }
 
-func (i EmailChannel) ToEmailChannelOutput() EmailChannelOutput {
+func (i *EmailChannel) ToEmailChannelOutput() EmailChannelOutput {
 	return i.ToEmailChannelOutputWithContext(context.Background())
 }
 
-func (i EmailChannel) ToEmailChannelOutputWithContext(ctx context.Context) EmailChannelOutput {
+func (i *EmailChannel) ToEmailChannelOutputWithContext(ctx context.Context) EmailChannelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EmailChannelOutput)
+}
+
+func (i *EmailChannel) ToEmailChannelPtrOutput() EmailChannelPtrOutput {
+	return i.ToEmailChannelPtrOutputWithContext(context.Background())
+}
+
+func (i *EmailChannel) ToEmailChannelPtrOutputWithContext(ctx context.Context) EmailChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailChannelPtrOutput)
+}
+
+type EmailChannelPtrInput interface {
+	pulumi.Input
+
+	ToEmailChannelPtrOutput() EmailChannelPtrOutput
+	ToEmailChannelPtrOutputWithContext(ctx context.Context) EmailChannelPtrOutput
 }
 
 type EmailChannelOutput struct {
@@ -219,7 +234,7 @@ type EmailChannelOutput struct {
 }
 
 func (EmailChannelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailChannelOutput)(nil)).Elem()
+	return reflect.TypeOf((*EmailChannel)(nil))
 }
 
 func (o EmailChannelOutput) ToEmailChannelOutput() EmailChannelOutput {
@@ -230,6 +245,23 @@ func (o EmailChannelOutput) ToEmailChannelOutputWithContext(ctx context.Context)
 	return o
 }
 
+type EmailChannelPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EmailChannelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailChannel)(nil))
+}
+
+func (o EmailChannelPtrOutput) ToEmailChannelPtrOutput() EmailChannelPtrOutput {
+	return o
+}
+
+func (o EmailChannelPtrOutput) ToEmailChannelPtrOutputWithContext(ctx context.Context) EmailChannelPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EmailChannelOutput{})
+	pulumi.RegisterOutputType(EmailChannelPtrOutput{})
 }

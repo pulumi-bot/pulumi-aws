@@ -137,16 +137,31 @@ type ThingTypeInput interface {
 	ToThingTypeOutputWithContext(ctx context.Context) ThingTypeOutput
 }
 
-func (ThingType) ElementType() reflect.Type {
-	return reflect.TypeOf((*ThingType)(nil)).Elem()
+func (*ThingType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThingType)(nil))
 }
 
-func (i ThingType) ToThingTypeOutput() ThingTypeOutput {
+func (i *ThingType) ToThingTypeOutput() ThingTypeOutput {
 	return i.ToThingTypeOutputWithContext(context.Background())
 }
 
-func (i ThingType) ToThingTypeOutputWithContext(ctx context.Context) ThingTypeOutput {
+func (i *ThingType) ToThingTypeOutputWithContext(ctx context.Context) ThingTypeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ThingTypeOutput)
+}
+
+func (i *ThingType) ToThingTypePtrOutput() ThingTypePtrOutput {
+	return i.ToThingTypePtrOutputWithContext(context.Background())
+}
+
+func (i *ThingType) ToThingTypePtrOutputWithContext(ctx context.Context) ThingTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThingTypePtrOutput)
+}
+
+type ThingTypePtrInput interface {
+	pulumi.Input
+
+	ToThingTypePtrOutput() ThingTypePtrOutput
+	ToThingTypePtrOutputWithContext(ctx context.Context) ThingTypePtrOutput
 }
 
 type ThingTypeOutput struct {
@@ -154,7 +169,7 @@ type ThingTypeOutput struct {
 }
 
 func (ThingTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ThingTypeOutput)(nil)).Elem()
+	return reflect.TypeOf((*ThingType)(nil))
 }
 
 func (o ThingTypeOutput) ToThingTypeOutput() ThingTypeOutput {
@@ -165,6 +180,23 @@ func (o ThingTypeOutput) ToThingTypeOutputWithContext(ctx context.Context) Thing
 	return o
 }
 
+type ThingTypePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ThingTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ThingType)(nil))
+}
+
+func (o ThingTypePtrOutput) ToThingTypePtrOutput() ThingTypePtrOutput {
+	return o
+}
+
+func (o ThingTypePtrOutput) ToThingTypePtrOutputWithContext(ctx context.Context) ThingTypePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ThingTypeOutput{})
+	pulumi.RegisterOutputType(ThingTypePtrOutput{})
 }

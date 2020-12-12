@@ -148,16 +148,31 @@ type InstanceFleetInput interface {
 	ToInstanceFleetOutputWithContext(ctx context.Context) InstanceFleetOutput
 }
 
-func (InstanceFleet) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceFleet)(nil)).Elem()
+func (*InstanceFleet) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFleet)(nil))
 }
 
-func (i InstanceFleet) ToInstanceFleetOutput() InstanceFleetOutput {
+func (i *InstanceFleet) ToInstanceFleetOutput() InstanceFleetOutput {
 	return i.ToInstanceFleetOutputWithContext(context.Background())
 }
 
-func (i InstanceFleet) ToInstanceFleetOutputWithContext(ctx context.Context) InstanceFleetOutput {
+func (i *InstanceFleet) ToInstanceFleetOutputWithContext(ctx context.Context) InstanceFleetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFleetOutput)
+}
+
+func (i *InstanceFleet) ToInstanceFleetPtrOutput() InstanceFleetPtrOutput {
+	return i.ToInstanceFleetPtrOutputWithContext(context.Background())
+}
+
+func (i *InstanceFleet) ToInstanceFleetPtrOutputWithContext(ctx context.Context) InstanceFleetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFleetPtrOutput)
+}
+
+type InstanceFleetPtrInput interface {
+	pulumi.Input
+
+	ToInstanceFleetPtrOutput() InstanceFleetPtrOutput
+	ToInstanceFleetPtrOutputWithContext(ctx context.Context) InstanceFleetPtrOutput
 }
 
 type InstanceFleetOutput struct {
@@ -165,7 +180,7 @@ type InstanceFleetOutput struct {
 }
 
 func (InstanceFleetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceFleetOutput)(nil)).Elem()
+	return reflect.TypeOf((*InstanceFleet)(nil))
 }
 
 func (o InstanceFleetOutput) ToInstanceFleetOutput() InstanceFleetOutput {
@@ -176,6 +191,23 @@ func (o InstanceFleetOutput) ToInstanceFleetOutputWithContext(ctx context.Contex
 	return o
 }
 
+type InstanceFleetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceFleetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFleet)(nil))
+}
+
+func (o InstanceFleetPtrOutput) ToInstanceFleetPtrOutput() InstanceFleetPtrOutput {
+	return o
+}
+
+func (o InstanceFleetPtrOutput) ToInstanceFleetPtrOutputWithContext(ctx context.Context) InstanceFleetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(InstanceFleetOutput{})
+	pulumi.RegisterOutputType(InstanceFleetPtrOutput{})
 }

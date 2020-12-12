@@ -168,16 +168,31 @@ type RuleGroupInput interface {
 	ToRuleGroupOutputWithContext(ctx context.Context) RuleGroupOutput
 }
 
-func (RuleGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*RuleGroup)(nil)).Elem()
+func (*RuleGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleGroup)(nil))
 }
 
-func (i RuleGroup) ToRuleGroupOutput() RuleGroupOutput {
+func (i *RuleGroup) ToRuleGroupOutput() RuleGroupOutput {
 	return i.ToRuleGroupOutputWithContext(context.Background())
 }
 
-func (i RuleGroup) ToRuleGroupOutputWithContext(ctx context.Context) RuleGroupOutput {
+func (i *RuleGroup) ToRuleGroupOutputWithContext(ctx context.Context) RuleGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupOutput)
+}
+
+func (i *RuleGroup) ToRuleGroupPtrOutput() RuleGroupPtrOutput {
+	return i.ToRuleGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *RuleGroup) ToRuleGroupPtrOutputWithContext(ctx context.Context) RuleGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleGroupPtrOutput)
+}
+
+type RuleGroupPtrInput interface {
+	pulumi.Input
+
+	ToRuleGroupPtrOutput() RuleGroupPtrOutput
+	ToRuleGroupPtrOutputWithContext(ctx context.Context) RuleGroupPtrOutput
 }
 
 type RuleGroupOutput struct {
@@ -185,7 +200,7 @@ type RuleGroupOutput struct {
 }
 
 func (RuleGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RuleGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*RuleGroup)(nil))
 }
 
 func (o RuleGroupOutput) ToRuleGroupOutput() RuleGroupOutput {
@@ -196,6 +211,23 @@ func (o RuleGroupOutput) ToRuleGroupOutputWithContext(ctx context.Context) RuleG
 	return o
 }
 
+type RuleGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RuleGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleGroup)(nil))
+}
+
+func (o RuleGroupPtrOutput) ToRuleGroupPtrOutput() RuleGroupPtrOutput {
+	return o
+}
+
+func (o RuleGroupPtrOutput) ToRuleGroupPtrOutputWithContext(ctx context.Context) RuleGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RuleGroupOutput{})
+	pulumi.RegisterOutputType(RuleGroupPtrOutput{})
 }

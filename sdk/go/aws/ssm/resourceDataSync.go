@@ -144,16 +144,31 @@ type ResourceDataSyncInput interface {
 	ToResourceDataSyncOutputWithContext(ctx context.Context) ResourceDataSyncOutput
 }
 
-func (ResourceDataSync) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceDataSync)(nil)).Elem()
+func (*ResourceDataSync) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceDataSync)(nil))
 }
 
-func (i ResourceDataSync) ToResourceDataSyncOutput() ResourceDataSyncOutput {
+func (i *ResourceDataSync) ToResourceDataSyncOutput() ResourceDataSyncOutput {
 	return i.ToResourceDataSyncOutputWithContext(context.Background())
 }
 
-func (i ResourceDataSync) ToResourceDataSyncOutputWithContext(ctx context.Context) ResourceDataSyncOutput {
+func (i *ResourceDataSync) ToResourceDataSyncOutputWithContext(ctx context.Context) ResourceDataSyncOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceDataSyncOutput)
+}
+
+func (i *ResourceDataSync) ToResourceDataSyncPtrOutput() ResourceDataSyncPtrOutput {
+	return i.ToResourceDataSyncPtrOutputWithContext(context.Background())
+}
+
+func (i *ResourceDataSync) ToResourceDataSyncPtrOutputWithContext(ctx context.Context) ResourceDataSyncPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceDataSyncPtrOutput)
+}
+
+type ResourceDataSyncPtrInput interface {
+	pulumi.Input
+
+	ToResourceDataSyncPtrOutput() ResourceDataSyncPtrOutput
+	ToResourceDataSyncPtrOutputWithContext(ctx context.Context) ResourceDataSyncPtrOutput
 }
 
 type ResourceDataSyncOutput struct {
@@ -161,7 +176,7 @@ type ResourceDataSyncOutput struct {
 }
 
 func (ResourceDataSyncOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceDataSyncOutput)(nil)).Elem()
+	return reflect.TypeOf((*ResourceDataSync)(nil))
 }
 
 func (o ResourceDataSyncOutput) ToResourceDataSyncOutput() ResourceDataSyncOutput {
@@ -172,6 +187,23 @@ func (o ResourceDataSyncOutput) ToResourceDataSyncOutputWithContext(ctx context.
 	return o
 }
 
+type ResourceDataSyncPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResourceDataSyncPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceDataSync)(nil))
+}
+
+func (o ResourceDataSyncPtrOutput) ToResourceDataSyncPtrOutput() ResourceDataSyncPtrOutput {
+	return o
+}
+
+func (o ResourceDataSyncPtrOutput) ToResourceDataSyncPtrOutputWithContext(ctx context.Context) ResourceDataSyncPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResourceDataSyncOutput{})
+	pulumi.RegisterOutputType(ResourceDataSyncPtrOutput{})
 }

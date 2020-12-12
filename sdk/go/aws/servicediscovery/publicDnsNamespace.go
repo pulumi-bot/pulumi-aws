@@ -145,16 +145,31 @@ type PublicDnsNamespaceInput interface {
 	ToPublicDnsNamespaceOutputWithContext(ctx context.Context) PublicDnsNamespaceOutput
 }
 
-func (PublicDnsNamespace) ElementType() reflect.Type {
-	return reflect.TypeOf((*PublicDnsNamespace)(nil)).Elem()
+func (*PublicDnsNamespace) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicDnsNamespace)(nil))
 }
 
-func (i PublicDnsNamespace) ToPublicDnsNamespaceOutput() PublicDnsNamespaceOutput {
+func (i *PublicDnsNamespace) ToPublicDnsNamespaceOutput() PublicDnsNamespaceOutput {
 	return i.ToPublicDnsNamespaceOutputWithContext(context.Background())
 }
 
-func (i PublicDnsNamespace) ToPublicDnsNamespaceOutputWithContext(ctx context.Context) PublicDnsNamespaceOutput {
+func (i *PublicDnsNamespace) ToPublicDnsNamespaceOutputWithContext(ctx context.Context) PublicDnsNamespaceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PublicDnsNamespaceOutput)
+}
+
+func (i *PublicDnsNamespace) ToPublicDnsNamespacePtrOutput() PublicDnsNamespacePtrOutput {
+	return i.ToPublicDnsNamespacePtrOutputWithContext(context.Background())
+}
+
+func (i *PublicDnsNamespace) ToPublicDnsNamespacePtrOutputWithContext(ctx context.Context) PublicDnsNamespacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicDnsNamespacePtrOutput)
+}
+
+type PublicDnsNamespacePtrInput interface {
+	pulumi.Input
+
+	ToPublicDnsNamespacePtrOutput() PublicDnsNamespacePtrOutput
+	ToPublicDnsNamespacePtrOutputWithContext(ctx context.Context) PublicDnsNamespacePtrOutput
 }
 
 type PublicDnsNamespaceOutput struct {
@@ -162,7 +177,7 @@ type PublicDnsNamespaceOutput struct {
 }
 
 func (PublicDnsNamespaceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PublicDnsNamespaceOutput)(nil)).Elem()
+	return reflect.TypeOf((*PublicDnsNamespace)(nil))
 }
 
 func (o PublicDnsNamespaceOutput) ToPublicDnsNamespaceOutput() PublicDnsNamespaceOutput {
@@ -173,6 +188,23 @@ func (o PublicDnsNamespaceOutput) ToPublicDnsNamespaceOutputWithContext(ctx cont
 	return o
 }
 
+type PublicDnsNamespacePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PublicDnsNamespacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicDnsNamespace)(nil))
+}
+
+func (o PublicDnsNamespacePtrOutput) ToPublicDnsNamespacePtrOutput() PublicDnsNamespacePtrOutput {
+	return o
+}
+
+func (o PublicDnsNamespacePtrOutput) ToPublicDnsNamespacePtrOutputWithContext(ctx context.Context) PublicDnsNamespacePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PublicDnsNamespaceOutput{})
+	pulumi.RegisterOutputType(PublicDnsNamespacePtrOutput{})
 }

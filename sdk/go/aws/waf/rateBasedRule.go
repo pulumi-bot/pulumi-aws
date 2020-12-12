@@ -201,16 +201,31 @@ type RateBasedRuleInput interface {
 	ToRateBasedRuleOutputWithContext(ctx context.Context) RateBasedRuleOutput
 }
 
-func (RateBasedRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*RateBasedRule)(nil)).Elem()
+func (*RateBasedRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateBasedRule)(nil))
 }
 
-func (i RateBasedRule) ToRateBasedRuleOutput() RateBasedRuleOutput {
+func (i *RateBasedRule) ToRateBasedRuleOutput() RateBasedRuleOutput {
 	return i.ToRateBasedRuleOutputWithContext(context.Background())
 }
 
-func (i RateBasedRule) ToRateBasedRuleOutputWithContext(ctx context.Context) RateBasedRuleOutput {
+func (i *RateBasedRule) ToRateBasedRuleOutputWithContext(ctx context.Context) RateBasedRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RateBasedRuleOutput)
+}
+
+func (i *RateBasedRule) ToRateBasedRulePtrOutput() RateBasedRulePtrOutput {
+	return i.ToRateBasedRulePtrOutputWithContext(context.Background())
+}
+
+func (i *RateBasedRule) ToRateBasedRulePtrOutputWithContext(ctx context.Context) RateBasedRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateBasedRulePtrOutput)
+}
+
+type RateBasedRulePtrInput interface {
+	pulumi.Input
+
+	ToRateBasedRulePtrOutput() RateBasedRulePtrOutput
+	ToRateBasedRulePtrOutputWithContext(ctx context.Context) RateBasedRulePtrOutput
 }
 
 type RateBasedRuleOutput struct {
@@ -218,7 +233,7 @@ type RateBasedRuleOutput struct {
 }
 
 func (RateBasedRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RateBasedRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*RateBasedRule)(nil))
 }
 
 func (o RateBasedRuleOutput) ToRateBasedRuleOutput() RateBasedRuleOutput {
@@ -229,6 +244,23 @@ func (o RateBasedRuleOutput) ToRateBasedRuleOutputWithContext(ctx context.Contex
 	return o
 }
 
+type RateBasedRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RateBasedRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RateBasedRule)(nil))
+}
+
+func (o RateBasedRulePtrOutput) ToRateBasedRulePtrOutput() RateBasedRulePtrOutput {
+	return o
+}
+
+func (o RateBasedRulePtrOutput) ToRateBasedRulePtrOutputWithContext(ctx context.Context) RateBasedRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RateBasedRuleOutput{})
+	pulumi.RegisterOutputType(RateBasedRulePtrOutput{})
 }

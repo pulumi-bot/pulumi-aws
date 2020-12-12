@@ -229,16 +229,31 @@ type OrganizationManagedRuleInput interface {
 	ToOrganizationManagedRuleOutputWithContext(ctx context.Context) OrganizationManagedRuleOutput
 }
 
-func (OrganizationManagedRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationManagedRule)(nil)).Elem()
+func (*OrganizationManagedRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationManagedRule)(nil))
 }
 
-func (i OrganizationManagedRule) ToOrganizationManagedRuleOutput() OrganizationManagedRuleOutput {
+func (i *OrganizationManagedRule) ToOrganizationManagedRuleOutput() OrganizationManagedRuleOutput {
 	return i.ToOrganizationManagedRuleOutputWithContext(context.Background())
 }
 
-func (i OrganizationManagedRule) ToOrganizationManagedRuleOutputWithContext(ctx context.Context) OrganizationManagedRuleOutput {
+func (i *OrganizationManagedRule) ToOrganizationManagedRuleOutputWithContext(ctx context.Context) OrganizationManagedRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationManagedRuleOutput)
+}
+
+func (i *OrganizationManagedRule) ToOrganizationManagedRulePtrOutput() OrganizationManagedRulePtrOutput {
+	return i.ToOrganizationManagedRulePtrOutputWithContext(context.Background())
+}
+
+func (i *OrganizationManagedRule) ToOrganizationManagedRulePtrOutputWithContext(ctx context.Context) OrganizationManagedRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationManagedRulePtrOutput)
+}
+
+type OrganizationManagedRulePtrInput interface {
+	pulumi.Input
+
+	ToOrganizationManagedRulePtrOutput() OrganizationManagedRulePtrOutput
+	ToOrganizationManagedRulePtrOutputWithContext(ctx context.Context) OrganizationManagedRulePtrOutput
 }
 
 type OrganizationManagedRuleOutput struct {
@@ -246,7 +261,7 @@ type OrganizationManagedRuleOutput struct {
 }
 
 func (OrganizationManagedRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationManagedRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*OrganizationManagedRule)(nil))
 }
 
 func (o OrganizationManagedRuleOutput) ToOrganizationManagedRuleOutput() OrganizationManagedRuleOutput {
@@ -257,6 +272,23 @@ func (o OrganizationManagedRuleOutput) ToOrganizationManagedRuleOutputWithContex
 	return o
 }
 
+type OrganizationManagedRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationManagedRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationManagedRule)(nil))
+}
+
+func (o OrganizationManagedRulePtrOutput) ToOrganizationManagedRulePtrOutput() OrganizationManagedRulePtrOutput {
+	return o
+}
+
+func (o OrganizationManagedRulePtrOutput) ToOrganizationManagedRulePtrOutputWithContext(ctx context.Context) OrganizationManagedRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(OrganizationManagedRuleOutput{})
+	pulumi.RegisterOutputType(OrganizationManagedRulePtrOutput{})
 }

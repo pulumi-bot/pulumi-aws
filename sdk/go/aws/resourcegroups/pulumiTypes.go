@@ -52,7 +52,7 @@ func (i GroupResourceQueryArgs) ToGroupResourceQueryPtrOutput() GroupResourceQue
 }
 
 func (i GroupResourceQueryArgs) ToGroupResourceQueryPtrOutputWithContext(ctx context.Context) GroupResourceQueryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupResourceQueryOutput).ToGroupResourceQueryPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupResourceQueryOutput).ToGroupResourceQueryPtrOutput()
 }
 
 // GroupResourceQueryPtrInput is an input type that accepts GroupResourceQueryArgs, GroupResourceQueryPtr and GroupResourceQueryPtrOutput values.
@@ -85,7 +85,7 @@ func (i *groupResourceQueryPtrType) ToGroupResourceQueryPtrOutput() GroupResourc
 }
 
 func (i *groupResourceQueryPtrType) ToGroupResourceQueryPtrOutputWithContext(ctx context.Context) GroupResourceQueryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupResourceQueryPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupResourceQueryOutput).ToGroupResourceQueryPtrOutput()
 }
 
 type GroupResourceQueryOutput struct{ *pulumi.OutputState }

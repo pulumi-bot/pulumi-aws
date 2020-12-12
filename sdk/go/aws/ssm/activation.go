@@ -205,16 +205,31 @@ type ActivationInput interface {
 	ToActivationOutputWithContext(ctx context.Context) ActivationOutput
 }
 
-func (Activation) ElementType() reflect.Type {
-	return reflect.TypeOf((*Activation)(nil)).Elem()
+func (*Activation) ElementType() reflect.Type {
+	return reflect.TypeOf((*Activation)(nil))
 }
 
-func (i Activation) ToActivationOutput() ActivationOutput {
+func (i *Activation) ToActivationOutput() ActivationOutput {
 	return i.ToActivationOutputWithContext(context.Background())
 }
 
-func (i Activation) ToActivationOutputWithContext(ctx context.Context) ActivationOutput {
+func (i *Activation) ToActivationOutputWithContext(ctx context.Context) ActivationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActivationOutput)
+}
+
+func (i *Activation) ToActivationPtrOutput() ActivationPtrOutput {
+	return i.ToActivationPtrOutputWithContext(context.Background())
+}
+
+func (i *Activation) ToActivationPtrOutputWithContext(ctx context.Context) ActivationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActivationPtrOutput)
+}
+
+type ActivationPtrInput interface {
+	pulumi.Input
+
+	ToActivationPtrOutput() ActivationPtrOutput
+	ToActivationPtrOutputWithContext(ctx context.Context) ActivationPtrOutput
 }
 
 type ActivationOutput struct {
@@ -222,7 +237,7 @@ type ActivationOutput struct {
 }
 
 func (ActivationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActivationOutput)(nil)).Elem()
+	return reflect.TypeOf((*Activation)(nil))
 }
 
 func (o ActivationOutput) ToActivationOutput() ActivationOutput {
@@ -233,6 +248,23 @@ func (o ActivationOutput) ToActivationOutputWithContext(ctx context.Context) Act
 	return o
 }
 
+type ActivationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ActivationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Activation)(nil))
+}
+
+func (o ActivationPtrOutput) ToActivationPtrOutput() ActivationPtrOutput {
+	return o
+}
+
+func (o ActivationPtrOutput) ToActivationPtrOutputWithContext(ctx context.Context) ActivationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ActivationOutput{})
+	pulumi.RegisterOutputType(ActivationPtrOutput{})
 }

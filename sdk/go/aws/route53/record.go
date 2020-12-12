@@ -401,16 +401,31 @@ type RecordInput interface {
 	ToRecordOutputWithContext(ctx context.Context) RecordOutput
 }
 
-func (Record) ElementType() reflect.Type {
-	return reflect.TypeOf((*Record)(nil)).Elem()
+func (*Record) ElementType() reflect.Type {
+	return reflect.TypeOf((*Record)(nil))
 }
 
-func (i Record) ToRecordOutput() RecordOutput {
+func (i *Record) ToRecordOutput() RecordOutput {
 	return i.ToRecordOutputWithContext(context.Background())
 }
 
-func (i Record) ToRecordOutputWithContext(ctx context.Context) RecordOutput {
+func (i *Record) ToRecordOutputWithContext(ctx context.Context) RecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RecordOutput)
+}
+
+func (i *Record) ToRecordPtrOutput() RecordPtrOutput {
+	return i.ToRecordPtrOutputWithContext(context.Background())
+}
+
+func (i *Record) ToRecordPtrOutputWithContext(ctx context.Context) RecordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordPtrOutput)
+}
+
+type RecordPtrInput interface {
+	pulumi.Input
+
+	ToRecordPtrOutput() RecordPtrOutput
+	ToRecordPtrOutputWithContext(ctx context.Context) RecordPtrOutput
 }
 
 type RecordOutput struct {
@@ -418,7 +433,7 @@ type RecordOutput struct {
 }
 
 func (RecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RecordOutput)(nil)).Elem()
+	return reflect.TypeOf((*Record)(nil))
 }
 
 func (o RecordOutput) ToRecordOutput() RecordOutput {
@@ -429,6 +444,23 @@ func (o RecordOutput) ToRecordOutputWithContext(ctx context.Context) RecordOutpu
 	return o
 }
 
+type RecordPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RecordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Record)(nil))
+}
+
+func (o RecordPtrOutput) ToRecordPtrOutput() RecordPtrOutput {
+	return o
+}
+
+func (o RecordPtrOutput) ToRecordPtrOutputWithContext(ctx context.Context) RecordPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RecordOutput{})
+	pulumi.RegisterOutputType(RecordPtrOutput{})
 }

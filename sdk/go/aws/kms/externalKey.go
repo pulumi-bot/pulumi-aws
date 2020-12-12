@@ -199,16 +199,31 @@ type ExternalKeyInput interface {
 	ToExternalKeyOutputWithContext(ctx context.Context) ExternalKeyOutput
 }
 
-func (ExternalKey) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExternalKey)(nil)).Elem()
+func (*ExternalKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalKey)(nil))
 }
 
-func (i ExternalKey) ToExternalKeyOutput() ExternalKeyOutput {
+func (i *ExternalKey) ToExternalKeyOutput() ExternalKeyOutput {
 	return i.ToExternalKeyOutputWithContext(context.Background())
 }
 
-func (i ExternalKey) ToExternalKeyOutputWithContext(ctx context.Context) ExternalKeyOutput {
+func (i *ExternalKey) ToExternalKeyOutputWithContext(ctx context.Context) ExternalKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalKeyOutput)
+}
+
+func (i *ExternalKey) ToExternalKeyPtrOutput() ExternalKeyPtrOutput {
+	return i.ToExternalKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *ExternalKey) ToExternalKeyPtrOutputWithContext(ctx context.Context) ExternalKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalKeyPtrOutput)
+}
+
+type ExternalKeyPtrInput interface {
+	pulumi.Input
+
+	ToExternalKeyPtrOutput() ExternalKeyPtrOutput
+	ToExternalKeyPtrOutputWithContext(ctx context.Context) ExternalKeyPtrOutput
 }
 
 type ExternalKeyOutput struct {
@@ -216,7 +231,7 @@ type ExternalKeyOutput struct {
 }
 
 func (ExternalKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExternalKeyOutput)(nil)).Elem()
+	return reflect.TypeOf((*ExternalKey)(nil))
 }
 
 func (o ExternalKeyOutput) ToExternalKeyOutput() ExternalKeyOutput {
@@ -227,6 +242,23 @@ func (o ExternalKeyOutput) ToExternalKeyOutputWithContext(ctx context.Context) E
 	return o
 }
 
+type ExternalKeyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ExternalKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalKey)(nil))
+}
+
+func (o ExternalKeyPtrOutput) ToExternalKeyPtrOutput() ExternalKeyPtrOutput {
+	return o
+}
+
+func (o ExternalKeyPtrOutput) ToExternalKeyPtrOutputWithContext(ctx context.Context) ExternalKeyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ExternalKeyOutput{})
+	pulumi.RegisterOutputType(ExternalKeyPtrOutput{})
 }

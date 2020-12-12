@@ -312,16 +312,31 @@ type MysqlLayerInput interface {
 	ToMysqlLayerOutputWithContext(ctx context.Context) MysqlLayerOutput
 }
 
-func (MysqlLayer) ElementType() reflect.Type {
-	return reflect.TypeOf((*MysqlLayer)(nil)).Elem()
+func (*MysqlLayer) ElementType() reflect.Type {
+	return reflect.TypeOf((*MysqlLayer)(nil))
 }
 
-func (i MysqlLayer) ToMysqlLayerOutput() MysqlLayerOutput {
+func (i *MysqlLayer) ToMysqlLayerOutput() MysqlLayerOutput {
 	return i.ToMysqlLayerOutputWithContext(context.Background())
 }
 
-func (i MysqlLayer) ToMysqlLayerOutputWithContext(ctx context.Context) MysqlLayerOutput {
+func (i *MysqlLayer) ToMysqlLayerOutputWithContext(ctx context.Context) MysqlLayerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MysqlLayerOutput)
+}
+
+func (i *MysqlLayer) ToMysqlLayerPtrOutput() MysqlLayerPtrOutput {
+	return i.ToMysqlLayerPtrOutputWithContext(context.Background())
+}
+
+func (i *MysqlLayer) ToMysqlLayerPtrOutputWithContext(ctx context.Context) MysqlLayerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MysqlLayerPtrOutput)
+}
+
+type MysqlLayerPtrInput interface {
+	pulumi.Input
+
+	ToMysqlLayerPtrOutput() MysqlLayerPtrOutput
+	ToMysqlLayerPtrOutputWithContext(ctx context.Context) MysqlLayerPtrOutput
 }
 
 type MysqlLayerOutput struct {
@@ -329,7 +344,7 @@ type MysqlLayerOutput struct {
 }
 
 func (MysqlLayerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MysqlLayerOutput)(nil)).Elem()
+	return reflect.TypeOf((*MysqlLayer)(nil))
 }
 
 func (o MysqlLayerOutput) ToMysqlLayerOutput() MysqlLayerOutput {
@@ -340,6 +355,23 @@ func (o MysqlLayerOutput) ToMysqlLayerOutputWithContext(ctx context.Context) Mys
 	return o
 }
 
+type MysqlLayerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MysqlLayerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MysqlLayer)(nil))
+}
+
+func (o MysqlLayerPtrOutput) ToMysqlLayerPtrOutput() MysqlLayerPtrOutput {
+	return o
+}
+
+func (o MysqlLayerPtrOutput) ToMysqlLayerPtrOutputWithContext(ctx context.Context) MysqlLayerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MysqlLayerOutput{})
+	pulumi.RegisterOutputType(MysqlLayerPtrOutput{})
 }

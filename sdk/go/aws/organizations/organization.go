@@ -150,16 +150,31 @@ type OrganizationInput interface {
 	ToOrganizationOutputWithContext(ctx context.Context) OrganizationOutput
 }
 
-func (Organization) ElementType() reflect.Type {
-	return reflect.TypeOf((*Organization)(nil)).Elem()
+func (*Organization) ElementType() reflect.Type {
+	return reflect.TypeOf((*Organization)(nil))
 }
 
-func (i Organization) ToOrganizationOutput() OrganizationOutput {
+func (i *Organization) ToOrganizationOutput() OrganizationOutput {
 	return i.ToOrganizationOutputWithContext(context.Background())
 }
 
-func (i Organization) ToOrganizationOutputWithContext(ctx context.Context) OrganizationOutput {
+func (i *Organization) ToOrganizationOutputWithContext(ctx context.Context) OrganizationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationOutput)
+}
+
+func (i *Organization) ToOrganizationPtrOutput() OrganizationPtrOutput {
+	return i.ToOrganizationPtrOutputWithContext(context.Background())
+}
+
+func (i *Organization) ToOrganizationPtrOutputWithContext(ctx context.Context) OrganizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPtrOutput)
+}
+
+type OrganizationPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationPtrOutput() OrganizationPtrOutput
+	ToOrganizationPtrOutputWithContext(ctx context.Context) OrganizationPtrOutput
 }
 
 type OrganizationOutput struct {
@@ -167,7 +182,7 @@ type OrganizationOutput struct {
 }
 
 func (OrganizationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationOutput)(nil)).Elem()
+	return reflect.TypeOf((*Organization)(nil))
 }
 
 func (o OrganizationOutput) ToOrganizationOutput() OrganizationOutput {
@@ -178,6 +193,23 @@ func (o OrganizationOutput) ToOrganizationOutputWithContext(ctx context.Context)
 	return o
 }
 
+type OrganizationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Organization)(nil))
+}
+
+func (o OrganizationPtrOutput) ToOrganizationPtrOutput() OrganizationPtrOutput {
+	return o
+}
+
+func (o OrganizationPtrOutput) ToOrganizationPtrOutputWithContext(ctx context.Context) OrganizationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(OrganizationOutput{})
+	pulumi.RegisterOutputType(OrganizationPtrOutput{})
 }

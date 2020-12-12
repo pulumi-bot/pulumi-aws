@@ -188,16 +188,31 @@ type MeshInput interface {
 	ToMeshOutputWithContext(ctx context.Context) MeshOutput
 }
 
-func (Mesh) ElementType() reflect.Type {
-	return reflect.TypeOf((*Mesh)(nil)).Elem()
+func (*Mesh) ElementType() reflect.Type {
+	return reflect.TypeOf((*Mesh)(nil))
 }
 
-func (i Mesh) ToMeshOutput() MeshOutput {
+func (i *Mesh) ToMeshOutput() MeshOutput {
 	return i.ToMeshOutputWithContext(context.Background())
 }
 
-func (i Mesh) ToMeshOutputWithContext(ctx context.Context) MeshOutput {
+func (i *Mesh) ToMeshOutputWithContext(ctx context.Context) MeshOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MeshOutput)
+}
+
+func (i *Mesh) ToMeshPtrOutput() MeshPtrOutput {
+	return i.ToMeshPtrOutputWithContext(context.Background())
+}
+
+func (i *Mesh) ToMeshPtrOutputWithContext(ctx context.Context) MeshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeshPtrOutput)
+}
+
+type MeshPtrInput interface {
+	pulumi.Input
+
+	ToMeshPtrOutput() MeshPtrOutput
+	ToMeshPtrOutputWithContext(ctx context.Context) MeshPtrOutput
 }
 
 type MeshOutput struct {
@@ -205,7 +220,7 @@ type MeshOutput struct {
 }
 
 func (MeshOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MeshOutput)(nil)).Elem()
+	return reflect.TypeOf((*Mesh)(nil))
 }
 
 func (o MeshOutput) ToMeshOutput() MeshOutput {
@@ -216,6 +231,23 @@ func (o MeshOutput) ToMeshOutputWithContext(ctx context.Context) MeshOutput {
 	return o
 }
 
+type MeshPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MeshPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Mesh)(nil))
+}
+
+func (o MeshPtrOutput) ToMeshPtrOutput() MeshPtrOutput {
+	return o
+}
+
+func (o MeshPtrOutput) ToMeshPtrOutputWithContext(ctx context.Context) MeshPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MeshOutput{})
+	pulumi.RegisterOutputType(MeshPtrOutput{})
 }

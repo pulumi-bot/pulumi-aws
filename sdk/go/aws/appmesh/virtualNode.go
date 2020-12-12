@@ -368,16 +368,31 @@ type VirtualNodeInput interface {
 	ToVirtualNodeOutputWithContext(ctx context.Context) VirtualNodeOutput
 }
 
-func (VirtualNode) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualNode)(nil)).Elem()
+func (*VirtualNode) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNode)(nil))
 }
 
-func (i VirtualNode) ToVirtualNodeOutput() VirtualNodeOutput {
+func (i *VirtualNode) ToVirtualNodeOutput() VirtualNodeOutput {
 	return i.ToVirtualNodeOutputWithContext(context.Background())
 }
 
-func (i VirtualNode) ToVirtualNodeOutputWithContext(ctx context.Context) VirtualNodeOutput {
+func (i *VirtualNode) ToVirtualNodeOutputWithContext(ctx context.Context) VirtualNodeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodeOutput)
+}
+
+func (i *VirtualNode) ToVirtualNodePtrOutput() VirtualNodePtrOutput {
+	return i.ToVirtualNodePtrOutputWithContext(context.Background())
+}
+
+func (i *VirtualNode) ToVirtualNodePtrOutputWithContext(ctx context.Context) VirtualNodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNodePtrOutput)
+}
+
+type VirtualNodePtrInput interface {
+	pulumi.Input
+
+	ToVirtualNodePtrOutput() VirtualNodePtrOutput
+	ToVirtualNodePtrOutputWithContext(ctx context.Context) VirtualNodePtrOutput
 }
 
 type VirtualNodeOutput struct {
@@ -385,7 +400,7 @@ type VirtualNodeOutput struct {
 }
 
 func (VirtualNodeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualNodeOutput)(nil)).Elem()
+	return reflect.TypeOf((*VirtualNode)(nil))
 }
 
 func (o VirtualNodeOutput) ToVirtualNodeOutput() VirtualNodeOutput {
@@ -396,6 +411,23 @@ func (o VirtualNodeOutput) ToVirtualNodeOutputWithContext(ctx context.Context) V
 	return o
 }
 
+type VirtualNodePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualNodePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNode)(nil))
+}
+
+func (o VirtualNodePtrOutput) ToVirtualNodePtrOutput() VirtualNodePtrOutput {
+	return o
+}
+
+func (o VirtualNodePtrOutput) ToVirtualNodePtrOutputWithContext(ctx context.Context) VirtualNodePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VirtualNodeOutput{})
+	pulumi.RegisterOutputType(VirtualNodePtrOutput{})
 }

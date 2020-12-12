@@ -348,16 +348,31 @@ type MLTransformInput interface {
 	ToMLTransformOutputWithContext(ctx context.Context) MLTransformOutput
 }
 
-func (MLTransform) ElementType() reflect.Type {
-	return reflect.TypeOf((*MLTransform)(nil)).Elem()
+func (*MLTransform) ElementType() reflect.Type {
+	return reflect.TypeOf((*MLTransform)(nil))
 }
 
-func (i MLTransform) ToMLTransformOutput() MLTransformOutput {
+func (i *MLTransform) ToMLTransformOutput() MLTransformOutput {
 	return i.ToMLTransformOutputWithContext(context.Background())
 }
 
-func (i MLTransform) ToMLTransformOutputWithContext(ctx context.Context) MLTransformOutput {
+func (i *MLTransform) ToMLTransformOutputWithContext(ctx context.Context) MLTransformOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MLTransformOutput)
+}
+
+func (i *MLTransform) ToMLTransformPtrOutput() MLTransformPtrOutput {
+	return i.ToMLTransformPtrOutputWithContext(context.Background())
+}
+
+func (i *MLTransform) ToMLTransformPtrOutputWithContext(ctx context.Context) MLTransformPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MLTransformPtrOutput)
+}
+
+type MLTransformPtrInput interface {
+	pulumi.Input
+
+	ToMLTransformPtrOutput() MLTransformPtrOutput
+	ToMLTransformPtrOutputWithContext(ctx context.Context) MLTransformPtrOutput
 }
 
 type MLTransformOutput struct {
@@ -365,7 +380,7 @@ type MLTransformOutput struct {
 }
 
 func (MLTransformOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MLTransformOutput)(nil)).Elem()
+	return reflect.TypeOf((*MLTransform)(nil))
 }
 
 func (o MLTransformOutput) ToMLTransformOutput() MLTransformOutput {
@@ -376,6 +391,23 @@ func (o MLTransformOutput) ToMLTransformOutputWithContext(ctx context.Context) M
 	return o
 }
 
+type MLTransformPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MLTransformPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MLTransform)(nil))
+}
+
+func (o MLTransformPtrOutput) ToMLTransformPtrOutput() MLTransformPtrOutput {
+	return o
+}
+
+func (o MLTransformPtrOutput) ToMLTransformPtrOutputWithContext(ctx context.Context) MLTransformPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(MLTransformOutput{})
+	pulumi.RegisterOutputType(MLTransformPtrOutput{})
 }

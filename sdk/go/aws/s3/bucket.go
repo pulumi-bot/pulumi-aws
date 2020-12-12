@@ -697,16 +697,31 @@ type BucketInput interface {
 	ToBucketOutputWithContext(ctx context.Context) BucketOutput
 }
 
-func (Bucket) ElementType() reflect.Type {
-	return reflect.TypeOf((*Bucket)(nil)).Elem()
+func (*Bucket) ElementType() reflect.Type {
+	return reflect.TypeOf((*Bucket)(nil))
 }
 
-func (i Bucket) ToBucketOutput() BucketOutput {
+func (i *Bucket) ToBucketOutput() BucketOutput {
 	return i.ToBucketOutputWithContext(context.Background())
 }
 
-func (i Bucket) ToBucketOutputWithContext(ctx context.Context) BucketOutput {
+func (i *Bucket) ToBucketOutputWithContext(ctx context.Context) BucketOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketOutput)
+}
+
+func (i *Bucket) ToBucketPtrOutput() BucketPtrOutput {
+	return i.ToBucketPtrOutputWithContext(context.Background())
+}
+
+func (i *Bucket) ToBucketPtrOutputWithContext(ctx context.Context) BucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketPtrOutput)
+}
+
+type BucketPtrInput interface {
+	pulumi.Input
+
+	ToBucketPtrOutput() BucketPtrOutput
+	ToBucketPtrOutputWithContext(ctx context.Context) BucketPtrOutput
 }
 
 type BucketOutput struct {
@@ -714,7 +729,7 @@ type BucketOutput struct {
 }
 
 func (BucketOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketOutput)(nil)).Elem()
+	return reflect.TypeOf((*Bucket)(nil))
 }
 
 func (o BucketOutput) ToBucketOutput() BucketOutput {
@@ -725,6 +740,23 @@ func (o BucketOutput) ToBucketOutputWithContext(ctx context.Context) BucketOutpu
 	return o
 }
 
+type BucketPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BucketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Bucket)(nil))
+}
+
+func (o BucketPtrOutput) ToBucketPtrOutput() BucketPtrOutput {
+	return o
+}
+
+func (o BucketPtrOutput) ToBucketPtrOutputWithContext(ctx context.Context) BucketPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(BucketOutput{})
+	pulumi.RegisterOutputType(BucketPtrOutput{})
 }

@@ -235,16 +235,31 @@ type WorkspaceInput interface {
 	ToWorkspaceOutputWithContext(ctx context.Context) WorkspaceOutput
 }
 
-func (Workspace) ElementType() reflect.Type {
-	return reflect.TypeOf((*Workspace)(nil)).Elem()
+func (*Workspace) ElementType() reflect.Type {
+	return reflect.TypeOf((*Workspace)(nil))
 }
 
-func (i Workspace) ToWorkspaceOutput() WorkspaceOutput {
+func (i *Workspace) ToWorkspaceOutput() WorkspaceOutput {
 	return i.ToWorkspaceOutputWithContext(context.Background())
 }
 
-func (i Workspace) ToWorkspaceOutputWithContext(ctx context.Context) WorkspaceOutput {
+func (i *Workspace) ToWorkspaceOutputWithContext(ctx context.Context) WorkspaceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceOutput)
+}
+
+func (i *Workspace) ToWorkspacePtrOutput() WorkspacePtrOutput {
+	return i.ToWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i *Workspace) ToWorkspacePtrOutputWithContext(ctx context.Context) WorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspacePtrOutput)
+}
+
+type WorkspacePtrInput interface {
+	pulumi.Input
+
+	ToWorkspacePtrOutput() WorkspacePtrOutput
+	ToWorkspacePtrOutputWithContext(ctx context.Context) WorkspacePtrOutput
 }
 
 type WorkspaceOutput struct {
@@ -252,7 +267,7 @@ type WorkspaceOutput struct {
 }
 
 func (WorkspaceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspaceOutput)(nil)).Elem()
+	return reflect.TypeOf((*Workspace)(nil))
 }
 
 func (o WorkspaceOutput) ToWorkspaceOutput() WorkspaceOutput {
@@ -263,6 +278,23 @@ func (o WorkspaceOutput) ToWorkspaceOutputWithContext(ctx context.Context) Works
 	return o
 }
 
+type WorkspacePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WorkspacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Workspace)(nil))
+}
+
+func (o WorkspacePtrOutput) ToWorkspacePtrOutput() WorkspacePtrOutput {
+	return o
+}
+
+func (o WorkspacePtrOutput) ToWorkspacePtrOutputWithContext(ctx context.Context) WorkspacePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(WorkspaceOutput{})
+	pulumi.RegisterOutputType(WorkspacePtrOutput{})
 }

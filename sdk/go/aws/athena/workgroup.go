@@ -181,16 +181,31 @@ type WorkgroupInput interface {
 	ToWorkgroupOutputWithContext(ctx context.Context) WorkgroupOutput
 }
 
-func (Workgroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*Workgroup)(nil)).Elem()
+func (*Workgroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*Workgroup)(nil))
 }
 
-func (i Workgroup) ToWorkgroupOutput() WorkgroupOutput {
+func (i *Workgroup) ToWorkgroupOutput() WorkgroupOutput {
 	return i.ToWorkgroupOutputWithContext(context.Background())
 }
 
-func (i Workgroup) ToWorkgroupOutputWithContext(ctx context.Context) WorkgroupOutput {
+func (i *Workgroup) ToWorkgroupOutputWithContext(ctx context.Context) WorkgroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkgroupOutput)
+}
+
+func (i *Workgroup) ToWorkgroupPtrOutput() WorkgroupPtrOutput {
+	return i.ToWorkgroupPtrOutputWithContext(context.Background())
+}
+
+func (i *Workgroup) ToWorkgroupPtrOutputWithContext(ctx context.Context) WorkgroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkgroupPtrOutput)
+}
+
+type WorkgroupPtrInput interface {
+	pulumi.Input
+
+	ToWorkgroupPtrOutput() WorkgroupPtrOutput
+	ToWorkgroupPtrOutputWithContext(ctx context.Context) WorkgroupPtrOutput
 }
 
 type WorkgroupOutput struct {
@@ -198,7 +213,7 @@ type WorkgroupOutput struct {
 }
 
 func (WorkgroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkgroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*Workgroup)(nil))
 }
 
 func (o WorkgroupOutput) ToWorkgroupOutput() WorkgroupOutput {
@@ -209,6 +224,23 @@ func (o WorkgroupOutput) ToWorkgroupOutputWithContext(ctx context.Context) Workg
 	return o
 }
 
+type WorkgroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WorkgroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Workgroup)(nil))
+}
+
+func (o WorkgroupPtrOutput) ToWorkgroupPtrOutput() WorkgroupPtrOutput {
+	return o
+}
+
+func (o WorkgroupPtrOutput) ToWorkgroupPtrOutputWithContext(ctx context.Context) WorkgroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(WorkgroupOutput{})
+	pulumi.RegisterOutputType(WorkgroupPtrOutput{})
 }

@@ -182,16 +182,31 @@ type LinkAggregationGroupInput interface {
 	ToLinkAggregationGroupOutputWithContext(ctx context.Context) LinkAggregationGroupOutput
 }
 
-func (LinkAggregationGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*LinkAggregationGroup)(nil)).Elem()
+func (*LinkAggregationGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkAggregationGroup)(nil))
 }
 
-func (i LinkAggregationGroup) ToLinkAggregationGroupOutput() LinkAggregationGroupOutput {
+func (i *LinkAggregationGroup) ToLinkAggregationGroupOutput() LinkAggregationGroupOutput {
 	return i.ToLinkAggregationGroupOutputWithContext(context.Background())
 }
 
-func (i LinkAggregationGroup) ToLinkAggregationGroupOutputWithContext(ctx context.Context) LinkAggregationGroupOutput {
+func (i *LinkAggregationGroup) ToLinkAggregationGroupOutputWithContext(ctx context.Context) LinkAggregationGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LinkAggregationGroupOutput)
+}
+
+func (i *LinkAggregationGroup) ToLinkAggregationGroupPtrOutput() LinkAggregationGroupPtrOutput {
+	return i.ToLinkAggregationGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *LinkAggregationGroup) ToLinkAggregationGroupPtrOutputWithContext(ctx context.Context) LinkAggregationGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkAggregationGroupPtrOutput)
+}
+
+type LinkAggregationGroupPtrInput interface {
+	pulumi.Input
+
+	ToLinkAggregationGroupPtrOutput() LinkAggregationGroupPtrOutput
+	ToLinkAggregationGroupPtrOutputWithContext(ctx context.Context) LinkAggregationGroupPtrOutput
 }
 
 type LinkAggregationGroupOutput struct {
@@ -199,7 +214,7 @@ type LinkAggregationGroupOutput struct {
 }
 
 func (LinkAggregationGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LinkAggregationGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*LinkAggregationGroup)(nil))
 }
 
 func (o LinkAggregationGroupOutput) ToLinkAggregationGroupOutput() LinkAggregationGroupOutput {
@@ -210,6 +225,23 @@ func (o LinkAggregationGroupOutput) ToLinkAggregationGroupOutputWithContext(ctx 
 	return o
 }
 
+type LinkAggregationGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LinkAggregationGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkAggregationGroup)(nil))
+}
+
+func (o LinkAggregationGroupPtrOutput) ToLinkAggregationGroupPtrOutput() LinkAggregationGroupPtrOutput {
+	return o
+}
+
+func (o LinkAggregationGroupPtrOutput) ToLinkAggregationGroupPtrOutputWithContext(ctx context.Context) LinkAggregationGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LinkAggregationGroupOutput{})
+	pulumi.RegisterOutputType(LinkAggregationGroupPtrOutput{})
 }

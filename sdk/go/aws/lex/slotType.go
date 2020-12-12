@@ -239,16 +239,31 @@ type SlotTypeInput interface {
 	ToSlotTypeOutputWithContext(ctx context.Context) SlotTypeOutput
 }
 
-func (SlotType) ElementType() reflect.Type {
-	return reflect.TypeOf((*SlotType)(nil)).Elem()
+func (*SlotType) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlotType)(nil))
 }
 
-func (i SlotType) ToSlotTypeOutput() SlotTypeOutput {
+func (i *SlotType) ToSlotTypeOutput() SlotTypeOutput {
 	return i.ToSlotTypeOutputWithContext(context.Background())
 }
 
-func (i SlotType) ToSlotTypeOutputWithContext(ctx context.Context) SlotTypeOutput {
+func (i *SlotType) ToSlotTypeOutputWithContext(ctx context.Context) SlotTypeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SlotTypeOutput)
+}
+
+func (i *SlotType) ToSlotTypePtrOutput() SlotTypePtrOutput {
+	return i.ToSlotTypePtrOutputWithContext(context.Background())
+}
+
+func (i *SlotType) ToSlotTypePtrOutputWithContext(ctx context.Context) SlotTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlotTypePtrOutput)
+}
+
+type SlotTypePtrInput interface {
+	pulumi.Input
+
+	ToSlotTypePtrOutput() SlotTypePtrOutput
+	ToSlotTypePtrOutputWithContext(ctx context.Context) SlotTypePtrOutput
 }
 
 type SlotTypeOutput struct {
@@ -256,7 +271,7 @@ type SlotTypeOutput struct {
 }
 
 func (SlotTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SlotTypeOutput)(nil)).Elem()
+	return reflect.TypeOf((*SlotType)(nil))
 }
 
 func (o SlotTypeOutput) ToSlotTypeOutput() SlotTypeOutput {
@@ -267,6 +282,23 @@ func (o SlotTypeOutput) ToSlotTypeOutputWithContext(ctx context.Context) SlotTyp
 	return o
 }
 
+type SlotTypePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SlotTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SlotType)(nil))
+}
+
+func (o SlotTypePtrOutput) ToSlotTypePtrOutput() SlotTypePtrOutput {
+	return o
+}
+
+func (o SlotTypePtrOutput) ToSlotTypePtrOutputWithContext(ctx context.Context) SlotTypePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SlotTypeOutput{})
+	pulumi.RegisterOutputType(SlotTypePtrOutput{})
 }

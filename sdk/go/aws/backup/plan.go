@@ -173,16 +173,31 @@ type PlanInput interface {
 	ToPlanOutputWithContext(ctx context.Context) PlanOutput
 }
 
-func (Plan) ElementType() reflect.Type {
-	return reflect.TypeOf((*Plan)(nil)).Elem()
+func (*Plan) ElementType() reflect.Type {
+	return reflect.TypeOf((*Plan)(nil))
 }
 
-func (i Plan) ToPlanOutput() PlanOutput {
+func (i *Plan) ToPlanOutput() PlanOutput {
 	return i.ToPlanOutputWithContext(context.Background())
 }
 
-func (i Plan) ToPlanOutputWithContext(ctx context.Context) PlanOutput {
+func (i *Plan) ToPlanOutputWithContext(ctx context.Context) PlanOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PlanOutput)
+}
+
+func (i *Plan) ToPlanPtrOutput() PlanPtrOutput {
+	return i.ToPlanPtrOutputWithContext(context.Background())
+}
+
+func (i *Plan) ToPlanPtrOutputWithContext(ctx context.Context) PlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlanPtrOutput)
+}
+
+type PlanPtrInput interface {
+	pulumi.Input
+
+	ToPlanPtrOutput() PlanPtrOutput
+	ToPlanPtrOutputWithContext(ctx context.Context) PlanPtrOutput
 }
 
 type PlanOutput struct {
@@ -190,7 +205,7 @@ type PlanOutput struct {
 }
 
 func (PlanOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PlanOutput)(nil)).Elem()
+	return reflect.TypeOf((*Plan)(nil))
 }
 
 func (o PlanOutput) ToPlanOutput() PlanOutput {
@@ -201,6 +216,23 @@ func (o PlanOutput) ToPlanOutputWithContext(ctx context.Context) PlanOutput {
 	return o
 }
 
+type PlanPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PlanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Plan)(nil))
+}
+
+func (o PlanPtrOutput) ToPlanPtrOutput() PlanPtrOutput {
+	return o
+}
+
+func (o PlanPtrOutput) ToPlanPtrOutputWithContext(ctx context.Context) PlanPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PlanOutput{})
+	pulumi.RegisterOutputType(PlanPtrOutput{})
 }

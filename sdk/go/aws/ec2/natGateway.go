@@ -186,16 +186,31 @@ type NatGatewayInput interface {
 	ToNatGatewayOutputWithContext(ctx context.Context) NatGatewayOutput
 }
 
-func (NatGateway) ElementType() reflect.Type {
-	return reflect.TypeOf((*NatGateway)(nil)).Elem()
+func (*NatGateway) ElementType() reflect.Type {
+	return reflect.TypeOf((*NatGateway)(nil))
 }
 
-func (i NatGateway) ToNatGatewayOutput() NatGatewayOutput {
+func (i *NatGateway) ToNatGatewayOutput() NatGatewayOutput {
 	return i.ToNatGatewayOutputWithContext(context.Background())
 }
 
-func (i NatGateway) ToNatGatewayOutputWithContext(ctx context.Context) NatGatewayOutput {
+func (i *NatGateway) ToNatGatewayOutputWithContext(ctx context.Context) NatGatewayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NatGatewayOutput)
+}
+
+func (i *NatGateway) ToNatGatewayPtrOutput() NatGatewayPtrOutput {
+	return i.ToNatGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i *NatGateway) ToNatGatewayPtrOutputWithContext(ctx context.Context) NatGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NatGatewayPtrOutput)
+}
+
+type NatGatewayPtrInput interface {
+	pulumi.Input
+
+	ToNatGatewayPtrOutput() NatGatewayPtrOutput
+	ToNatGatewayPtrOutputWithContext(ctx context.Context) NatGatewayPtrOutput
 }
 
 type NatGatewayOutput struct {
@@ -203,7 +218,7 @@ type NatGatewayOutput struct {
 }
 
 func (NatGatewayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NatGatewayOutput)(nil)).Elem()
+	return reflect.TypeOf((*NatGateway)(nil))
 }
 
 func (o NatGatewayOutput) ToNatGatewayOutput() NatGatewayOutput {
@@ -214,6 +229,23 @@ func (o NatGatewayOutput) ToNatGatewayOutputWithContext(ctx context.Context) Nat
 	return o
 }
 
+type NatGatewayPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NatGatewayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NatGateway)(nil))
+}
+
+func (o NatGatewayPtrOutput) ToNatGatewayPtrOutput() NatGatewayPtrOutput {
+	return o
+}
+
+func (o NatGatewayPtrOutput) ToNatGatewayPtrOutputWithContext(ctx context.Context) NatGatewayPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NatGatewayOutput{})
+	pulumi.RegisterOutputType(NatGatewayPtrOutput{})
 }

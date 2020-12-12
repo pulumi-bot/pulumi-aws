@@ -100,16 +100,31 @@ type RestApiPolicyInput interface {
 	ToRestApiPolicyOutputWithContext(ctx context.Context) RestApiPolicyOutput
 }
 
-func (RestApiPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*RestApiPolicy)(nil)).Elem()
+func (*RestApiPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestApiPolicy)(nil))
 }
 
-func (i RestApiPolicy) ToRestApiPolicyOutput() RestApiPolicyOutput {
+func (i *RestApiPolicy) ToRestApiPolicyOutput() RestApiPolicyOutput {
 	return i.ToRestApiPolicyOutputWithContext(context.Background())
 }
 
-func (i RestApiPolicy) ToRestApiPolicyOutputWithContext(ctx context.Context) RestApiPolicyOutput {
+func (i *RestApiPolicy) ToRestApiPolicyOutputWithContext(ctx context.Context) RestApiPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RestApiPolicyOutput)
+}
+
+func (i *RestApiPolicy) ToRestApiPolicyPtrOutput() RestApiPolicyPtrOutput {
+	return i.ToRestApiPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *RestApiPolicy) ToRestApiPolicyPtrOutputWithContext(ctx context.Context) RestApiPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestApiPolicyPtrOutput)
+}
+
+type RestApiPolicyPtrInput interface {
+	pulumi.Input
+
+	ToRestApiPolicyPtrOutput() RestApiPolicyPtrOutput
+	ToRestApiPolicyPtrOutputWithContext(ctx context.Context) RestApiPolicyPtrOutput
 }
 
 type RestApiPolicyOutput struct {
@@ -117,7 +132,7 @@ type RestApiPolicyOutput struct {
 }
 
 func (RestApiPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RestApiPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*RestApiPolicy)(nil))
 }
 
 func (o RestApiPolicyOutput) ToRestApiPolicyOutput() RestApiPolicyOutput {
@@ -128,6 +143,23 @@ func (o RestApiPolicyOutput) ToRestApiPolicyOutputWithContext(ctx context.Contex
 	return o
 }
 
+type RestApiPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RestApiPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestApiPolicy)(nil))
+}
+
+func (o RestApiPolicyPtrOutput) ToRestApiPolicyPtrOutput() RestApiPolicyPtrOutput {
+	return o
+}
+
+func (o RestApiPolicyPtrOutput) ToRestApiPolicyPtrOutputWithContext(ctx context.Context) RestApiPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RestApiPolicyOutput{})
+	pulumi.RegisterOutputType(RestApiPolicyPtrOutput{})
 }

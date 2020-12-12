@@ -310,16 +310,31 @@ type CatalogTableInput interface {
 	ToCatalogTableOutputWithContext(ctx context.Context) CatalogTableOutput
 }
 
-func (CatalogTable) ElementType() reflect.Type {
-	return reflect.TypeOf((*CatalogTable)(nil)).Elem()
+func (*CatalogTable) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogTable)(nil))
 }
 
-func (i CatalogTable) ToCatalogTableOutput() CatalogTableOutput {
+func (i *CatalogTable) ToCatalogTableOutput() CatalogTableOutput {
 	return i.ToCatalogTableOutputWithContext(context.Background())
 }
 
-func (i CatalogTable) ToCatalogTableOutputWithContext(ctx context.Context) CatalogTableOutput {
+func (i *CatalogTable) ToCatalogTableOutputWithContext(ctx context.Context) CatalogTableOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogTableOutput)
+}
+
+func (i *CatalogTable) ToCatalogTablePtrOutput() CatalogTablePtrOutput {
+	return i.ToCatalogTablePtrOutputWithContext(context.Background())
+}
+
+func (i *CatalogTable) ToCatalogTablePtrOutputWithContext(ctx context.Context) CatalogTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogTablePtrOutput)
+}
+
+type CatalogTablePtrInput interface {
+	pulumi.Input
+
+	ToCatalogTablePtrOutput() CatalogTablePtrOutput
+	ToCatalogTablePtrOutputWithContext(ctx context.Context) CatalogTablePtrOutput
 }
 
 type CatalogTableOutput struct {
@@ -327,7 +342,7 @@ type CatalogTableOutput struct {
 }
 
 func (CatalogTableOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CatalogTableOutput)(nil)).Elem()
+	return reflect.TypeOf((*CatalogTable)(nil))
 }
 
 func (o CatalogTableOutput) ToCatalogTableOutput() CatalogTableOutput {
@@ -338,6 +353,23 @@ func (o CatalogTableOutput) ToCatalogTableOutputWithContext(ctx context.Context)
 	return o
 }
 
+type CatalogTablePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CatalogTablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CatalogTable)(nil))
+}
+
+func (o CatalogTablePtrOutput) ToCatalogTablePtrOutput() CatalogTablePtrOutput {
+	return o
+}
+
+func (o CatalogTablePtrOutput) ToCatalogTablePtrOutputWithContext(ctx context.Context) CatalogTablePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CatalogTableOutput{})
+	pulumi.RegisterOutputType(CatalogTablePtrOutput{})
 }

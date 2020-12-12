@@ -163,16 +163,31 @@ type PartitionInput interface {
 	ToPartitionOutputWithContext(ctx context.Context) PartitionOutput
 }
 
-func (Partition) ElementType() reflect.Type {
-	return reflect.TypeOf((*Partition)(nil)).Elem()
+func (*Partition) ElementType() reflect.Type {
+	return reflect.TypeOf((*Partition)(nil))
 }
 
-func (i Partition) ToPartitionOutput() PartitionOutput {
+func (i *Partition) ToPartitionOutput() PartitionOutput {
 	return i.ToPartitionOutputWithContext(context.Background())
 }
 
-func (i Partition) ToPartitionOutputWithContext(ctx context.Context) PartitionOutput {
+func (i *Partition) ToPartitionOutputWithContext(ctx context.Context) PartitionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PartitionOutput)
+}
+
+func (i *Partition) ToPartitionPtrOutput() PartitionPtrOutput {
+	return i.ToPartitionPtrOutputWithContext(context.Background())
+}
+
+func (i *Partition) ToPartitionPtrOutputWithContext(ctx context.Context) PartitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PartitionPtrOutput)
+}
+
+type PartitionPtrInput interface {
+	pulumi.Input
+
+	ToPartitionPtrOutput() PartitionPtrOutput
+	ToPartitionPtrOutputWithContext(ctx context.Context) PartitionPtrOutput
 }
 
 type PartitionOutput struct {
@@ -180,7 +195,7 @@ type PartitionOutput struct {
 }
 
 func (PartitionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PartitionOutput)(nil)).Elem()
+	return reflect.TypeOf((*Partition)(nil))
 }
 
 func (o PartitionOutput) ToPartitionOutput() PartitionOutput {
@@ -191,6 +206,23 @@ func (o PartitionOutput) ToPartitionOutputWithContext(ctx context.Context) Parti
 	return o
 }
 
+type PartitionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PartitionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Partition)(nil))
+}
+
+func (o PartitionPtrOutput) ToPartitionPtrOutput() PartitionPtrOutput {
+	return o
+}
+
+func (o PartitionPtrOutput) ToPartitionPtrOutputWithContext(ctx context.Context) PartitionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PartitionOutput{})
+	pulumi.RegisterOutputType(PartitionPtrOutput{})
 }

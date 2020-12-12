@@ -124,16 +124,31 @@ type DefaultKmsKeyInput interface {
 	ToDefaultKmsKeyOutputWithContext(ctx context.Context) DefaultKmsKeyOutput
 }
 
-func (DefaultKmsKey) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefaultKmsKey)(nil)).Elem()
+func (*DefaultKmsKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultKmsKey)(nil))
 }
 
-func (i DefaultKmsKey) ToDefaultKmsKeyOutput() DefaultKmsKeyOutput {
+func (i *DefaultKmsKey) ToDefaultKmsKeyOutput() DefaultKmsKeyOutput {
 	return i.ToDefaultKmsKeyOutputWithContext(context.Background())
 }
 
-func (i DefaultKmsKey) ToDefaultKmsKeyOutputWithContext(ctx context.Context) DefaultKmsKeyOutput {
+func (i *DefaultKmsKey) ToDefaultKmsKeyOutputWithContext(ctx context.Context) DefaultKmsKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultKmsKeyOutput)
+}
+
+func (i *DefaultKmsKey) ToDefaultKmsKeyPtrOutput() DefaultKmsKeyPtrOutput {
+	return i.ToDefaultKmsKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *DefaultKmsKey) ToDefaultKmsKeyPtrOutputWithContext(ctx context.Context) DefaultKmsKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultKmsKeyPtrOutput)
+}
+
+type DefaultKmsKeyPtrInput interface {
+	pulumi.Input
+
+	ToDefaultKmsKeyPtrOutput() DefaultKmsKeyPtrOutput
+	ToDefaultKmsKeyPtrOutputWithContext(ctx context.Context) DefaultKmsKeyPtrOutput
 }
 
 type DefaultKmsKeyOutput struct {
@@ -141,7 +156,7 @@ type DefaultKmsKeyOutput struct {
 }
 
 func (DefaultKmsKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefaultKmsKeyOutput)(nil)).Elem()
+	return reflect.TypeOf((*DefaultKmsKey)(nil))
 }
 
 func (o DefaultKmsKeyOutput) ToDefaultKmsKeyOutput() DefaultKmsKeyOutput {
@@ -152,6 +167,23 @@ func (o DefaultKmsKeyOutput) ToDefaultKmsKeyOutputWithContext(ctx context.Contex
 	return o
 }
 
+type DefaultKmsKeyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DefaultKmsKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultKmsKey)(nil))
+}
+
+func (o DefaultKmsKeyPtrOutput) ToDefaultKmsKeyPtrOutput() DefaultKmsKeyPtrOutput {
+	return o
+}
+
+func (o DefaultKmsKeyPtrOutput) ToDefaultKmsKeyPtrOutputWithContext(ctx context.Context) DefaultKmsKeyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DefaultKmsKeyOutput{})
+	pulumi.RegisterOutputType(DefaultKmsKeyPtrOutput{})
 }

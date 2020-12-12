@@ -77,16 +77,31 @@ type ConfgurationSetInput interface {
 	ToConfgurationSetOutputWithContext(ctx context.Context) ConfgurationSetOutput
 }
 
-func (ConfgurationSet) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConfgurationSet)(nil)).Elem()
+func (*ConfgurationSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfgurationSet)(nil))
 }
 
-func (i ConfgurationSet) ToConfgurationSetOutput() ConfgurationSetOutput {
+func (i *ConfgurationSet) ToConfgurationSetOutput() ConfgurationSetOutput {
 	return i.ToConfgurationSetOutputWithContext(context.Background())
 }
 
-func (i ConfgurationSet) ToConfgurationSetOutputWithContext(ctx context.Context) ConfgurationSetOutput {
+func (i *ConfgurationSet) ToConfgurationSetOutputWithContext(ctx context.Context) ConfgurationSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfgurationSetOutput)
+}
+
+func (i *ConfgurationSet) ToConfgurationSetPtrOutput() ConfgurationSetPtrOutput {
+	return i.ToConfgurationSetPtrOutputWithContext(context.Background())
+}
+
+func (i *ConfgurationSet) ToConfgurationSetPtrOutputWithContext(ctx context.Context) ConfgurationSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfgurationSetPtrOutput)
+}
+
+type ConfgurationSetPtrInput interface {
+	pulumi.Input
+
+	ToConfgurationSetPtrOutput() ConfgurationSetPtrOutput
+	ToConfgurationSetPtrOutputWithContext(ctx context.Context) ConfgurationSetPtrOutput
 }
 
 type ConfgurationSetOutput struct {
@@ -94,7 +109,7 @@ type ConfgurationSetOutput struct {
 }
 
 func (ConfgurationSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConfgurationSetOutput)(nil)).Elem()
+	return reflect.TypeOf((*ConfgurationSet)(nil))
 }
 
 func (o ConfgurationSetOutput) ToConfgurationSetOutput() ConfgurationSetOutput {
@@ -105,6 +120,23 @@ func (o ConfgurationSetOutput) ToConfgurationSetOutputWithContext(ctx context.Co
 	return o
 }
 
+type ConfgurationSetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConfgurationSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfgurationSet)(nil))
+}
+
+func (o ConfgurationSetPtrOutput) ToConfgurationSetPtrOutput() ConfgurationSetPtrOutput {
+	return o
+}
+
+func (o ConfgurationSetPtrOutput) ToConfgurationSetPtrOutputWithContext(ctx context.Context) ConfgurationSetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ConfgurationSetOutput{})
+	pulumi.RegisterOutputType(ConfgurationSetPtrOutput{})
 }

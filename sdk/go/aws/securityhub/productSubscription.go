@@ -136,16 +136,31 @@ type ProductSubscriptionInput interface {
 	ToProductSubscriptionOutputWithContext(ctx context.Context) ProductSubscriptionOutput
 }
 
-func (ProductSubscription) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProductSubscription)(nil)).Elem()
+func (*ProductSubscription) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProductSubscription)(nil))
 }
 
-func (i ProductSubscription) ToProductSubscriptionOutput() ProductSubscriptionOutput {
+func (i *ProductSubscription) ToProductSubscriptionOutput() ProductSubscriptionOutput {
 	return i.ToProductSubscriptionOutputWithContext(context.Background())
 }
 
-func (i ProductSubscription) ToProductSubscriptionOutputWithContext(ctx context.Context) ProductSubscriptionOutput {
+func (i *ProductSubscription) ToProductSubscriptionOutputWithContext(ctx context.Context) ProductSubscriptionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProductSubscriptionOutput)
+}
+
+func (i *ProductSubscription) ToProductSubscriptionPtrOutput() ProductSubscriptionPtrOutput {
+	return i.ToProductSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i *ProductSubscription) ToProductSubscriptionPtrOutputWithContext(ctx context.Context) ProductSubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProductSubscriptionPtrOutput)
+}
+
+type ProductSubscriptionPtrInput interface {
+	pulumi.Input
+
+	ToProductSubscriptionPtrOutput() ProductSubscriptionPtrOutput
+	ToProductSubscriptionPtrOutputWithContext(ctx context.Context) ProductSubscriptionPtrOutput
 }
 
 type ProductSubscriptionOutput struct {
@@ -153,7 +168,7 @@ type ProductSubscriptionOutput struct {
 }
 
 func (ProductSubscriptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProductSubscriptionOutput)(nil)).Elem()
+	return reflect.TypeOf((*ProductSubscription)(nil))
 }
 
 func (o ProductSubscriptionOutput) ToProductSubscriptionOutput() ProductSubscriptionOutput {
@@ -164,6 +179,23 @@ func (o ProductSubscriptionOutput) ToProductSubscriptionOutputWithContext(ctx co
 	return o
 }
 
+type ProductSubscriptionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProductSubscriptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProductSubscription)(nil))
+}
+
+func (o ProductSubscriptionPtrOutput) ToProductSubscriptionPtrOutput() ProductSubscriptionPtrOutput {
+	return o
+}
+
+func (o ProductSubscriptionPtrOutput) ToProductSubscriptionPtrOutputWithContext(ctx context.Context) ProductSubscriptionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProductSubscriptionOutput{})
+	pulumi.RegisterOutputType(ProductSubscriptionPtrOutput{})
 }

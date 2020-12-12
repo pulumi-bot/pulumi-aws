@@ -114,16 +114,31 @@ type ProxyDefaultTargetGroupInput interface {
 	ToProxyDefaultTargetGroupOutputWithContext(ctx context.Context) ProxyDefaultTargetGroupOutput
 }
 
-func (ProxyDefaultTargetGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProxyDefaultTargetGroup)(nil)).Elem()
+func (*ProxyDefaultTargetGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProxyDefaultTargetGroup)(nil))
 }
 
-func (i ProxyDefaultTargetGroup) ToProxyDefaultTargetGroupOutput() ProxyDefaultTargetGroupOutput {
+func (i *ProxyDefaultTargetGroup) ToProxyDefaultTargetGroupOutput() ProxyDefaultTargetGroupOutput {
 	return i.ToProxyDefaultTargetGroupOutputWithContext(context.Background())
 }
 
-func (i ProxyDefaultTargetGroup) ToProxyDefaultTargetGroupOutputWithContext(ctx context.Context) ProxyDefaultTargetGroupOutput {
+func (i *ProxyDefaultTargetGroup) ToProxyDefaultTargetGroupOutputWithContext(ctx context.Context) ProxyDefaultTargetGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProxyDefaultTargetGroupOutput)
+}
+
+func (i *ProxyDefaultTargetGroup) ToProxyDefaultTargetGroupPtrOutput() ProxyDefaultTargetGroupPtrOutput {
+	return i.ToProxyDefaultTargetGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *ProxyDefaultTargetGroup) ToProxyDefaultTargetGroupPtrOutputWithContext(ctx context.Context) ProxyDefaultTargetGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProxyDefaultTargetGroupPtrOutput)
+}
+
+type ProxyDefaultTargetGroupPtrInput interface {
+	pulumi.Input
+
+	ToProxyDefaultTargetGroupPtrOutput() ProxyDefaultTargetGroupPtrOutput
+	ToProxyDefaultTargetGroupPtrOutputWithContext(ctx context.Context) ProxyDefaultTargetGroupPtrOutput
 }
 
 type ProxyDefaultTargetGroupOutput struct {
@@ -131,7 +146,7 @@ type ProxyDefaultTargetGroupOutput struct {
 }
 
 func (ProxyDefaultTargetGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProxyDefaultTargetGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*ProxyDefaultTargetGroup)(nil))
 }
 
 func (o ProxyDefaultTargetGroupOutput) ToProxyDefaultTargetGroupOutput() ProxyDefaultTargetGroupOutput {
@@ -142,6 +157,23 @@ func (o ProxyDefaultTargetGroupOutput) ToProxyDefaultTargetGroupOutputWithContex
 	return o
 }
 
+type ProxyDefaultTargetGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProxyDefaultTargetGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProxyDefaultTargetGroup)(nil))
+}
+
+func (o ProxyDefaultTargetGroupPtrOutput) ToProxyDefaultTargetGroupPtrOutput() ProxyDefaultTargetGroupPtrOutput {
+	return o
+}
+
+func (o ProxyDefaultTargetGroupPtrOutput) ToProxyDefaultTargetGroupPtrOutputWithContext(ctx context.Context) ProxyDefaultTargetGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProxyDefaultTargetGroupOutput{})
+	pulumi.RegisterOutputType(ProxyDefaultTargetGroupPtrOutput{})
 }

@@ -256,16 +256,31 @@ type StackSetInput interface {
 	ToStackSetOutputWithContext(ctx context.Context) StackSetOutput
 }
 
-func (StackSet) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackSet)(nil)).Elem()
+func (*StackSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackSet)(nil))
 }
 
-func (i StackSet) ToStackSetOutput() StackSetOutput {
+func (i *StackSet) ToStackSetOutput() StackSetOutput {
 	return i.ToStackSetOutputWithContext(context.Background())
 }
 
-func (i StackSet) ToStackSetOutputWithContext(ctx context.Context) StackSetOutput {
+func (i *StackSet) ToStackSetOutputWithContext(ctx context.Context) StackSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StackSetOutput)
+}
+
+func (i *StackSet) ToStackSetPtrOutput() StackSetPtrOutput {
+	return i.ToStackSetPtrOutputWithContext(context.Background())
+}
+
+func (i *StackSet) ToStackSetPtrOutputWithContext(ctx context.Context) StackSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackSetPtrOutput)
+}
+
+type StackSetPtrInput interface {
+	pulumi.Input
+
+	ToStackSetPtrOutput() StackSetPtrOutput
+	ToStackSetPtrOutputWithContext(ctx context.Context) StackSetPtrOutput
 }
 
 type StackSetOutput struct {
@@ -273,7 +288,7 @@ type StackSetOutput struct {
 }
 
 func (StackSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackSetOutput)(nil)).Elem()
+	return reflect.TypeOf((*StackSet)(nil))
 }
 
 func (o StackSetOutput) ToStackSetOutput() StackSetOutput {
@@ -284,6 +299,23 @@ func (o StackSetOutput) ToStackSetOutputWithContext(ctx context.Context) StackSe
 	return o
 }
 
+type StackSetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (StackSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StackSet)(nil))
+}
+
+func (o StackSetPtrOutput) ToStackSetPtrOutput() StackSetPtrOutput {
+	return o
+}
+
+func (o StackSetPtrOutput) ToStackSetPtrOutputWithContext(ctx context.Context) StackSetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(StackSetOutput{})
+	pulumi.RegisterOutputType(StackSetPtrOutput{})
 }

@@ -191,16 +191,31 @@ type WorkflowInput interface {
 	ToWorkflowOutputWithContext(ctx context.Context) WorkflowOutput
 }
 
-func (Workflow) ElementType() reflect.Type {
-	return reflect.TypeOf((*Workflow)(nil)).Elem()
+func (*Workflow) ElementType() reflect.Type {
+	return reflect.TypeOf((*Workflow)(nil))
 }
 
-func (i Workflow) ToWorkflowOutput() WorkflowOutput {
+func (i *Workflow) ToWorkflowOutput() WorkflowOutput {
 	return i.ToWorkflowOutputWithContext(context.Background())
 }
 
-func (i Workflow) ToWorkflowOutputWithContext(ctx context.Context) WorkflowOutput {
+func (i *Workflow) ToWorkflowOutputWithContext(ctx context.Context) WorkflowOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowOutput)
+}
+
+func (i *Workflow) ToWorkflowPtrOutput() WorkflowPtrOutput {
+	return i.ToWorkflowPtrOutputWithContext(context.Background())
+}
+
+func (i *Workflow) ToWorkflowPtrOutputWithContext(ctx context.Context) WorkflowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowPtrOutput)
+}
+
+type WorkflowPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowPtrOutput() WorkflowPtrOutput
+	ToWorkflowPtrOutputWithContext(ctx context.Context) WorkflowPtrOutput
 }
 
 type WorkflowOutput struct {
@@ -208,7 +223,7 @@ type WorkflowOutput struct {
 }
 
 func (WorkflowOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkflowOutput)(nil)).Elem()
+	return reflect.TypeOf((*Workflow)(nil))
 }
 
 func (o WorkflowOutput) ToWorkflowOutput() WorkflowOutput {
@@ -219,6 +234,23 @@ func (o WorkflowOutput) ToWorkflowOutputWithContext(ctx context.Context) Workflo
 	return o
 }
 
+type WorkflowPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WorkflowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Workflow)(nil))
+}
+
+func (o WorkflowPtrOutput) ToWorkflowPtrOutput() WorkflowPtrOutput {
+	return o
+}
+
+func (o WorkflowPtrOutput) ToWorkflowPtrOutputWithContext(ctx context.Context) WorkflowPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(WorkflowOutput{})
+	pulumi.RegisterOutputType(WorkflowPtrOutput{})
 }

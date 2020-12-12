@@ -424,7 +424,7 @@ func (i PlanRuleCopyActionLifecycleArgs) ToPlanRuleCopyActionLifecyclePtrOutput(
 }
 
 func (i PlanRuleCopyActionLifecycleArgs) ToPlanRuleCopyActionLifecyclePtrOutputWithContext(ctx context.Context) PlanRuleCopyActionLifecyclePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PlanRuleCopyActionLifecycleOutput).ToPlanRuleCopyActionLifecyclePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PlanRuleCopyActionLifecycleOutput).ToPlanRuleCopyActionLifecyclePtrOutput()
 }
 
 // PlanRuleCopyActionLifecyclePtrInput is an input type that accepts PlanRuleCopyActionLifecycleArgs, PlanRuleCopyActionLifecyclePtr and PlanRuleCopyActionLifecyclePtrOutput values.
@@ -457,7 +457,7 @@ func (i *planRuleCopyActionLifecyclePtrType) ToPlanRuleCopyActionLifecyclePtrOut
 }
 
 func (i *planRuleCopyActionLifecyclePtrType) ToPlanRuleCopyActionLifecyclePtrOutputWithContext(ctx context.Context) PlanRuleCopyActionLifecyclePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PlanRuleCopyActionLifecyclePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PlanRuleCopyActionLifecycleOutput).ToPlanRuleCopyActionLifecyclePtrOutput()
 }
 
 type PlanRuleCopyActionLifecycleOutput struct{ *pulumi.OutputState }
@@ -574,7 +574,7 @@ func (i PlanRuleLifecycleArgs) ToPlanRuleLifecyclePtrOutput() PlanRuleLifecycleP
 }
 
 func (i PlanRuleLifecycleArgs) ToPlanRuleLifecyclePtrOutputWithContext(ctx context.Context) PlanRuleLifecyclePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PlanRuleLifecycleOutput).ToPlanRuleLifecyclePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PlanRuleLifecycleOutput).ToPlanRuleLifecyclePtrOutput()
 }
 
 // PlanRuleLifecyclePtrInput is an input type that accepts PlanRuleLifecycleArgs, PlanRuleLifecyclePtr and PlanRuleLifecyclePtrOutput values.
@@ -607,7 +607,7 @@ func (i *planRuleLifecyclePtrType) ToPlanRuleLifecyclePtrOutput() PlanRuleLifecy
 }
 
 func (i *planRuleLifecyclePtrType) ToPlanRuleLifecyclePtrOutputWithContext(ctx context.Context) PlanRuleLifecyclePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PlanRuleLifecyclePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PlanRuleLifecycleOutput).ToPlanRuleLifecyclePtrOutput()
 }
 
 type PlanRuleLifecycleOutput struct{ *pulumi.OutputState }

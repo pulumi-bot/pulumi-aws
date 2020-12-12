@@ -131,16 +131,31 @@ type PipelineInput interface {
 	ToPipelineOutputWithContext(ctx context.Context) PipelineOutput
 }
 
-func (Pipeline) ElementType() reflect.Type {
-	return reflect.TypeOf((*Pipeline)(nil)).Elem()
+func (*Pipeline) ElementType() reflect.Type {
+	return reflect.TypeOf((*Pipeline)(nil))
 }
 
-func (i Pipeline) ToPipelineOutput() PipelineOutput {
+func (i *Pipeline) ToPipelineOutput() PipelineOutput {
 	return i.ToPipelineOutputWithContext(context.Background())
 }
 
-func (i Pipeline) ToPipelineOutputWithContext(ctx context.Context) PipelineOutput {
+func (i *Pipeline) ToPipelineOutputWithContext(ctx context.Context) PipelineOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineOutput)
+}
+
+func (i *Pipeline) ToPipelinePtrOutput() PipelinePtrOutput {
+	return i.ToPipelinePtrOutputWithContext(context.Background())
+}
+
+func (i *Pipeline) ToPipelinePtrOutputWithContext(ctx context.Context) PipelinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelinePtrOutput)
+}
+
+type PipelinePtrInput interface {
+	pulumi.Input
+
+	ToPipelinePtrOutput() PipelinePtrOutput
+	ToPipelinePtrOutputWithContext(ctx context.Context) PipelinePtrOutput
 }
 
 type PipelineOutput struct {
@@ -148,7 +163,7 @@ type PipelineOutput struct {
 }
 
 func (PipelineOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineOutput)(nil)).Elem()
+	return reflect.TypeOf((*Pipeline)(nil))
 }
 
 func (o PipelineOutput) ToPipelineOutput() PipelineOutput {
@@ -159,6 +174,23 @@ func (o PipelineOutput) ToPipelineOutputWithContext(ctx context.Context) Pipelin
 	return o
 }
 
+type PipelinePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PipelinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Pipeline)(nil))
+}
+
+func (o PipelinePtrOutput) ToPipelinePtrOutput() PipelinePtrOutput {
+	return o
+}
+
+func (o PipelinePtrOutput) ToPipelinePtrOutputWithContext(ctx context.Context) PipelinePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PipelineOutput{})
+	pulumi.RegisterOutputType(PipelinePtrOutput{})
 }

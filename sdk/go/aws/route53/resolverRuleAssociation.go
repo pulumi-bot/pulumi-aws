@@ -141,16 +141,31 @@ type ResolverRuleAssociationInput interface {
 	ToResolverRuleAssociationOutputWithContext(ctx context.Context) ResolverRuleAssociationOutput
 }
 
-func (ResolverRuleAssociation) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResolverRuleAssociation)(nil)).Elem()
+func (*ResolverRuleAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverRuleAssociation)(nil))
 }
 
-func (i ResolverRuleAssociation) ToResolverRuleAssociationOutput() ResolverRuleAssociationOutput {
+func (i *ResolverRuleAssociation) ToResolverRuleAssociationOutput() ResolverRuleAssociationOutput {
 	return i.ToResolverRuleAssociationOutputWithContext(context.Background())
 }
 
-func (i ResolverRuleAssociation) ToResolverRuleAssociationOutputWithContext(ctx context.Context) ResolverRuleAssociationOutput {
+func (i *ResolverRuleAssociation) ToResolverRuleAssociationOutputWithContext(ctx context.Context) ResolverRuleAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResolverRuleAssociationOutput)
+}
+
+func (i *ResolverRuleAssociation) ToResolverRuleAssociationPtrOutput() ResolverRuleAssociationPtrOutput {
+	return i.ToResolverRuleAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i *ResolverRuleAssociation) ToResolverRuleAssociationPtrOutputWithContext(ctx context.Context) ResolverRuleAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverRuleAssociationPtrOutput)
+}
+
+type ResolverRuleAssociationPtrInput interface {
+	pulumi.Input
+
+	ToResolverRuleAssociationPtrOutput() ResolverRuleAssociationPtrOutput
+	ToResolverRuleAssociationPtrOutputWithContext(ctx context.Context) ResolverRuleAssociationPtrOutput
 }
 
 type ResolverRuleAssociationOutput struct {
@@ -158,7 +173,7 @@ type ResolverRuleAssociationOutput struct {
 }
 
 func (ResolverRuleAssociationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResolverRuleAssociationOutput)(nil)).Elem()
+	return reflect.TypeOf((*ResolverRuleAssociation)(nil))
 }
 
 func (o ResolverRuleAssociationOutput) ToResolverRuleAssociationOutput() ResolverRuleAssociationOutput {
@@ -169,6 +184,23 @@ func (o ResolverRuleAssociationOutput) ToResolverRuleAssociationOutputWithContex
 	return o
 }
 
+type ResolverRuleAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResolverRuleAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResolverRuleAssociation)(nil))
+}
+
+func (o ResolverRuleAssociationPtrOutput) ToResolverRuleAssociationPtrOutput() ResolverRuleAssociationPtrOutput {
+	return o
+}
+
+func (o ResolverRuleAssociationPtrOutput) ToResolverRuleAssociationPtrOutputWithContext(ctx context.Context) ResolverRuleAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResolverRuleAssociationOutput{})
+	pulumi.RegisterOutputType(ResolverRuleAssociationPtrOutput{})
 }

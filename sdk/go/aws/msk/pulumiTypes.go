@@ -64,7 +64,7 @@ func (i ClusterBrokerNodeGroupInfoArgs) ToClusterBrokerNodeGroupInfoPtrOutput() 
 }
 
 func (i ClusterBrokerNodeGroupInfoArgs) ToClusterBrokerNodeGroupInfoPtrOutputWithContext(ctx context.Context) ClusterBrokerNodeGroupInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterBrokerNodeGroupInfoOutput).ToClusterBrokerNodeGroupInfoPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterBrokerNodeGroupInfoOutput).ToClusterBrokerNodeGroupInfoPtrOutput()
 }
 
 // ClusterBrokerNodeGroupInfoPtrInput is an input type that accepts ClusterBrokerNodeGroupInfoArgs, ClusterBrokerNodeGroupInfoPtr and ClusterBrokerNodeGroupInfoPtrOutput values.
@@ -97,7 +97,7 @@ func (i *clusterBrokerNodeGroupInfoPtrType) ToClusterBrokerNodeGroupInfoPtrOutpu
 }
 
 func (i *clusterBrokerNodeGroupInfoPtrType) ToClusterBrokerNodeGroupInfoPtrOutputWithContext(ctx context.Context) ClusterBrokerNodeGroupInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterBrokerNodeGroupInfoPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterBrokerNodeGroupInfoOutput).ToClusterBrokerNodeGroupInfoPtrOutput()
 }
 
 type ClusterBrokerNodeGroupInfoOutput struct{ *pulumi.OutputState }
@@ -259,7 +259,7 @@ func (i ClusterClientAuthenticationArgs) ToClusterClientAuthenticationPtrOutput(
 }
 
 func (i ClusterClientAuthenticationArgs) ToClusterClientAuthenticationPtrOutputWithContext(ctx context.Context) ClusterClientAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterClientAuthenticationOutput).ToClusterClientAuthenticationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClientAuthenticationOutput).ToClusterClientAuthenticationPtrOutput()
 }
 
 // ClusterClientAuthenticationPtrInput is an input type that accepts ClusterClientAuthenticationArgs, ClusterClientAuthenticationPtr and ClusterClientAuthenticationPtrOutput values.
@@ -292,7 +292,7 @@ func (i *clusterClientAuthenticationPtrType) ToClusterClientAuthenticationPtrOut
 }
 
 func (i *clusterClientAuthenticationPtrType) ToClusterClientAuthenticationPtrOutputWithContext(ctx context.Context) ClusterClientAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterClientAuthenticationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClientAuthenticationOutput).ToClusterClientAuthenticationPtrOutput()
 }
 
 type ClusterClientAuthenticationOutput struct{ *pulumi.OutputState }
@@ -405,7 +405,7 @@ func (i ClusterClientAuthenticationSaslArgs) ToClusterClientAuthenticationSaslPt
 }
 
 func (i ClusterClientAuthenticationSaslArgs) ToClusterClientAuthenticationSaslPtrOutputWithContext(ctx context.Context) ClusterClientAuthenticationSaslPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterClientAuthenticationSaslOutput).ToClusterClientAuthenticationSaslPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClientAuthenticationSaslOutput).ToClusterClientAuthenticationSaslPtrOutput()
 }
 
 // ClusterClientAuthenticationSaslPtrInput is an input type that accepts ClusterClientAuthenticationSaslArgs, ClusterClientAuthenticationSaslPtr and ClusterClientAuthenticationSaslPtrOutput values.
@@ -438,7 +438,7 @@ func (i *clusterClientAuthenticationSaslPtrType) ToClusterClientAuthenticationSa
 }
 
 func (i *clusterClientAuthenticationSaslPtrType) ToClusterClientAuthenticationSaslPtrOutputWithContext(ctx context.Context) ClusterClientAuthenticationSaslPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterClientAuthenticationSaslPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClientAuthenticationSaslOutput).ToClusterClientAuthenticationSaslPtrOutput()
 }
 
 type ClusterClientAuthenticationSaslOutput struct{ *pulumi.OutputState }
@@ -536,7 +536,7 @@ func (i ClusterClientAuthenticationTlsArgs) ToClusterClientAuthenticationTlsPtrO
 }
 
 func (i ClusterClientAuthenticationTlsArgs) ToClusterClientAuthenticationTlsPtrOutputWithContext(ctx context.Context) ClusterClientAuthenticationTlsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterClientAuthenticationTlsOutput).ToClusterClientAuthenticationTlsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClientAuthenticationTlsOutput).ToClusterClientAuthenticationTlsPtrOutput()
 }
 
 // ClusterClientAuthenticationTlsPtrInput is an input type that accepts ClusterClientAuthenticationTlsArgs, ClusterClientAuthenticationTlsPtr and ClusterClientAuthenticationTlsPtrOutput values.
@@ -569,7 +569,7 @@ func (i *clusterClientAuthenticationTlsPtrType) ToClusterClientAuthenticationTls
 }
 
 func (i *clusterClientAuthenticationTlsPtrType) ToClusterClientAuthenticationTlsPtrOutputWithContext(ctx context.Context) ClusterClientAuthenticationTlsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterClientAuthenticationTlsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClientAuthenticationTlsOutput).ToClusterClientAuthenticationTlsPtrOutput()
 }
 
 type ClusterClientAuthenticationTlsOutput struct{ *pulumi.OutputState }
@@ -671,7 +671,7 @@ func (i ClusterConfigurationInfoArgs) ToClusterConfigurationInfoPtrOutput() Clus
 }
 
 func (i ClusterConfigurationInfoArgs) ToClusterConfigurationInfoPtrOutputWithContext(ctx context.Context) ClusterConfigurationInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigurationInfoOutput).ToClusterConfigurationInfoPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigurationInfoOutput).ToClusterConfigurationInfoPtrOutput()
 }
 
 // ClusterConfigurationInfoPtrInput is an input type that accepts ClusterConfigurationInfoArgs, ClusterConfigurationInfoPtr and ClusterConfigurationInfoPtrOutput values.
@@ -704,7 +704,7 @@ func (i *clusterConfigurationInfoPtrType) ToClusterConfigurationInfoPtrOutput() 
 }
 
 func (i *clusterConfigurationInfoPtrType) ToClusterConfigurationInfoPtrOutputWithContext(ctx context.Context) ClusterConfigurationInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigurationInfoPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigurationInfoOutput).ToClusterConfigurationInfoPtrOutput()
 }
 
 type ClusterConfigurationInfoOutput struct{ *pulumi.OutputState }
@@ -821,7 +821,7 @@ func (i ClusterEncryptionInfoArgs) ToClusterEncryptionInfoPtrOutput() ClusterEnc
 }
 
 func (i ClusterEncryptionInfoArgs) ToClusterEncryptionInfoPtrOutputWithContext(ctx context.Context) ClusterEncryptionInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterEncryptionInfoOutput).ToClusterEncryptionInfoPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEncryptionInfoOutput).ToClusterEncryptionInfoPtrOutput()
 }
 
 // ClusterEncryptionInfoPtrInput is an input type that accepts ClusterEncryptionInfoArgs, ClusterEncryptionInfoPtr and ClusterEncryptionInfoPtrOutput values.
@@ -854,7 +854,7 @@ func (i *clusterEncryptionInfoPtrType) ToClusterEncryptionInfoPtrOutput() Cluste
 }
 
 func (i *clusterEncryptionInfoPtrType) ToClusterEncryptionInfoPtrOutputWithContext(ctx context.Context) ClusterEncryptionInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterEncryptionInfoPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEncryptionInfoOutput).ToClusterEncryptionInfoPtrOutput()
 }
 
 type ClusterEncryptionInfoOutput struct{ *pulumi.OutputState }
@@ -971,7 +971,7 @@ func (i ClusterEncryptionInfoEncryptionInTransitArgs) ToClusterEncryptionInfoEnc
 }
 
 func (i ClusterEncryptionInfoEncryptionInTransitArgs) ToClusterEncryptionInfoEncryptionInTransitPtrOutputWithContext(ctx context.Context) ClusterEncryptionInfoEncryptionInTransitPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterEncryptionInfoEncryptionInTransitOutput).ToClusterEncryptionInfoEncryptionInTransitPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEncryptionInfoEncryptionInTransitOutput).ToClusterEncryptionInfoEncryptionInTransitPtrOutput()
 }
 
 // ClusterEncryptionInfoEncryptionInTransitPtrInput is an input type that accepts ClusterEncryptionInfoEncryptionInTransitArgs, ClusterEncryptionInfoEncryptionInTransitPtr and ClusterEncryptionInfoEncryptionInTransitPtrOutput values.
@@ -1004,7 +1004,7 @@ func (i *clusterEncryptionInfoEncryptionInTransitPtrType) ToClusterEncryptionInf
 }
 
 func (i *clusterEncryptionInfoEncryptionInTransitPtrType) ToClusterEncryptionInfoEncryptionInTransitPtrOutputWithContext(ctx context.Context) ClusterEncryptionInfoEncryptionInTransitPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterEncryptionInfoEncryptionInTransitPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEncryptionInfoEncryptionInTransitOutput).ToClusterEncryptionInfoEncryptionInTransitPtrOutput()
 }
 
 type ClusterEncryptionInfoEncryptionInTransitOutput struct{ *pulumi.OutputState }
@@ -1117,7 +1117,7 @@ func (i ClusterLoggingInfoArgs) ToClusterLoggingInfoPtrOutput() ClusterLoggingIn
 }
 
 func (i ClusterLoggingInfoArgs) ToClusterLoggingInfoPtrOutputWithContext(ctx context.Context) ClusterLoggingInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingInfoOutput).ToClusterLoggingInfoPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingInfoOutput).ToClusterLoggingInfoPtrOutput()
 }
 
 // ClusterLoggingInfoPtrInput is an input type that accepts ClusterLoggingInfoArgs, ClusterLoggingInfoPtr and ClusterLoggingInfoPtrOutput values.
@@ -1150,7 +1150,7 @@ func (i *clusterLoggingInfoPtrType) ToClusterLoggingInfoPtrOutput() ClusterLoggi
 }
 
 func (i *clusterLoggingInfoPtrType) ToClusterLoggingInfoPtrOutputWithContext(ctx context.Context) ClusterLoggingInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingInfoPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingInfoOutput).ToClusterLoggingInfoPtrOutput()
 }
 
 type ClusterLoggingInfoOutput struct{ *pulumi.OutputState }
@@ -1250,7 +1250,7 @@ func (i ClusterLoggingInfoBrokerLogsArgs) ToClusterLoggingInfoBrokerLogsPtrOutpu
 }
 
 func (i ClusterLoggingInfoBrokerLogsArgs) ToClusterLoggingInfoBrokerLogsPtrOutputWithContext(ctx context.Context) ClusterLoggingInfoBrokerLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingInfoBrokerLogsOutput).ToClusterLoggingInfoBrokerLogsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingInfoBrokerLogsOutput).ToClusterLoggingInfoBrokerLogsPtrOutput()
 }
 
 // ClusterLoggingInfoBrokerLogsPtrInput is an input type that accepts ClusterLoggingInfoBrokerLogsArgs, ClusterLoggingInfoBrokerLogsPtr and ClusterLoggingInfoBrokerLogsPtrOutput values.
@@ -1283,7 +1283,7 @@ func (i *clusterLoggingInfoBrokerLogsPtrType) ToClusterLoggingInfoBrokerLogsPtrO
 }
 
 func (i *clusterLoggingInfoBrokerLogsPtrType) ToClusterLoggingInfoBrokerLogsPtrOutputWithContext(ctx context.Context) ClusterLoggingInfoBrokerLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingInfoBrokerLogsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingInfoBrokerLogsOutput).ToClusterLoggingInfoBrokerLogsPtrOutput()
 }
 
 type ClusterLoggingInfoBrokerLogsOutput struct{ *pulumi.OutputState }
@@ -1410,7 +1410,7 @@ func (i ClusterLoggingInfoBrokerLogsCloudwatchLogsArgs) ToClusterLoggingInfoBrok
 }
 
 func (i ClusterLoggingInfoBrokerLogsCloudwatchLogsArgs) ToClusterLoggingInfoBrokerLogsCloudwatchLogsPtrOutputWithContext(ctx context.Context) ClusterLoggingInfoBrokerLogsCloudwatchLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingInfoBrokerLogsCloudwatchLogsOutput).ToClusterLoggingInfoBrokerLogsCloudwatchLogsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingInfoBrokerLogsCloudwatchLogsOutput).ToClusterLoggingInfoBrokerLogsCloudwatchLogsPtrOutput()
 }
 
 // ClusterLoggingInfoBrokerLogsCloudwatchLogsPtrInput is an input type that accepts ClusterLoggingInfoBrokerLogsCloudwatchLogsArgs, ClusterLoggingInfoBrokerLogsCloudwatchLogsPtr and ClusterLoggingInfoBrokerLogsCloudwatchLogsPtrOutput values.
@@ -1443,7 +1443,7 @@ func (i *clusterLoggingInfoBrokerLogsCloudwatchLogsPtrType) ToClusterLoggingInfo
 }
 
 func (i *clusterLoggingInfoBrokerLogsCloudwatchLogsPtrType) ToClusterLoggingInfoBrokerLogsCloudwatchLogsPtrOutputWithContext(ctx context.Context) ClusterLoggingInfoBrokerLogsCloudwatchLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingInfoBrokerLogsCloudwatchLogsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingInfoBrokerLogsCloudwatchLogsOutput).ToClusterLoggingInfoBrokerLogsCloudwatchLogsPtrOutput()
 }
 
 type ClusterLoggingInfoBrokerLogsCloudwatchLogsOutput struct{ *pulumi.OutputState }
@@ -1562,7 +1562,7 @@ func (i ClusterLoggingInfoBrokerLogsFirehoseArgs) ToClusterLoggingInfoBrokerLogs
 }
 
 func (i ClusterLoggingInfoBrokerLogsFirehoseArgs) ToClusterLoggingInfoBrokerLogsFirehosePtrOutputWithContext(ctx context.Context) ClusterLoggingInfoBrokerLogsFirehosePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingInfoBrokerLogsFirehoseOutput).ToClusterLoggingInfoBrokerLogsFirehosePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingInfoBrokerLogsFirehoseOutput).ToClusterLoggingInfoBrokerLogsFirehosePtrOutput()
 }
 
 // ClusterLoggingInfoBrokerLogsFirehosePtrInput is an input type that accepts ClusterLoggingInfoBrokerLogsFirehoseArgs, ClusterLoggingInfoBrokerLogsFirehosePtr and ClusterLoggingInfoBrokerLogsFirehosePtrOutput values.
@@ -1595,7 +1595,7 @@ func (i *clusterLoggingInfoBrokerLogsFirehosePtrType) ToClusterLoggingInfoBroker
 }
 
 func (i *clusterLoggingInfoBrokerLogsFirehosePtrType) ToClusterLoggingInfoBrokerLogsFirehosePtrOutputWithContext(ctx context.Context) ClusterLoggingInfoBrokerLogsFirehosePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingInfoBrokerLogsFirehosePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingInfoBrokerLogsFirehoseOutput).ToClusterLoggingInfoBrokerLogsFirehosePtrOutput()
 }
 
 type ClusterLoggingInfoBrokerLogsFirehoseOutput struct{ *pulumi.OutputState }
@@ -1716,7 +1716,7 @@ func (i ClusterLoggingInfoBrokerLogsS3Args) ToClusterLoggingInfoBrokerLogsS3PtrO
 }
 
 func (i ClusterLoggingInfoBrokerLogsS3Args) ToClusterLoggingInfoBrokerLogsS3PtrOutputWithContext(ctx context.Context) ClusterLoggingInfoBrokerLogsS3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingInfoBrokerLogsS3Output).ToClusterLoggingInfoBrokerLogsS3PtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingInfoBrokerLogsS3Output).ToClusterLoggingInfoBrokerLogsS3PtrOutput()
 }
 
 // ClusterLoggingInfoBrokerLogsS3PtrInput is an input type that accepts ClusterLoggingInfoBrokerLogsS3Args, ClusterLoggingInfoBrokerLogsS3Ptr and ClusterLoggingInfoBrokerLogsS3PtrOutput values.
@@ -1749,7 +1749,7 @@ func (i *clusterLoggingInfoBrokerLogsS3PtrType) ToClusterLoggingInfoBrokerLogsS3
 }
 
 func (i *clusterLoggingInfoBrokerLogsS3PtrType) ToClusterLoggingInfoBrokerLogsS3PtrOutputWithContext(ctx context.Context) ClusterLoggingInfoBrokerLogsS3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingInfoBrokerLogsS3PtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterLoggingInfoBrokerLogsS3Output).ToClusterLoggingInfoBrokerLogsS3PtrOutput()
 }
 
 type ClusterLoggingInfoBrokerLogsS3Output struct{ *pulumi.OutputState }
@@ -1877,7 +1877,7 @@ func (i ClusterOpenMonitoringArgs) ToClusterOpenMonitoringPtrOutput() ClusterOpe
 }
 
 func (i ClusterOpenMonitoringArgs) ToClusterOpenMonitoringPtrOutputWithContext(ctx context.Context) ClusterOpenMonitoringPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterOpenMonitoringOutput).ToClusterOpenMonitoringPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterOpenMonitoringOutput).ToClusterOpenMonitoringPtrOutput()
 }
 
 // ClusterOpenMonitoringPtrInput is an input type that accepts ClusterOpenMonitoringArgs, ClusterOpenMonitoringPtr and ClusterOpenMonitoringPtrOutput values.
@@ -1910,7 +1910,7 @@ func (i *clusterOpenMonitoringPtrType) ToClusterOpenMonitoringPtrOutput() Cluste
 }
 
 func (i *clusterOpenMonitoringPtrType) ToClusterOpenMonitoringPtrOutputWithContext(ctx context.Context) ClusterOpenMonitoringPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterOpenMonitoringPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterOpenMonitoringOutput).ToClusterOpenMonitoringPtrOutput()
 }
 
 type ClusterOpenMonitoringOutput struct{ *pulumi.OutputState }
@@ -2012,7 +2012,7 @@ func (i ClusterOpenMonitoringPrometheusArgs) ToClusterOpenMonitoringPrometheusPt
 }
 
 func (i ClusterOpenMonitoringPrometheusArgs) ToClusterOpenMonitoringPrometheusPtrOutputWithContext(ctx context.Context) ClusterOpenMonitoringPrometheusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterOpenMonitoringPrometheusOutput).ToClusterOpenMonitoringPrometheusPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterOpenMonitoringPrometheusOutput).ToClusterOpenMonitoringPrometheusPtrOutput()
 }
 
 // ClusterOpenMonitoringPrometheusPtrInput is an input type that accepts ClusterOpenMonitoringPrometheusArgs, ClusterOpenMonitoringPrometheusPtr and ClusterOpenMonitoringPrometheusPtrOutput values.
@@ -2045,7 +2045,7 @@ func (i *clusterOpenMonitoringPrometheusPtrType) ToClusterOpenMonitoringPromethe
 }
 
 func (i *clusterOpenMonitoringPrometheusPtrType) ToClusterOpenMonitoringPrometheusPtrOutputWithContext(ctx context.Context) ClusterOpenMonitoringPrometheusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterOpenMonitoringPrometheusPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterOpenMonitoringPrometheusOutput).ToClusterOpenMonitoringPrometheusPtrOutput()
 }
 
 type ClusterOpenMonitoringPrometheusOutput struct{ *pulumi.OutputState }
@@ -2162,7 +2162,7 @@ func (i ClusterOpenMonitoringPrometheusJmxExporterArgs) ToClusterOpenMonitoringP
 }
 
 func (i ClusterOpenMonitoringPrometheusJmxExporterArgs) ToClusterOpenMonitoringPrometheusJmxExporterPtrOutputWithContext(ctx context.Context) ClusterOpenMonitoringPrometheusJmxExporterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterOpenMonitoringPrometheusJmxExporterOutput).ToClusterOpenMonitoringPrometheusJmxExporterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterOpenMonitoringPrometheusJmxExporterOutput).ToClusterOpenMonitoringPrometheusJmxExporterPtrOutput()
 }
 
 // ClusterOpenMonitoringPrometheusJmxExporterPtrInput is an input type that accepts ClusterOpenMonitoringPrometheusJmxExporterArgs, ClusterOpenMonitoringPrometheusJmxExporterPtr and ClusterOpenMonitoringPrometheusJmxExporterPtrOutput values.
@@ -2195,7 +2195,7 @@ func (i *clusterOpenMonitoringPrometheusJmxExporterPtrType) ToClusterOpenMonitor
 }
 
 func (i *clusterOpenMonitoringPrometheusJmxExporterPtrType) ToClusterOpenMonitoringPrometheusJmxExporterPtrOutputWithContext(ctx context.Context) ClusterOpenMonitoringPrometheusJmxExporterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterOpenMonitoringPrometheusJmxExporterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterOpenMonitoringPrometheusJmxExporterOutput).ToClusterOpenMonitoringPrometheusJmxExporterPtrOutput()
 }
 
 type ClusterOpenMonitoringPrometheusJmxExporterOutput struct{ *pulumi.OutputState }
@@ -2295,7 +2295,7 @@ func (i ClusterOpenMonitoringPrometheusNodeExporterArgs) ToClusterOpenMonitoring
 }
 
 func (i ClusterOpenMonitoringPrometheusNodeExporterArgs) ToClusterOpenMonitoringPrometheusNodeExporterPtrOutputWithContext(ctx context.Context) ClusterOpenMonitoringPrometheusNodeExporterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterOpenMonitoringPrometheusNodeExporterOutput).ToClusterOpenMonitoringPrometheusNodeExporterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterOpenMonitoringPrometheusNodeExporterOutput).ToClusterOpenMonitoringPrometheusNodeExporterPtrOutput()
 }
 
 // ClusterOpenMonitoringPrometheusNodeExporterPtrInput is an input type that accepts ClusterOpenMonitoringPrometheusNodeExporterArgs, ClusterOpenMonitoringPrometheusNodeExporterPtr and ClusterOpenMonitoringPrometheusNodeExporterPtrOutput values.
@@ -2328,7 +2328,7 @@ func (i *clusterOpenMonitoringPrometheusNodeExporterPtrType) ToClusterOpenMonito
 }
 
 func (i *clusterOpenMonitoringPrometheusNodeExporterPtrType) ToClusterOpenMonitoringPrometheusNodeExporterPtrOutputWithContext(ctx context.Context) ClusterOpenMonitoringPrometheusNodeExporterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterOpenMonitoringPrometheusNodeExporterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterOpenMonitoringPrometheusNodeExporterOutput).ToClusterOpenMonitoringPrometheusNodeExporterPtrOutput()
 }
 
 type ClusterOpenMonitoringPrometheusNodeExporterOutput struct{ *pulumi.OutputState }

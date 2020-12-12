@@ -126,16 +126,31 @@ type RegionSettingsInput interface {
 	ToRegionSettingsOutputWithContext(ctx context.Context) RegionSettingsOutput
 }
 
-func (RegionSettings) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionSettings)(nil)).Elem()
+func (*RegionSettings) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionSettings)(nil))
 }
 
-func (i RegionSettings) ToRegionSettingsOutput() RegionSettingsOutput {
+func (i *RegionSettings) ToRegionSettingsOutput() RegionSettingsOutput {
 	return i.ToRegionSettingsOutputWithContext(context.Background())
 }
 
-func (i RegionSettings) ToRegionSettingsOutputWithContext(ctx context.Context) RegionSettingsOutput {
+func (i *RegionSettings) ToRegionSettingsOutputWithContext(ctx context.Context) RegionSettingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionSettingsOutput)
+}
+
+func (i *RegionSettings) ToRegionSettingsPtrOutput() RegionSettingsPtrOutput {
+	return i.ToRegionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *RegionSettings) ToRegionSettingsPtrOutputWithContext(ctx context.Context) RegionSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionSettingsPtrOutput)
+}
+
+type RegionSettingsPtrInput interface {
+	pulumi.Input
+
+	ToRegionSettingsPtrOutput() RegionSettingsPtrOutput
+	ToRegionSettingsPtrOutputWithContext(ctx context.Context) RegionSettingsPtrOutput
 }
 
 type RegionSettingsOutput struct {
@@ -143,7 +158,7 @@ type RegionSettingsOutput struct {
 }
 
 func (RegionSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionSettingsOutput)(nil)).Elem()
+	return reflect.TypeOf((*RegionSettings)(nil))
 }
 
 func (o RegionSettingsOutput) ToRegionSettingsOutput() RegionSettingsOutput {
@@ -154,6 +169,23 @@ func (o RegionSettingsOutput) ToRegionSettingsOutputWithContext(ctx context.Cont
 	return o
 }
 
+type RegionSettingsPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegionSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionSettings)(nil))
+}
+
+func (o RegionSettingsPtrOutput) ToRegionSettingsPtrOutput() RegionSettingsPtrOutput {
+	return o
+}
+
+func (o RegionSettingsPtrOutput) ToRegionSettingsPtrOutputWithContext(ctx context.Context) RegionSettingsPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RegionSettingsOutput{})
+	pulumi.RegisterOutputType(RegionSettingsPtrOutput{})
 }

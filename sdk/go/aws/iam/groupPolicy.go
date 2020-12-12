@@ -169,16 +169,31 @@ type GroupPolicyInput interface {
 	ToGroupPolicyOutputWithContext(ctx context.Context) GroupPolicyOutput
 }
 
-func (GroupPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupPolicy)(nil)).Elem()
+func (*GroupPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupPolicy)(nil))
 }
 
-func (i GroupPolicy) ToGroupPolicyOutput() GroupPolicyOutput {
+func (i *GroupPolicy) ToGroupPolicyOutput() GroupPolicyOutput {
 	return i.ToGroupPolicyOutputWithContext(context.Background())
 }
 
-func (i GroupPolicy) ToGroupPolicyOutputWithContext(ctx context.Context) GroupPolicyOutput {
+func (i *GroupPolicy) ToGroupPolicyOutputWithContext(ctx context.Context) GroupPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupPolicyOutput)
+}
+
+func (i *GroupPolicy) ToGroupPolicyPtrOutput() GroupPolicyPtrOutput {
+	return i.ToGroupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *GroupPolicy) ToGroupPolicyPtrOutputWithContext(ctx context.Context) GroupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupPolicyPtrOutput)
+}
+
+type GroupPolicyPtrInput interface {
+	pulumi.Input
+
+	ToGroupPolicyPtrOutput() GroupPolicyPtrOutput
+	ToGroupPolicyPtrOutputWithContext(ctx context.Context) GroupPolicyPtrOutput
 }
 
 type GroupPolicyOutput struct {
@@ -186,7 +201,7 @@ type GroupPolicyOutput struct {
 }
 
 func (GroupPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*GroupPolicy)(nil))
 }
 
 func (o GroupPolicyOutput) ToGroupPolicyOutput() GroupPolicyOutput {
@@ -197,6 +212,23 @@ func (o GroupPolicyOutput) ToGroupPolicyOutputWithContext(ctx context.Context) G
 	return o
 }
 
+type GroupPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GroupPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupPolicy)(nil))
+}
+
+func (o GroupPolicyPtrOutput) ToGroupPolicyPtrOutput() GroupPolicyPtrOutput {
+	return o
+}
+
+func (o GroupPolicyPtrOutput) ToGroupPolicyPtrOutputWithContext(ctx context.Context) GroupPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(GroupPolicyOutput{})
+	pulumi.RegisterOutputType(GroupPolicyPtrOutput{})
 }

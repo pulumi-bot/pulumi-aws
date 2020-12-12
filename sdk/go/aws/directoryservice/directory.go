@@ -403,16 +403,31 @@ type DirectoryInput interface {
 	ToDirectoryOutputWithContext(ctx context.Context) DirectoryOutput
 }
 
-func (Directory) ElementType() reflect.Type {
-	return reflect.TypeOf((*Directory)(nil)).Elem()
+func (*Directory) ElementType() reflect.Type {
+	return reflect.TypeOf((*Directory)(nil))
 }
 
-func (i Directory) ToDirectoryOutput() DirectoryOutput {
+func (i *Directory) ToDirectoryOutput() DirectoryOutput {
 	return i.ToDirectoryOutputWithContext(context.Background())
 }
 
-func (i Directory) ToDirectoryOutputWithContext(ctx context.Context) DirectoryOutput {
+func (i *Directory) ToDirectoryOutputWithContext(ctx context.Context) DirectoryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DirectoryOutput)
+}
+
+func (i *Directory) ToDirectoryPtrOutput() DirectoryPtrOutput {
+	return i.ToDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (i *Directory) ToDirectoryPtrOutputWithContext(ctx context.Context) DirectoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryPtrOutput)
+}
+
+type DirectoryPtrInput interface {
+	pulumi.Input
+
+	ToDirectoryPtrOutput() DirectoryPtrOutput
+	ToDirectoryPtrOutputWithContext(ctx context.Context) DirectoryPtrOutput
 }
 
 type DirectoryOutput struct {
@@ -420,7 +435,7 @@ type DirectoryOutput struct {
 }
 
 func (DirectoryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DirectoryOutput)(nil)).Elem()
+	return reflect.TypeOf((*Directory)(nil))
 }
 
 func (o DirectoryOutput) ToDirectoryOutput() DirectoryOutput {
@@ -431,6 +446,23 @@ func (o DirectoryOutput) ToDirectoryOutputWithContext(ctx context.Context) Direc
 	return o
 }
 
+type DirectoryPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DirectoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Directory)(nil))
+}
+
+func (o DirectoryPtrOutput) ToDirectoryPtrOutput() DirectoryPtrOutput {
+	return o
+}
+
+func (o DirectoryPtrOutput) ToDirectoryPtrOutputWithContext(ctx context.Context) DirectoryPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DirectoryOutput{})
+	pulumi.RegisterOutputType(DirectoryPtrOutput{})
 }

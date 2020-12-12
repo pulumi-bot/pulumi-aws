@@ -215,16 +215,31 @@ type ThreatIntelSetInput interface {
 	ToThreatIntelSetOutputWithContext(ctx context.Context) ThreatIntelSetOutput
 }
 
-func (ThreatIntelSet) ElementType() reflect.Type {
-	return reflect.TypeOf((*ThreatIntelSet)(nil)).Elem()
+func (*ThreatIntelSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreatIntelSet)(nil))
 }
 
-func (i ThreatIntelSet) ToThreatIntelSetOutput() ThreatIntelSetOutput {
+func (i *ThreatIntelSet) ToThreatIntelSetOutput() ThreatIntelSetOutput {
 	return i.ToThreatIntelSetOutputWithContext(context.Background())
 }
 
-func (i ThreatIntelSet) ToThreatIntelSetOutputWithContext(ctx context.Context) ThreatIntelSetOutput {
+func (i *ThreatIntelSet) ToThreatIntelSetOutputWithContext(ctx context.Context) ThreatIntelSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelSetOutput)
+}
+
+func (i *ThreatIntelSet) ToThreatIntelSetPtrOutput() ThreatIntelSetPtrOutput {
+	return i.ToThreatIntelSetPtrOutputWithContext(context.Background())
+}
+
+func (i *ThreatIntelSet) ToThreatIntelSetPtrOutputWithContext(ctx context.Context) ThreatIntelSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelSetPtrOutput)
+}
+
+type ThreatIntelSetPtrInput interface {
+	pulumi.Input
+
+	ToThreatIntelSetPtrOutput() ThreatIntelSetPtrOutput
+	ToThreatIntelSetPtrOutputWithContext(ctx context.Context) ThreatIntelSetPtrOutput
 }
 
 type ThreatIntelSetOutput struct {
@@ -232,7 +247,7 @@ type ThreatIntelSetOutput struct {
 }
 
 func (ThreatIntelSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ThreatIntelSetOutput)(nil)).Elem()
+	return reflect.TypeOf((*ThreatIntelSet)(nil))
 }
 
 func (o ThreatIntelSetOutput) ToThreatIntelSetOutput() ThreatIntelSetOutput {
@@ -243,6 +258,23 @@ func (o ThreatIntelSetOutput) ToThreatIntelSetOutputWithContext(ctx context.Cont
 	return o
 }
 
+type ThreatIntelSetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ThreatIntelSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ThreatIntelSet)(nil))
+}
+
+func (o ThreatIntelSetPtrOutput) ToThreatIntelSetPtrOutput() ThreatIntelSetPtrOutput {
+	return o
+}
+
+func (o ThreatIntelSetPtrOutput) ToThreatIntelSetPtrOutputWithContext(ctx context.Context) ThreatIntelSetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ThreatIntelSetOutput{})
+	pulumi.RegisterOutputType(ThreatIntelSetPtrOutput{})
 }

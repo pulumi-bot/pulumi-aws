@@ -48,7 +48,7 @@ func (i AliasRoutingConfigArgs) ToAliasRoutingConfigPtrOutput() AliasRoutingConf
 }
 
 func (i AliasRoutingConfigArgs) ToAliasRoutingConfigPtrOutputWithContext(ctx context.Context) AliasRoutingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AliasRoutingConfigOutput).ToAliasRoutingConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AliasRoutingConfigOutput).ToAliasRoutingConfigPtrOutput()
 }
 
 // AliasRoutingConfigPtrInput is an input type that accepts AliasRoutingConfigArgs, AliasRoutingConfigPtr and AliasRoutingConfigPtrOutput values.
@@ -81,7 +81,7 @@ func (i *aliasRoutingConfigPtrType) ToAliasRoutingConfigPtrOutput() AliasRouting
 }
 
 func (i *aliasRoutingConfigPtrType) ToAliasRoutingConfigPtrOutputWithContext(ctx context.Context) AliasRoutingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AliasRoutingConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AliasRoutingConfigOutput).ToAliasRoutingConfigPtrOutput()
 }
 
 type AliasRoutingConfigOutput struct{ *pulumi.OutputState }
@@ -179,7 +179,7 @@ func (i CodeSigningConfigAllowedPublishersArgs) ToCodeSigningConfigAllowedPublis
 }
 
 func (i CodeSigningConfigAllowedPublishersArgs) ToCodeSigningConfigAllowedPublishersPtrOutputWithContext(ctx context.Context) CodeSigningConfigAllowedPublishersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CodeSigningConfigAllowedPublishersOutput).ToCodeSigningConfigAllowedPublishersPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CodeSigningConfigAllowedPublishersOutput).ToCodeSigningConfigAllowedPublishersPtrOutput()
 }
 
 // CodeSigningConfigAllowedPublishersPtrInput is an input type that accepts CodeSigningConfigAllowedPublishersArgs, CodeSigningConfigAllowedPublishersPtr and CodeSigningConfigAllowedPublishersPtrOutput values.
@@ -212,7 +212,7 @@ func (i *codeSigningConfigAllowedPublishersPtrType) ToCodeSigningConfigAllowedPu
 }
 
 func (i *codeSigningConfigAllowedPublishersPtrType) ToCodeSigningConfigAllowedPublishersPtrOutputWithContext(ctx context.Context) CodeSigningConfigAllowedPublishersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CodeSigningConfigAllowedPublishersPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CodeSigningConfigAllowedPublishersOutput).ToCodeSigningConfigAllowedPublishersPtrOutput()
 }
 
 type CodeSigningConfigAllowedPublishersOutput struct{ *pulumi.OutputState }
@@ -310,7 +310,7 @@ func (i CodeSigningConfigPoliciesArgs) ToCodeSigningConfigPoliciesPtrOutput() Co
 }
 
 func (i CodeSigningConfigPoliciesArgs) ToCodeSigningConfigPoliciesPtrOutputWithContext(ctx context.Context) CodeSigningConfigPoliciesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CodeSigningConfigPoliciesOutput).ToCodeSigningConfigPoliciesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CodeSigningConfigPoliciesOutput).ToCodeSigningConfigPoliciesPtrOutput()
 }
 
 // CodeSigningConfigPoliciesPtrInput is an input type that accepts CodeSigningConfigPoliciesArgs, CodeSigningConfigPoliciesPtr and CodeSigningConfigPoliciesPtrOutput values.
@@ -343,7 +343,7 @@ func (i *codeSigningConfigPoliciesPtrType) ToCodeSigningConfigPoliciesPtrOutput(
 }
 
 func (i *codeSigningConfigPoliciesPtrType) ToCodeSigningConfigPoliciesPtrOutputWithContext(ctx context.Context) CodeSigningConfigPoliciesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CodeSigningConfigPoliciesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CodeSigningConfigPoliciesOutput).ToCodeSigningConfigPoliciesPtrOutput()
 }
 
 type CodeSigningConfigPoliciesOutput struct{ *pulumi.OutputState }
@@ -441,7 +441,7 @@ func (i EventSourceMappingDestinationConfigArgs) ToEventSourceMappingDestination
 }
 
 func (i EventSourceMappingDestinationConfigArgs) ToEventSourceMappingDestinationConfigPtrOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingDestinationConfigOutput).ToEventSourceMappingDestinationConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingDestinationConfigOutput).ToEventSourceMappingDestinationConfigPtrOutput()
 }
 
 // EventSourceMappingDestinationConfigPtrInput is an input type that accepts EventSourceMappingDestinationConfigArgs, EventSourceMappingDestinationConfigPtr and EventSourceMappingDestinationConfigPtrOutput values.
@@ -474,7 +474,7 @@ func (i *eventSourceMappingDestinationConfigPtrType) ToEventSourceMappingDestina
 }
 
 func (i *eventSourceMappingDestinationConfigPtrType) ToEventSourceMappingDestinationConfigPtrOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingDestinationConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingDestinationConfigOutput).ToEventSourceMappingDestinationConfigPtrOutput()
 }
 
 type EventSourceMappingDestinationConfigOutput struct{ *pulumi.OutputState }
@@ -574,7 +574,7 @@ func (i EventSourceMappingDestinationConfigOnFailureArgs) ToEventSourceMappingDe
 }
 
 func (i EventSourceMappingDestinationConfigOnFailureArgs) ToEventSourceMappingDestinationConfigOnFailurePtrOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigOnFailurePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingDestinationConfigOnFailureOutput).ToEventSourceMappingDestinationConfigOnFailurePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingDestinationConfigOnFailureOutput).ToEventSourceMappingDestinationConfigOnFailurePtrOutput()
 }
 
 // EventSourceMappingDestinationConfigOnFailurePtrInput is an input type that accepts EventSourceMappingDestinationConfigOnFailureArgs, EventSourceMappingDestinationConfigOnFailurePtr and EventSourceMappingDestinationConfigOnFailurePtrOutput values.
@@ -607,7 +607,7 @@ func (i *eventSourceMappingDestinationConfigOnFailurePtrType) ToEventSourceMappi
 }
 
 func (i *eventSourceMappingDestinationConfigOnFailurePtrType) ToEventSourceMappingDestinationConfigOnFailurePtrOutputWithContext(ctx context.Context) EventSourceMappingDestinationConfigOnFailurePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingDestinationConfigOnFailurePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EventSourceMappingDestinationConfigOnFailureOutput).ToEventSourceMappingDestinationConfigOnFailurePtrOutput()
 }
 
 type EventSourceMappingDestinationConfigOnFailureOutput struct{ *pulumi.OutputState }
@@ -713,7 +713,7 @@ func (i FunctionDeadLetterConfigArgs) ToFunctionDeadLetterConfigPtrOutput() Func
 }
 
 func (i FunctionDeadLetterConfigArgs) ToFunctionDeadLetterConfigPtrOutputWithContext(ctx context.Context) FunctionDeadLetterConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionDeadLetterConfigOutput).ToFunctionDeadLetterConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionDeadLetterConfigOutput).ToFunctionDeadLetterConfigPtrOutput()
 }
 
 // FunctionDeadLetterConfigPtrInput is an input type that accepts FunctionDeadLetterConfigArgs, FunctionDeadLetterConfigPtr and FunctionDeadLetterConfigPtrOutput values.
@@ -746,7 +746,7 @@ func (i *functionDeadLetterConfigPtrType) ToFunctionDeadLetterConfigPtrOutput() 
 }
 
 func (i *functionDeadLetterConfigPtrType) ToFunctionDeadLetterConfigPtrOutputWithContext(ctx context.Context) FunctionDeadLetterConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionDeadLetterConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionDeadLetterConfigOutput).ToFunctionDeadLetterConfigPtrOutput()
 }
 
 type FunctionDeadLetterConfigOutput struct{ *pulumi.OutputState }
@@ -850,7 +850,7 @@ func (i FunctionEnvironmentArgs) ToFunctionEnvironmentPtrOutput() FunctionEnviro
 }
 
 func (i FunctionEnvironmentArgs) ToFunctionEnvironmentPtrOutputWithContext(ctx context.Context) FunctionEnvironmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionEnvironmentOutput).ToFunctionEnvironmentPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEnvironmentOutput).ToFunctionEnvironmentPtrOutput()
 }
 
 // FunctionEnvironmentPtrInput is an input type that accepts FunctionEnvironmentArgs, FunctionEnvironmentPtr and FunctionEnvironmentPtrOutput values.
@@ -883,7 +883,7 @@ func (i *functionEnvironmentPtrType) ToFunctionEnvironmentPtrOutput() FunctionEn
 }
 
 func (i *functionEnvironmentPtrType) ToFunctionEnvironmentPtrOutputWithContext(ctx context.Context) FunctionEnvironmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionEnvironmentPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEnvironmentOutput).ToFunctionEnvironmentPtrOutput()
 }
 
 type FunctionEnvironmentOutput struct{ *pulumi.OutputState }
@@ -985,7 +985,7 @@ func (i FunctionEventInvokeConfigDestinationConfigArgs) ToFunctionEventInvokeCon
 }
 
 func (i FunctionEventInvokeConfigDestinationConfigArgs) ToFunctionEventInvokeConfigDestinationConfigPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigOutput).ToFunctionEventInvokeConfigDestinationConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigOutput).ToFunctionEventInvokeConfigDestinationConfigPtrOutput()
 }
 
 // FunctionEventInvokeConfigDestinationConfigPtrInput is an input type that accepts FunctionEventInvokeConfigDestinationConfigArgs, FunctionEventInvokeConfigDestinationConfigPtr and FunctionEventInvokeConfigDestinationConfigPtrOutput values.
@@ -1018,7 +1018,7 @@ func (i *functionEventInvokeConfigDestinationConfigPtrType) ToFunctionEventInvok
 }
 
 func (i *functionEventInvokeConfigDestinationConfigPtrType) ToFunctionEventInvokeConfigDestinationConfigPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigOutput).ToFunctionEventInvokeConfigDestinationConfigPtrOutput()
 }
 
 type FunctionEventInvokeConfigDestinationConfigOutput struct{ *pulumi.OutputState }
@@ -1137,7 +1137,7 @@ func (i FunctionEventInvokeConfigDestinationConfigOnFailureArgs) ToFunctionEvent
 }
 
 func (i FunctionEventInvokeConfigDestinationConfigOnFailureArgs) ToFunctionEventInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigOnFailurePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigOnFailureOutput).ToFunctionEventInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigOnFailureOutput).ToFunctionEventInvokeConfigDestinationConfigOnFailurePtrOutput()
 }
 
 // FunctionEventInvokeConfigDestinationConfigOnFailurePtrInput is an input type that accepts FunctionEventInvokeConfigDestinationConfigOnFailureArgs, FunctionEventInvokeConfigDestinationConfigOnFailurePtr and FunctionEventInvokeConfigDestinationConfigOnFailurePtrOutput values.
@@ -1170,7 +1170,7 @@ func (i *functionEventInvokeConfigDestinationConfigOnFailurePtrType) ToFunctionE
 }
 
 func (i *functionEventInvokeConfigDestinationConfigOnFailurePtrType) ToFunctionEventInvokeConfigDestinationConfigOnFailurePtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigOnFailurePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigOnFailurePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigOnFailureOutput).ToFunctionEventInvokeConfigDestinationConfigOnFailurePtrOutput()
 }
 
 type FunctionEventInvokeConfigDestinationConfigOnFailureOutput struct{ *pulumi.OutputState }
@@ -1270,7 +1270,7 @@ func (i FunctionEventInvokeConfigDestinationConfigOnSuccessArgs) ToFunctionEvent
 }
 
 func (i FunctionEventInvokeConfigDestinationConfigOnSuccessArgs) ToFunctionEventInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigOnSuccessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigOnSuccessOutput).ToFunctionEventInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigOnSuccessOutput).ToFunctionEventInvokeConfigDestinationConfigOnSuccessPtrOutput()
 }
 
 // FunctionEventInvokeConfigDestinationConfigOnSuccessPtrInput is an input type that accepts FunctionEventInvokeConfigDestinationConfigOnSuccessArgs, FunctionEventInvokeConfigDestinationConfigOnSuccessPtr and FunctionEventInvokeConfigDestinationConfigOnSuccessPtrOutput values.
@@ -1303,7 +1303,7 @@ func (i *functionEventInvokeConfigDestinationConfigOnSuccessPtrType) ToFunctionE
 }
 
 func (i *functionEventInvokeConfigDestinationConfigOnSuccessPtrType) ToFunctionEventInvokeConfigDestinationConfigOnSuccessPtrOutputWithContext(ctx context.Context) FunctionEventInvokeConfigDestinationConfigOnSuccessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigOnSuccessPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionEventInvokeConfigDestinationConfigOnSuccessOutput).ToFunctionEventInvokeConfigDestinationConfigOnSuccessPtrOutput()
 }
 
 type FunctionEventInvokeConfigDestinationConfigOnSuccessOutput struct{ *pulumi.OutputState }
@@ -1407,7 +1407,7 @@ func (i FunctionFileSystemConfigArgs) ToFunctionFileSystemConfigPtrOutput() Func
 }
 
 func (i FunctionFileSystemConfigArgs) ToFunctionFileSystemConfigPtrOutputWithContext(ctx context.Context) FunctionFileSystemConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionFileSystemConfigOutput).ToFunctionFileSystemConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionFileSystemConfigOutput).ToFunctionFileSystemConfigPtrOutput()
 }
 
 // FunctionFileSystemConfigPtrInput is an input type that accepts FunctionFileSystemConfigArgs, FunctionFileSystemConfigPtr and FunctionFileSystemConfigPtrOutput values.
@@ -1440,7 +1440,7 @@ func (i *functionFileSystemConfigPtrType) ToFunctionFileSystemConfigPtrOutput() 
 }
 
 func (i *functionFileSystemConfigPtrType) ToFunctionFileSystemConfigPtrOutputWithContext(ctx context.Context) FunctionFileSystemConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionFileSystemConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionFileSystemConfigOutput).ToFunctionFileSystemConfigPtrOutput()
 }
 
 type FunctionFileSystemConfigOutput struct{ *pulumi.OutputState }
@@ -1561,7 +1561,7 @@ func (i FunctionImageConfigArgs) ToFunctionImageConfigPtrOutput() FunctionImageC
 }
 
 func (i FunctionImageConfigArgs) ToFunctionImageConfigPtrOutputWithContext(ctx context.Context) FunctionImageConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionImageConfigOutput).ToFunctionImageConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionImageConfigOutput).ToFunctionImageConfigPtrOutput()
 }
 
 // FunctionImageConfigPtrInput is an input type that accepts FunctionImageConfigArgs, FunctionImageConfigPtr and FunctionImageConfigPtrOutput values.
@@ -1594,7 +1594,7 @@ func (i *functionImageConfigPtrType) ToFunctionImageConfigPtrOutput() FunctionIm
 }
 
 func (i *functionImageConfigPtrType) ToFunctionImageConfigPtrOutputWithContext(ctx context.Context) FunctionImageConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionImageConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionImageConfigOutput).ToFunctionImageConfigPtrOutput()
 }
 
 type FunctionImageConfigOutput struct{ *pulumi.OutputState }
@@ -1730,7 +1730,7 @@ func (i FunctionTracingConfigArgs) ToFunctionTracingConfigPtrOutput() FunctionTr
 }
 
 func (i FunctionTracingConfigArgs) ToFunctionTracingConfigPtrOutputWithContext(ctx context.Context) FunctionTracingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionTracingConfigOutput).ToFunctionTracingConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionTracingConfigOutput).ToFunctionTracingConfigPtrOutput()
 }
 
 // FunctionTracingConfigPtrInput is an input type that accepts FunctionTracingConfigArgs, FunctionTracingConfigPtr and FunctionTracingConfigPtrOutput values.
@@ -1763,7 +1763,7 @@ func (i *functionTracingConfigPtrType) ToFunctionTracingConfigPtrOutput() Functi
 }
 
 func (i *functionTracingConfigPtrType) ToFunctionTracingConfigPtrOutputWithContext(ctx context.Context) FunctionTracingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionTracingConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionTracingConfigOutput).ToFunctionTracingConfigPtrOutput()
 }
 
 type FunctionTracingConfigOutput struct{ *pulumi.OutputState }
@@ -1875,7 +1875,7 @@ func (i FunctionVpcConfigArgs) ToFunctionVpcConfigPtrOutput() FunctionVpcConfigP
 }
 
 func (i FunctionVpcConfigArgs) ToFunctionVpcConfigPtrOutputWithContext(ctx context.Context) FunctionVpcConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionVpcConfigOutput).ToFunctionVpcConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionVpcConfigOutput).ToFunctionVpcConfigPtrOutput()
 }
 
 // FunctionVpcConfigPtrInput is an input type that accepts FunctionVpcConfigArgs, FunctionVpcConfigPtr and FunctionVpcConfigPtrOutput values.
@@ -1908,7 +1908,7 @@ func (i *functionVpcConfigPtrType) ToFunctionVpcConfigPtrOutput() FunctionVpcCon
 }
 
 func (i *functionVpcConfigPtrType) ToFunctionVpcConfigPtrOutputWithContext(ctx context.Context) FunctionVpcConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FunctionVpcConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionVpcConfigOutput).ToFunctionVpcConfigPtrOutput()
 }
 
 type FunctionVpcConfigOutput struct{ *pulumi.OutputState }

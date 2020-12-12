@@ -224,16 +224,31 @@ type SnapshotCopyInput interface {
 	ToSnapshotCopyOutputWithContext(ctx context.Context) SnapshotCopyOutput
 }
 
-func (SnapshotCopy) ElementType() reflect.Type {
-	return reflect.TypeOf((*SnapshotCopy)(nil)).Elem()
+func (*SnapshotCopy) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotCopy)(nil))
 }
 
-func (i SnapshotCopy) ToSnapshotCopyOutput() SnapshotCopyOutput {
+func (i *SnapshotCopy) ToSnapshotCopyOutput() SnapshotCopyOutput {
 	return i.ToSnapshotCopyOutputWithContext(context.Background())
 }
 
-func (i SnapshotCopy) ToSnapshotCopyOutputWithContext(ctx context.Context) SnapshotCopyOutput {
+func (i *SnapshotCopy) ToSnapshotCopyOutputWithContext(ctx context.Context) SnapshotCopyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SnapshotCopyOutput)
+}
+
+func (i *SnapshotCopy) ToSnapshotCopyPtrOutput() SnapshotCopyPtrOutput {
+	return i.ToSnapshotCopyPtrOutputWithContext(context.Background())
+}
+
+func (i *SnapshotCopy) ToSnapshotCopyPtrOutputWithContext(ctx context.Context) SnapshotCopyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotCopyPtrOutput)
+}
+
+type SnapshotCopyPtrInput interface {
+	pulumi.Input
+
+	ToSnapshotCopyPtrOutput() SnapshotCopyPtrOutput
+	ToSnapshotCopyPtrOutputWithContext(ctx context.Context) SnapshotCopyPtrOutput
 }
 
 type SnapshotCopyOutput struct {
@@ -241,7 +256,7 @@ type SnapshotCopyOutput struct {
 }
 
 func (SnapshotCopyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SnapshotCopyOutput)(nil)).Elem()
+	return reflect.TypeOf((*SnapshotCopy)(nil))
 }
 
 func (o SnapshotCopyOutput) ToSnapshotCopyOutput() SnapshotCopyOutput {
@@ -252,6 +267,23 @@ func (o SnapshotCopyOutput) ToSnapshotCopyOutputWithContext(ctx context.Context)
 	return o
 }
 
+type SnapshotCopyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SnapshotCopyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotCopy)(nil))
+}
+
+func (o SnapshotCopyPtrOutput) ToSnapshotCopyPtrOutput() SnapshotCopyPtrOutput {
+	return o
+}
+
+func (o SnapshotCopyPtrOutput) ToSnapshotCopyPtrOutputWithContext(ctx context.Context) SnapshotCopyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SnapshotCopyOutput{})
+	pulumi.RegisterOutputType(SnapshotCopyPtrOutput{})
 }

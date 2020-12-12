@@ -56,7 +56,7 @@ func (i ConfigurationAggregatorAccountAggregationSourceArgs) ToConfigurationAggr
 }
 
 func (i ConfigurationAggregatorAccountAggregationSourceArgs) ToConfigurationAggregatorAccountAggregationSourcePtrOutputWithContext(ctx context.Context) ConfigurationAggregatorAccountAggregationSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationAggregatorAccountAggregationSourceOutput).ToConfigurationAggregatorAccountAggregationSourcePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationAggregatorAccountAggregationSourceOutput).ToConfigurationAggregatorAccountAggregationSourcePtrOutput()
 }
 
 // ConfigurationAggregatorAccountAggregationSourcePtrInput is an input type that accepts ConfigurationAggregatorAccountAggregationSourceArgs, ConfigurationAggregatorAccountAggregationSourcePtr and ConfigurationAggregatorAccountAggregationSourcePtrOutput values.
@@ -89,7 +89,7 @@ func (i *configurationAggregatorAccountAggregationSourcePtrType) ToConfiguration
 }
 
 func (i *configurationAggregatorAccountAggregationSourcePtrType) ToConfigurationAggregatorAccountAggregationSourcePtrOutputWithContext(ctx context.Context) ConfigurationAggregatorAccountAggregationSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationAggregatorAccountAggregationSourcePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationAggregatorAccountAggregationSourceOutput).ToConfigurationAggregatorAccountAggregationSourcePtrOutput()
 }
 
 type ConfigurationAggregatorAccountAggregationSourceOutput struct{ *pulumi.OutputState }
@@ -227,7 +227,7 @@ func (i ConfigurationAggregatorOrganizationAggregationSourceArgs) ToConfiguratio
 }
 
 func (i ConfigurationAggregatorOrganizationAggregationSourceArgs) ToConfigurationAggregatorOrganizationAggregationSourcePtrOutputWithContext(ctx context.Context) ConfigurationAggregatorOrganizationAggregationSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationAggregatorOrganizationAggregationSourceOutput).ToConfigurationAggregatorOrganizationAggregationSourcePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationAggregatorOrganizationAggregationSourceOutput).ToConfigurationAggregatorOrganizationAggregationSourcePtrOutput()
 }
 
 // ConfigurationAggregatorOrganizationAggregationSourcePtrInput is an input type that accepts ConfigurationAggregatorOrganizationAggregationSourceArgs, ConfigurationAggregatorOrganizationAggregationSourcePtr and ConfigurationAggregatorOrganizationAggregationSourcePtrOutput values.
@@ -260,7 +260,7 @@ func (i *configurationAggregatorOrganizationAggregationSourcePtrType) ToConfigur
 }
 
 func (i *configurationAggregatorOrganizationAggregationSourcePtrType) ToConfigurationAggregatorOrganizationAggregationSourcePtrOutputWithContext(ctx context.Context) ConfigurationAggregatorOrganizationAggregationSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationAggregatorOrganizationAggregationSourcePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationAggregatorOrganizationAggregationSourceOutput).ToConfigurationAggregatorOrganizationAggregationSourcePtrOutput()
 }
 
 type ConfigurationAggregatorOrganizationAggregationSourceOutput struct{ *pulumi.OutputState }
@@ -390,7 +390,7 @@ func (i DeliveryChannelSnapshotDeliveryPropertiesArgs) ToDeliveryChannelSnapshot
 }
 
 func (i DeliveryChannelSnapshotDeliveryPropertiesArgs) ToDeliveryChannelSnapshotDeliveryPropertiesPtrOutputWithContext(ctx context.Context) DeliveryChannelSnapshotDeliveryPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelSnapshotDeliveryPropertiesOutput).ToDeliveryChannelSnapshotDeliveryPropertiesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelSnapshotDeliveryPropertiesOutput).ToDeliveryChannelSnapshotDeliveryPropertiesPtrOutput()
 }
 
 // DeliveryChannelSnapshotDeliveryPropertiesPtrInput is an input type that accepts DeliveryChannelSnapshotDeliveryPropertiesArgs, DeliveryChannelSnapshotDeliveryPropertiesPtr and DeliveryChannelSnapshotDeliveryPropertiesPtrOutput values.
@@ -423,7 +423,7 @@ func (i *deliveryChannelSnapshotDeliveryPropertiesPtrType) ToDeliveryChannelSnap
 }
 
 func (i *deliveryChannelSnapshotDeliveryPropertiesPtrType) ToDeliveryChannelSnapshotDeliveryPropertiesPtrOutputWithContext(ctx context.Context) DeliveryChannelSnapshotDeliveryPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelSnapshotDeliveryPropertiesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelSnapshotDeliveryPropertiesOutput).ToDeliveryChannelSnapshotDeliveryPropertiesPtrOutput()
 }
 
 type DeliveryChannelSnapshotDeliveryPropertiesOutput struct{ *pulumi.OutputState }
@@ -531,7 +531,7 @@ func (i RecorderRecordingGroupArgs) ToRecorderRecordingGroupPtrOutput() Recorder
 }
 
 func (i RecorderRecordingGroupArgs) ToRecorderRecordingGroupPtrOutputWithContext(ctx context.Context) RecorderRecordingGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RecorderRecordingGroupOutput).ToRecorderRecordingGroupPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RecorderRecordingGroupOutput).ToRecorderRecordingGroupPtrOutput()
 }
 
 // RecorderRecordingGroupPtrInput is an input type that accepts RecorderRecordingGroupArgs, RecorderRecordingGroupPtr and RecorderRecordingGroupPtrOutput values.
@@ -564,7 +564,7 @@ func (i *recorderRecordingGroupPtrType) ToRecorderRecordingGroupPtrOutput() Reco
 }
 
 func (i *recorderRecordingGroupPtrType) ToRecorderRecordingGroupPtrOutputWithContext(ctx context.Context) RecorderRecordingGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RecorderRecordingGroupPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RecorderRecordingGroupOutput).ToRecorderRecordingGroupPtrOutput()
 }
 
 type RecorderRecordingGroupOutput struct{ *pulumi.OutputState }
@@ -819,7 +819,7 @@ func (i RuleScopeArgs) ToRuleScopePtrOutput() RuleScopePtrOutput {
 }
 
 func (i RuleScopeArgs) ToRuleScopePtrOutputWithContext(ctx context.Context) RuleScopePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuleScopeOutput).ToRuleScopePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RuleScopeOutput).ToRuleScopePtrOutput()
 }
 
 // RuleScopePtrInput is an input type that accepts RuleScopeArgs, RuleScopePtr and RuleScopePtrOutput values.
@@ -852,7 +852,7 @@ func (i *ruleScopePtrType) ToRuleScopePtrOutput() RuleScopePtrOutput {
 }
 
 func (i *ruleScopePtrType) ToRuleScopePtrOutputWithContext(ctx context.Context) RuleScopePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuleScopePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RuleScopeOutput).ToRuleScopePtrOutput()
 }
 
 type RuleScopeOutput struct{ *pulumi.OutputState }
@@ -1003,7 +1003,7 @@ func (i RuleSourceArgs) ToRuleSourcePtrOutput() RuleSourcePtrOutput {
 }
 
 func (i RuleSourceArgs) ToRuleSourcePtrOutputWithContext(ctx context.Context) RuleSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuleSourceOutput).ToRuleSourcePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RuleSourceOutput).ToRuleSourcePtrOutput()
 }
 
 // RuleSourcePtrInput is an input type that accepts RuleSourceArgs, RuleSourcePtr and RuleSourcePtrOutput values.
@@ -1036,7 +1036,7 @@ func (i *ruleSourcePtrType) ToRuleSourcePtrOutput() RuleSourcePtrOutput {
 }
 
 func (i *ruleSourcePtrType) ToRuleSourcePtrOutputWithContext(ctx context.Context) RuleSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuleSourcePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RuleSourceOutput).ToRuleSourcePtrOutput()
 }
 
 type RuleSourceOutput struct{ *pulumi.OutputState }

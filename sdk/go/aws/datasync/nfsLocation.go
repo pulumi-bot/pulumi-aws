@@ -170,16 +170,31 @@ type NfsLocationInput interface {
 	ToNfsLocationOutputWithContext(ctx context.Context) NfsLocationOutput
 }
 
-func (NfsLocation) ElementType() reflect.Type {
-	return reflect.TypeOf((*NfsLocation)(nil)).Elem()
+func (*NfsLocation) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsLocation)(nil))
 }
 
-func (i NfsLocation) ToNfsLocationOutput() NfsLocationOutput {
+func (i *NfsLocation) ToNfsLocationOutput() NfsLocationOutput {
 	return i.ToNfsLocationOutputWithContext(context.Background())
 }
 
-func (i NfsLocation) ToNfsLocationOutputWithContext(ctx context.Context) NfsLocationOutput {
+func (i *NfsLocation) ToNfsLocationOutputWithContext(ctx context.Context) NfsLocationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NfsLocationOutput)
+}
+
+func (i *NfsLocation) ToNfsLocationPtrOutput() NfsLocationPtrOutput {
+	return i.ToNfsLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *NfsLocation) ToNfsLocationPtrOutputWithContext(ctx context.Context) NfsLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NfsLocationPtrOutput)
+}
+
+type NfsLocationPtrInput interface {
+	pulumi.Input
+
+	ToNfsLocationPtrOutput() NfsLocationPtrOutput
+	ToNfsLocationPtrOutputWithContext(ctx context.Context) NfsLocationPtrOutput
 }
 
 type NfsLocationOutput struct {
@@ -187,7 +202,7 @@ type NfsLocationOutput struct {
 }
 
 func (NfsLocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NfsLocationOutput)(nil)).Elem()
+	return reflect.TypeOf((*NfsLocation)(nil))
 }
 
 func (o NfsLocationOutput) ToNfsLocationOutput() NfsLocationOutput {
@@ -198,6 +213,23 @@ func (o NfsLocationOutput) ToNfsLocationOutputWithContext(ctx context.Context) N
 	return o
 }
 
+type NfsLocationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NfsLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NfsLocation)(nil))
+}
+
+func (o NfsLocationPtrOutput) ToNfsLocationPtrOutput() NfsLocationPtrOutput {
+	return o
+}
+
+func (o NfsLocationPtrOutput) ToNfsLocationPtrOutputWithContext(ctx context.Context) NfsLocationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NfsLocationOutput{})
+	pulumi.RegisterOutputType(NfsLocationPtrOutput{})
 }

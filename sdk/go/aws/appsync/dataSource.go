@@ -251,16 +251,31 @@ type DataSourceInput interface {
 	ToDataSourceOutputWithContext(ctx context.Context) DataSourceOutput
 }
 
-func (DataSource) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataSource)(nil)).Elem()
+func (*DataSource) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSource)(nil))
 }
 
-func (i DataSource) ToDataSourceOutput() DataSourceOutput {
+func (i *DataSource) ToDataSourceOutput() DataSourceOutput {
 	return i.ToDataSourceOutputWithContext(context.Background())
 }
 
-func (i DataSource) ToDataSourceOutputWithContext(ctx context.Context) DataSourceOutput {
+func (i *DataSource) ToDataSourceOutputWithContext(ctx context.Context) DataSourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataSourceOutput)
+}
+
+func (i *DataSource) ToDataSourcePtrOutput() DataSourcePtrOutput {
+	return i.ToDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *DataSource) ToDataSourcePtrOutputWithContext(ctx context.Context) DataSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourcePtrOutput)
+}
+
+type DataSourcePtrInput interface {
+	pulumi.Input
+
+	ToDataSourcePtrOutput() DataSourcePtrOutput
+	ToDataSourcePtrOutputWithContext(ctx context.Context) DataSourcePtrOutput
 }
 
 type DataSourceOutput struct {
@@ -268,7 +283,7 @@ type DataSourceOutput struct {
 }
 
 func (DataSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataSourceOutput)(nil)).Elem()
+	return reflect.TypeOf((*DataSource)(nil))
 }
 
 func (o DataSourceOutput) ToDataSourceOutput() DataSourceOutput {
@@ -279,6 +294,23 @@ func (o DataSourceOutput) ToDataSourceOutputWithContext(ctx context.Context) Dat
 	return o
 }
 
+type DataSourcePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DataSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataSource)(nil))
+}
+
+func (o DataSourcePtrOutput) ToDataSourcePtrOutput() DataSourcePtrOutput {
+	return o
+}
+
+func (o DataSourcePtrOutput) ToDataSourcePtrOutputWithContext(ctx context.Context) DataSourcePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DataSourceOutput{})
+	pulumi.RegisterOutputType(DataSourcePtrOutput{})
 }

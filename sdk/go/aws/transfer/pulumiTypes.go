@@ -60,7 +60,7 @@ func (i ServerEndpointDetailsArgs) ToServerEndpointDetailsPtrOutput() ServerEndp
 }
 
 func (i ServerEndpointDetailsArgs) ToServerEndpointDetailsPtrOutputWithContext(ctx context.Context) ServerEndpointDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerEndpointDetailsOutput).ToServerEndpointDetailsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServerEndpointDetailsOutput).ToServerEndpointDetailsPtrOutput()
 }
 
 // ServerEndpointDetailsPtrInput is an input type that accepts ServerEndpointDetailsArgs, ServerEndpointDetailsPtr and ServerEndpointDetailsPtrOutput values.
@@ -93,7 +93,7 @@ func (i *serverEndpointDetailsPtrType) ToServerEndpointDetailsPtrOutput() Server
 }
 
 func (i *serverEndpointDetailsPtrType) ToServerEndpointDetailsPtrOutputWithContext(ctx context.Context) ServerEndpointDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServerEndpointDetailsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServerEndpointDetailsOutput).ToServerEndpointDetailsPtrOutput()
 }
 
 type ServerEndpointDetailsOutput struct{ *pulumi.OutputState }

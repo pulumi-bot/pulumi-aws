@@ -133,16 +133,31 @@ type UploadBufferInput interface {
 	ToUploadBufferOutputWithContext(ctx context.Context) UploadBufferOutput
 }
 
-func (UploadBuffer) ElementType() reflect.Type {
-	return reflect.TypeOf((*UploadBuffer)(nil)).Elem()
+func (*UploadBuffer) ElementType() reflect.Type {
+	return reflect.TypeOf((*UploadBuffer)(nil))
 }
 
-func (i UploadBuffer) ToUploadBufferOutput() UploadBufferOutput {
+func (i *UploadBuffer) ToUploadBufferOutput() UploadBufferOutput {
 	return i.ToUploadBufferOutputWithContext(context.Background())
 }
 
-func (i UploadBuffer) ToUploadBufferOutputWithContext(ctx context.Context) UploadBufferOutput {
+func (i *UploadBuffer) ToUploadBufferOutputWithContext(ctx context.Context) UploadBufferOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UploadBufferOutput)
+}
+
+func (i *UploadBuffer) ToUploadBufferPtrOutput() UploadBufferPtrOutput {
+	return i.ToUploadBufferPtrOutputWithContext(context.Background())
+}
+
+func (i *UploadBuffer) ToUploadBufferPtrOutputWithContext(ctx context.Context) UploadBufferPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UploadBufferPtrOutput)
+}
+
+type UploadBufferPtrInput interface {
+	pulumi.Input
+
+	ToUploadBufferPtrOutput() UploadBufferPtrOutput
+	ToUploadBufferPtrOutputWithContext(ctx context.Context) UploadBufferPtrOutput
 }
 
 type UploadBufferOutput struct {
@@ -150,7 +165,7 @@ type UploadBufferOutput struct {
 }
 
 func (UploadBufferOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UploadBufferOutput)(nil)).Elem()
+	return reflect.TypeOf((*UploadBuffer)(nil))
 }
 
 func (o UploadBufferOutput) ToUploadBufferOutput() UploadBufferOutput {
@@ -161,6 +176,23 @@ func (o UploadBufferOutput) ToUploadBufferOutputWithContext(ctx context.Context)
 	return o
 }
 
+type UploadBufferPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (UploadBufferPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UploadBuffer)(nil))
+}
+
+func (o UploadBufferPtrOutput) ToUploadBufferPtrOutput() UploadBufferPtrOutput {
+	return o
+}
+
+func (o UploadBufferPtrOutput) ToUploadBufferPtrOutputWithContext(ctx context.Context) UploadBufferPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(UploadBufferOutput{})
+	pulumi.RegisterOutputType(UploadBufferPtrOutput{})
 }

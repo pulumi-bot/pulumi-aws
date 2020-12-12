@@ -191,16 +191,31 @@ type VaultLockInput interface {
 	ToVaultLockOutputWithContext(ctx context.Context) VaultLockOutput
 }
 
-func (VaultLock) ElementType() reflect.Type {
-	return reflect.TypeOf((*VaultLock)(nil)).Elem()
+func (*VaultLock) ElementType() reflect.Type {
+	return reflect.TypeOf((*VaultLock)(nil))
 }
 
-func (i VaultLock) ToVaultLockOutput() VaultLockOutput {
+func (i *VaultLock) ToVaultLockOutput() VaultLockOutput {
 	return i.ToVaultLockOutputWithContext(context.Background())
 }
 
-func (i VaultLock) ToVaultLockOutputWithContext(ctx context.Context) VaultLockOutput {
+func (i *VaultLock) ToVaultLockOutputWithContext(ctx context.Context) VaultLockOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VaultLockOutput)
+}
+
+func (i *VaultLock) ToVaultLockPtrOutput() VaultLockPtrOutput {
+	return i.ToVaultLockPtrOutputWithContext(context.Background())
+}
+
+func (i *VaultLock) ToVaultLockPtrOutputWithContext(ctx context.Context) VaultLockPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VaultLockPtrOutput)
+}
+
+type VaultLockPtrInput interface {
+	pulumi.Input
+
+	ToVaultLockPtrOutput() VaultLockPtrOutput
+	ToVaultLockPtrOutputWithContext(ctx context.Context) VaultLockPtrOutput
 }
 
 type VaultLockOutput struct {
@@ -208,7 +223,7 @@ type VaultLockOutput struct {
 }
 
 func (VaultLockOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VaultLockOutput)(nil)).Elem()
+	return reflect.TypeOf((*VaultLock)(nil))
 }
 
 func (o VaultLockOutput) ToVaultLockOutput() VaultLockOutput {
@@ -219,6 +234,23 @@ func (o VaultLockOutput) ToVaultLockOutputWithContext(ctx context.Context) Vault
 	return o
 }
 
+type VaultLockPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VaultLockPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VaultLock)(nil))
+}
+
+func (o VaultLockPtrOutput) ToVaultLockPtrOutput() VaultLockPtrOutput {
+	return o
+}
+
+func (o VaultLockPtrOutput) ToVaultLockPtrOutputWithContext(ctx context.Context) VaultLockPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VaultLockOutput{})
+	pulumi.RegisterOutputType(VaultLockPtrOutput{})
 }

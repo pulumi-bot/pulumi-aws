@@ -393,16 +393,31 @@ type DomainNameInput interface {
 	ToDomainNameOutputWithContext(ctx context.Context) DomainNameOutput
 }
 
-func (DomainName) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainName)(nil)).Elem()
+func (*DomainName) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainName)(nil))
 }
 
-func (i DomainName) ToDomainNameOutput() DomainNameOutput {
+func (i *DomainName) ToDomainNameOutput() DomainNameOutput {
 	return i.ToDomainNameOutputWithContext(context.Background())
 }
 
-func (i DomainName) ToDomainNameOutputWithContext(ctx context.Context) DomainNameOutput {
+func (i *DomainName) ToDomainNameOutputWithContext(ctx context.Context) DomainNameOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainNameOutput)
+}
+
+func (i *DomainName) ToDomainNamePtrOutput() DomainNamePtrOutput {
+	return i.ToDomainNamePtrOutputWithContext(context.Background())
+}
+
+func (i *DomainName) ToDomainNamePtrOutputWithContext(ctx context.Context) DomainNamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainNamePtrOutput)
+}
+
+type DomainNamePtrInput interface {
+	pulumi.Input
+
+	ToDomainNamePtrOutput() DomainNamePtrOutput
+	ToDomainNamePtrOutputWithContext(ctx context.Context) DomainNamePtrOutput
 }
 
 type DomainNameOutput struct {
@@ -410,7 +425,7 @@ type DomainNameOutput struct {
 }
 
 func (DomainNameOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainNameOutput)(nil)).Elem()
+	return reflect.TypeOf((*DomainName)(nil))
 }
 
 func (o DomainNameOutput) ToDomainNameOutput() DomainNameOutput {
@@ -421,6 +436,23 @@ func (o DomainNameOutput) ToDomainNameOutputWithContext(ctx context.Context) Dom
 	return o
 }
 
+type DomainNamePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainNamePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainName)(nil))
+}
+
+func (o DomainNamePtrOutput) ToDomainNamePtrOutput() DomainNamePtrOutput {
+	return o
+}
+
+func (o DomainNamePtrOutput) ToDomainNamePtrOutputWithContext(ctx context.Context) DomainNamePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DomainNameOutput{})
+	pulumi.RegisterOutputType(DomainNamePtrOutput{})
 }

@@ -179,16 +179,31 @@ type RegexPatternSetInput interface {
 	ToRegexPatternSetOutputWithContext(ctx context.Context) RegexPatternSetOutput
 }
 
-func (RegexPatternSet) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegexPatternSet)(nil)).Elem()
+func (*RegexPatternSet) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegexPatternSet)(nil))
 }
 
-func (i RegexPatternSet) ToRegexPatternSetOutput() RegexPatternSetOutput {
+func (i *RegexPatternSet) ToRegexPatternSetOutput() RegexPatternSetOutput {
 	return i.ToRegexPatternSetOutputWithContext(context.Background())
 }
 
-func (i RegexPatternSet) ToRegexPatternSetOutputWithContext(ctx context.Context) RegexPatternSetOutput {
+func (i *RegexPatternSet) ToRegexPatternSetOutputWithContext(ctx context.Context) RegexPatternSetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegexPatternSetOutput)
+}
+
+func (i *RegexPatternSet) ToRegexPatternSetPtrOutput() RegexPatternSetPtrOutput {
+	return i.ToRegexPatternSetPtrOutputWithContext(context.Background())
+}
+
+func (i *RegexPatternSet) ToRegexPatternSetPtrOutputWithContext(ctx context.Context) RegexPatternSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegexPatternSetPtrOutput)
+}
+
+type RegexPatternSetPtrInput interface {
+	pulumi.Input
+
+	ToRegexPatternSetPtrOutput() RegexPatternSetPtrOutput
+	ToRegexPatternSetPtrOutputWithContext(ctx context.Context) RegexPatternSetPtrOutput
 }
 
 type RegexPatternSetOutput struct {
@@ -196,7 +211,7 @@ type RegexPatternSetOutput struct {
 }
 
 func (RegexPatternSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegexPatternSetOutput)(nil)).Elem()
+	return reflect.TypeOf((*RegexPatternSet)(nil))
 }
 
 func (o RegexPatternSetOutput) ToRegexPatternSetOutput() RegexPatternSetOutput {
@@ -207,6 +222,23 @@ func (o RegexPatternSetOutput) ToRegexPatternSetOutputWithContext(ctx context.Co
 	return o
 }
 
+type RegexPatternSetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegexPatternSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegexPatternSet)(nil))
+}
+
+func (o RegexPatternSetPtrOutput) ToRegexPatternSetPtrOutput() RegexPatternSetPtrOutput {
+	return o
+}
+
+func (o RegexPatternSetPtrOutput) ToRegexPatternSetPtrOutputWithContext(ctx context.Context) RegexPatternSetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RegexPatternSetOutput{})
+	pulumi.RegisterOutputType(RegexPatternSetPtrOutput{})
 }

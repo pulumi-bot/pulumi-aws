@@ -143,16 +143,31 @@ type UserProfileInput interface {
 	ToUserProfileOutputWithContext(ctx context.Context) UserProfileOutput
 }
 
-func (UserProfile) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserProfile)(nil)).Elem()
+func (*UserProfile) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserProfile)(nil))
 }
 
-func (i UserProfile) ToUserProfileOutput() UserProfileOutput {
+func (i *UserProfile) ToUserProfileOutput() UserProfileOutput {
 	return i.ToUserProfileOutputWithContext(context.Background())
 }
 
-func (i UserProfile) ToUserProfileOutputWithContext(ctx context.Context) UserProfileOutput {
+func (i *UserProfile) ToUserProfileOutputWithContext(ctx context.Context) UserProfileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserProfileOutput)
+}
+
+func (i *UserProfile) ToUserProfilePtrOutput() UserProfilePtrOutput {
+	return i.ToUserProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *UserProfile) ToUserProfilePtrOutputWithContext(ctx context.Context) UserProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserProfilePtrOutput)
+}
+
+type UserProfilePtrInput interface {
+	pulumi.Input
+
+	ToUserProfilePtrOutput() UserProfilePtrOutput
+	ToUserProfilePtrOutputWithContext(ctx context.Context) UserProfilePtrOutput
 }
 
 type UserProfileOutput struct {
@@ -160,7 +175,7 @@ type UserProfileOutput struct {
 }
 
 func (UserProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserProfileOutput)(nil)).Elem()
+	return reflect.TypeOf((*UserProfile)(nil))
 }
 
 func (o UserProfileOutput) ToUserProfileOutput() UserProfileOutput {
@@ -171,6 +186,23 @@ func (o UserProfileOutput) ToUserProfileOutputWithContext(ctx context.Context) U
 	return o
 }
 
+type UserProfilePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserProfile)(nil))
+}
+
+func (o UserProfilePtrOutput) ToUserProfilePtrOutput() UserProfilePtrOutput {
+	return o
+}
+
+func (o UserProfilePtrOutput) ToUserProfilePtrOutputWithContext(ctx context.Context) UserProfilePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(UserProfileOutput{})
+	pulumi.RegisterOutputType(UserProfilePtrOutput{})
 }

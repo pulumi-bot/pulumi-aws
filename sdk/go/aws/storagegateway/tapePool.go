@@ -167,16 +167,31 @@ type TapePoolInput interface {
 	ToTapePoolOutputWithContext(ctx context.Context) TapePoolOutput
 }
 
-func (TapePool) ElementType() reflect.Type {
-	return reflect.TypeOf((*TapePool)(nil)).Elem()
+func (*TapePool) ElementType() reflect.Type {
+	return reflect.TypeOf((*TapePool)(nil))
 }
 
-func (i TapePool) ToTapePoolOutput() TapePoolOutput {
+func (i *TapePool) ToTapePoolOutput() TapePoolOutput {
 	return i.ToTapePoolOutputWithContext(context.Background())
 }
 
-func (i TapePool) ToTapePoolOutputWithContext(ctx context.Context) TapePoolOutput {
+func (i *TapePool) ToTapePoolOutputWithContext(ctx context.Context) TapePoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TapePoolOutput)
+}
+
+func (i *TapePool) ToTapePoolPtrOutput() TapePoolPtrOutput {
+	return i.ToTapePoolPtrOutputWithContext(context.Background())
+}
+
+func (i *TapePool) ToTapePoolPtrOutputWithContext(ctx context.Context) TapePoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TapePoolPtrOutput)
+}
+
+type TapePoolPtrInput interface {
+	pulumi.Input
+
+	ToTapePoolPtrOutput() TapePoolPtrOutput
+	ToTapePoolPtrOutputWithContext(ctx context.Context) TapePoolPtrOutput
 }
 
 type TapePoolOutput struct {
@@ -184,7 +199,7 @@ type TapePoolOutput struct {
 }
 
 func (TapePoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TapePoolOutput)(nil)).Elem()
+	return reflect.TypeOf((*TapePool)(nil))
 }
 
 func (o TapePoolOutput) ToTapePoolOutput() TapePoolOutput {
@@ -195,6 +210,23 @@ func (o TapePoolOutput) ToTapePoolOutputWithContext(ctx context.Context) TapePoo
 	return o
 }
 
+type TapePoolPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TapePoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TapePool)(nil))
+}
+
+func (o TapePoolPtrOutput) ToTapePoolPtrOutput() TapePoolPtrOutput {
+	return o
+}
+
+func (o TapePoolPtrOutput) ToTapePoolPtrOutputWithContext(ctx context.Context) TapePoolPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TapePoolOutput{})
+	pulumi.RegisterOutputType(TapePoolPtrOutput{})
 }

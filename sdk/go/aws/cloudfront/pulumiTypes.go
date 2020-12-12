@@ -281,7 +281,7 @@ func (i DistributionDefaultCacheBehaviorArgs) ToDistributionDefaultCacheBehavior
 }
 
 func (i DistributionDefaultCacheBehaviorArgs) ToDistributionDefaultCacheBehaviorPtrOutputWithContext(ctx context.Context) DistributionDefaultCacheBehaviorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionDefaultCacheBehaviorOutput).ToDistributionDefaultCacheBehaviorPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionDefaultCacheBehaviorOutput).ToDistributionDefaultCacheBehaviorPtrOutput()
 }
 
 // DistributionDefaultCacheBehaviorPtrInput is an input type that accepts DistributionDefaultCacheBehaviorArgs, DistributionDefaultCacheBehaviorPtr and DistributionDefaultCacheBehaviorPtrOutput values.
@@ -314,7 +314,7 @@ func (i *distributionDefaultCacheBehaviorPtrType) ToDistributionDefaultCacheBeha
 }
 
 func (i *distributionDefaultCacheBehaviorPtrType) ToDistributionDefaultCacheBehaviorPtrOutputWithContext(ctx context.Context) DistributionDefaultCacheBehaviorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionDefaultCacheBehaviorPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionDefaultCacheBehaviorOutput).ToDistributionDefaultCacheBehaviorPtrOutput()
 }
 
 type DistributionDefaultCacheBehaviorOutput struct{ *pulumi.OutputState }
@@ -668,7 +668,7 @@ func (i DistributionDefaultCacheBehaviorForwardedValuesArgs) ToDistributionDefau
 }
 
 func (i DistributionDefaultCacheBehaviorForwardedValuesArgs) ToDistributionDefaultCacheBehaviorForwardedValuesPtrOutputWithContext(ctx context.Context) DistributionDefaultCacheBehaviorForwardedValuesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionDefaultCacheBehaviorForwardedValuesOutput).ToDistributionDefaultCacheBehaviorForwardedValuesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionDefaultCacheBehaviorForwardedValuesOutput).ToDistributionDefaultCacheBehaviorForwardedValuesPtrOutput()
 }
 
 // DistributionDefaultCacheBehaviorForwardedValuesPtrInput is an input type that accepts DistributionDefaultCacheBehaviorForwardedValuesArgs, DistributionDefaultCacheBehaviorForwardedValuesPtr and DistributionDefaultCacheBehaviorForwardedValuesPtrOutput values.
@@ -701,7 +701,7 @@ func (i *distributionDefaultCacheBehaviorForwardedValuesPtrType) ToDistributionD
 }
 
 func (i *distributionDefaultCacheBehaviorForwardedValuesPtrType) ToDistributionDefaultCacheBehaviorForwardedValuesPtrOutputWithContext(ctx context.Context) DistributionDefaultCacheBehaviorForwardedValuesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionDefaultCacheBehaviorForwardedValuesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionDefaultCacheBehaviorForwardedValuesOutput).ToDistributionDefaultCacheBehaviorForwardedValuesPtrOutput()
 }
 
 type DistributionDefaultCacheBehaviorForwardedValuesOutput struct{ *pulumi.OutputState }
@@ -876,7 +876,7 @@ func (i DistributionDefaultCacheBehaviorForwardedValuesCookiesArgs) ToDistributi
 }
 
 func (i DistributionDefaultCacheBehaviorForwardedValuesCookiesArgs) ToDistributionDefaultCacheBehaviorForwardedValuesCookiesPtrOutputWithContext(ctx context.Context) DistributionDefaultCacheBehaviorForwardedValuesCookiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionDefaultCacheBehaviorForwardedValuesCookiesOutput).ToDistributionDefaultCacheBehaviorForwardedValuesCookiesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionDefaultCacheBehaviorForwardedValuesCookiesOutput).ToDistributionDefaultCacheBehaviorForwardedValuesCookiesPtrOutput()
 }
 
 // DistributionDefaultCacheBehaviorForwardedValuesCookiesPtrInput is an input type that accepts DistributionDefaultCacheBehaviorForwardedValuesCookiesArgs, DistributionDefaultCacheBehaviorForwardedValuesCookiesPtr and DistributionDefaultCacheBehaviorForwardedValuesCookiesPtrOutput values.
@@ -909,7 +909,7 @@ func (i *distributionDefaultCacheBehaviorForwardedValuesCookiesPtrType) ToDistri
 }
 
 func (i *distributionDefaultCacheBehaviorForwardedValuesCookiesPtrType) ToDistributionDefaultCacheBehaviorForwardedValuesCookiesPtrOutputWithContext(ctx context.Context) DistributionDefaultCacheBehaviorForwardedValuesCookiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionDefaultCacheBehaviorForwardedValuesCookiesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionDefaultCacheBehaviorForwardedValuesCookiesOutput).ToDistributionDefaultCacheBehaviorForwardedValuesCookiesPtrOutput()
 }
 
 type DistributionDefaultCacheBehaviorForwardedValuesCookiesOutput struct{ *pulumi.OutputState }
@@ -1169,7 +1169,7 @@ func (i DistributionLoggingConfigArgs) ToDistributionLoggingConfigPtrOutput() Di
 }
 
 func (i DistributionLoggingConfigArgs) ToDistributionLoggingConfigPtrOutputWithContext(ctx context.Context) DistributionLoggingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionLoggingConfigOutput).ToDistributionLoggingConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionLoggingConfigOutput).ToDistributionLoggingConfigPtrOutput()
 }
 
 // DistributionLoggingConfigPtrInput is an input type that accepts DistributionLoggingConfigArgs, DistributionLoggingConfigPtr and DistributionLoggingConfigPtrOutput values.
@@ -1202,7 +1202,7 @@ func (i *distributionLoggingConfigPtrType) ToDistributionLoggingConfigPtrOutput(
 }
 
 func (i *distributionLoggingConfigPtrType) ToDistributionLoggingConfigPtrOutputWithContext(ctx context.Context) DistributionLoggingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionLoggingConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionLoggingConfigOutput).ToDistributionLoggingConfigPtrOutput()
 }
 
 type DistributionLoggingConfigOutput struct{ *pulumi.OutputState }
@@ -2220,7 +2220,7 @@ func (i DistributionOriginCustomOriginConfigArgs) ToDistributionOriginCustomOrig
 }
 
 func (i DistributionOriginCustomOriginConfigArgs) ToDistributionOriginCustomOriginConfigPtrOutputWithContext(ctx context.Context) DistributionOriginCustomOriginConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionOriginCustomOriginConfigOutput).ToDistributionOriginCustomOriginConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionOriginCustomOriginConfigOutput).ToDistributionOriginCustomOriginConfigPtrOutput()
 }
 
 // DistributionOriginCustomOriginConfigPtrInput is an input type that accepts DistributionOriginCustomOriginConfigArgs, DistributionOriginCustomOriginConfigPtr and DistributionOriginCustomOriginConfigPtrOutput values.
@@ -2253,7 +2253,7 @@ func (i *distributionOriginCustomOriginConfigPtrType) ToDistributionOriginCustom
 }
 
 func (i *distributionOriginCustomOriginConfigPtrType) ToDistributionOriginCustomOriginConfigPtrOutputWithContext(ctx context.Context) DistributionOriginCustomOriginConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionOriginCustomOriginConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionOriginCustomOriginConfigOutput).ToDistributionOriginCustomOriginConfigPtrOutput()
 }
 
 type DistributionOriginCustomOriginConfigOutput struct{ *pulumi.OutputState }
@@ -2698,7 +2698,7 @@ func (i DistributionOriginS3OriginConfigArgs) ToDistributionOriginS3OriginConfig
 }
 
 func (i DistributionOriginS3OriginConfigArgs) ToDistributionOriginS3OriginConfigPtrOutputWithContext(ctx context.Context) DistributionOriginS3OriginConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionOriginS3OriginConfigOutput).ToDistributionOriginS3OriginConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionOriginS3OriginConfigOutput).ToDistributionOriginS3OriginConfigPtrOutput()
 }
 
 // DistributionOriginS3OriginConfigPtrInput is an input type that accepts DistributionOriginS3OriginConfigArgs, DistributionOriginS3OriginConfigPtr and DistributionOriginS3OriginConfigPtrOutput values.
@@ -2731,7 +2731,7 @@ func (i *distributionOriginS3OriginConfigPtrType) ToDistributionOriginS3OriginCo
 }
 
 func (i *distributionOriginS3OriginConfigPtrType) ToDistributionOriginS3OriginConfigPtrOutputWithContext(ctx context.Context) DistributionOriginS3OriginConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionOriginS3OriginConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionOriginS3OriginConfigOutput).ToDistributionOriginS3OriginConfigPtrOutput()
 }
 
 type DistributionOriginS3OriginConfigOutput struct{ *pulumi.OutputState }
@@ -2829,7 +2829,7 @@ func (i DistributionRestrictionsArgs) ToDistributionRestrictionsPtrOutput() Dist
 }
 
 func (i DistributionRestrictionsArgs) ToDistributionRestrictionsPtrOutputWithContext(ctx context.Context) DistributionRestrictionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionRestrictionsOutput).ToDistributionRestrictionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionRestrictionsOutput).ToDistributionRestrictionsPtrOutput()
 }
 
 // DistributionRestrictionsPtrInput is an input type that accepts DistributionRestrictionsArgs, DistributionRestrictionsPtr and DistributionRestrictionsPtrOutput values.
@@ -2862,7 +2862,7 @@ func (i *distributionRestrictionsPtrType) ToDistributionRestrictionsPtrOutput() 
 }
 
 func (i *distributionRestrictionsPtrType) ToDistributionRestrictionsPtrOutputWithContext(ctx context.Context) DistributionRestrictionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionRestrictionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionRestrictionsOutput).ToDistributionRestrictionsPtrOutput()
 }
 
 type DistributionRestrictionsOutput struct{ *pulumi.OutputState }
@@ -2969,7 +2969,7 @@ func (i DistributionRestrictionsGeoRestrictionArgs) ToDistributionRestrictionsGe
 }
 
 func (i DistributionRestrictionsGeoRestrictionArgs) ToDistributionRestrictionsGeoRestrictionPtrOutputWithContext(ctx context.Context) DistributionRestrictionsGeoRestrictionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionRestrictionsGeoRestrictionOutput).ToDistributionRestrictionsGeoRestrictionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionRestrictionsGeoRestrictionOutput).ToDistributionRestrictionsGeoRestrictionPtrOutput()
 }
 
 // DistributionRestrictionsGeoRestrictionPtrInput is an input type that accepts DistributionRestrictionsGeoRestrictionArgs, DistributionRestrictionsGeoRestrictionPtr and DistributionRestrictionsGeoRestrictionPtrOutput values.
@@ -3002,7 +3002,7 @@ func (i *distributionRestrictionsGeoRestrictionPtrType) ToDistributionRestrictio
 }
 
 func (i *distributionRestrictionsGeoRestrictionPtrType) ToDistributionRestrictionsGeoRestrictionPtrOutputWithContext(ctx context.Context) DistributionRestrictionsGeoRestrictionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionRestrictionsGeoRestrictionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionRestrictionsGeoRestrictionOutput).ToDistributionRestrictionsGeoRestrictionPtrOutput()
 }
 
 type DistributionRestrictionsGeoRestrictionOutput struct{ *pulumi.OutputState }
@@ -3384,7 +3384,7 @@ func (i DistributionViewerCertificateArgs) ToDistributionViewerCertificatePtrOut
 }
 
 func (i DistributionViewerCertificateArgs) ToDistributionViewerCertificatePtrOutputWithContext(ctx context.Context) DistributionViewerCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionViewerCertificateOutput).ToDistributionViewerCertificatePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionViewerCertificateOutput).ToDistributionViewerCertificatePtrOutput()
 }
 
 // DistributionViewerCertificatePtrInput is an input type that accepts DistributionViewerCertificateArgs, DistributionViewerCertificatePtr and DistributionViewerCertificatePtrOutput values.
@@ -3417,7 +3417,7 @@ func (i *distributionViewerCertificatePtrType) ToDistributionViewerCertificatePt
 }
 
 func (i *distributionViewerCertificatePtrType) ToDistributionViewerCertificatePtrOutputWithContext(ctx context.Context) DistributionViewerCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionViewerCertificatePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionViewerCertificateOutput).ToDistributionViewerCertificatePtrOutput()
 }
 
 type DistributionViewerCertificateOutput struct{ *pulumi.OutputState }

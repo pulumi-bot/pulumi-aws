@@ -60,7 +60,7 @@ func (i ProviderAssumeRoleArgs) ToProviderAssumeRolePtrOutput() ProviderAssumeRo
 }
 
 func (i ProviderAssumeRoleArgs) ToProviderAssumeRolePtrOutputWithContext(ctx context.Context) ProviderAssumeRolePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderAssumeRoleOutput).ToProviderAssumeRolePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderAssumeRoleOutput).ToProviderAssumeRolePtrOutput()
 }
 
 // ProviderAssumeRolePtrInput is an input type that accepts ProviderAssumeRoleArgs, ProviderAssumeRolePtr and ProviderAssumeRolePtrOutput values.
@@ -93,7 +93,7 @@ func (i *providerAssumeRolePtrType) ToProviderAssumeRolePtrOutput() ProviderAssu
 }
 
 func (i *providerAssumeRolePtrType) ToProviderAssumeRolePtrOutputWithContext(ctx context.Context) ProviderAssumeRolePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderAssumeRolePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderAssumeRoleOutput).ToProviderAssumeRolePtrOutput()
 }
 
 type ProviderAssumeRoleOutput struct{ *pulumi.OutputState }
@@ -1261,7 +1261,7 @@ func (i ProviderIgnoreTagsArgs) ToProviderIgnoreTagsPtrOutput() ProviderIgnoreTa
 }
 
 func (i ProviderIgnoreTagsArgs) ToProviderIgnoreTagsPtrOutputWithContext(ctx context.Context) ProviderIgnoreTagsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderIgnoreTagsOutput).ToProviderIgnoreTagsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderIgnoreTagsOutput).ToProviderIgnoreTagsPtrOutput()
 }
 
 // ProviderIgnoreTagsPtrInput is an input type that accepts ProviderIgnoreTagsArgs, ProviderIgnoreTagsPtr and ProviderIgnoreTagsPtrOutput values.
@@ -1294,7 +1294,7 @@ func (i *providerIgnoreTagsPtrType) ToProviderIgnoreTagsPtrOutput() ProviderIgno
 }
 
 func (i *providerIgnoreTagsPtrType) ToProviderIgnoreTagsPtrOutputWithContext(ctx context.Context) ProviderIgnoreTagsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProviderIgnoreTagsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderIgnoreTagsOutput).ToProviderIgnoreTagsPtrOutput()
 }
 
 type ProviderIgnoreTagsOutput struct{ *pulumi.OutputState }

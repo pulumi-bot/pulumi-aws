@@ -283,16 +283,31 @@ type SubnetInput interface {
 	ToSubnetOutputWithContext(ctx context.Context) SubnetOutput
 }
 
-func (Subnet) ElementType() reflect.Type {
-	return reflect.TypeOf((*Subnet)(nil)).Elem()
+func (*Subnet) ElementType() reflect.Type {
+	return reflect.TypeOf((*Subnet)(nil))
 }
 
-func (i Subnet) ToSubnetOutput() SubnetOutput {
+func (i *Subnet) ToSubnetOutput() SubnetOutput {
 	return i.ToSubnetOutputWithContext(context.Background())
 }
 
-func (i Subnet) ToSubnetOutputWithContext(ctx context.Context) SubnetOutput {
+func (i *Subnet) ToSubnetOutputWithContext(ctx context.Context) SubnetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetOutput)
+}
+
+func (i *Subnet) ToSubnetPtrOutput() SubnetPtrOutput {
+	return i.ToSubnetPtrOutputWithContext(context.Background())
+}
+
+func (i *Subnet) ToSubnetPtrOutputWithContext(ctx context.Context) SubnetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetPtrOutput)
+}
+
+type SubnetPtrInput interface {
+	pulumi.Input
+
+	ToSubnetPtrOutput() SubnetPtrOutput
+	ToSubnetPtrOutputWithContext(ctx context.Context) SubnetPtrOutput
 }
 
 type SubnetOutput struct {
@@ -300,7 +315,7 @@ type SubnetOutput struct {
 }
 
 func (SubnetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetOutput)(nil)).Elem()
+	return reflect.TypeOf((*Subnet)(nil))
 }
 
 func (o SubnetOutput) ToSubnetOutput() SubnetOutput {
@@ -311,6 +326,23 @@ func (o SubnetOutput) ToSubnetOutputWithContext(ctx context.Context) SubnetOutpu
 	return o
 }
 
+type SubnetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubnetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Subnet)(nil))
+}
+
+func (o SubnetPtrOutput) ToSubnetPtrOutput() SubnetPtrOutput {
+	return o
+}
+
+func (o SubnetPtrOutput) ToSubnetPtrOutputWithContext(ctx context.Context) SubnetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SubnetOutput{})
+	pulumi.RegisterOutputType(SubnetPtrOutput{})
 }

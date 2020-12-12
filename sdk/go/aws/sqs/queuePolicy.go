@@ -140,16 +140,31 @@ type QueuePolicyInput interface {
 	ToQueuePolicyOutputWithContext(ctx context.Context) QueuePolicyOutput
 }
 
-func (QueuePolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueuePolicy)(nil)).Elem()
+func (*QueuePolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueuePolicy)(nil))
 }
 
-func (i QueuePolicy) ToQueuePolicyOutput() QueuePolicyOutput {
+func (i *QueuePolicy) ToQueuePolicyOutput() QueuePolicyOutput {
 	return i.ToQueuePolicyOutputWithContext(context.Background())
 }
 
-func (i QueuePolicy) ToQueuePolicyOutputWithContext(ctx context.Context) QueuePolicyOutput {
+func (i *QueuePolicy) ToQueuePolicyOutputWithContext(ctx context.Context) QueuePolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QueuePolicyOutput)
+}
+
+func (i *QueuePolicy) ToQueuePolicyPtrOutput() QueuePolicyPtrOutput {
+	return i.ToQueuePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *QueuePolicy) ToQueuePolicyPtrOutputWithContext(ctx context.Context) QueuePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueuePolicyPtrOutput)
+}
+
+type QueuePolicyPtrInput interface {
+	pulumi.Input
+
+	ToQueuePolicyPtrOutput() QueuePolicyPtrOutput
+	ToQueuePolicyPtrOutputWithContext(ctx context.Context) QueuePolicyPtrOutput
 }
 
 type QueuePolicyOutput struct {
@@ -157,7 +172,7 @@ type QueuePolicyOutput struct {
 }
 
 func (QueuePolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QueuePolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*QueuePolicy)(nil))
 }
 
 func (o QueuePolicyOutput) ToQueuePolicyOutput() QueuePolicyOutput {
@@ -168,6 +183,23 @@ func (o QueuePolicyOutput) ToQueuePolicyOutputWithContext(ctx context.Context) Q
 	return o
 }
 
+type QueuePolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (QueuePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueuePolicy)(nil))
+}
+
+func (o QueuePolicyPtrOutput) ToQueuePolicyPtrOutput() QueuePolicyPtrOutput {
+	return o
+}
+
+func (o QueuePolicyPtrOutput) ToQueuePolicyPtrOutputWithContext(ctx context.Context) QueuePolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(QueuePolicyOutput{})
+	pulumi.RegisterOutputType(QueuePolicyPtrOutput{})
 }

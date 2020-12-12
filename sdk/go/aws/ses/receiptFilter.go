@@ -147,16 +147,31 @@ type ReceiptFilterInput interface {
 	ToReceiptFilterOutputWithContext(ctx context.Context) ReceiptFilterOutput
 }
 
-func (ReceiptFilter) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReceiptFilter)(nil)).Elem()
+func (*ReceiptFilter) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReceiptFilter)(nil))
 }
 
-func (i ReceiptFilter) ToReceiptFilterOutput() ReceiptFilterOutput {
+func (i *ReceiptFilter) ToReceiptFilterOutput() ReceiptFilterOutput {
 	return i.ToReceiptFilterOutputWithContext(context.Background())
 }
 
-func (i ReceiptFilter) ToReceiptFilterOutputWithContext(ctx context.Context) ReceiptFilterOutput {
+func (i *ReceiptFilter) ToReceiptFilterOutputWithContext(ctx context.Context) ReceiptFilterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReceiptFilterOutput)
+}
+
+func (i *ReceiptFilter) ToReceiptFilterPtrOutput() ReceiptFilterPtrOutput {
+	return i.ToReceiptFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *ReceiptFilter) ToReceiptFilterPtrOutputWithContext(ctx context.Context) ReceiptFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReceiptFilterPtrOutput)
+}
+
+type ReceiptFilterPtrInput interface {
+	pulumi.Input
+
+	ToReceiptFilterPtrOutput() ReceiptFilterPtrOutput
+	ToReceiptFilterPtrOutputWithContext(ctx context.Context) ReceiptFilterPtrOutput
 }
 
 type ReceiptFilterOutput struct {
@@ -164,7 +179,7 @@ type ReceiptFilterOutput struct {
 }
 
 func (ReceiptFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReceiptFilterOutput)(nil)).Elem()
+	return reflect.TypeOf((*ReceiptFilter)(nil))
 }
 
 func (o ReceiptFilterOutput) ToReceiptFilterOutput() ReceiptFilterOutput {
@@ -175,6 +190,23 @@ func (o ReceiptFilterOutput) ToReceiptFilterOutputWithContext(ctx context.Contex
 	return o
 }
 
+type ReceiptFilterPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReceiptFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReceiptFilter)(nil))
+}
+
+func (o ReceiptFilterPtrOutput) ToReceiptFilterPtrOutput() ReceiptFilterPtrOutput {
+	return o
+}
+
+func (o ReceiptFilterPtrOutput) ToReceiptFilterPtrOutputWithContext(ctx context.Context) ReceiptFilterPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ReceiptFilterOutput{})
+	pulumi.RegisterOutputType(ReceiptFilterPtrOutput{})
 }

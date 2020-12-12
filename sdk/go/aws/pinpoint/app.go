@@ -181,16 +181,31 @@ type AppInput interface {
 	ToAppOutputWithContext(ctx context.Context) AppOutput
 }
 
-func (App) ElementType() reflect.Type {
-	return reflect.TypeOf((*App)(nil)).Elem()
+func (*App) ElementType() reflect.Type {
+	return reflect.TypeOf((*App)(nil))
 }
 
-func (i App) ToAppOutput() AppOutput {
+func (i *App) ToAppOutput() AppOutput {
 	return i.ToAppOutputWithContext(context.Background())
 }
 
-func (i App) ToAppOutputWithContext(ctx context.Context) AppOutput {
+func (i *App) ToAppOutputWithContext(ctx context.Context) AppOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppOutput)
+}
+
+func (i *App) ToAppPtrOutput() AppPtrOutput {
+	return i.ToAppPtrOutputWithContext(context.Background())
+}
+
+func (i *App) ToAppPtrOutputWithContext(ctx context.Context) AppPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppPtrOutput)
+}
+
+type AppPtrInput interface {
+	pulumi.Input
+
+	ToAppPtrOutput() AppPtrOutput
+	ToAppPtrOutputWithContext(ctx context.Context) AppPtrOutput
 }
 
 type AppOutput struct {
@@ -198,7 +213,7 @@ type AppOutput struct {
 }
 
 func (AppOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppOutput)(nil)).Elem()
+	return reflect.TypeOf((*App)(nil))
 }
 
 func (o AppOutput) ToAppOutput() AppOutput {
@@ -209,6 +224,23 @@ func (o AppOutput) ToAppOutputWithContext(ctx context.Context) AppOutput {
 	return o
 }
 
+type AppPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AppPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**App)(nil))
+}
+
+func (o AppPtrOutput) ToAppPtrOutput() AppPtrOutput {
+	return o
+}
+
+func (o AppPtrOutput) ToAppPtrOutputWithContext(ctx context.Context) AppPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AppOutput{})
+	pulumi.RegisterOutputType(AppPtrOutput{})
 }

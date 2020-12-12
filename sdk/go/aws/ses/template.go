@@ -147,16 +147,31 @@ type TemplateInput interface {
 	ToTemplateOutputWithContext(ctx context.Context) TemplateOutput
 }
 
-func (Template) ElementType() reflect.Type {
-	return reflect.TypeOf((*Template)(nil)).Elem()
+func (*Template) ElementType() reflect.Type {
+	return reflect.TypeOf((*Template)(nil))
 }
 
-func (i Template) ToTemplateOutput() TemplateOutput {
+func (i *Template) ToTemplateOutput() TemplateOutput {
 	return i.ToTemplateOutputWithContext(context.Background())
 }
 
-func (i Template) ToTemplateOutputWithContext(ctx context.Context) TemplateOutput {
+func (i *Template) ToTemplateOutputWithContext(ctx context.Context) TemplateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateOutput)
+}
+
+func (i *Template) ToTemplatePtrOutput() TemplatePtrOutput {
+	return i.ToTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *Template) ToTemplatePtrOutputWithContext(ctx context.Context) TemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplatePtrOutput)
+}
+
+type TemplatePtrInput interface {
+	pulumi.Input
+
+	ToTemplatePtrOutput() TemplatePtrOutput
+	ToTemplatePtrOutputWithContext(ctx context.Context) TemplatePtrOutput
 }
 
 type TemplateOutput struct {
@@ -164,7 +179,7 @@ type TemplateOutput struct {
 }
 
 func (TemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TemplateOutput)(nil)).Elem()
+	return reflect.TypeOf((*Template)(nil))
 }
 
 func (o TemplateOutput) ToTemplateOutput() TemplateOutput {
@@ -175,6 +190,23 @@ func (o TemplateOutput) ToTemplateOutputWithContext(ctx context.Context) Templat
 	return o
 }
 
+type TemplatePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Template)(nil))
+}
+
+func (o TemplatePtrOutput) ToTemplatePtrOutput() TemplatePtrOutput {
+	return o
+}
+
+func (o TemplatePtrOutput) ToTemplatePtrOutputWithContext(ctx context.Context) TemplatePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TemplateOutput{})
+	pulumi.RegisterOutputType(TemplatePtrOutput{})
 }

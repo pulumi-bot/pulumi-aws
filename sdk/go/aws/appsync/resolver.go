@@ -192,16 +192,31 @@ type ResolverInput interface {
 	ToResolverOutputWithContext(ctx context.Context) ResolverOutput
 }
 
-func (Resolver) ElementType() reflect.Type {
-	return reflect.TypeOf((*Resolver)(nil)).Elem()
+func (*Resolver) ElementType() reflect.Type {
+	return reflect.TypeOf((*Resolver)(nil))
 }
 
-func (i Resolver) ToResolverOutput() ResolverOutput {
+func (i *Resolver) ToResolverOutput() ResolverOutput {
 	return i.ToResolverOutputWithContext(context.Background())
 }
 
-func (i Resolver) ToResolverOutputWithContext(ctx context.Context) ResolverOutput {
+func (i *Resolver) ToResolverOutputWithContext(ctx context.Context) ResolverOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResolverOutput)
+}
+
+func (i *Resolver) ToResolverPtrOutput() ResolverPtrOutput {
+	return i.ToResolverPtrOutputWithContext(context.Background())
+}
+
+func (i *Resolver) ToResolverPtrOutputWithContext(ctx context.Context) ResolverPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverPtrOutput)
+}
+
+type ResolverPtrInput interface {
+	pulumi.Input
+
+	ToResolverPtrOutput() ResolverPtrOutput
+	ToResolverPtrOutputWithContext(ctx context.Context) ResolverPtrOutput
 }
 
 type ResolverOutput struct {
@@ -209,7 +224,7 @@ type ResolverOutput struct {
 }
 
 func (ResolverOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResolverOutput)(nil)).Elem()
+	return reflect.TypeOf((*Resolver)(nil))
 }
 
 func (o ResolverOutput) ToResolverOutput() ResolverOutput {
@@ -220,6 +235,23 @@ func (o ResolverOutput) ToResolverOutputWithContext(ctx context.Context) Resolve
 	return o
 }
 
+type ResolverPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResolverPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Resolver)(nil))
+}
+
+func (o ResolverPtrOutput) ToResolverPtrOutput() ResolverPtrOutput {
+	return o
+}
+
+func (o ResolverPtrOutput) ToResolverPtrOutputWithContext(ctx context.Context) ResolverPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResolverOutput{})
+	pulumi.RegisterOutputType(ResolverPtrOutput{})
 }

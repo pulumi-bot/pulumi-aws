@@ -148,16 +148,31 @@ type ContainerPolicyInput interface {
 	ToContainerPolicyOutputWithContext(ctx context.Context) ContainerPolicyOutput
 }
 
-func (ContainerPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerPolicy)(nil)).Elem()
+func (*ContainerPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerPolicy)(nil))
 }
 
-func (i ContainerPolicy) ToContainerPolicyOutput() ContainerPolicyOutput {
+func (i *ContainerPolicy) ToContainerPolicyOutput() ContainerPolicyOutput {
 	return i.ToContainerPolicyOutputWithContext(context.Background())
 }
 
-func (i ContainerPolicy) ToContainerPolicyOutputWithContext(ctx context.Context) ContainerPolicyOutput {
+func (i *ContainerPolicy) ToContainerPolicyOutputWithContext(ctx context.Context) ContainerPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerPolicyOutput)
+}
+
+func (i *ContainerPolicy) ToContainerPolicyPtrOutput() ContainerPolicyPtrOutput {
+	return i.ToContainerPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *ContainerPolicy) ToContainerPolicyPtrOutputWithContext(ctx context.Context) ContainerPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerPolicyPtrOutput)
+}
+
+type ContainerPolicyPtrInput interface {
+	pulumi.Input
+
+	ToContainerPolicyPtrOutput() ContainerPolicyPtrOutput
+	ToContainerPolicyPtrOutputWithContext(ctx context.Context) ContainerPolicyPtrOutput
 }
 
 type ContainerPolicyOutput struct {
@@ -165,7 +180,7 @@ type ContainerPolicyOutput struct {
 }
 
 func (ContainerPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*ContainerPolicy)(nil))
 }
 
 func (o ContainerPolicyOutput) ToContainerPolicyOutput() ContainerPolicyOutput {
@@ -176,6 +191,23 @@ func (o ContainerPolicyOutput) ToContainerPolicyOutputWithContext(ctx context.Co
 	return o
 }
 
+type ContainerPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ContainerPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerPolicy)(nil))
+}
+
+func (o ContainerPolicyPtrOutput) ToContainerPolicyPtrOutput() ContainerPolicyPtrOutput {
+	return o
+}
+
+func (o ContainerPolicyPtrOutput) ToContainerPolicyPtrOutputWithContext(ctx context.Context) ContainerPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ContainerPolicyOutput{})
+	pulumi.RegisterOutputType(ContainerPolicyPtrOutput{})
 }

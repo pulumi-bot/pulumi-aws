@@ -242,16 +242,31 @@ type ComponentInput interface {
 	ToComponentOutputWithContext(ctx context.Context) ComponentOutput
 }
 
-func (Component) ElementType() reflect.Type {
-	return reflect.TypeOf((*Component)(nil)).Elem()
+func (*Component) ElementType() reflect.Type {
+	return reflect.TypeOf((*Component)(nil))
 }
 
-func (i Component) ToComponentOutput() ComponentOutput {
+func (i *Component) ToComponentOutput() ComponentOutput {
 	return i.ToComponentOutputWithContext(context.Background())
 }
 
-func (i Component) ToComponentOutputWithContext(ctx context.Context) ComponentOutput {
+func (i *Component) ToComponentOutputWithContext(ctx context.Context) ComponentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ComponentOutput)
+}
+
+func (i *Component) ToComponentPtrOutput() ComponentPtrOutput {
+	return i.ToComponentPtrOutputWithContext(context.Background())
+}
+
+func (i *Component) ToComponentPtrOutputWithContext(ctx context.Context) ComponentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComponentPtrOutput)
+}
+
+type ComponentPtrInput interface {
+	pulumi.Input
+
+	ToComponentPtrOutput() ComponentPtrOutput
+	ToComponentPtrOutputWithContext(ctx context.Context) ComponentPtrOutput
 }
 
 type ComponentOutput struct {
@@ -259,7 +274,7 @@ type ComponentOutput struct {
 }
 
 func (ComponentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ComponentOutput)(nil)).Elem()
+	return reflect.TypeOf((*Component)(nil))
 }
 
 func (o ComponentOutput) ToComponentOutput() ComponentOutput {
@@ -270,6 +285,23 @@ func (o ComponentOutput) ToComponentOutputWithContext(ctx context.Context) Compo
 	return o
 }
 
+type ComponentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ComponentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Component)(nil))
+}
+
+func (o ComponentPtrOutput) ToComponentPtrOutput() ComponentPtrOutput {
+	return o
+}
+
+func (o ComponentPtrOutput) ToComponentPtrOutputWithContext(ctx context.Context) ComponentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ComponentOutput{})
+	pulumi.RegisterOutputType(ComponentPtrOutput{})
 }
