@@ -253,7 +253,7 @@ namespace Pulumi.Aws.Iam
         ///         }));
         ///         var overrideJsonExample = @override.Apply(@override =&gt; Output.Create(Aws.Iam.GetPolicyDocument.InvokeAsync(new Aws.Iam.GetPolicyDocumentArgs
         ///         {
-        ///             OverrideJson = @override.Json,
+        ///             OverrideJson = _override.Json,
         ///             Statements = 
         ///             {
         ///                 new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
@@ -372,7 +372,7 @@ namespace Pulumi.Aws.Iam
         ///             return Output.Create(Aws.Iam.GetPolicyDocument.InvokeAsync(new Aws.Iam.GetPolicyDocumentArgs
         ///             {
         ///                 SourceJson = source.Json,
-        ///                 OverrideJson = @override.Json,
+        ///                 OverrideJson = _override.Json,
         ///             }));
         ///         });
         ///     }
