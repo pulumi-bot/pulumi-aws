@@ -499,16 +499,31 @@ type FirehoseDeliveryStreamInput interface {
 	ToFirehoseDeliveryStreamOutputWithContext(ctx context.Context) FirehoseDeliveryStreamOutput
 }
 
-func (FirehoseDeliveryStream) ElementType() reflect.Type {
-	return reflect.TypeOf((*FirehoseDeliveryStream)(nil)).Elem()
+func (*FirehoseDeliveryStream) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirehoseDeliveryStream)(nil))
 }
 
-func (i FirehoseDeliveryStream) ToFirehoseDeliveryStreamOutput() FirehoseDeliveryStreamOutput {
+func (i *FirehoseDeliveryStream) ToFirehoseDeliveryStreamOutput() FirehoseDeliveryStreamOutput {
 	return i.ToFirehoseDeliveryStreamOutputWithContext(context.Background())
 }
 
-func (i FirehoseDeliveryStream) ToFirehoseDeliveryStreamOutputWithContext(ctx context.Context) FirehoseDeliveryStreamOutput {
+func (i *FirehoseDeliveryStream) ToFirehoseDeliveryStreamOutputWithContext(ctx context.Context) FirehoseDeliveryStreamOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamOutput)
+}
+
+func (i *FirehoseDeliveryStream) ToFirehoseDeliveryStreamPtrOutput() FirehoseDeliveryStreamPtrOutput {
+	return i.ToFirehoseDeliveryStreamPtrOutputWithContext(context.Background())
+}
+
+func (i *FirehoseDeliveryStream) ToFirehoseDeliveryStreamPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamPtrOutput)
+}
+
+type FirehoseDeliveryStreamPtrInput interface {
+	pulumi.Input
+
+	ToFirehoseDeliveryStreamPtrOutput() FirehoseDeliveryStreamPtrOutput
+	ToFirehoseDeliveryStreamPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamPtrOutput
 }
 
 type FirehoseDeliveryStreamOutput struct {
@@ -516,7 +531,7 @@ type FirehoseDeliveryStreamOutput struct {
 }
 
 func (FirehoseDeliveryStreamOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FirehoseDeliveryStreamOutput)(nil)).Elem()
+	return reflect.TypeOf((*FirehoseDeliveryStream)(nil))
 }
 
 func (o FirehoseDeliveryStreamOutput) ToFirehoseDeliveryStreamOutput() FirehoseDeliveryStreamOutput {
@@ -527,6 +542,23 @@ func (o FirehoseDeliveryStreamOutput) ToFirehoseDeliveryStreamOutputWithContext(
 	return o
 }
 
+type FirehoseDeliveryStreamPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FirehoseDeliveryStreamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirehoseDeliveryStream)(nil))
+}
+
+func (o FirehoseDeliveryStreamPtrOutput) ToFirehoseDeliveryStreamPtrOutput() FirehoseDeliveryStreamPtrOutput {
+	return o
+}
+
+func (o FirehoseDeliveryStreamPtrOutput) ToFirehoseDeliveryStreamPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(FirehoseDeliveryStreamOutput{})
+	pulumi.RegisterOutputType(FirehoseDeliveryStreamPtrOutput{})
 }

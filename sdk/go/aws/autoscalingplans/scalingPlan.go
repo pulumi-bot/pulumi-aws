@@ -130,16 +130,31 @@ type ScalingPlanInput interface {
 	ToScalingPlanOutputWithContext(ctx context.Context) ScalingPlanOutput
 }
 
-func (ScalingPlan) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScalingPlan)(nil)).Elem()
+func (*ScalingPlan) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingPlan)(nil))
 }
 
-func (i ScalingPlan) ToScalingPlanOutput() ScalingPlanOutput {
+func (i *ScalingPlan) ToScalingPlanOutput() ScalingPlanOutput {
 	return i.ToScalingPlanOutputWithContext(context.Background())
 }
 
-func (i ScalingPlan) ToScalingPlanOutputWithContext(ctx context.Context) ScalingPlanOutput {
+func (i *ScalingPlan) ToScalingPlanOutputWithContext(ctx context.Context) ScalingPlanOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingPlanOutput)
+}
+
+func (i *ScalingPlan) ToScalingPlanPtrOutput() ScalingPlanPtrOutput {
+	return i.ToScalingPlanPtrOutputWithContext(context.Background())
+}
+
+func (i *ScalingPlan) ToScalingPlanPtrOutputWithContext(ctx context.Context) ScalingPlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingPlanPtrOutput)
+}
+
+type ScalingPlanPtrInput interface {
+	pulumi.Input
+
+	ToScalingPlanPtrOutput() ScalingPlanPtrOutput
+	ToScalingPlanPtrOutputWithContext(ctx context.Context) ScalingPlanPtrOutput
 }
 
 type ScalingPlanOutput struct {
@@ -147,7 +162,7 @@ type ScalingPlanOutput struct {
 }
 
 func (ScalingPlanOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScalingPlanOutput)(nil)).Elem()
+	return reflect.TypeOf((*ScalingPlan)(nil))
 }
 
 func (o ScalingPlanOutput) ToScalingPlanOutput() ScalingPlanOutput {
@@ -158,6 +173,23 @@ func (o ScalingPlanOutput) ToScalingPlanOutputWithContext(ctx context.Context) S
 	return o
 }
 
+type ScalingPlanPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ScalingPlanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScalingPlan)(nil))
+}
+
+func (o ScalingPlanPtrOutput) ToScalingPlanPtrOutput() ScalingPlanPtrOutput {
+	return o
+}
+
+func (o ScalingPlanPtrOutput) ToScalingPlanPtrOutputWithContext(ctx context.Context) ScalingPlanPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ScalingPlanOutput{})
+	pulumi.RegisterOutputType(ScalingPlanPtrOutput{})
 }

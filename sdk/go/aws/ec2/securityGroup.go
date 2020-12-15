@@ -276,16 +276,31 @@ type SecurityGroupInput interface {
 	ToSecurityGroupOutputWithContext(ctx context.Context) SecurityGroupOutput
 }
 
-func (SecurityGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityGroup)(nil)).Elem()
+func (*SecurityGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGroup)(nil))
 }
 
-func (i SecurityGroup) ToSecurityGroupOutput() SecurityGroupOutput {
+func (i *SecurityGroup) ToSecurityGroupOutput() SecurityGroupOutput {
 	return i.ToSecurityGroupOutputWithContext(context.Background())
 }
 
-func (i SecurityGroup) ToSecurityGroupOutputWithContext(ctx context.Context) SecurityGroupOutput {
+func (i *SecurityGroup) ToSecurityGroupOutputWithContext(ctx context.Context) SecurityGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupOutput)
+}
+
+func (i *SecurityGroup) ToSecurityGroupPtrOutput() SecurityGroupPtrOutput {
+	return i.ToSecurityGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *SecurityGroup) ToSecurityGroupPtrOutputWithContext(ctx context.Context) SecurityGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGroupPtrOutput)
+}
+
+type SecurityGroupPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGroupPtrOutput() SecurityGroupPtrOutput
+	ToSecurityGroupPtrOutputWithContext(ctx context.Context) SecurityGroupPtrOutput
 }
 
 type SecurityGroupOutput struct {
@@ -293,7 +308,7 @@ type SecurityGroupOutput struct {
 }
 
 func (SecurityGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*SecurityGroup)(nil))
 }
 
 func (o SecurityGroupOutput) ToSecurityGroupOutput() SecurityGroupOutput {
@@ -304,6 +319,23 @@ func (o SecurityGroupOutput) ToSecurityGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
+type SecurityGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecurityGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGroup)(nil))
+}
+
+func (o SecurityGroupPtrOutput) ToSecurityGroupPtrOutput() SecurityGroupPtrOutput {
+	return o
+}
+
+func (o SecurityGroupPtrOutput) ToSecurityGroupPtrOutputWithContext(ctx context.Context) SecurityGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SecurityGroupOutput{})
+	pulumi.RegisterOutputType(SecurityGroupPtrOutput{})
 }

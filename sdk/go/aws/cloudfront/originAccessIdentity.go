@@ -205,16 +205,31 @@ type OriginAccessIdentityInput interface {
 	ToOriginAccessIdentityOutputWithContext(ctx context.Context) OriginAccessIdentityOutput
 }
 
-func (OriginAccessIdentity) ElementType() reflect.Type {
-	return reflect.TypeOf((*OriginAccessIdentity)(nil)).Elem()
+func (*OriginAccessIdentity) ElementType() reflect.Type {
+	return reflect.TypeOf((*OriginAccessIdentity)(nil))
 }
 
-func (i OriginAccessIdentity) ToOriginAccessIdentityOutput() OriginAccessIdentityOutput {
+func (i *OriginAccessIdentity) ToOriginAccessIdentityOutput() OriginAccessIdentityOutput {
 	return i.ToOriginAccessIdentityOutputWithContext(context.Background())
 }
 
-func (i OriginAccessIdentity) ToOriginAccessIdentityOutputWithContext(ctx context.Context) OriginAccessIdentityOutput {
+func (i *OriginAccessIdentity) ToOriginAccessIdentityOutputWithContext(ctx context.Context) OriginAccessIdentityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OriginAccessIdentityOutput)
+}
+
+func (i *OriginAccessIdentity) ToOriginAccessIdentityPtrOutput() OriginAccessIdentityPtrOutput {
+	return i.ToOriginAccessIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *OriginAccessIdentity) ToOriginAccessIdentityPtrOutputWithContext(ctx context.Context) OriginAccessIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OriginAccessIdentityPtrOutput)
+}
+
+type OriginAccessIdentityPtrInput interface {
+	pulumi.Input
+
+	ToOriginAccessIdentityPtrOutput() OriginAccessIdentityPtrOutput
+	ToOriginAccessIdentityPtrOutputWithContext(ctx context.Context) OriginAccessIdentityPtrOutput
 }
 
 type OriginAccessIdentityOutput struct {
@@ -222,7 +237,7 @@ type OriginAccessIdentityOutput struct {
 }
 
 func (OriginAccessIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OriginAccessIdentityOutput)(nil)).Elem()
+	return reflect.TypeOf((*OriginAccessIdentity)(nil))
 }
 
 func (o OriginAccessIdentityOutput) ToOriginAccessIdentityOutput() OriginAccessIdentityOutput {
@@ -233,6 +248,23 @@ func (o OriginAccessIdentityOutput) ToOriginAccessIdentityOutputWithContext(ctx 
 	return o
 }
 
+type OriginAccessIdentityPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OriginAccessIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OriginAccessIdentity)(nil))
+}
+
+func (o OriginAccessIdentityPtrOutput) ToOriginAccessIdentityPtrOutput() OriginAccessIdentityPtrOutput {
+	return o
+}
+
+func (o OriginAccessIdentityPtrOutput) ToOriginAccessIdentityPtrOutputWithContext(ctx context.Context) OriginAccessIdentityPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(OriginAccessIdentityOutput{})
+	pulumi.RegisterOutputType(OriginAccessIdentityPtrOutput{})
 }

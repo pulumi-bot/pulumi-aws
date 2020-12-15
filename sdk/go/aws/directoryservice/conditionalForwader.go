@@ -148,16 +148,31 @@ type ConditionalForwaderInput interface {
 	ToConditionalForwaderOutputWithContext(ctx context.Context) ConditionalForwaderOutput
 }
 
-func (ConditionalForwader) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConditionalForwader)(nil)).Elem()
+func (*ConditionalForwader) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalForwader)(nil))
 }
 
-func (i ConditionalForwader) ToConditionalForwaderOutput() ConditionalForwaderOutput {
+func (i *ConditionalForwader) ToConditionalForwaderOutput() ConditionalForwaderOutput {
 	return i.ToConditionalForwaderOutputWithContext(context.Background())
 }
 
-func (i ConditionalForwader) ToConditionalForwaderOutputWithContext(ctx context.Context) ConditionalForwaderOutput {
+func (i *ConditionalForwader) ToConditionalForwaderOutputWithContext(ctx context.Context) ConditionalForwaderOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionalForwaderOutput)
+}
+
+func (i *ConditionalForwader) ToConditionalForwaderPtrOutput() ConditionalForwaderPtrOutput {
+	return i.ToConditionalForwaderPtrOutputWithContext(context.Background())
+}
+
+func (i *ConditionalForwader) ToConditionalForwaderPtrOutputWithContext(ctx context.Context) ConditionalForwaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalForwaderPtrOutput)
+}
+
+type ConditionalForwaderPtrInput interface {
+	pulumi.Input
+
+	ToConditionalForwaderPtrOutput() ConditionalForwaderPtrOutput
+	ToConditionalForwaderPtrOutputWithContext(ctx context.Context) ConditionalForwaderPtrOutput
 }
 
 type ConditionalForwaderOutput struct {
@@ -165,7 +180,7 @@ type ConditionalForwaderOutput struct {
 }
 
 func (ConditionalForwaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConditionalForwaderOutput)(nil)).Elem()
+	return reflect.TypeOf((*ConditionalForwader)(nil))
 }
 
 func (o ConditionalForwaderOutput) ToConditionalForwaderOutput() ConditionalForwaderOutput {
@@ -176,6 +191,23 @@ func (o ConditionalForwaderOutput) ToConditionalForwaderOutputWithContext(ctx co
 	return o
 }
 
+type ConditionalForwaderPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConditionalForwaderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalForwader)(nil))
+}
+
+func (o ConditionalForwaderPtrOutput) ToConditionalForwaderPtrOutput() ConditionalForwaderPtrOutput {
+	return o
+}
+
+func (o ConditionalForwaderPtrOutput) ToConditionalForwaderPtrOutputWithContext(ctx context.Context) ConditionalForwaderPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ConditionalForwaderOutput{})
+	pulumi.RegisterOutputType(ConditionalForwaderPtrOutput{})
 }

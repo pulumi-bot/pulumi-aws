@@ -166,16 +166,31 @@ type CodeSigningConfigInput interface {
 	ToCodeSigningConfigOutputWithContext(ctx context.Context) CodeSigningConfigOutput
 }
 
-func (CodeSigningConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*CodeSigningConfig)(nil)).Elem()
+func (*CodeSigningConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*CodeSigningConfig)(nil))
 }
 
-func (i CodeSigningConfig) ToCodeSigningConfigOutput() CodeSigningConfigOutput {
+func (i *CodeSigningConfig) ToCodeSigningConfigOutput() CodeSigningConfigOutput {
 	return i.ToCodeSigningConfigOutputWithContext(context.Background())
 }
 
-func (i CodeSigningConfig) ToCodeSigningConfigOutputWithContext(ctx context.Context) CodeSigningConfigOutput {
+func (i *CodeSigningConfig) ToCodeSigningConfigOutputWithContext(ctx context.Context) CodeSigningConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CodeSigningConfigOutput)
+}
+
+func (i *CodeSigningConfig) ToCodeSigningConfigPtrOutput() CodeSigningConfigPtrOutput {
+	return i.ToCodeSigningConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *CodeSigningConfig) ToCodeSigningConfigPtrOutputWithContext(ctx context.Context) CodeSigningConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CodeSigningConfigPtrOutput)
+}
+
+type CodeSigningConfigPtrInput interface {
+	pulumi.Input
+
+	ToCodeSigningConfigPtrOutput() CodeSigningConfigPtrOutput
+	ToCodeSigningConfigPtrOutputWithContext(ctx context.Context) CodeSigningConfigPtrOutput
 }
 
 type CodeSigningConfigOutput struct {
@@ -183,7 +198,7 @@ type CodeSigningConfigOutput struct {
 }
 
 func (CodeSigningConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CodeSigningConfigOutput)(nil)).Elem()
+	return reflect.TypeOf((*CodeSigningConfig)(nil))
 }
 
 func (o CodeSigningConfigOutput) ToCodeSigningConfigOutput() CodeSigningConfigOutput {
@@ -194,6 +209,23 @@ func (o CodeSigningConfigOutput) ToCodeSigningConfigOutputWithContext(ctx contex
 	return o
 }
 
+type CodeSigningConfigPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CodeSigningConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CodeSigningConfig)(nil))
+}
+
+func (o CodeSigningConfigPtrOutput) ToCodeSigningConfigPtrOutput() CodeSigningConfigPtrOutput {
+	return o
+}
+
+func (o CodeSigningConfigPtrOutput) ToCodeSigningConfigPtrOutputWithContext(ctx context.Context) CodeSigningConfigPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(CodeSigningConfigOutput{})
+	pulumi.RegisterOutputType(CodeSigningConfigPtrOutput{})
 }

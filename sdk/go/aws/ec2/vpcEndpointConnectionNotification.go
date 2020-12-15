@@ -140,16 +140,31 @@ type VpcEndpointConnectionNotificationInput interface {
 	ToVpcEndpointConnectionNotificationOutputWithContext(ctx context.Context) VpcEndpointConnectionNotificationOutput
 }
 
-func (VpcEndpointConnectionNotification) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcEndpointConnectionNotification)(nil)).Elem()
+func (*VpcEndpointConnectionNotification) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcEndpointConnectionNotification)(nil))
 }
 
-func (i VpcEndpointConnectionNotification) ToVpcEndpointConnectionNotificationOutput() VpcEndpointConnectionNotificationOutput {
+func (i *VpcEndpointConnectionNotification) ToVpcEndpointConnectionNotificationOutput() VpcEndpointConnectionNotificationOutput {
 	return i.ToVpcEndpointConnectionNotificationOutputWithContext(context.Background())
 }
 
-func (i VpcEndpointConnectionNotification) ToVpcEndpointConnectionNotificationOutputWithContext(ctx context.Context) VpcEndpointConnectionNotificationOutput {
+func (i *VpcEndpointConnectionNotification) ToVpcEndpointConnectionNotificationOutputWithContext(ctx context.Context) VpcEndpointConnectionNotificationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointConnectionNotificationOutput)
+}
+
+func (i *VpcEndpointConnectionNotification) ToVpcEndpointConnectionNotificationPtrOutput() VpcEndpointConnectionNotificationPtrOutput {
+	return i.ToVpcEndpointConnectionNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i *VpcEndpointConnectionNotification) ToVpcEndpointConnectionNotificationPtrOutputWithContext(ctx context.Context) VpcEndpointConnectionNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcEndpointConnectionNotificationPtrOutput)
+}
+
+type VpcEndpointConnectionNotificationPtrInput interface {
+	pulumi.Input
+
+	ToVpcEndpointConnectionNotificationPtrOutput() VpcEndpointConnectionNotificationPtrOutput
+	ToVpcEndpointConnectionNotificationPtrOutputWithContext(ctx context.Context) VpcEndpointConnectionNotificationPtrOutput
 }
 
 type VpcEndpointConnectionNotificationOutput struct {
@@ -157,7 +172,7 @@ type VpcEndpointConnectionNotificationOutput struct {
 }
 
 func (VpcEndpointConnectionNotificationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcEndpointConnectionNotificationOutput)(nil)).Elem()
+	return reflect.TypeOf((*VpcEndpointConnectionNotification)(nil))
 }
 
 func (o VpcEndpointConnectionNotificationOutput) ToVpcEndpointConnectionNotificationOutput() VpcEndpointConnectionNotificationOutput {
@@ -168,6 +183,23 @@ func (o VpcEndpointConnectionNotificationOutput) ToVpcEndpointConnectionNotifica
 	return o
 }
 
+type VpcEndpointConnectionNotificationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcEndpointConnectionNotificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcEndpointConnectionNotification)(nil))
+}
+
+func (o VpcEndpointConnectionNotificationPtrOutput) ToVpcEndpointConnectionNotificationPtrOutput() VpcEndpointConnectionNotificationPtrOutput {
+	return o
+}
+
+func (o VpcEndpointConnectionNotificationPtrOutput) ToVpcEndpointConnectionNotificationPtrOutputWithContext(ctx context.Context) VpcEndpointConnectionNotificationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VpcEndpointConnectionNotificationOutput{})
+	pulumi.RegisterOutputType(VpcEndpointConnectionNotificationPtrOutput{})
 }

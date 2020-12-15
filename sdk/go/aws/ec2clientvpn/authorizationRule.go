@@ -167,16 +167,31 @@ type AuthorizationRuleInput interface {
 	ToAuthorizationRuleOutputWithContext(ctx context.Context) AuthorizationRuleOutput
 }
 
-func (AuthorizationRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthorizationRule)(nil)).Elem()
+func (*AuthorizationRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationRule)(nil))
 }
 
-func (i AuthorizationRule) ToAuthorizationRuleOutput() AuthorizationRuleOutput {
+func (i *AuthorizationRule) ToAuthorizationRuleOutput() AuthorizationRuleOutput {
 	return i.ToAuthorizationRuleOutputWithContext(context.Background())
 }
 
-func (i AuthorizationRule) ToAuthorizationRuleOutputWithContext(ctx context.Context) AuthorizationRuleOutput {
+func (i *AuthorizationRule) ToAuthorizationRuleOutputWithContext(ctx context.Context) AuthorizationRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationRuleOutput)
+}
+
+func (i *AuthorizationRule) ToAuthorizationRulePtrOutput() AuthorizationRulePtrOutput {
+	return i.ToAuthorizationRulePtrOutputWithContext(context.Background())
+}
+
+func (i *AuthorizationRule) ToAuthorizationRulePtrOutputWithContext(ctx context.Context) AuthorizationRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationRulePtrOutput)
+}
+
+type AuthorizationRulePtrInput interface {
+	pulumi.Input
+
+	ToAuthorizationRulePtrOutput() AuthorizationRulePtrOutput
+	ToAuthorizationRulePtrOutputWithContext(ctx context.Context) AuthorizationRulePtrOutput
 }
 
 type AuthorizationRuleOutput struct {
@@ -184,7 +199,7 @@ type AuthorizationRuleOutput struct {
 }
 
 func (AuthorizationRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthorizationRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*AuthorizationRule)(nil))
 }
 
 func (o AuthorizationRuleOutput) ToAuthorizationRuleOutput() AuthorizationRuleOutput {
@@ -195,6 +210,23 @@ func (o AuthorizationRuleOutput) ToAuthorizationRuleOutputWithContext(ctx contex
 	return o
 }
 
+type AuthorizationRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthorizationRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorizationRule)(nil))
+}
+
+func (o AuthorizationRulePtrOutput) ToAuthorizationRulePtrOutput() AuthorizationRulePtrOutput {
+	return o
+}
+
+func (o AuthorizationRulePtrOutput) ToAuthorizationRulePtrOutputWithContext(ctx context.Context) AuthorizationRulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuthorizationRuleOutput{})
+	pulumi.RegisterOutputType(AuthorizationRulePtrOutput{})
 }

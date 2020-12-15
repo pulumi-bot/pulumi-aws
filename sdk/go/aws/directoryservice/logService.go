@@ -107,16 +107,31 @@ type LogServiceInput interface {
 	ToLogServiceOutputWithContext(ctx context.Context) LogServiceOutput
 }
 
-func (LogService) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogService)(nil)).Elem()
+func (*LogService) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogService)(nil))
 }
 
-func (i LogService) ToLogServiceOutput() LogServiceOutput {
+func (i *LogService) ToLogServiceOutput() LogServiceOutput {
 	return i.ToLogServiceOutputWithContext(context.Background())
 }
 
-func (i LogService) ToLogServiceOutputWithContext(ctx context.Context) LogServiceOutput {
+func (i *LogService) ToLogServiceOutputWithContext(ctx context.Context) LogServiceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogServiceOutput)
+}
+
+func (i *LogService) ToLogServicePtrOutput() LogServicePtrOutput {
+	return i.ToLogServicePtrOutputWithContext(context.Background())
+}
+
+func (i *LogService) ToLogServicePtrOutputWithContext(ctx context.Context) LogServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogServicePtrOutput)
+}
+
+type LogServicePtrInput interface {
+	pulumi.Input
+
+	ToLogServicePtrOutput() LogServicePtrOutput
+	ToLogServicePtrOutputWithContext(ctx context.Context) LogServicePtrOutput
 }
 
 type LogServiceOutput struct {
@@ -124,7 +139,7 @@ type LogServiceOutput struct {
 }
 
 func (LogServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogServiceOutput)(nil)).Elem()
+	return reflect.TypeOf((*LogService)(nil))
 }
 
 func (o LogServiceOutput) ToLogServiceOutput() LogServiceOutput {
@@ -135,6 +150,23 @@ func (o LogServiceOutput) ToLogServiceOutputWithContext(ctx context.Context) Log
 	return o
 }
 
+type LogServicePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogService)(nil))
+}
+
+func (o LogServicePtrOutput) ToLogServicePtrOutput() LogServicePtrOutput {
+	return o
+}
+
+func (o LogServicePtrOutput) ToLogServicePtrOutputWithContext(ctx context.Context) LogServicePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LogServiceOutput{})
+	pulumi.RegisterOutputType(LogServicePtrOutput{})
 }

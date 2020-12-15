@@ -350,16 +350,31 @@ type RailsAppLayerInput interface {
 	ToRailsAppLayerOutputWithContext(ctx context.Context) RailsAppLayerOutput
 }
 
-func (RailsAppLayer) ElementType() reflect.Type {
-	return reflect.TypeOf((*RailsAppLayer)(nil)).Elem()
+func (*RailsAppLayer) ElementType() reflect.Type {
+	return reflect.TypeOf((*RailsAppLayer)(nil))
 }
 
-func (i RailsAppLayer) ToRailsAppLayerOutput() RailsAppLayerOutput {
+func (i *RailsAppLayer) ToRailsAppLayerOutput() RailsAppLayerOutput {
 	return i.ToRailsAppLayerOutputWithContext(context.Background())
 }
 
-func (i RailsAppLayer) ToRailsAppLayerOutputWithContext(ctx context.Context) RailsAppLayerOutput {
+func (i *RailsAppLayer) ToRailsAppLayerOutputWithContext(ctx context.Context) RailsAppLayerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RailsAppLayerOutput)
+}
+
+func (i *RailsAppLayer) ToRailsAppLayerPtrOutput() RailsAppLayerPtrOutput {
+	return i.ToRailsAppLayerPtrOutputWithContext(context.Background())
+}
+
+func (i *RailsAppLayer) ToRailsAppLayerPtrOutputWithContext(ctx context.Context) RailsAppLayerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RailsAppLayerPtrOutput)
+}
+
+type RailsAppLayerPtrInput interface {
+	pulumi.Input
+
+	ToRailsAppLayerPtrOutput() RailsAppLayerPtrOutput
+	ToRailsAppLayerPtrOutputWithContext(ctx context.Context) RailsAppLayerPtrOutput
 }
 
 type RailsAppLayerOutput struct {
@@ -367,7 +382,7 @@ type RailsAppLayerOutput struct {
 }
 
 func (RailsAppLayerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RailsAppLayerOutput)(nil)).Elem()
+	return reflect.TypeOf((*RailsAppLayer)(nil))
 }
 
 func (o RailsAppLayerOutput) ToRailsAppLayerOutput() RailsAppLayerOutput {
@@ -378,6 +393,23 @@ func (o RailsAppLayerOutput) ToRailsAppLayerOutputWithContext(ctx context.Contex
 	return o
 }
 
+type RailsAppLayerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RailsAppLayerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RailsAppLayer)(nil))
+}
+
+func (o RailsAppLayerPtrOutput) ToRailsAppLayerPtrOutput() RailsAppLayerPtrOutput {
+	return o
+}
+
+func (o RailsAppLayerPtrOutput) ToRailsAppLayerPtrOutputWithContext(ctx context.Context) RailsAppLayerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RailsAppLayerOutput{})
+	pulumi.RegisterOutputType(RailsAppLayerPtrOutput{})
 }

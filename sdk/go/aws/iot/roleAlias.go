@@ -156,16 +156,31 @@ type RoleAliasInput interface {
 	ToRoleAliasOutputWithContext(ctx context.Context) RoleAliasOutput
 }
 
-func (RoleAlias) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoleAlias)(nil)).Elem()
+func (*RoleAlias) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleAlias)(nil))
 }
 
-func (i RoleAlias) ToRoleAliasOutput() RoleAliasOutput {
+func (i *RoleAlias) ToRoleAliasOutput() RoleAliasOutput {
 	return i.ToRoleAliasOutputWithContext(context.Background())
 }
 
-func (i RoleAlias) ToRoleAliasOutputWithContext(ctx context.Context) RoleAliasOutput {
+func (i *RoleAlias) ToRoleAliasOutputWithContext(ctx context.Context) RoleAliasOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoleAliasOutput)
+}
+
+func (i *RoleAlias) ToRoleAliasPtrOutput() RoleAliasPtrOutput {
+	return i.ToRoleAliasPtrOutputWithContext(context.Background())
+}
+
+func (i *RoleAlias) ToRoleAliasPtrOutputWithContext(ctx context.Context) RoleAliasPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleAliasPtrOutput)
+}
+
+type RoleAliasPtrInput interface {
+	pulumi.Input
+
+	ToRoleAliasPtrOutput() RoleAliasPtrOutput
+	ToRoleAliasPtrOutputWithContext(ctx context.Context) RoleAliasPtrOutput
 }
 
 type RoleAliasOutput struct {
@@ -173,7 +188,7 @@ type RoleAliasOutput struct {
 }
 
 func (RoleAliasOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoleAliasOutput)(nil)).Elem()
+	return reflect.TypeOf((*RoleAlias)(nil))
 }
 
 func (o RoleAliasOutput) ToRoleAliasOutput() RoleAliasOutput {
@@ -184,6 +199,23 @@ func (o RoleAliasOutput) ToRoleAliasOutputWithContext(ctx context.Context) RoleA
 	return o
 }
 
+type RoleAliasPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RoleAliasPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoleAlias)(nil))
+}
+
+func (o RoleAliasPtrOutput) ToRoleAliasPtrOutput() RoleAliasPtrOutput {
+	return o
+}
+
+func (o RoleAliasPtrOutput) ToRoleAliasPtrOutputWithContext(ctx context.Context) RoleAliasPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RoleAliasOutput{})
+	pulumi.RegisterOutputType(RoleAliasPtrOutput{})
 }

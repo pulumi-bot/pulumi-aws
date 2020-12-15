@@ -378,16 +378,31 @@ type WindowsFileSystemInput interface {
 	ToWindowsFileSystemOutputWithContext(ctx context.Context) WindowsFileSystemOutput
 }
 
-func (WindowsFileSystem) ElementType() reflect.Type {
-	return reflect.TypeOf((*WindowsFileSystem)(nil)).Elem()
+func (*WindowsFileSystem) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsFileSystem)(nil))
 }
 
-func (i WindowsFileSystem) ToWindowsFileSystemOutput() WindowsFileSystemOutput {
+func (i *WindowsFileSystem) ToWindowsFileSystemOutput() WindowsFileSystemOutput {
 	return i.ToWindowsFileSystemOutputWithContext(context.Background())
 }
 
-func (i WindowsFileSystem) ToWindowsFileSystemOutputWithContext(ctx context.Context) WindowsFileSystemOutput {
+func (i *WindowsFileSystem) ToWindowsFileSystemOutputWithContext(ctx context.Context) WindowsFileSystemOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WindowsFileSystemOutput)
+}
+
+func (i *WindowsFileSystem) ToWindowsFileSystemPtrOutput() WindowsFileSystemPtrOutput {
+	return i.ToWindowsFileSystemPtrOutputWithContext(context.Background())
+}
+
+func (i *WindowsFileSystem) ToWindowsFileSystemPtrOutputWithContext(ctx context.Context) WindowsFileSystemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsFileSystemPtrOutput)
+}
+
+type WindowsFileSystemPtrInput interface {
+	pulumi.Input
+
+	ToWindowsFileSystemPtrOutput() WindowsFileSystemPtrOutput
+	ToWindowsFileSystemPtrOutputWithContext(ctx context.Context) WindowsFileSystemPtrOutput
 }
 
 type WindowsFileSystemOutput struct {
@@ -395,7 +410,7 @@ type WindowsFileSystemOutput struct {
 }
 
 func (WindowsFileSystemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WindowsFileSystemOutput)(nil)).Elem()
+	return reflect.TypeOf((*WindowsFileSystem)(nil))
 }
 
 func (o WindowsFileSystemOutput) ToWindowsFileSystemOutput() WindowsFileSystemOutput {
@@ -406,6 +421,23 @@ func (o WindowsFileSystemOutput) ToWindowsFileSystemOutputWithContext(ctx contex
 	return o
 }
 
+type WindowsFileSystemPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WindowsFileSystemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WindowsFileSystem)(nil))
+}
+
+func (o WindowsFileSystemPtrOutput) ToWindowsFileSystemPtrOutput() WindowsFileSystemPtrOutput {
+	return o
+}
+
+func (o WindowsFileSystemPtrOutput) ToWindowsFileSystemPtrOutputWithContext(ctx context.Context) WindowsFileSystemPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(WindowsFileSystemOutput{})
+	pulumi.RegisterOutputType(WindowsFileSystemPtrOutput{})
 }

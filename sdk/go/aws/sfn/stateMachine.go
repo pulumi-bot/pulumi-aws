@@ -171,16 +171,31 @@ type StateMachineInput interface {
 	ToStateMachineOutputWithContext(ctx context.Context) StateMachineOutput
 }
 
-func (StateMachine) ElementType() reflect.Type {
-	return reflect.TypeOf((*StateMachine)(nil)).Elem()
+func (*StateMachine) ElementType() reflect.Type {
+	return reflect.TypeOf((*StateMachine)(nil))
 }
 
-func (i StateMachine) ToStateMachineOutput() StateMachineOutput {
+func (i *StateMachine) ToStateMachineOutput() StateMachineOutput {
 	return i.ToStateMachineOutputWithContext(context.Background())
 }
 
-func (i StateMachine) ToStateMachineOutputWithContext(ctx context.Context) StateMachineOutput {
+func (i *StateMachine) ToStateMachineOutputWithContext(ctx context.Context) StateMachineOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StateMachineOutput)
+}
+
+func (i *StateMachine) ToStateMachinePtrOutput() StateMachinePtrOutput {
+	return i.ToStateMachinePtrOutputWithContext(context.Background())
+}
+
+func (i *StateMachine) ToStateMachinePtrOutputWithContext(ctx context.Context) StateMachinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StateMachinePtrOutput)
+}
+
+type StateMachinePtrInput interface {
+	pulumi.Input
+
+	ToStateMachinePtrOutput() StateMachinePtrOutput
+	ToStateMachinePtrOutputWithContext(ctx context.Context) StateMachinePtrOutput
 }
 
 type StateMachineOutput struct {
@@ -188,7 +203,7 @@ type StateMachineOutput struct {
 }
 
 func (StateMachineOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StateMachineOutput)(nil)).Elem()
+	return reflect.TypeOf((*StateMachine)(nil))
 }
 
 func (o StateMachineOutput) ToStateMachineOutput() StateMachineOutput {
@@ -199,6 +214,23 @@ func (o StateMachineOutput) ToStateMachineOutputWithContext(ctx context.Context)
 	return o
 }
 
+type StateMachinePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (StateMachinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StateMachine)(nil))
+}
+
+func (o StateMachinePtrOutput) ToStateMachinePtrOutput() StateMachinePtrOutput {
+	return o
+}
+
+func (o StateMachinePtrOutput) ToStateMachinePtrOutputWithContext(ctx context.Context) StateMachinePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(StateMachineOutput{})
+	pulumi.RegisterOutputType(StateMachinePtrOutput{})
 }

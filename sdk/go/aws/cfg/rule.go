@@ -268,16 +268,31 @@ type RuleInput interface {
 	ToRuleOutputWithContext(ctx context.Context) RuleOutput
 }
 
-func (Rule) ElementType() reflect.Type {
-	return reflect.TypeOf((*Rule)(nil)).Elem()
+func (*Rule) ElementType() reflect.Type {
+	return reflect.TypeOf((*Rule)(nil))
 }
 
-func (i Rule) ToRuleOutput() RuleOutput {
+func (i *Rule) ToRuleOutput() RuleOutput {
 	return i.ToRuleOutputWithContext(context.Background())
 }
 
-func (i Rule) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
+func (i *Rule) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RuleOutput)
+}
+
+func (i *Rule) ToRulePtrOutput() RulePtrOutput {
+	return i.ToRulePtrOutputWithContext(context.Background())
+}
+
+func (i *Rule) ToRulePtrOutputWithContext(ctx context.Context) RulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulePtrOutput)
+}
+
+type RulePtrInput interface {
+	pulumi.Input
+
+	ToRulePtrOutput() RulePtrOutput
+	ToRulePtrOutputWithContext(ctx context.Context) RulePtrOutput
 }
 
 type RuleOutput struct {
@@ -285,7 +300,7 @@ type RuleOutput struct {
 }
 
 func (RuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*Rule)(nil))
 }
 
 func (o RuleOutput) ToRuleOutput() RuleOutput {
@@ -296,6 +311,23 @@ func (o RuleOutput) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 	return o
 }
 
+type RulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Rule)(nil))
+}
+
+func (o RulePtrOutput) ToRulePtrOutput() RulePtrOutput {
+	return o
+}
+
+func (o RulePtrOutput) ToRulePtrOutputWithContext(ctx context.Context) RulePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RuleOutput{})
+	pulumi.RegisterOutputType(RulePtrOutput{})
 }

@@ -195,16 +195,31 @@ type IdentityProviderInput interface {
 	ToIdentityProviderOutputWithContext(ctx context.Context) IdentityProviderOutput
 }
 
-func (IdentityProvider) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityProvider)(nil)).Elem()
+func (*IdentityProvider) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProvider)(nil))
 }
 
-func (i IdentityProvider) ToIdentityProviderOutput() IdentityProviderOutput {
+func (i *IdentityProvider) ToIdentityProviderOutput() IdentityProviderOutput {
 	return i.ToIdentityProviderOutputWithContext(context.Background())
 }
 
-func (i IdentityProvider) ToIdentityProviderOutputWithContext(ctx context.Context) IdentityProviderOutput {
+func (i *IdentityProvider) ToIdentityProviderOutputWithContext(ctx context.Context) IdentityProviderOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderOutput)
+}
+
+func (i *IdentityProvider) ToIdentityProviderPtrOutput() IdentityProviderPtrOutput {
+	return i.ToIdentityProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *IdentityProvider) ToIdentityProviderPtrOutputWithContext(ctx context.Context) IdentityProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderPtrOutput)
+}
+
+type IdentityProviderPtrInput interface {
+	pulumi.Input
+
+	ToIdentityProviderPtrOutput() IdentityProviderPtrOutput
+	ToIdentityProviderPtrOutputWithContext(ctx context.Context) IdentityProviderPtrOutput
 }
 
 type IdentityProviderOutput struct {
@@ -212,7 +227,7 @@ type IdentityProviderOutput struct {
 }
 
 func (IdentityProviderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityProviderOutput)(nil)).Elem()
+	return reflect.TypeOf((*IdentityProvider)(nil))
 }
 
 func (o IdentityProviderOutput) ToIdentityProviderOutput() IdentityProviderOutput {
@@ -223,6 +238,23 @@ func (o IdentityProviderOutput) ToIdentityProviderOutputWithContext(ctx context.
 	return o
 }
 
+type IdentityProviderPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityProviderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityProvider)(nil))
+}
+
+func (o IdentityProviderPtrOutput) ToIdentityProviderPtrOutput() IdentityProviderPtrOutput {
+	return o
+}
+
+func (o IdentityProviderPtrOutput) ToIdentityProviderPtrOutputWithContext(ctx context.Context) IdentityProviderPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(IdentityProviderOutput{})
+	pulumi.RegisterOutputType(IdentityProviderPtrOutput{})
 }

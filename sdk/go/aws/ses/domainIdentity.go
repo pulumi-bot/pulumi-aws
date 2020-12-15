@@ -160,16 +160,31 @@ type DomainIdentityInput interface {
 	ToDomainIdentityOutputWithContext(ctx context.Context) DomainIdentityOutput
 }
 
-func (DomainIdentity) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainIdentity)(nil)).Elem()
+func (*DomainIdentity) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainIdentity)(nil))
 }
 
-func (i DomainIdentity) ToDomainIdentityOutput() DomainIdentityOutput {
+func (i *DomainIdentity) ToDomainIdentityOutput() DomainIdentityOutput {
 	return i.ToDomainIdentityOutputWithContext(context.Background())
 }
 
-func (i DomainIdentity) ToDomainIdentityOutputWithContext(ctx context.Context) DomainIdentityOutput {
+func (i *DomainIdentity) ToDomainIdentityOutputWithContext(ctx context.Context) DomainIdentityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainIdentityOutput)
+}
+
+func (i *DomainIdentity) ToDomainIdentityPtrOutput() DomainIdentityPtrOutput {
+	return i.ToDomainIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *DomainIdentity) ToDomainIdentityPtrOutputWithContext(ctx context.Context) DomainIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainIdentityPtrOutput)
+}
+
+type DomainIdentityPtrInput interface {
+	pulumi.Input
+
+	ToDomainIdentityPtrOutput() DomainIdentityPtrOutput
+	ToDomainIdentityPtrOutputWithContext(ctx context.Context) DomainIdentityPtrOutput
 }
 
 type DomainIdentityOutput struct {
@@ -177,7 +192,7 @@ type DomainIdentityOutput struct {
 }
 
 func (DomainIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainIdentityOutput)(nil)).Elem()
+	return reflect.TypeOf((*DomainIdentity)(nil))
 }
 
 func (o DomainIdentityOutput) ToDomainIdentityOutput() DomainIdentityOutput {
@@ -188,6 +203,23 @@ func (o DomainIdentityOutput) ToDomainIdentityOutputWithContext(ctx context.Cont
 	return o
 }
 
+type DomainIdentityPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainIdentity)(nil))
+}
+
+func (o DomainIdentityPtrOutput) ToDomainIdentityPtrOutput() DomainIdentityPtrOutput {
+	return o
+}
+
+func (o DomainIdentityPtrOutput) ToDomainIdentityPtrOutputWithContext(ctx context.Context) DomainIdentityPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DomainIdentityOutput{})
+	pulumi.RegisterOutputType(DomainIdentityPtrOutput{})
 }

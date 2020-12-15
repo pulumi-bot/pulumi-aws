@@ -275,16 +275,31 @@ type BucketNotificationInput interface {
 	ToBucketNotificationOutputWithContext(ctx context.Context) BucketNotificationOutput
 }
 
-func (BucketNotification) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketNotification)(nil)).Elem()
+func (*BucketNotification) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketNotification)(nil))
 }
 
-func (i BucketNotification) ToBucketNotificationOutput() BucketNotificationOutput {
+func (i *BucketNotification) ToBucketNotificationOutput() BucketNotificationOutput {
 	return i.ToBucketNotificationOutputWithContext(context.Background())
 }
 
-func (i BucketNotification) ToBucketNotificationOutputWithContext(ctx context.Context) BucketNotificationOutput {
+func (i *BucketNotification) ToBucketNotificationOutputWithContext(ctx context.Context) BucketNotificationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketNotificationOutput)
+}
+
+func (i *BucketNotification) ToBucketNotificationPtrOutput() BucketNotificationPtrOutput {
+	return i.ToBucketNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i *BucketNotification) ToBucketNotificationPtrOutputWithContext(ctx context.Context) BucketNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketNotificationPtrOutput)
+}
+
+type BucketNotificationPtrInput interface {
+	pulumi.Input
+
+	ToBucketNotificationPtrOutput() BucketNotificationPtrOutput
+	ToBucketNotificationPtrOutputWithContext(ctx context.Context) BucketNotificationPtrOutput
 }
 
 type BucketNotificationOutput struct {
@@ -292,7 +307,7 @@ type BucketNotificationOutput struct {
 }
 
 func (BucketNotificationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketNotificationOutput)(nil)).Elem()
+	return reflect.TypeOf((*BucketNotification)(nil))
 }
 
 func (o BucketNotificationOutput) ToBucketNotificationOutput() BucketNotificationOutput {
@@ -303,6 +318,23 @@ func (o BucketNotificationOutput) ToBucketNotificationOutputWithContext(ctx cont
 	return o
 }
 
+type BucketNotificationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BucketNotificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketNotification)(nil))
+}
+
+func (o BucketNotificationPtrOutput) ToBucketNotificationPtrOutput() BucketNotificationPtrOutput {
+	return o
+}
+
+func (o BucketNotificationPtrOutput) ToBucketNotificationPtrOutputWithContext(ctx context.Context) BucketNotificationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(BucketNotificationOutput{})
+	pulumi.RegisterOutputType(BucketNotificationPtrOutput{})
 }

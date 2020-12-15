@@ -58,7 +58,7 @@ func (i DeploymentConfigMinimumHealthyHostsArgs) ToDeploymentConfigMinimumHealth
 }
 
 func (i DeploymentConfigMinimumHealthyHostsArgs) ToDeploymentConfigMinimumHealthyHostsPtrOutputWithContext(ctx context.Context) DeploymentConfigMinimumHealthyHostsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentConfigMinimumHealthyHostsOutput).ToDeploymentConfigMinimumHealthyHostsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentConfigMinimumHealthyHostsOutput).ToDeploymentConfigMinimumHealthyHostsPtrOutput()
 }
 
 // DeploymentConfigMinimumHealthyHostsPtrInput is an input type that accepts DeploymentConfigMinimumHealthyHostsArgs, DeploymentConfigMinimumHealthyHostsPtr and DeploymentConfigMinimumHealthyHostsPtrOutput values.
@@ -91,7 +91,7 @@ func (i *deploymentConfigMinimumHealthyHostsPtrType) ToDeploymentConfigMinimumHe
 }
 
 func (i *deploymentConfigMinimumHealthyHostsPtrType) ToDeploymentConfigMinimumHealthyHostsPtrOutputWithContext(ctx context.Context) DeploymentConfigMinimumHealthyHostsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentConfigMinimumHealthyHostsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentConfigMinimumHealthyHostsOutput).ToDeploymentConfigMinimumHealthyHostsPtrOutput()
 }
 
 type DeploymentConfigMinimumHealthyHostsOutput struct{ *pulumi.OutputState }
@@ -218,7 +218,7 @@ func (i DeploymentConfigTrafficRoutingConfigArgs) ToDeploymentConfigTrafficRouti
 }
 
 func (i DeploymentConfigTrafficRoutingConfigArgs) ToDeploymentConfigTrafficRoutingConfigPtrOutputWithContext(ctx context.Context) DeploymentConfigTrafficRoutingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentConfigTrafficRoutingConfigOutput).ToDeploymentConfigTrafficRoutingConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentConfigTrafficRoutingConfigOutput).ToDeploymentConfigTrafficRoutingConfigPtrOutput()
 }
 
 // DeploymentConfigTrafficRoutingConfigPtrInput is an input type that accepts DeploymentConfigTrafficRoutingConfigArgs, DeploymentConfigTrafficRoutingConfigPtr and DeploymentConfigTrafficRoutingConfigPtrOutput values.
@@ -251,7 +251,7 @@ func (i *deploymentConfigTrafficRoutingConfigPtrType) ToDeploymentConfigTrafficR
 }
 
 func (i *deploymentConfigTrafficRoutingConfigPtrType) ToDeploymentConfigTrafficRoutingConfigPtrOutputWithContext(ctx context.Context) DeploymentConfigTrafficRoutingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentConfigTrafficRoutingConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentConfigTrafficRoutingConfigOutput).ToDeploymentConfigTrafficRoutingConfigPtrOutput()
 }
 
 type DeploymentConfigTrafficRoutingConfigOutput struct{ *pulumi.OutputState }
@@ -387,7 +387,7 @@ func (i DeploymentConfigTrafficRoutingConfigTimeBasedCanaryArgs) ToDeploymentCon
 }
 
 func (i DeploymentConfigTrafficRoutingConfigTimeBasedCanaryArgs) ToDeploymentConfigTrafficRoutingConfigTimeBasedCanaryPtrOutputWithContext(ctx context.Context) DeploymentConfigTrafficRoutingConfigTimeBasedCanaryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentConfigTrafficRoutingConfigTimeBasedCanaryOutput).ToDeploymentConfigTrafficRoutingConfigTimeBasedCanaryPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentConfigTrafficRoutingConfigTimeBasedCanaryOutput).ToDeploymentConfigTrafficRoutingConfigTimeBasedCanaryPtrOutput()
 }
 
 // DeploymentConfigTrafficRoutingConfigTimeBasedCanaryPtrInput is an input type that accepts DeploymentConfigTrafficRoutingConfigTimeBasedCanaryArgs, DeploymentConfigTrafficRoutingConfigTimeBasedCanaryPtr and DeploymentConfigTrafficRoutingConfigTimeBasedCanaryPtrOutput values.
@@ -420,7 +420,7 @@ func (i *deploymentConfigTrafficRoutingConfigTimeBasedCanaryPtrType) ToDeploymen
 }
 
 func (i *deploymentConfigTrafficRoutingConfigTimeBasedCanaryPtrType) ToDeploymentConfigTrafficRoutingConfigTimeBasedCanaryPtrOutputWithContext(ctx context.Context) DeploymentConfigTrafficRoutingConfigTimeBasedCanaryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentConfigTrafficRoutingConfigTimeBasedCanaryPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentConfigTrafficRoutingConfigTimeBasedCanaryOutput).ToDeploymentConfigTrafficRoutingConfigTimeBasedCanaryPtrOutput()
 }
 
 type DeploymentConfigTrafficRoutingConfigTimeBasedCanaryOutput struct{ *pulumi.OutputState }
@@ -539,7 +539,7 @@ func (i DeploymentConfigTrafficRoutingConfigTimeBasedLinearArgs) ToDeploymentCon
 }
 
 func (i DeploymentConfigTrafficRoutingConfigTimeBasedLinearArgs) ToDeploymentConfigTrafficRoutingConfigTimeBasedLinearPtrOutputWithContext(ctx context.Context) DeploymentConfigTrafficRoutingConfigTimeBasedLinearPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentConfigTrafficRoutingConfigTimeBasedLinearOutput).ToDeploymentConfigTrafficRoutingConfigTimeBasedLinearPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentConfigTrafficRoutingConfigTimeBasedLinearOutput).ToDeploymentConfigTrafficRoutingConfigTimeBasedLinearPtrOutput()
 }
 
 // DeploymentConfigTrafficRoutingConfigTimeBasedLinearPtrInput is an input type that accepts DeploymentConfigTrafficRoutingConfigTimeBasedLinearArgs, DeploymentConfigTrafficRoutingConfigTimeBasedLinearPtr and DeploymentConfigTrafficRoutingConfigTimeBasedLinearPtrOutput values.
@@ -572,7 +572,7 @@ func (i *deploymentConfigTrafficRoutingConfigTimeBasedLinearPtrType) ToDeploymen
 }
 
 func (i *deploymentConfigTrafficRoutingConfigTimeBasedLinearPtrType) ToDeploymentConfigTrafficRoutingConfigTimeBasedLinearPtrOutputWithContext(ctx context.Context) DeploymentConfigTrafficRoutingConfigTimeBasedLinearPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentConfigTrafficRoutingConfigTimeBasedLinearPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentConfigTrafficRoutingConfigTimeBasedLinearOutput).ToDeploymentConfigTrafficRoutingConfigTimeBasedLinearPtrOutput()
 }
 
 type DeploymentConfigTrafficRoutingConfigTimeBasedLinearOutput struct{ *pulumi.OutputState }
@@ -699,7 +699,7 @@ func (i DeploymentGroupAlarmConfigurationArgs) ToDeploymentGroupAlarmConfigurati
 }
 
 func (i DeploymentGroupAlarmConfigurationArgs) ToDeploymentGroupAlarmConfigurationPtrOutputWithContext(ctx context.Context) DeploymentGroupAlarmConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupAlarmConfigurationOutput).ToDeploymentGroupAlarmConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupAlarmConfigurationOutput).ToDeploymentGroupAlarmConfigurationPtrOutput()
 }
 
 // DeploymentGroupAlarmConfigurationPtrInput is an input type that accepts DeploymentGroupAlarmConfigurationArgs, DeploymentGroupAlarmConfigurationPtr and DeploymentGroupAlarmConfigurationPtrOutput values.
@@ -732,7 +732,7 @@ func (i *deploymentGroupAlarmConfigurationPtrType) ToDeploymentGroupAlarmConfigu
 }
 
 func (i *deploymentGroupAlarmConfigurationPtrType) ToDeploymentGroupAlarmConfigurationPtrOutputWithContext(ctx context.Context) DeploymentGroupAlarmConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupAlarmConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupAlarmConfigurationOutput).ToDeploymentGroupAlarmConfigurationPtrOutput()
 }
 
 type DeploymentGroupAlarmConfigurationOutput struct{ *pulumi.OutputState }
@@ -868,7 +868,7 @@ func (i DeploymentGroupAutoRollbackConfigurationArgs) ToDeploymentGroupAutoRollb
 }
 
 func (i DeploymentGroupAutoRollbackConfigurationArgs) ToDeploymentGroupAutoRollbackConfigurationPtrOutputWithContext(ctx context.Context) DeploymentGroupAutoRollbackConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupAutoRollbackConfigurationOutput).ToDeploymentGroupAutoRollbackConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupAutoRollbackConfigurationOutput).ToDeploymentGroupAutoRollbackConfigurationPtrOutput()
 }
 
 // DeploymentGroupAutoRollbackConfigurationPtrInput is an input type that accepts DeploymentGroupAutoRollbackConfigurationArgs, DeploymentGroupAutoRollbackConfigurationPtr and DeploymentGroupAutoRollbackConfigurationPtrOutput values.
@@ -901,7 +901,7 @@ func (i *deploymentGroupAutoRollbackConfigurationPtrType) ToDeploymentGroupAutoR
 }
 
 func (i *deploymentGroupAutoRollbackConfigurationPtrType) ToDeploymentGroupAutoRollbackConfigurationPtrOutputWithContext(ctx context.Context) DeploymentGroupAutoRollbackConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupAutoRollbackConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupAutoRollbackConfigurationOutput).ToDeploymentGroupAutoRollbackConfigurationPtrOutput()
 }
 
 type DeploymentGroupAutoRollbackConfigurationOutput struct{ *pulumi.OutputState }
@@ -1022,7 +1022,7 @@ func (i DeploymentGroupBlueGreenDeploymentConfigArgs) ToDeploymentGroupBlueGreen
 }
 
 func (i DeploymentGroupBlueGreenDeploymentConfigArgs) ToDeploymentGroupBlueGreenDeploymentConfigPtrOutputWithContext(ctx context.Context) DeploymentGroupBlueGreenDeploymentConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupBlueGreenDeploymentConfigOutput).ToDeploymentGroupBlueGreenDeploymentConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupBlueGreenDeploymentConfigOutput).ToDeploymentGroupBlueGreenDeploymentConfigPtrOutput()
 }
 
 // DeploymentGroupBlueGreenDeploymentConfigPtrInput is an input type that accepts DeploymentGroupBlueGreenDeploymentConfigArgs, DeploymentGroupBlueGreenDeploymentConfigPtr and DeploymentGroupBlueGreenDeploymentConfigPtrOutput values.
@@ -1055,7 +1055,7 @@ func (i *deploymentGroupBlueGreenDeploymentConfigPtrType) ToDeploymentGroupBlueG
 }
 
 func (i *deploymentGroupBlueGreenDeploymentConfigPtrType) ToDeploymentGroupBlueGreenDeploymentConfigPtrOutputWithContext(ctx context.Context) DeploymentGroupBlueGreenDeploymentConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupBlueGreenDeploymentConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupBlueGreenDeploymentConfigOutput).ToDeploymentGroupBlueGreenDeploymentConfigPtrOutput()
 }
 
 type DeploymentGroupBlueGreenDeploymentConfigOutput struct{ *pulumi.OutputState }
@@ -1197,7 +1197,7 @@ func (i DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionArgs) ToDep
 }
 
 func (i DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionArgs) ToDeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionPtrOutputWithContext(ctx context.Context) DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionOutput).ToDeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionOutput).ToDeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionPtrOutput()
 }
 
 // DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionPtrInput is an input type that accepts DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionArgs, DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionPtr and DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionPtrOutput values.
@@ -1230,7 +1230,7 @@ func (i *deploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionPtrType) T
 }
 
 func (i *deploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionPtrType) ToDeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionPtrOutputWithContext(ctx context.Context) DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionOutput).ToDeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionPtrOutput()
 }
 
 type DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionOutput struct{ *pulumi.OutputState }
@@ -1355,7 +1355,7 @@ func (i DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionArgs
 }
 
 func (i DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionArgs) ToDeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionPtrOutputWithContext(ctx context.Context) DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionOutput).ToDeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionOutput).ToDeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionPtrOutput()
 }
 
 // DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionPtrInput is an input type that accepts DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionArgs, DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionPtr and DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionPtrOutput values.
@@ -1388,7 +1388,7 @@ func (i *deploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionPtr
 }
 
 func (i *deploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionPtrType) ToDeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionPtrOutputWithContext(ctx context.Context) DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionOutput).ToDeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionPtrOutput()
 }
 
 type DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionOutput struct{ *pulumi.OutputState }
@@ -1500,7 +1500,7 @@ func (i DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeployme
 }
 
 func (i DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessArgs) ToDeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessPtrOutputWithContext(ctx context.Context) DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessOutput).ToDeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessOutput).ToDeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessPtrOutput()
 }
 
 // DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessPtrInput is an input type that accepts DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessArgs, DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessPtr and DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessPtrOutput values.
@@ -1533,7 +1533,7 @@ func (i *deploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploym
 }
 
 func (i *deploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessPtrType) ToDeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessPtrOutputWithContext(ctx context.Context) DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessOutput).ToDeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessPtrOutput()
 }
 
 type DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessOutput struct{ *pulumi.OutputState }
@@ -1660,7 +1660,7 @@ func (i DeploymentGroupDeploymentStyleArgs) ToDeploymentGroupDeploymentStylePtrO
 }
 
 func (i DeploymentGroupDeploymentStyleArgs) ToDeploymentGroupDeploymentStylePtrOutputWithContext(ctx context.Context) DeploymentGroupDeploymentStylePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupDeploymentStyleOutput).ToDeploymentGroupDeploymentStylePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupDeploymentStyleOutput).ToDeploymentGroupDeploymentStylePtrOutput()
 }
 
 // DeploymentGroupDeploymentStylePtrInput is an input type that accepts DeploymentGroupDeploymentStyleArgs, DeploymentGroupDeploymentStylePtr and DeploymentGroupDeploymentStylePtrOutput values.
@@ -1693,7 +1693,7 @@ func (i *deploymentGroupDeploymentStylePtrType) ToDeploymentGroupDeploymentStyle
 }
 
 func (i *deploymentGroupDeploymentStylePtrType) ToDeploymentGroupDeploymentStylePtrOutputWithContext(ctx context.Context) DeploymentGroupDeploymentStylePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupDeploymentStylePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupDeploymentStyleOutput).ToDeploymentGroupDeploymentStylePtrOutput()
 }
 
 type DeploymentGroupDeploymentStyleOutput struct{ *pulumi.OutputState }
@@ -2137,7 +2137,7 @@ func (i DeploymentGroupEcsServiceArgs) ToDeploymentGroupEcsServicePtrOutput() De
 }
 
 func (i DeploymentGroupEcsServiceArgs) ToDeploymentGroupEcsServicePtrOutputWithContext(ctx context.Context) DeploymentGroupEcsServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupEcsServiceOutput).ToDeploymentGroupEcsServicePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupEcsServiceOutput).ToDeploymentGroupEcsServicePtrOutput()
 }
 
 // DeploymentGroupEcsServicePtrInput is an input type that accepts DeploymentGroupEcsServiceArgs, DeploymentGroupEcsServicePtr and DeploymentGroupEcsServicePtrOutput values.
@@ -2170,7 +2170,7 @@ func (i *deploymentGroupEcsServicePtrType) ToDeploymentGroupEcsServicePtrOutput(
 }
 
 func (i *deploymentGroupEcsServicePtrType) ToDeploymentGroupEcsServicePtrOutputWithContext(ctx context.Context) DeploymentGroupEcsServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupEcsServicePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupEcsServiceOutput).ToDeploymentGroupEcsServicePtrOutput()
 }
 
 type DeploymentGroupEcsServiceOutput struct{ *pulumi.OutputState }
@@ -2291,7 +2291,7 @@ func (i DeploymentGroupLoadBalancerInfoArgs) ToDeploymentGroupLoadBalancerInfoPt
 }
 
 func (i DeploymentGroupLoadBalancerInfoArgs) ToDeploymentGroupLoadBalancerInfoPtrOutputWithContext(ctx context.Context) DeploymentGroupLoadBalancerInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupLoadBalancerInfoOutput).ToDeploymentGroupLoadBalancerInfoPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupLoadBalancerInfoOutput).ToDeploymentGroupLoadBalancerInfoPtrOutput()
 }
 
 // DeploymentGroupLoadBalancerInfoPtrInput is an input type that accepts DeploymentGroupLoadBalancerInfoArgs, DeploymentGroupLoadBalancerInfoPtr and DeploymentGroupLoadBalancerInfoPtrOutput values.
@@ -2324,7 +2324,7 @@ func (i *deploymentGroupLoadBalancerInfoPtrType) ToDeploymentGroupLoadBalancerIn
 }
 
 func (i *deploymentGroupLoadBalancerInfoPtrType) ToDeploymentGroupLoadBalancerInfoPtrOutputWithContext(ctx context.Context) DeploymentGroupLoadBalancerInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupLoadBalancerInfoPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupLoadBalancerInfoOutput).ToDeploymentGroupLoadBalancerInfoPtrOutput()
 }
 
 type DeploymentGroupLoadBalancerInfoOutput struct{ *pulumi.OutputState }
@@ -2658,7 +2658,7 @@ func (i DeploymentGroupLoadBalancerInfoTargetGroupPairInfoArgs) ToDeploymentGrou
 }
 
 func (i DeploymentGroupLoadBalancerInfoTargetGroupPairInfoArgs) ToDeploymentGroupLoadBalancerInfoTargetGroupPairInfoPtrOutputWithContext(ctx context.Context) DeploymentGroupLoadBalancerInfoTargetGroupPairInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupLoadBalancerInfoTargetGroupPairInfoOutput).ToDeploymentGroupLoadBalancerInfoTargetGroupPairInfoPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupLoadBalancerInfoTargetGroupPairInfoOutput).ToDeploymentGroupLoadBalancerInfoTargetGroupPairInfoPtrOutput()
 }
 
 // DeploymentGroupLoadBalancerInfoTargetGroupPairInfoPtrInput is an input type that accepts DeploymentGroupLoadBalancerInfoTargetGroupPairInfoArgs, DeploymentGroupLoadBalancerInfoTargetGroupPairInfoPtr and DeploymentGroupLoadBalancerInfoTargetGroupPairInfoPtrOutput values.
@@ -2691,7 +2691,7 @@ func (i *deploymentGroupLoadBalancerInfoTargetGroupPairInfoPtrType) ToDeployment
 }
 
 func (i *deploymentGroupLoadBalancerInfoTargetGroupPairInfoPtrType) ToDeploymentGroupLoadBalancerInfoTargetGroupPairInfoPtrOutputWithContext(ctx context.Context) DeploymentGroupLoadBalancerInfoTargetGroupPairInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupLoadBalancerInfoTargetGroupPairInfoPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupLoadBalancerInfoTargetGroupPairInfoOutput).ToDeploymentGroupLoadBalancerInfoTargetGroupPairInfoPtrOutput()
 }
 
 type DeploymentGroupLoadBalancerInfoTargetGroupPairInfoOutput struct{ *pulumi.OutputState }
@@ -2827,7 +2827,7 @@ func (i DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRouteArgs) 
 }
 
 func (i DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRouteArgs) ToDeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoutePtrOutputWithContext(ctx context.Context) DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRouteOutput).ToDeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoutePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRouteOutput).ToDeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoutePtrOutput()
 }
 
 // DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoutePtrInput is an input type that accepts DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRouteArgs, DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoutePtr and DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoutePtrOutput values.
@@ -2860,7 +2860,7 @@ func (i *deploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoutePtrTy
 }
 
 func (i *deploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoutePtrType) ToDeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoutePtrOutputWithContext(ctx context.Context) DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoutePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRouteOutput).ToDeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoutePtrOutput()
 }
 
 type DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRouteOutput struct{ *pulumi.OutputState }
@@ -3059,7 +3059,7 @@ func (i DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRouteArgs) 
 }
 
 func (i DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRouteArgs) ToDeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoutePtrOutputWithContext(ctx context.Context) DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRouteOutput).ToDeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoutePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRouteOutput).ToDeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoutePtrOutput()
 }
 
 // DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoutePtrInput is an input type that accepts DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRouteArgs, DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoutePtr and DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoutePtrOutput values.
@@ -3092,7 +3092,7 @@ func (i *deploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoutePtrTy
 }
 
 func (i *deploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoutePtrType) ToDeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoutePtrOutputWithContext(ctx context.Context) DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoutePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRouteOutput).ToDeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoutePtrOutput()
 }
 
 type DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRouteOutput struct{ *pulumi.OutputState }

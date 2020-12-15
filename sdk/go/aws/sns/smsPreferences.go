@@ -153,16 +153,31 @@ type SmsPreferencesInput interface {
 	ToSmsPreferencesOutputWithContext(ctx context.Context) SmsPreferencesOutput
 }
 
-func (SmsPreferences) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmsPreferences)(nil)).Elem()
+func (*SmsPreferences) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmsPreferences)(nil))
 }
 
-func (i SmsPreferences) ToSmsPreferencesOutput() SmsPreferencesOutput {
+func (i *SmsPreferences) ToSmsPreferencesOutput() SmsPreferencesOutput {
 	return i.ToSmsPreferencesOutputWithContext(context.Background())
 }
 
-func (i SmsPreferences) ToSmsPreferencesOutputWithContext(ctx context.Context) SmsPreferencesOutput {
+func (i *SmsPreferences) ToSmsPreferencesOutputWithContext(ctx context.Context) SmsPreferencesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SmsPreferencesOutput)
+}
+
+func (i *SmsPreferences) ToSmsPreferencesPtrOutput() SmsPreferencesPtrOutput {
+	return i.ToSmsPreferencesPtrOutputWithContext(context.Background())
+}
+
+func (i *SmsPreferences) ToSmsPreferencesPtrOutputWithContext(ctx context.Context) SmsPreferencesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmsPreferencesPtrOutput)
+}
+
+type SmsPreferencesPtrInput interface {
+	pulumi.Input
+
+	ToSmsPreferencesPtrOutput() SmsPreferencesPtrOutput
+	ToSmsPreferencesPtrOutputWithContext(ctx context.Context) SmsPreferencesPtrOutput
 }
 
 type SmsPreferencesOutput struct {
@@ -170,7 +185,7 @@ type SmsPreferencesOutput struct {
 }
 
 func (SmsPreferencesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmsPreferencesOutput)(nil)).Elem()
+	return reflect.TypeOf((*SmsPreferences)(nil))
 }
 
 func (o SmsPreferencesOutput) ToSmsPreferencesOutput() SmsPreferencesOutput {
@@ -181,6 +196,23 @@ func (o SmsPreferencesOutput) ToSmsPreferencesOutputWithContext(ctx context.Cont
 	return o
 }
 
+type SmsPreferencesPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SmsPreferencesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SmsPreferences)(nil))
+}
+
+func (o SmsPreferencesPtrOutput) ToSmsPreferencesPtrOutput() SmsPreferencesPtrOutput {
+	return o
+}
+
+func (o SmsPreferencesPtrOutput) ToSmsPreferencesPtrOutputWithContext(ctx context.Context) SmsPreferencesPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SmsPreferencesOutput{})
+	pulumi.RegisterOutputType(SmsPreferencesPtrOutput{})
 }

@@ -121,16 +121,31 @@ type WebsiteCertificateAuthorityAssociationInput interface {
 	ToWebsiteCertificateAuthorityAssociationOutputWithContext(ctx context.Context) WebsiteCertificateAuthorityAssociationOutput
 }
 
-func (WebsiteCertificateAuthorityAssociation) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebsiteCertificateAuthorityAssociation)(nil)).Elem()
+func (*WebsiteCertificateAuthorityAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebsiteCertificateAuthorityAssociation)(nil))
 }
 
-func (i WebsiteCertificateAuthorityAssociation) ToWebsiteCertificateAuthorityAssociationOutput() WebsiteCertificateAuthorityAssociationOutput {
+func (i *WebsiteCertificateAuthorityAssociation) ToWebsiteCertificateAuthorityAssociationOutput() WebsiteCertificateAuthorityAssociationOutput {
 	return i.ToWebsiteCertificateAuthorityAssociationOutputWithContext(context.Background())
 }
 
-func (i WebsiteCertificateAuthorityAssociation) ToWebsiteCertificateAuthorityAssociationOutputWithContext(ctx context.Context) WebsiteCertificateAuthorityAssociationOutput {
+func (i *WebsiteCertificateAuthorityAssociation) ToWebsiteCertificateAuthorityAssociationOutputWithContext(ctx context.Context) WebsiteCertificateAuthorityAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebsiteCertificateAuthorityAssociationOutput)
+}
+
+func (i *WebsiteCertificateAuthorityAssociation) ToWebsiteCertificateAuthorityAssociationPtrOutput() WebsiteCertificateAuthorityAssociationPtrOutput {
+	return i.ToWebsiteCertificateAuthorityAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i *WebsiteCertificateAuthorityAssociation) ToWebsiteCertificateAuthorityAssociationPtrOutputWithContext(ctx context.Context) WebsiteCertificateAuthorityAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebsiteCertificateAuthorityAssociationPtrOutput)
+}
+
+type WebsiteCertificateAuthorityAssociationPtrInput interface {
+	pulumi.Input
+
+	ToWebsiteCertificateAuthorityAssociationPtrOutput() WebsiteCertificateAuthorityAssociationPtrOutput
+	ToWebsiteCertificateAuthorityAssociationPtrOutputWithContext(ctx context.Context) WebsiteCertificateAuthorityAssociationPtrOutput
 }
 
 type WebsiteCertificateAuthorityAssociationOutput struct {
@@ -138,7 +153,7 @@ type WebsiteCertificateAuthorityAssociationOutput struct {
 }
 
 func (WebsiteCertificateAuthorityAssociationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebsiteCertificateAuthorityAssociationOutput)(nil)).Elem()
+	return reflect.TypeOf((*WebsiteCertificateAuthorityAssociation)(nil))
 }
 
 func (o WebsiteCertificateAuthorityAssociationOutput) ToWebsiteCertificateAuthorityAssociationOutput() WebsiteCertificateAuthorityAssociationOutput {
@@ -149,6 +164,23 @@ func (o WebsiteCertificateAuthorityAssociationOutput) ToWebsiteCertificateAuthor
 	return o
 }
 
+type WebsiteCertificateAuthorityAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WebsiteCertificateAuthorityAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebsiteCertificateAuthorityAssociation)(nil))
+}
+
+func (o WebsiteCertificateAuthorityAssociationPtrOutput) ToWebsiteCertificateAuthorityAssociationPtrOutput() WebsiteCertificateAuthorityAssociationPtrOutput {
+	return o
+}
+
+func (o WebsiteCertificateAuthorityAssociationPtrOutput) ToWebsiteCertificateAuthorityAssociationPtrOutputWithContext(ctx context.Context) WebsiteCertificateAuthorityAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(WebsiteCertificateAuthorityAssociationOutput{})
+	pulumi.RegisterOutputType(WebsiteCertificateAuthorityAssociationPtrOutput{})
 }

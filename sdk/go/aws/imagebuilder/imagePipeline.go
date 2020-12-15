@@ -250,16 +250,31 @@ type ImagePipelineInput interface {
 	ToImagePipelineOutputWithContext(ctx context.Context) ImagePipelineOutput
 }
 
-func (ImagePipeline) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImagePipeline)(nil)).Elem()
+func (*ImagePipeline) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImagePipeline)(nil))
 }
 
-func (i ImagePipeline) ToImagePipelineOutput() ImagePipelineOutput {
+func (i *ImagePipeline) ToImagePipelineOutput() ImagePipelineOutput {
 	return i.ToImagePipelineOutputWithContext(context.Background())
 }
 
-func (i ImagePipeline) ToImagePipelineOutputWithContext(ctx context.Context) ImagePipelineOutput {
+func (i *ImagePipeline) ToImagePipelineOutputWithContext(ctx context.Context) ImagePipelineOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImagePipelineOutput)
+}
+
+func (i *ImagePipeline) ToImagePipelinePtrOutput() ImagePipelinePtrOutput {
+	return i.ToImagePipelinePtrOutputWithContext(context.Background())
+}
+
+func (i *ImagePipeline) ToImagePipelinePtrOutputWithContext(ctx context.Context) ImagePipelinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImagePipelinePtrOutput)
+}
+
+type ImagePipelinePtrInput interface {
+	pulumi.Input
+
+	ToImagePipelinePtrOutput() ImagePipelinePtrOutput
+	ToImagePipelinePtrOutputWithContext(ctx context.Context) ImagePipelinePtrOutput
 }
 
 type ImagePipelineOutput struct {
@@ -267,7 +282,7 @@ type ImagePipelineOutput struct {
 }
 
 func (ImagePipelineOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImagePipelineOutput)(nil)).Elem()
+	return reflect.TypeOf((*ImagePipeline)(nil))
 }
 
 func (o ImagePipelineOutput) ToImagePipelineOutput() ImagePipelineOutput {
@@ -278,6 +293,23 @@ func (o ImagePipelineOutput) ToImagePipelineOutputWithContext(ctx context.Contex
 	return o
 }
 
+type ImagePipelinePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ImagePipelinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImagePipeline)(nil))
+}
+
+func (o ImagePipelinePtrOutput) ToImagePipelinePtrOutput() ImagePipelinePtrOutput {
+	return o
+}
+
+func (o ImagePipelinePtrOutput) ToImagePipelinePtrOutputWithContext(ctx context.Context) ImagePipelinePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ImagePipelineOutput{})
+	pulumi.RegisterOutputType(ImagePipelinePtrOutput{})
 }

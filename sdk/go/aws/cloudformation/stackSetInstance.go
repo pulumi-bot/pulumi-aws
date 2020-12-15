@@ -169,16 +169,31 @@ type StackSetInstanceInput interface {
 	ToStackSetInstanceOutputWithContext(ctx context.Context) StackSetInstanceOutput
 }
 
-func (StackSetInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackSetInstance)(nil)).Elem()
+func (*StackSetInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackSetInstance)(nil))
 }
 
-func (i StackSetInstance) ToStackSetInstanceOutput() StackSetInstanceOutput {
+func (i *StackSetInstance) ToStackSetInstanceOutput() StackSetInstanceOutput {
 	return i.ToStackSetInstanceOutputWithContext(context.Background())
 }
 
-func (i StackSetInstance) ToStackSetInstanceOutputWithContext(ctx context.Context) StackSetInstanceOutput {
+func (i *StackSetInstance) ToStackSetInstanceOutputWithContext(ctx context.Context) StackSetInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StackSetInstanceOutput)
+}
+
+func (i *StackSetInstance) ToStackSetInstancePtrOutput() StackSetInstancePtrOutput {
+	return i.ToStackSetInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *StackSetInstance) ToStackSetInstancePtrOutputWithContext(ctx context.Context) StackSetInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackSetInstancePtrOutput)
+}
+
+type StackSetInstancePtrInput interface {
+	pulumi.Input
+
+	ToStackSetInstancePtrOutput() StackSetInstancePtrOutput
+	ToStackSetInstancePtrOutputWithContext(ctx context.Context) StackSetInstancePtrOutput
 }
 
 type StackSetInstanceOutput struct {
@@ -186,7 +201,7 @@ type StackSetInstanceOutput struct {
 }
 
 func (StackSetInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackSetInstanceOutput)(nil)).Elem()
+	return reflect.TypeOf((*StackSetInstance)(nil))
 }
 
 func (o StackSetInstanceOutput) ToStackSetInstanceOutput() StackSetInstanceOutput {
@@ -197,6 +212,23 @@ func (o StackSetInstanceOutput) ToStackSetInstanceOutputWithContext(ctx context.
 	return o
 }
 
+type StackSetInstancePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (StackSetInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StackSetInstance)(nil))
+}
+
+func (o StackSetInstancePtrOutput) ToStackSetInstancePtrOutput() StackSetInstancePtrOutput {
+	return o
+}
+
+func (o StackSetInstancePtrOutput) ToStackSetInstancePtrOutputWithContext(ctx context.Context) StackSetInstancePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(StackSetInstanceOutput{})
+	pulumi.RegisterOutputType(StackSetInstancePtrOutput{})
 }

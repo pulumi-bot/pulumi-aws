@@ -52,7 +52,7 @@ func (i BrokerConfigurationArgs) ToBrokerConfigurationPtrOutput() BrokerConfigur
 }
 
 func (i BrokerConfigurationArgs) ToBrokerConfigurationPtrOutputWithContext(ctx context.Context) BrokerConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BrokerConfigurationOutput).ToBrokerConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BrokerConfigurationOutput).ToBrokerConfigurationPtrOutput()
 }
 
 // BrokerConfigurationPtrInput is an input type that accepts BrokerConfigurationArgs, BrokerConfigurationPtr and BrokerConfigurationPtrOutput values.
@@ -85,7 +85,7 @@ func (i *brokerConfigurationPtrType) ToBrokerConfigurationPtrOutput() BrokerConf
 }
 
 func (i *brokerConfigurationPtrType) ToBrokerConfigurationPtrOutputWithContext(ctx context.Context) BrokerConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BrokerConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BrokerConfigurationOutput).ToBrokerConfigurationPtrOutput()
 }
 
 type BrokerConfigurationOutput struct{ *pulumi.OutputState }
@@ -202,7 +202,7 @@ func (i BrokerEncryptionOptionsArgs) ToBrokerEncryptionOptionsPtrOutput() Broker
 }
 
 func (i BrokerEncryptionOptionsArgs) ToBrokerEncryptionOptionsPtrOutputWithContext(ctx context.Context) BrokerEncryptionOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BrokerEncryptionOptionsOutput).ToBrokerEncryptionOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BrokerEncryptionOptionsOutput).ToBrokerEncryptionOptionsPtrOutput()
 }
 
 // BrokerEncryptionOptionsPtrInput is an input type that accepts BrokerEncryptionOptionsArgs, BrokerEncryptionOptionsPtr and BrokerEncryptionOptionsPtrOutput values.
@@ -235,7 +235,7 @@ func (i *brokerEncryptionOptionsPtrType) ToBrokerEncryptionOptionsPtrOutput() Br
 }
 
 func (i *brokerEncryptionOptionsPtrType) ToBrokerEncryptionOptionsPtrOutputWithContext(ctx context.Context) BrokerEncryptionOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BrokerEncryptionOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BrokerEncryptionOptionsOutput).ToBrokerEncryptionOptionsPtrOutput()
 }
 
 type BrokerEncryptionOptionsOutput struct{ *pulumi.OutputState }
@@ -458,7 +458,7 @@ func (i BrokerLogsArgs) ToBrokerLogsPtrOutput() BrokerLogsPtrOutput {
 }
 
 func (i BrokerLogsArgs) ToBrokerLogsPtrOutputWithContext(ctx context.Context) BrokerLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BrokerLogsOutput).ToBrokerLogsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BrokerLogsOutput).ToBrokerLogsPtrOutput()
 }
 
 // BrokerLogsPtrInput is an input type that accepts BrokerLogsArgs, BrokerLogsPtr and BrokerLogsPtrOutput values.
@@ -491,7 +491,7 @@ func (i *brokerLogsPtrType) ToBrokerLogsPtrOutput() BrokerLogsPtrOutput {
 }
 
 func (i *brokerLogsPtrType) ToBrokerLogsPtrOutputWithContext(ctx context.Context) BrokerLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BrokerLogsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BrokerLogsOutput).ToBrokerLogsPtrOutput()
 }
 
 type BrokerLogsOutput struct{ *pulumi.OutputState }
@@ -612,7 +612,7 @@ func (i BrokerMaintenanceWindowStartTimeArgs) ToBrokerMaintenanceWindowStartTime
 }
 
 func (i BrokerMaintenanceWindowStartTimeArgs) ToBrokerMaintenanceWindowStartTimePtrOutputWithContext(ctx context.Context) BrokerMaintenanceWindowStartTimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BrokerMaintenanceWindowStartTimeOutput).ToBrokerMaintenanceWindowStartTimePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BrokerMaintenanceWindowStartTimeOutput).ToBrokerMaintenanceWindowStartTimePtrOutput()
 }
 
 // BrokerMaintenanceWindowStartTimePtrInput is an input type that accepts BrokerMaintenanceWindowStartTimeArgs, BrokerMaintenanceWindowStartTimePtr and BrokerMaintenanceWindowStartTimePtrOutput values.
@@ -645,7 +645,7 @@ func (i *brokerMaintenanceWindowStartTimePtrType) ToBrokerMaintenanceWindowStart
 }
 
 func (i *brokerMaintenanceWindowStartTimePtrType) ToBrokerMaintenanceWindowStartTimePtrOutputWithContext(ctx context.Context) BrokerMaintenanceWindowStartTimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BrokerMaintenanceWindowStartTimePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BrokerMaintenanceWindowStartTimeOutput).ToBrokerMaintenanceWindowStartTimePtrOutput()
 }
 
 type BrokerMaintenanceWindowStartTimeOutput struct{ *pulumi.OutputState }

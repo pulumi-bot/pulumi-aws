@@ -336,16 +336,31 @@ type LustreFileSystemInput interface {
 	ToLustreFileSystemOutputWithContext(ctx context.Context) LustreFileSystemOutput
 }
 
-func (LustreFileSystem) ElementType() reflect.Type {
-	return reflect.TypeOf((*LustreFileSystem)(nil)).Elem()
+func (*LustreFileSystem) ElementType() reflect.Type {
+	return reflect.TypeOf((*LustreFileSystem)(nil))
 }
 
-func (i LustreFileSystem) ToLustreFileSystemOutput() LustreFileSystemOutput {
+func (i *LustreFileSystem) ToLustreFileSystemOutput() LustreFileSystemOutput {
 	return i.ToLustreFileSystemOutputWithContext(context.Background())
 }
 
-func (i LustreFileSystem) ToLustreFileSystemOutputWithContext(ctx context.Context) LustreFileSystemOutput {
+func (i *LustreFileSystem) ToLustreFileSystemOutputWithContext(ctx context.Context) LustreFileSystemOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LustreFileSystemOutput)
+}
+
+func (i *LustreFileSystem) ToLustreFileSystemPtrOutput() LustreFileSystemPtrOutput {
+	return i.ToLustreFileSystemPtrOutputWithContext(context.Background())
+}
+
+func (i *LustreFileSystem) ToLustreFileSystemPtrOutputWithContext(ctx context.Context) LustreFileSystemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LustreFileSystemPtrOutput)
+}
+
+type LustreFileSystemPtrInput interface {
+	pulumi.Input
+
+	ToLustreFileSystemPtrOutput() LustreFileSystemPtrOutput
+	ToLustreFileSystemPtrOutputWithContext(ctx context.Context) LustreFileSystemPtrOutput
 }
 
 type LustreFileSystemOutput struct {
@@ -353,7 +368,7 @@ type LustreFileSystemOutput struct {
 }
 
 func (LustreFileSystemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LustreFileSystemOutput)(nil)).Elem()
+	return reflect.TypeOf((*LustreFileSystem)(nil))
 }
 
 func (o LustreFileSystemOutput) ToLustreFileSystemOutput() LustreFileSystemOutput {
@@ -364,6 +379,23 @@ func (o LustreFileSystemOutput) ToLustreFileSystemOutputWithContext(ctx context.
 	return o
 }
 
+type LustreFileSystemPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LustreFileSystemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LustreFileSystem)(nil))
+}
+
+func (o LustreFileSystemPtrOutput) ToLustreFileSystemPtrOutput() LustreFileSystemPtrOutput {
+	return o
+}
+
+func (o LustreFileSystemPtrOutput) ToLustreFileSystemPtrOutputWithContext(ctx context.Context) LustreFileSystemPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LustreFileSystemOutput{})
+	pulumi.RegisterOutputType(LustreFileSystemPtrOutput{})
 }

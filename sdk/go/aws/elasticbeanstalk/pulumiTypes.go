@@ -60,7 +60,7 @@ func (i ApplicationAppversionLifecycleArgs) ToApplicationAppversionLifecyclePtrO
 }
 
 func (i ApplicationAppversionLifecycleArgs) ToApplicationAppversionLifecyclePtrOutputWithContext(ctx context.Context) ApplicationAppversionLifecyclePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppversionLifecycleOutput).ToApplicationAppversionLifecyclePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppversionLifecycleOutput).ToApplicationAppversionLifecyclePtrOutput()
 }
 
 // ApplicationAppversionLifecyclePtrInput is an input type that accepts ApplicationAppversionLifecycleArgs, ApplicationAppversionLifecyclePtr and ApplicationAppversionLifecyclePtrOutput values.
@@ -93,7 +93,7 @@ func (i *applicationAppversionLifecyclePtrType) ToApplicationAppversionLifecycle
 }
 
 func (i *applicationAppversionLifecyclePtrType) ToApplicationAppversionLifecyclePtrOutputWithContext(ctx context.Context) ApplicationAppversionLifecyclePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppversionLifecyclePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppversionLifecycleOutput).ToApplicationAppversionLifecyclePtrOutput()
 }
 
 type ApplicationAppversionLifecycleOutput struct{ *pulumi.OutputState }

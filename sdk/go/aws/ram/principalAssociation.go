@@ -171,16 +171,31 @@ type PrincipalAssociationInput interface {
 	ToPrincipalAssociationOutputWithContext(ctx context.Context) PrincipalAssociationOutput
 }
 
-func (PrincipalAssociation) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrincipalAssociation)(nil)).Elem()
+func (*PrincipalAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrincipalAssociation)(nil))
 }
 
-func (i PrincipalAssociation) ToPrincipalAssociationOutput() PrincipalAssociationOutput {
+func (i *PrincipalAssociation) ToPrincipalAssociationOutput() PrincipalAssociationOutput {
 	return i.ToPrincipalAssociationOutputWithContext(context.Background())
 }
 
-func (i PrincipalAssociation) ToPrincipalAssociationOutputWithContext(ctx context.Context) PrincipalAssociationOutput {
+func (i *PrincipalAssociation) ToPrincipalAssociationOutputWithContext(ctx context.Context) PrincipalAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PrincipalAssociationOutput)
+}
+
+func (i *PrincipalAssociation) ToPrincipalAssociationPtrOutput() PrincipalAssociationPtrOutput {
+	return i.ToPrincipalAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i *PrincipalAssociation) ToPrincipalAssociationPtrOutputWithContext(ctx context.Context) PrincipalAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrincipalAssociationPtrOutput)
+}
+
+type PrincipalAssociationPtrInput interface {
+	pulumi.Input
+
+	ToPrincipalAssociationPtrOutput() PrincipalAssociationPtrOutput
+	ToPrincipalAssociationPtrOutputWithContext(ctx context.Context) PrincipalAssociationPtrOutput
 }
 
 type PrincipalAssociationOutput struct {
@@ -188,7 +203,7 @@ type PrincipalAssociationOutput struct {
 }
 
 func (PrincipalAssociationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrincipalAssociationOutput)(nil)).Elem()
+	return reflect.TypeOf((*PrincipalAssociation)(nil))
 }
 
 func (o PrincipalAssociationOutput) ToPrincipalAssociationOutput() PrincipalAssociationOutput {
@@ -199,6 +214,23 @@ func (o PrincipalAssociationOutput) ToPrincipalAssociationOutputWithContext(ctx 
 	return o
 }
 
+type PrincipalAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PrincipalAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrincipalAssociation)(nil))
+}
+
+func (o PrincipalAssociationPtrOutput) ToPrincipalAssociationPtrOutput() PrincipalAssociationPtrOutput {
+	return o
+}
+
+func (o PrincipalAssociationPtrOutput) ToPrincipalAssociationPtrOutputWithContext(ctx context.Context) PrincipalAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PrincipalAssociationOutput{})
+	pulumi.RegisterOutputType(PrincipalAssociationPtrOutput{})
 }

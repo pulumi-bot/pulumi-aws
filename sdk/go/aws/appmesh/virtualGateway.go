@@ -243,16 +243,31 @@ type VirtualGatewayInput interface {
 	ToVirtualGatewayOutputWithContext(ctx context.Context) VirtualGatewayOutput
 }
 
-func (VirtualGateway) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualGateway)(nil)).Elem()
+func (*VirtualGateway) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualGateway)(nil))
 }
 
-func (i VirtualGateway) ToVirtualGatewayOutput() VirtualGatewayOutput {
+func (i *VirtualGateway) ToVirtualGatewayOutput() VirtualGatewayOutput {
 	return i.ToVirtualGatewayOutputWithContext(context.Background())
 }
 
-func (i VirtualGateway) ToVirtualGatewayOutputWithContext(ctx context.Context) VirtualGatewayOutput {
+func (i *VirtualGateway) ToVirtualGatewayOutputWithContext(ctx context.Context) VirtualGatewayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewayOutput)
+}
+
+func (i *VirtualGateway) ToVirtualGatewayPtrOutput() VirtualGatewayPtrOutput {
+	return i.ToVirtualGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i *VirtualGateway) ToVirtualGatewayPtrOutputWithContext(ctx context.Context) VirtualGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualGatewayPtrOutput)
+}
+
+type VirtualGatewayPtrInput interface {
+	pulumi.Input
+
+	ToVirtualGatewayPtrOutput() VirtualGatewayPtrOutput
+	ToVirtualGatewayPtrOutputWithContext(ctx context.Context) VirtualGatewayPtrOutput
 }
 
 type VirtualGatewayOutput struct {
@@ -260,7 +275,7 @@ type VirtualGatewayOutput struct {
 }
 
 func (VirtualGatewayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualGatewayOutput)(nil)).Elem()
+	return reflect.TypeOf((*VirtualGateway)(nil))
 }
 
 func (o VirtualGatewayOutput) ToVirtualGatewayOutput() VirtualGatewayOutput {
@@ -271,6 +286,23 @@ func (o VirtualGatewayOutput) ToVirtualGatewayOutputWithContext(ctx context.Cont
 	return o
 }
 
+type VirtualGatewayPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VirtualGatewayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualGateway)(nil))
+}
+
+func (o VirtualGatewayPtrOutput) ToVirtualGatewayPtrOutput() VirtualGatewayPtrOutput {
+	return o
+}
+
+func (o VirtualGatewayPtrOutput) ToVirtualGatewayPtrOutputWithContext(ctx context.Context) VirtualGatewayPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VirtualGatewayOutput{})
+	pulumi.RegisterOutputType(VirtualGatewayPtrOutput{})
 }

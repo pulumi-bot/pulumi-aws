@@ -382,16 +382,31 @@ type DeploymentGroupInput interface {
 	ToDeploymentGroupOutputWithContext(ctx context.Context) DeploymentGroupOutput
 }
 
-func (DeploymentGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeploymentGroup)(nil)).Elem()
+func (*DeploymentGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentGroup)(nil))
 }
 
-func (i DeploymentGroup) ToDeploymentGroupOutput() DeploymentGroupOutput {
+func (i *DeploymentGroup) ToDeploymentGroupOutput() DeploymentGroupOutput {
 	return i.ToDeploymentGroupOutputWithContext(context.Background())
 }
 
-func (i DeploymentGroup) ToDeploymentGroupOutputWithContext(ctx context.Context) DeploymentGroupOutput {
+func (i *DeploymentGroup) ToDeploymentGroupOutputWithContext(ctx context.Context) DeploymentGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupOutput)
+}
+
+func (i *DeploymentGroup) ToDeploymentGroupPtrOutput() DeploymentGroupPtrOutput {
+	return i.ToDeploymentGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *DeploymentGroup) ToDeploymentGroupPtrOutputWithContext(ctx context.Context) DeploymentGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentGroupPtrOutput)
+}
+
+type DeploymentGroupPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentGroupPtrOutput() DeploymentGroupPtrOutput
+	ToDeploymentGroupPtrOutputWithContext(ctx context.Context) DeploymentGroupPtrOutput
 }
 
 type DeploymentGroupOutput struct {
@@ -399,7 +414,7 @@ type DeploymentGroupOutput struct {
 }
 
 func (DeploymentGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeploymentGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*DeploymentGroup)(nil))
 }
 
 func (o DeploymentGroupOutput) ToDeploymentGroupOutput() DeploymentGroupOutput {
@@ -410,6 +425,23 @@ func (o DeploymentGroupOutput) ToDeploymentGroupOutputWithContext(ctx context.Co
 	return o
 }
 
+type DeploymentGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DeploymentGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentGroup)(nil))
+}
+
+func (o DeploymentGroupPtrOutput) ToDeploymentGroupPtrOutput() DeploymentGroupPtrOutput {
+	return o
+}
+
+func (o DeploymentGroupPtrOutput) ToDeploymentGroupPtrOutputWithContext(ctx context.Context) DeploymentGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DeploymentGroupOutput{})
+	pulumi.RegisterOutputType(DeploymentGroupPtrOutput{})
 }

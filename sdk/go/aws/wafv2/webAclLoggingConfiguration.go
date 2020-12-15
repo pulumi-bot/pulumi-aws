@@ -154,16 +154,31 @@ type WebAclLoggingConfigurationInput interface {
 	ToWebAclLoggingConfigurationOutputWithContext(ctx context.Context) WebAclLoggingConfigurationOutput
 }
 
-func (WebAclLoggingConfiguration) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebAclLoggingConfiguration)(nil)).Elem()
+func (*WebAclLoggingConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclLoggingConfiguration)(nil))
 }
 
-func (i WebAclLoggingConfiguration) ToWebAclLoggingConfigurationOutput() WebAclLoggingConfigurationOutput {
+func (i *WebAclLoggingConfiguration) ToWebAclLoggingConfigurationOutput() WebAclLoggingConfigurationOutput {
 	return i.ToWebAclLoggingConfigurationOutputWithContext(context.Background())
 }
 
-func (i WebAclLoggingConfiguration) ToWebAclLoggingConfigurationOutputWithContext(ctx context.Context) WebAclLoggingConfigurationOutput {
+func (i *WebAclLoggingConfiguration) ToWebAclLoggingConfigurationOutputWithContext(ctx context.Context) WebAclLoggingConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationOutput)
+}
+
+func (i *WebAclLoggingConfiguration) ToWebAclLoggingConfigurationPtrOutput() WebAclLoggingConfigurationPtrOutput {
+	return i.ToWebAclLoggingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *WebAclLoggingConfiguration) ToWebAclLoggingConfigurationPtrOutputWithContext(ctx context.Context) WebAclLoggingConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationPtrOutput)
+}
+
+type WebAclLoggingConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToWebAclLoggingConfigurationPtrOutput() WebAclLoggingConfigurationPtrOutput
+	ToWebAclLoggingConfigurationPtrOutputWithContext(ctx context.Context) WebAclLoggingConfigurationPtrOutput
 }
 
 type WebAclLoggingConfigurationOutput struct {
@@ -171,7 +186,7 @@ type WebAclLoggingConfigurationOutput struct {
 }
 
 func (WebAclLoggingConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebAclLoggingConfigurationOutput)(nil)).Elem()
+	return reflect.TypeOf((*WebAclLoggingConfiguration)(nil))
 }
 
 func (o WebAclLoggingConfigurationOutput) ToWebAclLoggingConfigurationOutput() WebAclLoggingConfigurationOutput {
@@ -182,6 +197,23 @@ func (o WebAclLoggingConfigurationOutput) ToWebAclLoggingConfigurationOutputWith
 	return o
 }
 
+type WebAclLoggingConfigurationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WebAclLoggingConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAclLoggingConfiguration)(nil))
+}
+
+func (o WebAclLoggingConfigurationPtrOutput) ToWebAclLoggingConfigurationPtrOutput() WebAclLoggingConfigurationPtrOutput {
+	return o
+}
+
+func (o WebAclLoggingConfigurationPtrOutput) ToWebAclLoggingConfigurationPtrOutputWithContext(ctx context.Context) WebAclLoggingConfigurationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(WebAclLoggingConfigurationOutput{})
+	pulumi.RegisterOutputType(WebAclLoggingConfigurationPtrOutput{})
 }

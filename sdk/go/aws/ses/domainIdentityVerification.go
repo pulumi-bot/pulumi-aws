@@ -146,16 +146,31 @@ type DomainIdentityVerificationInput interface {
 	ToDomainIdentityVerificationOutputWithContext(ctx context.Context) DomainIdentityVerificationOutput
 }
 
-func (DomainIdentityVerification) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainIdentityVerification)(nil)).Elem()
+func (*DomainIdentityVerification) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainIdentityVerification)(nil))
 }
 
-func (i DomainIdentityVerification) ToDomainIdentityVerificationOutput() DomainIdentityVerificationOutput {
+func (i *DomainIdentityVerification) ToDomainIdentityVerificationOutput() DomainIdentityVerificationOutput {
 	return i.ToDomainIdentityVerificationOutputWithContext(context.Background())
 }
 
-func (i DomainIdentityVerification) ToDomainIdentityVerificationOutputWithContext(ctx context.Context) DomainIdentityVerificationOutput {
+func (i *DomainIdentityVerification) ToDomainIdentityVerificationOutputWithContext(ctx context.Context) DomainIdentityVerificationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainIdentityVerificationOutput)
+}
+
+func (i *DomainIdentityVerification) ToDomainIdentityVerificationPtrOutput() DomainIdentityVerificationPtrOutput {
+	return i.ToDomainIdentityVerificationPtrOutputWithContext(context.Background())
+}
+
+func (i *DomainIdentityVerification) ToDomainIdentityVerificationPtrOutputWithContext(ctx context.Context) DomainIdentityVerificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainIdentityVerificationPtrOutput)
+}
+
+type DomainIdentityVerificationPtrInput interface {
+	pulumi.Input
+
+	ToDomainIdentityVerificationPtrOutput() DomainIdentityVerificationPtrOutput
+	ToDomainIdentityVerificationPtrOutputWithContext(ctx context.Context) DomainIdentityVerificationPtrOutput
 }
 
 type DomainIdentityVerificationOutput struct {
@@ -163,7 +178,7 @@ type DomainIdentityVerificationOutput struct {
 }
 
 func (DomainIdentityVerificationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainIdentityVerificationOutput)(nil)).Elem()
+	return reflect.TypeOf((*DomainIdentityVerification)(nil))
 }
 
 func (o DomainIdentityVerificationOutput) ToDomainIdentityVerificationOutput() DomainIdentityVerificationOutput {
@@ -174,6 +189,23 @@ func (o DomainIdentityVerificationOutput) ToDomainIdentityVerificationOutputWith
 	return o
 }
 
+type DomainIdentityVerificationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainIdentityVerificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainIdentityVerification)(nil))
+}
+
+func (o DomainIdentityVerificationPtrOutput) ToDomainIdentityVerificationPtrOutput() DomainIdentityVerificationPtrOutput {
+	return o
+}
+
+func (o DomainIdentityVerificationPtrOutput) ToDomainIdentityVerificationPtrOutputWithContext(ctx context.Context) DomainIdentityVerificationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DomainIdentityVerificationOutput{})
+	pulumi.RegisterOutputType(DomainIdentityVerificationPtrOutput{})
 }

@@ -56,7 +56,7 @@ func (i AnalyticsApplicationCloudwatchLoggingOptionsArgs) ToAnalyticsApplication
 }
 
 func (i AnalyticsApplicationCloudwatchLoggingOptionsArgs) ToAnalyticsApplicationCloudwatchLoggingOptionsPtrOutputWithContext(ctx context.Context) AnalyticsApplicationCloudwatchLoggingOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationCloudwatchLoggingOptionsOutput).ToAnalyticsApplicationCloudwatchLoggingOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationCloudwatchLoggingOptionsOutput).ToAnalyticsApplicationCloudwatchLoggingOptionsPtrOutput()
 }
 
 // AnalyticsApplicationCloudwatchLoggingOptionsPtrInput is an input type that accepts AnalyticsApplicationCloudwatchLoggingOptionsArgs, AnalyticsApplicationCloudwatchLoggingOptionsPtr and AnalyticsApplicationCloudwatchLoggingOptionsPtrOutput values.
@@ -89,7 +89,7 @@ func (i *analyticsApplicationCloudwatchLoggingOptionsPtrType) ToAnalyticsApplica
 }
 
 func (i *analyticsApplicationCloudwatchLoggingOptionsPtrType) ToAnalyticsApplicationCloudwatchLoggingOptionsPtrOutputWithContext(ctx context.Context) AnalyticsApplicationCloudwatchLoggingOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationCloudwatchLoggingOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationCloudwatchLoggingOptionsOutput).ToAnalyticsApplicationCloudwatchLoggingOptionsPtrOutput()
 }
 
 type AnalyticsApplicationCloudwatchLoggingOptionsOutput struct{ *pulumi.OutputState }
@@ -255,7 +255,7 @@ func (i AnalyticsApplicationInputsArgs) ToAnalyticsApplicationInputsPtrOutput() 
 }
 
 func (i AnalyticsApplicationInputsArgs) ToAnalyticsApplicationInputsPtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsOutput).ToAnalyticsApplicationInputsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsOutput).ToAnalyticsApplicationInputsPtrOutput()
 }
 
 // AnalyticsApplicationInputsPtrInput is an input type that accepts AnalyticsApplicationInputsArgs, AnalyticsApplicationInputsPtr and AnalyticsApplicationInputsPtrOutput values.
@@ -288,7 +288,7 @@ func (i *analyticsApplicationInputsPtrType) ToAnalyticsApplicationInputsPtrOutpu
 }
 
 func (i *analyticsApplicationInputsPtrType) ToAnalyticsApplicationInputsPtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsOutput).ToAnalyticsApplicationInputsPtrOutput()
 }
 
 type AnalyticsApplicationInputsOutput struct{ *pulumi.OutputState }
@@ -520,7 +520,7 @@ func (i AnalyticsApplicationInputsKinesisFirehoseArgs) ToAnalyticsApplicationInp
 }
 
 func (i AnalyticsApplicationInputsKinesisFirehoseArgs) ToAnalyticsApplicationInputsKinesisFirehosePtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsKinesisFirehosePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsKinesisFirehoseOutput).ToAnalyticsApplicationInputsKinesisFirehosePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsKinesisFirehoseOutput).ToAnalyticsApplicationInputsKinesisFirehosePtrOutput()
 }
 
 // AnalyticsApplicationInputsKinesisFirehosePtrInput is an input type that accepts AnalyticsApplicationInputsKinesisFirehoseArgs, AnalyticsApplicationInputsKinesisFirehosePtr and AnalyticsApplicationInputsKinesisFirehosePtrOutput values.
@@ -553,7 +553,7 @@ func (i *analyticsApplicationInputsKinesisFirehosePtrType) ToAnalyticsApplicatio
 }
 
 func (i *analyticsApplicationInputsKinesisFirehosePtrType) ToAnalyticsApplicationInputsKinesisFirehosePtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsKinesisFirehosePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsKinesisFirehosePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsKinesisFirehoseOutput).ToAnalyticsApplicationInputsKinesisFirehosePtrOutput()
 }
 
 type AnalyticsApplicationInputsKinesisFirehoseOutput struct{ *pulumi.OutputState }
@@ -672,7 +672,7 @@ func (i AnalyticsApplicationInputsKinesisStreamArgs) ToAnalyticsApplicationInput
 }
 
 func (i AnalyticsApplicationInputsKinesisStreamArgs) ToAnalyticsApplicationInputsKinesisStreamPtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsKinesisStreamPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsKinesisStreamOutput).ToAnalyticsApplicationInputsKinesisStreamPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsKinesisStreamOutput).ToAnalyticsApplicationInputsKinesisStreamPtrOutput()
 }
 
 // AnalyticsApplicationInputsKinesisStreamPtrInput is an input type that accepts AnalyticsApplicationInputsKinesisStreamArgs, AnalyticsApplicationInputsKinesisStreamPtr and AnalyticsApplicationInputsKinesisStreamPtrOutput values.
@@ -705,7 +705,7 @@ func (i *analyticsApplicationInputsKinesisStreamPtrType) ToAnalyticsApplicationI
 }
 
 func (i *analyticsApplicationInputsKinesisStreamPtrType) ToAnalyticsApplicationInputsKinesisStreamPtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsKinesisStreamPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsKinesisStreamPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsKinesisStreamOutput).ToAnalyticsApplicationInputsKinesisStreamPtrOutput()
 }
 
 type AnalyticsApplicationInputsKinesisStreamOutput struct{ *pulumi.OutputState }
@@ -818,7 +818,7 @@ func (i AnalyticsApplicationInputsParallelismArgs) ToAnalyticsApplicationInputsP
 }
 
 func (i AnalyticsApplicationInputsParallelismArgs) ToAnalyticsApplicationInputsParallelismPtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsParallelismPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsParallelismOutput).ToAnalyticsApplicationInputsParallelismPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsParallelismOutput).ToAnalyticsApplicationInputsParallelismPtrOutput()
 }
 
 // AnalyticsApplicationInputsParallelismPtrInput is an input type that accepts AnalyticsApplicationInputsParallelismArgs, AnalyticsApplicationInputsParallelismPtr and AnalyticsApplicationInputsParallelismPtrOutput values.
@@ -851,7 +851,7 @@ func (i *analyticsApplicationInputsParallelismPtrType) ToAnalyticsApplicationInp
 }
 
 func (i *analyticsApplicationInputsParallelismPtrType) ToAnalyticsApplicationInputsParallelismPtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsParallelismPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsParallelismPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsParallelismOutput).ToAnalyticsApplicationInputsParallelismPtrOutput()
 }
 
 type AnalyticsApplicationInputsParallelismOutput struct{ *pulumi.OutputState }
@@ -949,7 +949,7 @@ func (i AnalyticsApplicationInputsProcessingConfigurationArgs) ToAnalyticsApplic
 }
 
 func (i AnalyticsApplicationInputsProcessingConfigurationArgs) ToAnalyticsApplicationInputsProcessingConfigurationPtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsProcessingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsProcessingConfigurationOutput).ToAnalyticsApplicationInputsProcessingConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsProcessingConfigurationOutput).ToAnalyticsApplicationInputsProcessingConfigurationPtrOutput()
 }
 
 // AnalyticsApplicationInputsProcessingConfigurationPtrInput is an input type that accepts AnalyticsApplicationInputsProcessingConfigurationArgs, AnalyticsApplicationInputsProcessingConfigurationPtr and AnalyticsApplicationInputsProcessingConfigurationPtrOutput values.
@@ -982,7 +982,7 @@ func (i *analyticsApplicationInputsProcessingConfigurationPtrType) ToAnalyticsAp
 }
 
 func (i *analyticsApplicationInputsProcessingConfigurationPtrType) ToAnalyticsApplicationInputsProcessingConfigurationPtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsProcessingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsProcessingConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsProcessingConfigurationOutput).ToAnalyticsApplicationInputsProcessingConfigurationPtrOutput()
 }
 
 type AnalyticsApplicationInputsProcessingConfigurationOutput struct{ *pulumi.OutputState }
@@ -1088,7 +1088,7 @@ func (i AnalyticsApplicationInputsProcessingConfigurationLambdaArgs) ToAnalytics
 }
 
 func (i AnalyticsApplicationInputsProcessingConfigurationLambdaArgs) ToAnalyticsApplicationInputsProcessingConfigurationLambdaPtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsProcessingConfigurationLambdaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsProcessingConfigurationLambdaOutput).ToAnalyticsApplicationInputsProcessingConfigurationLambdaPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsProcessingConfigurationLambdaOutput).ToAnalyticsApplicationInputsProcessingConfigurationLambdaPtrOutput()
 }
 
 // AnalyticsApplicationInputsProcessingConfigurationLambdaPtrInput is an input type that accepts AnalyticsApplicationInputsProcessingConfigurationLambdaArgs, AnalyticsApplicationInputsProcessingConfigurationLambdaPtr and AnalyticsApplicationInputsProcessingConfigurationLambdaPtrOutput values.
@@ -1121,7 +1121,7 @@ func (i *analyticsApplicationInputsProcessingConfigurationLambdaPtrType) ToAnaly
 }
 
 func (i *analyticsApplicationInputsProcessingConfigurationLambdaPtrType) ToAnalyticsApplicationInputsProcessingConfigurationLambdaPtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsProcessingConfigurationLambdaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsProcessingConfigurationLambdaPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsProcessingConfigurationLambdaOutput).ToAnalyticsApplicationInputsProcessingConfigurationLambdaPtrOutput()
 }
 
 type AnalyticsApplicationInputsProcessingConfigurationLambdaOutput struct{ *pulumi.OutputState }
@@ -1248,7 +1248,7 @@ func (i AnalyticsApplicationInputsSchemaArgs) ToAnalyticsApplicationInputsSchema
 }
 
 func (i AnalyticsApplicationInputsSchemaArgs) ToAnalyticsApplicationInputsSchemaPtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsSchemaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsSchemaOutput).ToAnalyticsApplicationInputsSchemaPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsSchemaOutput).ToAnalyticsApplicationInputsSchemaPtrOutput()
 }
 
 // AnalyticsApplicationInputsSchemaPtrInput is an input type that accepts AnalyticsApplicationInputsSchemaArgs, AnalyticsApplicationInputsSchemaPtr and AnalyticsApplicationInputsSchemaPtrOutput values.
@@ -1281,7 +1281,7 @@ func (i *analyticsApplicationInputsSchemaPtrType) ToAnalyticsApplicationInputsSc
 }
 
 func (i *analyticsApplicationInputsSchemaPtrType) ToAnalyticsApplicationInputsSchemaPtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsSchemaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsSchemaPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsSchemaOutput).ToAnalyticsApplicationInputsSchemaPtrOutput()
 }
 
 type AnalyticsApplicationInputsSchemaOutput struct{ *pulumi.OutputState }
@@ -1538,7 +1538,7 @@ func (i AnalyticsApplicationInputsSchemaRecordFormatArgs) ToAnalyticsApplication
 }
 
 func (i AnalyticsApplicationInputsSchemaRecordFormatArgs) ToAnalyticsApplicationInputsSchemaRecordFormatPtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsSchemaRecordFormatPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsSchemaRecordFormatOutput).ToAnalyticsApplicationInputsSchemaRecordFormatPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsSchemaRecordFormatOutput).ToAnalyticsApplicationInputsSchemaRecordFormatPtrOutput()
 }
 
 // AnalyticsApplicationInputsSchemaRecordFormatPtrInput is an input type that accepts AnalyticsApplicationInputsSchemaRecordFormatArgs, AnalyticsApplicationInputsSchemaRecordFormatPtr and AnalyticsApplicationInputsSchemaRecordFormatPtrOutput values.
@@ -1571,7 +1571,7 @@ func (i *analyticsApplicationInputsSchemaRecordFormatPtrType) ToAnalyticsApplica
 }
 
 func (i *analyticsApplicationInputsSchemaRecordFormatPtrType) ToAnalyticsApplicationInputsSchemaRecordFormatPtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsSchemaRecordFormatPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsSchemaRecordFormatPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsSchemaRecordFormatOutput).ToAnalyticsApplicationInputsSchemaRecordFormatPtrOutput()
 }
 
 type AnalyticsApplicationInputsSchemaRecordFormatOutput struct{ *pulumi.OutputState }
@@ -1698,7 +1698,7 @@ func (i AnalyticsApplicationInputsSchemaRecordFormatMappingParametersArgs) ToAna
 }
 
 func (i AnalyticsApplicationInputsSchemaRecordFormatMappingParametersArgs) ToAnalyticsApplicationInputsSchemaRecordFormatMappingParametersPtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsSchemaRecordFormatMappingParametersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsSchemaRecordFormatMappingParametersOutput).ToAnalyticsApplicationInputsSchemaRecordFormatMappingParametersPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsSchemaRecordFormatMappingParametersOutput).ToAnalyticsApplicationInputsSchemaRecordFormatMappingParametersPtrOutput()
 }
 
 // AnalyticsApplicationInputsSchemaRecordFormatMappingParametersPtrInput is an input type that accepts AnalyticsApplicationInputsSchemaRecordFormatMappingParametersArgs, AnalyticsApplicationInputsSchemaRecordFormatMappingParametersPtr and AnalyticsApplicationInputsSchemaRecordFormatMappingParametersPtrOutput values.
@@ -1731,7 +1731,7 @@ func (i *analyticsApplicationInputsSchemaRecordFormatMappingParametersPtrType) T
 }
 
 func (i *analyticsApplicationInputsSchemaRecordFormatMappingParametersPtrType) ToAnalyticsApplicationInputsSchemaRecordFormatMappingParametersPtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsSchemaRecordFormatMappingParametersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsSchemaRecordFormatMappingParametersPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsSchemaRecordFormatMappingParametersOutput).ToAnalyticsApplicationInputsSchemaRecordFormatMappingParametersPtrOutput()
 }
 
 type AnalyticsApplicationInputsSchemaRecordFormatMappingParametersOutput struct{ *pulumi.OutputState }
@@ -1858,7 +1858,7 @@ func (i AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvArgs) To
 }
 
 func (i AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvArgs) ToAnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvPtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvOutput).ToAnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvOutput).ToAnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvPtrOutput()
 }
 
 // AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvPtrInput is an input type that accepts AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvArgs, AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvPtr and AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvPtrOutput values.
@@ -1891,7 +1891,7 @@ func (i *analyticsApplicationInputsSchemaRecordFormatMappingParametersCsvPtrType
 }
 
 func (i *analyticsApplicationInputsSchemaRecordFormatMappingParametersCsvPtrType) ToAnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvPtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvOutput).ToAnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvPtrOutput()
 }
 
 type AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsvOutput struct{ *pulumi.OutputState }
@@ -2010,7 +2010,7 @@ func (i AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonArgs) T
 }
 
 func (i AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonArgs) ToAnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonPtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonOutput).ToAnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonOutput).ToAnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonPtrOutput()
 }
 
 // AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonPtrInput is an input type that accepts AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonArgs, AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonPtr and AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonPtrOutput values.
@@ -2043,7 +2043,7 @@ func (i *analyticsApplicationInputsSchemaRecordFormatMappingParametersJsonPtrTyp
 }
 
 func (i *analyticsApplicationInputsSchemaRecordFormatMappingParametersJsonPtrType) ToAnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonPtrOutputWithContext(ctx context.Context) AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonOutput).ToAnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonPtrOutput()
 }
 
 type AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJsonOutput struct{ *pulumi.OutputState }
@@ -2393,7 +2393,7 @@ func (i AnalyticsApplicationOutputKinesisFirehoseArgs) ToAnalyticsApplicationOut
 }
 
 func (i AnalyticsApplicationOutputKinesisFirehoseArgs) ToAnalyticsApplicationOutputKinesisFirehosePtrOutputWithContext(ctx context.Context) AnalyticsApplicationOutputKinesisFirehosePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationOutputKinesisFirehoseOutput).ToAnalyticsApplicationOutputKinesisFirehosePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationOutputKinesisFirehoseOutput).ToAnalyticsApplicationOutputKinesisFirehosePtrOutput()
 }
 
 // AnalyticsApplicationOutputKinesisFirehosePtrInput is an input type that accepts AnalyticsApplicationOutputKinesisFirehoseArgs, AnalyticsApplicationOutputKinesisFirehosePtr and AnalyticsApplicationOutputKinesisFirehosePtrOutput values.
@@ -2426,7 +2426,7 @@ func (i *analyticsApplicationOutputKinesisFirehosePtrType) ToAnalyticsApplicatio
 }
 
 func (i *analyticsApplicationOutputKinesisFirehosePtrType) ToAnalyticsApplicationOutputKinesisFirehosePtrOutputWithContext(ctx context.Context) AnalyticsApplicationOutputKinesisFirehosePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationOutputKinesisFirehosePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationOutputKinesisFirehoseOutput).ToAnalyticsApplicationOutputKinesisFirehosePtrOutput()
 }
 
 type AnalyticsApplicationOutputKinesisFirehoseOutput struct{ *pulumi.OutputState }
@@ -2545,7 +2545,7 @@ func (i AnalyticsApplicationOutputKinesisStreamArgs) ToAnalyticsApplicationOutpu
 }
 
 func (i AnalyticsApplicationOutputKinesisStreamArgs) ToAnalyticsApplicationOutputKinesisStreamPtrOutputWithContext(ctx context.Context) AnalyticsApplicationOutputKinesisStreamPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationOutputKinesisStreamOutput).ToAnalyticsApplicationOutputKinesisStreamPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationOutputKinesisStreamOutput).ToAnalyticsApplicationOutputKinesisStreamPtrOutput()
 }
 
 // AnalyticsApplicationOutputKinesisStreamPtrInput is an input type that accepts AnalyticsApplicationOutputKinesisStreamArgs, AnalyticsApplicationOutputKinesisStreamPtr and AnalyticsApplicationOutputKinesisStreamPtrOutput values.
@@ -2578,7 +2578,7 @@ func (i *analyticsApplicationOutputKinesisStreamPtrType) ToAnalyticsApplicationO
 }
 
 func (i *analyticsApplicationOutputKinesisStreamPtrType) ToAnalyticsApplicationOutputKinesisStreamPtrOutputWithContext(ctx context.Context) AnalyticsApplicationOutputKinesisStreamPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationOutputKinesisStreamPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationOutputKinesisStreamOutput).ToAnalyticsApplicationOutputKinesisStreamPtrOutput()
 }
 
 type AnalyticsApplicationOutputKinesisStreamOutput struct{ *pulumi.OutputState }
@@ -2695,7 +2695,7 @@ func (i AnalyticsApplicationOutputLambdaArgs) ToAnalyticsApplicationOutputLambda
 }
 
 func (i AnalyticsApplicationOutputLambdaArgs) ToAnalyticsApplicationOutputLambdaPtrOutputWithContext(ctx context.Context) AnalyticsApplicationOutputLambdaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationOutputLambdaOutput).ToAnalyticsApplicationOutputLambdaPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationOutputLambdaOutput).ToAnalyticsApplicationOutputLambdaPtrOutput()
 }
 
 // AnalyticsApplicationOutputLambdaPtrInput is an input type that accepts AnalyticsApplicationOutputLambdaArgs, AnalyticsApplicationOutputLambdaPtr and AnalyticsApplicationOutputLambdaPtrOutput values.
@@ -2728,7 +2728,7 @@ func (i *analyticsApplicationOutputLambdaPtrType) ToAnalyticsApplicationOutputLa
 }
 
 func (i *analyticsApplicationOutputLambdaPtrType) ToAnalyticsApplicationOutputLambdaPtrOutputWithContext(ctx context.Context) AnalyticsApplicationOutputLambdaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationOutputLambdaPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationOutputLambdaOutput).ToAnalyticsApplicationOutputLambdaPtrOutput()
 }
 
 type AnalyticsApplicationOutputLambdaOutput struct{ *pulumi.OutputState }
@@ -2905,7 +2905,7 @@ func (i AnalyticsApplicationReferenceDataSourcesArgs) ToAnalyticsApplicationRefe
 }
 
 func (i AnalyticsApplicationReferenceDataSourcesArgs) ToAnalyticsApplicationReferenceDataSourcesPtrOutputWithContext(ctx context.Context) AnalyticsApplicationReferenceDataSourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesOutput).ToAnalyticsApplicationReferenceDataSourcesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesOutput).ToAnalyticsApplicationReferenceDataSourcesPtrOutput()
 }
 
 // AnalyticsApplicationReferenceDataSourcesPtrInput is an input type that accepts AnalyticsApplicationReferenceDataSourcesArgs, AnalyticsApplicationReferenceDataSourcesPtr and AnalyticsApplicationReferenceDataSourcesPtrOutput values.
@@ -2938,7 +2938,7 @@ func (i *analyticsApplicationReferenceDataSourcesPtrType) ToAnalyticsApplication
 }
 
 func (i *analyticsApplicationReferenceDataSourcesPtrType) ToAnalyticsApplicationReferenceDataSourcesPtrOutputWithContext(ctx context.Context) AnalyticsApplicationReferenceDataSourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesOutput).ToAnalyticsApplicationReferenceDataSourcesPtrOutput()
 }
 
 type AnalyticsApplicationReferenceDataSourcesOutput struct{ *pulumi.OutputState }
@@ -3093,7 +3093,7 @@ func (i AnalyticsApplicationReferenceDataSourcesS3Args) ToAnalyticsApplicationRe
 }
 
 func (i AnalyticsApplicationReferenceDataSourcesS3Args) ToAnalyticsApplicationReferenceDataSourcesS3PtrOutputWithContext(ctx context.Context) AnalyticsApplicationReferenceDataSourcesS3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesS3Output).ToAnalyticsApplicationReferenceDataSourcesS3PtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesS3Output).ToAnalyticsApplicationReferenceDataSourcesS3PtrOutput()
 }
 
 // AnalyticsApplicationReferenceDataSourcesS3PtrInput is an input type that accepts AnalyticsApplicationReferenceDataSourcesS3Args, AnalyticsApplicationReferenceDataSourcesS3Ptr and AnalyticsApplicationReferenceDataSourcesS3PtrOutput values.
@@ -3126,7 +3126,7 @@ func (i *analyticsApplicationReferenceDataSourcesS3PtrType) ToAnalyticsApplicati
 }
 
 func (i *analyticsApplicationReferenceDataSourcesS3PtrType) ToAnalyticsApplicationReferenceDataSourcesS3PtrOutputWithContext(ctx context.Context) AnalyticsApplicationReferenceDataSourcesS3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesS3PtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesS3Output).ToAnalyticsApplicationReferenceDataSourcesS3PtrOutput()
 }
 
 type AnalyticsApplicationReferenceDataSourcesS3Output struct{ *pulumi.OutputState }
@@ -3268,7 +3268,7 @@ func (i AnalyticsApplicationReferenceDataSourcesSchemaArgs) ToAnalyticsApplicati
 }
 
 func (i AnalyticsApplicationReferenceDataSourcesSchemaArgs) ToAnalyticsApplicationReferenceDataSourcesSchemaPtrOutputWithContext(ctx context.Context) AnalyticsApplicationReferenceDataSourcesSchemaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesSchemaOutput).ToAnalyticsApplicationReferenceDataSourcesSchemaPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesSchemaOutput).ToAnalyticsApplicationReferenceDataSourcesSchemaPtrOutput()
 }
 
 // AnalyticsApplicationReferenceDataSourcesSchemaPtrInput is an input type that accepts AnalyticsApplicationReferenceDataSourcesSchemaArgs, AnalyticsApplicationReferenceDataSourcesSchemaPtr and AnalyticsApplicationReferenceDataSourcesSchemaPtrOutput values.
@@ -3301,7 +3301,7 @@ func (i *analyticsApplicationReferenceDataSourcesSchemaPtrType) ToAnalyticsAppli
 }
 
 func (i *analyticsApplicationReferenceDataSourcesSchemaPtrType) ToAnalyticsApplicationReferenceDataSourcesSchemaPtrOutputWithContext(ctx context.Context) AnalyticsApplicationReferenceDataSourcesSchemaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesSchemaPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesSchemaOutput).ToAnalyticsApplicationReferenceDataSourcesSchemaPtrOutput()
 }
 
 type AnalyticsApplicationReferenceDataSourcesSchemaOutput struct{ *pulumi.OutputState }
@@ -3560,7 +3560,7 @@ func (i AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatArgs) ToAnalyt
 }
 
 func (i AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatArgs) ToAnalyticsApplicationReferenceDataSourcesSchemaRecordFormatPtrOutputWithContext(ctx context.Context) AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatOutput).ToAnalyticsApplicationReferenceDataSourcesSchemaRecordFormatPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatOutput).ToAnalyticsApplicationReferenceDataSourcesSchemaRecordFormatPtrOutput()
 }
 
 // AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatPtrInput is an input type that accepts AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatArgs, AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatPtr and AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatPtrOutput values.
@@ -3593,7 +3593,7 @@ func (i *analyticsApplicationReferenceDataSourcesSchemaRecordFormatPtrType) ToAn
 }
 
 func (i *analyticsApplicationReferenceDataSourcesSchemaRecordFormatPtrType) ToAnalyticsApplicationReferenceDataSourcesSchemaRecordFormatPtrOutputWithContext(ctx context.Context) AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatOutput).ToAnalyticsApplicationReferenceDataSourcesSchemaRecordFormatPtrOutput()
 }
 
 type AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatOutput struct{ *pulumi.OutputState }
@@ -3720,7 +3720,7 @@ func (i AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParamet
 }
 
 func (i AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersArgs) ToAnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersPtrOutputWithContext(ctx context.Context) AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersOutput).ToAnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersOutput).ToAnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersPtrOutput()
 }
 
 // AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersPtrInput is an input type that accepts AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersArgs, AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersPtr and AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersPtrOutput values.
@@ -3753,7 +3753,7 @@ func (i *analyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParame
 }
 
 func (i *analyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersPtrType) ToAnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersPtrOutputWithContext(ctx context.Context) AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersOutput).ToAnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersPtrOutput()
 }
 
 type AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersOutput struct{ *pulumi.OutputState }
@@ -3880,7 +3880,7 @@ func (i AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParamet
 }
 
 func (i AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsvArgs) ToAnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsvPtrOutputWithContext(ctx context.Context) AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsvPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsvOutput).ToAnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsvPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsvOutput).ToAnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsvPtrOutput()
 }
 
 // AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsvPtrInput is an input type that accepts AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsvArgs, AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsvPtr and AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsvPtrOutput values.
@@ -3913,7 +3913,7 @@ func (i *analyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParame
 }
 
 func (i *analyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsvPtrType) ToAnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsvPtrOutputWithContext(ctx context.Context) AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsvPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsvPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsvOutput).ToAnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsvPtrOutput()
 }
 
 type AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsvOutput struct{ *pulumi.OutputState }
@@ -4032,7 +4032,7 @@ func (i AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParamet
 }
 
 func (i AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJsonArgs) ToAnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJsonPtrOutputWithContext(ctx context.Context) AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJsonPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJsonOutput).ToAnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJsonPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJsonOutput).ToAnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJsonPtrOutput()
 }
 
 // AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJsonPtrInput is an input type that accepts AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJsonArgs, AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJsonPtr and AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJsonPtrOutput values.
@@ -4065,7 +4065,7 @@ func (i *analyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParame
 }
 
 func (i *analyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJsonPtrType) ToAnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJsonPtrOutputWithContext(ctx context.Context) AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJsonPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJsonPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJsonOutput).ToAnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJsonPtrOutput()
 }
 
 type AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJsonOutput struct{ *pulumi.OutputState }
@@ -4215,7 +4215,7 @@ func (i FirehoseDeliveryStreamElasticsearchConfigurationArgs) ToFirehoseDelivery
 }
 
 func (i FirehoseDeliveryStreamElasticsearchConfigurationArgs) ToFirehoseDeliveryStreamElasticsearchConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamElasticsearchConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamElasticsearchConfigurationOutput).ToFirehoseDeliveryStreamElasticsearchConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamElasticsearchConfigurationOutput).ToFirehoseDeliveryStreamElasticsearchConfigurationPtrOutput()
 }
 
 // FirehoseDeliveryStreamElasticsearchConfigurationPtrInput is an input type that accepts FirehoseDeliveryStreamElasticsearchConfigurationArgs, FirehoseDeliveryStreamElasticsearchConfigurationPtr and FirehoseDeliveryStreamElasticsearchConfigurationPtrOutput values.
@@ -4248,7 +4248,7 @@ func (i *firehoseDeliveryStreamElasticsearchConfigurationPtrType) ToFirehoseDeli
 }
 
 func (i *firehoseDeliveryStreamElasticsearchConfigurationPtrType) ToFirehoseDeliveryStreamElasticsearchConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamElasticsearchConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamElasticsearchConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamElasticsearchConfigurationOutput).ToFirehoseDeliveryStreamElasticsearchConfigurationPtrOutput()
 }
 
 type FirehoseDeliveryStreamElasticsearchConfigurationOutput struct{ *pulumi.OutputState }
@@ -4542,7 +4542,7 @@ func (i FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptions
 }
 
 func (i FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptionsArgs) ToFirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptionsPtrOutput()
 }
 
 // FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptionsPtrInput is an input type that accepts FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptionsArgs, FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptionsPtr and FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptionsPtrOutput values.
@@ -4575,7 +4575,7 @@ func (i *firehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOption
 }
 
 func (i *firehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptionsPtrType) ToFirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptionsPtrOutput()
 }
 
 type FirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptionsOutput struct{ *pulumi.OutputState }
@@ -4715,7 +4715,7 @@ func (i FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationA
 }
 
 func (i FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationArgs) ToFirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationOutput).ToFirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationOutput).ToFirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationPtrOutput()
 }
 
 // FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationPtrInput is an input type that accepts FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationArgs, FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationPtr and FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationPtrOutput values.
@@ -4748,7 +4748,7 @@ func (i *firehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration
 }
 
 func (i *firehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationPtrType) ToFirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationOutput).ToFirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationPtrOutput()
 }
 
 type FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationOutput struct{ *pulumi.OutputState }
@@ -5097,7 +5097,7 @@ func (i FirehoseDeliveryStreamElasticsearchConfigurationVpcConfigArgs) ToFirehos
 }
 
 func (i FirehoseDeliveryStreamElasticsearchConfigurationVpcConfigArgs) ToFirehoseDeliveryStreamElasticsearchConfigurationVpcConfigPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamElasticsearchConfigurationVpcConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamElasticsearchConfigurationVpcConfigOutput).ToFirehoseDeliveryStreamElasticsearchConfigurationVpcConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamElasticsearchConfigurationVpcConfigOutput).ToFirehoseDeliveryStreamElasticsearchConfigurationVpcConfigPtrOutput()
 }
 
 // FirehoseDeliveryStreamElasticsearchConfigurationVpcConfigPtrInput is an input type that accepts FirehoseDeliveryStreamElasticsearchConfigurationVpcConfigArgs, FirehoseDeliveryStreamElasticsearchConfigurationVpcConfigPtr and FirehoseDeliveryStreamElasticsearchConfigurationVpcConfigPtrOutput values.
@@ -5130,7 +5130,7 @@ func (i *firehoseDeliveryStreamElasticsearchConfigurationVpcConfigPtrType) ToFir
 }
 
 func (i *firehoseDeliveryStreamElasticsearchConfigurationVpcConfigPtrType) ToFirehoseDeliveryStreamElasticsearchConfigurationVpcConfigPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamElasticsearchConfigurationVpcConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamElasticsearchConfigurationVpcConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamElasticsearchConfigurationVpcConfigOutput).ToFirehoseDeliveryStreamElasticsearchConfigurationVpcConfigPtrOutput()
 }
 
 type FirehoseDeliveryStreamElasticsearchConfigurationVpcConfigOutput struct{ *pulumi.OutputState }
@@ -5325,7 +5325,7 @@ func (i FirehoseDeliveryStreamExtendedS3ConfigurationArgs) ToFirehoseDeliveryStr
 }
 
 func (i FirehoseDeliveryStreamExtendedS3ConfigurationArgs) ToFirehoseDeliveryStreamExtendedS3ConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationPtrOutput()
 }
 
 // FirehoseDeliveryStreamExtendedS3ConfigurationPtrInput is an input type that accepts FirehoseDeliveryStreamExtendedS3ConfigurationArgs, FirehoseDeliveryStreamExtendedS3ConfigurationPtr and FirehoseDeliveryStreamExtendedS3ConfigurationPtrOutput values.
@@ -5358,7 +5358,7 @@ func (i *firehoseDeliveryStreamExtendedS3ConfigurationPtrType) ToFirehoseDeliver
 }
 
 func (i *firehoseDeliveryStreamExtendedS3ConfigurationPtrType) ToFirehoseDeliveryStreamExtendedS3ConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationPtrOutput()
 }
 
 type FirehoseDeliveryStreamExtendedS3ConfigurationOutput struct{ *pulumi.OutputState }
@@ -5658,7 +5658,7 @@ func (i FirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsArg
 }
 
 func (i FirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsArgs) ToFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsPtrOutput()
 }
 
 // FirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsPtrInput is an input type that accepts FirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsArgs, FirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsPtr and FirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsPtrOutput values.
@@ -5691,7 +5691,7 @@ func (i *firehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsPt
 }
 
 func (i *firehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsPtrType) ToFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsPtrOutput()
 }
 
 type FirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsOutput struct{ *pulumi.OutputState }
@@ -5837,7 +5837,7 @@ func (i FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigu
 }
 
 func (i FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationArgs) ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationPtrOutput()
 }
 
 // FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationPtrInput is an input type that accepts FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationArgs, FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationPtr and FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationPtrOutput values.
@@ -5870,7 +5870,7 @@ func (i *firehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfig
 }
 
 func (i *firehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationPtrType) ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationPtrOutput()
 }
 
 type FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutput struct{ *pulumi.OutputState }
@@ -6023,7 +6023,7 @@ func (i FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigu
 }
 
 func (i FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationArgs) ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationPtrOutput()
 }
 
 // FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationPtrInput is an input type that accepts FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationArgs, FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationPtr and FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationPtrOutput values.
@@ -6056,7 +6056,7 @@ func (i *firehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfig
 }
 
 func (i *firehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationPtrType) ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationPtrOutput()
 }
 
 type FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationOutput struct{ *pulumi.OutputState }
@@ -6162,7 +6162,7 @@ func (i FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigu
 }
 
 func (i FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerArgs) ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerPtrOutput()
 }
 
 // FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerPtrInput is an input type that accepts FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerArgs, FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerPtr and FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerPtrOutput values.
@@ -6195,7 +6195,7 @@ func (i *firehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfig
 }
 
 func (i *firehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerPtrType) ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerPtrOutput()
 }
 
 type FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOutput struct{ *pulumi.OutputState }
@@ -6314,7 +6314,7 @@ func (i FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigu
 }
 
 func (i FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeArgs) ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDePtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDePtrOutput()
 }
 
 // FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDePtrInput is an input type that accepts FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeArgs, FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDePtr and FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDePtrOutput values.
@@ -6347,7 +6347,7 @@ func (i *firehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfig
 }
 
 func (i *firehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDePtrType) ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDePtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDePtrOutput()
 }
 
 type FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeOutput struct{ *pulumi.OutputState }
@@ -6457,7 +6457,7 @@ func (i FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigu
 }
 
 func (i FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeArgs) ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDePtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDePtrOutput()
 }
 
 // FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDePtrInput is an input type that accepts FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeArgs, FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDePtr and FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDePtrOutput values.
@@ -6490,7 +6490,7 @@ func (i *firehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfig
 }
 
 func (i *firehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDePtrType) ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDePtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDePtrOutput()
 }
 
 type FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeOutput struct{ *pulumi.OutputState }
@@ -6626,7 +6626,7 @@ func (i FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigu
 }
 
 func (i FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationArgs) ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationPtrOutput()
 }
 
 // FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationPtrInput is an input type that accepts FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationArgs, FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationPtr and FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationPtrOutput values.
@@ -6659,7 +6659,7 @@ func (i *firehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfig
 }
 
 func (i *firehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationPtrType) ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationPtrOutput()
 }
 
 type FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationOutput struct{ *pulumi.OutputState }
@@ -6765,7 +6765,7 @@ func (i FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigu
 }
 
 func (i FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerArgs) ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerPtrOutput()
 }
 
 // FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerPtrInput is an input type that accepts FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerArgs, FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerPtr and FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerPtrOutput values.
@@ -6798,7 +6798,7 @@ func (i *firehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfig
 }
 
 func (i *firehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerPtrType) ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerPtrOutput()
 }
 
 type FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOutput struct{ *pulumi.OutputState }
@@ -6953,7 +6953,7 @@ func (i FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigu
 }
 
 func (i FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeArgs) ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDePtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDePtrOutput()
 }
 
 // FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDePtrInput is an input type that accepts FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeArgs, FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDePtr and FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDePtrOutput values.
@@ -6986,7 +6986,7 @@ func (i *firehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfig
 }
 
 func (i *firehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDePtrType) ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDePtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDePtrOutput()
 }
 
 type FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeOutput struct{ *pulumi.OutputState }
@@ -7261,7 +7261,7 @@ func (i FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigu
 }
 
 func (i FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeArgs) ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDePtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDePtrOutput()
 }
 
 // FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDePtrInput is an input type that accepts FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeArgs, FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDePtr and FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDePtrOutput values.
@@ -7294,7 +7294,7 @@ func (i *firehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfig
 }
 
 func (i *firehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDePtrType) ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDePtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDePtrOutput()
 }
 
 type FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeOutput struct{ *pulumi.OutputState }
@@ -7501,7 +7501,7 @@ func (i FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigu
 }
 
 func (i FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationArgs) ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationPtrOutput()
 }
 
 // FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationPtrInput is an input type that accepts FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationArgs, FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationPtr and FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationPtrOutput values.
@@ -7534,7 +7534,7 @@ func (i *firehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfig
 }
 
 func (i *firehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationPtrType) ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationPtrOutput()
 }
 
 type FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationOutput struct{ *pulumi.OutputState }
@@ -7725,7 +7725,7 @@ func (i FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationArgs
 }
 
 func (i FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationArgs) ToFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationPtrOutput()
 }
 
 // FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationPtrInput is an input type that accepts FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationArgs, FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationPtr and FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationPtrOutput values.
@@ -7758,7 +7758,7 @@ func (i *firehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationPtr
 }
 
 func (i *firehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationPtrType) ToFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationPtrOutput()
 }
 
 type FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationOutput struct{ *pulumi.OutputState }
@@ -8127,7 +8127,7 @@ func (i FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationArgs) 
 }
 
 func (i FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationArgs) ToFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationPtrOutput()
 }
 
 // FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationPtrInput is an input type that accepts FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationArgs, FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationPtr and FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationPtrOutput values.
@@ -8160,7 +8160,7 @@ func (i *firehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationPtrTy
 }
 
 func (i *firehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationPtrType) ToFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationPtrOutput()
 }
 
 type FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationOutput struct{ *pulumi.OutputState }
@@ -8383,7 +8383,7 @@ func (i FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudw
 }
 
 func (i FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsArgs) ToFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrOutput()
 }
 
 // FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrInput is an input type that accepts FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsArgs, FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtr and FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrOutput values.
@@ -8416,7 +8416,7 @@ func (i *firehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloud
 }
 
 func (i *firehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrType) ToFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrOutput()
 }
 
 type FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsOutput struct{ *pulumi.OutputState }
@@ -8592,7 +8592,7 @@ func (i FirehoseDeliveryStreamHttpEndpointConfigurationArgs) ToFirehoseDeliveryS
 }
 
 func (i FirehoseDeliveryStreamHttpEndpointConfigurationArgs) ToFirehoseDeliveryStreamHttpEndpointConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamHttpEndpointConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamHttpEndpointConfigurationOutput).ToFirehoseDeliveryStreamHttpEndpointConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamHttpEndpointConfigurationOutput).ToFirehoseDeliveryStreamHttpEndpointConfigurationPtrOutput()
 }
 
 // FirehoseDeliveryStreamHttpEndpointConfigurationPtrInput is an input type that accepts FirehoseDeliveryStreamHttpEndpointConfigurationArgs, FirehoseDeliveryStreamHttpEndpointConfigurationPtr and FirehoseDeliveryStreamHttpEndpointConfigurationPtrOutput values.
@@ -8625,7 +8625,7 @@ func (i *firehoseDeliveryStreamHttpEndpointConfigurationPtrType) ToFirehoseDeliv
 }
 
 func (i *firehoseDeliveryStreamHttpEndpointConfigurationPtrType) ToFirehoseDeliveryStreamHttpEndpointConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamHttpEndpointConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamHttpEndpointConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamHttpEndpointConfigurationOutput).ToFirehoseDeliveryStreamHttpEndpointConfigurationPtrOutput()
 }
 
 type FirehoseDeliveryStreamHttpEndpointConfigurationOutput struct{ *pulumi.OutputState }
@@ -8889,7 +8889,7 @@ func (i FirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptionsA
 }
 
 func (i FirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptionsArgs) ToFirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptionsPtrOutput()
 }
 
 // FirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptionsPtrInput is an input type that accepts FirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptionsArgs, FirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptionsPtr and FirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptionsPtrOutput values.
@@ -8922,7 +8922,7 @@ func (i *firehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptions
 }
 
 func (i *firehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptionsPtrType) ToFirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptionsPtrOutput()
 }
 
 type FirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptionsOutput struct{ *pulumi.OutputState }
@@ -9062,7 +9062,7 @@ func (i FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationAr
 }
 
 func (i FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationArgs) ToFirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationOutput).ToFirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationOutput).ToFirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationPtrOutput()
 }
 
 // FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationPtrInput is an input type that accepts FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationArgs, FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationPtr and FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationPtrOutput values.
@@ -9095,7 +9095,7 @@ func (i *firehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationP
 }
 
 func (i *firehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationPtrType) ToFirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationOutput).ToFirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationPtrOutput()
 }
 
 type FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationOutput struct{ *pulumi.OutputState }
@@ -9436,7 +9436,7 @@ func (i FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationArgs)
 }
 
 func (i FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationArgs) ToFirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationOutput).ToFirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationOutput).ToFirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationPtrOutput()
 }
 
 // FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationPtrInput is an input type that accepts FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationArgs, FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationPtr and FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationPtrOutput values.
@@ -9469,7 +9469,7 @@ func (i *firehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationPtrT
 }
 
 func (i *firehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationPtrType) ToFirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationOutput).ToFirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationPtrOutput()
 }
 
 type FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationOutput struct{ *pulumi.OutputState }
@@ -9702,7 +9702,7 @@ func (i FirehoseDeliveryStreamKinesisSourceConfigurationArgs) ToFirehoseDelivery
 }
 
 func (i FirehoseDeliveryStreamKinesisSourceConfigurationArgs) ToFirehoseDeliveryStreamKinesisSourceConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamKinesisSourceConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamKinesisSourceConfigurationOutput).ToFirehoseDeliveryStreamKinesisSourceConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamKinesisSourceConfigurationOutput).ToFirehoseDeliveryStreamKinesisSourceConfigurationPtrOutput()
 }
 
 // FirehoseDeliveryStreamKinesisSourceConfigurationPtrInput is an input type that accepts FirehoseDeliveryStreamKinesisSourceConfigurationArgs, FirehoseDeliveryStreamKinesisSourceConfigurationPtr and FirehoseDeliveryStreamKinesisSourceConfigurationPtrOutput values.
@@ -9735,7 +9735,7 @@ func (i *firehoseDeliveryStreamKinesisSourceConfigurationPtrType) ToFirehoseDeli
 }
 
 func (i *firehoseDeliveryStreamKinesisSourceConfigurationPtrType) ToFirehoseDeliveryStreamKinesisSourceConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamKinesisSourceConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamKinesisSourceConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamKinesisSourceConfigurationOutput).ToFirehoseDeliveryStreamKinesisSourceConfigurationPtrOutput()
 }
 
 type FirehoseDeliveryStreamKinesisSourceConfigurationOutput struct{ *pulumi.OutputState }
@@ -9894,7 +9894,7 @@ func (i FirehoseDeliveryStreamRedshiftConfigurationArgs) ToFirehoseDeliveryStrea
 }
 
 func (i FirehoseDeliveryStreamRedshiftConfigurationArgs) ToFirehoseDeliveryStreamRedshiftConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamRedshiftConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamRedshiftConfigurationOutput).ToFirehoseDeliveryStreamRedshiftConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamRedshiftConfigurationOutput).ToFirehoseDeliveryStreamRedshiftConfigurationPtrOutput()
 }
 
 // FirehoseDeliveryStreamRedshiftConfigurationPtrInput is an input type that accepts FirehoseDeliveryStreamRedshiftConfigurationArgs, FirehoseDeliveryStreamRedshiftConfigurationPtr and FirehoseDeliveryStreamRedshiftConfigurationPtrOutput values.
@@ -9927,7 +9927,7 @@ func (i *firehoseDeliveryStreamRedshiftConfigurationPtrType) ToFirehoseDeliveryS
 }
 
 func (i *firehoseDeliveryStreamRedshiftConfigurationPtrType) ToFirehoseDeliveryStreamRedshiftConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamRedshiftConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamRedshiftConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamRedshiftConfigurationOutput).ToFirehoseDeliveryStreamRedshiftConfigurationPtrOutput()
 }
 
 type FirehoseDeliveryStreamRedshiftConfigurationOutput struct{ *pulumi.OutputState }
@@ -10206,7 +10206,7 @@ func (i FirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsArgs)
 }
 
 func (i FirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsArgs) ToFirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsPtrOutput()
 }
 
 // FirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsPtrInput is an input type that accepts FirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsArgs, FirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsPtr and FirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsPtrOutput values.
@@ -10239,7 +10239,7 @@ func (i *firehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsPtrT
 }
 
 func (i *firehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsPtrType) ToFirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsPtrOutput()
 }
 
 type FirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsOutput struct{ *pulumi.OutputState }
@@ -10377,7 +10377,7 @@ func (i FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationArgs) 
 }
 
 func (i FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationArgs) ToFirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationOutput).ToFirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationOutput).ToFirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationPtrOutput()
 }
 
 // FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationPtrInput is an input type that accepts FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationArgs, FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationPtr and FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationPtrOutput values.
@@ -10410,7 +10410,7 @@ func (i *firehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationPtrTy
 }
 
 func (i *firehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationPtrType) ToFirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationOutput).ToFirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationPtrOutput()
 }
 
 type FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationOutput struct{ *pulumi.OutputState }
@@ -10779,7 +10779,7 @@ func (i FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationArgs) To
 }
 
 func (i FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationArgs) ToFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationOutput).ToFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationOutput).ToFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationPtrOutput()
 }
 
 // FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationPtrInput is an input type that accepts FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationArgs, FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationPtr and FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationPtrOutput values.
@@ -10812,7 +10812,7 @@ func (i *firehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationPtrType
 }
 
 func (i *firehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationPtrType) ToFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationOutput).ToFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationPtrOutput()
 }
 
 type FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationOutput struct{ *pulumi.OutputState }
@@ -11033,7 +11033,7 @@ func (i FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwat
 }
 
 func (i FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptionsArgs) ToFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrOutput()
 }
 
 // FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrInput is an input type that accepts FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptionsArgs, FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtr and FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrOutput values.
@@ -11066,7 +11066,7 @@ func (i *firehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwa
 }
 
 func (i *firehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrType) ToFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptionsPtrOutput()
 }
 
 type FirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptionsOutput struct{ *pulumi.OutputState }
@@ -11234,7 +11234,7 @@ func (i FirehoseDeliveryStreamS3ConfigurationArgs) ToFirehoseDeliveryStreamS3Con
 }
 
 func (i FirehoseDeliveryStreamS3ConfigurationArgs) ToFirehoseDeliveryStreamS3ConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamS3ConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamS3ConfigurationOutput).ToFirehoseDeliveryStreamS3ConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamS3ConfigurationOutput).ToFirehoseDeliveryStreamS3ConfigurationPtrOutput()
 }
 
 // FirehoseDeliveryStreamS3ConfigurationPtrInput is an input type that accepts FirehoseDeliveryStreamS3ConfigurationArgs, FirehoseDeliveryStreamS3ConfigurationPtr and FirehoseDeliveryStreamS3ConfigurationPtrOutput values.
@@ -11267,7 +11267,7 @@ func (i *firehoseDeliveryStreamS3ConfigurationPtrType) ToFirehoseDeliveryStreamS
 }
 
 func (i *firehoseDeliveryStreamS3ConfigurationPtrType) ToFirehoseDeliveryStreamS3ConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamS3ConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamS3ConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamS3ConfigurationOutput).ToFirehoseDeliveryStreamS3ConfigurationPtrOutput()
 }
 
 type FirehoseDeliveryStreamS3ConfigurationOutput struct{ *pulumi.OutputState }
@@ -11484,7 +11484,7 @@ func (i FirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsArgs) ToFir
 }
 
 func (i FirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsArgs) ToFirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsPtrOutput()
 }
 
 // FirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsPtrInput is an input type that accepts FirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsArgs, FirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsPtr and FirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsPtrOutput values.
@@ -11517,7 +11517,7 @@ func (i *firehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsPtrType) T
 }
 
 func (i *firehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsPtrType) ToFirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsPtrOutput()
 }
 
 type FirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsOutput struct{ *pulumi.OutputState }
@@ -11655,7 +11655,7 @@ func (i FirehoseDeliveryStreamServerSideEncryptionArgs) ToFirehoseDeliveryStream
 }
 
 func (i FirehoseDeliveryStreamServerSideEncryptionArgs) ToFirehoseDeliveryStreamServerSideEncryptionPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamServerSideEncryptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamServerSideEncryptionOutput).ToFirehoseDeliveryStreamServerSideEncryptionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamServerSideEncryptionOutput).ToFirehoseDeliveryStreamServerSideEncryptionPtrOutput()
 }
 
 // FirehoseDeliveryStreamServerSideEncryptionPtrInput is an input type that accepts FirehoseDeliveryStreamServerSideEncryptionArgs, FirehoseDeliveryStreamServerSideEncryptionPtr and FirehoseDeliveryStreamServerSideEncryptionPtrOutput values.
@@ -11688,7 +11688,7 @@ func (i *firehoseDeliveryStreamServerSideEncryptionPtrType) ToFirehoseDeliverySt
 }
 
 func (i *firehoseDeliveryStreamServerSideEncryptionPtrType) ToFirehoseDeliveryStreamServerSideEncryptionPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamServerSideEncryptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamServerSideEncryptionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamServerSideEncryptionOutput).ToFirehoseDeliveryStreamServerSideEncryptionPtrOutput()
 }
 
 type FirehoseDeliveryStreamServerSideEncryptionOutput struct{ *pulumi.OutputState }
@@ -11846,7 +11846,7 @@ func (i FirehoseDeliveryStreamSplunkConfigurationArgs) ToFirehoseDeliveryStreamS
 }
 
 func (i FirehoseDeliveryStreamSplunkConfigurationArgs) ToFirehoseDeliveryStreamSplunkConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamSplunkConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamSplunkConfigurationOutput).ToFirehoseDeliveryStreamSplunkConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamSplunkConfigurationOutput).ToFirehoseDeliveryStreamSplunkConfigurationPtrOutput()
 }
 
 // FirehoseDeliveryStreamSplunkConfigurationPtrInput is an input type that accepts FirehoseDeliveryStreamSplunkConfigurationArgs, FirehoseDeliveryStreamSplunkConfigurationPtr and FirehoseDeliveryStreamSplunkConfigurationPtrOutput values.
@@ -11879,7 +11879,7 @@ func (i *firehoseDeliveryStreamSplunkConfigurationPtrType) ToFirehoseDeliveryStr
 }
 
 func (i *firehoseDeliveryStreamSplunkConfigurationPtrType) ToFirehoseDeliveryStreamSplunkConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamSplunkConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamSplunkConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamSplunkConfigurationOutput).ToFirehoseDeliveryStreamSplunkConfigurationPtrOutput()
 }
 
 type FirehoseDeliveryStreamSplunkConfigurationOutput struct{ *pulumi.OutputState }
@@ -12096,7 +12096,7 @@ func (i FirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsArgs) T
 }
 
 func (i FirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsArgs) ToFirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsPtrOutput()
 }
 
 // FirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsPtrInput is an input type that accepts FirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsArgs, FirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsPtr and FirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsPtrOutput values.
@@ -12129,7 +12129,7 @@ func (i *firehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsPtrTyp
 }
 
 func (i *firehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsPtrType) ToFirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsOutput).ToFirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsPtrOutput()
 }
 
 type FirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsOutput struct{ *pulumi.OutputState }
@@ -12267,7 +12267,7 @@ func (i FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationArgs) To
 }
 
 func (i FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationArgs) ToFirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationOutput).ToFirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationOutput).ToFirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationPtrOutput()
 }
 
 // FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationPtrInput is an input type that accepts FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationArgs, FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationPtr and FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationPtrOutput values.
@@ -12300,7 +12300,7 @@ func (i *firehoseDeliveryStreamSplunkConfigurationProcessingConfigurationPtrType
 }
 
 func (i *firehoseDeliveryStreamSplunkConfigurationProcessingConfigurationPtrType) ToFirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationOutput).ToFirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationPtrOutput()
 }
 
 type FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationOutput struct{ *pulumi.OutputState }

@@ -145,16 +145,31 @@ type VaultInput interface {
 	ToVaultOutputWithContext(ctx context.Context) VaultOutput
 }
 
-func (Vault) ElementType() reflect.Type {
-	return reflect.TypeOf((*Vault)(nil)).Elem()
+func (*Vault) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vault)(nil))
 }
 
-func (i Vault) ToVaultOutput() VaultOutput {
+func (i *Vault) ToVaultOutput() VaultOutput {
 	return i.ToVaultOutputWithContext(context.Background())
 }
 
-func (i Vault) ToVaultOutputWithContext(ctx context.Context) VaultOutput {
+func (i *Vault) ToVaultOutputWithContext(ctx context.Context) VaultOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VaultOutput)
+}
+
+func (i *Vault) ToVaultPtrOutput() VaultPtrOutput {
+	return i.ToVaultPtrOutputWithContext(context.Background())
+}
+
+func (i *Vault) ToVaultPtrOutputWithContext(ctx context.Context) VaultPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VaultPtrOutput)
+}
+
+type VaultPtrInput interface {
+	pulumi.Input
+
+	ToVaultPtrOutput() VaultPtrOutput
+	ToVaultPtrOutputWithContext(ctx context.Context) VaultPtrOutput
 }
 
 type VaultOutput struct {
@@ -162,7 +177,7 @@ type VaultOutput struct {
 }
 
 func (VaultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VaultOutput)(nil)).Elem()
+	return reflect.TypeOf((*Vault)(nil))
 }
 
 func (o VaultOutput) ToVaultOutput() VaultOutput {
@@ -173,6 +188,23 @@ func (o VaultOutput) ToVaultOutputWithContext(ctx context.Context) VaultOutput {
 	return o
 }
 
+type VaultPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VaultPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vault)(nil))
+}
+
+func (o VaultPtrOutput) ToVaultPtrOutput() VaultPtrOutput {
+	return o
+}
+
+func (o VaultPtrOutput) ToVaultPtrOutputWithContext(ctx context.Context) VaultPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VaultOutput{})
+	pulumi.RegisterOutputType(VaultPtrOutput{})
 }

@@ -186,16 +186,31 @@ type SourceCredentialInput interface {
 	ToSourceCredentialOutputWithContext(ctx context.Context) SourceCredentialOutput
 }
 
-func (SourceCredential) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceCredential)(nil)).Elem()
+func (*SourceCredential) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceCredential)(nil))
 }
 
-func (i SourceCredential) ToSourceCredentialOutput() SourceCredentialOutput {
+func (i *SourceCredential) ToSourceCredentialOutput() SourceCredentialOutput {
 	return i.ToSourceCredentialOutputWithContext(context.Background())
 }
 
-func (i SourceCredential) ToSourceCredentialOutputWithContext(ctx context.Context) SourceCredentialOutput {
+func (i *SourceCredential) ToSourceCredentialOutputWithContext(ctx context.Context) SourceCredentialOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SourceCredentialOutput)
+}
+
+func (i *SourceCredential) ToSourceCredentialPtrOutput() SourceCredentialPtrOutput {
+	return i.ToSourceCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i *SourceCredential) ToSourceCredentialPtrOutputWithContext(ctx context.Context) SourceCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceCredentialPtrOutput)
+}
+
+type SourceCredentialPtrInput interface {
+	pulumi.Input
+
+	ToSourceCredentialPtrOutput() SourceCredentialPtrOutput
+	ToSourceCredentialPtrOutputWithContext(ctx context.Context) SourceCredentialPtrOutput
 }
 
 type SourceCredentialOutput struct {
@@ -203,7 +218,7 @@ type SourceCredentialOutput struct {
 }
 
 func (SourceCredentialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceCredentialOutput)(nil)).Elem()
+	return reflect.TypeOf((*SourceCredential)(nil))
 }
 
 func (o SourceCredentialOutput) ToSourceCredentialOutput() SourceCredentialOutput {
@@ -214,6 +229,23 @@ func (o SourceCredentialOutput) ToSourceCredentialOutputWithContext(ctx context.
 	return o
 }
 
+type SourceCredentialPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SourceCredentialPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceCredential)(nil))
+}
+
+func (o SourceCredentialPtrOutput) ToSourceCredentialPtrOutput() SourceCredentialPtrOutput {
+	return o
+}
+
+func (o SourceCredentialPtrOutput) ToSourceCredentialPtrOutputWithContext(ctx context.Context) SourceCredentialPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SourceCredentialOutput{})
+	pulumi.RegisterOutputType(SourceCredentialPtrOutput{})
 }

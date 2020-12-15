@@ -304,16 +304,31 @@ type NotebookInstanceInput interface {
 	ToNotebookInstanceOutputWithContext(ctx context.Context) NotebookInstanceOutput
 }
 
-func (NotebookInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*NotebookInstance)(nil)).Elem()
+func (*NotebookInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookInstance)(nil))
 }
 
-func (i NotebookInstance) ToNotebookInstanceOutput() NotebookInstanceOutput {
+func (i *NotebookInstance) ToNotebookInstanceOutput() NotebookInstanceOutput {
 	return i.ToNotebookInstanceOutputWithContext(context.Background())
 }
 
-func (i NotebookInstance) ToNotebookInstanceOutputWithContext(ctx context.Context) NotebookInstanceOutput {
+func (i *NotebookInstance) ToNotebookInstanceOutputWithContext(ctx context.Context) NotebookInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NotebookInstanceOutput)
+}
+
+func (i *NotebookInstance) ToNotebookInstancePtrOutput() NotebookInstancePtrOutput {
+	return i.ToNotebookInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *NotebookInstance) ToNotebookInstancePtrOutputWithContext(ctx context.Context) NotebookInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookInstancePtrOutput)
+}
+
+type NotebookInstancePtrInput interface {
+	pulumi.Input
+
+	ToNotebookInstancePtrOutput() NotebookInstancePtrOutput
+	ToNotebookInstancePtrOutputWithContext(ctx context.Context) NotebookInstancePtrOutput
 }
 
 type NotebookInstanceOutput struct {
@@ -321,7 +336,7 @@ type NotebookInstanceOutput struct {
 }
 
 func (NotebookInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NotebookInstanceOutput)(nil)).Elem()
+	return reflect.TypeOf((*NotebookInstance)(nil))
 }
 
 func (o NotebookInstanceOutput) ToNotebookInstanceOutput() NotebookInstanceOutput {
@@ -332,6 +347,23 @@ func (o NotebookInstanceOutput) ToNotebookInstanceOutputWithContext(ctx context.
 	return o
 }
 
+type NotebookInstancePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NotebookInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookInstance)(nil))
+}
+
+func (o NotebookInstancePtrOutput) ToNotebookInstancePtrOutput() NotebookInstancePtrOutput {
+	return o
+}
+
+func (o NotebookInstancePtrOutput) ToNotebookInstancePtrOutputWithContext(ctx context.Context) NotebookInstancePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NotebookInstanceOutput{})
+	pulumi.RegisterOutputType(NotebookInstancePtrOutput{})
 }

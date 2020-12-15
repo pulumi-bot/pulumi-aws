@@ -512,16 +512,31 @@ type DistributionInput interface {
 	ToDistributionOutputWithContext(ctx context.Context) DistributionOutput
 }
 
-func (Distribution) ElementType() reflect.Type {
-	return reflect.TypeOf((*Distribution)(nil)).Elem()
+func (*Distribution) ElementType() reflect.Type {
+	return reflect.TypeOf((*Distribution)(nil))
 }
 
-func (i Distribution) ToDistributionOutput() DistributionOutput {
+func (i *Distribution) ToDistributionOutput() DistributionOutput {
 	return i.ToDistributionOutputWithContext(context.Background())
 }
 
-func (i Distribution) ToDistributionOutputWithContext(ctx context.Context) DistributionOutput {
+func (i *Distribution) ToDistributionOutputWithContext(ctx context.Context) DistributionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DistributionOutput)
+}
+
+func (i *Distribution) ToDistributionPtrOutput() DistributionPtrOutput {
+	return i.ToDistributionPtrOutputWithContext(context.Background())
+}
+
+func (i *Distribution) ToDistributionPtrOutputWithContext(ctx context.Context) DistributionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionPtrOutput)
+}
+
+type DistributionPtrInput interface {
+	pulumi.Input
+
+	ToDistributionPtrOutput() DistributionPtrOutput
+	ToDistributionPtrOutputWithContext(ctx context.Context) DistributionPtrOutput
 }
 
 type DistributionOutput struct {
@@ -529,7 +544,7 @@ type DistributionOutput struct {
 }
 
 func (DistributionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DistributionOutput)(nil)).Elem()
+	return reflect.TypeOf((*Distribution)(nil))
 }
 
 func (o DistributionOutput) ToDistributionOutput() DistributionOutput {
@@ -540,6 +555,23 @@ func (o DistributionOutput) ToDistributionOutputWithContext(ctx context.Context)
 	return o
 }
 
+type DistributionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DistributionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Distribution)(nil))
+}
+
+func (o DistributionPtrOutput) ToDistributionPtrOutput() DistributionPtrOutput {
+	return o
+}
+
+func (o DistributionPtrOutput) ToDistributionPtrOutputWithContext(ctx context.Context) DistributionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DistributionOutput{})
+	pulumi.RegisterOutputType(DistributionPtrOutput{})
 }

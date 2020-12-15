@@ -192,16 +192,31 @@ type EventPermissionInput interface {
 	ToEventPermissionOutputWithContext(ctx context.Context) EventPermissionOutput
 }
 
-func (EventPermission) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventPermission)(nil)).Elem()
+func (*EventPermission) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventPermission)(nil))
 }
 
-func (i EventPermission) ToEventPermissionOutput() EventPermissionOutput {
+func (i *EventPermission) ToEventPermissionOutput() EventPermissionOutput {
 	return i.ToEventPermissionOutputWithContext(context.Background())
 }
 
-func (i EventPermission) ToEventPermissionOutputWithContext(ctx context.Context) EventPermissionOutput {
+func (i *EventPermission) ToEventPermissionOutputWithContext(ctx context.Context) EventPermissionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EventPermissionOutput)
+}
+
+func (i *EventPermission) ToEventPermissionPtrOutput() EventPermissionPtrOutput {
+	return i.ToEventPermissionPtrOutputWithContext(context.Background())
+}
+
+func (i *EventPermission) ToEventPermissionPtrOutputWithContext(ctx context.Context) EventPermissionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventPermissionPtrOutput)
+}
+
+type EventPermissionPtrInput interface {
+	pulumi.Input
+
+	ToEventPermissionPtrOutput() EventPermissionPtrOutput
+	ToEventPermissionPtrOutputWithContext(ctx context.Context) EventPermissionPtrOutput
 }
 
 type EventPermissionOutput struct {
@@ -209,7 +224,7 @@ type EventPermissionOutput struct {
 }
 
 func (EventPermissionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventPermissionOutput)(nil)).Elem()
+	return reflect.TypeOf((*EventPermission)(nil))
 }
 
 func (o EventPermissionOutput) ToEventPermissionOutput() EventPermissionOutput {
@@ -220,6 +235,23 @@ func (o EventPermissionOutput) ToEventPermissionOutputWithContext(ctx context.Co
 	return o
 }
 
+type EventPermissionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventPermissionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventPermission)(nil))
+}
+
+func (o EventPermissionPtrOutput) ToEventPermissionPtrOutput() EventPermissionPtrOutput {
+	return o
+}
+
+func (o EventPermissionPtrOutput) ToEventPermissionPtrOutputWithContext(ctx context.Context) EventPermissionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EventPermissionOutput{})
+	pulumi.RegisterOutputType(EventPermissionPtrOutput{})
 }

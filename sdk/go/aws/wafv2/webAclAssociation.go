@@ -197,16 +197,31 @@ type WebAclAssociationInput interface {
 	ToWebAclAssociationOutputWithContext(ctx context.Context) WebAclAssociationOutput
 }
 
-func (WebAclAssociation) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebAclAssociation)(nil)).Elem()
+func (*WebAclAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAclAssociation)(nil))
 }
 
-func (i WebAclAssociation) ToWebAclAssociationOutput() WebAclAssociationOutput {
+func (i *WebAclAssociation) ToWebAclAssociationOutput() WebAclAssociationOutput {
 	return i.ToWebAclAssociationOutputWithContext(context.Background())
 }
 
-func (i WebAclAssociation) ToWebAclAssociationOutputWithContext(ctx context.Context) WebAclAssociationOutput {
+func (i *WebAclAssociation) ToWebAclAssociationOutputWithContext(ctx context.Context) WebAclAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebAclAssociationOutput)
+}
+
+func (i *WebAclAssociation) ToWebAclAssociationPtrOutput() WebAclAssociationPtrOutput {
+	return i.ToWebAclAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i *WebAclAssociation) ToWebAclAssociationPtrOutputWithContext(ctx context.Context) WebAclAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclAssociationPtrOutput)
+}
+
+type WebAclAssociationPtrInput interface {
+	pulumi.Input
+
+	ToWebAclAssociationPtrOutput() WebAclAssociationPtrOutput
+	ToWebAclAssociationPtrOutputWithContext(ctx context.Context) WebAclAssociationPtrOutput
 }
 
 type WebAclAssociationOutput struct {
@@ -214,7 +229,7 @@ type WebAclAssociationOutput struct {
 }
 
 func (WebAclAssociationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebAclAssociationOutput)(nil)).Elem()
+	return reflect.TypeOf((*WebAclAssociation)(nil))
 }
 
 func (o WebAclAssociationOutput) ToWebAclAssociationOutput() WebAclAssociationOutput {
@@ -225,6 +240,23 @@ func (o WebAclAssociationOutput) ToWebAclAssociationOutputWithContext(ctx contex
 	return o
 }
 
+type WebAclAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WebAclAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebAclAssociation)(nil))
+}
+
+func (o WebAclAssociationPtrOutput) ToWebAclAssociationPtrOutput() WebAclAssociationPtrOutput {
+	return o
+}
+
+func (o WebAclAssociationPtrOutput) ToWebAclAssociationPtrOutputWithContext(ctx context.Context) WebAclAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(WebAclAssociationOutput{})
+	pulumi.RegisterOutputType(WebAclAssociationPtrOutput{})
 }

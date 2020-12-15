@@ -148,16 +148,31 @@ type EndpointInput interface {
 	ToEndpointOutputWithContext(ctx context.Context) EndpointOutput
 }
 
-func (Endpoint) ElementType() reflect.Type {
-	return reflect.TypeOf((*Endpoint)(nil)).Elem()
+func (*Endpoint) ElementType() reflect.Type {
+	return reflect.TypeOf((*Endpoint)(nil))
 }
 
-func (i Endpoint) ToEndpointOutput() EndpointOutput {
+func (i *Endpoint) ToEndpointOutput() EndpointOutput {
 	return i.ToEndpointOutputWithContext(context.Background())
 }
 
-func (i Endpoint) ToEndpointOutputWithContext(ctx context.Context) EndpointOutput {
+func (i *Endpoint) ToEndpointOutputWithContext(ctx context.Context) EndpointOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointOutput)
+}
+
+func (i *Endpoint) ToEndpointPtrOutput() EndpointPtrOutput {
+	return i.ToEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *Endpoint) ToEndpointPtrOutputWithContext(ctx context.Context) EndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointPtrOutput)
+}
+
+type EndpointPtrInput interface {
+	pulumi.Input
+
+	ToEndpointPtrOutput() EndpointPtrOutput
+	ToEndpointPtrOutputWithContext(ctx context.Context) EndpointPtrOutput
 }
 
 type EndpointOutput struct {
@@ -165,7 +180,7 @@ type EndpointOutput struct {
 }
 
 func (EndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EndpointOutput)(nil)).Elem()
+	return reflect.TypeOf((*Endpoint)(nil))
 }
 
 func (o EndpointOutput) ToEndpointOutput() EndpointOutput {
@@ -176,6 +191,23 @@ func (o EndpointOutput) ToEndpointOutputWithContext(ctx context.Context) Endpoin
 	return o
 }
 
+type EndpointPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Endpoint)(nil))
+}
+
+func (o EndpointPtrOutput) ToEndpointPtrOutput() EndpointPtrOutput {
+	return o
+}
+
+func (o EndpointPtrOutput) ToEndpointPtrOutputWithContext(ctx context.Context) EndpointPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EndpointOutput{})
+	pulumi.RegisterOutputType(EndpointPtrOutput{})
 }

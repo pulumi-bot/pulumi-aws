@@ -105,16 +105,31 @@ type BucketOwnershipControlsInput interface {
 	ToBucketOwnershipControlsOutputWithContext(ctx context.Context) BucketOwnershipControlsOutput
 }
 
-func (BucketOwnershipControls) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketOwnershipControls)(nil)).Elem()
+func (*BucketOwnershipControls) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketOwnershipControls)(nil))
 }
 
-func (i BucketOwnershipControls) ToBucketOwnershipControlsOutput() BucketOwnershipControlsOutput {
+func (i *BucketOwnershipControls) ToBucketOwnershipControlsOutput() BucketOwnershipControlsOutput {
 	return i.ToBucketOwnershipControlsOutputWithContext(context.Background())
 }
 
-func (i BucketOwnershipControls) ToBucketOwnershipControlsOutputWithContext(ctx context.Context) BucketOwnershipControlsOutput {
+func (i *BucketOwnershipControls) ToBucketOwnershipControlsOutputWithContext(ctx context.Context) BucketOwnershipControlsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketOwnershipControlsOutput)
+}
+
+func (i *BucketOwnershipControls) ToBucketOwnershipControlsPtrOutput() BucketOwnershipControlsPtrOutput {
+	return i.ToBucketOwnershipControlsPtrOutputWithContext(context.Background())
+}
+
+func (i *BucketOwnershipControls) ToBucketOwnershipControlsPtrOutputWithContext(ctx context.Context) BucketOwnershipControlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketOwnershipControlsPtrOutput)
+}
+
+type BucketOwnershipControlsPtrInput interface {
+	pulumi.Input
+
+	ToBucketOwnershipControlsPtrOutput() BucketOwnershipControlsPtrOutput
+	ToBucketOwnershipControlsPtrOutputWithContext(ctx context.Context) BucketOwnershipControlsPtrOutput
 }
 
 type BucketOwnershipControlsOutput struct {
@@ -122,7 +137,7 @@ type BucketOwnershipControlsOutput struct {
 }
 
 func (BucketOwnershipControlsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketOwnershipControlsOutput)(nil)).Elem()
+	return reflect.TypeOf((*BucketOwnershipControls)(nil))
 }
 
 func (o BucketOwnershipControlsOutput) ToBucketOwnershipControlsOutput() BucketOwnershipControlsOutput {
@@ -133,6 +148,23 @@ func (o BucketOwnershipControlsOutput) ToBucketOwnershipControlsOutputWithContex
 	return o
 }
 
+type BucketOwnershipControlsPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BucketOwnershipControlsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketOwnershipControls)(nil))
+}
+
+func (o BucketOwnershipControlsPtrOutput) ToBucketOwnershipControlsPtrOutput() BucketOwnershipControlsPtrOutput {
+	return o
+}
+
+func (o BucketOwnershipControlsPtrOutput) ToBucketOwnershipControlsPtrOutputWithContext(ctx context.Context) BucketOwnershipControlsPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(BucketOwnershipControlsOutput{})
+	pulumi.RegisterOutputType(BucketOwnershipControlsPtrOutput{})
 }

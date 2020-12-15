@@ -213,16 +213,31 @@ type VpcAttachmentInput interface {
 	ToVpcAttachmentOutputWithContext(ctx context.Context) VpcAttachmentOutput
 }
 
-func (VpcAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcAttachment)(nil)).Elem()
+func (*VpcAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcAttachment)(nil))
 }
 
-func (i VpcAttachment) ToVpcAttachmentOutput() VpcAttachmentOutput {
+func (i *VpcAttachment) ToVpcAttachmentOutput() VpcAttachmentOutput {
 	return i.ToVpcAttachmentOutputWithContext(context.Background())
 }
 
-func (i VpcAttachment) ToVpcAttachmentOutputWithContext(ctx context.Context) VpcAttachmentOutput {
+func (i *VpcAttachment) ToVpcAttachmentOutputWithContext(ctx context.Context) VpcAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VpcAttachmentOutput)
+}
+
+func (i *VpcAttachment) ToVpcAttachmentPtrOutput() VpcAttachmentPtrOutput {
+	return i.ToVpcAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *VpcAttachment) ToVpcAttachmentPtrOutputWithContext(ctx context.Context) VpcAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcAttachmentPtrOutput)
+}
+
+type VpcAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToVpcAttachmentPtrOutput() VpcAttachmentPtrOutput
+	ToVpcAttachmentPtrOutputWithContext(ctx context.Context) VpcAttachmentPtrOutput
 }
 
 type VpcAttachmentOutput struct {
@@ -230,7 +245,7 @@ type VpcAttachmentOutput struct {
 }
 
 func (VpcAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VpcAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*VpcAttachment)(nil))
 }
 
 func (o VpcAttachmentOutput) ToVpcAttachmentOutput() VpcAttachmentOutput {
@@ -241,6 +256,23 @@ func (o VpcAttachmentOutput) ToVpcAttachmentOutputWithContext(ctx context.Contex
 	return o
 }
 
+type VpcAttachmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VpcAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcAttachment)(nil))
+}
+
+func (o VpcAttachmentPtrOutput) ToVpcAttachmentPtrOutput() VpcAttachmentPtrOutput {
+	return o
+}
+
+func (o VpcAttachmentPtrOutput) ToVpcAttachmentPtrOutputWithContext(ctx context.Context) VpcAttachmentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(VpcAttachmentOutput{})
+	pulumi.RegisterOutputType(VpcAttachmentPtrOutput{})
 }

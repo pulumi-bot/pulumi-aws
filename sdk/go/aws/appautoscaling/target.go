@@ -272,16 +272,31 @@ type TargetInput interface {
 	ToTargetOutputWithContext(ctx context.Context) TargetOutput
 }
 
-func (Target) ElementType() reflect.Type {
-	return reflect.TypeOf((*Target)(nil)).Elem()
+func (*Target) ElementType() reflect.Type {
+	return reflect.TypeOf((*Target)(nil))
 }
 
-func (i Target) ToTargetOutput() TargetOutput {
+func (i *Target) ToTargetOutput() TargetOutput {
 	return i.ToTargetOutputWithContext(context.Background())
 }
 
-func (i Target) ToTargetOutputWithContext(ctx context.Context) TargetOutput {
+func (i *Target) ToTargetOutputWithContext(ctx context.Context) TargetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TargetOutput)
+}
+
+func (i *Target) ToTargetPtrOutput() TargetPtrOutput {
+	return i.ToTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *Target) ToTargetPtrOutputWithContext(ctx context.Context) TargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetPtrOutput)
+}
+
+type TargetPtrInput interface {
+	pulumi.Input
+
+	ToTargetPtrOutput() TargetPtrOutput
+	ToTargetPtrOutputWithContext(ctx context.Context) TargetPtrOutput
 }
 
 type TargetOutput struct {
@@ -289,7 +304,7 @@ type TargetOutput struct {
 }
 
 func (TargetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetOutput)(nil)).Elem()
+	return reflect.TypeOf((*Target)(nil))
 }
 
 func (o TargetOutput) ToTargetOutput() TargetOutput {
@@ -300,6 +315,23 @@ func (o TargetOutput) ToTargetOutputWithContext(ctx context.Context) TargetOutpu
 	return o
 }
 
+type TargetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Target)(nil))
+}
+
+func (o TargetPtrOutput) ToTargetPtrOutput() TargetPtrOutput {
+	return o
+}
+
+func (o TargetPtrOutput) ToTargetPtrOutputWithContext(ctx context.Context) TargetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TargetOutput{})
+	pulumi.RegisterOutputType(TargetPtrOutput{})
 }

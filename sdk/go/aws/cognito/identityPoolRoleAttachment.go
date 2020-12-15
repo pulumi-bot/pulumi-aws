@@ -186,16 +186,31 @@ type IdentityPoolRoleAttachmentInput interface {
 	ToIdentityPoolRoleAttachmentOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentOutput
 }
 
-func (IdentityPoolRoleAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityPoolRoleAttachment)(nil)).Elem()
+func (*IdentityPoolRoleAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPoolRoleAttachment)(nil))
 }
 
-func (i IdentityPoolRoleAttachment) ToIdentityPoolRoleAttachmentOutput() IdentityPoolRoleAttachmentOutput {
+func (i *IdentityPoolRoleAttachment) ToIdentityPoolRoleAttachmentOutput() IdentityPoolRoleAttachmentOutput {
 	return i.ToIdentityPoolRoleAttachmentOutputWithContext(context.Background())
 }
 
-func (i IdentityPoolRoleAttachment) ToIdentityPoolRoleAttachmentOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentOutput {
+func (i *IdentityPoolRoleAttachment) ToIdentityPoolRoleAttachmentOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPoolRoleAttachmentOutput)
+}
+
+func (i *IdentityPoolRoleAttachment) ToIdentityPoolRoleAttachmentPtrOutput() IdentityPoolRoleAttachmentPtrOutput {
+	return i.ToIdentityPoolRoleAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *IdentityPoolRoleAttachment) ToIdentityPoolRoleAttachmentPtrOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPoolRoleAttachmentPtrOutput)
+}
+
+type IdentityPoolRoleAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToIdentityPoolRoleAttachmentPtrOutput() IdentityPoolRoleAttachmentPtrOutput
+	ToIdentityPoolRoleAttachmentPtrOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentPtrOutput
 }
 
 type IdentityPoolRoleAttachmentOutput struct {
@@ -203,7 +218,7 @@ type IdentityPoolRoleAttachmentOutput struct {
 }
 
 func (IdentityPoolRoleAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IdentityPoolRoleAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*IdentityPoolRoleAttachment)(nil))
 }
 
 func (o IdentityPoolRoleAttachmentOutput) ToIdentityPoolRoleAttachmentOutput() IdentityPoolRoleAttachmentOutput {
@@ -214,6 +229,23 @@ func (o IdentityPoolRoleAttachmentOutput) ToIdentityPoolRoleAttachmentOutputWith
 	return o
 }
 
+type IdentityPoolRoleAttachmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IdentityPoolRoleAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityPoolRoleAttachment)(nil))
+}
+
+func (o IdentityPoolRoleAttachmentPtrOutput) ToIdentityPoolRoleAttachmentPtrOutput() IdentityPoolRoleAttachmentPtrOutput {
+	return o
+}
+
+func (o IdentityPoolRoleAttachmentPtrOutput) ToIdentityPoolRoleAttachmentPtrOutputWithContext(ctx context.Context) IdentityPoolRoleAttachmentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(IdentityPoolRoleAttachmentOutput{})
+	pulumi.RegisterOutputType(IdentityPoolRoleAttachmentPtrOutput{})
 }

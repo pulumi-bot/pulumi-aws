@@ -169,16 +169,31 @@ type ProxyTargetInput interface {
 	ToProxyTargetOutputWithContext(ctx context.Context) ProxyTargetOutput
 }
 
-func (ProxyTarget) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProxyTarget)(nil)).Elem()
+func (*ProxyTarget) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProxyTarget)(nil))
 }
 
-func (i ProxyTarget) ToProxyTargetOutput() ProxyTargetOutput {
+func (i *ProxyTarget) ToProxyTargetOutput() ProxyTargetOutput {
 	return i.ToProxyTargetOutputWithContext(context.Background())
 }
 
-func (i ProxyTarget) ToProxyTargetOutputWithContext(ctx context.Context) ProxyTargetOutput {
+func (i *ProxyTarget) ToProxyTargetOutputWithContext(ctx context.Context) ProxyTargetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProxyTargetOutput)
+}
+
+func (i *ProxyTarget) ToProxyTargetPtrOutput() ProxyTargetPtrOutput {
+	return i.ToProxyTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *ProxyTarget) ToProxyTargetPtrOutputWithContext(ctx context.Context) ProxyTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProxyTargetPtrOutput)
+}
+
+type ProxyTargetPtrInput interface {
+	pulumi.Input
+
+	ToProxyTargetPtrOutput() ProxyTargetPtrOutput
+	ToProxyTargetPtrOutputWithContext(ctx context.Context) ProxyTargetPtrOutput
 }
 
 type ProxyTargetOutput struct {
@@ -186,7 +201,7 @@ type ProxyTargetOutput struct {
 }
 
 func (ProxyTargetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProxyTargetOutput)(nil)).Elem()
+	return reflect.TypeOf((*ProxyTarget)(nil))
 }
 
 func (o ProxyTargetOutput) ToProxyTargetOutput() ProxyTargetOutput {
@@ -197,6 +212,23 @@ func (o ProxyTargetOutput) ToProxyTargetOutputWithContext(ctx context.Context) P
 	return o
 }
 
+type ProxyTargetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProxyTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProxyTarget)(nil))
+}
+
+func (o ProxyTargetPtrOutput) ToProxyTargetPtrOutput() ProxyTargetPtrOutput {
+	return o
+}
+
+func (o ProxyTargetPtrOutput) ToProxyTargetPtrOutputWithContext(ctx context.Context) ProxyTargetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProxyTargetOutput{})
+	pulumi.RegisterOutputType(ProxyTargetPtrOutput{})
 }

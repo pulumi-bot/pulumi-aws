@@ -188,16 +188,31 @@ type BotAliasInput interface {
 	ToBotAliasOutputWithContext(ctx context.Context) BotAliasOutput
 }
 
-func (BotAlias) ElementType() reflect.Type {
-	return reflect.TypeOf((*BotAlias)(nil)).Elem()
+func (*BotAlias) ElementType() reflect.Type {
+	return reflect.TypeOf((*BotAlias)(nil))
 }
 
-func (i BotAlias) ToBotAliasOutput() BotAliasOutput {
+func (i *BotAlias) ToBotAliasOutput() BotAliasOutput {
 	return i.ToBotAliasOutputWithContext(context.Background())
 }
 
-func (i BotAlias) ToBotAliasOutputWithContext(ctx context.Context) BotAliasOutput {
+func (i *BotAlias) ToBotAliasOutputWithContext(ctx context.Context) BotAliasOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BotAliasOutput)
+}
+
+func (i *BotAlias) ToBotAliasPtrOutput() BotAliasPtrOutput {
+	return i.ToBotAliasPtrOutputWithContext(context.Background())
+}
+
+func (i *BotAlias) ToBotAliasPtrOutputWithContext(ctx context.Context) BotAliasPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BotAliasPtrOutput)
+}
+
+type BotAliasPtrInput interface {
+	pulumi.Input
+
+	ToBotAliasPtrOutput() BotAliasPtrOutput
+	ToBotAliasPtrOutputWithContext(ctx context.Context) BotAliasPtrOutput
 }
 
 type BotAliasOutput struct {
@@ -205,7 +220,7 @@ type BotAliasOutput struct {
 }
 
 func (BotAliasOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BotAliasOutput)(nil)).Elem()
+	return reflect.TypeOf((*BotAlias)(nil))
 }
 
 func (o BotAliasOutput) ToBotAliasOutput() BotAliasOutput {
@@ -216,6 +231,23 @@ func (o BotAliasOutput) ToBotAliasOutputWithContext(ctx context.Context) BotAlia
 	return o
 }
 
+type BotAliasPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BotAliasPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BotAlias)(nil))
+}
+
+func (o BotAliasPtrOutput) ToBotAliasPtrOutput() BotAliasPtrOutput {
+	return o
+}
+
+func (o BotAliasPtrOutput) ToBotAliasPtrOutputWithContext(ctx context.Context) BotAliasPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(BotAliasOutput{})
+	pulumi.RegisterOutputType(BotAliasPtrOutput{})
 }

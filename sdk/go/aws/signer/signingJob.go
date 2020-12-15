@@ -257,16 +257,31 @@ type SigningJobInput interface {
 	ToSigningJobOutputWithContext(ctx context.Context) SigningJobOutput
 }
 
-func (SigningJob) ElementType() reflect.Type {
-	return reflect.TypeOf((*SigningJob)(nil)).Elem()
+func (*SigningJob) ElementType() reflect.Type {
+	return reflect.TypeOf((*SigningJob)(nil))
 }
 
-func (i SigningJob) ToSigningJobOutput() SigningJobOutput {
+func (i *SigningJob) ToSigningJobOutput() SigningJobOutput {
 	return i.ToSigningJobOutputWithContext(context.Background())
 }
 
-func (i SigningJob) ToSigningJobOutputWithContext(ctx context.Context) SigningJobOutput {
+func (i *SigningJob) ToSigningJobOutputWithContext(ctx context.Context) SigningJobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SigningJobOutput)
+}
+
+func (i *SigningJob) ToSigningJobPtrOutput() SigningJobPtrOutput {
+	return i.ToSigningJobPtrOutputWithContext(context.Background())
+}
+
+func (i *SigningJob) ToSigningJobPtrOutputWithContext(ctx context.Context) SigningJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SigningJobPtrOutput)
+}
+
+type SigningJobPtrInput interface {
+	pulumi.Input
+
+	ToSigningJobPtrOutput() SigningJobPtrOutput
+	ToSigningJobPtrOutputWithContext(ctx context.Context) SigningJobPtrOutput
 }
 
 type SigningJobOutput struct {
@@ -274,7 +289,7 @@ type SigningJobOutput struct {
 }
 
 func (SigningJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SigningJobOutput)(nil)).Elem()
+	return reflect.TypeOf((*SigningJob)(nil))
 }
 
 func (o SigningJobOutput) ToSigningJobOutput() SigningJobOutput {
@@ -285,6 +300,23 @@ func (o SigningJobOutput) ToSigningJobOutputWithContext(ctx context.Context) Sig
 	return o
 }
 
+type SigningJobPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SigningJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SigningJob)(nil))
+}
+
+func (o SigningJobPtrOutput) ToSigningJobPtrOutput() SigningJobPtrOutput {
+	return o
+}
+
+func (o SigningJobPtrOutput) ToSigningJobPtrOutputWithContext(ctx context.Context) SigningJobPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(SigningJobOutput{})
+	pulumi.RegisterOutputType(SigningJobPtrOutput{})
 }

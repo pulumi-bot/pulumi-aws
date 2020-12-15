@@ -162,16 +162,31 @@ type AdmChannelInput interface {
 	ToAdmChannelOutputWithContext(ctx context.Context) AdmChannelOutput
 }
 
-func (AdmChannel) ElementType() reflect.Type {
-	return reflect.TypeOf((*AdmChannel)(nil)).Elem()
+func (*AdmChannel) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdmChannel)(nil))
 }
 
-func (i AdmChannel) ToAdmChannelOutput() AdmChannelOutput {
+func (i *AdmChannel) ToAdmChannelOutput() AdmChannelOutput {
 	return i.ToAdmChannelOutputWithContext(context.Background())
 }
 
-func (i AdmChannel) ToAdmChannelOutputWithContext(ctx context.Context) AdmChannelOutput {
+func (i *AdmChannel) ToAdmChannelOutputWithContext(ctx context.Context) AdmChannelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AdmChannelOutput)
+}
+
+func (i *AdmChannel) ToAdmChannelPtrOutput() AdmChannelPtrOutput {
+	return i.ToAdmChannelPtrOutputWithContext(context.Background())
+}
+
+func (i *AdmChannel) ToAdmChannelPtrOutputWithContext(ctx context.Context) AdmChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdmChannelPtrOutput)
+}
+
+type AdmChannelPtrInput interface {
+	pulumi.Input
+
+	ToAdmChannelPtrOutput() AdmChannelPtrOutput
+	ToAdmChannelPtrOutputWithContext(ctx context.Context) AdmChannelPtrOutput
 }
 
 type AdmChannelOutput struct {
@@ -179,7 +194,7 @@ type AdmChannelOutput struct {
 }
 
 func (AdmChannelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AdmChannelOutput)(nil)).Elem()
+	return reflect.TypeOf((*AdmChannel)(nil))
 }
 
 func (o AdmChannelOutput) ToAdmChannelOutput() AdmChannelOutput {
@@ -190,6 +205,23 @@ func (o AdmChannelOutput) ToAdmChannelOutputWithContext(ctx context.Context) Adm
 	return o
 }
 
+type AdmChannelPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AdmChannelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdmChannel)(nil))
+}
+
+func (o AdmChannelPtrOutput) ToAdmChannelPtrOutput() AdmChannelPtrOutput {
+	return o
+}
+
+func (o AdmChannelPtrOutput) ToAdmChannelPtrOutputWithContext(ctx context.Context) AdmChannelPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AdmChannelOutput{})
+	pulumi.RegisterOutputType(AdmChannelPtrOutput{})
 }

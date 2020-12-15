@@ -56,7 +56,7 @@ func (i AccessPointPosixUserArgs) ToAccessPointPosixUserPtrOutput() AccessPointP
 }
 
 func (i AccessPointPosixUserArgs) ToAccessPointPosixUserPtrOutputWithContext(ctx context.Context) AccessPointPosixUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessPointPosixUserOutput).ToAccessPointPosixUserPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointPosixUserOutput).ToAccessPointPosixUserPtrOutput()
 }
 
 // AccessPointPosixUserPtrInput is an input type that accepts AccessPointPosixUserArgs, AccessPointPosixUserPtr and AccessPointPosixUserPtrOutput values.
@@ -89,7 +89,7 @@ func (i *accessPointPosixUserPtrType) ToAccessPointPosixUserPtrOutput() AccessPo
 }
 
 func (i *accessPointPosixUserPtrType) ToAccessPointPosixUserPtrOutputWithContext(ctx context.Context) AccessPointPosixUserPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessPointPosixUserPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointPosixUserOutput).ToAccessPointPosixUserPtrOutput()
 }
 
 type AccessPointPosixUserOutput struct{ *pulumi.OutputState }
@@ -221,7 +221,7 @@ func (i AccessPointRootDirectoryArgs) ToAccessPointRootDirectoryPtrOutput() Acce
 }
 
 func (i AccessPointRootDirectoryArgs) ToAccessPointRootDirectoryPtrOutputWithContext(ctx context.Context) AccessPointRootDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessPointRootDirectoryOutput).ToAccessPointRootDirectoryPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointRootDirectoryOutput).ToAccessPointRootDirectoryPtrOutput()
 }
 
 // AccessPointRootDirectoryPtrInput is an input type that accepts AccessPointRootDirectoryArgs, AccessPointRootDirectoryPtr and AccessPointRootDirectoryPtrOutput values.
@@ -254,7 +254,7 @@ func (i *accessPointRootDirectoryPtrType) ToAccessPointRootDirectoryPtrOutput() 
 }
 
 func (i *accessPointRootDirectoryPtrType) ToAccessPointRootDirectoryPtrOutputWithContext(ctx context.Context) AccessPointRootDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessPointRootDirectoryPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointRootDirectoryOutput).ToAccessPointRootDirectoryPtrOutput()
 }
 
 type AccessPointRootDirectoryOutput struct{ *pulumi.OutputState }
@@ -375,7 +375,7 @@ func (i AccessPointRootDirectoryCreationInfoArgs) ToAccessPointRootDirectoryCrea
 }
 
 func (i AccessPointRootDirectoryCreationInfoArgs) ToAccessPointRootDirectoryCreationInfoPtrOutputWithContext(ctx context.Context) AccessPointRootDirectoryCreationInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessPointRootDirectoryCreationInfoOutput).ToAccessPointRootDirectoryCreationInfoPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointRootDirectoryCreationInfoOutput).ToAccessPointRootDirectoryCreationInfoPtrOutput()
 }
 
 // AccessPointRootDirectoryCreationInfoPtrInput is an input type that accepts AccessPointRootDirectoryCreationInfoArgs, AccessPointRootDirectoryCreationInfoPtr and AccessPointRootDirectoryCreationInfoPtrOutput values.
@@ -408,7 +408,7 @@ func (i *accessPointRootDirectoryCreationInfoPtrType) ToAccessPointRootDirectory
 }
 
 func (i *accessPointRootDirectoryCreationInfoPtrType) ToAccessPointRootDirectoryCreationInfoPtrOutputWithContext(ctx context.Context) AccessPointRootDirectoryCreationInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessPointRootDirectoryCreationInfoPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointRootDirectoryCreationInfoOutput).ToAccessPointRootDirectoryCreationInfoPtrOutput()
 }
 
 type AccessPointRootDirectoryCreationInfoOutput struct{ *pulumi.OutputState }
@@ -536,7 +536,7 @@ func (i FileSystemLifecyclePolicyArgs) ToFileSystemLifecyclePolicyPtrOutput() Fi
 }
 
 func (i FileSystemLifecyclePolicyArgs) ToFileSystemLifecyclePolicyPtrOutputWithContext(ctx context.Context) FileSystemLifecyclePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileSystemLifecyclePolicyOutput).ToFileSystemLifecyclePolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemLifecyclePolicyOutput).ToFileSystemLifecyclePolicyPtrOutput()
 }
 
 // FileSystemLifecyclePolicyPtrInput is an input type that accepts FileSystemLifecyclePolicyArgs, FileSystemLifecyclePolicyPtr and FileSystemLifecyclePolicyPtrOutput values.
@@ -569,7 +569,7 @@ func (i *fileSystemLifecyclePolicyPtrType) ToFileSystemLifecyclePolicyPtrOutput(
 }
 
 func (i *fileSystemLifecyclePolicyPtrType) ToFileSystemLifecyclePolicyPtrOutputWithContext(ctx context.Context) FileSystemLifecyclePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileSystemLifecyclePolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemLifecyclePolicyOutput).ToFileSystemLifecyclePolicyPtrOutput()
 }
 
 type FileSystemLifecyclePolicyOutput struct{ *pulumi.OutputState }

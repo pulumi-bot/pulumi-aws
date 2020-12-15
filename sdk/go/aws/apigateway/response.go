@@ -174,16 +174,31 @@ type ResponseInput interface {
 	ToResponseOutputWithContext(ctx context.Context) ResponseOutput
 }
 
-func (Response) ElementType() reflect.Type {
-	return reflect.TypeOf((*Response)(nil)).Elem()
+func (*Response) ElementType() reflect.Type {
+	return reflect.TypeOf((*Response)(nil))
 }
 
-func (i Response) ToResponseOutput() ResponseOutput {
+func (i *Response) ToResponseOutput() ResponseOutput {
 	return i.ToResponseOutputWithContext(context.Background())
 }
 
-func (i Response) ToResponseOutputWithContext(ctx context.Context) ResponseOutput {
+func (i *Response) ToResponseOutputWithContext(ctx context.Context) ResponseOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResponseOutput)
+}
+
+func (i *Response) ToResponsePtrOutput() ResponsePtrOutput {
+	return i.ToResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *Response) ToResponsePtrOutputWithContext(ctx context.Context) ResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResponsePtrOutput)
+}
+
+type ResponsePtrInput interface {
+	pulumi.Input
+
+	ToResponsePtrOutput() ResponsePtrOutput
+	ToResponsePtrOutputWithContext(ctx context.Context) ResponsePtrOutput
 }
 
 type ResponseOutput struct {
@@ -191,7 +206,7 @@ type ResponseOutput struct {
 }
 
 func (ResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResponseOutput)(nil)).Elem()
+	return reflect.TypeOf((*Response)(nil))
 }
 
 func (o ResponseOutput) ToResponseOutput() ResponseOutput {
@@ -202,6 +217,23 @@ func (o ResponseOutput) ToResponseOutputWithContext(ctx context.Context) Respons
 	return o
 }
 
+type ResponsePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Response)(nil))
+}
+
+func (o ResponsePtrOutput) ToResponsePtrOutput() ResponsePtrOutput {
+	return o
+}
+
+func (o ResponsePtrOutput) ToResponsePtrOutputWithContext(ctx context.Context) ResponsePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResponseOutput{})
+	pulumi.RegisterOutputType(ResponsePtrOutput{})
 }

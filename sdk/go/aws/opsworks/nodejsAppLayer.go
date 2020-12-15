@@ -300,16 +300,31 @@ type NodejsAppLayerInput interface {
 	ToNodejsAppLayerOutputWithContext(ctx context.Context) NodejsAppLayerOutput
 }
 
-func (NodejsAppLayer) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodejsAppLayer)(nil)).Elem()
+func (*NodejsAppLayer) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodejsAppLayer)(nil))
 }
 
-func (i NodejsAppLayer) ToNodejsAppLayerOutput() NodejsAppLayerOutput {
+func (i *NodejsAppLayer) ToNodejsAppLayerOutput() NodejsAppLayerOutput {
 	return i.ToNodejsAppLayerOutputWithContext(context.Background())
 }
 
-func (i NodejsAppLayer) ToNodejsAppLayerOutputWithContext(ctx context.Context) NodejsAppLayerOutput {
+func (i *NodejsAppLayer) ToNodejsAppLayerOutputWithContext(ctx context.Context) NodejsAppLayerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodejsAppLayerOutput)
+}
+
+func (i *NodejsAppLayer) ToNodejsAppLayerPtrOutput() NodejsAppLayerPtrOutput {
+	return i.ToNodejsAppLayerPtrOutputWithContext(context.Background())
+}
+
+func (i *NodejsAppLayer) ToNodejsAppLayerPtrOutputWithContext(ctx context.Context) NodejsAppLayerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodejsAppLayerPtrOutput)
+}
+
+type NodejsAppLayerPtrInput interface {
+	pulumi.Input
+
+	ToNodejsAppLayerPtrOutput() NodejsAppLayerPtrOutput
+	ToNodejsAppLayerPtrOutputWithContext(ctx context.Context) NodejsAppLayerPtrOutput
 }
 
 type NodejsAppLayerOutput struct {
@@ -317,7 +332,7 @@ type NodejsAppLayerOutput struct {
 }
 
 func (NodejsAppLayerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodejsAppLayerOutput)(nil)).Elem()
+	return reflect.TypeOf((*NodejsAppLayer)(nil))
 }
 
 func (o NodejsAppLayerOutput) ToNodejsAppLayerOutput() NodejsAppLayerOutput {
@@ -328,6 +343,23 @@ func (o NodejsAppLayerOutput) ToNodejsAppLayerOutputWithContext(ctx context.Cont
 	return o
 }
 
+type NodejsAppLayerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NodejsAppLayerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodejsAppLayer)(nil))
+}
+
+func (o NodejsAppLayerPtrOutput) ToNodejsAppLayerPtrOutput() NodejsAppLayerPtrOutput {
+	return o
+}
+
+func (o NodejsAppLayerPtrOutput) ToNodejsAppLayerPtrOutputWithContext(ctx context.Context) NodejsAppLayerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(NodejsAppLayerOutput{})
+	pulumi.RegisterOutputType(NodejsAppLayerPtrOutput{})
 }

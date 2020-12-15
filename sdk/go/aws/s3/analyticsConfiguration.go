@@ -198,16 +198,31 @@ type AnalyticsConfigurationInput interface {
 	ToAnalyticsConfigurationOutputWithContext(ctx context.Context) AnalyticsConfigurationOutput
 }
 
-func (AnalyticsConfiguration) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnalyticsConfiguration)(nil)).Elem()
+func (*AnalyticsConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalyticsConfiguration)(nil))
 }
 
-func (i AnalyticsConfiguration) ToAnalyticsConfigurationOutput() AnalyticsConfigurationOutput {
+func (i *AnalyticsConfiguration) ToAnalyticsConfigurationOutput() AnalyticsConfigurationOutput {
 	return i.ToAnalyticsConfigurationOutputWithContext(context.Background())
 }
 
-func (i AnalyticsConfiguration) ToAnalyticsConfigurationOutputWithContext(ctx context.Context) AnalyticsConfigurationOutput {
+func (i *AnalyticsConfiguration) ToAnalyticsConfigurationOutputWithContext(ctx context.Context) AnalyticsConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationOutput)
+}
+
+func (i *AnalyticsConfiguration) ToAnalyticsConfigurationPtrOutput() AnalyticsConfigurationPtrOutput {
+	return i.ToAnalyticsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *AnalyticsConfiguration) ToAnalyticsConfigurationPtrOutputWithContext(ctx context.Context) AnalyticsConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationPtrOutput)
+}
+
+type AnalyticsConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAnalyticsConfigurationPtrOutput() AnalyticsConfigurationPtrOutput
+	ToAnalyticsConfigurationPtrOutputWithContext(ctx context.Context) AnalyticsConfigurationPtrOutput
 }
 
 type AnalyticsConfigurationOutput struct {
@@ -215,7 +230,7 @@ type AnalyticsConfigurationOutput struct {
 }
 
 func (AnalyticsConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnalyticsConfigurationOutput)(nil)).Elem()
+	return reflect.TypeOf((*AnalyticsConfiguration)(nil))
 }
 
 func (o AnalyticsConfigurationOutput) ToAnalyticsConfigurationOutput() AnalyticsConfigurationOutput {
@@ -226,6 +241,23 @@ func (o AnalyticsConfigurationOutput) ToAnalyticsConfigurationOutputWithContext(
 	return o
 }
 
+type AnalyticsConfigurationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AnalyticsConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnalyticsConfiguration)(nil))
+}
+
+func (o AnalyticsConfigurationPtrOutput) ToAnalyticsConfigurationPtrOutput() AnalyticsConfigurationPtrOutput {
+	return o
+}
+
+func (o AnalyticsConfigurationPtrOutput) ToAnalyticsConfigurationPtrOutputWithContext(ctx context.Context) AnalyticsConfigurationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AnalyticsConfigurationOutput{})
+	pulumi.RegisterOutputType(AnalyticsConfigurationPtrOutput{})
 }

@@ -72,7 +72,7 @@ func (i AccessPointPublicAccessBlockConfigurationArgs) ToAccessPointPublicAccess
 }
 
 func (i AccessPointPublicAccessBlockConfigurationArgs) ToAccessPointPublicAccessBlockConfigurationPtrOutputWithContext(ctx context.Context) AccessPointPublicAccessBlockConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessPointPublicAccessBlockConfigurationOutput).ToAccessPointPublicAccessBlockConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointPublicAccessBlockConfigurationOutput).ToAccessPointPublicAccessBlockConfigurationPtrOutput()
 }
 
 // AccessPointPublicAccessBlockConfigurationPtrInput is an input type that accepts AccessPointPublicAccessBlockConfigurationArgs, AccessPointPublicAccessBlockConfigurationPtr and AccessPointPublicAccessBlockConfigurationPtrOutput values.
@@ -105,7 +105,7 @@ func (i *accessPointPublicAccessBlockConfigurationPtrType) ToAccessPointPublicAc
 }
 
 func (i *accessPointPublicAccessBlockConfigurationPtrType) ToAccessPointPublicAccessBlockConfigurationPtrOutputWithContext(ctx context.Context) AccessPointPublicAccessBlockConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessPointPublicAccessBlockConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointPublicAccessBlockConfigurationOutput).ToAccessPointPublicAccessBlockConfigurationPtrOutput()
 }
 
 type AccessPointPublicAccessBlockConfigurationOutput struct{ *pulumi.OutputState }
@@ -262,7 +262,7 @@ func (i AccessPointVpcConfigurationArgs) ToAccessPointVpcConfigurationPtrOutput(
 }
 
 func (i AccessPointVpcConfigurationArgs) ToAccessPointVpcConfigurationPtrOutputWithContext(ctx context.Context) AccessPointVpcConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessPointVpcConfigurationOutput).ToAccessPointVpcConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointVpcConfigurationOutput).ToAccessPointVpcConfigurationPtrOutput()
 }
 
 // AccessPointVpcConfigurationPtrInput is an input type that accepts AccessPointVpcConfigurationArgs, AccessPointVpcConfigurationPtr and AccessPointVpcConfigurationPtrOutput values.
@@ -295,7 +295,7 @@ func (i *accessPointVpcConfigurationPtrType) ToAccessPointVpcConfigurationPtrOut
 }
 
 func (i *accessPointVpcConfigurationPtrType) ToAccessPointVpcConfigurationPtrOutputWithContext(ctx context.Context) AccessPointVpcConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessPointVpcConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointVpcConfigurationOutput).ToAccessPointVpcConfigurationPtrOutput()
 }
 
 type AccessPointVpcConfigurationOutput struct{ *pulumi.OutputState }
@@ -397,7 +397,7 @@ func (i AnalyticsConfigurationFilterArgs) ToAnalyticsConfigurationFilterPtrOutpu
 }
 
 func (i AnalyticsConfigurationFilterArgs) ToAnalyticsConfigurationFilterPtrOutputWithContext(ctx context.Context) AnalyticsConfigurationFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationFilterOutput).ToAnalyticsConfigurationFilterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationFilterOutput).ToAnalyticsConfigurationFilterPtrOutput()
 }
 
 // AnalyticsConfigurationFilterPtrInput is an input type that accepts AnalyticsConfigurationFilterArgs, AnalyticsConfigurationFilterPtr and AnalyticsConfigurationFilterPtrOutput values.
@@ -430,7 +430,7 @@ func (i *analyticsConfigurationFilterPtrType) ToAnalyticsConfigurationFilterPtrO
 }
 
 func (i *analyticsConfigurationFilterPtrType) ToAnalyticsConfigurationFilterPtrOutputWithContext(ctx context.Context) AnalyticsConfigurationFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationFilterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationFilterOutput).ToAnalyticsConfigurationFilterPtrOutput()
 }
 
 type AnalyticsConfigurationFilterOutput struct{ *pulumi.OutputState }
@@ -543,7 +543,7 @@ func (i AnalyticsConfigurationStorageClassAnalysisArgs) ToAnalyticsConfiguration
 }
 
 func (i AnalyticsConfigurationStorageClassAnalysisArgs) ToAnalyticsConfigurationStorageClassAnalysisPtrOutputWithContext(ctx context.Context) AnalyticsConfigurationStorageClassAnalysisPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationStorageClassAnalysisOutput).ToAnalyticsConfigurationStorageClassAnalysisPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationStorageClassAnalysisOutput).ToAnalyticsConfigurationStorageClassAnalysisPtrOutput()
 }
 
 // AnalyticsConfigurationStorageClassAnalysisPtrInput is an input type that accepts AnalyticsConfigurationStorageClassAnalysisArgs, AnalyticsConfigurationStorageClassAnalysisPtr and AnalyticsConfigurationStorageClassAnalysisPtrOutput values.
@@ -576,7 +576,7 @@ func (i *analyticsConfigurationStorageClassAnalysisPtrType) ToAnalyticsConfigura
 }
 
 func (i *analyticsConfigurationStorageClassAnalysisPtrType) ToAnalyticsConfigurationStorageClassAnalysisPtrOutputWithContext(ctx context.Context) AnalyticsConfigurationStorageClassAnalysisPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationStorageClassAnalysisPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationStorageClassAnalysisOutput).ToAnalyticsConfigurationStorageClassAnalysisPtrOutput()
 }
 
 type AnalyticsConfigurationStorageClassAnalysisOutput struct{ *pulumi.OutputState }
@@ -682,7 +682,7 @@ func (i AnalyticsConfigurationStorageClassAnalysisDataExportArgs) ToAnalyticsCon
 }
 
 func (i AnalyticsConfigurationStorageClassAnalysisDataExportArgs) ToAnalyticsConfigurationStorageClassAnalysisDataExportPtrOutputWithContext(ctx context.Context) AnalyticsConfigurationStorageClassAnalysisDataExportPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationStorageClassAnalysisDataExportOutput).ToAnalyticsConfigurationStorageClassAnalysisDataExportPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationStorageClassAnalysisDataExportOutput).ToAnalyticsConfigurationStorageClassAnalysisDataExportPtrOutput()
 }
 
 // AnalyticsConfigurationStorageClassAnalysisDataExportPtrInput is an input type that accepts AnalyticsConfigurationStorageClassAnalysisDataExportArgs, AnalyticsConfigurationStorageClassAnalysisDataExportPtr and AnalyticsConfigurationStorageClassAnalysisDataExportPtrOutput values.
@@ -715,7 +715,7 @@ func (i *analyticsConfigurationStorageClassAnalysisDataExportPtrType) ToAnalytic
 }
 
 func (i *analyticsConfigurationStorageClassAnalysisDataExportPtrType) ToAnalyticsConfigurationStorageClassAnalysisDataExportPtrOutputWithContext(ctx context.Context) AnalyticsConfigurationStorageClassAnalysisDataExportPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationStorageClassAnalysisDataExportPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationStorageClassAnalysisDataExportOutput).ToAnalyticsConfigurationStorageClassAnalysisDataExportPtrOutput()
 }
 
 type AnalyticsConfigurationStorageClassAnalysisDataExportOutput struct{ *pulumi.OutputState }
@@ -832,7 +832,7 @@ func (i AnalyticsConfigurationStorageClassAnalysisDataExportDestinationArgs) ToA
 }
 
 func (i AnalyticsConfigurationStorageClassAnalysisDataExportDestinationArgs) ToAnalyticsConfigurationStorageClassAnalysisDataExportDestinationPtrOutputWithContext(ctx context.Context) AnalyticsConfigurationStorageClassAnalysisDataExportDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationStorageClassAnalysisDataExportDestinationOutput).ToAnalyticsConfigurationStorageClassAnalysisDataExportDestinationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationStorageClassAnalysisDataExportDestinationOutput).ToAnalyticsConfigurationStorageClassAnalysisDataExportDestinationPtrOutput()
 }
 
 // AnalyticsConfigurationStorageClassAnalysisDataExportDestinationPtrInput is an input type that accepts AnalyticsConfigurationStorageClassAnalysisDataExportDestinationArgs, AnalyticsConfigurationStorageClassAnalysisDataExportDestinationPtr and AnalyticsConfigurationStorageClassAnalysisDataExportDestinationPtrOutput values.
@@ -865,7 +865,7 @@ func (i *analyticsConfigurationStorageClassAnalysisDataExportDestinationPtrType)
 }
 
 func (i *analyticsConfigurationStorageClassAnalysisDataExportDestinationPtrType) ToAnalyticsConfigurationStorageClassAnalysisDataExportDestinationPtrOutputWithContext(ctx context.Context) AnalyticsConfigurationStorageClassAnalysisDataExportDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationStorageClassAnalysisDataExportDestinationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationStorageClassAnalysisDataExportDestinationOutput).ToAnalyticsConfigurationStorageClassAnalysisDataExportDestinationPtrOutput()
 }
 
 type AnalyticsConfigurationStorageClassAnalysisDataExportDestinationOutput struct{ *pulumi.OutputState }
@@ -979,7 +979,7 @@ func (i AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketD
 }
 
 func (i AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationArgs) ToAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationPtrOutputWithContext(ctx context.Context) AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationOutput).ToAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationOutput).ToAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationPtrOutput()
 }
 
 // AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationPtrInput is an input type that accepts AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationArgs, AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationPtr and AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationPtrOutput values.
@@ -1012,7 +1012,7 @@ func (i *analyticsConfigurationStorageClassAnalysisDataExportDestinationS3Bucket
 }
 
 func (i *analyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationPtrType) ToAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationPtrOutputWithContext(ctx context.Context) AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationOutput).ToAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationPtrOutput()
 }
 
 type AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationOutput struct{ *pulumi.OutputState }
@@ -1603,7 +1603,7 @@ func (i BucketLifecycleRuleExpirationArgs) ToBucketLifecycleRuleExpirationPtrOut
 }
 
 func (i BucketLifecycleRuleExpirationArgs) ToBucketLifecycleRuleExpirationPtrOutputWithContext(ctx context.Context) BucketLifecycleRuleExpirationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleExpirationOutput).ToBucketLifecycleRuleExpirationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleExpirationOutput).ToBucketLifecycleRuleExpirationPtrOutput()
 }
 
 // BucketLifecycleRuleExpirationPtrInput is an input type that accepts BucketLifecycleRuleExpirationArgs, BucketLifecycleRuleExpirationPtr and BucketLifecycleRuleExpirationPtrOutput values.
@@ -1636,7 +1636,7 @@ func (i *bucketLifecycleRuleExpirationPtrType) ToBucketLifecycleRuleExpirationPt
 }
 
 func (i *bucketLifecycleRuleExpirationPtrType) ToBucketLifecycleRuleExpirationPtrOutputWithContext(ctx context.Context) BucketLifecycleRuleExpirationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleExpirationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleExpirationOutput).ToBucketLifecycleRuleExpirationPtrOutput()
 }
 
 type BucketLifecycleRuleExpirationOutput struct{ *pulumi.OutputState }
@@ -1764,7 +1764,7 @@ func (i BucketLifecycleRuleNoncurrentVersionExpirationArgs) ToBucketLifecycleRul
 }
 
 func (i BucketLifecycleRuleNoncurrentVersionExpirationArgs) ToBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(ctx context.Context) BucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleNoncurrentVersionExpirationOutput).ToBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleNoncurrentVersionExpirationOutput).ToBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput()
 }
 
 // BucketLifecycleRuleNoncurrentVersionExpirationPtrInput is an input type that accepts BucketLifecycleRuleNoncurrentVersionExpirationArgs, BucketLifecycleRuleNoncurrentVersionExpirationPtr and BucketLifecycleRuleNoncurrentVersionExpirationPtrOutput values.
@@ -1797,7 +1797,7 @@ func (i *bucketLifecycleRuleNoncurrentVersionExpirationPtrType) ToBucketLifecycl
 }
 
 func (i *bucketLifecycleRuleNoncurrentVersionExpirationPtrType) ToBucketLifecycleRuleNoncurrentVersionExpirationPtrOutputWithContext(ctx context.Context) BucketLifecycleRuleNoncurrentVersionExpirationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleNoncurrentVersionExpirationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleNoncurrentVersionExpirationOutput).ToBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput()
 }
 
 type BucketLifecycleRuleNoncurrentVersionExpirationOutput struct{ *pulumi.OutputState }
@@ -2228,7 +2228,7 @@ func (i BucketMetricFilterArgs) ToBucketMetricFilterPtrOutput() BucketMetricFilt
 }
 
 func (i BucketMetricFilterArgs) ToBucketMetricFilterPtrOutputWithContext(ctx context.Context) BucketMetricFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketMetricFilterOutput).ToBucketMetricFilterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketMetricFilterOutput).ToBucketMetricFilterPtrOutput()
 }
 
 // BucketMetricFilterPtrInput is an input type that accepts BucketMetricFilterArgs, BucketMetricFilterPtr and BucketMetricFilterPtrOutput values.
@@ -2261,7 +2261,7 @@ func (i *bucketMetricFilterPtrType) ToBucketMetricFilterPtrOutput() BucketMetric
 }
 
 func (i *bucketMetricFilterPtrType) ToBucketMetricFilterPtrOutputWithContext(ctx context.Context) BucketMetricFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketMetricFilterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketMetricFilterOutput).ToBucketMetricFilterPtrOutput()
 }
 
 type BucketMetricFilterOutput struct{ *pulumi.OutputState }
@@ -2777,7 +2777,7 @@ func (i BucketObjectLockConfigurationArgs) ToBucketObjectLockConfigurationPtrOut
 }
 
 func (i BucketObjectLockConfigurationArgs) ToBucketObjectLockConfigurationPtrOutputWithContext(ctx context.Context) BucketObjectLockConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectLockConfigurationOutput).ToBucketObjectLockConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectLockConfigurationOutput).ToBucketObjectLockConfigurationPtrOutput()
 }
 
 // BucketObjectLockConfigurationPtrInput is an input type that accepts BucketObjectLockConfigurationArgs, BucketObjectLockConfigurationPtr and BucketObjectLockConfigurationPtrOutput values.
@@ -2810,7 +2810,7 @@ func (i *bucketObjectLockConfigurationPtrType) ToBucketObjectLockConfigurationPt
 }
 
 func (i *bucketObjectLockConfigurationPtrType) ToBucketObjectLockConfigurationPtrOutputWithContext(ctx context.Context) BucketObjectLockConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectLockConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectLockConfigurationOutput).ToBucketObjectLockConfigurationPtrOutput()
 }
 
 type BucketObjectLockConfigurationOutput struct{ *pulumi.OutputState }
@@ -2923,7 +2923,7 @@ func (i BucketObjectLockConfigurationRuleArgs) ToBucketObjectLockConfigurationRu
 }
 
 func (i BucketObjectLockConfigurationRuleArgs) ToBucketObjectLockConfigurationRulePtrOutputWithContext(ctx context.Context) BucketObjectLockConfigurationRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectLockConfigurationRuleOutput).ToBucketObjectLockConfigurationRulePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectLockConfigurationRuleOutput).ToBucketObjectLockConfigurationRulePtrOutput()
 }
 
 // BucketObjectLockConfigurationRulePtrInput is an input type that accepts BucketObjectLockConfigurationRuleArgs, BucketObjectLockConfigurationRulePtr and BucketObjectLockConfigurationRulePtrOutput values.
@@ -2956,7 +2956,7 @@ func (i *bucketObjectLockConfigurationRulePtrType) ToBucketObjectLockConfigurati
 }
 
 func (i *bucketObjectLockConfigurationRulePtrType) ToBucketObjectLockConfigurationRulePtrOutputWithContext(ctx context.Context) BucketObjectLockConfigurationRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectLockConfigurationRulePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectLockConfigurationRuleOutput).ToBucketObjectLockConfigurationRulePtrOutput()
 }
 
 type BucketObjectLockConfigurationRuleOutput struct{ *pulumi.OutputState }
@@ -3064,7 +3064,7 @@ func (i BucketObjectLockConfigurationRuleDefaultRetentionArgs) ToBucketObjectLoc
 }
 
 func (i BucketObjectLockConfigurationRuleDefaultRetentionArgs) ToBucketObjectLockConfigurationRuleDefaultRetentionPtrOutputWithContext(ctx context.Context) BucketObjectLockConfigurationRuleDefaultRetentionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectLockConfigurationRuleDefaultRetentionOutput).ToBucketObjectLockConfigurationRuleDefaultRetentionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectLockConfigurationRuleDefaultRetentionOutput).ToBucketObjectLockConfigurationRuleDefaultRetentionPtrOutput()
 }
 
 // BucketObjectLockConfigurationRuleDefaultRetentionPtrInput is an input type that accepts BucketObjectLockConfigurationRuleDefaultRetentionArgs, BucketObjectLockConfigurationRuleDefaultRetentionPtr and BucketObjectLockConfigurationRuleDefaultRetentionPtrOutput values.
@@ -3097,7 +3097,7 @@ func (i *bucketObjectLockConfigurationRuleDefaultRetentionPtrType) ToBucketObjec
 }
 
 func (i *bucketObjectLockConfigurationRuleDefaultRetentionPtrType) ToBucketObjectLockConfigurationRuleDefaultRetentionPtrOutputWithContext(ctx context.Context) BucketObjectLockConfigurationRuleDefaultRetentionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectLockConfigurationRuleDefaultRetentionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectLockConfigurationRuleDefaultRetentionOutput).ToBucketObjectLockConfigurationRuleDefaultRetentionPtrOutput()
 }
 
 type BucketObjectLockConfigurationRuleDefaultRetentionOutput struct{ *pulumi.OutputState }
@@ -3227,7 +3227,7 @@ func (i BucketOwnershipControlsRuleArgs) ToBucketOwnershipControlsRulePtrOutput(
 }
 
 func (i BucketOwnershipControlsRuleArgs) ToBucketOwnershipControlsRulePtrOutputWithContext(ctx context.Context) BucketOwnershipControlsRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketOwnershipControlsRuleOutput).ToBucketOwnershipControlsRulePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketOwnershipControlsRuleOutput).ToBucketOwnershipControlsRulePtrOutput()
 }
 
 // BucketOwnershipControlsRulePtrInput is an input type that accepts BucketOwnershipControlsRuleArgs, BucketOwnershipControlsRulePtr and BucketOwnershipControlsRulePtrOutput values.
@@ -3260,7 +3260,7 @@ func (i *bucketOwnershipControlsRulePtrType) ToBucketOwnershipControlsRulePtrOut
 }
 
 func (i *bucketOwnershipControlsRulePtrType) ToBucketOwnershipControlsRulePtrOutputWithContext(ctx context.Context) BucketOwnershipControlsRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketOwnershipControlsRulePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketOwnershipControlsRuleOutput).ToBucketOwnershipControlsRulePtrOutput()
 }
 
 type BucketOwnershipControlsRuleOutput struct{ *pulumi.OutputState }
@@ -3362,7 +3362,7 @@ func (i BucketReplicationConfigurationArgs) ToBucketReplicationConfigurationPtrO
 }
 
 func (i BucketReplicationConfigurationArgs) ToBucketReplicationConfigurationPtrOutputWithContext(ctx context.Context) BucketReplicationConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationConfigurationOutput).ToBucketReplicationConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationConfigurationOutput).ToBucketReplicationConfigurationPtrOutput()
 }
 
 // BucketReplicationConfigurationPtrInput is an input type that accepts BucketReplicationConfigurationArgs, BucketReplicationConfigurationPtr and BucketReplicationConfigurationPtrOutput values.
@@ -3395,7 +3395,7 @@ func (i *bucketReplicationConfigurationPtrType) ToBucketReplicationConfiguration
 }
 
 func (i *bucketReplicationConfigurationPtrType) ToBucketReplicationConfigurationPtrOutputWithContext(ctx context.Context) BucketReplicationConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationConfigurationOutput).ToBucketReplicationConfigurationPtrOutput()
 }
 
 type BucketReplicationConfigurationOutput struct{ *pulumi.OutputState }
@@ -3756,7 +3756,7 @@ func (i BucketReplicationConfigurationRuleDestinationAccessControlTranslationArg
 }
 
 func (i BucketReplicationConfigurationRuleDestinationAccessControlTranslationArgs) ToBucketReplicationConfigurationRuleDestinationAccessControlTranslationPtrOutputWithContext(ctx context.Context) BucketReplicationConfigurationRuleDestinationAccessControlTranslationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationConfigurationRuleDestinationAccessControlTranslationOutput).ToBucketReplicationConfigurationRuleDestinationAccessControlTranslationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationConfigurationRuleDestinationAccessControlTranslationOutput).ToBucketReplicationConfigurationRuleDestinationAccessControlTranslationPtrOutput()
 }
 
 // BucketReplicationConfigurationRuleDestinationAccessControlTranslationPtrInput is an input type that accepts BucketReplicationConfigurationRuleDestinationAccessControlTranslationArgs, BucketReplicationConfigurationRuleDestinationAccessControlTranslationPtr and BucketReplicationConfigurationRuleDestinationAccessControlTranslationPtrOutput values.
@@ -3789,7 +3789,7 @@ func (i *bucketReplicationConfigurationRuleDestinationAccessControlTranslationPt
 }
 
 func (i *bucketReplicationConfigurationRuleDestinationAccessControlTranslationPtrType) ToBucketReplicationConfigurationRuleDestinationAccessControlTranslationPtrOutputWithContext(ctx context.Context) BucketReplicationConfigurationRuleDestinationAccessControlTranslationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationConfigurationRuleDestinationAccessControlTranslationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationConfigurationRuleDestinationAccessControlTranslationOutput).ToBucketReplicationConfigurationRuleDestinationAccessControlTranslationPtrOutput()
 }
 
 type BucketReplicationConfigurationRuleDestinationAccessControlTranslationOutput struct{ *pulumi.OutputState }
@@ -3895,7 +3895,7 @@ func (i BucketReplicationConfigurationRuleFilterArgs) ToBucketReplicationConfigu
 }
 
 func (i BucketReplicationConfigurationRuleFilterArgs) ToBucketReplicationConfigurationRuleFilterPtrOutputWithContext(ctx context.Context) BucketReplicationConfigurationRuleFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationConfigurationRuleFilterOutput).ToBucketReplicationConfigurationRuleFilterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationConfigurationRuleFilterOutput).ToBucketReplicationConfigurationRuleFilterPtrOutput()
 }
 
 // BucketReplicationConfigurationRuleFilterPtrInput is an input type that accepts BucketReplicationConfigurationRuleFilterArgs, BucketReplicationConfigurationRuleFilterPtr and BucketReplicationConfigurationRuleFilterPtrOutput values.
@@ -3928,7 +3928,7 @@ func (i *bucketReplicationConfigurationRuleFilterPtrType) ToBucketReplicationCon
 }
 
 func (i *bucketReplicationConfigurationRuleFilterPtrType) ToBucketReplicationConfigurationRuleFilterPtrOutputWithContext(ctx context.Context) BucketReplicationConfigurationRuleFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationConfigurationRuleFilterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationConfigurationRuleFilterOutput).ToBucketReplicationConfigurationRuleFilterPtrOutput()
 }
 
 type BucketReplicationConfigurationRuleFilterOutput struct{ *pulumi.OutputState }
@@ -4045,7 +4045,7 @@ func (i BucketReplicationConfigurationRuleSourceSelectionCriteriaArgs) ToBucketR
 }
 
 func (i BucketReplicationConfigurationRuleSourceSelectionCriteriaArgs) ToBucketReplicationConfigurationRuleSourceSelectionCriteriaPtrOutputWithContext(ctx context.Context) BucketReplicationConfigurationRuleSourceSelectionCriteriaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationConfigurationRuleSourceSelectionCriteriaOutput).ToBucketReplicationConfigurationRuleSourceSelectionCriteriaPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationConfigurationRuleSourceSelectionCriteriaOutput).ToBucketReplicationConfigurationRuleSourceSelectionCriteriaPtrOutput()
 }
 
 // BucketReplicationConfigurationRuleSourceSelectionCriteriaPtrInput is an input type that accepts BucketReplicationConfigurationRuleSourceSelectionCriteriaArgs, BucketReplicationConfigurationRuleSourceSelectionCriteriaPtr and BucketReplicationConfigurationRuleSourceSelectionCriteriaPtrOutput values.
@@ -4078,7 +4078,7 @@ func (i *bucketReplicationConfigurationRuleSourceSelectionCriteriaPtrType) ToBuc
 }
 
 func (i *bucketReplicationConfigurationRuleSourceSelectionCriteriaPtrType) ToBucketReplicationConfigurationRuleSourceSelectionCriteriaPtrOutputWithContext(ctx context.Context) BucketReplicationConfigurationRuleSourceSelectionCriteriaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationConfigurationRuleSourceSelectionCriteriaPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationConfigurationRuleSourceSelectionCriteriaOutput).ToBucketReplicationConfigurationRuleSourceSelectionCriteriaPtrOutput()
 }
 
 type BucketReplicationConfigurationRuleSourceSelectionCriteriaOutput struct{ *pulumi.OutputState }
@@ -4182,7 +4182,7 @@ func (i BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncrypted
 }
 
 func (i BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjectsArgs) ToBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutputWithContext(ctx context.Context) BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjectsOutput).ToBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjectsOutput).ToBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput()
 }
 
 // BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjectsPtrInput is an input type that accepts BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjectsArgs, BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjectsPtr and BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput values.
@@ -4215,7 +4215,7 @@ func (i *bucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncrypte
 }
 
 func (i *bucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjectsPtrType) ToBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutputWithContext(ctx context.Context) BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjectsOutput).ToBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput()
 }
 
 type BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjectsOutput struct{ *pulumi.OutputState }
@@ -4317,7 +4317,7 @@ func (i BucketServerSideEncryptionConfigurationArgs) ToBucketServerSideEncryptio
 }
 
 func (i BucketServerSideEncryptionConfigurationArgs) ToBucketServerSideEncryptionConfigurationPtrOutputWithContext(ctx context.Context) BucketServerSideEncryptionConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketServerSideEncryptionConfigurationOutput).ToBucketServerSideEncryptionConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketServerSideEncryptionConfigurationOutput).ToBucketServerSideEncryptionConfigurationPtrOutput()
 }
 
 // BucketServerSideEncryptionConfigurationPtrInput is an input type that accepts BucketServerSideEncryptionConfigurationArgs, BucketServerSideEncryptionConfigurationPtr and BucketServerSideEncryptionConfigurationPtrOutput values.
@@ -4350,7 +4350,7 @@ func (i *bucketServerSideEncryptionConfigurationPtrType) ToBucketServerSideEncry
 }
 
 func (i *bucketServerSideEncryptionConfigurationPtrType) ToBucketServerSideEncryptionConfigurationPtrOutputWithContext(ctx context.Context) BucketServerSideEncryptionConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketServerSideEncryptionConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketServerSideEncryptionConfigurationOutput).ToBucketServerSideEncryptionConfigurationPtrOutput()
 }
 
 type BucketServerSideEncryptionConfigurationOutput struct{ *pulumi.OutputState }
@@ -4450,7 +4450,7 @@ func (i BucketServerSideEncryptionConfigurationRuleArgs) ToBucketServerSideEncry
 }
 
 func (i BucketServerSideEncryptionConfigurationRuleArgs) ToBucketServerSideEncryptionConfigurationRulePtrOutputWithContext(ctx context.Context) BucketServerSideEncryptionConfigurationRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketServerSideEncryptionConfigurationRuleOutput).ToBucketServerSideEncryptionConfigurationRulePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketServerSideEncryptionConfigurationRuleOutput).ToBucketServerSideEncryptionConfigurationRulePtrOutput()
 }
 
 // BucketServerSideEncryptionConfigurationRulePtrInput is an input type that accepts BucketServerSideEncryptionConfigurationRuleArgs, BucketServerSideEncryptionConfigurationRulePtr and BucketServerSideEncryptionConfigurationRulePtrOutput values.
@@ -4483,7 +4483,7 @@ func (i *bucketServerSideEncryptionConfigurationRulePtrType) ToBucketServerSideE
 }
 
 func (i *bucketServerSideEncryptionConfigurationRulePtrType) ToBucketServerSideEncryptionConfigurationRulePtrOutputWithContext(ctx context.Context) BucketServerSideEncryptionConfigurationRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketServerSideEncryptionConfigurationRulePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketServerSideEncryptionConfigurationRuleOutput).ToBucketServerSideEncryptionConfigurationRulePtrOutput()
 }
 
 type BucketServerSideEncryptionConfigurationRuleOutput struct{ *pulumi.OutputState }
@@ -4589,7 +4589,7 @@ func (i BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDe
 }
 
 func (i BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs) ToBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultPtrOutputWithContext(ctx context.Context) BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultOutput).ToBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultOutput).ToBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultPtrOutput()
 }
 
 // BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultPtrInput is an input type that accepts BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs, BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultPtr and BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultPtrOutput values.
@@ -4622,7 +4622,7 @@ func (i *bucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByD
 }
 
 func (i *bucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultPtrType) ToBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultPtrOutputWithContext(ctx context.Context) BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultOutput).ToBucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultPtrOutput()
 }
 
 type BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultOutput struct{ *pulumi.OutputState }
@@ -4745,7 +4745,7 @@ func (i BucketVersioningArgs) ToBucketVersioningPtrOutput() BucketVersioningPtrO
 }
 
 func (i BucketVersioningArgs) ToBucketVersioningPtrOutputWithContext(ctx context.Context) BucketVersioningPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketVersioningOutput).ToBucketVersioningPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketVersioningOutput).ToBucketVersioningPtrOutput()
 }
 
 // BucketVersioningPtrInput is an input type that accepts BucketVersioningArgs, BucketVersioningPtr and BucketVersioningPtrOutput values.
@@ -4778,7 +4778,7 @@ func (i *bucketVersioningPtrType) ToBucketVersioningPtrOutput() BucketVersioning
 }
 
 func (i *bucketVersioningPtrType) ToBucketVersioningPtrOutputWithContext(ctx context.Context) BucketVersioningPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketVersioningPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketVersioningOutput).ToBucketVersioningPtrOutput()
 }
 
 type BucketVersioningOutput struct{ *pulumi.OutputState }
@@ -4905,7 +4905,7 @@ func (i BucketWebsiteArgs) ToBucketWebsitePtrOutput() BucketWebsitePtrOutput {
 }
 
 func (i BucketWebsiteArgs) ToBucketWebsitePtrOutputWithContext(ctx context.Context) BucketWebsitePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteOutput).ToBucketWebsitePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteOutput).ToBucketWebsitePtrOutput()
 }
 
 // BucketWebsitePtrInput is an input type that accepts BucketWebsiteArgs, BucketWebsitePtr and BucketWebsitePtrOutput values.
@@ -4938,7 +4938,7 @@ func (i *bucketWebsitePtrType) ToBucketWebsitePtrOutput() BucketWebsitePtrOutput
 }
 
 func (i *bucketWebsitePtrType) ToBucketWebsitePtrOutputWithContext(ctx context.Context) BucketWebsitePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsitePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsiteOutput).ToBucketWebsitePtrOutput()
 }
 
 type BucketWebsiteOutput struct{ *pulumi.OutputState }
@@ -5083,7 +5083,7 @@ func (i InventoryDestinationArgs) ToInventoryDestinationPtrOutput() InventoryDes
 }
 
 func (i InventoryDestinationArgs) ToInventoryDestinationPtrOutputWithContext(ctx context.Context) InventoryDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InventoryDestinationOutput).ToInventoryDestinationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InventoryDestinationOutput).ToInventoryDestinationPtrOutput()
 }
 
 // InventoryDestinationPtrInput is an input type that accepts InventoryDestinationArgs, InventoryDestinationPtr and InventoryDestinationPtrOutput values.
@@ -5116,7 +5116,7 @@ func (i *inventoryDestinationPtrType) ToInventoryDestinationPtrOutput() Inventor
 }
 
 func (i *inventoryDestinationPtrType) ToInventoryDestinationPtrOutputWithContext(ctx context.Context) InventoryDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InventoryDestinationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InventoryDestinationOutput).ToInventoryDestinationPtrOutput()
 }
 
 type InventoryDestinationOutput struct{ *pulumi.OutputState }
@@ -5230,7 +5230,7 @@ func (i InventoryDestinationBucketArgs) ToInventoryDestinationBucketPtrOutput() 
 }
 
 func (i InventoryDestinationBucketArgs) ToInventoryDestinationBucketPtrOutputWithContext(ctx context.Context) InventoryDestinationBucketPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InventoryDestinationBucketOutput).ToInventoryDestinationBucketPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InventoryDestinationBucketOutput).ToInventoryDestinationBucketPtrOutput()
 }
 
 // InventoryDestinationBucketPtrInput is an input type that accepts InventoryDestinationBucketArgs, InventoryDestinationBucketPtr and InventoryDestinationBucketPtrOutput values.
@@ -5263,7 +5263,7 @@ func (i *inventoryDestinationBucketPtrType) ToInventoryDestinationBucketPtrOutpu
 }
 
 func (i *inventoryDestinationBucketPtrType) ToInventoryDestinationBucketPtrOutputWithContext(ctx context.Context) InventoryDestinationBucketPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InventoryDestinationBucketPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InventoryDestinationBucketOutput).ToInventoryDestinationBucketPtrOutput()
 }
 
 type InventoryDestinationBucketOutput struct{ *pulumi.OutputState }
@@ -5425,7 +5425,7 @@ func (i InventoryDestinationBucketEncryptionArgs) ToInventoryDestinationBucketEn
 }
 
 func (i InventoryDestinationBucketEncryptionArgs) ToInventoryDestinationBucketEncryptionPtrOutputWithContext(ctx context.Context) InventoryDestinationBucketEncryptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InventoryDestinationBucketEncryptionOutput).ToInventoryDestinationBucketEncryptionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InventoryDestinationBucketEncryptionOutput).ToInventoryDestinationBucketEncryptionPtrOutput()
 }
 
 // InventoryDestinationBucketEncryptionPtrInput is an input type that accepts InventoryDestinationBucketEncryptionArgs, InventoryDestinationBucketEncryptionPtr and InventoryDestinationBucketEncryptionPtrOutput values.
@@ -5458,7 +5458,7 @@ func (i *inventoryDestinationBucketEncryptionPtrType) ToInventoryDestinationBuck
 }
 
 func (i *inventoryDestinationBucketEncryptionPtrType) ToInventoryDestinationBucketEncryptionPtrOutputWithContext(ctx context.Context) InventoryDestinationBucketEncryptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InventoryDestinationBucketEncryptionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InventoryDestinationBucketEncryptionOutput).ToInventoryDestinationBucketEncryptionPtrOutput()
 }
 
 type InventoryDestinationBucketEncryptionOutput struct{ *pulumi.OutputState }
@@ -5575,7 +5575,7 @@ func (i InventoryDestinationBucketEncryptionSseKmsArgs) ToInventoryDestinationBu
 }
 
 func (i InventoryDestinationBucketEncryptionSseKmsArgs) ToInventoryDestinationBucketEncryptionSseKmsPtrOutputWithContext(ctx context.Context) InventoryDestinationBucketEncryptionSseKmsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InventoryDestinationBucketEncryptionSseKmsOutput).ToInventoryDestinationBucketEncryptionSseKmsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InventoryDestinationBucketEncryptionSseKmsOutput).ToInventoryDestinationBucketEncryptionSseKmsPtrOutput()
 }
 
 // InventoryDestinationBucketEncryptionSseKmsPtrInput is an input type that accepts InventoryDestinationBucketEncryptionSseKmsArgs, InventoryDestinationBucketEncryptionSseKmsPtr and InventoryDestinationBucketEncryptionSseKmsPtrOutput values.
@@ -5608,7 +5608,7 @@ func (i *inventoryDestinationBucketEncryptionSseKmsPtrType) ToInventoryDestinati
 }
 
 func (i *inventoryDestinationBucketEncryptionSseKmsPtrType) ToInventoryDestinationBucketEncryptionSseKmsPtrOutputWithContext(ctx context.Context) InventoryDestinationBucketEncryptionSseKmsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InventoryDestinationBucketEncryptionSseKmsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InventoryDestinationBucketEncryptionSseKmsOutput).ToInventoryDestinationBucketEncryptionSseKmsPtrOutput()
 }
 
 type InventoryDestinationBucketEncryptionSseKmsOutput struct{ *pulumi.OutputState }
@@ -5704,7 +5704,7 @@ func (i InventoryDestinationBucketEncryptionSseS3Args) ToInventoryDestinationBuc
 }
 
 func (i InventoryDestinationBucketEncryptionSseS3Args) ToInventoryDestinationBucketEncryptionSseS3PtrOutputWithContext(ctx context.Context) InventoryDestinationBucketEncryptionSseS3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InventoryDestinationBucketEncryptionSseS3Output).ToInventoryDestinationBucketEncryptionSseS3PtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InventoryDestinationBucketEncryptionSseS3Output).ToInventoryDestinationBucketEncryptionSseS3PtrOutput()
 }
 
 // InventoryDestinationBucketEncryptionSseS3PtrInput is an input type that accepts InventoryDestinationBucketEncryptionSseS3Args, InventoryDestinationBucketEncryptionSseS3Ptr and InventoryDestinationBucketEncryptionSseS3PtrOutput values.
@@ -5737,7 +5737,7 @@ func (i *inventoryDestinationBucketEncryptionSseS3PtrType) ToInventoryDestinatio
 }
 
 func (i *inventoryDestinationBucketEncryptionSseS3PtrType) ToInventoryDestinationBucketEncryptionSseS3PtrOutputWithContext(ctx context.Context) InventoryDestinationBucketEncryptionSseS3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InventoryDestinationBucketEncryptionSseS3PtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InventoryDestinationBucketEncryptionSseS3Output).ToInventoryDestinationBucketEncryptionSseS3PtrOutput()
 }
 
 type InventoryDestinationBucketEncryptionSseS3Output struct{ *pulumi.OutputState }
@@ -5822,7 +5822,7 @@ func (i InventoryFilterArgs) ToInventoryFilterPtrOutput() InventoryFilterPtrOutp
 }
 
 func (i InventoryFilterArgs) ToInventoryFilterPtrOutputWithContext(ctx context.Context) InventoryFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InventoryFilterOutput).ToInventoryFilterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InventoryFilterOutput).ToInventoryFilterPtrOutput()
 }
 
 // InventoryFilterPtrInput is an input type that accepts InventoryFilterArgs, InventoryFilterPtr and InventoryFilterPtrOutput values.
@@ -5855,7 +5855,7 @@ func (i *inventoryFilterPtrType) ToInventoryFilterPtrOutput() InventoryFilterPtr
 }
 
 func (i *inventoryFilterPtrType) ToInventoryFilterPtrOutputWithContext(ctx context.Context) InventoryFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InventoryFilterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InventoryFilterOutput).ToInventoryFilterPtrOutput()
 }
 
 type InventoryFilterOutput struct{ *pulumi.OutputState }
@@ -5953,7 +5953,7 @@ func (i InventoryScheduleArgs) ToInventorySchedulePtrOutput() InventoryScheduleP
 }
 
 func (i InventoryScheduleArgs) ToInventorySchedulePtrOutputWithContext(ctx context.Context) InventorySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InventoryScheduleOutput).ToInventorySchedulePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InventoryScheduleOutput).ToInventorySchedulePtrOutput()
 }
 
 // InventorySchedulePtrInput is an input type that accepts InventoryScheduleArgs, InventorySchedulePtr and InventorySchedulePtrOutput values.
@@ -5986,7 +5986,7 @@ func (i *inventorySchedulePtrType) ToInventorySchedulePtrOutput() InventorySched
 }
 
 func (i *inventorySchedulePtrType) ToInventorySchedulePtrOutputWithContext(ctx context.Context) InventorySchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InventorySchedulePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InventoryScheduleOutput).ToInventorySchedulePtrOutput()
 }
 
 type InventoryScheduleOutput struct{ *pulumi.OutputState }

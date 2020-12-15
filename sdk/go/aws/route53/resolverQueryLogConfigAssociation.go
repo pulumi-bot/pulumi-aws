@@ -131,16 +131,31 @@ type ResolverQueryLogConfigAssociationInput interface {
 	ToResolverQueryLogConfigAssociationOutputWithContext(ctx context.Context) ResolverQueryLogConfigAssociationOutput
 }
 
-func (ResolverQueryLogConfigAssociation) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResolverQueryLogConfigAssociation)(nil)).Elem()
+func (*ResolverQueryLogConfigAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResolverQueryLogConfigAssociation)(nil))
 }
 
-func (i ResolverQueryLogConfigAssociation) ToResolverQueryLogConfigAssociationOutput() ResolverQueryLogConfigAssociationOutput {
+func (i *ResolverQueryLogConfigAssociation) ToResolverQueryLogConfigAssociationOutput() ResolverQueryLogConfigAssociationOutput {
 	return i.ToResolverQueryLogConfigAssociationOutputWithContext(context.Background())
 }
 
-func (i ResolverQueryLogConfigAssociation) ToResolverQueryLogConfigAssociationOutputWithContext(ctx context.Context) ResolverQueryLogConfigAssociationOutput {
+func (i *ResolverQueryLogConfigAssociation) ToResolverQueryLogConfigAssociationOutputWithContext(ctx context.Context) ResolverQueryLogConfigAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResolverQueryLogConfigAssociationOutput)
+}
+
+func (i *ResolverQueryLogConfigAssociation) ToResolverQueryLogConfigAssociationPtrOutput() ResolverQueryLogConfigAssociationPtrOutput {
+	return i.ToResolverQueryLogConfigAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i *ResolverQueryLogConfigAssociation) ToResolverQueryLogConfigAssociationPtrOutputWithContext(ctx context.Context) ResolverQueryLogConfigAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverQueryLogConfigAssociationPtrOutput)
+}
+
+type ResolverQueryLogConfigAssociationPtrInput interface {
+	pulumi.Input
+
+	ToResolverQueryLogConfigAssociationPtrOutput() ResolverQueryLogConfigAssociationPtrOutput
+	ToResolverQueryLogConfigAssociationPtrOutputWithContext(ctx context.Context) ResolverQueryLogConfigAssociationPtrOutput
 }
 
 type ResolverQueryLogConfigAssociationOutput struct {
@@ -148,7 +163,7 @@ type ResolverQueryLogConfigAssociationOutput struct {
 }
 
 func (ResolverQueryLogConfigAssociationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResolverQueryLogConfigAssociationOutput)(nil)).Elem()
+	return reflect.TypeOf((*ResolverQueryLogConfigAssociation)(nil))
 }
 
 func (o ResolverQueryLogConfigAssociationOutput) ToResolverQueryLogConfigAssociationOutput() ResolverQueryLogConfigAssociationOutput {
@@ -159,6 +174,23 @@ func (o ResolverQueryLogConfigAssociationOutput) ToResolverQueryLogConfigAssocia
 	return o
 }
 
+type ResolverQueryLogConfigAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ResolverQueryLogConfigAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResolverQueryLogConfigAssociation)(nil))
+}
+
+func (o ResolverQueryLogConfigAssociationPtrOutput) ToResolverQueryLogConfigAssociationPtrOutput() ResolverQueryLogConfigAssociationPtrOutput {
+	return o
+}
+
+func (o ResolverQueryLogConfigAssociationPtrOutput) ToResolverQueryLogConfigAssociationPtrOutputWithContext(ctx context.Context) ResolverQueryLogConfigAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResolverQueryLogConfigAssociationOutput{})
+	pulumi.RegisterOutputType(ResolverQueryLogConfigAssociationPtrOutput{})
 }

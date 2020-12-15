@@ -225,16 +225,31 @@ type ImageRecipeInput interface {
 	ToImageRecipeOutputWithContext(ctx context.Context) ImageRecipeOutput
 }
 
-func (ImageRecipe) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageRecipe)(nil)).Elem()
+func (*ImageRecipe) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageRecipe)(nil))
 }
 
-func (i ImageRecipe) ToImageRecipeOutput() ImageRecipeOutput {
+func (i *ImageRecipe) ToImageRecipeOutput() ImageRecipeOutput {
 	return i.ToImageRecipeOutputWithContext(context.Background())
 }
 
-func (i ImageRecipe) ToImageRecipeOutputWithContext(ctx context.Context) ImageRecipeOutput {
+func (i *ImageRecipe) ToImageRecipeOutputWithContext(ctx context.Context) ImageRecipeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageRecipeOutput)
+}
+
+func (i *ImageRecipe) ToImageRecipePtrOutput() ImageRecipePtrOutput {
+	return i.ToImageRecipePtrOutputWithContext(context.Background())
+}
+
+func (i *ImageRecipe) ToImageRecipePtrOutputWithContext(ctx context.Context) ImageRecipePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageRecipePtrOutput)
+}
+
+type ImageRecipePtrInput interface {
+	pulumi.Input
+
+	ToImageRecipePtrOutput() ImageRecipePtrOutput
+	ToImageRecipePtrOutputWithContext(ctx context.Context) ImageRecipePtrOutput
 }
 
 type ImageRecipeOutput struct {
@@ -242,7 +257,7 @@ type ImageRecipeOutput struct {
 }
 
 func (ImageRecipeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageRecipeOutput)(nil)).Elem()
+	return reflect.TypeOf((*ImageRecipe)(nil))
 }
 
 func (o ImageRecipeOutput) ToImageRecipeOutput() ImageRecipeOutput {
@@ -253,6 +268,23 @@ func (o ImageRecipeOutput) ToImageRecipeOutputWithContext(ctx context.Context) I
 	return o
 }
 
+type ImageRecipePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ImageRecipePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageRecipe)(nil))
+}
+
+func (o ImageRecipePtrOutput) ToImageRecipePtrOutput() ImageRecipePtrOutput {
+	return o
+}
+
+func (o ImageRecipePtrOutput) ToImageRecipePtrOutputWithContext(ctx context.Context) ImageRecipePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ImageRecipeOutput{})
+	pulumi.RegisterOutputType(ImageRecipePtrOutput{})
 }

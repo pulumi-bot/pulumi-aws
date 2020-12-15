@@ -127,16 +127,31 @@ type PublicKeyInput interface {
 	ToPublicKeyOutputWithContext(ctx context.Context) PublicKeyOutput
 }
 
-func (PublicKey) ElementType() reflect.Type {
-	return reflect.TypeOf((*PublicKey)(nil)).Elem()
+func (*PublicKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicKey)(nil))
 }
 
-func (i PublicKey) ToPublicKeyOutput() PublicKeyOutput {
+func (i *PublicKey) ToPublicKeyOutput() PublicKeyOutput {
 	return i.ToPublicKeyOutputWithContext(context.Background())
 }
 
-func (i PublicKey) ToPublicKeyOutputWithContext(ctx context.Context) PublicKeyOutput {
+func (i *PublicKey) ToPublicKeyOutputWithContext(ctx context.Context) PublicKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PublicKeyOutput)
+}
+
+func (i *PublicKey) ToPublicKeyPtrOutput() PublicKeyPtrOutput {
+	return i.ToPublicKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *PublicKey) ToPublicKeyPtrOutputWithContext(ctx context.Context) PublicKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicKeyPtrOutput)
+}
+
+type PublicKeyPtrInput interface {
+	pulumi.Input
+
+	ToPublicKeyPtrOutput() PublicKeyPtrOutput
+	ToPublicKeyPtrOutputWithContext(ctx context.Context) PublicKeyPtrOutput
 }
 
 type PublicKeyOutput struct {
@@ -144,7 +159,7 @@ type PublicKeyOutput struct {
 }
 
 func (PublicKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PublicKeyOutput)(nil)).Elem()
+	return reflect.TypeOf((*PublicKey)(nil))
 }
 
 func (o PublicKeyOutput) ToPublicKeyOutput() PublicKeyOutput {
@@ -155,6 +170,23 @@ func (o PublicKeyOutput) ToPublicKeyOutputWithContext(ctx context.Context) Publi
 	return o
 }
 
+type PublicKeyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PublicKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicKey)(nil))
+}
+
+func (o PublicKeyPtrOutput) ToPublicKeyPtrOutput() PublicKeyPtrOutput {
+	return o
+}
+
+func (o PublicKeyPtrOutput) ToPublicKeyPtrOutputWithContext(ctx context.Context) PublicKeyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(PublicKeyOutput{})
+	pulumi.RegisterOutputType(PublicKeyPtrOutput{})
 }

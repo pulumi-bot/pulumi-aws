@@ -148,16 +148,31 @@ type RecorderInput interface {
 	ToRecorderOutputWithContext(ctx context.Context) RecorderOutput
 }
 
-func (Recorder) ElementType() reflect.Type {
-	return reflect.TypeOf((*Recorder)(nil)).Elem()
+func (*Recorder) ElementType() reflect.Type {
+	return reflect.TypeOf((*Recorder)(nil))
 }
 
-func (i Recorder) ToRecorderOutput() RecorderOutput {
+func (i *Recorder) ToRecorderOutput() RecorderOutput {
 	return i.ToRecorderOutputWithContext(context.Background())
 }
 
-func (i Recorder) ToRecorderOutputWithContext(ctx context.Context) RecorderOutput {
+func (i *Recorder) ToRecorderOutputWithContext(ctx context.Context) RecorderOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RecorderOutput)
+}
+
+func (i *Recorder) ToRecorderPtrOutput() RecorderPtrOutput {
+	return i.ToRecorderPtrOutputWithContext(context.Background())
+}
+
+func (i *Recorder) ToRecorderPtrOutputWithContext(ctx context.Context) RecorderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecorderPtrOutput)
+}
+
+type RecorderPtrInput interface {
+	pulumi.Input
+
+	ToRecorderPtrOutput() RecorderPtrOutput
+	ToRecorderPtrOutputWithContext(ctx context.Context) RecorderPtrOutput
 }
 
 type RecorderOutput struct {
@@ -165,7 +180,7 @@ type RecorderOutput struct {
 }
 
 func (RecorderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RecorderOutput)(nil)).Elem()
+	return reflect.TypeOf((*Recorder)(nil))
 }
 
 func (o RecorderOutput) ToRecorderOutput() RecorderOutput {
@@ -176,6 +191,23 @@ func (o RecorderOutput) ToRecorderOutputWithContext(ctx context.Context) Recorde
 	return o
 }
 
+type RecorderPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RecorderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Recorder)(nil))
+}
+
+func (o RecorderPtrOutput) ToRecorderPtrOutput() RecorderPtrOutput {
+	return o
+}
+
+func (o RecorderPtrOutput) ToRecorderPtrOutputWithContext(ctx context.Context) RecorderPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RecorderOutput{})
+	pulumi.RegisterOutputType(RecorderPtrOutput{})
 }

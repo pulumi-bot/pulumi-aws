@@ -52,7 +52,7 @@ func (i ThingTypePropertiesArgs) ToThingTypePropertiesPtrOutput() ThingTypePrope
 }
 
 func (i ThingTypePropertiesArgs) ToThingTypePropertiesPtrOutputWithContext(ctx context.Context) ThingTypePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ThingTypePropertiesOutput).ToThingTypePropertiesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ThingTypePropertiesOutput).ToThingTypePropertiesPtrOutput()
 }
 
 // ThingTypePropertiesPtrInput is an input type that accepts ThingTypePropertiesArgs, ThingTypePropertiesPtr and ThingTypePropertiesPtrOutput values.
@@ -85,7 +85,7 @@ func (i *thingTypePropertiesPtrType) ToThingTypePropertiesPtrOutput() ThingTypeP
 }
 
 func (i *thingTypePropertiesPtrType) ToThingTypePropertiesPtrOutputWithContext(ctx context.Context) ThingTypePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ThingTypePropertiesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ThingTypePropertiesOutput).ToThingTypePropertiesPtrOutput()
 }
 
 type ThingTypePropertiesOutput struct{ *pulumi.OutputState }
@@ -210,7 +210,7 @@ func (i TopicRuleCloudwatchAlarmArgs) ToTopicRuleCloudwatchAlarmPtrOutput() Topi
 }
 
 func (i TopicRuleCloudwatchAlarmArgs) ToTopicRuleCloudwatchAlarmPtrOutputWithContext(ctx context.Context) TopicRuleCloudwatchAlarmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleCloudwatchAlarmOutput).ToTopicRuleCloudwatchAlarmPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleCloudwatchAlarmOutput).ToTopicRuleCloudwatchAlarmPtrOutput()
 }
 
 // TopicRuleCloudwatchAlarmPtrInput is an input type that accepts TopicRuleCloudwatchAlarmArgs, TopicRuleCloudwatchAlarmPtr and TopicRuleCloudwatchAlarmPtrOutput values.
@@ -243,7 +243,7 @@ func (i *topicRuleCloudwatchAlarmPtrType) ToTopicRuleCloudwatchAlarmPtrOutput() 
 }
 
 func (i *topicRuleCloudwatchAlarmPtrType) ToTopicRuleCloudwatchAlarmPtrOutputWithContext(ctx context.Context) TopicRuleCloudwatchAlarmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleCloudwatchAlarmPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleCloudwatchAlarmOutput).ToTopicRuleCloudwatchAlarmPtrOutput()
 }
 
 type TopicRuleCloudwatchAlarmOutput struct{ *pulumi.OutputState }
@@ -406,7 +406,7 @@ func (i TopicRuleCloudwatchMetricArgs) ToTopicRuleCloudwatchMetricPtrOutput() To
 }
 
 func (i TopicRuleCloudwatchMetricArgs) ToTopicRuleCloudwatchMetricPtrOutputWithContext(ctx context.Context) TopicRuleCloudwatchMetricPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleCloudwatchMetricOutput).ToTopicRuleCloudwatchMetricPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleCloudwatchMetricOutput).ToTopicRuleCloudwatchMetricPtrOutput()
 }
 
 // TopicRuleCloudwatchMetricPtrInput is an input type that accepts TopicRuleCloudwatchMetricArgs, TopicRuleCloudwatchMetricPtr and TopicRuleCloudwatchMetricPtrOutput values.
@@ -439,7 +439,7 @@ func (i *topicRuleCloudwatchMetricPtrType) ToTopicRuleCloudwatchMetricPtrOutput(
 }
 
 func (i *topicRuleCloudwatchMetricPtrType) ToTopicRuleCloudwatchMetricPtrOutputWithContext(ctx context.Context) TopicRuleCloudwatchMetricPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleCloudwatchMetricPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleCloudwatchMetricOutput).ToTopicRuleCloudwatchMetricPtrOutput()
 }
 
 type TopicRuleCloudwatchMetricOutput struct{ *pulumi.OutputState }
@@ -648,7 +648,7 @@ func (i TopicRuleDynamodbArgs) ToTopicRuleDynamodbPtrOutput() TopicRuleDynamodbP
 }
 
 func (i TopicRuleDynamodbArgs) ToTopicRuleDynamodbPtrOutputWithContext(ctx context.Context) TopicRuleDynamodbPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleDynamodbOutput).ToTopicRuleDynamodbPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleDynamodbOutput).ToTopicRuleDynamodbPtrOutput()
 }
 
 // TopicRuleDynamodbPtrInput is an input type that accepts TopicRuleDynamodbArgs, TopicRuleDynamodbPtr and TopicRuleDynamodbPtrOutput values.
@@ -681,7 +681,7 @@ func (i *topicRuleDynamodbPtrType) ToTopicRuleDynamodbPtrOutput() TopicRuleDynam
 }
 
 func (i *topicRuleDynamodbPtrType) ToTopicRuleDynamodbPtrOutputWithContext(ctx context.Context) TopicRuleDynamodbPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleDynamodbPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleDynamodbOutput).ToTopicRuleDynamodbPtrOutput()
 }
 
 type TopicRuleDynamodbOutput struct{ *pulumi.OutputState }
@@ -1020,7 +1020,7 @@ func (i TopicRuleDynamodbv2PutItemArgs) ToTopicRuleDynamodbv2PutItemPtrOutput() 
 }
 
 func (i TopicRuleDynamodbv2PutItemArgs) ToTopicRuleDynamodbv2PutItemPtrOutputWithContext(ctx context.Context) TopicRuleDynamodbv2PutItemPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleDynamodbv2PutItemOutput).ToTopicRuleDynamodbv2PutItemPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleDynamodbv2PutItemOutput).ToTopicRuleDynamodbv2PutItemPtrOutput()
 }
 
 // TopicRuleDynamodbv2PutItemPtrInput is an input type that accepts TopicRuleDynamodbv2PutItemArgs, TopicRuleDynamodbv2PutItemPtr and TopicRuleDynamodbv2PutItemPtrOutput values.
@@ -1053,7 +1053,7 @@ func (i *topicRuleDynamodbv2PutItemPtrType) ToTopicRuleDynamodbv2PutItemPtrOutpu
 }
 
 func (i *topicRuleDynamodbv2PutItemPtrType) ToTopicRuleDynamodbv2PutItemPtrOutputWithContext(ctx context.Context) TopicRuleDynamodbv2PutItemPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleDynamodbv2PutItemPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleDynamodbv2PutItemOutput).ToTopicRuleDynamodbv2PutItemPtrOutput()
 }
 
 type TopicRuleDynamodbv2PutItemOutput struct{ *pulumi.OutputState }
@@ -1167,7 +1167,7 @@ func (i TopicRuleElasticsearchArgs) ToTopicRuleElasticsearchPtrOutput() TopicRul
 }
 
 func (i TopicRuleElasticsearchArgs) ToTopicRuleElasticsearchPtrOutputWithContext(ctx context.Context) TopicRuleElasticsearchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleElasticsearchOutput).ToTopicRuleElasticsearchPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleElasticsearchOutput).ToTopicRuleElasticsearchPtrOutput()
 }
 
 // TopicRuleElasticsearchPtrInput is an input type that accepts TopicRuleElasticsearchArgs, TopicRuleElasticsearchPtr and TopicRuleElasticsearchPtrOutput values.
@@ -1200,7 +1200,7 @@ func (i *topicRuleElasticsearchPtrType) ToTopicRuleElasticsearchPtrOutput() Topi
 }
 
 func (i *topicRuleElasticsearchPtrType) ToTopicRuleElasticsearchPtrOutputWithContext(ctx context.Context) TopicRuleElasticsearchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleElasticsearchPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleElasticsearchOutput).ToTopicRuleElasticsearchPtrOutput()
 }
 
 type TopicRuleElasticsearchOutput struct{ *pulumi.OutputState }
@@ -1384,7 +1384,7 @@ func (i TopicRuleErrorActionArgs) ToTopicRuleErrorActionPtrOutput() TopicRuleErr
 }
 
 func (i TopicRuleErrorActionArgs) ToTopicRuleErrorActionPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionOutput).ToTopicRuleErrorActionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionOutput).ToTopicRuleErrorActionPtrOutput()
 }
 
 // TopicRuleErrorActionPtrInput is an input type that accepts TopicRuleErrorActionArgs, TopicRuleErrorActionPtr and TopicRuleErrorActionPtrOutput values.
@@ -1417,7 +1417,7 @@ func (i *topicRuleErrorActionPtrType) ToTopicRuleErrorActionPtrOutput() TopicRul
 }
 
 func (i *topicRuleErrorActionPtrType) ToTopicRuleErrorActionPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionOutput).ToTopicRuleErrorActionPtrOutput()
 }
 
 type TopicRuleErrorActionOutput struct{ *pulumi.OutputState }
@@ -1706,7 +1706,7 @@ func (i TopicRuleErrorActionCloudwatchAlarmArgs) ToTopicRuleErrorActionCloudwatc
 }
 
 func (i TopicRuleErrorActionCloudwatchAlarmArgs) ToTopicRuleErrorActionCloudwatchAlarmPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionCloudwatchAlarmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionCloudwatchAlarmOutput).ToTopicRuleErrorActionCloudwatchAlarmPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionCloudwatchAlarmOutput).ToTopicRuleErrorActionCloudwatchAlarmPtrOutput()
 }
 
 // TopicRuleErrorActionCloudwatchAlarmPtrInput is an input type that accepts TopicRuleErrorActionCloudwatchAlarmArgs, TopicRuleErrorActionCloudwatchAlarmPtr and TopicRuleErrorActionCloudwatchAlarmPtrOutput values.
@@ -1739,7 +1739,7 @@ func (i *topicRuleErrorActionCloudwatchAlarmPtrType) ToTopicRuleErrorActionCloud
 }
 
 func (i *topicRuleErrorActionCloudwatchAlarmPtrType) ToTopicRuleErrorActionCloudwatchAlarmPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionCloudwatchAlarmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionCloudwatchAlarmPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionCloudwatchAlarmOutput).ToTopicRuleErrorActionCloudwatchAlarmPtrOutput()
 }
 
 type TopicRuleErrorActionCloudwatchAlarmOutput struct{ *pulumi.OutputState }
@@ -1902,7 +1902,7 @@ func (i TopicRuleErrorActionCloudwatchMetricArgs) ToTopicRuleErrorActionCloudwat
 }
 
 func (i TopicRuleErrorActionCloudwatchMetricArgs) ToTopicRuleErrorActionCloudwatchMetricPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionCloudwatchMetricPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionCloudwatchMetricOutput).ToTopicRuleErrorActionCloudwatchMetricPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionCloudwatchMetricOutput).ToTopicRuleErrorActionCloudwatchMetricPtrOutput()
 }
 
 // TopicRuleErrorActionCloudwatchMetricPtrInput is an input type that accepts TopicRuleErrorActionCloudwatchMetricArgs, TopicRuleErrorActionCloudwatchMetricPtr and TopicRuleErrorActionCloudwatchMetricPtrOutput values.
@@ -1935,7 +1935,7 @@ func (i *topicRuleErrorActionCloudwatchMetricPtrType) ToTopicRuleErrorActionClou
 }
 
 func (i *topicRuleErrorActionCloudwatchMetricPtrType) ToTopicRuleErrorActionCloudwatchMetricPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionCloudwatchMetricPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionCloudwatchMetricPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionCloudwatchMetricOutput).ToTopicRuleErrorActionCloudwatchMetricPtrOutput()
 }
 
 type TopicRuleErrorActionCloudwatchMetricOutput struct{ *pulumi.OutputState }
@@ -2144,7 +2144,7 @@ func (i TopicRuleErrorActionDynamodbArgs) ToTopicRuleErrorActionDynamodbPtrOutpu
 }
 
 func (i TopicRuleErrorActionDynamodbArgs) ToTopicRuleErrorActionDynamodbPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionDynamodbPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionDynamodbOutput).ToTopicRuleErrorActionDynamodbPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionDynamodbOutput).ToTopicRuleErrorActionDynamodbPtrOutput()
 }
 
 // TopicRuleErrorActionDynamodbPtrInput is an input type that accepts TopicRuleErrorActionDynamodbArgs, TopicRuleErrorActionDynamodbPtr and TopicRuleErrorActionDynamodbPtrOutput values.
@@ -2177,7 +2177,7 @@ func (i *topicRuleErrorActionDynamodbPtrType) ToTopicRuleErrorActionDynamodbPtrO
 }
 
 func (i *topicRuleErrorActionDynamodbPtrType) ToTopicRuleErrorActionDynamodbPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionDynamodbPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionDynamodbPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionDynamodbOutput).ToTopicRuleErrorActionDynamodbPtrOutput()
 }
 
 type TopicRuleErrorActionDynamodbOutput struct{ *pulumi.OutputState }
@@ -2414,7 +2414,7 @@ func (i TopicRuleErrorActionDynamodbv2Args) ToTopicRuleErrorActionDynamodbv2PtrO
 }
 
 func (i TopicRuleErrorActionDynamodbv2Args) ToTopicRuleErrorActionDynamodbv2PtrOutputWithContext(ctx context.Context) TopicRuleErrorActionDynamodbv2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionDynamodbv2Output).ToTopicRuleErrorActionDynamodbv2PtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionDynamodbv2Output).ToTopicRuleErrorActionDynamodbv2PtrOutput()
 }
 
 // TopicRuleErrorActionDynamodbv2PtrInput is an input type that accepts TopicRuleErrorActionDynamodbv2Args, TopicRuleErrorActionDynamodbv2Ptr and TopicRuleErrorActionDynamodbv2PtrOutput values.
@@ -2447,7 +2447,7 @@ func (i *topicRuleErrorActionDynamodbv2PtrType) ToTopicRuleErrorActionDynamodbv2
 }
 
 func (i *topicRuleErrorActionDynamodbv2PtrType) ToTopicRuleErrorActionDynamodbv2PtrOutputWithContext(ctx context.Context) TopicRuleErrorActionDynamodbv2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionDynamodbv2PtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionDynamodbv2Output).ToTopicRuleErrorActionDynamodbv2PtrOutput()
 }
 
 type TopicRuleErrorActionDynamodbv2Output struct{ *pulumi.OutputState }
@@ -2560,7 +2560,7 @@ func (i TopicRuleErrorActionDynamodbv2PutItemArgs) ToTopicRuleErrorActionDynamod
 }
 
 func (i TopicRuleErrorActionDynamodbv2PutItemArgs) ToTopicRuleErrorActionDynamodbv2PutItemPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionDynamodbv2PutItemPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionDynamodbv2PutItemOutput).ToTopicRuleErrorActionDynamodbv2PutItemPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionDynamodbv2PutItemOutput).ToTopicRuleErrorActionDynamodbv2PutItemPtrOutput()
 }
 
 // TopicRuleErrorActionDynamodbv2PutItemPtrInput is an input type that accepts TopicRuleErrorActionDynamodbv2PutItemArgs, TopicRuleErrorActionDynamodbv2PutItemPtr and TopicRuleErrorActionDynamodbv2PutItemPtrOutput values.
@@ -2593,7 +2593,7 @@ func (i *topicRuleErrorActionDynamodbv2PutItemPtrType) ToTopicRuleErrorActionDyn
 }
 
 func (i *topicRuleErrorActionDynamodbv2PutItemPtrType) ToTopicRuleErrorActionDynamodbv2PutItemPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionDynamodbv2PutItemPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionDynamodbv2PutItemPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionDynamodbv2PutItemOutput).ToTopicRuleErrorActionDynamodbv2PutItemPtrOutput()
 }
 
 type TopicRuleErrorActionDynamodbv2PutItemOutput struct{ *pulumi.OutputState }
@@ -2707,7 +2707,7 @@ func (i TopicRuleErrorActionElasticsearchArgs) ToTopicRuleErrorActionElasticsear
 }
 
 func (i TopicRuleErrorActionElasticsearchArgs) ToTopicRuleErrorActionElasticsearchPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionElasticsearchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionElasticsearchOutput).ToTopicRuleErrorActionElasticsearchPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionElasticsearchOutput).ToTopicRuleErrorActionElasticsearchPtrOutput()
 }
 
 // TopicRuleErrorActionElasticsearchPtrInput is an input type that accepts TopicRuleErrorActionElasticsearchArgs, TopicRuleErrorActionElasticsearchPtr and TopicRuleErrorActionElasticsearchPtrOutput values.
@@ -2740,7 +2740,7 @@ func (i *topicRuleErrorActionElasticsearchPtrType) ToTopicRuleErrorActionElastic
 }
 
 func (i *topicRuleErrorActionElasticsearchPtrType) ToTopicRuleErrorActionElasticsearchPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionElasticsearchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionElasticsearchPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionElasticsearchOutput).ToTopicRuleErrorActionElasticsearchPtrOutput()
 }
 
 type TopicRuleErrorActionElasticsearchOutput struct{ *pulumi.OutputState }
@@ -2906,7 +2906,7 @@ func (i TopicRuleErrorActionFirehoseArgs) ToTopicRuleErrorActionFirehosePtrOutpu
 }
 
 func (i TopicRuleErrorActionFirehoseArgs) ToTopicRuleErrorActionFirehosePtrOutputWithContext(ctx context.Context) TopicRuleErrorActionFirehosePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionFirehoseOutput).ToTopicRuleErrorActionFirehosePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionFirehoseOutput).ToTopicRuleErrorActionFirehosePtrOutput()
 }
 
 // TopicRuleErrorActionFirehosePtrInput is an input type that accepts TopicRuleErrorActionFirehoseArgs, TopicRuleErrorActionFirehosePtr and TopicRuleErrorActionFirehosePtrOutput values.
@@ -2939,7 +2939,7 @@ func (i *topicRuleErrorActionFirehosePtrType) ToTopicRuleErrorActionFirehosePtrO
 }
 
 func (i *topicRuleErrorActionFirehosePtrType) ToTopicRuleErrorActionFirehosePtrOutputWithContext(ctx context.Context) TopicRuleErrorActionFirehosePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionFirehosePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionFirehoseOutput).ToTopicRuleErrorActionFirehosePtrOutput()
 }
 
 type TopicRuleErrorActionFirehoseOutput struct{ *pulumi.OutputState }
@@ -3071,7 +3071,7 @@ func (i TopicRuleErrorActionIotAnalyticsArgs) ToTopicRuleErrorActionIotAnalytics
 }
 
 func (i TopicRuleErrorActionIotAnalyticsArgs) ToTopicRuleErrorActionIotAnalyticsPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionIotAnalyticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionIotAnalyticsOutput).ToTopicRuleErrorActionIotAnalyticsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionIotAnalyticsOutput).ToTopicRuleErrorActionIotAnalyticsPtrOutput()
 }
 
 // TopicRuleErrorActionIotAnalyticsPtrInput is an input type that accepts TopicRuleErrorActionIotAnalyticsArgs, TopicRuleErrorActionIotAnalyticsPtr and TopicRuleErrorActionIotAnalyticsPtrOutput values.
@@ -3104,7 +3104,7 @@ func (i *topicRuleErrorActionIotAnalyticsPtrType) ToTopicRuleErrorActionIotAnaly
 }
 
 func (i *topicRuleErrorActionIotAnalyticsPtrType) ToTopicRuleErrorActionIotAnalyticsPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionIotAnalyticsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionIotAnalyticsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionIotAnalyticsOutput).ToTopicRuleErrorActionIotAnalyticsPtrOutput()
 }
 
 type TopicRuleErrorActionIotAnalyticsOutput struct{ *pulumi.OutputState }
@@ -3225,7 +3225,7 @@ func (i TopicRuleErrorActionIotEventsArgs) ToTopicRuleErrorActionIotEventsPtrOut
 }
 
 func (i TopicRuleErrorActionIotEventsArgs) ToTopicRuleErrorActionIotEventsPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionIotEventsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionIotEventsOutput).ToTopicRuleErrorActionIotEventsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionIotEventsOutput).ToTopicRuleErrorActionIotEventsPtrOutput()
 }
 
 // TopicRuleErrorActionIotEventsPtrInput is an input type that accepts TopicRuleErrorActionIotEventsArgs, TopicRuleErrorActionIotEventsPtr and TopicRuleErrorActionIotEventsPtrOutput values.
@@ -3258,7 +3258,7 @@ func (i *topicRuleErrorActionIotEventsPtrType) ToTopicRuleErrorActionIotEventsPt
 }
 
 func (i *topicRuleErrorActionIotEventsPtrType) ToTopicRuleErrorActionIotEventsPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionIotEventsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionIotEventsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionIotEventsOutput).ToTopicRuleErrorActionIotEventsPtrOutput()
 }
 
 type TopicRuleErrorActionIotEventsOutput struct{ *pulumi.OutputState }
@@ -3394,7 +3394,7 @@ func (i TopicRuleErrorActionKinesisArgs) ToTopicRuleErrorActionKinesisPtrOutput(
 }
 
 func (i TopicRuleErrorActionKinesisArgs) ToTopicRuleErrorActionKinesisPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionKinesisPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionKinesisOutput).ToTopicRuleErrorActionKinesisPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionKinesisOutput).ToTopicRuleErrorActionKinesisPtrOutput()
 }
 
 // TopicRuleErrorActionKinesisPtrInput is an input type that accepts TopicRuleErrorActionKinesisArgs, TopicRuleErrorActionKinesisPtr and TopicRuleErrorActionKinesisPtrOutput values.
@@ -3427,7 +3427,7 @@ func (i *topicRuleErrorActionKinesisPtrType) ToTopicRuleErrorActionKinesisPtrOut
 }
 
 func (i *topicRuleErrorActionKinesisPtrType) ToTopicRuleErrorActionKinesisPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionKinesisPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionKinesisPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionKinesisOutput).ToTopicRuleErrorActionKinesisPtrOutput()
 }
 
 type TopicRuleErrorActionKinesisOutput struct{ *pulumi.OutputState }
@@ -3555,7 +3555,7 @@ func (i TopicRuleErrorActionLambdaArgs) ToTopicRuleErrorActionLambdaPtrOutput() 
 }
 
 func (i TopicRuleErrorActionLambdaArgs) ToTopicRuleErrorActionLambdaPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionLambdaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionLambdaOutput).ToTopicRuleErrorActionLambdaPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionLambdaOutput).ToTopicRuleErrorActionLambdaPtrOutput()
 }
 
 // TopicRuleErrorActionLambdaPtrInput is an input type that accepts TopicRuleErrorActionLambdaArgs, TopicRuleErrorActionLambdaPtr and TopicRuleErrorActionLambdaPtrOutput values.
@@ -3588,7 +3588,7 @@ func (i *topicRuleErrorActionLambdaPtrType) ToTopicRuleErrorActionLambdaPtrOutpu
 }
 
 func (i *topicRuleErrorActionLambdaPtrType) ToTopicRuleErrorActionLambdaPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionLambdaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionLambdaPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionLambdaOutput).ToTopicRuleErrorActionLambdaPtrOutput()
 }
 
 type TopicRuleErrorActionLambdaOutput struct{ *pulumi.OutputState }
@@ -3694,7 +3694,7 @@ func (i TopicRuleErrorActionRepublishArgs) ToTopicRuleErrorActionRepublishPtrOut
 }
 
 func (i TopicRuleErrorActionRepublishArgs) ToTopicRuleErrorActionRepublishPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionRepublishPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionRepublishOutput).ToTopicRuleErrorActionRepublishPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionRepublishOutput).ToTopicRuleErrorActionRepublishPtrOutput()
 }
 
 // TopicRuleErrorActionRepublishPtrInput is an input type that accepts TopicRuleErrorActionRepublishArgs, TopicRuleErrorActionRepublishPtr and TopicRuleErrorActionRepublishPtrOutput values.
@@ -3727,7 +3727,7 @@ func (i *topicRuleErrorActionRepublishPtrType) ToTopicRuleErrorActionRepublishPt
 }
 
 func (i *topicRuleErrorActionRepublishPtrType) ToTopicRuleErrorActionRepublishPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionRepublishPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionRepublishPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionRepublishOutput).ToTopicRuleErrorActionRepublishPtrOutput()
 }
 
 type TopicRuleErrorActionRepublishOutput struct{ *pulumi.OutputState }
@@ -3863,7 +3863,7 @@ func (i TopicRuleErrorActionS3Args) ToTopicRuleErrorActionS3PtrOutput() TopicRul
 }
 
 func (i TopicRuleErrorActionS3Args) ToTopicRuleErrorActionS3PtrOutputWithContext(ctx context.Context) TopicRuleErrorActionS3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionS3Output).ToTopicRuleErrorActionS3PtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionS3Output).ToTopicRuleErrorActionS3PtrOutput()
 }
 
 // TopicRuleErrorActionS3PtrInput is an input type that accepts TopicRuleErrorActionS3Args, TopicRuleErrorActionS3Ptr and TopicRuleErrorActionS3PtrOutput values.
@@ -3896,7 +3896,7 @@ func (i *topicRuleErrorActionS3PtrType) ToTopicRuleErrorActionS3PtrOutput() Topi
 }
 
 func (i *topicRuleErrorActionS3PtrType) ToTopicRuleErrorActionS3PtrOutputWithContext(ctx context.Context) TopicRuleErrorActionS3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionS3PtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionS3Output).ToTopicRuleErrorActionS3PtrOutput()
 }
 
 type TopicRuleErrorActionS3Output struct{ *pulumi.OutputState }
@@ -4032,7 +4032,7 @@ func (i TopicRuleErrorActionSnsArgs) ToTopicRuleErrorActionSnsPtrOutput() TopicR
 }
 
 func (i TopicRuleErrorActionSnsArgs) ToTopicRuleErrorActionSnsPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionSnsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionSnsOutput).ToTopicRuleErrorActionSnsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionSnsOutput).ToTopicRuleErrorActionSnsPtrOutput()
 }
 
 // TopicRuleErrorActionSnsPtrInput is an input type that accepts TopicRuleErrorActionSnsArgs, TopicRuleErrorActionSnsPtr and TopicRuleErrorActionSnsPtrOutput values.
@@ -4065,7 +4065,7 @@ func (i *topicRuleErrorActionSnsPtrType) ToTopicRuleErrorActionSnsPtrOutput() To
 }
 
 func (i *topicRuleErrorActionSnsPtrType) ToTopicRuleErrorActionSnsPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionSnsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionSnsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionSnsOutput).ToTopicRuleErrorActionSnsPtrOutput()
 }
 
 type TopicRuleErrorActionSnsOutput struct{ *pulumi.OutputState }
@@ -4201,7 +4201,7 @@ func (i TopicRuleErrorActionSqsArgs) ToTopicRuleErrorActionSqsPtrOutput() TopicR
 }
 
 func (i TopicRuleErrorActionSqsArgs) ToTopicRuleErrorActionSqsPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionSqsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionSqsOutput).ToTopicRuleErrorActionSqsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionSqsOutput).ToTopicRuleErrorActionSqsPtrOutput()
 }
 
 // TopicRuleErrorActionSqsPtrInput is an input type that accepts TopicRuleErrorActionSqsArgs, TopicRuleErrorActionSqsPtr and TopicRuleErrorActionSqsPtrOutput values.
@@ -4234,7 +4234,7 @@ func (i *topicRuleErrorActionSqsPtrType) ToTopicRuleErrorActionSqsPtrOutput() To
 }
 
 func (i *topicRuleErrorActionSqsPtrType) ToTopicRuleErrorActionSqsPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionSqsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionSqsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionSqsOutput).ToTopicRuleErrorActionSqsPtrOutput()
 }
 
 type TopicRuleErrorActionSqsOutput struct{ *pulumi.OutputState }
@@ -4370,7 +4370,7 @@ func (i TopicRuleErrorActionStepFunctionsArgs) ToTopicRuleErrorActionStepFunctio
 }
 
 func (i TopicRuleErrorActionStepFunctionsArgs) ToTopicRuleErrorActionStepFunctionsPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionStepFunctionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionStepFunctionsOutput).ToTopicRuleErrorActionStepFunctionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionStepFunctionsOutput).ToTopicRuleErrorActionStepFunctionsPtrOutput()
 }
 
 // TopicRuleErrorActionStepFunctionsPtrInput is an input type that accepts TopicRuleErrorActionStepFunctionsArgs, TopicRuleErrorActionStepFunctionsPtr and TopicRuleErrorActionStepFunctionsPtrOutput values.
@@ -4403,7 +4403,7 @@ func (i *topicRuleErrorActionStepFunctionsPtrType) ToTopicRuleErrorActionStepFun
 }
 
 func (i *topicRuleErrorActionStepFunctionsPtrType) ToTopicRuleErrorActionStepFunctionsPtrOutputWithContext(ctx context.Context) TopicRuleErrorActionStepFunctionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionStepFunctionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleErrorActionStepFunctionsOutput).ToTopicRuleErrorActionStepFunctionsPtrOutput()
 }
 
 type TopicRuleErrorActionStepFunctionsOutput struct{ *pulumi.OutputState }
@@ -4539,7 +4539,7 @@ func (i TopicRuleFirehoseArgs) ToTopicRuleFirehosePtrOutput() TopicRuleFirehoseP
 }
 
 func (i TopicRuleFirehoseArgs) ToTopicRuleFirehosePtrOutputWithContext(ctx context.Context) TopicRuleFirehosePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleFirehoseOutput).ToTopicRuleFirehosePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleFirehoseOutput).ToTopicRuleFirehosePtrOutput()
 }
 
 // TopicRuleFirehosePtrInput is an input type that accepts TopicRuleFirehoseArgs, TopicRuleFirehosePtr and TopicRuleFirehosePtrOutput values.
@@ -4572,7 +4572,7 @@ func (i *topicRuleFirehosePtrType) ToTopicRuleFirehosePtrOutput() TopicRuleFireh
 }
 
 func (i *topicRuleFirehosePtrType) ToTopicRuleFirehosePtrOutputWithContext(ctx context.Context) TopicRuleFirehosePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleFirehosePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleFirehoseOutput).ToTopicRuleFirehosePtrOutput()
 }
 
 type TopicRuleFirehoseOutput struct{ *pulumi.OutputState }
@@ -4929,7 +4929,7 @@ func (i TopicRuleKinesisArgs) ToTopicRuleKinesisPtrOutput() TopicRuleKinesisPtrO
 }
 
 func (i TopicRuleKinesisArgs) ToTopicRuleKinesisPtrOutputWithContext(ctx context.Context) TopicRuleKinesisPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleKinesisOutput).ToTopicRuleKinesisPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleKinesisOutput).ToTopicRuleKinesisPtrOutput()
 }
 
 // TopicRuleKinesisPtrInput is an input type that accepts TopicRuleKinesisArgs, TopicRuleKinesisPtr and TopicRuleKinesisPtrOutput values.
@@ -4962,7 +4962,7 @@ func (i *topicRuleKinesisPtrType) ToTopicRuleKinesisPtrOutput() TopicRuleKinesis
 }
 
 func (i *topicRuleKinesisPtrType) ToTopicRuleKinesisPtrOutputWithContext(ctx context.Context) TopicRuleKinesisPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleKinesisPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleKinesisOutput).ToTopicRuleKinesisPtrOutput()
 }
 
 type TopicRuleKinesisOutput struct{ *pulumi.OutputState }
@@ -5090,7 +5090,7 @@ func (i TopicRuleLambdaArgs) ToTopicRuleLambdaPtrOutput() TopicRuleLambdaPtrOutp
 }
 
 func (i TopicRuleLambdaArgs) ToTopicRuleLambdaPtrOutputWithContext(ctx context.Context) TopicRuleLambdaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleLambdaOutput).ToTopicRuleLambdaPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleLambdaOutput).ToTopicRuleLambdaPtrOutput()
 }
 
 // TopicRuleLambdaPtrInput is an input type that accepts TopicRuleLambdaArgs, TopicRuleLambdaPtr and TopicRuleLambdaPtrOutput values.
@@ -5123,7 +5123,7 @@ func (i *topicRuleLambdaPtrType) ToTopicRuleLambdaPtrOutput() TopicRuleLambdaPtr
 }
 
 func (i *topicRuleLambdaPtrType) ToTopicRuleLambdaPtrOutputWithContext(ctx context.Context) TopicRuleLambdaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleLambdaPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleLambdaOutput).ToTopicRuleLambdaPtrOutput()
 }
 
 type TopicRuleLambdaOutput struct{ *pulumi.OutputState }
@@ -5229,7 +5229,7 @@ func (i TopicRuleRepublishArgs) ToTopicRuleRepublishPtrOutput() TopicRuleRepubli
 }
 
 func (i TopicRuleRepublishArgs) ToTopicRuleRepublishPtrOutputWithContext(ctx context.Context) TopicRuleRepublishPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleRepublishOutput).ToTopicRuleRepublishPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleRepublishOutput).ToTopicRuleRepublishPtrOutput()
 }
 
 // TopicRuleRepublishPtrInput is an input type that accepts TopicRuleRepublishArgs, TopicRuleRepublishPtr and TopicRuleRepublishPtrOutput values.
@@ -5262,7 +5262,7 @@ func (i *topicRuleRepublishPtrType) ToTopicRuleRepublishPtrOutput() TopicRuleRep
 }
 
 func (i *topicRuleRepublishPtrType) ToTopicRuleRepublishPtrOutputWithContext(ctx context.Context) TopicRuleRepublishPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleRepublishPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleRepublishOutput).ToTopicRuleRepublishPtrOutput()
 }
 
 type TopicRuleRepublishOutput struct{ *pulumi.OutputState }
@@ -5398,7 +5398,7 @@ func (i TopicRuleS3Args) ToTopicRuleS3PtrOutput() TopicRuleS3PtrOutput {
 }
 
 func (i TopicRuleS3Args) ToTopicRuleS3PtrOutputWithContext(ctx context.Context) TopicRuleS3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleS3Output).ToTopicRuleS3PtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleS3Output).ToTopicRuleS3PtrOutput()
 }
 
 // TopicRuleS3PtrInput is an input type that accepts TopicRuleS3Args, TopicRuleS3Ptr and TopicRuleS3PtrOutput values.
@@ -5431,7 +5431,7 @@ func (i *topicRuleS3PtrType) ToTopicRuleS3PtrOutput() TopicRuleS3PtrOutput {
 }
 
 func (i *topicRuleS3PtrType) ToTopicRuleS3PtrOutputWithContext(ctx context.Context) TopicRuleS3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleS3PtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleS3Output).ToTopicRuleS3PtrOutput()
 }
 
 type TopicRuleS3Output struct{ *pulumi.OutputState }
@@ -5567,7 +5567,7 @@ func (i TopicRuleSnsArgs) ToTopicRuleSnsPtrOutput() TopicRuleSnsPtrOutput {
 }
 
 func (i TopicRuleSnsArgs) ToTopicRuleSnsPtrOutputWithContext(ctx context.Context) TopicRuleSnsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleSnsOutput).ToTopicRuleSnsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleSnsOutput).ToTopicRuleSnsPtrOutput()
 }
 
 // TopicRuleSnsPtrInput is an input type that accepts TopicRuleSnsArgs, TopicRuleSnsPtr and TopicRuleSnsPtrOutput values.
@@ -5600,7 +5600,7 @@ func (i *topicRuleSnsPtrType) ToTopicRuleSnsPtrOutput() TopicRuleSnsPtrOutput {
 }
 
 func (i *topicRuleSnsPtrType) ToTopicRuleSnsPtrOutputWithContext(ctx context.Context) TopicRuleSnsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleSnsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleSnsOutput).ToTopicRuleSnsPtrOutput()
 }
 
 type TopicRuleSnsOutput struct{ *pulumi.OutputState }
@@ -5736,7 +5736,7 @@ func (i TopicRuleSqsArgs) ToTopicRuleSqsPtrOutput() TopicRuleSqsPtrOutput {
 }
 
 func (i TopicRuleSqsArgs) ToTopicRuleSqsPtrOutputWithContext(ctx context.Context) TopicRuleSqsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleSqsOutput).ToTopicRuleSqsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleSqsOutput).ToTopicRuleSqsPtrOutput()
 }
 
 // TopicRuleSqsPtrInput is an input type that accepts TopicRuleSqsArgs, TopicRuleSqsPtr and TopicRuleSqsPtrOutput values.
@@ -5769,7 +5769,7 @@ func (i *topicRuleSqsPtrType) ToTopicRuleSqsPtrOutput() TopicRuleSqsPtrOutput {
 }
 
 func (i *topicRuleSqsPtrType) ToTopicRuleSqsPtrOutputWithContext(ctx context.Context) TopicRuleSqsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleSqsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TopicRuleSqsOutput).ToTopicRuleSqsPtrOutput()
 }
 
 type TopicRuleSqsOutput struct{ *pulumi.OutputState }

@@ -140,16 +140,31 @@ type TopicPolicyInput interface {
 	ToTopicPolicyOutputWithContext(ctx context.Context) TopicPolicyOutput
 }
 
-func (TopicPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicPolicy)(nil)).Elem()
+func (*TopicPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicPolicy)(nil))
 }
 
-func (i TopicPolicy) ToTopicPolicyOutput() TopicPolicyOutput {
+func (i *TopicPolicy) ToTopicPolicyOutput() TopicPolicyOutput {
 	return i.ToTopicPolicyOutputWithContext(context.Background())
 }
 
-func (i TopicPolicy) ToTopicPolicyOutputWithContext(ctx context.Context) TopicPolicyOutput {
+func (i *TopicPolicy) ToTopicPolicyOutputWithContext(ctx context.Context) TopicPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TopicPolicyOutput)
+}
+
+func (i *TopicPolicy) ToTopicPolicyPtrOutput() TopicPolicyPtrOutput {
+	return i.ToTopicPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *TopicPolicy) ToTopicPolicyPtrOutputWithContext(ctx context.Context) TopicPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicPolicyPtrOutput)
+}
+
+type TopicPolicyPtrInput interface {
+	pulumi.Input
+
+	ToTopicPolicyPtrOutput() TopicPolicyPtrOutput
+	ToTopicPolicyPtrOutputWithContext(ctx context.Context) TopicPolicyPtrOutput
 }
 
 type TopicPolicyOutput struct {
@@ -157,7 +172,7 @@ type TopicPolicyOutput struct {
 }
 
 func (TopicPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*TopicPolicy)(nil))
 }
 
 func (o TopicPolicyOutput) ToTopicPolicyOutput() TopicPolicyOutput {
@@ -168,6 +183,23 @@ func (o TopicPolicyOutput) ToTopicPolicyOutputWithContext(ctx context.Context) T
 	return o
 }
 
+type TopicPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TopicPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicPolicy)(nil))
+}
+
+func (o TopicPolicyPtrOutput) ToTopicPolicyPtrOutput() TopicPolicyPtrOutput {
+	return o
+}
+
+func (o TopicPolicyPtrOutput) ToTopicPolicyPtrOutputWithContext(ctx context.Context) TopicPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(TopicPolicyOutput{})
+	pulumi.RegisterOutputType(TopicPolicyPtrOutput{})
 }

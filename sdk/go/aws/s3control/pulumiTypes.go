@@ -185,7 +185,7 @@ func (i BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadArgs) ToBu
 }
 
 func (i BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadArgs) ToBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadPtrOutputWithContext(ctx context.Context) BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadOutput).ToBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadOutput).ToBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadPtrOutput()
 }
 
 // BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadPtrInput is an input type that accepts BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadArgs, BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadPtr and BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadPtrOutput values.
@@ -218,7 +218,7 @@ func (i *bucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadPtrType) 
 }
 
 func (i *bucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadPtrType) ToBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadPtrOutputWithContext(ctx context.Context) BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadOutput).ToBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadPtrOutput()
 }
 
 type BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadOutput struct{ *pulumi.OutputState }
@@ -328,7 +328,7 @@ func (i BucketLifecycleConfigurationRuleExpirationArgs) ToBucketLifecycleConfigu
 }
 
 func (i BucketLifecycleConfigurationRuleExpirationArgs) ToBucketLifecycleConfigurationRuleExpirationPtrOutputWithContext(ctx context.Context) BucketLifecycleConfigurationRuleExpirationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleConfigurationRuleExpirationOutput).ToBucketLifecycleConfigurationRuleExpirationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleConfigurationRuleExpirationOutput).ToBucketLifecycleConfigurationRuleExpirationPtrOutput()
 }
 
 // BucketLifecycleConfigurationRuleExpirationPtrInput is an input type that accepts BucketLifecycleConfigurationRuleExpirationArgs, BucketLifecycleConfigurationRuleExpirationPtr and BucketLifecycleConfigurationRuleExpirationPtrOutput values.
@@ -361,7 +361,7 @@ func (i *bucketLifecycleConfigurationRuleExpirationPtrType) ToBucketLifecycleCon
 }
 
 func (i *bucketLifecycleConfigurationRuleExpirationPtrType) ToBucketLifecycleConfigurationRuleExpirationPtrOutputWithContext(ctx context.Context) BucketLifecycleConfigurationRuleExpirationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleConfigurationRuleExpirationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleConfigurationRuleExpirationOutput).ToBucketLifecycleConfigurationRuleExpirationPtrOutput()
 }
 
 type BucketLifecycleConfigurationRuleExpirationOutput struct{ *pulumi.OutputState }
@@ -495,7 +495,7 @@ func (i BucketLifecycleConfigurationRuleFilterArgs) ToBucketLifecycleConfigurati
 }
 
 func (i BucketLifecycleConfigurationRuleFilterArgs) ToBucketLifecycleConfigurationRuleFilterPtrOutputWithContext(ctx context.Context) BucketLifecycleConfigurationRuleFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleConfigurationRuleFilterOutput).ToBucketLifecycleConfigurationRuleFilterPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleConfigurationRuleFilterOutput).ToBucketLifecycleConfigurationRuleFilterPtrOutput()
 }
 
 // BucketLifecycleConfigurationRuleFilterPtrInput is an input type that accepts BucketLifecycleConfigurationRuleFilterArgs, BucketLifecycleConfigurationRuleFilterPtr and BucketLifecycleConfigurationRuleFilterPtrOutput values.
@@ -528,7 +528,7 @@ func (i *bucketLifecycleConfigurationRuleFilterPtrType) ToBucketLifecycleConfigu
 }
 
 func (i *bucketLifecycleConfigurationRuleFilterPtrType) ToBucketLifecycleConfigurationRuleFilterPtrOutputWithContext(ctx context.Context) BucketLifecycleConfigurationRuleFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleConfigurationRuleFilterPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleConfigurationRuleFilterOutput).ToBucketLifecycleConfigurationRuleFilterPtrOutput()
 }
 
 type BucketLifecycleConfigurationRuleFilterOutput struct{ *pulumi.OutputState }

@@ -474,16 +474,31 @@ type EventTargetInput interface {
 	ToEventTargetOutputWithContext(ctx context.Context) EventTargetOutput
 }
 
-func (EventTarget) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventTarget)(nil)).Elem()
+func (*EventTarget) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventTarget)(nil))
 }
 
-func (i EventTarget) ToEventTargetOutput() EventTargetOutput {
+func (i *EventTarget) ToEventTargetOutput() EventTargetOutput {
 	return i.ToEventTargetOutputWithContext(context.Background())
 }
 
-func (i EventTarget) ToEventTargetOutputWithContext(ctx context.Context) EventTargetOutput {
+func (i *EventTarget) ToEventTargetOutputWithContext(ctx context.Context) EventTargetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EventTargetOutput)
+}
+
+func (i *EventTarget) ToEventTargetPtrOutput() EventTargetPtrOutput {
+	return i.ToEventTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *EventTarget) ToEventTargetPtrOutputWithContext(ctx context.Context) EventTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventTargetPtrOutput)
+}
+
+type EventTargetPtrInput interface {
+	pulumi.Input
+
+	ToEventTargetPtrOutput() EventTargetPtrOutput
+	ToEventTargetPtrOutputWithContext(ctx context.Context) EventTargetPtrOutput
 }
 
 type EventTargetOutput struct {
@@ -491,7 +506,7 @@ type EventTargetOutput struct {
 }
 
 func (EventTargetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventTargetOutput)(nil)).Elem()
+	return reflect.TypeOf((*EventTarget)(nil))
 }
 
 func (o EventTargetOutput) ToEventTargetOutput() EventTargetOutput {
@@ -502,6 +517,23 @@ func (o EventTargetOutput) ToEventTargetOutputWithContext(ctx context.Context) E
 	return o
 }
 
+type EventTargetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventTarget)(nil))
+}
+
+func (o EventTargetPtrOutput) ToEventTargetPtrOutput() EventTargetPtrOutput {
+	return o
+}
+
+func (o EventTargetPtrOutput) ToEventTargetPtrOutputWithContext(ctx context.Context) EventTargetPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(EventTargetOutput{})
+	pulumi.RegisterOutputType(EventTargetPtrOutput{})
 }

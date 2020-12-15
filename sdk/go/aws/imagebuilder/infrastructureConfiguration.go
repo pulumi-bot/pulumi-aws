@@ -222,16 +222,31 @@ type InfrastructureConfigurationInput interface {
 	ToInfrastructureConfigurationOutputWithContext(ctx context.Context) InfrastructureConfigurationOutput
 }
 
-func (InfrastructureConfiguration) ElementType() reflect.Type {
-	return reflect.TypeOf((*InfrastructureConfiguration)(nil)).Elem()
+func (*InfrastructureConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureConfiguration)(nil))
 }
 
-func (i InfrastructureConfiguration) ToInfrastructureConfigurationOutput() InfrastructureConfigurationOutput {
+func (i *InfrastructureConfiguration) ToInfrastructureConfigurationOutput() InfrastructureConfigurationOutput {
 	return i.ToInfrastructureConfigurationOutputWithContext(context.Background())
 }
 
-func (i InfrastructureConfiguration) ToInfrastructureConfigurationOutputWithContext(ctx context.Context) InfrastructureConfigurationOutput {
+func (i *InfrastructureConfiguration) ToInfrastructureConfigurationOutputWithContext(ctx context.Context) InfrastructureConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureConfigurationOutput)
+}
+
+func (i *InfrastructureConfiguration) ToInfrastructureConfigurationPtrOutput() InfrastructureConfigurationPtrOutput {
+	return i.ToInfrastructureConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *InfrastructureConfiguration) ToInfrastructureConfigurationPtrOutputWithContext(ctx context.Context) InfrastructureConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureConfigurationPtrOutput)
+}
+
+type InfrastructureConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToInfrastructureConfigurationPtrOutput() InfrastructureConfigurationPtrOutput
+	ToInfrastructureConfigurationPtrOutputWithContext(ctx context.Context) InfrastructureConfigurationPtrOutput
 }
 
 type InfrastructureConfigurationOutput struct {
@@ -239,7 +254,7 @@ type InfrastructureConfigurationOutput struct {
 }
 
 func (InfrastructureConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InfrastructureConfigurationOutput)(nil)).Elem()
+	return reflect.TypeOf((*InfrastructureConfiguration)(nil))
 }
 
 func (o InfrastructureConfigurationOutput) ToInfrastructureConfigurationOutput() InfrastructureConfigurationOutput {
@@ -250,6 +265,23 @@ func (o InfrastructureConfigurationOutput) ToInfrastructureConfigurationOutputWi
 	return o
 }
 
+type InfrastructureConfigurationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (InfrastructureConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureConfiguration)(nil))
+}
+
+func (o InfrastructureConfigurationPtrOutput) ToInfrastructureConfigurationPtrOutput() InfrastructureConfigurationPtrOutput {
+	return o
+}
+
+func (o InfrastructureConfigurationPtrOutput) ToInfrastructureConfigurationPtrOutputWithContext(ctx context.Context) InfrastructureConfigurationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(InfrastructureConfigurationOutput{})
+	pulumi.RegisterOutputType(InfrastructureConfigurationPtrOutput{})
 }

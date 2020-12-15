@@ -202,16 +202,31 @@ type JobDefinitionInput interface {
 	ToJobDefinitionOutputWithContext(ctx context.Context) JobDefinitionOutput
 }
 
-func (JobDefinition) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobDefinition)(nil)).Elem()
+func (*JobDefinition) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobDefinition)(nil))
 }
 
-func (i JobDefinition) ToJobDefinitionOutput() JobDefinitionOutput {
+func (i *JobDefinition) ToJobDefinitionOutput() JobDefinitionOutput {
 	return i.ToJobDefinitionOutputWithContext(context.Background())
 }
 
-func (i JobDefinition) ToJobDefinitionOutputWithContext(ctx context.Context) JobDefinitionOutput {
+func (i *JobDefinition) ToJobDefinitionOutputWithContext(ctx context.Context) JobDefinitionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobDefinitionOutput)
+}
+
+func (i *JobDefinition) ToJobDefinitionPtrOutput() JobDefinitionPtrOutput {
+	return i.ToJobDefinitionPtrOutputWithContext(context.Background())
+}
+
+func (i *JobDefinition) ToJobDefinitionPtrOutputWithContext(ctx context.Context) JobDefinitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobDefinitionPtrOutput)
+}
+
+type JobDefinitionPtrInput interface {
+	pulumi.Input
+
+	ToJobDefinitionPtrOutput() JobDefinitionPtrOutput
+	ToJobDefinitionPtrOutputWithContext(ctx context.Context) JobDefinitionPtrOutput
 }
 
 type JobDefinitionOutput struct {
@@ -219,7 +234,7 @@ type JobDefinitionOutput struct {
 }
 
 func (JobDefinitionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobDefinitionOutput)(nil)).Elem()
+	return reflect.TypeOf((*JobDefinition)(nil))
 }
 
 func (o JobDefinitionOutput) ToJobDefinitionOutput() JobDefinitionOutput {
@@ -230,6 +245,23 @@ func (o JobDefinitionOutput) ToJobDefinitionOutputWithContext(ctx context.Contex
 	return o
 }
 
+type JobDefinitionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (JobDefinitionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobDefinition)(nil))
+}
+
+func (o JobDefinitionPtrOutput) ToJobDefinitionPtrOutput() JobDefinitionPtrOutput {
+	return o
+}
+
+func (o JobDefinitionPtrOutput) ToJobDefinitionPtrOutputWithContext(ctx context.Context) JobDefinitionPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(JobDefinitionOutput{})
+	pulumi.RegisterOutputType(JobDefinitionPtrOutput{})
 }

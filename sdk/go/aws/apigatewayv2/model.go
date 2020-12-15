@@ -168,16 +168,31 @@ type ModelInput interface {
 	ToModelOutputWithContext(ctx context.Context) ModelOutput
 }
 
-func (Model) ElementType() reflect.Type {
-	return reflect.TypeOf((*Model)(nil)).Elem()
+func (*Model) ElementType() reflect.Type {
+	return reflect.TypeOf((*Model)(nil))
 }
 
-func (i Model) ToModelOutput() ModelOutput {
+func (i *Model) ToModelOutput() ModelOutput {
 	return i.ToModelOutputWithContext(context.Background())
 }
 
-func (i Model) ToModelOutputWithContext(ctx context.Context) ModelOutput {
+func (i *Model) ToModelOutputWithContext(ctx context.Context) ModelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ModelOutput)
+}
+
+func (i *Model) ToModelPtrOutput() ModelPtrOutput {
+	return i.ToModelPtrOutputWithContext(context.Background())
+}
+
+func (i *Model) ToModelPtrOutputWithContext(ctx context.Context) ModelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelPtrOutput)
+}
+
+type ModelPtrInput interface {
+	pulumi.Input
+
+	ToModelPtrOutput() ModelPtrOutput
+	ToModelPtrOutputWithContext(ctx context.Context) ModelPtrOutput
 }
 
 type ModelOutput struct {
@@ -185,7 +200,7 @@ type ModelOutput struct {
 }
 
 func (ModelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ModelOutput)(nil)).Elem()
+	return reflect.TypeOf((*Model)(nil))
 }
 
 func (o ModelOutput) ToModelOutput() ModelOutput {
@@ -196,6 +211,23 @@ func (o ModelOutput) ToModelOutputWithContext(ctx context.Context) ModelOutput {
 	return o
 }
 
+type ModelPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ModelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Model)(nil))
+}
+
+func (o ModelPtrOutput) ToModelPtrOutput() ModelPtrOutput {
+	return o
+}
+
+func (o ModelPtrOutput) ToModelPtrOutputWithContext(ctx context.Context) ModelPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ModelOutput{})
+	pulumi.RegisterOutputType(ModelPtrOutput{})
 }

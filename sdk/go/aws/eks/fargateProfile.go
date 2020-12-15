@@ -211,16 +211,31 @@ type FargateProfileInput interface {
 	ToFargateProfileOutputWithContext(ctx context.Context) FargateProfileOutput
 }
 
-func (FargateProfile) ElementType() reflect.Type {
-	return reflect.TypeOf((*FargateProfile)(nil)).Elem()
+func (*FargateProfile) ElementType() reflect.Type {
+	return reflect.TypeOf((*FargateProfile)(nil))
 }
 
-func (i FargateProfile) ToFargateProfileOutput() FargateProfileOutput {
+func (i *FargateProfile) ToFargateProfileOutput() FargateProfileOutput {
 	return i.ToFargateProfileOutputWithContext(context.Background())
 }
 
-func (i FargateProfile) ToFargateProfileOutputWithContext(ctx context.Context) FargateProfileOutput {
+func (i *FargateProfile) ToFargateProfileOutputWithContext(ctx context.Context) FargateProfileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FargateProfileOutput)
+}
+
+func (i *FargateProfile) ToFargateProfilePtrOutput() FargateProfilePtrOutput {
+	return i.ToFargateProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *FargateProfile) ToFargateProfilePtrOutputWithContext(ctx context.Context) FargateProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FargateProfilePtrOutput)
+}
+
+type FargateProfilePtrInput interface {
+	pulumi.Input
+
+	ToFargateProfilePtrOutput() FargateProfilePtrOutput
+	ToFargateProfilePtrOutputWithContext(ctx context.Context) FargateProfilePtrOutput
 }
 
 type FargateProfileOutput struct {
@@ -228,7 +243,7 @@ type FargateProfileOutput struct {
 }
 
 func (FargateProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FargateProfileOutput)(nil)).Elem()
+	return reflect.TypeOf((*FargateProfile)(nil))
 }
 
 func (o FargateProfileOutput) ToFargateProfileOutput() FargateProfileOutput {
@@ -239,6 +254,23 @@ func (o FargateProfileOutput) ToFargateProfileOutputWithContext(ctx context.Cont
 	return o
 }
 
+type FargateProfilePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FargateProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FargateProfile)(nil))
+}
+
+func (o FargateProfilePtrOutput) ToFargateProfilePtrOutput() FargateProfilePtrOutput {
+	return o
+}
+
+func (o FargateProfilePtrOutput) ToFargateProfilePtrOutputWithContext(ctx context.Context) FargateProfilePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(FargateProfileOutput{})
+	pulumi.RegisterOutputType(FargateProfilePtrOutput{})
 }

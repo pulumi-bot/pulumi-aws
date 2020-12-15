@@ -177,16 +177,31 @@ type LifecyclePolicyInput interface {
 	ToLifecyclePolicyOutputWithContext(ctx context.Context) LifecyclePolicyOutput
 }
 
-func (LifecyclePolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*LifecyclePolicy)(nil)).Elem()
+func (*LifecyclePolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicy)(nil))
 }
 
-func (i LifecyclePolicy) ToLifecyclePolicyOutput() LifecyclePolicyOutput {
+func (i *LifecyclePolicy) ToLifecyclePolicyOutput() LifecyclePolicyOutput {
 	return i.ToLifecyclePolicyOutputWithContext(context.Background())
 }
 
-func (i LifecyclePolicy) ToLifecyclePolicyOutputWithContext(ctx context.Context) LifecyclePolicyOutput {
+func (i *LifecyclePolicy) ToLifecyclePolicyOutputWithContext(ctx context.Context) LifecyclePolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LifecyclePolicyOutput)
+}
+
+func (i *LifecyclePolicy) ToLifecyclePolicyPtrOutput() LifecyclePolicyPtrOutput {
+	return i.ToLifecyclePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *LifecyclePolicy) ToLifecyclePolicyPtrOutputWithContext(ctx context.Context) LifecyclePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifecyclePolicyPtrOutput)
+}
+
+type LifecyclePolicyPtrInput interface {
+	pulumi.Input
+
+	ToLifecyclePolicyPtrOutput() LifecyclePolicyPtrOutput
+	ToLifecyclePolicyPtrOutputWithContext(ctx context.Context) LifecyclePolicyPtrOutput
 }
 
 type LifecyclePolicyOutput struct {
@@ -194,7 +209,7 @@ type LifecyclePolicyOutput struct {
 }
 
 func (LifecyclePolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LifecyclePolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*LifecyclePolicy)(nil))
 }
 
 func (o LifecyclePolicyOutput) ToLifecyclePolicyOutput() LifecyclePolicyOutput {
@@ -205,6 +220,23 @@ func (o LifecyclePolicyOutput) ToLifecyclePolicyOutputWithContext(ctx context.Co
 	return o
 }
 
+type LifecyclePolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LifecyclePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LifecyclePolicy)(nil))
+}
+
+func (o LifecyclePolicyPtrOutput) ToLifecyclePolicyPtrOutput() LifecyclePolicyPtrOutput {
+	return o
+}
+
+func (o LifecyclePolicyPtrOutput) ToLifecyclePolicyPtrOutputWithContext(ctx context.Context) LifecyclePolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LifecyclePolicyOutput{})
+	pulumi.RegisterOutputType(LifecyclePolicyPtrOutput{})
 }

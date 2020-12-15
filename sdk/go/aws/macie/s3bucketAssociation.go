@@ -147,16 +147,31 @@ type S3BucketAssociationInput interface {
 	ToS3BucketAssociationOutputWithContext(ctx context.Context) S3BucketAssociationOutput
 }
 
-func (S3BucketAssociation) ElementType() reflect.Type {
-	return reflect.TypeOf((*S3BucketAssociation)(nil)).Elem()
+func (*S3BucketAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3BucketAssociation)(nil))
 }
 
-func (i S3BucketAssociation) ToS3BucketAssociationOutput() S3BucketAssociationOutput {
+func (i *S3BucketAssociation) ToS3BucketAssociationOutput() S3BucketAssociationOutput {
 	return i.ToS3BucketAssociationOutputWithContext(context.Background())
 }
 
-func (i S3BucketAssociation) ToS3BucketAssociationOutputWithContext(ctx context.Context) S3BucketAssociationOutput {
+func (i *S3BucketAssociation) ToS3BucketAssociationOutputWithContext(ctx context.Context) S3BucketAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(S3BucketAssociationOutput)
+}
+
+func (i *S3BucketAssociation) ToS3BucketAssociationPtrOutput() S3BucketAssociationPtrOutput {
+	return i.ToS3BucketAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i *S3BucketAssociation) ToS3BucketAssociationPtrOutputWithContext(ctx context.Context) S3BucketAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3BucketAssociationPtrOutput)
+}
+
+type S3BucketAssociationPtrInput interface {
+	pulumi.Input
+
+	ToS3BucketAssociationPtrOutput() S3BucketAssociationPtrOutput
+	ToS3BucketAssociationPtrOutputWithContext(ctx context.Context) S3BucketAssociationPtrOutput
 }
 
 type S3BucketAssociationOutput struct {
@@ -164,7 +179,7 @@ type S3BucketAssociationOutput struct {
 }
 
 func (S3BucketAssociationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*S3BucketAssociationOutput)(nil)).Elem()
+	return reflect.TypeOf((*S3BucketAssociation)(nil))
 }
 
 func (o S3BucketAssociationOutput) ToS3BucketAssociationOutput() S3BucketAssociationOutput {
@@ -175,6 +190,23 @@ func (o S3BucketAssociationOutput) ToS3BucketAssociationOutputWithContext(ctx co
 	return o
 }
 
+type S3BucketAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (S3BucketAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**S3BucketAssociation)(nil))
+}
+
+func (o S3BucketAssociationPtrOutput) ToS3BucketAssociationPtrOutput() S3BucketAssociationPtrOutput {
+	return o
+}
+
+func (o S3BucketAssociationPtrOutput) ToS3BucketAssociationPtrOutputWithContext(ctx context.Context) S3BucketAssociationPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(S3BucketAssociationOutput{})
+	pulumi.RegisterOutputType(S3BucketAssociationPtrOutput{})
 }

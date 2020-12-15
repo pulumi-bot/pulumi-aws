@@ -377,16 +377,31 @@ type GraphQLApiInput interface {
 	ToGraphQLApiOutputWithContext(ctx context.Context) GraphQLApiOutput
 }
 
-func (GraphQLApi) ElementType() reflect.Type {
-	return reflect.TypeOf((*GraphQLApi)(nil)).Elem()
+func (*GraphQLApi) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphQLApi)(nil))
 }
 
-func (i GraphQLApi) ToGraphQLApiOutput() GraphQLApiOutput {
+func (i *GraphQLApi) ToGraphQLApiOutput() GraphQLApiOutput {
 	return i.ToGraphQLApiOutputWithContext(context.Background())
 }
 
-func (i GraphQLApi) ToGraphQLApiOutputWithContext(ctx context.Context) GraphQLApiOutput {
+func (i *GraphQLApi) ToGraphQLApiOutputWithContext(ctx context.Context) GraphQLApiOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiOutput)
+}
+
+func (i *GraphQLApi) ToGraphQLApiPtrOutput() GraphQLApiPtrOutput {
+	return i.ToGraphQLApiPtrOutputWithContext(context.Background())
+}
+
+func (i *GraphQLApi) ToGraphQLApiPtrOutputWithContext(ctx context.Context) GraphQLApiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiPtrOutput)
+}
+
+type GraphQLApiPtrInput interface {
+	pulumi.Input
+
+	ToGraphQLApiPtrOutput() GraphQLApiPtrOutput
+	ToGraphQLApiPtrOutputWithContext(ctx context.Context) GraphQLApiPtrOutput
 }
 
 type GraphQLApiOutput struct {
@@ -394,7 +409,7 @@ type GraphQLApiOutput struct {
 }
 
 func (GraphQLApiOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GraphQLApiOutput)(nil)).Elem()
+	return reflect.TypeOf((*GraphQLApi)(nil))
 }
 
 func (o GraphQLApiOutput) ToGraphQLApiOutput() GraphQLApiOutput {
@@ -405,6 +420,23 @@ func (o GraphQLApiOutput) ToGraphQLApiOutputWithContext(ctx context.Context) Gra
 	return o
 }
 
+type GraphQLApiPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GraphQLApiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GraphQLApi)(nil))
+}
+
+func (o GraphQLApiPtrOutput) ToGraphQLApiPtrOutput() GraphQLApiPtrOutput {
+	return o
+}
+
+func (o GraphQLApiPtrOutput) ToGraphQLApiPtrOutputWithContext(ctx context.Context) GraphQLApiPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(GraphQLApiOutput{})
+	pulumi.RegisterOutputType(GraphQLApiPtrOutput{})
 }

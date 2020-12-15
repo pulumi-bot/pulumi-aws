@@ -188,16 +188,31 @@ type BucketPublicAccessBlockInput interface {
 	ToBucketPublicAccessBlockOutputWithContext(ctx context.Context) BucketPublicAccessBlockOutput
 }
 
-func (BucketPublicAccessBlock) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketPublicAccessBlock)(nil)).Elem()
+func (*BucketPublicAccessBlock) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketPublicAccessBlock)(nil))
 }
 
-func (i BucketPublicAccessBlock) ToBucketPublicAccessBlockOutput() BucketPublicAccessBlockOutput {
+func (i *BucketPublicAccessBlock) ToBucketPublicAccessBlockOutput() BucketPublicAccessBlockOutput {
 	return i.ToBucketPublicAccessBlockOutputWithContext(context.Background())
 }
 
-func (i BucketPublicAccessBlock) ToBucketPublicAccessBlockOutputWithContext(ctx context.Context) BucketPublicAccessBlockOutput {
+func (i *BucketPublicAccessBlock) ToBucketPublicAccessBlockOutputWithContext(ctx context.Context) BucketPublicAccessBlockOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketPublicAccessBlockOutput)
+}
+
+func (i *BucketPublicAccessBlock) ToBucketPublicAccessBlockPtrOutput() BucketPublicAccessBlockPtrOutput {
+	return i.ToBucketPublicAccessBlockPtrOutputWithContext(context.Background())
+}
+
+func (i *BucketPublicAccessBlock) ToBucketPublicAccessBlockPtrOutputWithContext(ctx context.Context) BucketPublicAccessBlockPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketPublicAccessBlockPtrOutput)
+}
+
+type BucketPublicAccessBlockPtrInput interface {
+	pulumi.Input
+
+	ToBucketPublicAccessBlockPtrOutput() BucketPublicAccessBlockPtrOutput
+	ToBucketPublicAccessBlockPtrOutputWithContext(ctx context.Context) BucketPublicAccessBlockPtrOutput
 }
 
 type BucketPublicAccessBlockOutput struct {
@@ -205,7 +220,7 @@ type BucketPublicAccessBlockOutput struct {
 }
 
 func (BucketPublicAccessBlockOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketPublicAccessBlockOutput)(nil)).Elem()
+	return reflect.TypeOf((*BucketPublicAccessBlock)(nil))
 }
 
 func (o BucketPublicAccessBlockOutput) ToBucketPublicAccessBlockOutput() BucketPublicAccessBlockOutput {
@@ -216,6 +231,23 @@ func (o BucketPublicAccessBlockOutput) ToBucketPublicAccessBlockOutputWithContex
 	return o
 }
 
+type BucketPublicAccessBlockPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BucketPublicAccessBlockPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketPublicAccessBlock)(nil))
+}
+
+func (o BucketPublicAccessBlockPtrOutput) ToBucketPublicAccessBlockPtrOutput() BucketPublicAccessBlockPtrOutput {
+	return o
+}
+
+func (o BucketPublicAccessBlockPtrOutput) ToBucketPublicAccessBlockPtrOutputWithContext(ctx context.Context) BucketPublicAccessBlockPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(BucketPublicAccessBlockOutput{})
+	pulumi.RegisterOutputType(BucketPublicAccessBlockPtrOutput{})
 }

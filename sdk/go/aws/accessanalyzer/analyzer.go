@@ -175,16 +175,31 @@ type AnalyzerInput interface {
 	ToAnalyzerOutputWithContext(ctx context.Context) AnalyzerOutput
 }
 
-func (Analyzer) ElementType() reflect.Type {
-	return reflect.TypeOf((*Analyzer)(nil)).Elem()
+func (*Analyzer) ElementType() reflect.Type {
+	return reflect.TypeOf((*Analyzer)(nil))
 }
 
-func (i Analyzer) ToAnalyzerOutput() AnalyzerOutput {
+func (i *Analyzer) ToAnalyzerOutput() AnalyzerOutput {
 	return i.ToAnalyzerOutputWithContext(context.Background())
 }
 
-func (i Analyzer) ToAnalyzerOutputWithContext(ctx context.Context) AnalyzerOutput {
+func (i *Analyzer) ToAnalyzerOutputWithContext(ctx context.Context) AnalyzerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AnalyzerOutput)
+}
+
+func (i *Analyzer) ToAnalyzerPtrOutput() AnalyzerPtrOutput {
+	return i.ToAnalyzerPtrOutputWithContext(context.Background())
+}
+
+func (i *Analyzer) ToAnalyzerPtrOutputWithContext(ctx context.Context) AnalyzerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalyzerPtrOutput)
+}
+
+type AnalyzerPtrInput interface {
+	pulumi.Input
+
+	ToAnalyzerPtrOutput() AnalyzerPtrOutput
+	ToAnalyzerPtrOutputWithContext(ctx context.Context) AnalyzerPtrOutput
 }
 
 type AnalyzerOutput struct {
@@ -192,7 +207,7 @@ type AnalyzerOutput struct {
 }
 
 func (AnalyzerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AnalyzerOutput)(nil)).Elem()
+	return reflect.TypeOf((*Analyzer)(nil))
 }
 
 func (o AnalyzerOutput) ToAnalyzerOutput() AnalyzerOutput {
@@ -203,6 +218,23 @@ func (o AnalyzerOutput) ToAnalyzerOutputWithContext(ctx context.Context) Analyze
 	return o
 }
 
+type AnalyzerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AnalyzerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Analyzer)(nil))
+}
+
+func (o AnalyzerPtrOutput) ToAnalyzerPtrOutput() AnalyzerPtrOutput {
+	return o
+}
+
+func (o AnalyzerPtrOutput) ToAnalyzerPtrOutputWithContext(ctx context.Context) AnalyzerPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AnalyzerOutput{})
+	pulumi.RegisterOutputType(AnalyzerPtrOutput{})
 }

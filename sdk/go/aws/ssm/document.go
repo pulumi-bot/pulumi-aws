@@ -308,16 +308,31 @@ type DocumentInput interface {
 	ToDocumentOutputWithContext(ctx context.Context) DocumentOutput
 }
 
-func (Document) ElementType() reflect.Type {
-	return reflect.TypeOf((*Document)(nil)).Elem()
+func (*Document) ElementType() reflect.Type {
+	return reflect.TypeOf((*Document)(nil))
 }
 
-func (i Document) ToDocumentOutput() DocumentOutput {
+func (i *Document) ToDocumentOutput() DocumentOutput {
 	return i.ToDocumentOutputWithContext(context.Background())
 }
 
-func (i Document) ToDocumentOutputWithContext(ctx context.Context) DocumentOutput {
+func (i *Document) ToDocumentOutputWithContext(ctx context.Context) DocumentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentOutput)
+}
+
+func (i *Document) ToDocumentPtrOutput() DocumentPtrOutput {
+	return i.ToDocumentPtrOutputWithContext(context.Background())
+}
+
+func (i *Document) ToDocumentPtrOutputWithContext(ctx context.Context) DocumentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DocumentPtrOutput)
+}
+
+type DocumentPtrInput interface {
+	pulumi.Input
+
+	ToDocumentPtrOutput() DocumentPtrOutput
+	ToDocumentPtrOutputWithContext(ctx context.Context) DocumentPtrOutput
 }
 
 type DocumentOutput struct {
@@ -325,7 +340,7 @@ type DocumentOutput struct {
 }
 
 func (DocumentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DocumentOutput)(nil)).Elem()
+	return reflect.TypeOf((*Document)(nil))
 }
 
 func (o DocumentOutput) ToDocumentOutput() DocumentOutput {
@@ -336,6 +351,23 @@ func (o DocumentOutput) ToDocumentOutputWithContext(ctx context.Context) Documen
 	return o
 }
 
+type DocumentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DocumentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Document)(nil))
+}
+
+func (o DocumentPtrOutput) ToDocumentPtrOutput() DocumentPtrOutput {
+	return o
+}
+
+func (o DocumentPtrOutput) ToDocumentPtrOutputWithContext(ctx context.Context) DocumentPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DocumentOutput{})
+	pulumi.RegisterOutputType(DocumentPtrOutput{})
 }

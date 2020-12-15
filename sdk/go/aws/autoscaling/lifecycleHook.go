@@ -229,16 +229,31 @@ type LifecycleHookInput interface {
 	ToLifecycleHookOutputWithContext(ctx context.Context) LifecycleHookOutput
 }
 
-func (LifecycleHook) ElementType() reflect.Type {
-	return reflect.TypeOf((*LifecycleHook)(nil)).Elem()
+func (*LifecycleHook) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecycleHook)(nil))
 }
 
-func (i LifecycleHook) ToLifecycleHookOutput() LifecycleHookOutput {
+func (i *LifecycleHook) ToLifecycleHookOutput() LifecycleHookOutput {
 	return i.ToLifecycleHookOutputWithContext(context.Background())
 }
 
-func (i LifecycleHook) ToLifecycleHookOutputWithContext(ctx context.Context) LifecycleHookOutput {
+func (i *LifecycleHook) ToLifecycleHookOutputWithContext(ctx context.Context) LifecycleHookOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LifecycleHookOutput)
+}
+
+func (i *LifecycleHook) ToLifecycleHookPtrOutput() LifecycleHookPtrOutput {
+	return i.ToLifecycleHookPtrOutputWithContext(context.Background())
+}
+
+func (i *LifecycleHook) ToLifecycleHookPtrOutputWithContext(ctx context.Context) LifecycleHookPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifecycleHookPtrOutput)
+}
+
+type LifecycleHookPtrInput interface {
+	pulumi.Input
+
+	ToLifecycleHookPtrOutput() LifecycleHookPtrOutput
+	ToLifecycleHookPtrOutputWithContext(ctx context.Context) LifecycleHookPtrOutput
 }
 
 type LifecycleHookOutput struct {
@@ -246,7 +261,7 @@ type LifecycleHookOutput struct {
 }
 
 func (LifecycleHookOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LifecycleHookOutput)(nil)).Elem()
+	return reflect.TypeOf((*LifecycleHook)(nil))
 }
 
 func (o LifecycleHookOutput) ToLifecycleHookOutput() LifecycleHookOutput {
@@ -257,6 +272,23 @@ func (o LifecycleHookOutput) ToLifecycleHookOutputWithContext(ctx context.Contex
 	return o
 }
 
+type LifecycleHookPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LifecycleHookPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LifecycleHook)(nil))
+}
+
+func (o LifecycleHookPtrOutput) ToLifecycleHookPtrOutput() LifecycleHookPtrOutput {
+	return o
+}
+
+func (o LifecycleHookPtrOutput) ToLifecycleHookPtrOutputWithContext(ctx context.Context) LifecycleHookPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(LifecycleHookOutput{})
+	pulumi.RegisterOutputType(LifecycleHookPtrOutput{})
 }

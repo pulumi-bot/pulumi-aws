@@ -153,16 +153,31 @@ type DocumentationPartInput interface {
 	ToDocumentationPartOutputWithContext(ctx context.Context) DocumentationPartOutput
 }
 
-func (DocumentationPart) ElementType() reflect.Type {
-	return reflect.TypeOf((*DocumentationPart)(nil)).Elem()
+func (*DocumentationPart) ElementType() reflect.Type {
+	return reflect.TypeOf((*DocumentationPart)(nil))
 }
 
-func (i DocumentationPart) ToDocumentationPartOutput() DocumentationPartOutput {
+func (i *DocumentationPart) ToDocumentationPartOutput() DocumentationPartOutput {
 	return i.ToDocumentationPartOutputWithContext(context.Background())
 }
 
-func (i DocumentationPart) ToDocumentationPartOutputWithContext(ctx context.Context) DocumentationPartOutput {
+func (i *DocumentationPart) ToDocumentationPartOutputWithContext(ctx context.Context) DocumentationPartOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentationPartOutput)
+}
+
+func (i *DocumentationPart) ToDocumentationPartPtrOutput() DocumentationPartPtrOutput {
+	return i.ToDocumentationPartPtrOutputWithContext(context.Background())
+}
+
+func (i *DocumentationPart) ToDocumentationPartPtrOutputWithContext(ctx context.Context) DocumentationPartPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DocumentationPartPtrOutput)
+}
+
+type DocumentationPartPtrInput interface {
+	pulumi.Input
+
+	ToDocumentationPartPtrOutput() DocumentationPartPtrOutput
+	ToDocumentationPartPtrOutputWithContext(ctx context.Context) DocumentationPartPtrOutput
 }
 
 type DocumentationPartOutput struct {
@@ -170,7 +185,7 @@ type DocumentationPartOutput struct {
 }
 
 func (DocumentationPartOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DocumentationPartOutput)(nil)).Elem()
+	return reflect.TypeOf((*DocumentationPart)(nil))
 }
 
 func (o DocumentationPartOutput) ToDocumentationPartOutput() DocumentationPartOutput {
@@ -181,6 +196,23 @@ func (o DocumentationPartOutput) ToDocumentationPartOutputWithContext(ctx contex
 	return o
 }
 
+type DocumentationPartPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DocumentationPartPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DocumentationPart)(nil))
+}
+
+func (o DocumentationPartPtrOutput) ToDocumentationPartPtrOutput() DocumentationPartPtrOutput {
+	return o
+}
+
+func (o DocumentationPartPtrOutput) ToDocumentationPartPtrOutputWithContext(ctx context.Context) DocumentationPartPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(DocumentationPartOutput{})
+	pulumi.RegisterOutputType(DocumentationPartPtrOutput{})
 }

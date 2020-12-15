@@ -221,16 +221,31 @@ type OptionGroupInput interface {
 	ToOptionGroupOutputWithContext(ctx context.Context) OptionGroupOutput
 }
 
-func (OptionGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*OptionGroup)(nil)).Elem()
+func (*OptionGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*OptionGroup)(nil))
 }
 
-func (i OptionGroup) ToOptionGroupOutput() OptionGroupOutput {
+func (i *OptionGroup) ToOptionGroupOutput() OptionGroupOutput {
 	return i.ToOptionGroupOutputWithContext(context.Background())
 }
 
-func (i OptionGroup) ToOptionGroupOutputWithContext(ctx context.Context) OptionGroupOutput {
+func (i *OptionGroup) ToOptionGroupOutputWithContext(ctx context.Context) OptionGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OptionGroupOutput)
+}
+
+func (i *OptionGroup) ToOptionGroupPtrOutput() OptionGroupPtrOutput {
+	return i.ToOptionGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *OptionGroup) ToOptionGroupPtrOutputWithContext(ctx context.Context) OptionGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionGroupPtrOutput)
+}
+
+type OptionGroupPtrInput interface {
+	pulumi.Input
+
+	ToOptionGroupPtrOutput() OptionGroupPtrOutput
+	ToOptionGroupPtrOutputWithContext(ctx context.Context) OptionGroupPtrOutput
 }
 
 type OptionGroupOutput struct {
@@ -238,7 +253,7 @@ type OptionGroupOutput struct {
 }
 
 func (OptionGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OptionGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*OptionGroup)(nil))
 }
 
 func (o OptionGroupOutput) ToOptionGroupOutput() OptionGroupOutput {
@@ -249,6 +264,23 @@ func (o OptionGroupOutput) ToOptionGroupOutputWithContext(ctx context.Context) O
 	return o
 }
 
+type OptionGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OptionGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OptionGroup)(nil))
+}
+
+func (o OptionGroupPtrOutput) ToOptionGroupPtrOutput() OptionGroupPtrOutput {
+	return o
+}
+
+func (o OptionGroupPtrOutput) ToOptionGroupPtrOutputWithContext(ctx context.Context) OptionGroupPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(OptionGroupOutput{})
+	pulumi.RegisterOutputType(OptionGroupPtrOutput{})
 }

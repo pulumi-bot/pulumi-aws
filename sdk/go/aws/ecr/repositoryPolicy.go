@@ -145,16 +145,31 @@ type RepositoryPolicyInput interface {
 	ToRepositoryPolicyOutputWithContext(ctx context.Context) RepositoryPolicyOutput
 }
 
-func (RepositoryPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*RepositoryPolicy)(nil)).Elem()
+func (*RepositoryPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryPolicy)(nil))
 }
 
-func (i RepositoryPolicy) ToRepositoryPolicyOutput() RepositoryPolicyOutput {
+func (i *RepositoryPolicy) ToRepositoryPolicyOutput() RepositoryPolicyOutput {
 	return i.ToRepositoryPolicyOutputWithContext(context.Background())
 }
 
-func (i RepositoryPolicy) ToRepositoryPolicyOutputWithContext(ctx context.Context) RepositoryPolicyOutput {
+func (i *RepositoryPolicy) ToRepositoryPolicyOutputWithContext(ctx context.Context) RepositoryPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryPolicyOutput)
+}
+
+func (i *RepositoryPolicy) ToRepositoryPolicyPtrOutput() RepositoryPolicyPtrOutput {
+	return i.ToRepositoryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *RepositoryPolicy) ToRepositoryPolicyPtrOutputWithContext(ctx context.Context) RepositoryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryPolicyPtrOutput)
+}
+
+type RepositoryPolicyPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryPolicyPtrOutput() RepositoryPolicyPtrOutput
+	ToRepositoryPolicyPtrOutputWithContext(ctx context.Context) RepositoryPolicyPtrOutput
 }
 
 type RepositoryPolicyOutput struct {
@@ -162,7 +177,7 @@ type RepositoryPolicyOutput struct {
 }
 
 func (RepositoryPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RepositoryPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*RepositoryPolicy)(nil))
 }
 
 func (o RepositoryPolicyOutput) ToRepositoryPolicyOutput() RepositoryPolicyOutput {
@@ -173,6 +188,23 @@ func (o RepositoryPolicyOutput) ToRepositoryPolicyOutputWithContext(ctx context.
 	return o
 }
 
+type RepositoryPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RepositoryPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryPolicy)(nil))
+}
+
+func (o RepositoryPolicyPtrOutput) ToRepositoryPolicyPtrOutput() RepositoryPolicyPtrOutput {
+	return o
+}
+
+func (o RepositoryPolicyPtrOutput) ToRepositoryPolicyPtrOutputWithContext(ctx context.Context) RepositoryPolicyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(RepositoryPolicyOutput{})
+	pulumi.RegisterOutputType(RepositoryPolicyPtrOutput{})
 }

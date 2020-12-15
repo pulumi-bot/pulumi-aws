@@ -275,16 +275,31 @@ type ProjectInput interface {
 	ToProjectOutputWithContext(ctx context.Context) ProjectOutput
 }
 
-func (Project) ElementType() reflect.Type {
-	return reflect.TypeOf((*Project)(nil)).Elem()
+func (*Project) ElementType() reflect.Type {
+	return reflect.TypeOf((*Project)(nil))
 }
 
-func (i Project) ToProjectOutput() ProjectOutput {
+func (i *Project) ToProjectOutput() ProjectOutput {
 	return i.ToProjectOutputWithContext(context.Background())
 }
 
-func (i Project) ToProjectOutputWithContext(ctx context.Context) ProjectOutput {
+func (i *Project) ToProjectOutputWithContext(ctx context.Context) ProjectOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectOutput)
+}
+
+func (i *Project) ToProjectPtrOutput() ProjectPtrOutput {
+	return i.ToProjectPtrOutputWithContext(context.Background())
+}
+
+func (i *Project) ToProjectPtrOutputWithContext(ctx context.Context) ProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectPtrOutput)
+}
+
+type ProjectPtrInput interface {
+	pulumi.Input
+
+	ToProjectPtrOutput() ProjectPtrOutput
+	ToProjectPtrOutputWithContext(ctx context.Context) ProjectPtrOutput
 }
 
 type ProjectOutput struct {
@@ -292,7 +307,7 @@ type ProjectOutput struct {
 }
 
 func (ProjectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectOutput)(nil)).Elem()
+	return reflect.TypeOf((*Project)(nil))
 }
 
 func (o ProjectOutput) ToProjectOutput() ProjectOutput {
@@ -303,6 +318,23 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
+type ProjectPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Project)(nil))
+}
+
+func (o ProjectPtrOutput) ToProjectPtrOutput() ProjectPtrOutput {
+	return o
+}
+
+func (o ProjectPtrOutput) ToProjectPtrOutputWithContext(ctx context.Context) ProjectPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProjectOutput{})
+	pulumi.RegisterOutputType(ProjectPtrOutput{})
 }

@@ -217,16 +217,31 @@ type GatewayRouteInput interface {
 	ToGatewayRouteOutputWithContext(ctx context.Context) GatewayRouteOutput
 }
 
-func (GatewayRoute) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayRoute)(nil)).Elem()
+func (*GatewayRoute) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayRoute)(nil))
 }
 
-func (i GatewayRoute) ToGatewayRouteOutput() GatewayRouteOutput {
+func (i *GatewayRoute) ToGatewayRouteOutput() GatewayRouteOutput {
 	return i.ToGatewayRouteOutputWithContext(context.Background())
 }
 
-func (i GatewayRoute) ToGatewayRouteOutputWithContext(ctx context.Context) GatewayRouteOutput {
+func (i *GatewayRoute) ToGatewayRouteOutputWithContext(ctx context.Context) GatewayRouteOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayRouteOutput)
+}
+
+func (i *GatewayRoute) ToGatewayRoutePtrOutput() GatewayRoutePtrOutput {
+	return i.ToGatewayRoutePtrOutputWithContext(context.Background())
+}
+
+func (i *GatewayRoute) ToGatewayRoutePtrOutputWithContext(ctx context.Context) GatewayRoutePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayRoutePtrOutput)
+}
+
+type GatewayRoutePtrInput interface {
+	pulumi.Input
+
+	ToGatewayRoutePtrOutput() GatewayRoutePtrOutput
+	ToGatewayRoutePtrOutputWithContext(ctx context.Context) GatewayRoutePtrOutput
 }
 
 type GatewayRouteOutput struct {
@@ -234,7 +249,7 @@ type GatewayRouteOutput struct {
 }
 
 func (GatewayRouteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayRouteOutput)(nil)).Elem()
+	return reflect.TypeOf((*GatewayRoute)(nil))
 }
 
 func (o GatewayRouteOutput) ToGatewayRouteOutput() GatewayRouteOutput {
@@ -245,6 +260,23 @@ func (o GatewayRouteOutput) ToGatewayRouteOutputWithContext(ctx context.Context)
 	return o
 }
 
+type GatewayRoutePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GatewayRoutePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayRoute)(nil))
+}
+
+func (o GatewayRoutePtrOutput) ToGatewayRoutePtrOutput() GatewayRoutePtrOutput {
+	return o
+}
+
+func (o GatewayRoutePtrOutput) ToGatewayRoutePtrOutputWithContext(ctx context.Context) GatewayRoutePtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(GatewayRouteOutput{})
+	pulumi.RegisterOutputType(GatewayRoutePtrOutput{})
 }

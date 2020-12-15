@@ -234,16 +234,31 @@ type AccessKeyInput interface {
 	ToAccessKeyOutputWithContext(ctx context.Context) AccessKeyOutput
 }
 
-func (AccessKey) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessKey)(nil)).Elem()
+func (*AccessKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessKey)(nil))
 }
 
-func (i AccessKey) ToAccessKeyOutput() AccessKeyOutput {
+func (i *AccessKey) ToAccessKeyOutput() AccessKeyOutput {
 	return i.ToAccessKeyOutputWithContext(context.Background())
 }
 
-func (i AccessKey) ToAccessKeyOutputWithContext(ctx context.Context) AccessKeyOutput {
+func (i *AccessKey) ToAccessKeyOutputWithContext(ctx context.Context) AccessKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessKeyOutput)
+}
+
+func (i *AccessKey) ToAccessKeyPtrOutput() AccessKeyPtrOutput {
+	return i.ToAccessKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *AccessKey) ToAccessKeyPtrOutputWithContext(ctx context.Context) AccessKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessKeyPtrOutput)
+}
+
+type AccessKeyPtrInput interface {
+	pulumi.Input
+
+	ToAccessKeyPtrOutput() AccessKeyPtrOutput
+	ToAccessKeyPtrOutputWithContext(ctx context.Context) AccessKeyPtrOutput
 }
 
 type AccessKeyOutput struct {
@@ -251,7 +266,7 @@ type AccessKeyOutput struct {
 }
 
 func (AccessKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessKeyOutput)(nil)).Elem()
+	return reflect.TypeOf((*AccessKey)(nil))
 }
 
 func (o AccessKeyOutput) ToAccessKeyOutput() AccessKeyOutput {
@@ -262,6 +277,23 @@ func (o AccessKeyOutput) ToAccessKeyOutputWithContext(ctx context.Context) Acces
 	return o
 }
 
+type AccessKeyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessKey)(nil))
+}
+
+func (o AccessKeyPtrOutput) ToAccessKeyPtrOutput() AccessKeyPtrOutput {
+	return o
+}
+
+func (o AccessKeyPtrOutput) ToAccessKeyPtrOutputWithContext(ctx context.Context) AccessKeyPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccessKeyOutput{})
+	pulumi.RegisterOutputType(AccessKeyPtrOutput{})
 }
