@@ -25,8 +25,8 @@ import (
 // 		opt0 := aws_vpc.Foo.Id
 // 		opt1 := "10.0.1.0/22"
 // 		pc, err := ec2.LookupVpcPeeringConnection(ctx, &ec2.LookupVpcPeeringConnectionArgs{
-// 			VpcId:         &opt0,
-// 			PeerCidrBlock: &opt1,
+// 			VpcId:         _opt0,
+// 			PeerCidrBlock: _opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

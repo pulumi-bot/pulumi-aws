@@ -26,7 +26,7 @@ import (
 // 		opt0 := fmt.Sprintf("%v%v", "$", "LATEST")
 // 		_, err := lex.LookupIntent(ctx, &lex.LookupIntentArgs{
 // 			Name:    "OrderFlowers",
-// 			Version: &opt0,
+// 			Version: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -40,8 +40,8 @@ import (
 // 		opt0 := lbTgArn
 // 		opt1 := lbTgName
 // 		_, err := lb.LookupTargetGroup(ctx, &lb.LookupTargetGroupArgs{
-// 			Arn:  &opt0,
-// 			Name: &opt1,
+// 			Arn:  _opt0,
+// 			Name: _opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -29,7 +29,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "wsb-bh8rsxt14"
 // 		valueWindows10, err := workspaces.GetBundle(ctx, &workspaces.GetBundleArgs{
-// 			BundleId: &opt0,
+// 			BundleId: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -235,15 +235,15 @@ type WorkspaceInput interface {
 	ToWorkspaceOutputWithContext(ctx context.Context) WorkspaceOutput
 }
 
-func (Workspace) ElementType() reflect.Type {
-	return reflect.TypeOf((*Workspace)(nil)).Elem()
+func (*Workspace) ElementType() reflect.Type {
+	return reflect.TypeOf((*Workspace)(nil))
 }
 
-func (i Workspace) ToWorkspaceOutput() WorkspaceOutput {
+func (i *Workspace) ToWorkspaceOutput() WorkspaceOutput {
 	return i.ToWorkspaceOutputWithContext(context.Background())
 }
 
-func (i Workspace) ToWorkspaceOutputWithContext(ctx context.Context) WorkspaceOutput {
+func (i *Workspace) ToWorkspaceOutputWithContext(ctx context.Context) WorkspaceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceOutput)
 }
 
@@ -252,7 +252,7 @@ type WorkspaceOutput struct {
 }
 
 func (WorkspaceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspaceOutput)(nil)).Elem()
+	return reflect.TypeOf((*Workspace)(nil))
 }
 
 func (o WorkspaceOutput) ToWorkspaceOutput() WorkspaceOutput {

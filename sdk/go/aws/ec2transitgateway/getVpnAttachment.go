@@ -27,8 +27,8 @@ import (
 // 		opt0 := aws_ec2_transit_gateway.Example.Id
 // 		opt1 := aws_vpn_connection.Example.Id
 // 		_, err := ec2transitgateway.GetVpnAttachment(ctx, &ec2transitgateway.GetVpnAttachmentArgs{
-// 			TransitGatewayId: &opt0,
-// 			VpnConnectionId:  &opt1,
+// 			TransitGatewayId: _opt0,
+// 			VpnConnectionId:  _opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

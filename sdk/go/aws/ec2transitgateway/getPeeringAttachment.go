@@ -53,7 +53,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "tgw-attach-12345678"
 // 		_, err := ec2transitgateway.LookupPeeringAttachment(ctx, &ec2transitgateway.LookupPeeringAttachmentArgs{
-// 			Id: &opt0,
+// 			Id: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

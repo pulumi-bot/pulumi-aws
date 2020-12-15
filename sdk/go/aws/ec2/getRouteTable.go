@@ -33,7 +33,7 @@ import (
 // 		subnetId := cfg.RequireObject("subnetId")
 // 		opt0 := subnetId
 // 		selected, err := ec2.LookupRouteTable(ctx, &ec2.LookupRouteTableArgs{
-// 			SubnetId: &opt0,
+// 			SubnetId: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

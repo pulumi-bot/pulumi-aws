@@ -31,7 +31,7 @@ import (
 // 		awsEc2LocalGatewayRouteTable := cfg.RequireObject("awsEc2LocalGatewayRouteTable")
 // 		opt0 := awsEc2LocalGatewayRouteTable
 // 		_, err := ec2.GetLocalGatewayRouteTable(ctx, &ec2.GetLocalGatewayRouteTableArgs{
-// 			LocalGatewayRouteTableId: &opt0,
+// 			LocalGatewayRouteTableId: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

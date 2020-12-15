@@ -23,7 +23,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "latest"
 // 		_, err := ecr.GetImage(ctx, &ecr.GetImageArgs{
-// 			ImageTag:       &opt0,
+// 			ImageTag:       _opt0,
 // 			RepositoryName: "my/service",
 // 		}, nil)
 // 		if err != nil {

@@ -23,7 +23,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "multi-node"
 // 		_, err := redshift.GetOrderableCluster(ctx, &redshift.GetOrderableClusterArgs{
-// 			ClusterType: &opt0,
+// 			ClusterType: _opt0,
 // 			PreferredNodeTypes: []string{
 // 				"dc2.large",
 // 				"ds2.xlarge",

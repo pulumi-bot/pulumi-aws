@@ -27,9 +27,9 @@ import (
 // 		opt1 := "RECURSIVE"
 // 		opt2 := "NOT_SHARED"
 // 		_, err := route53.GetResolverRules(ctx, &route53.GetResolverRulesArgs{
-// 			OwnerId:     &opt0,
-// 			RuleType:    &opt1,
-// 			ShareStatus: &opt2,
+// 			OwnerId:     _opt0,
+// 			RuleType:    _opt1,
+// 			ShareStatus: _opt2,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -52,8 +52,8 @@ import (
 // 		opt0 := "FORWARD"
 // 		opt1 := "SHARED_WITH_ME"
 // 		_, err := route53.GetResolverRules(ctx, &route53.GetResolverRulesArgs{
-// 			RuleType:    &opt0,
-// 			ShareStatus: &opt1,
+// 			RuleType:    _opt0,
+// 			ShareStatus: _opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

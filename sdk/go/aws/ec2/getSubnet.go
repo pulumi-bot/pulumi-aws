@@ -34,7 +34,7 @@ import (
 // 		subnetId := cfg.RequireObject("subnetId")
 // 		opt0 := subnetId
 // 		selected, err := ec2.LookupSubnet(ctx, &ec2.LookupSubnetArgs{
-// 			Id: &opt0,
+// 			Id: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -25,8 +25,8 @@ import (
 // 		opt0 := aws_ec2_transit_gateway.Example.Id
 // 		opt1 := aws_dx_gateway.Example.Id
 // 		_, err := ec2transitgateway.GetDirectConnectGatewayAttachment(ctx, &ec2transitgateway.GetDirectConnectGatewayAttachmentArgs{
-// 			TransitGatewayId: &opt0,
-// 			DxGatewayId:      &opt1,
+// 			TransitGatewayId: _opt0,
+// 			DxGatewayId:      _opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

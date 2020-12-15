@@ -24,7 +24,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "dopts-12345678"
 // 		_, err := ec2.LookupVpcDhcpOptions(ctx, &ec2.LookupVpcDhcpOptionsArgs{
-// 			DhcpOptionsId: &opt0,
+// 			DhcpOptionsId: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

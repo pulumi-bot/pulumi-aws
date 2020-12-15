@@ -25,8 +25,8 @@ import (
 // 		opt0 := "my-domain.org"
 // 		opt1 := true
 // 		my_domain, err := iam.LookupServerCertificate(ctx, &iam.LookupServerCertificateArgs{
-// 			NamePrefix: &opt0,
-// 			Latest:     &opt1,
+// 			NamePrefix: _opt0,
+// 			Latest:     _opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

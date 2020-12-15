@@ -30,8 +30,8 @@ import (
 // 		opt0 := "test.com."
 // 		opt1 := true
 // 		selected, err := route53.LookupZone(ctx, &route53.LookupZoneArgs{
-// 			Name:        &opt0,
-// 			PrivateZone: &opt1,
+// 			Name:        _opt0,
+// 			PrivateZone: _opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

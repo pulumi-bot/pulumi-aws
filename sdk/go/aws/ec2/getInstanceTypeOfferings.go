@@ -38,7 +38,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 			LocationType: &opt0,
+// 			LocationType: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -24,7 +24,7 @@ import (
 // 		opt0 := "us-west-2a"
 // 		opt1 := "t3.medium"
 // 		_, err := ec2.GetSpotPrice(ctx, &ec2.GetSpotPriceArgs{
-// 			AvailabilityZone: &opt0,
+// 			AvailabilityZone: _opt0,
 // 			Filters: []ec2.GetSpotPriceFilter{
 // 				ec2.GetSpotPriceFilter{
 // 					Name: "product-description",
@@ -33,7 +33,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 			InstanceType: &opt1,
+// 			InstanceType: _opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

@@ -35,7 +35,7 @@ import (
 // 		opt0 := true
 // 		_, err = acm.LookupCertificate(ctx, &acm.LookupCertificateArgs{
 // 			Domain:     "tf.example.com",
-// 			MostRecent: &opt0,
+// 			MostRecent: _opt0,
 // 			Types: []string{
 // 				"AMAZON_ISSUED",
 // 			},

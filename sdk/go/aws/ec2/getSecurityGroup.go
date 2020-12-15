@@ -33,7 +33,7 @@ import (
 // 		securityGroupId := cfg.RequireObject("securityGroupId")
 // 		opt0 := securityGroupId
 // 		selected, err := ec2.LookupSecurityGroup(ctx, &ec2.LookupSecurityGroupArgs{
-// 			Id: &opt0,
+// 			Id: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

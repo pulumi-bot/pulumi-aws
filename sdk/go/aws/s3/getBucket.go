@@ -34,7 +34,7 @@ import (
 // 		}
 // 		opt0 := "test.com."
 // 		testZone, err := route53.LookupZone(ctx, &route53.LookupZoneArgs{
-// 			Name: &opt0,
+// 			Name: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

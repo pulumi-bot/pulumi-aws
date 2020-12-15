@@ -26,8 +26,8 @@ import (
 // 		opt0 := "s3"
 // 		opt1 := "Gateway"
 // 		s3, err := ec2.LookupVpcEndpointService(ctx, &ec2.LookupVpcEndpointServiceArgs{
-// 			Service:     &opt0,
-// 			ServiceType: &opt1,
+// 			Service:     _opt0,
+// 			ServiceType: _opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -63,7 +63,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "com.amazonaws.vpce.us-west-2.vpce-svc-0e87519c997c63cd8"
 // 		_, err := ec2.LookupVpcEndpointService(ctx, &ec2.LookupVpcEndpointServiceArgs{
-// 			ServiceName: &opt0,
+// 			ServiceName: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

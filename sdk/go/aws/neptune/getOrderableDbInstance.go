@@ -23,7 +23,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "1.0.3.0"
 // 		_, err := neptune.GetOrderableDbInstance(ctx, &neptune.GetOrderableDbInstanceArgs{
-// 			EngineVersion: &opt0,
+// 			EngineVersion: _opt0,
 // 			PreferredInstanceClasses: []string{
 // 				"db.r5.large",
 // 				"db.r4.large",

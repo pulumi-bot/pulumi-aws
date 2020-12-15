@@ -40,8 +40,8 @@ import (
 // 		opt0 := lbArn
 // 		opt1 := lbName
 // 		_, err := lb.LookupLoadBalancer(ctx, &lb.LookupLoadBalancerArgs{
-// 			Arn:  &opt0,
-// 			Name: &opt1,
+// 			Arn:  _opt0,
+// 			Name: _opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

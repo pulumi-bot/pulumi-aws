@@ -26,7 +26,7 @@ import (
 // 		subnetId := cfg.RequireObject("subnetId")
 // 		opt0 := aws_subnet.Public.Id
 // 		_, err := ec2.LookupNatGateway(ctx, &ec2.LookupNatGatewayArgs{
-// 			SubnetId: &opt0,
+// 			SubnetId: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -50,7 +50,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := aws_subnet.Public.Id
 // 		_, err := ec2.LookupNatGateway(ctx, &ec2.LookupNatGatewayArgs{
-// 			SubnetId: &opt0,
+// 			SubnetId: _opt0,
 // 			Tags: map[string]interface{}{
 // 				"Name": "gw NAT",
 // 			},

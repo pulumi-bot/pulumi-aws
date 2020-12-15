@@ -26,8 +26,8 @@ import (
 // 		opt0 := "AWS-"
 // 		opt1 := "CENTOS"
 // 		_, err := ssm.LookupPatchBaseline(ctx, &ssm.LookupPatchBaselineArgs{
-// 			NamePrefix:      &opt0,
-// 			OperatingSystem: &opt1,
+// 			NamePrefix:      _opt0,
+// 			OperatingSystem: _opt1,
 // 			Owner:           "AWS",
 // 		}, nil)
 // 		if err != nil {
@@ -54,9 +54,9 @@ import (
 // 		opt1 := "MyCustomBaseline"
 // 		opt2 := "WINDOWS"
 // 		_, err := ssm.LookupPatchBaseline(ctx, &ssm.LookupPatchBaselineArgs{
-// 			DefaultBaseline: &opt0,
-// 			NamePrefix:      &opt1,
-// 			OperatingSystem: &opt2,
+// 			DefaultBaseline: _opt0,
+// 			NamePrefix:      _opt1,
+// 			OperatingSystem: _opt2,
 // 			Owner:           "Self",
 // 		}, nil)
 // 		if err != nil {

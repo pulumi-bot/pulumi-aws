@@ -25,8 +25,8 @@ import (
 // 		opt0 := aws_vpc.Foo.Id
 // 		opt1 := "com.amazonaws.us-west-2.s3"
 // 		s3, err := ec2.LookupVpcEndpoint(ctx, &ec2.LookupVpcEndpointArgs{
-// 			VpcId:       &opt0,
-// 			ServiceName: &opt1,
+// 			VpcId:       _opt0,
+// 			ServiceName: _opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

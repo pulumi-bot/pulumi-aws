@@ -126,7 +126,7 @@ import (
 // 		}
 // 		opt0 := "__default_policy_ID"
 // 		sns_topic_policy, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-// 			PolicyId: &opt0,
+// 			PolicyId: _opt0,
 // 			Statements: []iam.GetPolicyDocumentStatement{
 // 				iam.GetPolicyDocumentStatement{
 // 					Actions: []string{
@@ -198,7 +198,7 @@ import (
 // 		}
 // 		opt1 := fmt.Sprintf("%v%v%v%v%v%v%v", "arn:aws:sqs:", sqs.Region, ":", sqs.Account-id, ":", sqs.Name, "/SQSDefaultPolicy")
 // 		sqs_queue_policy, err := iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-// 			PolicyId: &opt1,
+// 			PolicyId: _opt1,
 // 			Statements: []iam.GetPolicyDocumentStatement{
 // 				iam.GetPolicyDocumentStatement{
 // 					Sid:    "example-sns-topic",
@@ -451,15 +451,15 @@ type TopicSubscriptionInput interface {
 	ToTopicSubscriptionOutputWithContext(ctx context.Context) TopicSubscriptionOutput
 }
 
-func (TopicSubscription) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicSubscription)(nil)).Elem()
+func (*TopicSubscription) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicSubscription)(nil))
 }
 
-func (i TopicSubscription) ToTopicSubscriptionOutput() TopicSubscriptionOutput {
+func (i *TopicSubscription) ToTopicSubscriptionOutput() TopicSubscriptionOutput {
 	return i.ToTopicSubscriptionOutputWithContext(context.Background())
 }
 
-func (i TopicSubscription) ToTopicSubscriptionOutputWithContext(ctx context.Context) TopicSubscriptionOutput {
+func (i *TopicSubscription) ToTopicSubscriptionOutputWithContext(ctx context.Context) TopicSubscriptionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TopicSubscriptionOutput)
 }
 
@@ -468,7 +468,7 @@ type TopicSubscriptionOutput struct {
 }
 
 func (TopicSubscriptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicSubscriptionOutput)(nil)).Elem()
+	return reflect.TypeOf((*TopicSubscription)(nil))
 }
 
 func (o TopicSubscriptionOutput) ToTopicSubscriptionOutput() TopicSubscriptionOutput {

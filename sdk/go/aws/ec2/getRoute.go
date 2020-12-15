@@ -33,7 +33,7 @@ import (
 // 		subnetId := cfg.RequireObject("subnetId")
 // 		opt0 := subnetId
 // 		_, err := ec2.LookupRouteTable(ctx, &ec2.LookupRouteTableArgs{
-// 			SubnetId: &opt0,
+// 			SubnetId: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -41,14 +41,14 @@ import (
 // 		opt1 := "10.0.1.0/24"
 // 		route, err := ec2.LookupRoute(ctx, &ec2.LookupRouteArgs{
 // 			RouteTableId:         aws_route_table.Selected.Id,
-// 			DestinationCidrBlock: &opt1,
+// 			DestinationCidrBlock: _opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt2 := route.NetworkInterfaceId
 // 		_, err = ec2.LookupNetworkInterface(ctx, &ec2.LookupNetworkInterfaceArgs{
-// 			Id: &opt2,
+// 			Id: _opt2,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

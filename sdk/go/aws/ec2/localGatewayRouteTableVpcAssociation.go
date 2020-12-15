@@ -27,7 +27,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "arn:aws:outposts:us-west-2:123456789012:outpost/op-1234567890abcdef"
 // 		exampleLocalGatewayRouteTable, err := ec2.GetLocalGatewayRouteTable(ctx, &ec2.GetLocalGatewayRouteTableArgs{
-// 			OutpostArn: &opt0,
+// 			OutpostArn: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -157,15 +157,15 @@ type LocalGatewayRouteTableVpcAssociationInput interface {
 	ToLocalGatewayRouteTableVpcAssociationOutputWithContext(ctx context.Context) LocalGatewayRouteTableVpcAssociationOutput
 }
 
-func (LocalGatewayRouteTableVpcAssociation) ElementType() reflect.Type {
-	return reflect.TypeOf((*LocalGatewayRouteTableVpcAssociation)(nil)).Elem()
+func (*LocalGatewayRouteTableVpcAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalGatewayRouteTableVpcAssociation)(nil))
 }
 
-func (i LocalGatewayRouteTableVpcAssociation) ToLocalGatewayRouteTableVpcAssociationOutput() LocalGatewayRouteTableVpcAssociationOutput {
+func (i *LocalGatewayRouteTableVpcAssociation) ToLocalGatewayRouteTableVpcAssociationOutput() LocalGatewayRouteTableVpcAssociationOutput {
 	return i.ToLocalGatewayRouteTableVpcAssociationOutputWithContext(context.Background())
 }
 
-func (i LocalGatewayRouteTableVpcAssociation) ToLocalGatewayRouteTableVpcAssociationOutputWithContext(ctx context.Context) LocalGatewayRouteTableVpcAssociationOutput {
+func (i *LocalGatewayRouteTableVpcAssociation) ToLocalGatewayRouteTableVpcAssociationOutputWithContext(ctx context.Context) LocalGatewayRouteTableVpcAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LocalGatewayRouteTableVpcAssociationOutput)
 }
 
@@ -174,7 +174,7 @@ type LocalGatewayRouteTableVpcAssociationOutput struct {
 }
 
 func (LocalGatewayRouteTableVpcAssociationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LocalGatewayRouteTableVpcAssociationOutput)(nil)).Elem()
+	return reflect.TypeOf((*LocalGatewayRouteTableVpcAssociation)(nil))
 }
 
 func (o LocalGatewayRouteTableVpcAssociationOutput) ToLocalGatewayRouteTableVpcAssociationOutput() LocalGatewayRouteTableVpcAssociationOutput {

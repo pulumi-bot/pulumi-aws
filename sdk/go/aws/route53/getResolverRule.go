@@ -26,8 +26,8 @@ import (
 // 		opt0 := "subdomain.example.com"
 // 		opt1 := "SYSTEM"
 // 		_, err := route53.LookupResolverRule(ctx, &route53.LookupResolverRuleArgs{
-// 			DomainName: &opt0,
-// 			RuleType:   &opt1,
+// 			DomainName: _opt0,
+// 			RuleType:   _opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

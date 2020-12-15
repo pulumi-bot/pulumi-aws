@@ -23,7 +23,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := data.Aws_outposts_site.Id
 // 		_, err := outposts.GetOutposts(ctx, &outposts.GetOutpostsArgs{
-// 			SiteId: &opt0,
+// 			SiteId: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

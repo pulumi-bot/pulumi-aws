@@ -29,7 +29,7 @@ import (
 // 		}
 // 		opt0 := fileSystemId
 // 		_, err := efs.LookupFileSystem(ctx, &efs.LookupFileSystemArgs{
-// 			FileSystemId: &opt0,
+// 			FileSystemId: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

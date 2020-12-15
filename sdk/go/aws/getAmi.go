@@ -48,8 +48,8 @@ import (
 // 					},
 // 				},
 // 			},
-// 			MostRecent: &opt0,
-// 			NameRegex:  &opt1,
+// 			MostRecent: _opt0,
+// 			NameRegex:  _opt1,
 // 			Owners: []string{
 // 				"self",
 // 			},

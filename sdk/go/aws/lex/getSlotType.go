@@ -24,7 +24,7 @@ import (
 // 		opt0 := "1"
 // 		_, err := lex.LookupSlotType(ctx, &lex.LookupSlotTypeArgs{
 // 			Name:    "FlowerTypes",
-// 			Version: &opt0,
+// 			Version: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

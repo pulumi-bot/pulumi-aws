@@ -38,7 +38,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 			InstanceId: &opt0,
+// 			InstanceId: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

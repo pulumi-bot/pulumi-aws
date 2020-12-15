@@ -45,7 +45,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "db-snapshot"
 // 		exampleEventCategories, err := rds.GetEventCategories(ctx, &rds.GetEventCategoriesArgs{
-// 			SourceType: &opt0,
+// 			SourceType: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

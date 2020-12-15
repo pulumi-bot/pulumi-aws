@@ -28,7 +28,7 @@ import (
 // 		localGatewayId := cfg.RequireObject("localGatewayId")
 // 		opt0 := localGatewayId
 // 		_, err := ec2.GetLocalGateway(ctx, &ec2.GetLocalGatewayArgs{
-// 			Id: &opt0,
+// 			Id: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

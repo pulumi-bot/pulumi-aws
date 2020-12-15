@@ -25,9 +25,9 @@ import (
 // 		opt1 := "3.6.0"
 // 		opt2 := "na"
 // 		_, err := docdb.GetOrderableDbInstance(ctx, &docdb.GetOrderableDbInstanceArgs{
-// 			Engine:        &opt0,
-// 			EngineVersion: &opt1,
-// 			LicenseModel:  &opt2,
+// 			Engine:        _opt0,
+// 			EngineVersion: _opt1,
+// 			LicenseModel:  _opt2,
 // 			PreferredInstanceClasses: []string{
 // 				"db.r5.large",
 // 				"db.r4.large",

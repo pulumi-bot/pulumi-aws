@@ -26,7 +26,7 @@ import (
 // 		opt0 := "YAML"
 // 		foo, err := ssm.LookupDocument(ctx, &ssm.LookupDocumentArgs{
 // 			Name:           "AWS-GatherSoftwareInventory",
-// 			DocumentFormat: &opt0,
+// 			DocumentFormat: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -52,7 +52,7 @@ import (
 // 		opt0 := "JSON"
 // 		_, err := ssm.LookupDocument(ctx, &ssm.LookupDocumentArgs{
 // 			Name:           aws_ssm_document.Test.Name,
-// 			DocumentFormat: &opt0,
+// 			DocumentFormat: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

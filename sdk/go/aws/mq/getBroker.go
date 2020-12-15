@@ -33,14 +33,14 @@ import (
 // 		}
 // 		opt0 := brokerId
 // 		_, err := mq.LookupBroker(ctx, &mq.LookupBrokerArgs{
-// 			BrokerId: &opt0,
+// 			BrokerId: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		opt1 := brokerName
 // 		_, err = mq.LookupBroker(ctx, &mq.LookupBrokerArgs{
-// 			BrokerName: &opt1,
+// 			BrokerName: _opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

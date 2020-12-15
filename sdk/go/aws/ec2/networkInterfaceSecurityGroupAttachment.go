@@ -46,7 +46,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := true
 // 		ami, err := aws.GetAmi(ctx, &aws.GetAmiArgs{
-// 			MostRecent: &opt0,
+// 			MostRecent: _opt0,
 // 			Filters: []aws.GetAmiFilter{
 // 				aws.GetAmiFilter{
 // 					Name: "name",
@@ -108,7 +108,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "i-1234567890abcdef0"
 // 		instance, err := ec2.LookupInstance(ctx, &ec2.LookupInstanceArgs{
-// 			InstanceId: &opt0,
+// 			InstanceId: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -222,15 +222,15 @@ type NetworkInterfaceSecurityGroupAttachmentInput interface {
 	ToNetworkInterfaceSecurityGroupAttachmentOutputWithContext(ctx context.Context) NetworkInterfaceSecurityGroupAttachmentOutput
 }
 
-func (NetworkInterfaceSecurityGroupAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkInterfaceSecurityGroupAttachment)(nil)).Elem()
+func (*NetworkInterfaceSecurityGroupAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceSecurityGroupAttachment)(nil))
 }
 
-func (i NetworkInterfaceSecurityGroupAttachment) ToNetworkInterfaceSecurityGroupAttachmentOutput() NetworkInterfaceSecurityGroupAttachmentOutput {
+func (i *NetworkInterfaceSecurityGroupAttachment) ToNetworkInterfaceSecurityGroupAttachmentOutput() NetworkInterfaceSecurityGroupAttachmentOutput {
 	return i.ToNetworkInterfaceSecurityGroupAttachmentOutputWithContext(context.Background())
 }
 
-func (i NetworkInterfaceSecurityGroupAttachment) ToNetworkInterfaceSecurityGroupAttachmentOutputWithContext(ctx context.Context) NetworkInterfaceSecurityGroupAttachmentOutput {
+func (i *NetworkInterfaceSecurityGroupAttachment) ToNetworkInterfaceSecurityGroupAttachmentOutputWithContext(ctx context.Context) NetworkInterfaceSecurityGroupAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceSecurityGroupAttachmentOutput)
 }
 
@@ -239,7 +239,7 @@ type NetworkInterfaceSecurityGroupAttachmentOutput struct {
 }
 
 func (NetworkInterfaceSecurityGroupAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkInterfaceSecurityGroupAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*NetworkInterfaceSecurityGroupAttachment)(nil))
 }
 
 func (o NetworkInterfaceSecurityGroupAttachmentOutput) ToNetworkInterfaceSecurityGroupAttachmentOutput() NetworkInterfaceSecurityGroupAttachmentOutput {

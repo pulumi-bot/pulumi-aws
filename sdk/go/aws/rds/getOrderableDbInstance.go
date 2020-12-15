@@ -26,14 +26,14 @@ import (
 // 		opt2 := "standard"
 // 		_, err := rds.GetOrderableDbInstance(ctx, &rds.GetOrderableDbInstanceArgs{
 // 			Engine:        "mysql",
-// 			EngineVersion: &opt0,
-// 			LicenseModel:  &opt1,
+// 			EngineVersion: _opt0,
+// 			LicenseModel:  _opt1,
 // 			PreferredInstanceClasses: []string{
 // 				"db.r6.xlarge",
 // 				"db.m4.large",
 // 				"db.t3.small",
 // 			},
-// 			StorageType: &opt2,
+// 			StorageType: _opt2,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -58,7 +58,7 @@ import (
 // 		opt0 := "general-public-license"
 // 		_, err := rds.GetOrderableDbInstance(ctx, &rds.GetOrderableDbInstanceArgs{
 // 			Engine:       "mysql",
-// 			LicenseModel: &opt0,
+// 			LicenseModel: _opt0,
 // 			PreferredEngineVersions: []string{
 // 				"5.6.35",
 // 				"5.6.41",

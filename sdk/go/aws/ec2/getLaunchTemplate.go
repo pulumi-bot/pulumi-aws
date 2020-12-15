@@ -23,7 +23,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "my-launch-template"
 // 		_, err := ec2.LookupLaunchTemplate(ctx, &ec2.LookupLaunchTemplateArgs{
-// 			Name: &opt0,
+// 			Name: _opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

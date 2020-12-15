@@ -27,8 +27,8 @@ import (
 // 		opt0 := "development_cluster"
 // 		opt1 := true
 // 		developmentFinalSnapshot, err := rds.LookupClusterSnapshot(ctx, &rds.LookupClusterSnapshotArgs{
-// 			DbClusterIdentifier: &opt0,
-// 			MostRecent:          &opt1,
+// 			DbClusterIdentifier: _opt0,
+// 			MostRecent:          _opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

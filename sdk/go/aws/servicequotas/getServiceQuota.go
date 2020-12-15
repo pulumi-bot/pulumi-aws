@@ -23,7 +23,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "L-F678F1CE"
 // 		_, err := servicequotas.LookupServiceQuota(ctx, &servicequotas.LookupServiceQuotaArgs{
-// 			QuotaCode:   &opt0,
+// 			QuotaCode:   _opt0,
 // 			ServiceCode: "vpc",
 // 		}, nil)
 // 		if err != nil {
@@ -31,7 +31,7 @@ import (
 // 		}
 // 		opt1 := "VPCs per Region"
 // 		_, err = servicequotas.LookupServiceQuota(ctx, &servicequotas.LookupServiceQuotaArgs{
-// 			QuotaName:   &opt1,
+// 			QuotaName:   _opt1,
 // 			ServiceCode: "vpc",
 // 		}, nil)
 // 		if err != nil {

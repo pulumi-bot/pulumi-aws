@@ -144,7 +144,7 @@ import (
 // 		}
 // 		opt0 := source.Json
 // 		_, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-// 			SourceJson: &opt0,
+// 			SourceJson: _opt0,
 // 			Statements: []iam.GetPolicyDocumentStatement{
 // 				iam.GetPolicyDocumentStatement{
 // 					Sid: "SidToOverwrite",
@@ -179,7 +179,7 @@ import (
 // 		}
 // 		opt1 := override.Json
 // 		_, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-// 			OverrideJson: &opt1,
+// 			OverrideJson: _opt1,
 // 			Statements: []iam.GetPolicyDocumentStatement{
 // 				iam.GetPolicyDocumentStatement{
 // 					Actions: []string{
@@ -292,8 +292,8 @@ import (
 // 		opt0 := source.Json
 // 		opt1 := override.Json
 // 		_, err = iam.GetPolicyDocument(ctx, &iam.GetPolicyDocumentArgs{
-// 			SourceJson:   &opt0,
-// 			OverrideJson: &opt1,
+// 			SourceJson:   _opt0,
+// 			OverrideJson: _opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
