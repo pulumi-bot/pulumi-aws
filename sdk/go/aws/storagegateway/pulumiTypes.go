@@ -171,7 +171,7 @@ func (i GatewaySmbActiveDirectorySettingsArgs) ToGatewaySmbActiveDirectorySettin
 }
 
 func (i GatewaySmbActiveDirectorySettingsArgs) ToGatewaySmbActiveDirectorySettingsPtrOutputWithContext(ctx context.Context) GatewaySmbActiveDirectorySettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewaySmbActiveDirectorySettingsOutput).ToGatewaySmbActiveDirectorySettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaySmbActiveDirectorySettingsOutput).ToGatewaySmbActiveDirectorySettingsPtrOutput()
 }
 
 // GatewaySmbActiveDirectorySettingsPtrInput is an input type that accepts GatewaySmbActiveDirectorySettingsArgs, GatewaySmbActiveDirectorySettingsPtr and GatewaySmbActiveDirectorySettingsPtrOutput values.
@@ -204,7 +204,7 @@ func (i *gatewaySmbActiveDirectorySettingsPtrType) ToGatewaySmbActiveDirectorySe
 }
 
 func (i *gatewaySmbActiveDirectorySettingsPtrType) ToGatewaySmbActiveDirectorySettingsPtrOutputWithContext(ctx context.Context) GatewaySmbActiveDirectorySettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewaySmbActiveDirectorySettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaySmbActiveDirectorySettingsOutput).ToGatewaySmbActiveDirectorySettingsPtrOutput()
 }
 
 type GatewaySmbActiveDirectorySettingsOutput struct{ *pulumi.OutputState }
@@ -397,7 +397,7 @@ func (i NfsFileShareCacheAttributesArgs) ToNfsFileShareCacheAttributesPtrOutput(
 }
 
 func (i NfsFileShareCacheAttributesArgs) ToNfsFileShareCacheAttributesPtrOutputWithContext(ctx context.Context) NfsFileShareCacheAttributesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NfsFileShareCacheAttributesOutput).ToNfsFileShareCacheAttributesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(NfsFileShareCacheAttributesOutput).ToNfsFileShareCacheAttributesPtrOutput()
 }
 
 // NfsFileShareCacheAttributesPtrInput is an input type that accepts NfsFileShareCacheAttributesArgs, NfsFileShareCacheAttributesPtr and NfsFileShareCacheAttributesPtrOutput values.
@@ -430,7 +430,7 @@ func (i *nfsFileShareCacheAttributesPtrType) ToNfsFileShareCacheAttributesPtrOut
 }
 
 func (i *nfsFileShareCacheAttributesPtrType) ToNfsFileShareCacheAttributesPtrOutputWithContext(ctx context.Context) NfsFileShareCacheAttributesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NfsFileShareCacheAttributesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(NfsFileShareCacheAttributesOutput).ToNfsFileShareCacheAttributesPtrOutput()
 }
 
 type NfsFileShareCacheAttributesOutput struct{ *pulumi.OutputState }
@@ -544,7 +544,7 @@ func (i NfsFileShareNfsFileShareDefaultsArgs) ToNfsFileShareNfsFileShareDefaults
 }
 
 func (i NfsFileShareNfsFileShareDefaultsArgs) ToNfsFileShareNfsFileShareDefaultsPtrOutputWithContext(ctx context.Context) NfsFileShareNfsFileShareDefaultsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NfsFileShareNfsFileShareDefaultsOutput).ToNfsFileShareNfsFileShareDefaultsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(NfsFileShareNfsFileShareDefaultsOutput).ToNfsFileShareNfsFileShareDefaultsPtrOutput()
 }
 
 // NfsFileShareNfsFileShareDefaultsPtrInput is an input type that accepts NfsFileShareNfsFileShareDefaultsArgs, NfsFileShareNfsFileShareDefaultsPtr and NfsFileShareNfsFileShareDefaultsPtrOutput values.
@@ -577,7 +577,7 @@ func (i *nfsFileShareNfsFileShareDefaultsPtrType) ToNfsFileShareNfsFileShareDefa
 }
 
 func (i *nfsFileShareNfsFileShareDefaultsPtrType) ToNfsFileShareNfsFileShareDefaultsPtrOutputWithContext(ctx context.Context) NfsFileShareNfsFileShareDefaultsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NfsFileShareNfsFileShareDefaultsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(NfsFileShareNfsFileShareDefaultsOutput).ToNfsFileShareNfsFileShareDefaultsPtrOutput()
 }
 
 type NfsFileShareNfsFileShareDefaultsOutput struct{ *pulumi.OutputState }
@@ -724,7 +724,7 @@ func (i SmbFileShareCacheAttributesArgs) ToSmbFileShareCacheAttributesPtrOutput(
 }
 
 func (i SmbFileShareCacheAttributesArgs) ToSmbFileShareCacheAttributesPtrOutputWithContext(ctx context.Context) SmbFileShareCacheAttributesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmbFileShareCacheAttributesOutput).ToSmbFileShareCacheAttributesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SmbFileShareCacheAttributesOutput).ToSmbFileShareCacheAttributesPtrOutput()
 }
 
 // SmbFileShareCacheAttributesPtrInput is an input type that accepts SmbFileShareCacheAttributesArgs, SmbFileShareCacheAttributesPtr and SmbFileShareCacheAttributesPtrOutput values.
@@ -757,7 +757,7 @@ func (i *smbFileShareCacheAttributesPtrType) ToSmbFileShareCacheAttributesPtrOut
 }
 
 func (i *smbFileShareCacheAttributesPtrType) ToSmbFileShareCacheAttributesPtrOutputWithContext(ctx context.Context) SmbFileShareCacheAttributesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmbFileShareCacheAttributesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SmbFileShareCacheAttributesOutput).ToSmbFileShareCacheAttributesPtrOutput()
 }
 
 type SmbFileShareCacheAttributesOutput struct{ *pulumi.OutputState }

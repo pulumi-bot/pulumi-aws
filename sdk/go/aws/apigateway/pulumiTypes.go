@@ -52,7 +52,7 @@ func (i AccountThrottleSettingsArgs) ToAccountThrottleSettingsPtrOutput() Accoun
 }
 
 func (i AccountThrottleSettingsArgs) ToAccountThrottleSettingsPtrOutputWithContext(ctx context.Context) AccountThrottleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountThrottleSettingsOutput).ToAccountThrottleSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountThrottleSettingsOutput).ToAccountThrottleSettingsPtrOutput()
 }
 
 // AccountThrottleSettingsPtrInput is an input type that accepts AccountThrottleSettingsArgs, AccountThrottleSettingsPtr and AccountThrottleSettingsPtrOutput values.
@@ -85,7 +85,7 @@ func (i *accountThrottleSettingsPtrType) ToAccountThrottleSettingsPtrOutput() Ac
 }
 
 func (i *accountThrottleSettingsPtrType) ToAccountThrottleSettingsPtrOutputWithContext(ctx context.Context) AccountThrottleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccountThrottleSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AccountThrottleSettingsOutput).ToAccountThrottleSettingsPtrOutput()
 }
 
 type AccountThrottleSettingsOutput struct{ *pulumi.OutputState }
@@ -214,7 +214,7 @@ func (i DocumentationPartLocationArgs) ToDocumentationPartLocationPtrOutput() Do
 }
 
 func (i DocumentationPartLocationArgs) ToDocumentationPartLocationPtrOutputWithContext(ctx context.Context) DocumentationPartLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DocumentationPartLocationOutput).ToDocumentationPartLocationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DocumentationPartLocationOutput).ToDocumentationPartLocationPtrOutput()
 }
 
 // DocumentationPartLocationPtrInput is an input type that accepts DocumentationPartLocationArgs, DocumentationPartLocationPtr and DocumentationPartLocationPtrOutput values.
@@ -247,7 +247,7 @@ func (i *documentationPartLocationPtrType) ToDocumentationPartLocationPtrOutput(
 }
 
 func (i *documentationPartLocationPtrType) ToDocumentationPartLocationPtrOutputWithContext(ctx context.Context) DocumentationPartLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DocumentationPartLocationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DocumentationPartLocationOutput).ToDocumentationPartLocationPtrOutput()
 }
 
 type DocumentationPartLocationOutput struct{ *pulumi.OutputState }
@@ -405,7 +405,7 @@ func (i DomainNameEndpointConfigurationArgs) ToDomainNameEndpointConfigurationPt
 }
 
 func (i DomainNameEndpointConfigurationArgs) ToDomainNameEndpointConfigurationPtrOutputWithContext(ctx context.Context) DomainNameEndpointConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainNameEndpointConfigurationOutput).ToDomainNameEndpointConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainNameEndpointConfigurationOutput).ToDomainNameEndpointConfigurationPtrOutput()
 }
 
 // DomainNameEndpointConfigurationPtrInput is an input type that accepts DomainNameEndpointConfigurationArgs, DomainNameEndpointConfigurationPtr and DomainNameEndpointConfigurationPtrOutput values.
@@ -438,7 +438,7 @@ func (i *domainNameEndpointConfigurationPtrType) ToDomainNameEndpointConfigurati
 }
 
 func (i *domainNameEndpointConfigurationPtrType) ToDomainNameEndpointConfigurationPtrOutputWithContext(ctx context.Context) DomainNameEndpointConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainNameEndpointConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DomainNameEndpointConfigurationOutput).ToDomainNameEndpointConfigurationPtrOutput()
 }
 
 type DomainNameEndpointConfigurationOutput struct{ *pulumi.OutputState }
@@ -572,7 +572,7 @@ func (i MethodSettingsSettingsArgs) ToMethodSettingsSettingsPtrOutput() MethodSe
 }
 
 func (i MethodSettingsSettingsArgs) ToMethodSettingsSettingsPtrOutputWithContext(ctx context.Context) MethodSettingsSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MethodSettingsSettingsOutput).ToMethodSettingsSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(MethodSettingsSettingsOutput).ToMethodSettingsSettingsPtrOutput()
 }
 
 // MethodSettingsSettingsPtrInput is an input type that accepts MethodSettingsSettingsArgs, MethodSettingsSettingsPtr and MethodSettingsSettingsPtrOutput values.
@@ -605,7 +605,7 @@ func (i *methodSettingsSettingsPtrType) ToMethodSettingsSettingsPtrOutput() Meth
 }
 
 func (i *methodSettingsSettingsPtrType) ToMethodSettingsSettingsPtrOutputWithContext(ctx context.Context) MethodSettingsSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MethodSettingsSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(MethodSettingsSettingsOutput).ToMethodSettingsSettingsPtrOutput()
 }
 
 type MethodSettingsSettingsOutput struct{ *pulumi.OutputState }
@@ -842,7 +842,7 @@ func (i RestApiEndpointConfigurationArgs) ToRestApiEndpointConfigurationPtrOutpu
 }
 
 func (i RestApiEndpointConfigurationArgs) ToRestApiEndpointConfigurationPtrOutputWithContext(ctx context.Context) RestApiEndpointConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RestApiEndpointConfigurationOutput).ToRestApiEndpointConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RestApiEndpointConfigurationOutput).ToRestApiEndpointConfigurationPtrOutput()
 }
 
 // RestApiEndpointConfigurationPtrInput is an input type that accepts RestApiEndpointConfigurationArgs, RestApiEndpointConfigurationPtr and RestApiEndpointConfigurationPtrOutput values.
@@ -875,7 +875,7 @@ func (i *restApiEndpointConfigurationPtrType) ToRestApiEndpointConfigurationPtrO
 }
 
 func (i *restApiEndpointConfigurationPtrType) ToRestApiEndpointConfigurationPtrOutputWithContext(ctx context.Context) RestApiEndpointConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RestApiEndpointConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RestApiEndpointConfigurationOutput).ToRestApiEndpointConfigurationPtrOutput()
 }
 
 type RestApiEndpointConfigurationOutput struct{ *pulumi.OutputState }
@@ -994,7 +994,7 @@ func (i StageAccessLogSettingsArgs) ToStageAccessLogSettingsPtrOutput() StageAcc
 }
 
 func (i StageAccessLogSettingsArgs) ToStageAccessLogSettingsPtrOutputWithContext(ctx context.Context) StageAccessLogSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StageAccessLogSettingsOutput).ToStageAccessLogSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(StageAccessLogSettingsOutput).ToStageAccessLogSettingsPtrOutput()
 }
 
 // StageAccessLogSettingsPtrInput is an input type that accepts StageAccessLogSettingsArgs, StageAccessLogSettingsPtr and StageAccessLogSettingsPtrOutput values.
@@ -1027,7 +1027,7 @@ func (i *stageAccessLogSettingsPtrType) ToStageAccessLogSettingsPtrOutput() Stag
 }
 
 func (i *stageAccessLogSettingsPtrType) ToStageAccessLogSettingsPtrOutputWithContext(ctx context.Context) StageAccessLogSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StageAccessLogSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(StageAccessLogSettingsOutput).ToStageAccessLogSettingsPtrOutput()
 }
 
 type StageAccessLogSettingsOutput struct{ *pulumi.OutputState }
@@ -1256,7 +1256,7 @@ func (i UsagePlanQuotaSettingsArgs) ToUsagePlanQuotaSettingsPtrOutput() UsagePla
 }
 
 func (i UsagePlanQuotaSettingsArgs) ToUsagePlanQuotaSettingsPtrOutputWithContext(ctx context.Context) UsagePlanQuotaSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanQuotaSettingsOutput).ToUsagePlanQuotaSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanQuotaSettingsOutput).ToUsagePlanQuotaSettingsPtrOutput()
 }
 
 // UsagePlanQuotaSettingsPtrInput is an input type that accepts UsagePlanQuotaSettingsArgs, UsagePlanQuotaSettingsPtr and UsagePlanQuotaSettingsPtrOutput values.
@@ -1289,7 +1289,7 @@ func (i *usagePlanQuotaSettingsPtrType) ToUsagePlanQuotaSettingsPtrOutput() Usag
 }
 
 func (i *usagePlanQuotaSettingsPtrType) ToUsagePlanQuotaSettingsPtrOutputWithContext(ctx context.Context) UsagePlanQuotaSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanQuotaSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanQuotaSettingsOutput).ToUsagePlanQuotaSettingsPtrOutput()
 }
 
 type UsagePlanQuotaSettingsOutput struct{ *pulumi.OutputState }
@@ -1421,7 +1421,7 @@ func (i UsagePlanThrottleSettingsArgs) ToUsagePlanThrottleSettingsPtrOutput() Us
 }
 
 func (i UsagePlanThrottleSettingsArgs) ToUsagePlanThrottleSettingsPtrOutputWithContext(ctx context.Context) UsagePlanThrottleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanThrottleSettingsOutput).ToUsagePlanThrottleSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanThrottleSettingsOutput).ToUsagePlanThrottleSettingsPtrOutput()
 }
 
 // UsagePlanThrottleSettingsPtrInput is an input type that accepts UsagePlanThrottleSettingsArgs, UsagePlanThrottleSettingsPtr and UsagePlanThrottleSettingsPtrOutput values.
@@ -1454,7 +1454,7 @@ func (i *usagePlanThrottleSettingsPtrType) ToUsagePlanThrottleSettingsPtrOutput(
 }
 
 func (i *usagePlanThrottleSettingsPtrType) ToUsagePlanThrottleSettingsPtrOutputWithContext(ctx context.Context) UsagePlanThrottleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanThrottleSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(UsagePlanThrottleSettingsOutput).ToUsagePlanThrottleSettingsPtrOutput()
 }
 
 type UsagePlanThrottleSettingsOutput struct{ *pulumi.OutputState }

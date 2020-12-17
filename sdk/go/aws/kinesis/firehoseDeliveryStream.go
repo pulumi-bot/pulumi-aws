@@ -499,16 +499,95 @@ type FirehoseDeliveryStreamInput interface {
 	ToFirehoseDeliveryStreamOutputWithContext(ctx context.Context) FirehoseDeliveryStreamOutput
 }
 
-func (FirehoseDeliveryStream) ElementType() reflect.Type {
-	return reflect.TypeOf((*FirehoseDeliveryStream)(nil)).Elem()
+func (*FirehoseDeliveryStream) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirehoseDeliveryStream)(nil))
 }
 
-func (i FirehoseDeliveryStream) ToFirehoseDeliveryStreamOutput() FirehoseDeliveryStreamOutput {
+func (i *FirehoseDeliveryStream) ToFirehoseDeliveryStreamOutput() FirehoseDeliveryStreamOutput {
 	return i.ToFirehoseDeliveryStreamOutputWithContext(context.Background())
 }
 
-func (i FirehoseDeliveryStream) ToFirehoseDeliveryStreamOutputWithContext(ctx context.Context) FirehoseDeliveryStreamOutput {
+func (i *FirehoseDeliveryStream) ToFirehoseDeliveryStreamOutputWithContext(ctx context.Context) FirehoseDeliveryStreamOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamOutput)
+}
+
+func (i *FirehoseDeliveryStream) ToFirehoseDeliveryStreamPtrOutput() FirehoseDeliveryStreamPtrOutput {
+	return i.ToFirehoseDeliveryStreamPtrOutputWithContext(context.Background())
+}
+
+func (i *FirehoseDeliveryStream) ToFirehoseDeliveryStreamPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamPtrOutput)
+}
+
+type FirehoseDeliveryStreamPtrInput interface {
+	pulumi.Input
+
+	ToFirehoseDeliveryStreamPtrOutput() FirehoseDeliveryStreamPtrOutput
+	ToFirehoseDeliveryStreamPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamPtrOutput
+}
+
+type firehoseDeliveryStreamPtrType FirehoseDeliveryStreamArgs
+
+func (*firehoseDeliveryStreamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirehoseDeliveryStream)(nil))
+}
+
+func (i *firehoseDeliveryStreamPtrType) ToFirehoseDeliveryStreamPtrOutput() FirehoseDeliveryStreamPtrOutput {
+	return i.ToFirehoseDeliveryStreamPtrOutputWithContext(context.Background())
+}
+
+func (i *firehoseDeliveryStreamPtrType) ToFirehoseDeliveryStreamPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamOutput).ToFirehoseDeliveryStreamPtrOutput()
+}
+
+// FirehoseDeliveryStreamArrayInput is an input type that accepts FirehoseDeliveryStreamArray and FirehoseDeliveryStreamArrayOutput values.
+// You can construct a concrete instance of `FirehoseDeliveryStreamArrayInput` via:
+//
+//          FirehoseDeliveryStreamArray{ FirehoseDeliveryStreamArgs{...} }
+type FirehoseDeliveryStreamArrayInput interface {
+	pulumi.Input
+
+	ToFirehoseDeliveryStreamArrayOutput() FirehoseDeliveryStreamArrayOutput
+	ToFirehoseDeliveryStreamArrayOutputWithContext(context.Context) FirehoseDeliveryStreamArrayOutput
+}
+
+type FirehoseDeliveryStreamArray []FirehoseDeliveryStreamInput
+
+func (FirehoseDeliveryStreamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirehoseDeliveryStream)(nil))
+}
+
+func (i FirehoseDeliveryStreamArray) ToFirehoseDeliveryStreamArrayOutput() FirehoseDeliveryStreamArrayOutput {
+	return i.ToFirehoseDeliveryStreamArrayOutputWithContext(context.Background())
+}
+
+func (i FirehoseDeliveryStreamArray) ToFirehoseDeliveryStreamArrayOutputWithContext(ctx context.Context) FirehoseDeliveryStreamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamArrayOutput)
+}
+
+// FirehoseDeliveryStreamMapInput is an input type that accepts FirehoseDeliveryStreamMap and FirehoseDeliveryStreamMapOutput values.
+// You can construct a concrete instance of `FirehoseDeliveryStreamMapInput` via:
+//
+//          FirehoseDeliveryStreamMap{ "key": FirehoseDeliveryStreamArgs{...} }
+type FirehoseDeliveryStreamMapInput interface {
+	pulumi.Input
+
+	ToFirehoseDeliveryStreamMapOutput() FirehoseDeliveryStreamMapOutput
+	ToFirehoseDeliveryStreamMapOutputWithContext(context.Context) FirehoseDeliveryStreamMapOutput
+}
+
+type FirehoseDeliveryStreamMap map[string]FirehoseDeliveryStreamInput
+
+func (FirehoseDeliveryStreamMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FirehoseDeliveryStream)(nil))
+}
+
+func (i FirehoseDeliveryStreamMap) ToFirehoseDeliveryStreamMapOutput() FirehoseDeliveryStreamMapOutput {
+	return i.ToFirehoseDeliveryStreamMapOutputWithContext(context.Background())
+}
+
+func (i FirehoseDeliveryStreamMap) ToFirehoseDeliveryStreamMapOutputWithContext(ctx context.Context) FirehoseDeliveryStreamMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirehoseDeliveryStreamMapOutput)
 }
 
 type FirehoseDeliveryStreamOutput struct {
@@ -516,7 +595,7 @@ type FirehoseDeliveryStreamOutput struct {
 }
 
 func (FirehoseDeliveryStreamOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FirehoseDeliveryStreamOutput)(nil)).Elem()
+	return reflect.TypeOf((*FirehoseDeliveryStream)(nil))
 }
 
 func (o FirehoseDeliveryStreamOutput) ToFirehoseDeliveryStreamOutput() FirehoseDeliveryStreamOutput {
@@ -527,6 +606,75 @@ func (o FirehoseDeliveryStreamOutput) ToFirehoseDeliveryStreamOutputWithContext(
 	return o
 }
 
+func (o FirehoseDeliveryStreamOutput) ToFirehoseDeliveryStreamPtrOutput() FirehoseDeliveryStreamPtrOutput {
+	return o.ToFirehoseDeliveryStreamPtrOutputWithContext(context.Background())
+}
+
+func (o FirehoseDeliveryStreamOutput) ToFirehoseDeliveryStreamPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamPtrOutput {
+	return o.ApplyT(func(v FirehoseDeliveryStream) *FirehoseDeliveryStream {
+		return &v
+	}).(FirehoseDeliveryStreamPtrOutput)
+}
+
+type FirehoseDeliveryStreamPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FirehoseDeliveryStreamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirehoseDeliveryStream)(nil))
+}
+
+func (o FirehoseDeliveryStreamPtrOutput) ToFirehoseDeliveryStreamPtrOutput() FirehoseDeliveryStreamPtrOutput {
+	return o
+}
+
+func (o FirehoseDeliveryStreamPtrOutput) ToFirehoseDeliveryStreamPtrOutputWithContext(ctx context.Context) FirehoseDeliveryStreamPtrOutput {
+	return o
+}
+
+type FirehoseDeliveryStreamArrayOutput struct{ *pulumi.OutputState }
+
+func (FirehoseDeliveryStreamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirehoseDeliveryStream)(nil))
+}
+
+func (o FirehoseDeliveryStreamArrayOutput) ToFirehoseDeliveryStreamArrayOutput() FirehoseDeliveryStreamArrayOutput {
+	return o
+}
+
+func (o FirehoseDeliveryStreamArrayOutput) ToFirehoseDeliveryStreamArrayOutputWithContext(ctx context.Context) FirehoseDeliveryStreamArrayOutput {
+	return o
+}
+
+func (o FirehoseDeliveryStreamArrayOutput) Index(i pulumi.IntInput) FirehoseDeliveryStreamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirehoseDeliveryStream {
+		return vs[0].([]FirehoseDeliveryStream)[vs[1].(int)]
+	}).(FirehoseDeliveryStreamOutput)
+}
+
+type FirehoseDeliveryStreamMapOutput struct{ *pulumi.OutputState }
+
+func (FirehoseDeliveryStreamMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FirehoseDeliveryStream)(nil))
+}
+
+func (o FirehoseDeliveryStreamMapOutput) ToFirehoseDeliveryStreamMapOutput() FirehoseDeliveryStreamMapOutput {
+	return o
+}
+
+func (o FirehoseDeliveryStreamMapOutput) ToFirehoseDeliveryStreamMapOutputWithContext(ctx context.Context) FirehoseDeliveryStreamMapOutput {
+	return o
+}
+
+func (o FirehoseDeliveryStreamMapOutput) MapIndex(k pulumi.StringInput) FirehoseDeliveryStreamOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FirehoseDeliveryStream {
+		return vs[0].(map[string]FirehoseDeliveryStream)[vs[1].(string)]
+	}).(FirehoseDeliveryStreamOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(FirehoseDeliveryStreamOutput{})
+	pulumi.RegisterOutputType(FirehoseDeliveryStreamPtrOutput{})
+	pulumi.RegisterOutputType(FirehoseDeliveryStreamArrayOutput{})
+	pulumi.RegisterOutputType(FirehoseDeliveryStreamMapOutput{})
 }

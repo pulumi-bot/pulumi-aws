@@ -186,16 +186,95 @@ type SourceCredentialInput interface {
 	ToSourceCredentialOutputWithContext(ctx context.Context) SourceCredentialOutput
 }
 
-func (SourceCredential) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceCredential)(nil)).Elem()
+func (*SourceCredential) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceCredential)(nil))
 }
 
-func (i SourceCredential) ToSourceCredentialOutput() SourceCredentialOutput {
+func (i *SourceCredential) ToSourceCredentialOutput() SourceCredentialOutput {
 	return i.ToSourceCredentialOutputWithContext(context.Background())
 }
 
-func (i SourceCredential) ToSourceCredentialOutputWithContext(ctx context.Context) SourceCredentialOutput {
+func (i *SourceCredential) ToSourceCredentialOutputWithContext(ctx context.Context) SourceCredentialOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SourceCredentialOutput)
+}
+
+func (i *SourceCredential) ToSourceCredentialPtrOutput() SourceCredentialPtrOutput {
+	return i.ToSourceCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i *SourceCredential) ToSourceCredentialPtrOutputWithContext(ctx context.Context) SourceCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceCredentialPtrOutput)
+}
+
+type SourceCredentialPtrInput interface {
+	pulumi.Input
+
+	ToSourceCredentialPtrOutput() SourceCredentialPtrOutput
+	ToSourceCredentialPtrOutputWithContext(ctx context.Context) SourceCredentialPtrOutput
+}
+
+type sourceCredentialPtrType SourceCredentialArgs
+
+func (*sourceCredentialPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceCredential)(nil))
+}
+
+func (i *sourceCredentialPtrType) ToSourceCredentialPtrOutput() SourceCredentialPtrOutput {
+	return i.ToSourceCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i *sourceCredentialPtrType) ToSourceCredentialPtrOutputWithContext(ctx context.Context) SourceCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceCredentialOutput).ToSourceCredentialPtrOutput()
+}
+
+// SourceCredentialArrayInput is an input type that accepts SourceCredentialArray and SourceCredentialArrayOutput values.
+// You can construct a concrete instance of `SourceCredentialArrayInput` via:
+//
+//          SourceCredentialArray{ SourceCredentialArgs{...} }
+type SourceCredentialArrayInput interface {
+	pulumi.Input
+
+	ToSourceCredentialArrayOutput() SourceCredentialArrayOutput
+	ToSourceCredentialArrayOutputWithContext(context.Context) SourceCredentialArrayOutput
+}
+
+type SourceCredentialArray []SourceCredentialInput
+
+func (SourceCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SourceCredential)(nil))
+}
+
+func (i SourceCredentialArray) ToSourceCredentialArrayOutput() SourceCredentialArrayOutput {
+	return i.ToSourceCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i SourceCredentialArray) ToSourceCredentialArrayOutputWithContext(ctx context.Context) SourceCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceCredentialArrayOutput)
+}
+
+// SourceCredentialMapInput is an input type that accepts SourceCredentialMap and SourceCredentialMapOutput values.
+// You can construct a concrete instance of `SourceCredentialMapInput` via:
+//
+//          SourceCredentialMap{ "key": SourceCredentialArgs{...} }
+type SourceCredentialMapInput interface {
+	pulumi.Input
+
+	ToSourceCredentialMapOutput() SourceCredentialMapOutput
+	ToSourceCredentialMapOutputWithContext(context.Context) SourceCredentialMapOutput
+}
+
+type SourceCredentialMap map[string]SourceCredentialInput
+
+func (SourceCredentialMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SourceCredential)(nil))
+}
+
+func (i SourceCredentialMap) ToSourceCredentialMapOutput() SourceCredentialMapOutput {
+	return i.ToSourceCredentialMapOutputWithContext(context.Background())
+}
+
+func (i SourceCredentialMap) ToSourceCredentialMapOutputWithContext(ctx context.Context) SourceCredentialMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceCredentialMapOutput)
 }
 
 type SourceCredentialOutput struct {
@@ -203,7 +282,7 @@ type SourceCredentialOutput struct {
 }
 
 func (SourceCredentialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceCredentialOutput)(nil)).Elem()
+	return reflect.TypeOf((*SourceCredential)(nil))
 }
 
 func (o SourceCredentialOutput) ToSourceCredentialOutput() SourceCredentialOutput {
@@ -214,6 +293,75 @@ func (o SourceCredentialOutput) ToSourceCredentialOutputWithContext(ctx context.
 	return o
 }
 
+func (o SourceCredentialOutput) ToSourceCredentialPtrOutput() SourceCredentialPtrOutput {
+	return o.ToSourceCredentialPtrOutputWithContext(context.Background())
+}
+
+func (o SourceCredentialOutput) ToSourceCredentialPtrOutputWithContext(ctx context.Context) SourceCredentialPtrOutput {
+	return o.ApplyT(func(v SourceCredential) *SourceCredential {
+		return &v
+	}).(SourceCredentialPtrOutput)
+}
+
+type SourceCredentialPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SourceCredentialPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceCredential)(nil))
+}
+
+func (o SourceCredentialPtrOutput) ToSourceCredentialPtrOutput() SourceCredentialPtrOutput {
+	return o
+}
+
+func (o SourceCredentialPtrOutput) ToSourceCredentialPtrOutputWithContext(ctx context.Context) SourceCredentialPtrOutput {
+	return o
+}
+
+type SourceCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (SourceCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SourceCredential)(nil))
+}
+
+func (o SourceCredentialArrayOutput) ToSourceCredentialArrayOutput() SourceCredentialArrayOutput {
+	return o
+}
+
+func (o SourceCredentialArrayOutput) ToSourceCredentialArrayOutputWithContext(ctx context.Context) SourceCredentialArrayOutput {
+	return o
+}
+
+func (o SourceCredentialArrayOutput) Index(i pulumi.IntInput) SourceCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SourceCredential {
+		return vs[0].([]SourceCredential)[vs[1].(int)]
+	}).(SourceCredentialOutput)
+}
+
+type SourceCredentialMapOutput struct{ *pulumi.OutputState }
+
+func (SourceCredentialMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SourceCredential)(nil))
+}
+
+func (o SourceCredentialMapOutput) ToSourceCredentialMapOutput() SourceCredentialMapOutput {
+	return o
+}
+
+func (o SourceCredentialMapOutput) ToSourceCredentialMapOutputWithContext(ctx context.Context) SourceCredentialMapOutput {
+	return o
+}
+
+func (o SourceCredentialMapOutput) MapIndex(k pulumi.StringInput) SourceCredentialOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SourceCredential {
+		return vs[0].(map[string]SourceCredential)[vs[1].(string)]
+	}).(SourceCredentialOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SourceCredentialOutput{})
+	pulumi.RegisterOutputType(SourceCredentialPtrOutput{})
+	pulumi.RegisterOutputType(SourceCredentialArrayOutput{})
+	pulumi.RegisterOutputType(SourceCredentialMapOutput{})
 }

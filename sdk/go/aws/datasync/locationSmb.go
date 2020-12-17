@@ -216,16 +216,95 @@ type LocationSmbInput interface {
 	ToLocationSmbOutputWithContext(ctx context.Context) LocationSmbOutput
 }
 
-func (LocationSmb) ElementType() reflect.Type {
-	return reflect.TypeOf((*LocationSmb)(nil)).Elem()
+func (*LocationSmb) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationSmb)(nil))
 }
 
-func (i LocationSmb) ToLocationSmbOutput() LocationSmbOutput {
+func (i *LocationSmb) ToLocationSmbOutput() LocationSmbOutput {
 	return i.ToLocationSmbOutputWithContext(context.Background())
 }
 
-func (i LocationSmb) ToLocationSmbOutputWithContext(ctx context.Context) LocationSmbOutput {
+func (i *LocationSmb) ToLocationSmbOutputWithContext(ctx context.Context) LocationSmbOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LocationSmbOutput)
+}
+
+func (i *LocationSmb) ToLocationSmbPtrOutput() LocationSmbPtrOutput {
+	return i.ToLocationSmbPtrOutputWithContext(context.Background())
+}
+
+func (i *LocationSmb) ToLocationSmbPtrOutputWithContext(ctx context.Context) LocationSmbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationSmbPtrOutput)
+}
+
+type LocationSmbPtrInput interface {
+	pulumi.Input
+
+	ToLocationSmbPtrOutput() LocationSmbPtrOutput
+	ToLocationSmbPtrOutputWithContext(ctx context.Context) LocationSmbPtrOutput
+}
+
+type locationSmbPtrType LocationSmbArgs
+
+func (*locationSmbPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationSmb)(nil))
+}
+
+func (i *locationSmbPtrType) ToLocationSmbPtrOutput() LocationSmbPtrOutput {
+	return i.ToLocationSmbPtrOutputWithContext(context.Background())
+}
+
+func (i *locationSmbPtrType) ToLocationSmbPtrOutputWithContext(ctx context.Context) LocationSmbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationSmbOutput).ToLocationSmbPtrOutput()
+}
+
+// LocationSmbArrayInput is an input type that accepts LocationSmbArray and LocationSmbArrayOutput values.
+// You can construct a concrete instance of `LocationSmbArrayInput` via:
+//
+//          LocationSmbArray{ LocationSmbArgs{...} }
+type LocationSmbArrayInput interface {
+	pulumi.Input
+
+	ToLocationSmbArrayOutput() LocationSmbArrayOutput
+	ToLocationSmbArrayOutputWithContext(context.Context) LocationSmbArrayOutput
+}
+
+type LocationSmbArray []LocationSmbInput
+
+func (LocationSmbArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocationSmb)(nil))
+}
+
+func (i LocationSmbArray) ToLocationSmbArrayOutput() LocationSmbArrayOutput {
+	return i.ToLocationSmbArrayOutputWithContext(context.Background())
+}
+
+func (i LocationSmbArray) ToLocationSmbArrayOutputWithContext(ctx context.Context) LocationSmbArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationSmbArrayOutput)
+}
+
+// LocationSmbMapInput is an input type that accepts LocationSmbMap and LocationSmbMapOutput values.
+// You can construct a concrete instance of `LocationSmbMapInput` via:
+//
+//          LocationSmbMap{ "key": LocationSmbArgs{...} }
+type LocationSmbMapInput interface {
+	pulumi.Input
+
+	ToLocationSmbMapOutput() LocationSmbMapOutput
+	ToLocationSmbMapOutputWithContext(context.Context) LocationSmbMapOutput
+}
+
+type LocationSmbMap map[string]LocationSmbInput
+
+func (LocationSmbMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]LocationSmb)(nil))
+}
+
+func (i LocationSmbMap) ToLocationSmbMapOutput() LocationSmbMapOutput {
+	return i.ToLocationSmbMapOutputWithContext(context.Background())
+}
+
+func (i LocationSmbMap) ToLocationSmbMapOutputWithContext(ctx context.Context) LocationSmbMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationSmbMapOutput)
 }
 
 type LocationSmbOutput struct {
@@ -233,7 +312,7 @@ type LocationSmbOutput struct {
 }
 
 func (LocationSmbOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LocationSmbOutput)(nil)).Elem()
+	return reflect.TypeOf((*LocationSmb)(nil))
 }
 
 func (o LocationSmbOutput) ToLocationSmbOutput() LocationSmbOutput {
@@ -244,6 +323,75 @@ func (o LocationSmbOutput) ToLocationSmbOutputWithContext(ctx context.Context) L
 	return o
 }
 
+func (o LocationSmbOutput) ToLocationSmbPtrOutput() LocationSmbPtrOutput {
+	return o.ToLocationSmbPtrOutputWithContext(context.Background())
+}
+
+func (o LocationSmbOutput) ToLocationSmbPtrOutputWithContext(ctx context.Context) LocationSmbPtrOutput {
+	return o.ApplyT(func(v LocationSmb) *LocationSmb {
+		return &v
+	}).(LocationSmbPtrOutput)
+}
+
+type LocationSmbPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LocationSmbPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationSmb)(nil))
+}
+
+func (o LocationSmbPtrOutput) ToLocationSmbPtrOutput() LocationSmbPtrOutput {
+	return o
+}
+
+func (o LocationSmbPtrOutput) ToLocationSmbPtrOutputWithContext(ctx context.Context) LocationSmbPtrOutput {
+	return o
+}
+
+type LocationSmbArrayOutput struct{ *pulumi.OutputState }
+
+func (LocationSmbArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocationSmb)(nil))
+}
+
+func (o LocationSmbArrayOutput) ToLocationSmbArrayOutput() LocationSmbArrayOutput {
+	return o
+}
+
+func (o LocationSmbArrayOutput) ToLocationSmbArrayOutputWithContext(ctx context.Context) LocationSmbArrayOutput {
+	return o
+}
+
+func (o LocationSmbArrayOutput) Index(i pulumi.IntInput) LocationSmbOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocationSmb {
+		return vs[0].([]LocationSmb)[vs[1].(int)]
+	}).(LocationSmbOutput)
+}
+
+type LocationSmbMapOutput struct{ *pulumi.OutputState }
+
+func (LocationSmbMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]LocationSmb)(nil))
+}
+
+func (o LocationSmbMapOutput) ToLocationSmbMapOutput() LocationSmbMapOutput {
+	return o
+}
+
+func (o LocationSmbMapOutput) ToLocationSmbMapOutputWithContext(ctx context.Context) LocationSmbMapOutput {
+	return o
+}
+
+func (o LocationSmbMapOutput) MapIndex(k pulumi.StringInput) LocationSmbOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LocationSmb {
+		return vs[0].(map[string]LocationSmb)[vs[1].(string)]
+	}).(LocationSmbOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(LocationSmbOutput{})
+	pulumi.RegisterOutputType(LocationSmbPtrOutput{})
+	pulumi.RegisterOutputType(LocationSmbArrayOutput{})
+	pulumi.RegisterOutputType(LocationSmbMapOutput{})
 }

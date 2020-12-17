@@ -183,7 +183,7 @@ func (i ClusterRestoreToPointInTimeArgs) ToClusterRestoreToPointInTimePtrOutput(
 }
 
 func (i ClusterRestoreToPointInTimeArgs) ToClusterRestoreToPointInTimePtrOutputWithContext(ctx context.Context) ClusterRestoreToPointInTimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterRestoreToPointInTimeOutput).ToClusterRestoreToPointInTimePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRestoreToPointInTimeOutput).ToClusterRestoreToPointInTimePtrOutput()
 }
 
 // ClusterRestoreToPointInTimePtrInput is an input type that accepts ClusterRestoreToPointInTimeArgs, ClusterRestoreToPointInTimePtr and ClusterRestoreToPointInTimePtrOutput values.
@@ -216,7 +216,7 @@ func (i *clusterRestoreToPointInTimePtrType) ToClusterRestoreToPointInTimePtrOut
 }
 
 func (i *clusterRestoreToPointInTimePtrType) ToClusterRestoreToPointInTimePtrOutputWithContext(ctx context.Context) ClusterRestoreToPointInTimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterRestoreToPointInTimePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRestoreToPointInTimeOutput).ToClusterRestoreToPointInTimePtrOutput()
 }
 
 type ClusterRestoreToPointInTimeOutput struct{ *pulumi.OutputState }
@@ -377,7 +377,7 @@ func (i ClusterS3ImportArgs) ToClusterS3ImportPtrOutput() ClusterS3ImportPtrOutp
 }
 
 func (i ClusterS3ImportArgs) ToClusterS3ImportPtrOutputWithContext(ctx context.Context) ClusterS3ImportPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterS3ImportOutput).ToClusterS3ImportPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterS3ImportOutput).ToClusterS3ImportPtrOutput()
 }
 
 // ClusterS3ImportPtrInput is an input type that accepts ClusterS3ImportArgs, ClusterS3ImportPtr and ClusterS3ImportPtrOutput values.
@@ -410,7 +410,7 @@ func (i *clusterS3ImportPtrType) ToClusterS3ImportPtrOutput() ClusterS3ImportPtr
 }
 
 func (i *clusterS3ImportPtrType) ToClusterS3ImportPtrOutputWithContext(ctx context.Context) ClusterS3ImportPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterS3ImportPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterS3ImportOutput).ToClusterS3ImportPtrOutput()
 }
 
 type ClusterS3ImportOutput struct{ *pulumi.OutputState }
@@ -584,7 +584,7 @@ func (i ClusterScalingConfigurationArgs) ToClusterScalingConfigurationPtrOutput(
 }
 
 func (i ClusterScalingConfigurationArgs) ToClusterScalingConfigurationPtrOutputWithContext(ctx context.Context) ClusterScalingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterScalingConfigurationOutput).ToClusterScalingConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterScalingConfigurationOutput).ToClusterScalingConfigurationPtrOutput()
 }
 
 // ClusterScalingConfigurationPtrInput is an input type that accepts ClusterScalingConfigurationArgs, ClusterScalingConfigurationPtr and ClusterScalingConfigurationPtrOutput values.
@@ -617,7 +617,7 @@ func (i *clusterScalingConfigurationPtrType) ToClusterScalingConfigurationPtrOut
 }
 
 func (i *clusterScalingConfigurationPtrType) ToClusterScalingConfigurationPtrOutputWithContext(ctx context.Context) ClusterScalingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterScalingConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterScalingConfigurationOutput).ToClusterScalingConfigurationPtrOutput()
 }
 
 type ClusterScalingConfigurationOutput struct{ *pulumi.OutputState }
@@ -893,7 +893,7 @@ func (i InstanceRestoreToPointInTimeArgs) ToInstanceRestoreToPointInTimePtrOutpu
 }
 
 func (i InstanceRestoreToPointInTimeArgs) ToInstanceRestoreToPointInTimePtrOutputWithContext(ctx context.Context) InstanceRestoreToPointInTimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceRestoreToPointInTimeOutput).ToInstanceRestoreToPointInTimePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceRestoreToPointInTimeOutput).ToInstanceRestoreToPointInTimePtrOutput()
 }
 
 // InstanceRestoreToPointInTimePtrInput is an input type that accepts InstanceRestoreToPointInTimeArgs, InstanceRestoreToPointInTimePtr and InstanceRestoreToPointInTimePtrOutput values.
@@ -926,7 +926,7 @@ func (i *instanceRestoreToPointInTimePtrType) ToInstanceRestoreToPointInTimePtrO
 }
 
 func (i *instanceRestoreToPointInTimePtrType) ToInstanceRestoreToPointInTimePtrOutputWithContext(ctx context.Context) InstanceRestoreToPointInTimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceRestoreToPointInTimePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceRestoreToPointInTimeOutput).ToInstanceRestoreToPointInTimePtrOutput()
 }
 
 type InstanceRestoreToPointInTimeOutput struct{ *pulumi.OutputState }
@@ -1085,7 +1085,7 @@ func (i InstanceS3ImportArgs) ToInstanceS3ImportPtrOutput() InstanceS3ImportPtrO
 }
 
 func (i InstanceS3ImportArgs) ToInstanceS3ImportPtrOutputWithContext(ctx context.Context) InstanceS3ImportPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceS3ImportOutput).ToInstanceS3ImportPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceS3ImportOutput).ToInstanceS3ImportPtrOutput()
 }
 
 // InstanceS3ImportPtrInput is an input type that accepts InstanceS3ImportArgs, InstanceS3ImportPtr and InstanceS3ImportPtrOutput values.
@@ -1118,7 +1118,7 @@ func (i *instanceS3ImportPtrType) ToInstanceS3ImportPtrOutput() InstanceS3Import
 }
 
 func (i *instanceS3ImportPtrType) ToInstanceS3ImportPtrOutputWithContext(ctx context.Context) InstanceS3ImportPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceS3ImportPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceS3ImportOutput).ToInstanceS3ImportPtrOutput()
 }
 
 type InstanceS3ImportOutput struct{ *pulumi.OutputState }
@@ -1785,7 +1785,7 @@ func (i ProxyDefaultTargetGroupConnectionPoolConfigArgs) ToProxyDefaultTargetGro
 }
 
 func (i ProxyDefaultTargetGroupConnectionPoolConfigArgs) ToProxyDefaultTargetGroupConnectionPoolConfigPtrOutputWithContext(ctx context.Context) ProxyDefaultTargetGroupConnectionPoolConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProxyDefaultTargetGroupConnectionPoolConfigOutput).ToProxyDefaultTargetGroupConnectionPoolConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ProxyDefaultTargetGroupConnectionPoolConfigOutput).ToProxyDefaultTargetGroupConnectionPoolConfigPtrOutput()
 }
 
 // ProxyDefaultTargetGroupConnectionPoolConfigPtrInput is an input type that accepts ProxyDefaultTargetGroupConnectionPoolConfigArgs, ProxyDefaultTargetGroupConnectionPoolConfigPtr and ProxyDefaultTargetGroupConnectionPoolConfigPtrOutput values.
@@ -1818,7 +1818,7 @@ func (i *proxyDefaultTargetGroupConnectionPoolConfigPtrType) ToProxyDefaultTarge
 }
 
 func (i *proxyDefaultTargetGroupConnectionPoolConfigPtrType) ToProxyDefaultTargetGroupConnectionPoolConfigPtrOutputWithContext(ctx context.Context) ProxyDefaultTargetGroupConnectionPoolConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProxyDefaultTargetGroupConnectionPoolConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ProxyDefaultTargetGroupConnectionPoolConfigOutput).ToProxyDefaultTargetGroupConnectionPoolConfigPtrOutput()
 }
 
 type ProxyDefaultTargetGroupConnectionPoolConfigOutput struct{ *pulumi.OutputState }

@@ -139,16 +139,95 @@ type LedgerInput interface {
 	ToLedgerOutputWithContext(ctx context.Context) LedgerOutput
 }
 
-func (Ledger) ElementType() reflect.Type {
-	return reflect.TypeOf((*Ledger)(nil)).Elem()
+func (*Ledger) ElementType() reflect.Type {
+	return reflect.TypeOf((*Ledger)(nil))
 }
 
-func (i Ledger) ToLedgerOutput() LedgerOutput {
+func (i *Ledger) ToLedgerOutput() LedgerOutput {
 	return i.ToLedgerOutputWithContext(context.Background())
 }
 
-func (i Ledger) ToLedgerOutputWithContext(ctx context.Context) LedgerOutput {
+func (i *Ledger) ToLedgerOutputWithContext(ctx context.Context) LedgerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LedgerOutput)
+}
+
+func (i *Ledger) ToLedgerPtrOutput() LedgerPtrOutput {
+	return i.ToLedgerPtrOutputWithContext(context.Background())
+}
+
+func (i *Ledger) ToLedgerPtrOutputWithContext(ctx context.Context) LedgerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LedgerPtrOutput)
+}
+
+type LedgerPtrInput interface {
+	pulumi.Input
+
+	ToLedgerPtrOutput() LedgerPtrOutput
+	ToLedgerPtrOutputWithContext(ctx context.Context) LedgerPtrOutput
+}
+
+type ledgerPtrType LedgerArgs
+
+func (*ledgerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Ledger)(nil))
+}
+
+func (i *ledgerPtrType) ToLedgerPtrOutput() LedgerPtrOutput {
+	return i.ToLedgerPtrOutputWithContext(context.Background())
+}
+
+func (i *ledgerPtrType) ToLedgerPtrOutputWithContext(ctx context.Context) LedgerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LedgerOutput).ToLedgerPtrOutput()
+}
+
+// LedgerArrayInput is an input type that accepts LedgerArray and LedgerArrayOutput values.
+// You can construct a concrete instance of `LedgerArrayInput` via:
+//
+//          LedgerArray{ LedgerArgs{...} }
+type LedgerArrayInput interface {
+	pulumi.Input
+
+	ToLedgerArrayOutput() LedgerArrayOutput
+	ToLedgerArrayOutputWithContext(context.Context) LedgerArrayOutput
+}
+
+type LedgerArray []LedgerInput
+
+func (LedgerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Ledger)(nil))
+}
+
+func (i LedgerArray) ToLedgerArrayOutput() LedgerArrayOutput {
+	return i.ToLedgerArrayOutputWithContext(context.Background())
+}
+
+func (i LedgerArray) ToLedgerArrayOutputWithContext(ctx context.Context) LedgerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LedgerArrayOutput)
+}
+
+// LedgerMapInput is an input type that accepts LedgerMap and LedgerMapOutput values.
+// You can construct a concrete instance of `LedgerMapInput` via:
+//
+//          LedgerMap{ "key": LedgerArgs{...} }
+type LedgerMapInput interface {
+	pulumi.Input
+
+	ToLedgerMapOutput() LedgerMapOutput
+	ToLedgerMapOutputWithContext(context.Context) LedgerMapOutput
+}
+
+type LedgerMap map[string]LedgerInput
+
+func (LedgerMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Ledger)(nil))
+}
+
+func (i LedgerMap) ToLedgerMapOutput() LedgerMapOutput {
+	return i.ToLedgerMapOutputWithContext(context.Background())
+}
+
+func (i LedgerMap) ToLedgerMapOutputWithContext(ctx context.Context) LedgerMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LedgerMapOutput)
 }
 
 type LedgerOutput struct {
@@ -156,7 +235,7 @@ type LedgerOutput struct {
 }
 
 func (LedgerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LedgerOutput)(nil)).Elem()
+	return reflect.TypeOf((*Ledger)(nil))
 }
 
 func (o LedgerOutput) ToLedgerOutput() LedgerOutput {
@@ -167,6 +246,75 @@ func (o LedgerOutput) ToLedgerOutputWithContext(ctx context.Context) LedgerOutpu
 	return o
 }
 
+func (o LedgerOutput) ToLedgerPtrOutput() LedgerPtrOutput {
+	return o.ToLedgerPtrOutputWithContext(context.Background())
+}
+
+func (o LedgerOutput) ToLedgerPtrOutputWithContext(ctx context.Context) LedgerPtrOutput {
+	return o.ApplyT(func(v Ledger) *Ledger {
+		return &v
+	}).(LedgerPtrOutput)
+}
+
+type LedgerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LedgerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Ledger)(nil))
+}
+
+func (o LedgerPtrOutput) ToLedgerPtrOutput() LedgerPtrOutput {
+	return o
+}
+
+func (o LedgerPtrOutput) ToLedgerPtrOutputWithContext(ctx context.Context) LedgerPtrOutput {
+	return o
+}
+
+type LedgerArrayOutput struct{ *pulumi.OutputState }
+
+func (LedgerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Ledger)(nil))
+}
+
+func (o LedgerArrayOutput) ToLedgerArrayOutput() LedgerArrayOutput {
+	return o
+}
+
+func (o LedgerArrayOutput) ToLedgerArrayOutputWithContext(ctx context.Context) LedgerArrayOutput {
+	return o
+}
+
+func (o LedgerArrayOutput) Index(i pulumi.IntInput) LedgerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Ledger {
+		return vs[0].([]Ledger)[vs[1].(int)]
+	}).(LedgerOutput)
+}
+
+type LedgerMapOutput struct{ *pulumi.OutputState }
+
+func (LedgerMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Ledger)(nil))
+}
+
+func (o LedgerMapOutput) ToLedgerMapOutput() LedgerMapOutput {
+	return o
+}
+
+func (o LedgerMapOutput) ToLedgerMapOutputWithContext(ctx context.Context) LedgerMapOutput {
+	return o
+}
+
+func (o LedgerMapOutput) MapIndex(k pulumi.StringInput) LedgerOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Ledger {
+		return vs[0].(map[string]Ledger)[vs[1].(string)]
+	}).(LedgerOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(LedgerOutput{})
+	pulumi.RegisterOutputType(LedgerPtrOutput{})
+	pulumi.RegisterOutputType(LedgerArrayOutput{})
+	pulumi.RegisterOutputType(LedgerMapOutput{})
 }

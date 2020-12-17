@@ -56,7 +56,7 @@ func (i LifecyclePolicyPolicyDetailsArgs) ToLifecyclePolicyPolicyDetailsPtrOutpu
 }
 
 func (i LifecyclePolicyPolicyDetailsArgs) ToLifecyclePolicyPolicyDetailsPtrOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LifecyclePolicyPolicyDetailsOutput).ToLifecyclePolicyPolicyDetailsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(LifecyclePolicyPolicyDetailsOutput).ToLifecyclePolicyPolicyDetailsPtrOutput()
 }
 
 // LifecyclePolicyPolicyDetailsPtrInput is an input type that accepts LifecyclePolicyPolicyDetailsArgs, LifecyclePolicyPolicyDetailsPtr and LifecyclePolicyPolicyDetailsPtrOutput values.
@@ -89,7 +89,7 @@ func (i *lifecyclePolicyPolicyDetailsPtrType) ToLifecyclePolicyPolicyDetailsPtrO
 }
 
 func (i *lifecyclePolicyPolicyDetailsPtrType) ToLifecyclePolicyPolicyDetailsPtrOutputWithContext(ctx context.Context) LifecyclePolicyPolicyDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LifecyclePolicyPolicyDetailsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(LifecyclePolicyPolicyDetailsOutput).ToLifecyclePolicyPolicyDetailsPtrOutput()
 }
 
 type LifecyclePolicyPolicyDetailsOutput struct{ *pulumi.OutputState }

@@ -129,16 +129,95 @@ type EventBusInput interface {
 	ToEventBusOutputWithContext(ctx context.Context) EventBusOutput
 }
 
-func (EventBus) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventBus)(nil)).Elem()
+func (*EventBus) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventBus)(nil))
 }
 
-func (i EventBus) ToEventBusOutput() EventBusOutput {
+func (i *EventBus) ToEventBusOutput() EventBusOutput {
 	return i.ToEventBusOutputWithContext(context.Background())
 }
 
-func (i EventBus) ToEventBusOutputWithContext(ctx context.Context) EventBusOutput {
+func (i *EventBus) ToEventBusOutputWithContext(ctx context.Context) EventBusOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EventBusOutput)
+}
+
+func (i *EventBus) ToEventBusPtrOutput() EventBusPtrOutput {
+	return i.ToEventBusPtrOutputWithContext(context.Background())
+}
+
+func (i *EventBus) ToEventBusPtrOutputWithContext(ctx context.Context) EventBusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventBusPtrOutput)
+}
+
+type EventBusPtrInput interface {
+	pulumi.Input
+
+	ToEventBusPtrOutput() EventBusPtrOutput
+	ToEventBusPtrOutputWithContext(ctx context.Context) EventBusPtrOutput
+}
+
+type eventBusPtrType EventBusArgs
+
+func (*eventBusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventBus)(nil))
+}
+
+func (i *eventBusPtrType) ToEventBusPtrOutput() EventBusPtrOutput {
+	return i.ToEventBusPtrOutputWithContext(context.Background())
+}
+
+func (i *eventBusPtrType) ToEventBusPtrOutputWithContext(ctx context.Context) EventBusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventBusOutput).ToEventBusPtrOutput()
+}
+
+// EventBusArrayInput is an input type that accepts EventBusArray and EventBusArrayOutput values.
+// You can construct a concrete instance of `EventBusArrayInput` via:
+//
+//          EventBusArray{ EventBusArgs{...} }
+type EventBusArrayInput interface {
+	pulumi.Input
+
+	ToEventBusArrayOutput() EventBusArrayOutput
+	ToEventBusArrayOutputWithContext(context.Context) EventBusArrayOutput
+}
+
+type EventBusArray []EventBusInput
+
+func (EventBusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventBus)(nil))
+}
+
+func (i EventBusArray) ToEventBusArrayOutput() EventBusArrayOutput {
+	return i.ToEventBusArrayOutputWithContext(context.Background())
+}
+
+func (i EventBusArray) ToEventBusArrayOutputWithContext(ctx context.Context) EventBusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventBusArrayOutput)
+}
+
+// EventBusMapInput is an input type that accepts EventBusMap and EventBusMapOutput values.
+// You can construct a concrete instance of `EventBusMapInput` via:
+//
+//          EventBusMap{ "key": EventBusArgs{...} }
+type EventBusMapInput interface {
+	pulumi.Input
+
+	ToEventBusMapOutput() EventBusMapOutput
+	ToEventBusMapOutputWithContext(context.Context) EventBusMapOutput
+}
+
+type EventBusMap map[string]EventBusInput
+
+func (EventBusMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]EventBus)(nil))
+}
+
+func (i EventBusMap) ToEventBusMapOutput() EventBusMapOutput {
+	return i.ToEventBusMapOutputWithContext(context.Background())
+}
+
+func (i EventBusMap) ToEventBusMapOutputWithContext(ctx context.Context) EventBusMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventBusMapOutput)
 }
 
 type EventBusOutput struct {
@@ -146,7 +225,7 @@ type EventBusOutput struct {
 }
 
 func (EventBusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventBusOutput)(nil)).Elem()
+	return reflect.TypeOf((*EventBus)(nil))
 }
 
 func (o EventBusOutput) ToEventBusOutput() EventBusOutput {
@@ -157,6 +236,75 @@ func (o EventBusOutput) ToEventBusOutputWithContext(ctx context.Context) EventBu
 	return o
 }
 
+func (o EventBusOutput) ToEventBusPtrOutput() EventBusPtrOutput {
+	return o.ToEventBusPtrOutputWithContext(context.Background())
+}
+
+func (o EventBusOutput) ToEventBusPtrOutputWithContext(ctx context.Context) EventBusPtrOutput {
+	return o.ApplyT(func(v EventBus) *EventBus {
+		return &v
+	}).(EventBusPtrOutput)
+}
+
+type EventBusPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventBusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventBus)(nil))
+}
+
+func (o EventBusPtrOutput) ToEventBusPtrOutput() EventBusPtrOutput {
+	return o
+}
+
+func (o EventBusPtrOutput) ToEventBusPtrOutputWithContext(ctx context.Context) EventBusPtrOutput {
+	return o
+}
+
+type EventBusArrayOutput struct{ *pulumi.OutputState }
+
+func (EventBusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventBus)(nil))
+}
+
+func (o EventBusArrayOutput) ToEventBusArrayOutput() EventBusArrayOutput {
+	return o
+}
+
+func (o EventBusArrayOutput) ToEventBusArrayOutputWithContext(ctx context.Context) EventBusArrayOutput {
+	return o
+}
+
+func (o EventBusArrayOutput) Index(i pulumi.IntInput) EventBusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventBus {
+		return vs[0].([]EventBus)[vs[1].(int)]
+	}).(EventBusOutput)
+}
+
+type EventBusMapOutput struct{ *pulumi.OutputState }
+
+func (EventBusMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]EventBus)(nil))
+}
+
+func (o EventBusMapOutput) ToEventBusMapOutput() EventBusMapOutput {
+	return o
+}
+
+func (o EventBusMapOutput) ToEventBusMapOutputWithContext(ctx context.Context) EventBusMapOutput {
+	return o
+}
+
+func (o EventBusMapOutput) MapIndex(k pulumi.StringInput) EventBusOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EventBus {
+		return vs[0].(map[string]EventBus)[vs[1].(string)]
+	}).(EventBusOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(EventBusOutput{})
+	pulumi.RegisterOutputType(EventBusPtrOutput{})
+	pulumi.RegisterOutputType(EventBusArrayOutput{})
+	pulumi.RegisterOutputType(EventBusMapOutput{})
 }

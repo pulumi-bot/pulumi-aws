@@ -56,7 +56,7 @@ func (i DataSourceDynamodbConfigArgs) ToDataSourceDynamodbConfigPtrOutput() Data
 }
 
 func (i DataSourceDynamodbConfigArgs) ToDataSourceDynamodbConfigPtrOutputWithContext(ctx context.Context) DataSourceDynamodbConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataSourceDynamodbConfigOutput).ToDataSourceDynamodbConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceDynamodbConfigOutput).ToDataSourceDynamodbConfigPtrOutput()
 }
 
 // DataSourceDynamodbConfigPtrInput is an input type that accepts DataSourceDynamodbConfigArgs, DataSourceDynamodbConfigPtr and DataSourceDynamodbConfigPtrOutput values.
@@ -89,7 +89,7 @@ func (i *dataSourceDynamodbConfigPtrType) ToDataSourceDynamodbConfigPtrOutput() 
 }
 
 func (i *dataSourceDynamodbConfigPtrType) ToDataSourceDynamodbConfigPtrOutputWithContext(ctx context.Context) DataSourceDynamodbConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataSourceDynamodbConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceDynamodbConfigOutput).ToDataSourceDynamodbConfigPtrOutput()
 }
 
 type DataSourceDynamodbConfigOutput struct{ *pulumi.OutputState }
@@ -221,7 +221,7 @@ func (i DataSourceElasticsearchConfigArgs) ToDataSourceElasticsearchConfigPtrOut
 }
 
 func (i DataSourceElasticsearchConfigArgs) ToDataSourceElasticsearchConfigPtrOutputWithContext(ctx context.Context) DataSourceElasticsearchConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataSourceElasticsearchConfigOutput).ToDataSourceElasticsearchConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceElasticsearchConfigOutput).ToDataSourceElasticsearchConfigPtrOutput()
 }
 
 // DataSourceElasticsearchConfigPtrInput is an input type that accepts DataSourceElasticsearchConfigArgs, DataSourceElasticsearchConfigPtr and DataSourceElasticsearchConfigPtrOutput values.
@@ -254,7 +254,7 @@ func (i *dataSourceElasticsearchConfigPtrType) ToDataSourceElasticsearchConfigPt
 }
 
 func (i *dataSourceElasticsearchConfigPtrType) ToDataSourceElasticsearchConfigPtrOutputWithContext(ctx context.Context) DataSourceElasticsearchConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataSourceElasticsearchConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceElasticsearchConfigOutput).ToDataSourceElasticsearchConfigPtrOutput()
 }
 
 type DataSourceElasticsearchConfigOutput struct{ *pulumi.OutputState }
@@ -367,7 +367,7 @@ func (i DataSourceHttpConfigArgs) ToDataSourceHttpConfigPtrOutput() DataSourceHt
 }
 
 func (i DataSourceHttpConfigArgs) ToDataSourceHttpConfigPtrOutputWithContext(ctx context.Context) DataSourceHttpConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataSourceHttpConfigOutput).ToDataSourceHttpConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceHttpConfigOutput).ToDataSourceHttpConfigPtrOutput()
 }
 
 // DataSourceHttpConfigPtrInput is an input type that accepts DataSourceHttpConfigArgs, DataSourceHttpConfigPtr and DataSourceHttpConfigPtrOutput values.
@@ -400,7 +400,7 @@ func (i *dataSourceHttpConfigPtrType) ToDataSourceHttpConfigPtrOutput() DataSour
 }
 
 func (i *dataSourceHttpConfigPtrType) ToDataSourceHttpConfigPtrOutputWithContext(ctx context.Context) DataSourceHttpConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataSourceHttpConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceHttpConfigOutput).ToDataSourceHttpConfigPtrOutput()
 }
 
 type DataSourceHttpConfigOutput struct{ *pulumi.OutputState }
@@ -498,7 +498,7 @@ func (i DataSourceLambdaConfigArgs) ToDataSourceLambdaConfigPtrOutput() DataSour
 }
 
 func (i DataSourceLambdaConfigArgs) ToDataSourceLambdaConfigPtrOutputWithContext(ctx context.Context) DataSourceLambdaConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataSourceLambdaConfigOutput).ToDataSourceLambdaConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceLambdaConfigOutput).ToDataSourceLambdaConfigPtrOutput()
 }
 
 // DataSourceLambdaConfigPtrInput is an input type that accepts DataSourceLambdaConfigArgs, DataSourceLambdaConfigPtr and DataSourceLambdaConfigPtrOutput values.
@@ -531,7 +531,7 @@ func (i *dataSourceLambdaConfigPtrType) ToDataSourceLambdaConfigPtrOutput() Data
 }
 
 func (i *dataSourceLambdaConfigPtrType) ToDataSourceLambdaConfigPtrOutputWithContext(ctx context.Context) DataSourceLambdaConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataSourceLambdaConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DataSourceLambdaConfigOutput).ToDataSourceLambdaConfigPtrOutput()
 }
 
 type DataSourceLambdaConfigOutput struct{ *pulumi.OutputState }
@@ -760,7 +760,7 @@ func (i GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs) ToGra
 }
 
 func (i GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs) ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigPtrOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigOutput).ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigOutput).ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigPtrOutput()
 }
 
 // GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigPtrInput is an input type that accepts GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigArgs, GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigPtr and GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigPtrOutput values.
@@ -793,7 +793,7 @@ func (i *graphQLApiAdditionalAuthenticationProviderOpenidConnectConfigPtrType) T
 }
 
 func (i *graphQLApiAdditionalAuthenticationProviderOpenidConnectConfigPtrType) ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigPtrOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigOutput).ToGraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigPtrOutput()
 }
 
 type GraphQLApiAdditionalAuthenticationProviderOpenidConnectConfigOutput struct{ *pulumi.OutputState }
@@ -946,7 +946,7 @@ func (i GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgs) ToGraphQLA
 }
 
 func (i GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgs) ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigPtrOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderUserPoolConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderUserPoolConfigOutput).ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderUserPoolConfigOutput).ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigPtrOutput()
 }
 
 // GraphQLApiAdditionalAuthenticationProviderUserPoolConfigPtrInput is an input type that accepts GraphQLApiAdditionalAuthenticationProviderUserPoolConfigArgs, GraphQLApiAdditionalAuthenticationProviderUserPoolConfigPtr and GraphQLApiAdditionalAuthenticationProviderUserPoolConfigPtrOutput values.
@@ -979,7 +979,7 @@ func (i *graphQLApiAdditionalAuthenticationProviderUserPoolConfigPtrType) ToGrap
 }
 
 func (i *graphQLApiAdditionalAuthenticationProviderUserPoolConfigPtrType) ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigPtrOutputWithContext(ctx context.Context) GraphQLApiAdditionalAuthenticationProviderUserPoolConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderUserPoolConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiAdditionalAuthenticationProviderUserPoolConfigOutput).ToGraphQLApiAdditionalAuthenticationProviderUserPoolConfigPtrOutput()
 }
 
 type GraphQLApiAdditionalAuthenticationProviderUserPoolConfigOutput struct{ *pulumi.OutputState }
@@ -1117,7 +1117,7 @@ func (i GraphQLApiLogConfigArgs) ToGraphQLApiLogConfigPtrOutput() GraphQLApiLogC
 }
 
 func (i GraphQLApiLogConfigArgs) ToGraphQLApiLogConfigPtrOutputWithContext(ctx context.Context) GraphQLApiLogConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiLogConfigOutput).ToGraphQLApiLogConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiLogConfigOutput).ToGraphQLApiLogConfigPtrOutput()
 }
 
 // GraphQLApiLogConfigPtrInput is an input type that accepts GraphQLApiLogConfigArgs, GraphQLApiLogConfigPtr and GraphQLApiLogConfigPtrOutput values.
@@ -1150,7 +1150,7 @@ func (i *graphQLApiLogConfigPtrType) ToGraphQLApiLogConfigPtrOutput() GraphQLApi
 }
 
 func (i *graphQLApiLogConfigPtrType) ToGraphQLApiLogConfigPtrOutputWithContext(ctx context.Context) GraphQLApiLogConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiLogConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiLogConfigOutput).ToGraphQLApiLogConfigPtrOutput()
 }
 
 type GraphQLApiLogConfigOutput struct{ *pulumi.OutputState }
@@ -1290,7 +1290,7 @@ func (i GraphQLApiOpenidConnectConfigArgs) ToGraphQLApiOpenidConnectConfigPtrOut
 }
 
 func (i GraphQLApiOpenidConnectConfigArgs) ToGraphQLApiOpenidConnectConfigPtrOutputWithContext(ctx context.Context) GraphQLApiOpenidConnectConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiOpenidConnectConfigOutput).ToGraphQLApiOpenidConnectConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiOpenidConnectConfigOutput).ToGraphQLApiOpenidConnectConfigPtrOutput()
 }
 
 // GraphQLApiOpenidConnectConfigPtrInput is an input type that accepts GraphQLApiOpenidConnectConfigArgs, GraphQLApiOpenidConnectConfigPtr and GraphQLApiOpenidConnectConfigPtrOutput values.
@@ -1323,7 +1323,7 @@ func (i *graphQLApiOpenidConnectConfigPtrType) ToGraphQLApiOpenidConnectConfigPt
 }
 
 func (i *graphQLApiOpenidConnectConfigPtrType) ToGraphQLApiOpenidConnectConfigPtrOutputWithContext(ctx context.Context) GraphQLApiOpenidConnectConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiOpenidConnectConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiOpenidConnectConfigOutput).ToGraphQLApiOpenidConnectConfigPtrOutput()
 }
 
 type GraphQLApiOpenidConnectConfigOutput struct{ *pulumi.OutputState }
@@ -1478,7 +1478,7 @@ func (i GraphQLApiUserPoolConfigArgs) ToGraphQLApiUserPoolConfigPtrOutput() Grap
 }
 
 func (i GraphQLApiUserPoolConfigArgs) ToGraphQLApiUserPoolConfigPtrOutputWithContext(ctx context.Context) GraphQLApiUserPoolConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiUserPoolConfigOutput).ToGraphQLApiUserPoolConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiUserPoolConfigOutput).ToGraphQLApiUserPoolConfigPtrOutput()
 }
 
 // GraphQLApiUserPoolConfigPtrInput is an input type that accepts GraphQLApiUserPoolConfigArgs, GraphQLApiUserPoolConfigPtr and GraphQLApiUserPoolConfigPtrOutput values.
@@ -1511,7 +1511,7 @@ func (i *graphQLApiUserPoolConfigPtrType) ToGraphQLApiUserPoolConfigPtrOutput() 
 }
 
 func (i *graphQLApiUserPoolConfigPtrType) ToGraphQLApiUserPoolConfigPtrOutputWithContext(ctx context.Context) GraphQLApiUserPoolConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiUserPoolConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiUserPoolConfigOutput).ToGraphQLApiUserPoolConfigPtrOutput()
 }
 
 type GraphQLApiUserPoolConfigOutput struct{ *pulumi.OutputState }
@@ -1658,7 +1658,7 @@ func (i ResolverCachingConfigArgs) ToResolverCachingConfigPtrOutput() ResolverCa
 }
 
 func (i ResolverCachingConfigArgs) ToResolverCachingConfigPtrOutputWithContext(ctx context.Context) ResolverCachingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResolverCachingConfigOutput).ToResolverCachingConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverCachingConfigOutput).ToResolverCachingConfigPtrOutput()
 }
 
 // ResolverCachingConfigPtrInput is an input type that accepts ResolverCachingConfigArgs, ResolverCachingConfigPtr and ResolverCachingConfigPtrOutput values.
@@ -1691,7 +1691,7 @@ func (i *resolverCachingConfigPtrType) ToResolverCachingConfigPtrOutput() Resolv
 }
 
 func (i *resolverCachingConfigPtrType) ToResolverCachingConfigPtrOutputWithContext(ctx context.Context) ResolverCachingConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResolverCachingConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverCachingConfigOutput).ToResolverCachingConfigPtrOutput()
 }
 
 type ResolverCachingConfigOutput struct{ *pulumi.OutputState }
@@ -1804,7 +1804,7 @@ func (i ResolverPipelineConfigArgs) ToResolverPipelineConfigPtrOutput() Resolver
 }
 
 func (i ResolverPipelineConfigArgs) ToResolverPipelineConfigPtrOutputWithContext(ctx context.Context) ResolverPipelineConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResolverPipelineConfigOutput).ToResolverPipelineConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverPipelineConfigOutput).ToResolverPipelineConfigPtrOutput()
 }
 
 // ResolverPipelineConfigPtrInput is an input type that accepts ResolverPipelineConfigArgs, ResolverPipelineConfigPtr and ResolverPipelineConfigPtrOutput values.
@@ -1837,7 +1837,7 @@ func (i *resolverPipelineConfigPtrType) ToResolverPipelineConfigPtrOutput() Reso
 }
 
 func (i *resolverPipelineConfigPtrType) ToResolverPipelineConfigPtrOutputWithContext(ctx context.Context) ResolverPipelineConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResolverPipelineConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ResolverPipelineConfigOutput).ToResolverPipelineConfigPtrOutput()
 }
 
 type ResolverPipelineConfigOutput struct{ *pulumi.OutputState }

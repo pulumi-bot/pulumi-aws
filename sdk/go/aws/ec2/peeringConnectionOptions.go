@@ -280,16 +280,95 @@ type PeeringConnectionOptionsInput interface {
 	ToPeeringConnectionOptionsOutputWithContext(ctx context.Context) PeeringConnectionOptionsOutput
 }
 
-func (PeeringConnectionOptions) ElementType() reflect.Type {
-	return reflect.TypeOf((*PeeringConnectionOptions)(nil)).Elem()
+func (*PeeringConnectionOptions) ElementType() reflect.Type {
+	return reflect.TypeOf((*PeeringConnectionOptions)(nil))
 }
 
-func (i PeeringConnectionOptions) ToPeeringConnectionOptionsOutput() PeeringConnectionOptionsOutput {
+func (i *PeeringConnectionOptions) ToPeeringConnectionOptionsOutput() PeeringConnectionOptionsOutput {
 	return i.ToPeeringConnectionOptionsOutputWithContext(context.Background())
 }
 
-func (i PeeringConnectionOptions) ToPeeringConnectionOptionsOutputWithContext(ctx context.Context) PeeringConnectionOptionsOutput {
+func (i *PeeringConnectionOptions) ToPeeringConnectionOptionsOutputWithContext(ctx context.Context) PeeringConnectionOptionsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringConnectionOptionsOutput)
+}
+
+func (i *PeeringConnectionOptions) ToPeeringConnectionOptionsPtrOutput() PeeringConnectionOptionsPtrOutput {
+	return i.ToPeeringConnectionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *PeeringConnectionOptions) ToPeeringConnectionOptionsPtrOutputWithContext(ctx context.Context) PeeringConnectionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PeeringConnectionOptionsPtrOutput)
+}
+
+type PeeringConnectionOptionsPtrInput interface {
+	pulumi.Input
+
+	ToPeeringConnectionOptionsPtrOutput() PeeringConnectionOptionsPtrOutput
+	ToPeeringConnectionOptionsPtrOutputWithContext(ctx context.Context) PeeringConnectionOptionsPtrOutput
+}
+
+type peeringConnectionOptionsPtrType PeeringConnectionOptionsArgs
+
+func (*peeringConnectionOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PeeringConnectionOptions)(nil))
+}
+
+func (i *peeringConnectionOptionsPtrType) ToPeeringConnectionOptionsPtrOutput() PeeringConnectionOptionsPtrOutput {
+	return i.ToPeeringConnectionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *peeringConnectionOptionsPtrType) ToPeeringConnectionOptionsPtrOutputWithContext(ctx context.Context) PeeringConnectionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PeeringConnectionOptionsOutput).ToPeeringConnectionOptionsPtrOutput()
+}
+
+// PeeringConnectionOptionsArrayInput is an input type that accepts PeeringConnectionOptionsArray and PeeringConnectionOptionsArrayOutput values.
+// You can construct a concrete instance of `PeeringConnectionOptionsArrayInput` via:
+//
+//          PeeringConnectionOptionsArray{ PeeringConnectionOptionsArgs{...} }
+type PeeringConnectionOptionsArrayInput interface {
+	pulumi.Input
+
+	ToPeeringConnectionOptionsArrayOutput() PeeringConnectionOptionsArrayOutput
+	ToPeeringConnectionOptionsArrayOutputWithContext(context.Context) PeeringConnectionOptionsArrayOutput
+}
+
+type PeeringConnectionOptionsArray []PeeringConnectionOptionsInput
+
+func (PeeringConnectionOptionsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PeeringConnectionOptions)(nil))
+}
+
+func (i PeeringConnectionOptionsArray) ToPeeringConnectionOptionsArrayOutput() PeeringConnectionOptionsArrayOutput {
+	return i.ToPeeringConnectionOptionsArrayOutputWithContext(context.Background())
+}
+
+func (i PeeringConnectionOptionsArray) ToPeeringConnectionOptionsArrayOutputWithContext(ctx context.Context) PeeringConnectionOptionsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PeeringConnectionOptionsArrayOutput)
+}
+
+// PeeringConnectionOptionsMapInput is an input type that accepts PeeringConnectionOptionsMap and PeeringConnectionOptionsMapOutput values.
+// You can construct a concrete instance of `PeeringConnectionOptionsMapInput` via:
+//
+//          PeeringConnectionOptionsMap{ "key": PeeringConnectionOptionsArgs{...} }
+type PeeringConnectionOptionsMapInput interface {
+	pulumi.Input
+
+	ToPeeringConnectionOptionsMapOutput() PeeringConnectionOptionsMapOutput
+	ToPeeringConnectionOptionsMapOutputWithContext(context.Context) PeeringConnectionOptionsMapOutput
+}
+
+type PeeringConnectionOptionsMap map[string]PeeringConnectionOptionsInput
+
+func (PeeringConnectionOptionsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PeeringConnectionOptions)(nil))
+}
+
+func (i PeeringConnectionOptionsMap) ToPeeringConnectionOptionsMapOutput() PeeringConnectionOptionsMapOutput {
+	return i.ToPeeringConnectionOptionsMapOutputWithContext(context.Background())
+}
+
+func (i PeeringConnectionOptionsMap) ToPeeringConnectionOptionsMapOutputWithContext(ctx context.Context) PeeringConnectionOptionsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PeeringConnectionOptionsMapOutput)
 }
 
 type PeeringConnectionOptionsOutput struct {
@@ -297,7 +376,7 @@ type PeeringConnectionOptionsOutput struct {
 }
 
 func (PeeringConnectionOptionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PeeringConnectionOptionsOutput)(nil)).Elem()
+	return reflect.TypeOf((*PeeringConnectionOptions)(nil))
 }
 
 func (o PeeringConnectionOptionsOutput) ToPeeringConnectionOptionsOutput() PeeringConnectionOptionsOutput {
@@ -308,6 +387,75 @@ func (o PeeringConnectionOptionsOutput) ToPeeringConnectionOptionsOutputWithCont
 	return o
 }
 
+func (o PeeringConnectionOptionsOutput) ToPeeringConnectionOptionsPtrOutput() PeeringConnectionOptionsPtrOutput {
+	return o.ToPeeringConnectionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o PeeringConnectionOptionsOutput) ToPeeringConnectionOptionsPtrOutputWithContext(ctx context.Context) PeeringConnectionOptionsPtrOutput {
+	return o.ApplyT(func(v PeeringConnectionOptions) *PeeringConnectionOptions {
+		return &v
+	}).(PeeringConnectionOptionsPtrOutput)
+}
+
+type PeeringConnectionOptionsPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PeeringConnectionOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PeeringConnectionOptions)(nil))
+}
+
+func (o PeeringConnectionOptionsPtrOutput) ToPeeringConnectionOptionsPtrOutput() PeeringConnectionOptionsPtrOutput {
+	return o
+}
+
+func (o PeeringConnectionOptionsPtrOutput) ToPeeringConnectionOptionsPtrOutputWithContext(ctx context.Context) PeeringConnectionOptionsPtrOutput {
+	return o
+}
+
+type PeeringConnectionOptionsArrayOutput struct{ *pulumi.OutputState }
+
+func (PeeringConnectionOptionsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PeeringConnectionOptions)(nil))
+}
+
+func (o PeeringConnectionOptionsArrayOutput) ToPeeringConnectionOptionsArrayOutput() PeeringConnectionOptionsArrayOutput {
+	return o
+}
+
+func (o PeeringConnectionOptionsArrayOutput) ToPeeringConnectionOptionsArrayOutputWithContext(ctx context.Context) PeeringConnectionOptionsArrayOutput {
+	return o
+}
+
+func (o PeeringConnectionOptionsArrayOutput) Index(i pulumi.IntInput) PeeringConnectionOptionsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PeeringConnectionOptions {
+		return vs[0].([]PeeringConnectionOptions)[vs[1].(int)]
+	}).(PeeringConnectionOptionsOutput)
+}
+
+type PeeringConnectionOptionsMapOutput struct{ *pulumi.OutputState }
+
+func (PeeringConnectionOptionsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PeeringConnectionOptions)(nil))
+}
+
+func (o PeeringConnectionOptionsMapOutput) ToPeeringConnectionOptionsMapOutput() PeeringConnectionOptionsMapOutput {
+	return o
+}
+
+func (o PeeringConnectionOptionsMapOutput) ToPeeringConnectionOptionsMapOutputWithContext(ctx context.Context) PeeringConnectionOptionsMapOutput {
+	return o
+}
+
+func (o PeeringConnectionOptionsMapOutput) MapIndex(k pulumi.StringInput) PeeringConnectionOptionsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PeeringConnectionOptions {
+		return vs[0].(map[string]PeeringConnectionOptions)[vs[1].(string)]
+	}).(PeeringConnectionOptionsOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(PeeringConnectionOptionsOutput{})
+	pulumi.RegisterOutputType(PeeringConnectionOptionsPtrOutput{})
+	pulumi.RegisterOutputType(PeeringConnectionOptionsArrayOutput{})
+	pulumi.RegisterOutputType(PeeringConnectionOptionsMapOutput{})
 }

@@ -46,7 +46,7 @@ func (i FilterFindingCriteriaArgs) ToFilterFindingCriteriaPtrOutput() FilterFind
 }
 
 func (i FilterFindingCriteriaArgs) ToFilterFindingCriteriaPtrOutputWithContext(ctx context.Context) FilterFindingCriteriaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FilterFindingCriteriaOutput).ToFilterFindingCriteriaPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FilterFindingCriteriaOutput).ToFilterFindingCriteriaPtrOutput()
 }
 
 // FilterFindingCriteriaPtrInput is an input type that accepts FilterFindingCriteriaArgs, FilterFindingCriteriaPtr and FilterFindingCriteriaPtrOutput values.
@@ -79,7 +79,7 @@ func (i *filterFindingCriteriaPtrType) ToFilterFindingCriteriaPtrOutput() Filter
 }
 
 func (i *filterFindingCriteriaPtrType) ToFilterFindingCriteriaPtrOutputWithContext(ctx context.Context) FilterFindingCriteriaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FilterFindingCriteriaPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FilterFindingCriteriaOutput).ToFilterFindingCriteriaPtrOutput()
 }
 
 type FilterFindingCriteriaOutput struct{ *pulumi.OutputState }

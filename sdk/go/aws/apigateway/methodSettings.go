@@ -220,16 +220,95 @@ type MethodSettingsInput interface {
 	ToMethodSettingsOutputWithContext(ctx context.Context) MethodSettingsOutput
 }
 
-func (MethodSettings) ElementType() reflect.Type {
-	return reflect.TypeOf((*MethodSettings)(nil)).Elem()
+func (*MethodSettings) ElementType() reflect.Type {
+	return reflect.TypeOf((*MethodSettings)(nil))
 }
 
-func (i MethodSettings) ToMethodSettingsOutput() MethodSettingsOutput {
+func (i *MethodSettings) ToMethodSettingsOutput() MethodSettingsOutput {
 	return i.ToMethodSettingsOutputWithContext(context.Background())
 }
 
-func (i MethodSettings) ToMethodSettingsOutputWithContext(ctx context.Context) MethodSettingsOutput {
+func (i *MethodSettings) ToMethodSettingsOutputWithContext(ctx context.Context) MethodSettingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MethodSettingsOutput)
+}
+
+func (i *MethodSettings) ToMethodSettingsPtrOutput() MethodSettingsPtrOutput {
+	return i.ToMethodSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *MethodSettings) ToMethodSettingsPtrOutputWithContext(ctx context.Context) MethodSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MethodSettingsPtrOutput)
+}
+
+type MethodSettingsPtrInput interface {
+	pulumi.Input
+
+	ToMethodSettingsPtrOutput() MethodSettingsPtrOutput
+	ToMethodSettingsPtrOutputWithContext(ctx context.Context) MethodSettingsPtrOutput
+}
+
+type methodSettingsPtrType MethodSettingsArgs
+
+func (*methodSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MethodSettings)(nil))
+}
+
+func (i *methodSettingsPtrType) ToMethodSettingsPtrOutput() MethodSettingsPtrOutput {
+	return i.ToMethodSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *methodSettingsPtrType) ToMethodSettingsPtrOutputWithContext(ctx context.Context) MethodSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MethodSettingsOutput).ToMethodSettingsPtrOutput()
+}
+
+// MethodSettingsArrayInput is an input type that accepts MethodSettingsArray and MethodSettingsArrayOutput values.
+// You can construct a concrete instance of `MethodSettingsArrayInput` via:
+//
+//          MethodSettingsArray{ MethodSettingsArgs{...} }
+type MethodSettingsArrayInput interface {
+	pulumi.Input
+
+	ToMethodSettingsArrayOutput() MethodSettingsArrayOutput
+	ToMethodSettingsArrayOutputWithContext(context.Context) MethodSettingsArrayOutput
+}
+
+type MethodSettingsArray []MethodSettingsInput
+
+func (MethodSettingsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MethodSettings)(nil))
+}
+
+func (i MethodSettingsArray) ToMethodSettingsArrayOutput() MethodSettingsArrayOutput {
+	return i.ToMethodSettingsArrayOutputWithContext(context.Background())
+}
+
+func (i MethodSettingsArray) ToMethodSettingsArrayOutputWithContext(ctx context.Context) MethodSettingsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MethodSettingsArrayOutput)
+}
+
+// MethodSettingsMapInput is an input type that accepts MethodSettingsMap and MethodSettingsMapOutput values.
+// You can construct a concrete instance of `MethodSettingsMapInput` via:
+//
+//          MethodSettingsMap{ "key": MethodSettingsArgs{...} }
+type MethodSettingsMapInput interface {
+	pulumi.Input
+
+	ToMethodSettingsMapOutput() MethodSettingsMapOutput
+	ToMethodSettingsMapOutputWithContext(context.Context) MethodSettingsMapOutput
+}
+
+type MethodSettingsMap map[string]MethodSettingsInput
+
+func (MethodSettingsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MethodSettings)(nil))
+}
+
+func (i MethodSettingsMap) ToMethodSettingsMapOutput() MethodSettingsMapOutput {
+	return i.ToMethodSettingsMapOutputWithContext(context.Background())
+}
+
+func (i MethodSettingsMap) ToMethodSettingsMapOutputWithContext(ctx context.Context) MethodSettingsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MethodSettingsMapOutput)
 }
 
 type MethodSettingsOutput struct {
@@ -237,7 +316,7 @@ type MethodSettingsOutput struct {
 }
 
 func (MethodSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MethodSettingsOutput)(nil)).Elem()
+	return reflect.TypeOf((*MethodSettings)(nil))
 }
 
 func (o MethodSettingsOutput) ToMethodSettingsOutput() MethodSettingsOutput {
@@ -248,6 +327,75 @@ func (o MethodSettingsOutput) ToMethodSettingsOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o MethodSettingsOutput) ToMethodSettingsPtrOutput() MethodSettingsPtrOutput {
+	return o.ToMethodSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o MethodSettingsOutput) ToMethodSettingsPtrOutputWithContext(ctx context.Context) MethodSettingsPtrOutput {
+	return o.ApplyT(func(v MethodSettings) *MethodSettings {
+		return &v
+	}).(MethodSettingsPtrOutput)
+}
+
+type MethodSettingsPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MethodSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MethodSettings)(nil))
+}
+
+func (o MethodSettingsPtrOutput) ToMethodSettingsPtrOutput() MethodSettingsPtrOutput {
+	return o
+}
+
+func (o MethodSettingsPtrOutput) ToMethodSettingsPtrOutputWithContext(ctx context.Context) MethodSettingsPtrOutput {
+	return o
+}
+
+type MethodSettingsArrayOutput struct{ *pulumi.OutputState }
+
+func (MethodSettingsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MethodSettings)(nil))
+}
+
+func (o MethodSettingsArrayOutput) ToMethodSettingsArrayOutput() MethodSettingsArrayOutput {
+	return o
+}
+
+func (o MethodSettingsArrayOutput) ToMethodSettingsArrayOutputWithContext(ctx context.Context) MethodSettingsArrayOutput {
+	return o
+}
+
+func (o MethodSettingsArrayOutput) Index(i pulumi.IntInput) MethodSettingsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MethodSettings {
+		return vs[0].([]MethodSettings)[vs[1].(int)]
+	}).(MethodSettingsOutput)
+}
+
+type MethodSettingsMapOutput struct{ *pulumi.OutputState }
+
+func (MethodSettingsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MethodSettings)(nil))
+}
+
+func (o MethodSettingsMapOutput) ToMethodSettingsMapOutput() MethodSettingsMapOutput {
+	return o
+}
+
+func (o MethodSettingsMapOutput) ToMethodSettingsMapOutputWithContext(ctx context.Context) MethodSettingsMapOutput {
+	return o
+}
+
+func (o MethodSettingsMapOutput) MapIndex(k pulumi.StringInput) MethodSettingsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MethodSettings {
+		return vs[0].(map[string]MethodSettings)[vs[1].(string)]
+	}).(MethodSettingsOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(MethodSettingsOutput{})
+	pulumi.RegisterOutputType(MethodSettingsPtrOutput{})
+	pulumi.RegisterOutputType(MethodSettingsArrayOutput{})
+	pulumi.RegisterOutputType(MethodSettingsMapOutput{})
 }

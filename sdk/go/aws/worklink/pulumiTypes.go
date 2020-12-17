@@ -52,7 +52,7 @@ func (i FleetIdentityProviderArgs) ToFleetIdentityProviderPtrOutput() FleetIdent
 }
 
 func (i FleetIdentityProviderArgs) ToFleetIdentityProviderPtrOutputWithContext(ctx context.Context) FleetIdentityProviderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetIdentityProviderOutput).ToFleetIdentityProviderPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetIdentityProviderOutput).ToFleetIdentityProviderPtrOutput()
 }
 
 // FleetIdentityProviderPtrInput is an input type that accepts FleetIdentityProviderArgs, FleetIdentityProviderPtr and FleetIdentityProviderPtrOutput values.
@@ -85,7 +85,7 @@ func (i *fleetIdentityProviderPtrType) ToFleetIdentityProviderPtrOutput() FleetI
 }
 
 func (i *fleetIdentityProviderPtrType) ToFleetIdentityProviderPtrOutputWithContext(ctx context.Context) FleetIdentityProviderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetIdentityProviderPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetIdentityProviderOutput).ToFleetIdentityProviderPtrOutput()
 }
 
 type FleetIdentityProviderOutput struct{ *pulumi.OutputState }
@@ -206,7 +206,7 @@ func (i FleetNetworkArgs) ToFleetNetworkPtrOutput() FleetNetworkPtrOutput {
 }
 
 func (i FleetNetworkArgs) ToFleetNetworkPtrOutputWithContext(ctx context.Context) FleetNetworkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetNetworkOutput).ToFleetNetworkPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetNetworkOutput).ToFleetNetworkPtrOutput()
 }
 
 // FleetNetworkPtrInput is an input type that accepts FleetNetworkArgs, FleetNetworkPtr and FleetNetworkPtrOutput values.
@@ -239,7 +239,7 @@ func (i *fleetNetworkPtrType) ToFleetNetworkPtrOutput() FleetNetworkPtrOutput {
 }
 
 func (i *fleetNetworkPtrType) ToFleetNetworkPtrOutputWithContext(ctx context.Context) FleetNetworkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FleetNetworkPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(FleetNetworkOutput).ToFleetNetworkPtrOutput()
 }
 
 type FleetNetworkOutput struct{ *pulumi.OutputState }

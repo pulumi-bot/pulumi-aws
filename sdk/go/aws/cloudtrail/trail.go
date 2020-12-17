@@ -482,16 +482,95 @@ type TrailInput interface {
 	ToTrailOutputWithContext(ctx context.Context) TrailOutput
 }
 
-func (Trail) ElementType() reflect.Type {
-	return reflect.TypeOf((*Trail)(nil)).Elem()
+func (*Trail) ElementType() reflect.Type {
+	return reflect.TypeOf((*Trail)(nil))
 }
 
-func (i Trail) ToTrailOutput() TrailOutput {
+func (i *Trail) ToTrailOutput() TrailOutput {
 	return i.ToTrailOutputWithContext(context.Background())
 }
 
-func (i Trail) ToTrailOutputWithContext(ctx context.Context) TrailOutput {
+func (i *Trail) ToTrailOutputWithContext(ctx context.Context) TrailOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrailOutput)
+}
+
+func (i *Trail) ToTrailPtrOutput() TrailPtrOutput {
+	return i.ToTrailPtrOutputWithContext(context.Background())
+}
+
+func (i *Trail) ToTrailPtrOutputWithContext(ctx context.Context) TrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrailPtrOutput)
+}
+
+type TrailPtrInput interface {
+	pulumi.Input
+
+	ToTrailPtrOutput() TrailPtrOutput
+	ToTrailPtrOutputWithContext(ctx context.Context) TrailPtrOutput
+}
+
+type trailPtrType TrailArgs
+
+func (*trailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Trail)(nil))
+}
+
+func (i *trailPtrType) ToTrailPtrOutput() TrailPtrOutput {
+	return i.ToTrailPtrOutputWithContext(context.Background())
+}
+
+func (i *trailPtrType) ToTrailPtrOutputWithContext(ctx context.Context) TrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrailOutput).ToTrailPtrOutput()
+}
+
+// TrailArrayInput is an input type that accepts TrailArray and TrailArrayOutput values.
+// You can construct a concrete instance of `TrailArrayInput` via:
+//
+//          TrailArray{ TrailArgs{...} }
+type TrailArrayInput interface {
+	pulumi.Input
+
+	ToTrailArrayOutput() TrailArrayOutput
+	ToTrailArrayOutputWithContext(context.Context) TrailArrayOutput
+}
+
+type TrailArray []TrailInput
+
+func (TrailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Trail)(nil))
+}
+
+func (i TrailArray) ToTrailArrayOutput() TrailArrayOutput {
+	return i.ToTrailArrayOutputWithContext(context.Background())
+}
+
+func (i TrailArray) ToTrailArrayOutputWithContext(ctx context.Context) TrailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrailArrayOutput)
+}
+
+// TrailMapInput is an input type that accepts TrailMap and TrailMapOutput values.
+// You can construct a concrete instance of `TrailMapInput` via:
+//
+//          TrailMap{ "key": TrailArgs{...} }
+type TrailMapInput interface {
+	pulumi.Input
+
+	ToTrailMapOutput() TrailMapOutput
+	ToTrailMapOutputWithContext(context.Context) TrailMapOutput
+}
+
+type TrailMap map[string]TrailInput
+
+func (TrailMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Trail)(nil))
+}
+
+func (i TrailMap) ToTrailMapOutput() TrailMapOutput {
+	return i.ToTrailMapOutputWithContext(context.Background())
+}
+
+func (i TrailMap) ToTrailMapOutputWithContext(ctx context.Context) TrailMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrailMapOutput)
 }
 
 type TrailOutput struct {
@@ -499,7 +578,7 @@ type TrailOutput struct {
 }
 
 func (TrailOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TrailOutput)(nil)).Elem()
+	return reflect.TypeOf((*Trail)(nil))
 }
 
 func (o TrailOutput) ToTrailOutput() TrailOutput {
@@ -510,6 +589,75 @@ func (o TrailOutput) ToTrailOutputWithContext(ctx context.Context) TrailOutput {
 	return o
 }
 
+func (o TrailOutput) ToTrailPtrOutput() TrailPtrOutput {
+	return o.ToTrailPtrOutputWithContext(context.Background())
+}
+
+func (o TrailOutput) ToTrailPtrOutputWithContext(ctx context.Context) TrailPtrOutput {
+	return o.ApplyT(func(v Trail) *Trail {
+		return &v
+	}).(TrailPtrOutput)
+}
+
+type TrailPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TrailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Trail)(nil))
+}
+
+func (o TrailPtrOutput) ToTrailPtrOutput() TrailPtrOutput {
+	return o
+}
+
+func (o TrailPtrOutput) ToTrailPtrOutputWithContext(ctx context.Context) TrailPtrOutput {
+	return o
+}
+
+type TrailArrayOutput struct{ *pulumi.OutputState }
+
+func (TrailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Trail)(nil))
+}
+
+func (o TrailArrayOutput) ToTrailArrayOutput() TrailArrayOutput {
+	return o
+}
+
+func (o TrailArrayOutput) ToTrailArrayOutputWithContext(ctx context.Context) TrailArrayOutput {
+	return o
+}
+
+func (o TrailArrayOutput) Index(i pulumi.IntInput) TrailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Trail {
+		return vs[0].([]Trail)[vs[1].(int)]
+	}).(TrailOutput)
+}
+
+type TrailMapOutput struct{ *pulumi.OutputState }
+
+func (TrailMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Trail)(nil))
+}
+
+func (o TrailMapOutput) ToTrailMapOutput() TrailMapOutput {
+	return o
+}
+
+func (o TrailMapOutput) ToTrailMapOutputWithContext(ctx context.Context) TrailMapOutput {
+	return o
+}
+
+func (o TrailMapOutput) MapIndex(k pulumi.StringInput) TrailOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Trail {
+		return vs[0].(map[string]Trail)[vs[1].(string)]
+	}).(TrailOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TrailOutput{})
+	pulumi.RegisterOutputType(TrailPtrOutput{})
+	pulumi.RegisterOutputType(TrailArrayOutput{})
+	pulumi.RegisterOutputType(TrailMapOutput{})
 }

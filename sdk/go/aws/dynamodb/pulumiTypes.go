@@ -565,7 +565,7 @@ func (i TablePointInTimeRecoveryArgs) ToTablePointInTimeRecoveryPtrOutput() Tabl
 }
 
 func (i TablePointInTimeRecoveryArgs) ToTablePointInTimeRecoveryPtrOutputWithContext(ctx context.Context) TablePointInTimeRecoveryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TablePointInTimeRecoveryOutput).ToTablePointInTimeRecoveryPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TablePointInTimeRecoveryOutput).ToTablePointInTimeRecoveryPtrOutput()
 }
 
 // TablePointInTimeRecoveryPtrInput is an input type that accepts TablePointInTimeRecoveryArgs, TablePointInTimeRecoveryPtr and TablePointInTimeRecoveryPtrOutput values.
@@ -598,7 +598,7 @@ func (i *tablePointInTimeRecoveryPtrType) ToTablePointInTimeRecoveryPtrOutput() 
 }
 
 func (i *tablePointInTimeRecoveryPtrType) ToTablePointInTimeRecoveryPtrOutputWithContext(ctx context.Context) TablePointInTimeRecoveryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TablePointInTimeRecoveryPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TablePointInTimeRecoveryOutput).ToTablePointInTimeRecoveryPtrOutput()
 }
 
 type TablePointInTimeRecoveryOutput struct{ *pulumi.OutputState }
@@ -799,7 +799,7 @@ func (i TableServerSideEncryptionArgs) ToTableServerSideEncryptionPtrOutput() Ta
 }
 
 func (i TableServerSideEncryptionArgs) ToTableServerSideEncryptionPtrOutputWithContext(ctx context.Context) TableServerSideEncryptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableServerSideEncryptionOutput).ToTableServerSideEncryptionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TableServerSideEncryptionOutput).ToTableServerSideEncryptionPtrOutput()
 }
 
 // TableServerSideEncryptionPtrInput is an input type that accepts TableServerSideEncryptionArgs, TableServerSideEncryptionPtr and TableServerSideEncryptionPtrOutput values.
@@ -832,7 +832,7 @@ func (i *tableServerSideEncryptionPtrType) ToTableServerSideEncryptionPtrOutput(
 }
 
 func (i *tableServerSideEncryptionPtrType) ToTableServerSideEncryptionPtrOutputWithContext(ctx context.Context) TableServerSideEncryptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableServerSideEncryptionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TableServerSideEncryptionOutput).ToTableServerSideEncryptionPtrOutput()
 }
 
 type TableServerSideEncryptionOutput struct{ *pulumi.OutputState }
@@ -951,7 +951,7 @@ func (i TableTtlArgs) ToTableTtlPtrOutput() TableTtlPtrOutput {
 }
 
 func (i TableTtlArgs) ToTableTtlPtrOutputWithContext(ctx context.Context) TableTtlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableTtlOutput).ToTableTtlPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(TableTtlOutput).ToTableTtlPtrOutput()
 }
 
 // TableTtlPtrInput is an input type that accepts TableTtlArgs, TableTtlPtr and TableTtlPtrOutput values.
@@ -984,7 +984,7 @@ func (i *tableTtlPtrType) ToTableTtlPtrOutput() TableTtlPtrOutput {
 }
 
 func (i *tableTtlPtrType) ToTableTtlPtrOutputWithContext(ctx context.Context) TableTtlPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableTtlPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(TableTtlOutput).ToTableTtlPtrOutput()
 }
 
 type TableTtlOutput struct{ *pulumi.OutputState }

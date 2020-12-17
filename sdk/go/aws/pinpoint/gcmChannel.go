@@ -147,16 +147,95 @@ type GcmChannelInput interface {
 	ToGcmChannelOutputWithContext(ctx context.Context) GcmChannelOutput
 }
 
-func (GcmChannel) ElementType() reflect.Type {
-	return reflect.TypeOf((*GcmChannel)(nil)).Elem()
+func (*GcmChannel) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcmChannel)(nil))
 }
 
-func (i GcmChannel) ToGcmChannelOutput() GcmChannelOutput {
+func (i *GcmChannel) ToGcmChannelOutput() GcmChannelOutput {
 	return i.ToGcmChannelOutputWithContext(context.Background())
 }
 
-func (i GcmChannel) ToGcmChannelOutputWithContext(ctx context.Context) GcmChannelOutput {
+func (i *GcmChannel) ToGcmChannelOutputWithContext(ctx context.Context) GcmChannelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GcmChannelOutput)
+}
+
+func (i *GcmChannel) ToGcmChannelPtrOutput() GcmChannelPtrOutput {
+	return i.ToGcmChannelPtrOutputWithContext(context.Background())
+}
+
+func (i *GcmChannel) ToGcmChannelPtrOutputWithContext(ctx context.Context) GcmChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcmChannelPtrOutput)
+}
+
+type GcmChannelPtrInput interface {
+	pulumi.Input
+
+	ToGcmChannelPtrOutput() GcmChannelPtrOutput
+	ToGcmChannelPtrOutputWithContext(ctx context.Context) GcmChannelPtrOutput
+}
+
+type gcmChannelPtrType GcmChannelArgs
+
+func (*gcmChannelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcmChannel)(nil))
+}
+
+func (i *gcmChannelPtrType) ToGcmChannelPtrOutput() GcmChannelPtrOutput {
+	return i.ToGcmChannelPtrOutputWithContext(context.Background())
+}
+
+func (i *gcmChannelPtrType) ToGcmChannelPtrOutputWithContext(ctx context.Context) GcmChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcmChannelOutput).ToGcmChannelPtrOutput()
+}
+
+// GcmChannelArrayInput is an input type that accepts GcmChannelArray and GcmChannelArrayOutput values.
+// You can construct a concrete instance of `GcmChannelArrayInput` via:
+//
+//          GcmChannelArray{ GcmChannelArgs{...} }
+type GcmChannelArrayInput interface {
+	pulumi.Input
+
+	ToGcmChannelArrayOutput() GcmChannelArrayOutput
+	ToGcmChannelArrayOutputWithContext(context.Context) GcmChannelArrayOutput
+}
+
+type GcmChannelArray []GcmChannelInput
+
+func (GcmChannelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcmChannel)(nil))
+}
+
+func (i GcmChannelArray) ToGcmChannelArrayOutput() GcmChannelArrayOutput {
+	return i.ToGcmChannelArrayOutputWithContext(context.Background())
+}
+
+func (i GcmChannelArray) ToGcmChannelArrayOutputWithContext(ctx context.Context) GcmChannelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcmChannelArrayOutput)
+}
+
+// GcmChannelMapInput is an input type that accepts GcmChannelMap and GcmChannelMapOutput values.
+// You can construct a concrete instance of `GcmChannelMapInput` via:
+//
+//          GcmChannelMap{ "key": GcmChannelArgs{...} }
+type GcmChannelMapInput interface {
+	pulumi.Input
+
+	ToGcmChannelMapOutput() GcmChannelMapOutput
+	ToGcmChannelMapOutputWithContext(context.Context) GcmChannelMapOutput
+}
+
+type GcmChannelMap map[string]GcmChannelInput
+
+func (GcmChannelMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GcmChannel)(nil))
+}
+
+func (i GcmChannelMap) ToGcmChannelMapOutput() GcmChannelMapOutput {
+	return i.ToGcmChannelMapOutputWithContext(context.Background())
+}
+
+func (i GcmChannelMap) ToGcmChannelMapOutputWithContext(ctx context.Context) GcmChannelMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcmChannelMapOutput)
 }
 
 type GcmChannelOutput struct {
@@ -164,7 +243,7 @@ type GcmChannelOutput struct {
 }
 
 func (GcmChannelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GcmChannelOutput)(nil)).Elem()
+	return reflect.TypeOf((*GcmChannel)(nil))
 }
 
 func (o GcmChannelOutput) ToGcmChannelOutput() GcmChannelOutput {
@@ -175,6 +254,75 @@ func (o GcmChannelOutput) ToGcmChannelOutputWithContext(ctx context.Context) Gcm
 	return o
 }
 
+func (o GcmChannelOutput) ToGcmChannelPtrOutput() GcmChannelPtrOutput {
+	return o.ToGcmChannelPtrOutputWithContext(context.Background())
+}
+
+func (o GcmChannelOutput) ToGcmChannelPtrOutputWithContext(ctx context.Context) GcmChannelPtrOutput {
+	return o.ApplyT(func(v GcmChannel) *GcmChannel {
+		return &v
+	}).(GcmChannelPtrOutput)
+}
+
+type GcmChannelPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GcmChannelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcmChannel)(nil))
+}
+
+func (o GcmChannelPtrOutput) ToGcmChannelPtrOutput() GcmChannelPtrOutput {
+	return o
+}
+
+func (o GcmChannelPtrOutput) ToGcmChannelPtrOutputWithContext(ctx context.Context) GcmChannelPtrOutput {
+	return o
+}
+
+type GcmChannelArrayOutput struct{ *pulumi.OutputState }
+
+func (GcmChannelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcmChannel)(nil))
+}
+
+func (o GcmChannelArrayOutput) ToGcmChannelArrayOutput() GcmChannelArrayOutput {
+	return o
+}
+
+func (o GcmChannelArrayOutput) ToGcmChannelArrayOutputWithContext(ctx context.Context) GcmChannelArrayOutput {
+	return o
+}
+
+func (o GcmChannelArrayOutput) Index(i pulumi.IntInput) GcmChannelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GcmChannel {
+		return vs[0].([]GcmChannel)[vs[1].(int)]
+	}).(GcmChannelOutput)
+}
+
+type GcmChannelMapOutput struct{ *pulumi.OutputState }
+
+func (GcmChannelMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GcmChannel)(nil))
+}
+
+func (o GcmChannelMapOutput) ToGcmChannelMapOutput() GcmChannelMapOutput {
+	return o
+}
+
+func (o GcmChannelMapOutput) ToGcmChannelMapOutputWithContext(ctx context.Context) GcmChannelMapOutput {
+	return o
+}
+
+func (o GcmChannelMapOutput) MapIndex(k pulumi.StringInput) GcmChannelOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GcmChannel {
+		return vs[0].(map[string]GcmChannel)[vs[1].(string)]
+	}).(GcmChannelOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GcmChannelOutput{})
+	pulumi.RegisterOutputType(GcmChannelPtrOutput{})
+	pulumi.RegisterOutputType(GcmChannelArrayOutput{})
+	pulumi.RegisterOutputType(GcmChannelMapOutput{})
 }

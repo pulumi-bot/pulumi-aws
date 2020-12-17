@@ -161,16 +161,95 @@ type NetworkAssociationInput interface {
 	ToNetworkAssociationOutputWithContext(ctx context.Context) NetworkAssociationOutput
 }
 
-func (NetworkAssociation) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkAssociation)(nil)).Elem()
+func (*NetworkAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAssociation)(nil))
 }
 
-func (i NetworkAssociation) ToNetworkAssociationOutput() NetworkAssociationOutput {
+func (i *NetworkAssociation) ToNetworkAssociationOutput() NetworkAssociationOutput {
 	return i.ToNetworkAssociationOutputWithContext(context.Background())
 }
 
-func (i NetworkAssociation) ToNetworkAssociationOutputWithContext(ctx context.Context) NetworkAssociationOutput {
+func (i *NetworkAssociation) ToNetworkAssociationOutputWithContext(ctx context.Context) NetworkAssociationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAssociationOutput)
+}
+
+func (i *NetworkAssociation) ToNetworkAssociationPtrOutput() NetworkAssociationPtrOutput {
+	return i.ToNetworkAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i *NetworkAssociation) ToNetworkAssociationPtrOutputWithContext(ctx context.Context) NetworkAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAssociationPtrOutput)
+}
+
+type NetworkAssociationPtrInput interface {
+	pulumi.Input
+
+	ToNetworkAssociationPtrOutput() NetworkAssociationPtrOutput
+	ToNetworkAssociationPtrOutputWithContext(ctx context.Context) NetworkAssociationPtrOutput
+}
+
+type networkAssociationPtrType NetworkAssociationArgs
+
+func (*networkAssociationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkAssociation)(nil))
+}
+
+func (i *networkAssociationPtrType) ToNetworkAssociationPtrOutput() NetworkAssociationPtrOutput {
+	return i.ToNetworkAssociationPtrOutputWithContext(context.Background())
+}
+
+func (i *networkAssociationPtrType) ToNetworkAssociationPtrOutputWithContext(ctx context.Context) NetworkAssociationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAssociationOutput).ToNetworkAssociationPtrOutput()
+}
+
+// NetworkAssociationArrayInput is an input type that accepts NetworkAssociationArray and NetworkAssociationArrayOutput values.
+// You can construct a concrete instance of `NetworkAssociationArrayInput` via:
+//
+//          NetworkAssociationArray{ NetworkAssociationArgs{...} }
+type NetworkAssociationArrayInput interface {
+	pulumi.Input
+
+	ToNetworkAssociationArrayOutput() NetworkAssociationArrayOutput
+	ToNetworkAssociationArrayOutputWithContext(context.Context) NetworkAssociationArrayOutput
+}
+
+type NetworkAssociationArray []NetworkAssociationInput
+
+func (NetworkAssociationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkAssociation)(nil))
+}
+
+func (i NetworkAssociationArray) ToNetworkAssociationArrayOutput() NetworkAssociationArrayOutput {
+	return i.ToNetworkAssociationArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkAssociationArray) ToNetworkAssociationArrayOutputWithContext(ctx context.Context) NetworkAssociationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAssociationArrayOutput)
+}
+
+// NetworkAssociationMapInput is an input type that accepts NetworkAssociationMap and NetworkAssociationMapOutput values.
+// You can construct a concrete instance of `NetworkAssociationMapInput` via:
+//
+//          NetworkAssociationMap{ "key": NetworkAssociationArgs{...} }
+type NetworkAssociationMapInput interface {
+	pulumi.Input
+
+	ToNetworkAssociationMapOutput() NetworkAssociationMapOutput
+	ToNetworkAssociationMapOutputWithContext(context.Context) NetworkAssociationMapOutput
+}
+
+type NetworkAssociationMap map[string]NetworkAssociationInput
+
+func (NetworkAssociationMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NetworkAssociation)(nil))
+}
+
+func (i NetworkAssociationMap) ToNetworkAssociationMapOutput() NetworkAssociationMapOutput {
+	return i.ToNetworkAssociationMapOutputWithContext(context.Background())
+}
+
+func (i NetworkAssociationMap) ToNetworkAssociationMapOutputWithContext(ctx context.Context) NetworkAssociationMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAssociationMapOutput)
 }
 
 type NetworkAssociationOutput struct {
@@ -178,7 +257,7 @@ type NetworkAssociationOutput struct {
 }
 
 func (NetworkAssociationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkAssociationOutput)(nil)).Elem()
+	return reflect.TypeOf((*NetworkAssociation)(nil))
 }
 
 func (o NetworkAssociationOutput) ToNetworkAssociationOutput() NetworkAssociationOutput {
@@ -189,6 +268,75 @@ func (o NetworkAssociationOutput) ToNetworkAssociationOutputWithContext(ctx cont
 	return o
 }
 
+func (o NetworkAssociationOutput) ToNetworkAssociationPtrOutput() NetworkAssociationPtrOutput {
+	return o.ToNetworkAssociationPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkAssociationOutput) ToNetworkAssociationPtrOutputWithContext(ctx context.Context) NetworkAssociationPtrOutput {
+	return o.ApplyT(func(v NetworkAssociation) *NetworkAssociation {
+		return &v
+	}).(NetworkAssociationPtrOutput)
+}
+
+type NetworkAssociationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkAssociationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkAssociation)(nil))
+}
+
+func (o NetworkAssociationPtrOutput) ToNetworkAssociationPtrOutput() NetworkAssociationPtrOutput {
+	return o
+}
+
+func (o NetworkAssociationPtrOutput) ToNetworkAssociationPtrOutputWithContext(ctx context.Context) NetworkAssociationPtrOutput {
+	return o
+}
+
+type NetworkAssociationArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkAssociationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkAssociation)(nil))
+}
+
+func (o NetworkAssociationArrayOutput) ToNetworkAssociationArrayOutput() NetworkAssociationArrayOutput {
+	return o
+}
+
+func (o NetworkAssociationArrayOutput) ToNetworkAssociationArrayOutputWithContext(ctx context.Context) NetworkAssociationArrayOutput {
+	return o
+}
+
+func (o NetworkAssociationArrayOutput) Index(i pulumi.IntInput) NetworkAssociationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkAssociation {
+		return vs[0].([]NetworkAssociation)[vs[1].(int)]
+	}).(NetworkAssociationOutput)
+}
+
+type NetworkAssociationMapOutput struct{ *pulumi.OutputState }
+
+func (NetworkAssociationMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NetworkAssociation)(nil))
+}
+
+func (o NetworkAssociationMapOutput) ToNetworkAssociationMapOutput() NetworkAssociationMapOutput {
+	return o
+}
+
+func (o NetworkAssociationMapOutput) ToNetworkAssociationMapOutputWithContext(ctx context.Context) NetworkAssociationMapOutput {
+	return o
+}
+
+func (o NetworkAssociationMapOutput) MapIndex(k pulumi.StringInput) NetworkAssociationOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NetworkAssociation {
+		return vs[0].(map[string]NetworkAssociation)[vs[1].(string)]
+	}).(NetworkAssociationOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(NetworkAssociationOutput{})
+	pulumi.RegisterOutputType(NetworkAssociationPtrOutput{})
+	pulumi.RegisterOutputType(NetworkAssociationArrayOutput{})
+	pulumi.RegisterOutputType(NetworkAssociationMapOutput{})
 }

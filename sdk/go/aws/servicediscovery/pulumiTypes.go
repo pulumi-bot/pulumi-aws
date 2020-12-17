@@ -56,7 +56,7 @@ func (i ServiceDnsConfigArgs) ToServiceDnsConfigPtrOutput() ServiceDnsConfigPtrO
 }
 
 func (i ServiceDnsConfigArgs) ToServiceDnsConfigPtrOutputWithContext(ctx context.Context) ServiceDnsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceDnsConfigOutput).ToServiceDnsConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceDnsConfigOutput).ToServiceDnsConfigPtrOutput()
 }
 
 // ServiceDnsConfigPtrInput is an input type that accepts ServiceDnsConfigArgs, ServiceDnsConfigPtr and ServiceDnsConfigPtrOutput values.
@@ -89,7 +89,7 @@ func (i *serviceDnsConfigPtrType) ToServiceDnsConfigPtrOutput() ServiceDnsConfig
 }
 
 func (i *serviceDnsConfigPtrType) ToServiceDnsConfigPtrOutputWithContext(ctx context.Context) ServiceDnsConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceDnsConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceDnsConfigOutput).ToServiceDnsConfigPtrOutput()
 }
 
 type ServiceDnsConfigOutput struct{ *pulumi.OutputState }
@@ -331,7 +331,7 @@ func (i ServiceHealthCheckConfigArgs) ToServiceHealthCheckConfigPtrOutput() Serv
 }
 
 func (i ServiceHealthCheckConfigArgs) ToServiceHealthCheckConfigPtrOutputWithContext(ctx context.Context) ServiceHealthCheckConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceHealthCheckConfigOutput).ToServiceHealthCheckConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceHealthCheckConfigOutput).ToServiceHealthCheckConfigPtrOutput()
 }
 
 // ServiceHealthCheckConfigPtrInput is an input type that accepts ServiceHealthCheckConfigArgs, ServiceHealthCheckConfigPtr and ServiceHealthCheckConfigPtrOutput values.
@@ -364,7 +364,7 @@ func (i *serviceHealthCheckConfigPtrType) ToServiceHealthCheckConfigPtrOutput() 
 }
 
 func (i *serviceHealthCheckConfigPtrType) ToServiceHealthCheckConfigPtrOutputWithContext(ctx context.Context) ServiceHealthCheckConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceHealthCheckConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceHealthCheckConfigOutput).ToServiceHealthCheckConfigPtrOutput()
 }
 
 type ServiceHealthCheckConfigOutput struct{ *pulumi.OutputState }
@@ -492,7 +492,7 @@ func (i ServiceHealthCheckCustomConfigArgs) ToServiceHealthCheckCustomConfigPtrO
 }
 
 func (i ServiceHealthCheckCustomConfigArgs) ToServiceHealthCheckCustomConfigPtrOutputWithContext(ctx context.Context) ServiceHealthCheckCustomConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceHealthCheckCustomConfigOutput).ToServiceHealthCheckCustomConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceHealthCheckCustomConfigOutput).ToServiceHealthCheckCustomConfigPtrOutput()
 }
 
 // ServiceHealthCheckCustomConfigPtrInput is an input type that accepts ServiceHealthCheckCustomConfigArgs, ServiceHealthCheckCustomConfigPtr and ServiceHealthCheckCustomConfigPtrOutput values.
@@ -525,7 +525,7 @@ func (i *serviceHealthCheckCustomConfigPtrType) ToServiceHealthCheckCustomConfig
 }
 
 func (i *serviceHealthCheckCustomConfigPtrType) ToServiceHealthCheckCustomConfigPtrOutputWithContext(ctx context.Context) ServiceHealthCheckCustomConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceHealthCheckCustomConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceHealthCheckCustomConfigOutput).ToServiceHealthCheckCustomConfigPtrOutput()
 }
 
 type ServiceHealthCheckCustomConfigOutput struct{ *pulumi.OutputState }

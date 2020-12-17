@@ -209,16 +209,95 @@ type LoggingConfigurationInput interface {
 	ToLoggingConfigurationOutputWithContext(ctx context.Context) LoggingConfigurationOutput
 }
 
-func (LoggingConfiguration) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoggingConfiguration)(nil)).Elem()
+func (*LoggingConfiguration) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfiguration)(nil))
 }
 
-func (i LoggingConfiguration) ToLoggingConfigurationOutput() LoggingConfigurationOutput {
+func (i *LoggingConfiguration) ToLoggingConfigurationOutput() LoggingConfigurationOutput {
 	return i.ToLoggingConfigurationOutputWithContext(context.Background())
 }
 
-func (i LoggingConfiguration) ToLoggingConfigurationOutputWithContext(ctx context.Context) LoggingConfigurationOutput {
+func (i *LoggingConfiguration) ToLoggingConfigurationOutputWithContext(ctx context.Context) LoggingConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigurationOutput)
+}
+
+func (i *LoggingConfiguration) ToLoggingConfigurationPtrOutput() LoggingConfigurationPtrOutput {
+	return i.ToLoggingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *LoggingConfiguration) ToLoggingConfigurationPtrOutputWithContext(ctx context.Context) LoggingConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigurationPtrOutput)
+}
+
+type LoggingConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToLoggingConfigurationPtrOutput() LoggingConfigurationPtrOutput
+	ToLoggingConfigurationPtrOutputWithContext(ctx context.Context) LoggingConfigurationPtrOutput
+}
+
+type loggingConfigurationPtrType LoggingConfigurationArgs
+
+func (*loggingConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingConfiguration)(nil))
+}
+
+func (i *loggingConfigurationPtrType) ToLoggingConfigurationPtrOutput() LoggingConfigurationPtrOutput {
+	return i.ToLoggingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *loggingConfigurationPtrType) ToLoggingConfigurationPtrOutputWithContext(ctx context.Context) LoggingConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigurationOutput).ToLoggingConfigurationPtrOutput()
+}
+
+// LoggingConfigurationArrayInput is an input type that accepts LoggingConfigurationArray and LoggingConfigurationArrayOutput values.
+// You can construct a concrete instance of `LoggingConfigurationArrayInput` via:
+//
+//          LoggingConfigurationArray{ LoggingConfigurationArgs{...} }
+type LoggingConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToLoggingConfigurationArrayOutput() LoggingConfigurationArrayOutput
+	ToLoggingConfigurationArrayOutputWithContext(context.Context) LoggingConfigurationArrayOutput
+}
+
+type LoggingConfigurationArray []LoggingConfigurationInput
+
+func (LoggingConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingConfiguration)(nil))
+}
+
+func (i LoggingConfigurationArray) ToLoggingConfigurationArrayOutput() LoggingConfigurationArrayOutput {
+	return i.ToLoggingConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i LoggingConfigurationArray) ToLoggingConfigurationArrayOutputWithContext(ctx context.Context) LoggingConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigurationArrayOutput)
+}
+
+// LoggingConfigurationMapInput is an input type that accepts LoggingConfigurationMap and LoggingConfigurationMapOutput values.
+// You can construct a concrete instance of `LoggingConfigurationMapInput` via:
+//
+//          LoggingConfigurationMap{ "key": LoggingConfigurationArgs{...} }
+type LoggingConfigurationMapInput interface {
+	pulumi.Input
+
+	ToLoggingConfigurationMapOutput() LoggingConfigurationMapOutput
+	ToLoggingConfigurationMapOutputWithContext(context.Context) LoggingConfigurationMapOutput
+}
+
+type LoggingConfigurationMap map[string]LoggingConfigurationInput
+
+func (LoggingConfigurationMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]LoggingConfiguration)(nil))
+}
+
+func (i LoggingConfigurationMap) ToLoggingConfigurationMapOutput() LoggingConfigurationMapOutput {
+	return i.ToLoggingConfigurationMapOutputWithContext(context.Background())
+}
+
+func (i LoggingConfigurationMap) ToLoggingConfigurationMapOutputWithContext(ctx context.Context) LoggingConfigurationMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigurationMapOutput)
 }
 
 type LoggingConfigurationOutput struct {
@@ -226,7 +305,7 @@ type LoggingConfigurationOutput struct {
 }
 
 func (LoggingConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoggingConfigurationOutput)(nil)).Elem()
+	return reflect.TypeOf((*LoggingConfiguration)(nil))
 }
 
 func (o LoggingConfigurationOutput) ToLoggingConfigurationOutput() LoggingConfigurationOutput {
@@ -237,6 +316,75 @@ func (o LoggingConfigurationOutput) ToLoggingConfigurationOutputWithContext(ctx 
 	return o
 }
 
+func (o LoggingConfigurationOutput) ToLoggingConfigurationPtrOutput() LoggingConfigurationPtrOutput {
+	return o.ToLoggingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o LoggingConfigurationOutput) ToLoggingConfigurationPtrOutputWithContext(ctx context.Context) LoggingConfigurationPtrOutput {
+	return o.ApplyT(func(v LoggingConfiguration) *LoggingConfiguration {
+		return &v
+	}).(LoggingConfigurationPtrOutput)
+}
+
+type LoggingConfigurationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LoggingConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingConfiguration)(nil))
+}
+
+func (o LoggingConfigurationPtrOutput) ToLoggingConfigurationPtrOutput() LoggingConfigurationPtrOutput {
+	return o
+}
+
+func (o LoggingConfigurationPtrOutput) ToLoggingConfigurationPtrOutputWithContext(ctx context.Context) LoggingConfigurationPtrOutput {
+	return o
+}
+
+type LoggingConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingConfiguration)(nil))
+}
+
+func (o LoggingConfigurationArrayOutput) ToLoggingConfigurationArrayOutput() LoggingConfigurationArrayOutput {
+	return o
+}
+
+func (o LoggingConfigurationArrayOutput) ToLoggingConfigurationArrayOutputWithContext(ctx context.Context) LoggingConfigurationArrayOutput {
+	return o
+}
+
+func (o LoggingConfigurationArrayOutput) Index(i pulumi.IntInput) LoggingConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoggingConfiguration {
+		return vs[0].([]LoggingConfiguration)[vs[1].(int)]
+	}).(LoggingConfigurationOutput)
+}
+
+type LoggingConfigurationMapOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigurationMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]LoggingConfiguration)(nil))
+}
+
+func (o LoggingConfigurationMapOutput) ToLoggingConfigurationMapOutput() LoggingConfigurationMapOutput {
+	return o
+}
+
+func (o LoggingConfigurationMapOutput) ToLoggingConfigurationMapOutputWithContext(ctx context.Context) LoggingConfigurationMapOutput {
+	return o
+}
+
+func (o LoggingConfigurationMapOutput) MapIndex(k pulumi.StringInput) LoggingConfigurationOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LoggingConfiguration {
+		return vs[0].(map[string]LoggingConfiguration)[vs[1].(string)]
+	}).(LoggingConfigurationOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(LoggingConfigurationOutput{})
+	pulumi.RegisterOutputType(LoggingConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(LoggingConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(LoggingConfigurationMapOutput{})
 }
