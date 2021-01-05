@@ -26,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := elb.NewLoadBalancer(ctx, "wu_tang", &elb.LoadBalancerArgs{
+// 		_, err := elb.NewLoadBalancer(ctx, "wu-tang", &elb.LoadBalancerArgs{
 // 			AvailabilityZones: pulumi.StringArray{
 // 				pulumi.String("us-east-1a"),
 // 			},
@@ -46,7 +46,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = elb.NewLoadBalancerPolicy(ctx, "wu_tang_ssl", &elb.LoadBalancerPolicyArgs{
+// 		_, err = elb.NewLoadBalancerPolicy(ctx, "wu-tang-ssl", &elb.LoadBalancerPolicyArgs{
 // 			LoadBalancerName: wu_tang.Name,
 // 			PolicyName:       pulumi.String("wu-tang-ssl"),
 // 			PolicyTypeName:   pulumi.String("SSLNegotiationPolicyType"),
@@ -64,7 +64,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = elb.NewListenerPolicy(ctx, "wu_tang_listener_policies_443", &elb.ListenerPolicyArgs{
+// 		_, err = elb.NewListenerPolicy(ctx, "wu-tang-listener-policies-443", &elb.ListenerPolicyArgs{
 // 			LoadBalancerName: wu_tang.Name,
 // 			LoadBalancerPort: pulumi.Int(443),
 // 			PolicyNames: pulumi.StringArray{
@@ -92,7 +92,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := elb.NewLoadBalancer(ctx, "wu_tang", &elb.LoadBalancerArgs{
+// 		_, err := elb.NewLoadBalancer(ctx, "wu-tang", &elb.LoadBalancerArgs{
 // 			AvailabilityZones: pulumi.StringArray{
 // 				pulumi.String("us-east-1a"),
 // 			},
@@ -112,7 +112,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = elb.NewLoadBalancerPolicy(ctx, "wu_tang_ssl_tls_1_1", &elb.LoadBalancerPolicyArgs{
+// 		_, err = elb.NewLoadBalancerPolicy(ctx, "wu-tang-ssl-tls-1-1", &elb.LoadBalancerPolicyArgs{
 // 			LoadBalancerName: wu_tang.Name,
 // 			PolicyName:       pulumi.String("wu-tang-ssl"),
 // 			PolicyTypeName:   pulumi.String("SSLNegotiationPolicyType"),
@@ -126,7 +126,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = elb.NewListenerPolicy(ctx, "wu_tang_listener_policies_443", &elb.ListenerPolicyArgs{
+// 		_, err = elb.NewListenerPolicy(ctx, "wu-tang-listener-policies-443", &elb.ListenerPolicyArgs{
 // 			LoadBalancerName: wu_tang.Name,
 // 			LoadBalancerPort: pulumi.Int(443),
 // 			PolicyNames: pulumi.StringArray{

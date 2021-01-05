@@ -24,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := datapipeline.NewPipeline(ctx, "_default", nil)
+// 		_, err := datapipeline.NewPipeline(ctx, "default", nil)
 // 		if err != nil {
 // 			return err
 // 		}

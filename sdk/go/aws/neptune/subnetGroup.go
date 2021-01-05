@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := neptune.NewSubnetGroup(ctx, "_default", &neptune.SubnetGroupArgs{
+// 		_, err := neptune.NewSubnetGroup(ctx, "default", &neptune.SubnetGroupArgs{
 // 			SubnetIds: pulumi.StringArray{
 // 				pulumi.Any(aws_subnet.Frontend.Id),
 // 				pulumi.Any(aws_subnet.Backend.Id),

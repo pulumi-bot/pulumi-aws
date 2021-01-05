@@ -27,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := route53.NewRecord(ctx, "www_dev", &route53.RecordArgs{
+// 		_, err := route53.NewRecord(ctx, "www-dev", &route53.RecordArgs{
 // 			ZoneId: pulumi.Any(aws_route53_zone.Primary.Zone_id),
 // 			Name:   pulumi.String("www"),
 // 			Type:   pulumi.String("CNAME"),
@@ -45,7 +45,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = route53.NewRecord(ctx, "www_live", &route53.RecordArgs{
+// 		_, err = route53.NewRecord(ctx, "www-live", &route53.RecordArgs{
 // 			ZoneId: pulumi.Any(aws_route53_zone.Primary.Zone_id),
 // 			Name:   pulumi.String("www"),
 // 			Type:   pulumi.String("CNAME"),

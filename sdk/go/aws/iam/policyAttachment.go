@@ -52,7 +52,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = iam.NewPolicyAttachment(ctx, "test_attach", &iam.PolicyAttachmentArgs{
+// 		_, err = iam.NewPolicyAttachment(ctx, "test-attach", &iam.PolicyAttachmentArgs{
 // 			Users: pulumi.StringArray{
 // 				user.Name,
 // 			},

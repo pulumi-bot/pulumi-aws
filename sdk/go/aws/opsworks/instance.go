@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := opsworks.NewInstance(ctx, "my_instance", &opsworks.InstanceArgs{
+// 		_, err := opsworks.NewInstance(ctx, "my-instance", &opsworks.InstanceArgs{
 // 			StackId: pulumi.Any(aws_opsworks_stack.Main.Id),
 // 			LayerIds: pulumi.StringArray{
 // 				pulumi.Any(aws_opsworks_custom_layer.My - layer.Id),

@@ -38,7 +38,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = iam.NewGroupPolicyAttachment(ctx, "test_attach", &iam.GroupPolicyAttachmentArgs{
+// 		_, err = iam.NewGroupPolicyAttachment(ctx, "test-attach", &iam.GroupPolicyAttachmentArgs{
 // 			Group:     group.Name,
 // 			PolicyArn: policy.Arn,
 // 		})

@@ -58,7 +58,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = ec2.NewDefaultSecurityGroup(ctx, "_default", &ec2.DefaultSecurityGroupArgs{
+// 		_, err = ec2.NewDefaultSecurityGroup(ctx, "default", &ec2.DefaultSecurityGroupArgs{
 // 			VpcId: mainvpc.ID(),
 // 			Ingress: ec2.DefaultSecurityGroupIngressArray{
 // 				&ec2.DefaultSecurityGroupIngressArgs{
@@ -108,7 +108,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = ec2.NewDefaultSecurityGroup(ctx, "_default", &ec2.DefaultSecurityGroupArgs{
+// 		_, err = ec2.NewDefaultSecurityGroup(ctx, "default", &ec2.DefaultSecurityGroupArgs{
 // 			VpcId: mainvpc.ID(),
 // 			Ingress: ec2.DefaultSecurityGroupIngressArray{
 // 				&ec2.DefaultSecurityGroupIngressArgs{

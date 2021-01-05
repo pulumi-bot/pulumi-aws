@@ -46,39 +46,39 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = iam.NewRole(ctx, "dms_access_for_endpoint", &iam.RoleArgs{
+// 		_, err = iam.NewRole(ctx, "dms-access-for-endpoint", &iam.RoleArgs{
 // 			AssumeRolePolicy: pulumi.String(dmsAssumeRole.Json),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = iam.NewRolePolicyAttachment(ctx, "dms_access_for_endpoint_AmazonDMSRedshiftS3Role", &iam.RolePolicyAttachmentArgs{
+// 		_, err = iam.NewRolePolicyAttachment(ctx, "dms-access-for-endpoint-AmazonDMSRedshiftS3Role", &iam.RolePolicyAttachmentArgs{
 // 			PolicyArn: pulumi.String("arn:aws:iam::aws:policy/service-role/AmazonDMSRedshiftS3Role"),
 // 			Role:      dms_access_for_endpoint.Name,
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = iam.NewRole(ctx, "dms_cloudwatch_logs_role", &iam.RoleArgs{
+// 		_, err = iam.NewRole(ctx, "dms-cloudwatch-logs-role", &iam.RoleArgs{
 // 			AssumeRolePolicy: pulumi.String(dmsAssumeRole.Json),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = iam.NewRolePolicyAttachment(ctx, "dms_cloudwatch_logs_role_AmazonDMSCloudWatchLogsRole", &iam.RolePolicyAttachmentArgs{
+// 		_, err = iam.NewRolePolicyAttachment(ctx, "dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole", &iam.RolePolicyAttachmentArgs{
 // 			PolicyArn: pulumi.String("arn:aws:iam::aws:policy/service-role/AmazonDMSCloudWatchLogsRole"),
 // 			Role:      dms_cloudwatch_logs_role.Name,
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = iam.NewRole(ctx, "dms_vpc_role", &iam.RoleArgs{
+// 		_, err = iam.NewRole(ctx, "dms-vpc-role", &iam.RoleArgs{
 // 			AssumeRolePolicy: pulumi.String(dmsAssumeRole.Json),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = iam.NewRolePolicyAttachment(ctx, "dms_vpc_role_AmazonDMSVPCManagementRole", &iam.RolePolicyAttachmentArgs{
+// 		_, err = iam.NewRolePolicyAttachment(ctx, "dms-vpc-role-AmazonDMSVPCManagementRole", &iam.RolePolicyAttachmentArgs{
 // 			PolicyArn: pulumi.String("arn:aws:iam::aws:policy/service-role/AmazonDMSVPCManagementRole"),
 // 			Role:      dms_vpc_role.Name,
 // 		})

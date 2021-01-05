@@ -138,7 +138,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = directoryservice.NewDirectory(ctx, "exampleDirectoryservice_directoryDirectory", &directoryservice.DirectoryArgs{
+// 		_, err = directoryservice.NewDirectory(ctx, "exampleDirectoryservice/directoryDirectory", &directoryservice.DirectoryArgs{
 // 			Name:     pulumi.String("corp.example.com"),
 // 			Password: pulumi.String("#S1ncerely"),
 // 			Size:     pulumi.String("Small"),

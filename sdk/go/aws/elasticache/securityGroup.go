@@ -35,7 +35,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = elasticache.NewSecurityGroup(ctx, "barElasticache_securityGroupSecurityGroup", &elasticache.SecurityGroupArgs{
+// 		_, err = elasticache.NewSecurityGroup(ctx, "barElasticache/securityGroupSecurityGroup", &elasticache.SecurityGroupArgs{
 // 			SecurityGroupNames: pulumi.StringArray{
 // 				barSecurityGroup.Name,
 // 			},

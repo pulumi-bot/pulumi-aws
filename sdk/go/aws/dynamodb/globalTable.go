@@ -30,19 +30,19 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := providers.Newaws(ctx, "us_east_1", &providers.awsArgs{
+// 		_, err := providers.Newaws(ctx, "us-east-1", &providers.awsArgs{
 // 			Region: pulumi.String("us-east-1"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = providers.Newaws(ctx, "us_west_2", &providers.awsArgs{
+// 		_, err = providers.Newaws(ctx, "us-west-2", &providers.awsArgs{
 // 			Region: pulumi.String("us-west-2"),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = dynamodb.NewTable(ctx, "us_east_1Table", &dynamodb.TableArgs{
+// 		_, err = dynamodb.NewTable(ctx, "us-east-1Table", &dynamodb.TableArgs{
 // 			HashKey:        pulumi.String("myAttribute"),
 // 			StreamEnabled:  pulumi.Bool(true),
 // 			StreamViewType: pulumi.String("NEW_AND_OLD_IMAGES"),
@@ -58,7 +58,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = dynamodb.NewTable(ctx, "us_west_2Table", &dynamodb.TableArgs{
+// 		_, err = dynamodb.NewTable(ctx, "us-west-2Table", &dynamodb.TableArgs{
 // 			HashKey:        pulumi.String("myAttribute"),
 // 			StreamEnabled:  pulumi.Bool(true),
 // 			StreamViewType: pulumi.String("NEW_AND_OLD_IMAGES"),

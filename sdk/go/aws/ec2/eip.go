@@ -54,7 +54,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.NewNetworkInterface(ctx, "multi_ip", &ec2.NetworkInterfaceArgs{
+// 		_, err := ec2.NewNetworkInterface(ctx, "multi-ip", &ec2.NetworkInterfaceArgs{
 // 			SubnetId: pulumi.Any(aws_subnet.Main.Id),
 // 			PrivateIps: pulumi.StringArray{
 // 				pulumi.String("10.0.0.10"),
@@ -97,7 +97,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.NewVpc(ctx, "_default", &ec2.VpcArgs{
+// 		_, err := ec2.NewVpc(ctx, "default", &ec2.VpcArgs{
 // 			CidrBlock:          pulumi.String("10.0.0.0/16"),
 // 			EnableDnsHostnames: pulumi.Bool(true),
 // 		})
@@ -156,7 +156,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := ec2.NewEip(ctx, "byoip_ip", &ec2.EipArgs{
+// 		_, err := ec2.NewEip(ctx, "byoip-ip", &ec2.EipArgs{
 // 			PublicIpv4Pool: pulumi.String("ipv4pool-ec2-012345"),
 // 			Vpc:            pulumi.Bool(true),
 // 		})

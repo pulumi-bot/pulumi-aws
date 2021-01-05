@@ -74,7 +74,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = s3.NewInventory(ctx, "test_prefix", &s3.InventoryArgs{
+// 		_, err = s3.NewInventory(ctx, "test-prefix", &s3.InventoryArgs{
 // 			Bucket:                 test.ID(),
 // 			IncludedObjectVersions: pulumi.String("All"),
 // 			Schedule: &s3.InventoryScheduleArgs{

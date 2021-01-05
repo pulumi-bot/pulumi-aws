@@ -34,7 +34,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := docdb.NewCluster(ctx, "_default", &docdb.ClusterArgs{
+// 		_, err := docdb.NewCluster(ctx, "default", &docdb.ClusterArgs{
 // 			ClusterIdentifier: pulumi.String("docdb-cluster-demo"),
 // 			AvailabilityZones: pulumi.StringArray{
 // 				pulumi.String("us-west-2a"),

@@ -38,7 +38,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = sns.NewTopicPolicy(ctx, "_default", &sns.TopicPolicyArgs{
+// 		_, err = sns.NewTopicPolicy(ctx, "default", &sns.TopicPolicyArgs{
 // 			Arn: notif.Arn,
 // 			Policy: notifAccess.ApplyT(func(notifAccess iam.GetPolicyDocumentResult) (string, error) {
 // 				return notifAccess.Json, nil

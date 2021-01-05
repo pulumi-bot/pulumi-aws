@@ -34,7 +34,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := providers.Newaws(ctx, "us_east_1", &providers.awsArgs{
+// 		_, err := providers.Newaws(ctx, "us-east-1", &providers.awsArgs{
 // 			Region: pulumi.String("us-east-1"),
 // 		})
 // 		if err != nil {
@@ -70,7 +70,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = cloudwatch.NewLogResourcePolicy(ctx, "route53_query_logging_policyLogResourcePolicy", &cloudwatch.LogResourcePolicyArgs{
+// 		_, err = cloudwatch.NewLogResourcePolicy(ctx, "route53-query-logging-policyLogResourcePolicy", &cloudwatch.LogResourcePolicyArgs{
 // 			PolicyDocument: pulumi.String(route53_query_logging_policyPolicyDocument.Json),
 // 			PolicyName:     pulumi.String("route53-query-logging-policy"),
 // 		}, pulumi.Provider(aws.Us-east-1))

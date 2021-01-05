@@ -36,7 +36,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = serverlessrepository.NewCloudFormationStack(ctx, "postgres_rotator", &serverlessrepository.CloudFormationStackArgs{
+// 		_, err = serverlessrepository.NewCloudFormationStack(ctx, "postgres-rotator", &serverlessrepository.CloudFormationStackArgs{
 // 			ApplicationId: pulumi.String("arn:aws:serverlessrepo:us-east-1:297356227824:applications/SecretsManagerRDSPostgreSQLRotationSingleUser"),
 // 			Capabilities: pulumi.StringArray{
 // 				pulumi.String("CAPABILITY_IAM"),

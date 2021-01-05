@@ -73,7 +73,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = route53.NewRecord(ctx, "auth_cognito_A", &route53.RecordArgs{
+// 		_, err = route53.NewRecord(ctx, "auth-cognito-A", &route53.RecordArgs{
 // 			Name:   main.Domain,
 // 			Type:   pulumi.String("A"),
 // 			ZoneId: pulumi.String(exampleZone.ZoneId),

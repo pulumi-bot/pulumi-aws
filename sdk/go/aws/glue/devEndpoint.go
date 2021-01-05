@@ -60,7 +60,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = iam.NewRolePolicyAttachment(ctx, "example_AWSGlueServiceRole", &iam.RolePolicyAttachmentArgs{
+// 		_, err = iam.NewRolePolicyAttachment(ctx, "example-AWSGlueServiceRole", &iam.RolePolicyAttachmentArgs{
 // 			PolicyArn: pulumi.String("arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"),
 // 			Role:      exampleRole.Name,
 // 		})

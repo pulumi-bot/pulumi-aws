@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := docdb.NewSubnetGroup(ctx, "_default", &docdb.SubnetGroupArgs{
+// 		_, err := docdb.NewSubnetGroup(ctx, "default", &docdb.SubnetGroupArgs{
 // 			SubnetIds: pulumi.StringArray{
 // 				pulumi.Any(aws_subnet.Frontend.Id),
 // 				pulumi.Any(aws_subnet.Backend.Id),

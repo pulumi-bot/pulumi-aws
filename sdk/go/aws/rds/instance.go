@@ -50,7 +50,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := rds.NewInstance(ctx, "_default", &rds.InstanceArgs{
+// 		_, err := rds.NewInstance(ctx, "default", &rds.InstanceArgs{
 // 			AllocatedStorage:   pulumi.Int(20),
 // 			Engine:             pulumi.String("mysql"),
 // 			EngineVersion:      pulumi.String("5.7"),

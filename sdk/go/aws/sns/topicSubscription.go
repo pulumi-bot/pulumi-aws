@@ -262,20 +262,20 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = sns.NewTopic(ctx, "sns_topicTopic", &sns.TopicArgs{
+// 		_, err = sns.NewTopic(ctx, "sns-topicTopic", &sns.TopicArgs{
 // 			DisplayName: pulumi.String(sns.Display_name),
 // 			Policy:      pulumi.String(sns_topic_policy.Json),
 // 		}, pulumi.Provider("aws.sns"))
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = sqs.NewQueue(ctx, "sqs_queue", &sqs.QueueArgs{
+// 		_, err = sqs.NewQueue(ctx, "sqs-queue", &sqs.QueueArgs{
 // 			Policy: pulumi.String(sqs_queue_policy.Json),
 // 		}, pulumi.Provider("aws.sqs"))
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = sns.NewTopicSubscription(ctx, "sns_topicTopicSubscription", &sns.TopicSubscriptionArgs{
+// 		_, err = sns.NewTopicSubscription(ctx, "sns-topicTopicSubscription", &sns.TopicSubscriptionArgs{
 // 			Topic:    sns_topicTopic.Arn,
 // 			Protocol: pulumi.String("sqs"),
 // 			Endpoint: sqs_queue.Arn,
