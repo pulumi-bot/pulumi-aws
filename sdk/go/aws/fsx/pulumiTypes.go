@@ -68,7 +68,7 @@ func (i WindowsFileSystemSelfManagedActiveDirectoryArgs) ToWindowsFileSystemSelf
 }
 
 func (i WindowsFileSystemSelfManagedActiveDirectoryArgs) ToWindowsFileSystemSelfManagedActiveDirectoryPtrOutputWithContext(ctx context.Context) WindowsFileSystemSelfManagedActiveDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsFileSystemSelfManagedActiveDirectoryOutput).ToWindowsFileSystemSelfManagedActiveDirectoryPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsFileSystemSelfManagedActiveDirectoryOutput).ToWindowsFileSystemSelfManagedActiveDirectoryPtrOutput()
 }
 
 // WindowsFileSystemSelfManagedActiveDirectoryPtrInput is an input type that accepts WindowsFileSystemSelfManagedActiveDirectoryArgs, WindowsFileSystemSelfManagedActiveDirectoryPtr and WindowsFileSystemSelfManagedActiveDirectoryPtrOutput values.
@@ -101,7 +101,7 @@ func (i *windowsFileSystemSelfManagedActiveDirectoryPtrType) ToWindowsFileSystem
 }
 
 func (i *windowsFileSystemSelfManagedActiveDirectoryPtrType) ToWindowsFileSystemSelfManagedActiveDirectoryPtrOutputWithContext(ctx context.Context) WindowsFileSystemSelfManagedActiveDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WindowsFileSystemSelfManagedActiveDirectoryPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsFileSystemSelfManagedActiveDirectoryOutput).ToWindowsFileSystemSelfManagedActiveDirectoryPtrOutput()
 }
 
 type WindowsFileSystemSelfManagedActiveDirectoryOutput struct{ *pulumi.OutputState }

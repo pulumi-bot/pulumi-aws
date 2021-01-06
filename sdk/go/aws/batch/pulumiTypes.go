@@ -104,7 +104,7 @@ func (i ComputeEnvironmentComputeResourcesArgs) ToComputeEnvironmentComputeResou
 }
 
 func (i ComputeEnvironmentComputeResourcesArgs) ToComputeEnvironmentComputeResourcesPtrOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeEnvironmentComputeResourcesOutput).ToComputeEnvironmentComputeResourcesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeEnvironmentComputeResourcesOutput).ToComputeEnvironmentComputeResourcesPtrOutput()
 }
 
 // ComputeEnvironmentComputeResourcesPtrInput is an input type that accepts ComputeEnvironmentComputeResourcesArgs, ComputeEnvironmentComputeResourcesPtr and ComputeEnvironmentComputeResourcesPtrOutput values.
@@ -137,7 +137,7 @@ func (i *computeEnvironmentComputeResourcesPtrType) ToComputeEnvironmentComputeR
 }
 
 func (i *computeEnvironmentComputeResourcesPtrType) ToComputeEnvironmentComputeResourcesPtrOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeEnvironmentComputeResourcesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeEnvironmentComputeResourcesOutput).ToComputeEnvironmentComputeResourcesPtrOutput()
 }
 
 type ComputeEnvironmentComputeResourcesOutput struct{ *pulumi.OutputState }
@@ -455,7 +455,7 @@ func (i ComputeEnvironmentComputeResourcesLaunchTemplateArgs) ToComputeEnvironme
 }
 
 func (i ComputeEnvironmentComputeResourcesLaunchTemplateArgs) ToComputeEnvironmentComputeResourcesLaunchTemplatePtrOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesLaunchTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeEnvironmentComputeResourcesLaunchTemplateOutput).ToComputeEnvironmentComputeResourcesLaunchTemplatePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeEnvironmentComputeResourcesLaunchTemplateOutput).ToComputeEnvironmentComputeResourcesLaunchTemplatePtrOutput()
 }
 
 // ComputeEnvironmentComputeResourcesLaunchTemplatePtrInput is an input type that accepts ComputeEnvironmentComputeResourcesLaunchTemplateArgs, ComputeEnvironmentComputeResourcesLaunchTemplatePtr and ComputeEnvironmentComputeResourcesLaunchTemplatePtrOutput values.
@@ -488,7 +488,7 @@ func (i *computeEnvironmentComputeResourcesLaunchTemplatePtrType) ToComputeEnvir
 }
 
 func (i *computeEnvironmentComputeResourcesLaunchTemplatePtrType) ToComputeEnvironmentComputeResourcesLaunchTemplatePtrOutputWithContext(ctx context.Context) ComputeEnvironmentComputeResourcesLaunchTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ComputeEnvironmentComputeResourcesLaunchTemplatePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ComputeEnvironmentComputeResourcesLaunchTemplateOutput).ToComputeEnvironmentComputeResourcesLaunchTemplatePtrOutput()
 }
 
 type ComputeEnvironmentComputeResourcesLaunchTemplateOutput struct{ *pulumi.OutputState }
@@ -618,7 +618,7 @@ func (i JobDefinitionRetryStrategyArgs) ToJobDefinitionRetryStrategyPtrOutput() 
 }
 
 func (i JobDefinitionRetryStrategyArgs) ToJobDefinitionRetryStrategyPtrOutputWithContext(ctx context.Context) JobDefinitionRetryStrategyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobDefinitionRetryStrategyOutput).ToJobDefinitionRetryStrategyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(JobDefinitionRetryStrategyOutput).ToJobDefinitionRetryStrategyPtrOutput()
 }
 
 // JobDefinitionRetryStrategyPtrInput is an input type that accepts JobDefinitionRetryStrategyArgs, JobDefinitionRetryStrategyPtr and JobDefinitionRetryStrategyPtrOutput values.
@@ -651,7 +651,7 @@ func (i *jobDefinitionRetryStrategyPtrType) ToJobDefinitionRetryStrategyPtrOutpu
 }
 
 func (i *jobDefinitionRetryStrategyPtrType) ToJobDefinitionRetryStrategyPtrOutputWithContext(ctx context.Context) JobDefinitionRetryStrategyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobDefinitionRetryStrategyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(JobDefinitionRetryStrategyOutput).ToJobDefinitionRetryStrategyPtrOutput()
 }
 
 type JobDefinitionRetryStrategyOutput struct{ *pulumi.OutputState }
@@ -749,7 +749,7 @@ func (i JobDefinitionTimeoutArgs) ToJobDefinitionTimeoutPtrOutput() JobDefinitio
 }
 
 func (i JobDefinitionTimeoutArgs) ToJobDefinitionTimeoutPtrOutputWithContext(ctx context.Context) JobDefinitionTimeoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobDefinitionTimeoutOutput).ToJobDefinitionTimeoutPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(JobDefinitionTimeoutOutput).ToJobDefinitionTimeoutPtrOutput()
 }
 
 // JobDefinitionTimeoutPtrInput is an input type that accepts JobDefinitionTimeoutArgs, JobDefinitionTimeoutPtr and JobDefinitionTimeoutPtrOutput values.
@@ -782,7 +782,7 @@ func (i *jobDefinitionTimeoutPtrType) ToJobDefinitionTimeoutPtrOutput() JobDefin
 }
 
 func (i *jobDefinitionTimeoutPtrType) ToJobDefinitionTimeoutPtrOutputWithContext(ctx context.Context) JobDefinitionTimeoutPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobDefinitionTimeoutPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(JobDefinitionTimeoutOutput).ToJobDefinitionTimeoutPtrOutput()
 }
 
 type JobDefinitionTimeoutOutput struct{ *pulumi.OutputState }

@@ -180,7 +180,7 @@ func (i EndpointConnectionLogOptionsArgs) ToEndpointConnectionLogOptionsPtrOutpu
 }
 
 func (i EndpointConnectionLogOptionsArgs) ToEndpointConnectionLogOptionsPtrOutputWithContext(ctx context.Context) EndpointConnectionLogOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointConnectionLogOptionsOutput).ToEndpointConnectionLogOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointConnectionLogOptionsOutput).ToEndpointConnectionLogOptionsPtrOutput()
 }
 
 // EndpointConnectionLogOptionsPtrInput is an input type that accepts EndpointConnectionLogOptionsArgs, EndpointConnectionLogOptionsPtr and EndpointConnectionLogOptionsPtrOutput values.
@@ -213,7 +213,7 @@ func (i *endpointConnectionLogOptionsPtrType) ToEndpointConnectionLogOptionsPtrO
 }
 
 func (i *endpointConnectionLogOptionsPtrType) ToEndpointConnectionLogOptionsPtrOutputWithContext(ctx context.Context) EndpointConnectionLogOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointConnectionLogOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointConnectionLogOptionsOutput).ToEndpointConnectionLogOptionsPtrOutput()
 }
 
 type EndpointConnectionLogOptionsOutput struct{ *pulumi.OutputState }

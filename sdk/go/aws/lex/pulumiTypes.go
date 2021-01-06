@@ -60,7 +60,7 @@ func (i BotAbortStatementArgs) ToBotAbortStatementPtrOutput() BotAbortStatementP
 }
 
 func (i BotAbortStatementArgs) ToBotAbortStatementPtrOutputWithContext(ctx context.Context) BotAbortStatementPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BotAbortStatementOutput).ToBotAbortStatementPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BotAbortStatementOutput).ToBotAbortStatementPtrOutput()
 }
 
 // BotAbortStatementPtrInput is an input type that accepts BotAbortStatementArgs, BotAbortStatementPtr and BotAbortStatementPtrOutput values.
@@ -93,7 +93,7 @@ func (i *botAbortStatementPtrType) ToBotAbortStatementPtrOutput() BotAbortStatem
 }
 
 func (i *botAbortStatementPtrType) ToBotAbortStatementPtrOutputWithContext(ctx context.Context) BotAbortStatementPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BotAbortStatementPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BotAbortStatementOutput).ToBotAbortStatementPtrOutput()
 }
 
 type BotAbortStatementOutput struct{ *pulumi.OutputState }
@@ -336,7 +336,7 @@ func (i BotAliasConversationLogsArgs) ToBotAliasConversationLogsPtrOutput() BotA
 }
 
 func (i BotAliasConversationLogsArgs) ToBotAliasConversationLogsPtrOutputWithContext(ctx context.Context) BotAliasConversationLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BotAliasConversationLogsOutput).ToBotAliasConversationLogsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BotAliasConversationLogsOutput).ToBotAliasConversationLogsPtrOutput()
 }
 
 // BotAliasConversationLogsPtrInput is an input type that accepts BotAliasConversationLogsArgs, BotAliasConversationLogsPtr and BotAliasConversationLogsPtrOutput values.
@@ -369,7 +369,7 @@ func (i *botAliasConversationLogsPtrType) ToBotAliasConversationLogsPtrOutput() 
 }
 
 func (i *botAliasConversationLogsPtrType) ToBotAliasConversationLogsPtrOutputWithContext(ctx context.Context) BotAliasConversationLogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BotAliasConversationLogsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BotAliasConversationLogsOutput).ToBotAliasConversationLogsPtrOutput()
 }
 
 type BotAliasConversationLogsOutput struct{ *pulumi.OutputState }
@@ -631,7 +631,7 @@ func (i BotClarificationPromptArgs) ToBotClarificationPromptPtrOutput() BotClari
 }
 
 func (i BotClarificationPromptArgs) ToBotClarificationPromptPtrOutputWithContext(ctx context.Context) BotClarificationPromptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BotClarificationPromptOutput).ToBotClarificationPromptPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(BotClarificationPromptOutput).ToBotClarificationPromptPtrOutput()
 }
 
 // BotClarificationPromptPtrInput is an input type that accepts BotClarificationPromptArgs, BotClarificationPromptPtr and BotClarificationPromptPtrOutput values.
@@ -664,7 +664,7 @@ func (i *botClarificationPromptPtrType) ToBotClarificationPromptPtrOutput() BotC
 }
 
 func (i *botClarificationPromptPtrType) ToBotClarificationPromptPtrOutputWithContext(ctx context.Context) BotClarificationPromptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BotClarificationPromptPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(BotClarificationPromptOutput).ToBotClarificationPromptPtrOutput()
 }
 
 type BotClarificationPromptOutput struct{ *pulumi.OutputState }
@@ -1036,7 +1036,7 @@ func (i IntentConclusionStatementArgs) ToIntentConclusionStatementPtrOutput() In
 }
 
 func (i IntentConclusionStatementArgs) ToIntentConclusionStatementPtrOutputWithContext(ctx context.Context) IntentConclusionStatementPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentConclusionStatementOutput).ToIntentConclusionStatementPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(IntentConclusionStatementOutput).ToIntentConclusionStatementPtrOutput()
 }
 
 // IntentConclusionStatementPtrInput is an input type that accepts IntentConclusionStatementArgs, IntentConclusionStatementPtr and IntentConclusionStatementPtrOutput values.
@@ -1069,7 +1069,7 @@ func (i *intentConclusionStatementPtrType) ToIntentConclusionStatementPtrOutput(
 }
 
 func (i *intentConclusionStatementPtrType) ToIntentConclusionStatementPtrOutputWithContext(ctx context.Context) IntentConclusionStatementPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentConclusionStatementPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(IntentConclusionStatementOutput).ToIntentConclusionStatementPtrOutput()
 }
 
 type IntentConclusionStatementOutput struct{ *pulumi.OutputState }
@@ -1324,7 +1324,7 @@ func (i IntentConfirmationPromptArgs) ToIntentConfirmationPromptPtrOutput() Inte
 }
 
 func (i IntentConfirmationPromptArgs) ToIntentConfirmationPromptPtrOutputWithContext(ctx context.Context) IntentConfirmationPromptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentConfirmationPromptOutput).ToIntentConfirmationPromptPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(IntentConfirmationPromptOutput).ToIntentConfirmationPromptPtrOutput()
 }
 
 // IntentConfirmationPromptPtrInput is an input type that accepts IntentConfirmationPromptArgs, IntentConfirmationPromptPtr and IntentConfirmationPromptPtrOutput values.
@@ -1357,7 +1357,7 @@ func (i *intentConfirmationPromptPtrType) ToIntentConfirmationPromptPtrOutput() 
 }
 
 func (i *intentConfirmationPromptPtrType) ToIntentConfirmationPromptPtrOutputWithContext(ctx context.Context) IntentConfirmationPromptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentConfirmationPromptPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(IntentConfirmationPromptOutput).ToIntentConfirmationPromptPtrOutput()
 }
 
 type IntentConfirmationPromptOutput struct{ *pulumi.OutputState }
@@ -1619,7 +1619,7 @@ func (i IntentDialogCodeHookArgs) ToIntentDialogCodeHookPtrOutput() IntentDialog
 }
 
 func (i IntentDialogCodeHookArgs) ToIntentDialogCodeHookPtrOutputWithContext(ctx context.Context) IntentDialogCodeHookPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentDialogCodeHookOutput).ToIntentDialogCodeHookPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(IntentDialogCodeHookOutput).ToIntentDialogCodeHookPtrOutput()
 }
 
 // IntentDialogCodeHookPtrInput is an input type that accepts IntentDialogCodeHookArgs, IntentDialogCodeHookPtr and IntentDialogCodeHookPtrOutput values.
@@ -1652,7 +1652,7 @@ func (i *intentDialogCodeHookPtrType) ToIntentDialogCodeHookPtrOutput() IntentDi
 }
 
 func (i *intentDialogCodeHookPtrType) ToIntentDialogCodeHookPtrOutputWithContext(ctx context.Context) IntentDialogCodeHookPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentDialogCodeHookPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(IntentDialogCodeHookOutput).ToIntentDialogCodeHookPtrOutput()
 }
 
 type IntentDialogCodeHookOutput struct{ *pulumi.OutputState }
@@ -1777,7 +1777,7 @@ func (i IntentFollowUpPromptArgs) ToIntentFollowUpPromptPtrOutput() IntentFollow
 }
 
 func (i IntentFollowUpPromptArgs) ToIntentFollowUpPromptPtrOutputWithContext(ctx context.Context) IntentFollowUpPromptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentFollowUpPromptOutput).ToIntentFollowUpPromptPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(IntentFollowUpPromptOutput).ToIntentFollowUpPromptPtrOutput()
 }
 
 // IntentFollowUpPromptPtrInput is an input type that accepts IntentFollowUpPromptArgs, IntentFollowUpPromptPtr and IntentFollowUpPromptPtrOutput values.
@@ -1810,7 +1810,7 @@ func (i *intentFollowUpPromptPtrType) ToIntentFollowUpPromptPtrOutput() IntentFo
 }
 
 func (i *intentFollowUpPromptPtrType) ToIntentFollowUpPromptPtrOutputWithContext(ctx context.Context) IntentFollowUpPromptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentFollowUpPromptPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(IntentFollowUpPromptOutput).ToIntentFollowUpPromptPtrOutput()
 }
 
 type IntentFollowUpPromptOutput struct{ *pulumi.OutputState }
@@ -1943,7 +1943,7 @@ func (i IntentFollowUpPromptPromptArgs) ToIntentFollowUpPromptPromptPtrOutput() 
 }
 
 func (i IntentFollowUpPromptPromptArgs) ToIntentFollowUpPromptPromptPtrOutputWithContext(ctx context.Context) IntentFollowUpPromptPromptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentFollowUpPromptPromptOutput).ToIntentFollowUpPromptPromptPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(IntentFollowUpPromptPromptOutput).ToIntentFollowUpPromptPromptPtrOutput()
 }
 
 // IntentFollowUpPromptPromptPtrInput is an input type that accepts IntentFollowUpPromptPromptArgs, IntentFollowUpPromptPromptPtr and IntentFollowUpPromptPromptPtrOutput values.
@@ -1976,7 +1976,7 @@ func (i *intentFollowUpPromptPromptPtrType) ToIntentFollowUpPromptPromptPtrOutpu
 }
 
 func (i *intentFollowUpPromptPromptPtrType) ToIntentFollowUpPromptPromptPtrOutputWithContext(ctx context.Context) IntentFollowUpPromptPromptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentFollowUpPromptPromptPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(IntentFollowUpPromptPromptOutput).ToIntentFollowUpPromptPromptPtrOutput()
 }
 
 type IntentFollowUpPromptPromptOutput struct{ *pulumi.OutputState }
@@ -2242,7 +2242,7 @@ func (i IntentFollowUpPromptRejectionStatementArgs) ToIntentFollowUpPromptReject
 }
 
 func (i IntentFollowUpPromptRejectionStatementArgs) ToIntentFollowUpPromptRejectionStatementPtrOutputWithContext(ctx context.Context) IntentFollowUpPromptRejectionStatementPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentFollowUpPromptRejectionStatementOutput).ToIntentFollowUpPromptRejectionStatementPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(IntentFollowUpPromptRejectionStatementOutput).ToIntentFollowUpPromptRejectionStatementPtrOutput()
 }
 
 // IntentFollowUpPromptRejectionStatementPtrInput is an input type that accepts IntentFollowUpPromptRejectionStatementArgs, IntentFollowUpPromptRejectionStatementPtr and IntentFollowUpPromptRejectionStatementPtrOutput values.
@@ -2275,7 +2275,7 @@ func (i *intentFollowUpPromptRejectionStatementPtrType) ToIntentFollowUpPromptRe
 }
 
 func (i *intentFollowUpPromptRejectionStatementPtrType) ToIntentFollowUpPromptRejectionStatementPtrOutputWithContext(ctx context.Context) IntentFollowUpPromptRejectionStatementPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentFollowUpPromptRejectionStatementPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(IntentFollowUpPromptRejectionStatementOutput).ToIntentFollowUpPromptRejectionStatementPtrOutput()
 }
 
 type IntentFollowUpPromptRejectionStatementOutput struct{ *pulumi.OutputState }
@@ -2524,7 +2524,7 @@ func (i IntentFulfillmentActivityArgs) ToIntentFulfillmentActivityPtrOutput() In
 }
 
 func (i IntentFulfillmentActivityArgs) ToIntentFulfillmentActivityPtrOutputWithContext(ctx context.Context) IntentFulfillmentActivityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentFulfillmentActivityOutput).ToIntentFulfillmentActivityPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(IntentFulfillmentActivityOutput).ToIntentFulfillmentActivityPtrOutput()
 }
 
 // IntentFulfillmentActivityPtrInput is an input type that accepts IntentFulfillmentActivityArgs, IntentFulfillmentActivityPtr and IntentFulfillmentActivityPtrOutput values.
@@ -2557,7 +2557,7 @@ func (i *intentFulfillmentActivityPtrType) ToIntentFulfillmentActivityPtrOutput(
 }
 
 func (i *intentFulfillmentActivityPtrType) ToIntentFulfillmentActivityPtrOutputWithContext(ctx context.Context) IntentFulfillmentActivityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentFulfillmentActivityPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(IntentFulfillmentActivityOutput).ToIntentFulfillmentActivityPtrOutput()
 }
 
 type IntentFulfillmentActivityOutput struct{ *pulumi.OutputState }
@@ -2682,7 +2682,7 @@ func (i IntentFulfillmentActivityCodeHookArgs) ToIntentFulfillmentActivityCodeHo
 }
 
 func (i IntentFulfillmentActivityCodeHookArgs) ToIntentFulfillmentActivityCodeHookPtrOutputWithContext(ctx context.Context) IntentFulfillmentActivityCodeHookPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentFulfillmentActivityCodeHookOutput).ToIntentFulfillmentActivityCodeHookPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(IntentFulfillmentActivityCodeHookOutput).ToIntentFulfillmentActivityCodeHookPtrOutput()
 }
 
 // IntentFulfillmentActivityCodeHookPtrInput is an input type that accepts IntentFulfillmentActivityCodeHookArgs, IntentFulfillmentActivityCodeHookPtr and IntentFulfillmentActivityCodeHookPtrOutput values.
@@ -2715,7 +2715,7 @@ func (i *intentFulfillmentActivityCodeHookPtrType) ToIntentFulfillmentActivityCo
 }
 
 func (i *intentFulfillmentActivityCodeHookPtrType) ToIntentFulfillmentActivityCodeHookPtrOutputWithContext(ctx context.Context) IntentFulfillmentActivityCodeHookPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentFulfillmentActivityCodeHookPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(IntentFulfillmentActivityCodeHookOutput).ToIntentFulfillmentActivityCodeHookPtrOutput()
 }
 
 type IntentFulfillmentActivityCodeHookOutput struct{ *pulumi.OutputState }
@@ -2844,7 +2844,7 @@ func (i IntentRejectionStatementArgs) ToIntentRejectionStatementPtrOutput() Inte
 }
 
 func (i IntentRejectionStatementArgs) ToIntentRejectionStatementPtrOutputWithContext(ctx context.Context) IntentRejectionStatementPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentRejectionStatementOutput).ToIntentRejectionStatementPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(IntentRejectionStatementOutput).ToIntentRejectionStatementPtrOutput()
 }
 
 // IntentRejectionStatementPtrInput is an input type that accepts IntentRejectionStatementArgs, IntentRejectionStatementPtr and IntentRejectionStatementPtrOutput values.
@@ -2877,7 +2877,7 @@ func (i *intentRejectionStatementPtrType) ToIntentRejectionStatementPtrOutput() 
 }
 
 func (i *intentRejectionStatementPtrType) ToIntentRejectionStatementPtrOutputWithContext(ctx context.Context) IntentRejectionStatementPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentRejectionStatementPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(IntentRejectionStatementOutput).ToIntentRejectionStatementPtrOutput()
 }
 
 type IntentRejectionStatementOutput struct{ *pulumi.OutputState }
@@ -3328,7 +3328,7 @@ func (i IntentSlotValueElicitationPromptArgs) ToIntentSlotValueElicitationPrompt
 }
 
 func (i IntentSlotValueElicitationPromptArgs) ToIntentSlotValueElicitationPromptPtrOutputWithContext(ctx context.Context) IntentSlotValueElicitationPromptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentSlotValueElicitationPromptOutput).ToIntentSlotValueElicitationPromptPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(IntentSlotValueElicitationPromptOutput).ToIntentSlotValueElicitationPromptPtrOutput()
 }
 
 // IntentSlotValueElicitationPromptPtrInput is an input type that accepts IntentSlotValueElicitationPromptArgs, IntentSlotValueElicitationPromptPtr and IntentSlotValueElicitationPromptPtrOutput values.
@@ -3361,7 +3361,7 @@ func (i *intentSlotValueElicitationPromptPtrType) ToIntentSlotValueElicitationPr
 }
 
 func (i *intentSlotValueElicitationPromptPtrType) ToIntentSlotValueElicitationPromptPtrOutputWithContext(ctx context.Context) IntentSlotValueElicitationPromptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntentSlotValueElicitationPromptPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(IntentSlotValueElicitationPromptOutput).ToIntentSlotValueElicitationPromptPtrOutput()
 }
 
 type IntentSlotValueElicitationPromptOutput struct{ *pulumi.OutputState }

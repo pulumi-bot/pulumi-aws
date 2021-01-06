@@ -50,7 +50,7 @@ func (i CodeRepositoryGitConfigArgs) ToCodeRepositoryGitConfigPtrOutput() CodeRe
 }
 
 func (i CodeRepositoryGitConfigArgs) ToCodeRepositoryGitConfigPtrOutputWithContext(ctx context.Context) CodeRepositoryGitConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CodeRepositoryGitConfigOutput).ToCodeRepositoryGitConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CodeRepositoryGitConfigOutput).ToCodeRepositoryGitConfigPtrOutput()
 }
 
 // CodeRepositoryGitConfigPtrInput is an input type that accepts CodeRepositoryGitConfigArgs, CodeRepositoryGitConfigPtr and CodeRepositoryGitConfigPtrOutput values.
@@ -83,7 +83,7 @@ func (i *codeRepositoryGitConfigPtrType) ToCodeRepositoryGitConfigPtrOutput() Co
 }
 
 func (i *codeRepositoryGitConfigPtrType) ToCodeRepositoryGitConfigPtrOutputWithContext(ctx context.Context) CodeRepositoryGitConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CodeRepositoryGitConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CodeRepositoryGitConfigOutput).ToCodeRepositoryGitConfigPtrOutput()
 }
 
 type CodeRepositoryGitConfigOutput struct{ *pulumi.OutputState }
@@ -224,7 +224,7 @@ func (i EndpointConfigurationDataCaptureConfigArgs) ToEndpointConfigurationDataC
 }
 
 func (i EndpointConfigurationDataCaptureConfigArgs) ToEndpointConfigurationDataCaptureConfigPtrOutputWithContext(ctx context.Context) EndpointConfigurationDataCaptureConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointConfigurationDataCaptureConfigOutput).ToEndpointConfigurationDataCaptureConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointConfigurationDataCaptureConfigOutput).ToEndpointConfigurationDataCaptureConfigPtrOutput()
 }
 
 // EndpointConfigurationDataCaptureConfigPtrInput is an input type that accepts EndpointConfigurationDataCaptureConfigArgs, EndpointConfigurationDataCaptureConfigPtr and EndpointConfigurationDataCaptureConfigPtrOutput values.
@@ -257,7 +257,7 @@ func (i *endpointConfigurationDataCaptureConfigPtrType) ToEndpointConfigurationD
 }
 
 func (i *endpointConfigurationDataCaptureConfigPtrType) ToEndpointConfigurationDataCaptureConfigPtrOutputWithContext(ctx context.Context) EndpointConfigurationDataCaptureConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointConfigurationDataCaptureConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointConfigurationDataCaptureConfigOutput).ToEndpointConfigurationDataCaptureConfigPtrOutput()
 }
 
 type EndpointConfigurationDataCaptureConfigOutput struct{ *pulumi.OutputState }
@@ -438,7 +438,7 @@ func (i EndpointConfigurationDataCaptureConfigCaptureContentTypeHeaderArgs) ToEn
 }
 
 func (i EndpointConfigurationDataCaptureConfigCaptureContentTypeHeaderArgs) ToEndpointConfigurationDataCaptureConfigCaptureContentTypeHeaderPtrOutputWithContext(ctx context.Context) EndpointConfigurationDataCaptureConfigCaptureContentTypeHeaderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointConfigurationDataCaptureConfigCaptureContentTypeHeaderOutput).ToEndpointConfigurationDataCaptureConfigCaptureContentTypeHeaderPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointConfigurationDataCaptureConfigCaptureContentTypeHeaderOutput).ToEndpointConfigurationDataCaptureConfigCaptureContentTypeHeaderPtrOutput()
 }
 
 // EndpointConfigurationDataCaptureConfigCaptureContentTypeHeaderPtrInput is an input type that accepts EndpointConfigurationDataCaptureConfigCaptureContentTypeHeaderArgs, EndpointConfigurationDataCaptureConfigCaptureContentTypeHeaderPtr and EndpointConfigurationDataCaptureConfigCaptureContentTypeHeaderPtrOutput values.
@@ -471,7 +471,7 @@ func (i *endpointConfigurationDataCaptureConfigCaptureContentTypeHeaderPtrType) 
 }
 
 func (i *endpointConfigurationDataCaptureConfigCaptureContentTypeHeaderPtrType) ToEndpointConfigurationDataCaptureConfigCaptureContentTypeHeaderPtrOutputWithContext(ctx context.Context) EndpointConfigurationDataCaptureConfigCaptureContentTypeHeaderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointConfigurationDataCaptureConfigCaptureContentTypeHeaderPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointConfigurationDataCaptureConfigCaptureContentTypeHeaderOutput).ToEndpointConfigurationDataCaptureConfigCaptureContentTypeHeaderPtrOutput()
 }
 
 type EndpointConfigurationDataCaptureConfigCaptureContentTypeHeaderOutput struct{ *pulumi.OutputState }
@@ -974,7 +974,7 @@ func (i ModelContainerImageConfigArgs) ToModelContainerImageConfigPtrOutput() Mo
 }
 
 func (i ModelContainerImageConfigArgs) ToModelContainerImageConfigPtrOutputWithContext(ctx context.Context) ModelContainerImageConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelContainerImageConfigOutput).ToModelContainerImageConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ModelContainerImageConfigOutput).ToModelContainerImageConfigPtrOutput()
 }
 
 // ModelContainerImageConfigPtrInput is an input type that accepts ModelContainerImageConfigArgs, ModelContainerImageConfigPtr and ModelContainerImageConfigPtrOutput values.
@@ -1007,7 +1007,7 @@ func (i *modelContainerImageConfigPtrType) ToModelContainerImageConfigPtrOutput(
 }
 
 func (i *modelContainerImageConfigPtrType) ToModelContainerImageConfigPtrOutputWithContext(ctx context.Context) ModelContainerImageConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelContainerImageConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ModelContainerImageConfigOutput).ToModelContainerImageConfigPtrOutput()
 }
 
 type ModelContainerImageConfigOutput struct{ *pulumi.OutputState }
@@ -1127,7 +1127,7 @@ func (i ModelPrimaryContainerArgs) ToModelPrimaryContainerPtrOutput() ModelPrima
 }
 
 func (i ModelPrimaryContainerArgs) ToModelPrimaryContainerPtrOutputWithContext(ctx context.Context) ModelPrimaryContainerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelPrimaryContainerOutput).ToModelPrimaryContainerPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ModelPrimaryContainerOutput).ToModelPrimaryContainerPtrOutput()
 }
 
 // ModelPrimaryContainerPtrInput is an input type that accepts ModelPrimaryContainerArgs, ModelPrimaryContainerPtr and ModelPrimaryContainerPtrOutput values.
@@ -1160,7 +1160,7 @@ func (i *modelPrimaryContainerPtrType) ToModelPrimaryContainerPtrOutput() ModelP
 }
 
 func (i *modelPrimaryContainerPtrType) ToModelPrimaryContainerPtrOutputWithContext(ctx context.Context) ModelPrimaryContainerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelPrimaryContainerPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ModelPrimaryContainerOutput).ToModelPrimaryContainerPtrOutput()
 }
 
 type ModelPrimaryContainerOutput struct{ *pulumi.OutputState }
@@ -1335,7 +1335,7 @@ func (i ModelPrimaryContainerImageConfigArgs) ToModelPrimaryContainerImageConfig
 }
 
 func (i ModelPrimaryContainerImageConfigArgs) ToModelPrimaryContainerImageConfigPtrOutputWithContext(ctx context.Context) ModelPrimaryContainerImageConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelPrimaryContainerImageConfigOutput).ToModelPrimaryContainerImageConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ModelPrimaryContainerImageConfigOutput).ToModelPrimaryContainerImageConfigPtrOutput()
 }
 
 // ModelPrimaryContainerImageConfigPtrInput is an input type that accepts ModelPrimaryContainerImageConfigArgs, ModelPrimaryContainerImageConfigPtr and ModelPrimaryContainerImageConfigPtrOutput values.
@@ -1368,7 +1368,7 @@ func (i *modelPrimaryContainerImageConfigPtrType) ToModelPrimaryContainerImageCo
 }
 
 func (i *modelPrimaryContainerImageConfigPtrType) ToModelPrimaryContainerImageConfigPtrOutputWithContext(ctx context.Context) ModelPrimaryContainerImageConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelPrimaryContainerImageConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ModelPrimaryContainerImageConfigOutput).ToModelPrimaryContainerImageConfigPtrOutput()
 }
 
 type ModelPrimaryContainerImageConfigOutput struct{ *pulumi.OutputState }
@@ -1466,7 +1466,7 @@ func (i ModelVpcConfigArgs) ToModelVpcConfigPtrOutput() ModelVpcConfigPtrOutput 
 }
 
 func (i ModelVpcConfigArgs) ToModelVpcConfigPtrOutputWithContext(ctx context.Context) ModelVpcConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelVpcConfigOutput).ToModelVpcConfigPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ModelVpcConfigOutput).ToModelVpcConfigPtrOutput()
 }
 
 // ModelVpcConfigPtrInput is an input type that accepts ModelVpcConfigArgs, ModelVpcConfigPtr and ModelVpcConfigPtrOutput values.
@@ -1499,7 +1499,7 @@ func (i *modelVpcConfigPtrType) ToModelVpcConfigPtrOutput() ModelVpcConfigPtrOut
 }
 
 func (i *modelVpcConfigPtrType) ToModelVpcConfigPtrOutputWithContext(ctx context.Context) ModelVpcConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ModelVpcConfigPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ModelVpcConfigOutput).ToModelVpcConfigPtrOutput()
 }
 
 type ModelVpcConfigOutput struct{ *pulumi.OutputState }

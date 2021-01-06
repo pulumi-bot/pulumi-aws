@@ -52,7 +52,7 @@ func (i DatabaseEncryptionConfigurationArgs) ToDatabaseEncryptionConfigurationPt
 }
 
 func (i DatabaseEncryptionConfigurationArgs) ToDatabaseEncryptionConfigurationPtrOutputWithContext(ctx context.Context) DatabaseEncryptionConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseEncryptionConfigurationOutput).ToDatabaseEncryptionConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseEncryptionConfigurationOutput).ToDatabaseEncryptionConfigurationPtrOutput()
 }
 
 // DatabaseEncryptionConfigurationPtrInput is an input type that accepts DatabaseEncryptionConfigurationArgs, DatabaseEncryptionConfigurationPtr and DatabaseEncryptionConfigurationPtrOutput values.
@@ -85,7 +85,7 @@ func (i *databaseEncryptionConfigurationPtrType) ToDatabaseEncryptionConfigurati
 }
 
 func (i *databaseEncryptionConfigurationPtrType) ToDatabaseEncryptionConfigurationPtrOutputWithContext(ctx context.Context) DatabaseEncryptionConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseEncryptionConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseEncryptionConfigurationOutput).ToDatabaseEncryptionConfigurationPtrOutput()
 }
 
 type DatabaseEncryptionConfigurationOutput struct{ *pulumi.OutputState }
@@ -210,7 +210,7 @@ func (i WorkgroupConfigurationArgs) ToWorkgroupConfigurationPtrOutput() Workgrou
 }
 
 func (i WorkgroupConfigurationArgs) ToWorkgroupConfigurationPtrOutputWithContext(ctx context.Context) WorkgroupConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkgroupConfigurationOutput).ToWorkgroupConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WorkgroupConfigurationOutput).ToWorkgroupConfigurationPtrOutput()
 }
 
 // WorkgroupConfigurationPtrInput is an input type that accepts WorkgroupConfigurationArgs, WorkgroupConfigurationPtr and WorkgroupConfigurationPtrOutput values.
@@ -243,7 +243,7 @@ func (i *workgroupConfigurationPtrType) ToWorkgroupConfigurationPtrOutput() Work
 }
 
 func (i *workgroupConfigurationPtrType) ToWorkgroupConfigurationPtrOutputWithContext(ctx context.Context) WorkgroupConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkgroupConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WorkgroupConfigurationOutput).ToWorkgroupConfigurationPtrOutput()
 }
 
 type WorkgroupConfigurationOutput struct{ *pulumi.OutputState }
@@ -392,7 +392,7 @@ func (i WorkgroupConfigurationResultConfigurationArgs) ToWorkgroupConfigurationR
 }
 
 func (i WorkgroupConfigurationResultConfigurationArgs) ToWorkgroupConfigurationResultConfigurationPtrOutputWithContext(ctx context.Context) WorkgroupConfigurationResultConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkgroupConfigurationResultConfigurationOutput).ToWorkgroupConfigurationResultConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WorkgroupConfigurationResultConfigurationOutput).ToWorkgroupConfigurationResultConfigurationPtrOutput()
 }
 
 // WorkgroupConfigurationResultConfigurationPtrInput is an input type that accepts WorkgroupConfigurationResultConfigurationArgs, WorkgroupConfigurationResultConfigurationPtr and WorkgroupConfigurationResultConfigurationPtrOutput values.
@@ -425,7 +425,7 @@ func (i *workgroupConfigurationResultConfigurationPtrType) ToWorkgroupConfigurat
 }
 
 func (i *workgroupConfigurationResultConfigurationPtrType) ToWorkgroupConfigurationResultConfigurationPtrOutputWithContext(ctx context.Context) WorkgroupConfigurationResultConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkgroupConfigurationResultConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WorkgroupConfigurationResultConfigurationOutput).ToWorkgroupConfigurationResultConfigurationPtrOutput()
 }
 
 type WorkgroupConfigurationResultConfigurationOutput struct{ *pulumi.OutputState }
@@ -546,7 +546,7 @@ func (i WorkgroupConfigurationResultConfigurationEncryptionConfigurationArgs) To
 }
 
 func (i WorkgroupConfigurationResultConfigurationEncryptionConfigurationArgs) ToWorkgroupConfigurationResultConfigurationEncryptionConfigurationPtrOutputWithContext(ctx context.Context) WorkgroupConfigurationResultConfigurationEncryptionConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkgroupConfigurationResultConfigurationEncryptionConfigurationOutput).ToWorkgroupConfigurationResultConfigurationEncryptionConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WorkgroupConfigurationResultConfigurationEncryptionConfigurationOutput).ToWorkgroupConfigurationResultConfigurationEncryptionConfigurationPtrOutput()
 }
 
 // WorkgroupConfigurationResultConfigurationEncryptionConfigurationPtrInput is an input type that accepts WorkgroupConfigurationResultConfigurationEncryptionConfigurationArgs, WorkgroupConfigurationResultConfigurationEncryptionConfigurationPtr and WorkgroupConfigurationResultConfigurationEncryptionConfigurationPtrOutput values.
@@ -579,7 +579,7 @@ func (i *workgroupConfigurationResultConfigurationEncryptionConfigurationPtrType
 }
 
 func (i *workgroupConfigurationResultConfigurationEncryptionConfigurationPtrType) ToWorkgroupConfigurationResultConfigurationEncryptionConfigurationPtrOutputWithContext(ctx context.Context) WorkgroupConfigurationResultConfigurationEncryptionConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkgroupConfigurationResultConfigurationEncryptionConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WorkgroupConfigurationResultConfigurationEncryptionConfigurationOutput).ToWorkgroupConfigurationResultConfigurationEncryptionConfigurationPtrOutput()
 }
 
 type WorkgroupConfigurationResultConfigurationEncryptionConfigurationOutput struct{ *pulumi.OutputState }

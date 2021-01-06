@@ -56,7 +56,7 @@ func (i QueueReservationPlanSettingsArgs) ToQueueReservationPlanSettingsPtrOutpu
 }
 
 func (i QueueReservationPlanSettingsArgs) ToQueueReservationPlanSettingsPtrOutputWithContext(ctx context.Context) QueueReservationPlanSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueueReservationPlanSettingsOutput).ToQueueReservationPlanSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(QueueReservationPlanSettingsOutput).ToQueueReservationPlanSettingsPtrOutput()
 }
 
 // QueueReservationPlanSettingsPtrInput is an input type that accepts QueueReservationPlanSettingsArgs, QueueReservationPlanSettingsPtr and QueueReservationPlanSettingsPtrOutput values.
@@ -89,7 +89,7 @@ func (i *queueReservationPlanSettingsPtrType) ToQueueReservationPlanSettingsPtrO
 }
 
 func (i *queueReservationPlanSettingsPtrType) ToQueueReservationPlanSettingsPtrOutputWithContext(ctx context.Context) QueueReservationPlanSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QueueReservationPlanSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(QueueReservationPlanSettingsOutput).ToQueueReservationPlanSettingsPtrOutput()
 }
 
 type QueueReservationPlanSettingsOutput struct{ *pulumi.OutputState }

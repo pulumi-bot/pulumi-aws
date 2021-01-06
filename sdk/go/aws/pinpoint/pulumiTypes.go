@@ -56,7 +56,7 @@ func (i AppCampaignHookArgs) ToAppCampaignHookPtrOutput() AppCampaignHookPtrOutp
 }
 
 func (i AppCampaignHookArgs) ToAppCampaignHookPtrOutputWithContext(ctx context.Context) AppCampaignHookPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppCampaignHookOutput).ToAppCampaignHookPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AppCampaignHookOutput).ToAppCampaignHookPtrOutput()
 }
 
 // AppCampaignHookPtrInput is an input type that accepts AppCampaignHookArgs, AppCampaignHookPtr and AppCampaignHookPtrOutput values.
@@ -89,7 +89,7 @@ func (i *appCampaignHookPtrType) ToAppCampaignHookPtrOutput() AppCampaignHookPtr
 }
 
 func (i *appCampaignHookPtrType) ToAppCampaignHookPtrOutputWithContext(ctx context.Context) AppCampaignHookPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppCampaignHookPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AppCampaignHookOutput).ToAppCampaignHookPtrOutput()
 }
 
 type AppCampaignHookOutput struct{ *pulumi.OutputState }
@@ -229,7 +229,7 @@ func (i AppLimitsArgs) ToAppLimitsPtrOutput() AppLimitsPtrOutput {
 }
 
 func (i AppLimitsArgs) ToAppLimitsPtrOutputWithContext(ctx context.Context) AppLimitsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppLimitsOutput).ToAppLimitsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AppLimitsOutput).ToAppLimitsPtrOutput()
 }
 
 // AppLimitsPtrInput is an input type that accepts AppLimitsArgs, AppLimitsPtr and AppLimitsPtrOutput values.
@@ -262,7 +262,7 @@ func (i *appLimitsPtrType) ToAppLimitsPtrOutput() AppLimitsPtrOutput {
 }
 
 func (i *appLimitsPtrType) ToAppLimitsPtrOutputWithContext(ctx context.Context) AppLimitsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppLimitsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AppLimitsOutput).ToAppLimitsPtrOutput()
 }
 
 type AppLimitsOutput struct{ *pulumi.OutputState }
@@ -409,7 +409,7 @@ func (i AppQuietTimeArgs) ToAppQuietTimePtrOutput() AppQuietTimePtrOutput {
 }
 
 func (i AppQuietTimeArgs) ToAppQuietTimePtrOutputWithContext(ctx context.Context) AppQuietTimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppQuietTimeOutput).ToAppQuietTimePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(AppQuietTimeOutput).ToAppQuietTimePtrOutput()
 }
 
 // AppQuietTimePtrInput is an input type that accepts AppQuietTimeArgs, AppQuietTimePtr and AppQuietTimePtrOutput values.
@@ -442,7 +442,7 @@ func (i *appQuietTimePtrType) ToAppQuietTimePtrOutput() AppQuietTimePtrOutput {
 }
 
 func (i *appQuietTimePtrType) ToAppQuietTimePtrOutputWithContext(ctx context.Context) AppQuietTimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppQuietTimePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(AppQuietTimeOutput).ToAppQuietTimePtrOutput()
 }
 
 type AppQuietTimeOutput struct{ *pulumi.OutputState }
