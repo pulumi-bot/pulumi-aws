@@ -172,7 +172,7 @@ func (i CertificateOptionsArgs) ToCertificateOptionsPtrOutput() CertificateOptio
 }
 
 func (i CertificateOptionsArgs) ToCertificateOptionsPtrOutputWithContext(ctx context.Context) CertificateOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateOptionsOutput).ToCertificateOptionsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateOptionsOutput).ToCertificateOptionsPtrOutput()
 }
 
 // CertificateOptionsPtrInput is an input type that accepts CertificateOptionsArgs, CertificateOptionsPtr and CertificateOptionsPtrOutput values.
@@ -205,7 +205,7 @@ func (i *certificateOptionsPtrType) ToCertificateOptionsPtrOutput() CertificateO
 }
 
 func (i *certificateOptionsPtrType) ToCertificateOptionsPtrOutputWithContext(ctx context.Context) CertificateOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CertificateOptionsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateOptionsOutput).ToCertificateOptionsPtrOutput()
 }
 
 type CertificateOptionsOutput struct{ *pulumi.OutputState }

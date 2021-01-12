@@ -154,7 +154,7 @@ func (i RepositoryImageScanningConfigurationArgs) ToRepositoryImageScanningConfi
 }
 
 func (i RepositoryImageScanningConfigurationArgs) ToRepositoryImageScanningConfigurationPtrOutputWithContext(ctx context.Context) RepositoryImageScanningConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RepositoryImageScanningConfigurationOutput).ToRepositoryImageScanningConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryImageScanningConfigurationOutput).ToRepositoryImageScanningConfigurationPtrOutput()
 }
 
 // RepositoryImageScanningConfigurationPtrInput is an input type that accepts RepositoryImageScanningConfigurationArgs, RepositoryImageScanningConfigurationPtr and RepositoryImageScanningConfigurationPtrOutput values.
@@ -187,7 +187,7 @@ func (i *repositoryImageScanningConfigurationPtrType) ToRepositoryImageScanningC
 }
 
 func (i *repositoryImageScanningConfigurationPtrType) ToRepositoryImageScanningConfigurationPtrOutputWithContext(ctx context.Context) RepositoryImageScanningConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RepositoryImageScanningConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryImageScanningConfigurationOutput).ToRepositoryImageScanningConfigurationPtrOutput()
 }
 
 type RepositoryImageScanningConfigurationOutput struct{ *pulumi.OutputState }

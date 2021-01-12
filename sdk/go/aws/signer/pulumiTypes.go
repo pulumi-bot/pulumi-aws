@@ -48,7 +48,7 @@ func (i SigningJobDestinationArgs) ToSigningJobDestinationPtrOutput() SigningJob
 }
 
 func (i SigningJobDestinationArgs) ToSigningJobDestinationPtrOutputWithContext(ctx context.Context) SigningJobDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SigningJobDestinationOutput).ToSigningJobDestinationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SigningJobDestinationOutput).ToSigningJobDestinationPtrOutput()
 }
 
 // SigningJobDestinationPtrInput is an input type that accepts SigningJobDestinationArgs, SigningJobDestinationPtr and SigningJobDestinationPtrOutput values.
@@ -81,7 +81,7 @@ func (i *signingJobDestinationPtrType) ToSigningJobDestinationPtrOutput() Signin
 }
 
 func (i *signingJobDestinationPtrType) ToSigningJobDestinationPtrOutputWithContext(ctx context.Context) SigningJobDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SigningJobDestinationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SigningJobDestinationOutput).ToSigningJobDestinationPtrOutput()
 }
 
 type SigningJobDestinationOutput struct{ *pulumi.OutputState }
@@ -183,7 +183,7 @@ func (i SigningJobDestinationS3Args) ToSigningJobDestinationS3PtrOutput() Signin
 }
 
 func (i SigningJobDestinationS3Args) ToSigningJobDestinationS3PtrOutputWithContext(ctx context.Context) SigningJobDestinationS3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SigningJobDestinationS3Output).ToSigningJobDestinationS3PtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SigningJobDestinationS3Output).ToSigningJobDestinationS3PtrOutput()
 }
 
 // SigningJobDestinationS3PtrInput is an input type that accepts SigningJobDestinationS3Args, SigningJobDestinationS3Ptr and SigningJobDestinationS3PtrOutput values.
@@ -216,7 +216,7 @@ func (i *signingJobDestinationS3PtrType) ToSigningJobDestinationS3PtrOutput() Si
 }
 
 func (i *signingJobDestinationS3PtrType) ToSigningJobDestinationS3PtrOutputWithContext(ctx context.Context) SigningJobDestinationS3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SigningJobDestinationS3PtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SigningJobDestinationS3Output).ToSigningJobDestinationS3PtrOutput()
 }
 
 type SigningJobDestinationS3Output struct{ *pulumi.OutputState }
@@ -638,7 +638,7 @@ func (i SigningJobSourceArgs) ToSigningJobSourcePtrOutput() SigningJobSourcePtrO
 }
 
 func (i SigningJobSourceArgs) ToSigningJobSourcePtrOutputWithContext(ctx context.Context) SigningJobSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SigningJobSourceOutput).ToSigningJobSourcePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SigningJobSourceOutput).ToSigningJobSourcePtrOutput()
 }
 
 // SigningJobSourcePtrInput is an input type that accepts SigningJobSourceArgs, SigningJobSourcePtr and SigningJobSourcePtrOutput values.
@@ -671,7 +671,7 @@ func (i *signingJobSourcePtrType) ToSigningJobSourcePtrOutput() SigningJobSource
 }
 
 func (i *signingJobSourcePtrType) ToSigningJobSourcePtrOutputWithContext(ctx context.Context) SigningJobSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SigningJobSourcePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SigningJobSourceOutput).ToSigningJobSourcePtrOutput()
 }
 
 type SigningJobSourceOutput struct{ *pulumi.OutputState }
@@ -777,7 +777,7 @@ func (i SigningJobSourceS3Args) ToSigningJobSourceS3PtrOutput() SigningJobSource
 }
 
 func (i SigningJobSourceS3Args) ToSigningJobSourceS3PtrOutputWithContext(ctx context.Context) SigningJobSourceS3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SigningJobSourceS3Output).ToSigningJobSourceS3PtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SigningJobSourceS3Output).ToSigningJobSourceS3PtrOutput()
 }
 
 // SigningJobSourceS3PtrInput is an input type that accepts SigningJobSourceS3Args, SigningJobSourceS3Ptr and SigningJobSourceS3PtrOutput values.
@@ -810,7 +810,7 @@ func (i *signingJobSourceS3PtrType) ToSigningJobSourceS3PtrOutput() SigningJobSo
 }
 
 func (i *signingJobSourceS3PtrType) ToSigningJobSourceS3PtrOutputWithContext(ctx context.Context) SigningJobSourceS3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SigningJobSourceS3PtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SigningJobSourceS3Output).ToSigningJobSourceS3PtrOutput()
 }
 
 type SigningJobSourceS3Output struct{ *pulumi.OutputState }
@@ -1044,7 +1044,7 @@ func (i SigningProfileSignatureValidityPeriodArgs) ToSigningProfileSignatureVali
 }
 
 func (i SigningProfileSignatureValidityPeriodArgs) ToSigningProfileSignatureValidityPeriodPtrOutputWithContext(ctx context.Context) SigningProfileSignatureValidityPeriodPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SigningProfileSignatureValidityPeriodOutput).ToSigningProfileSignatureValidityPeriodPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(SigningProfileSignatureValidityPeriodOutput).ToSigningProfileSignatureValidityPeriodPtrOutput()
 }
 
 // SigningProfileSignatureValidityPeriodPtrInput is an input type that accepts SigningProfileSignatureValidityPeriodArgs, SigningProfileSignatureValidityPeriodPtr and SigningProfileSignatureValidityPeriodPtrOutput values.
@@ -1077,7 +1077,7 @@ func (i *signingProfileSignatureValidityPeriodPtrType) ToSigningProfileSignature
 }
 
 func (i *signingProfileSignatureValidityPeriodPtrType) ToSigningProfileSignatureValidityPeriodPtrOutputWithContext(ctx context.Context) SigningProfileSignatureValidityPeriodPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SigningProfileSignatureValidityPeriodPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(SigningProfileSignatureValidityPeriodOutput).ToSigningProfileSignatureValidityPeriodPtrOutput()
 }
 
 type SigningProfileSignatureValidityPeriodOutput struct{ *pulumi.OutputState }

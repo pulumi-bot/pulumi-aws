@@ -60,7 +60,7 @@ func (i PipelineArtifactStoreArgs) ToPipelineArtifactStorePtrOutput() PipelineAr
 }
 
 func (i PipelineArtifactStoreArgs) ToPipelineArtifactStorePtrOutputWithContext(ctx context.Context) PipelineArtifactStorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineArtifactStoreOutput).ToPipelineArtifactStorePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineArtifactStoreOutput).ToPipelineArtifactStorePtrOutput()
 }
 
 // PipelineArtifactStorePtrInput is an input type that accepts PipelineArtifactStoreArgs, PipelineArtifactStorePtr and PipelineArtifactStorePtrOutput values.
@@ -93,7 +93,7 @@ func (i *pipelineArtifactStorePtrType) ToPipelineArtifactStorePtrOutput() Pipeli
 }
 
 func (i *pipelineArtifactStorePtrType) ToPipelineArtifactStorePtrOutputWithContext(ctx context.Context) PipelineArtifactStorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineArtifactStorePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineArtifactStoreOutput).ToPipelineArtifactStorePtrOutput()
 }
 
 type PipelineArtifactStoreOutput struct{ *pulumi.OutputState }
@@ -240,7 +240,7 @@ func (i PipelineArtifactStoreEncryptionKeyArgs) ToPipelineArtifactStoreEncryptio
 }
 
 func (i PipelineArtifactStoreEncryptionKeyArgs) ToPipelineArtifactStoreEncryptionKeyPtrOutputWithContext(ctx context.Context) PipelineArtifactStoreEncryptionKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineArtifactStoreEncryptionKeyOutput).ToPipelineArtifactStoreEncryptionKeyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineArtifactStoreEncryptionKeyOutput).ToPipelineArtifactStoreEncryptionKeyPtrOutput()
 }
 
 // PipelineArtifactStoreEncryptionKeyPtrInput is an input type that accepts PipelineArtifactStoreEncryptionKeyArgs, PipelineArtifactStoreEncryptionKeyPtr and PipelineArtifactStoreEncryptionKeyPtrOutput values.
@@ -273,7 +273,7 @@ func (i *pipelineArtifactStoreEncryptionKeyPtrType) ToPipelineArtifactStoreEncry
 }
 
 func (i *pipelineArtifactStoreEncryptionKeyPtrType) ToPipelineArtifactStoreEncryptionKeyPtrOutputWithContext(ctx context.Context) PipelineArtifactStoreEncryptionKeyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineArtifactStoreEncryptionKeyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineArtifactStoreEncryptionKeyOutput).ToPipelineArtifactStoreEncryptionKeyPtrOutput()
 }
 
 type PipelineArtifactStoreEncryptionKeyOutput struct{ *pulumi.OutputState }
@@ -692,7 +692,7 @@ func (i WebhookAuthenticationConfigurationArgs) ToWebhookAuthenticationConfigura
 }
 
 func (i WebhookAuthenticationConfigurationArgs) ToWebhookAuthenticationConfigurationPtrOutputWithContext(ctx context.Context) WebhookAuthenticationConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebhookAuthenticationConfigurationOutput).ToWebhookAuthenticationConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookAuthenticationConfigurationOutput).ToWebhookAuthenticationConfigurationPtrOutput()
 }
 
 // WebhookAuthenticationConfigurationPtrInput is an input type that accepts WebhookAuthenticationConfigurationArgs, WebhookAuthenticationConfigurationPtr and WebhookAuthenticationConfigurationPtrOutput values.
@@ -725,7 +725,7 @@ func (i *webhookAuthenticationConfigurationPtrType) ToWebhookAuthenticationConfi
 }
 
 func (i *webhookAuthenticationConfigurationPtrType) ToWebhookAuthenticationConfigurationPtrOutputWithContext(ctx context.Context) WebhookAuthenticationConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebhookAuthenticationConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookAuthenticationConfigurationOutput).ToWebhookAuthenticationConfigurationPtrOutput()
 }
 
 type WebhookAuthenticationConfigurationOutput struct{ *pulumi.OutputState }

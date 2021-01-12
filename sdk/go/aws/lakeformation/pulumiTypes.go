@@ -264,7 +264,7 @@ func (i PermissionsDataLocationArgs) ToPermissionsDataLocationPtrOutput() Permis
 }
 
 func (i PermissionsDataLocationArgs) ToPermissionsDataLocationPtrOutputWithContext(ctx context.Context) PermissionsDataLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PermissionsDataLocationOutput).ToPermissionsDataLocationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PermissionsDataLocationOutput).ToPermissionsDataLocationPtrOutput()
 }
 
 // PermissionsDataLocationPtrInput is an input type that accepts PermissionsDataLocationArgs, PermissionsDataLocationPtr and PermissionsDataLocationPtrOutput values.
@@ -297,7 +297,7 @@ func (i *permissionsDataLocationPtrType) ToPermissionsDataLocationPtrOutput() Pe
 }
 
 func (i *permissionsDataLocationPtrType) ToPermissionsDataLocationPtrOutputWithContext(ctx context.Context) PermissionsDataLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PermissionsDataLocationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PermissionsDataLocationOutput).ToPermissionsDataLocationPtrOutput()
 }
 
 type PermissionsDataLocationOutput struct{ *pulumi.OutputState }
@@ -414,7 +414,7 @@ func (i PermissionsDatabaseArgs) ToPermissionsDatabasePtrOutput() PermissionsDat
 }
 
 func (i PermissionsDatabaseArgs) ToPermissionsDatabasePtrOutputWithContext(ctx context.Context) PermissionsDatabasePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PermissionsDatabaseOutput).ToPermissionsDatabasePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PermissionsDatabaseOutput).ToPermissionsDatabasePtrOutput()
 }
 
 // PermissionsDatabasePtrInput is an input type that accepts PermissionsDatabaseArgs, PermissionsDatabasePtr and PermissionsDatabasePtrOutput values.
@@ -447,7 +447,7 @@ func (i *permissionsDatabasePtrType) ToPermissionsDatabasePtrOutput() Permission
 }
 
 func (i *permissionsDatabasePtrType) ToPermissionsDatabasePtrOutputWithContext(ctx context.Context) PermissionsDatabasePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PermissionsDatabasePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PermissionsDatabaseOutput).ToPermissionsDatabasePtrOutput()
 }
 
 type PermissionsDatabaseOutput struct{ *pulumi.OutputState }
@@ -572,7 +572,7 @@ func (i PermissionsTableArgs) ToPermissionsTablePtrOutput() PermissionsTablePtrO
 }
 
 func (i PermissionsTableArgs) ToPermissionsTablePtrOutputWithContext(ctx context.Context) PermissionsTablePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PermissionsTableOutput).ToPermissionsTablePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PermissionsTableOutput).ToPermissionsTablePtrOutput()
 }
 
 // PermissionsTablePtrInput is an input type that accepts PermissionsTableArgs, PermissionsTablePtr and PermissionsTablePtrOutput values.
@@ -605,7 +605,7 @@ func (i *permissionsTablePtrType) ToPermissionsTablePtrOutput() PermissionsTable
 }
 
 func (i *permissionsTablePtrType) ToPermissionsTablePtrOutputWithContext(ctx context.Context) PermissionsTablePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PermissionsTablePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PermissionsTableOutput).ToPermissionsTablePtrOutput()
 }
 
 type PermissionsTableOutput struct{ *pulumi.OutputState }
@@ -764,7 +764,7 @@ func (i PermissionsTableWithColumnsArgs) ToPermissionsTableWithColumnsPtrOutput(
 }
 
 func (i PermissionsTableWithColumnsArgs) ToPermissionsTableWithColumnsPtrOutputWithContext(ctx context.Context) PermissionsTableWithColumnsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PermissionsTableWithColumnsOutput).ToPermissionsTableWithColumnsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PermissionsTableWithColumnsOutput).ToPermissionsTableWithColumnsPtrOutput()
 }
 
 // PermissionsTableWithColumnsPtrInput is an input type that accepts PermissionsTableWithColumnsArgs, PermissionsTableWithColumnsPtr and PermissionsTableWithColumnsPtrOutput values.
@@ -797,7 +797,7 @@ func (i *permissionsTableWithColumnsPtrType) ToPermissionsTableWithColumnsPtrOut
 }
 
 func (i *permissionsTableWithColumnsPtrType) ToPermissionsTableWithColumnsPtrOutputWithContext(ctx context.Context) PermissionsTableWithColumnsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PermissionsTableWithColumnsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PermissionsTableWithColumnsOutput).ToPermissionsTableWithColumnsPtrOutput()
 }
 
 type PermissionsTableWithColumnsOutput struct{ *pulumi.OutputState }

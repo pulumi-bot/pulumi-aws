@@ -1530,7 +1530,7 @@ func (i WebAclDefaultActionArgs) ToWebAclDefaultActionPtrOutput() WebAclDefaultA
 }
 
 func (i WebAclDefaultActionArgs) ToWebAclDefaultActionPtrOutputWithContext(ctx context.Context) WebAclDefaultActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebAclDefaultActionOutput).ToWebAclDefaultActionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclDefaultActionOutput).ToWebAclDefaultActionPtrOutput()
 }
 
 // WebAclDefaultActionPtrInput is an input type that accepts WebAclDefaultActionArgs, WebAclDefaultActionPtr and WebAclDefaultActionPtrOutput values.
@@ -1563,7 +1563,7 @@ func (i *webAclDefaultActionPtrType) ToWebAclDefaultActionPtrOutput() WebAclDefa
 }
 
 func (i *webAclDefaultActionPtrType) ToWebAclDefaultActionPtrOutputWithContext(ctx context.Context) WebAclDefaultActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebAclDefaultActionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclDefaultActionOutput).ToWebAclDefaultActionPtrOutput()
 }
 
 type WebAclDefaultActionOutput struct{ *pulumi.OutputState }
@@ -1665,7 +1665,7 @@ func (i WebAclLoggingConfigurationArgs) ToWebAclLoggingConfigurationPtrOutput() 
 }
 
 func (i WebAclLoggingConfigurationArgs) ToWebAclLoggingConfigurationPtrOutputWithContext(ctx context.Context) WebAclLoggingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationOutput).ToWebAclLoggingConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationOutput).ToWebAclLoggingConfigurationPtrOutput()
 }
 
 // WebAclLoggingConfigurationPtrInput is an input type that accepts WebAclLoggingConfigurationArgs, WebAclLoggingConfigurationPtr and WebAclLoggingConfigurationPtrOutput values.
@@ -1698,7 +1698,7 @@ func (i *webAclLoggingConfigurationPtrType) ToWebAclLoggingConfigurationPtrOutpu
 }
 
 func (i *webAclLoggingConfigurationPtrType) ToWebAclLoggingConfigurationPtrOutputWithContext(ctx context.Context) WebAclLoggingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationOutput).ToWebAclLoggingConfigurationPtrOutput()
 }
 
 type WebAclLoggingConfigurationOutput struct{ *pulumi.OutputState }
@@ -1811,7 +1811,7 @@ func (i WebAclLoggingConfigurationRedactedFieldsArgs) ToWebAclLoggingConfigurati
 }
 
 func (i WebAclLoggingConfigurationRedactedFieldsArgs) ToWebAclLoggingConfigurationRedactedFieldsPtrOutputWithContext(ctx context.Context) WebAclLoggingConfigurationRedactedFieldsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationRedactedFieldsOutput).ToWebAclLoggingConfigurationRedactedFieldsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationRedactedFieldsOutput).ToWebAclLoggingConfigurationRedactedFieldsPtrOutput()
 }
 
 // WebAclLoggingConfigurationRedactedFieldsPtrInput is an input type that accepts WebAclLoggingConfigurationRedactedFieldsArgs, WebAclLoggingConfigurationRedactedFieldsPtr and WebAclLoggingConfigurationRedactedFieldsPtrOutput values.
@@ -1844,7 +1844,7 @@ func (i *webAclLoggingConfigurationRedactedFieldsPtrType) ToWebAclLoggingConfigu
 }
 
 func (i *webAclLoggingConfigurationRedactedFieldsPtrType) ToWebAclLoggingConfigurationRedactedFieldsPtrOutputWithContext(ctx context.Context) WebAclLoggingConfigurationRedactedFieldsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationRedactedFieldsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclLoggingConfigurationRedactedFieldsOutput).ToWebAclLoggingConfigurationRedactedFieldsPtrOutput()
 }
 
 type WebAclLoggingConfigurationRedactedFieldsOutput struct{ *pulumi.OutputState }
@@ -2186,7 +2186,7 @@ func (i WebAclRuleActionArgs) ToWebAclRuleActionPtrOutput() WebAclRuleActionPtrO
 }
 
 func (i WebAclRuleActionArgs) ToWebAclRuleActionPtrOutputWithContext(ctx context.Context) WebAclRuleActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleActionOutput).ToWebAclRuleActionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleActionOutput).ToWebAclRuleActionPtrOutput()
 }
 
 // WebAclRuleActionPtrInput is an input type that accepts WebAclRuleActionArgs, WebAclRuleActionPtr and WebAclRuleActionPtrOutput values.
@@ -2219,7 +2219,7 @@ func (i *webAclRuleActionPtrType) ToWebAclRuleActionPtrOutput() WebAclRuleAction
 }
 
 func (i *webAclRuleActionPtrType) ToWebAclRuleActionPtrOutputWithContext(ctx context.Context) WebAclRuleActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleActionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleActionOutput).ToWebAclRuleActionPtrOutput()
 }
 
 type WebAclRuleActionOutput struct{ *pulumi.OutputState }
@@ -2317,7 +2317,7 @@ func (i WebAclRuleOverrideActionArgs) ToWebAclRuleOverrideActionPtrOutput() WebA
 }
 
 func (i WebAclRuleOverrideActionArgs) ToWebAclRuleOverrideActionPtrOutputWithContext(ctx context.Context) WebAclRuleOverrideActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleOverrideActionOutput).ToWebAclRuleOverrideActionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleOverrideActionOutput).ToWebAclRuleOverrideActionPtrOutput()
 }
 
 // WebAclRuleOverrideActionPtrInput is an input type that accepts WebAclRuleOverrideActionArgs, WebAclRuleOverrideActionPtr and WebAclRuleOverrideActionPtrOutput values.
@@ -2350,7 +2350,7 @@ func (i *webAclRuleOverrideActionPtrType) ToWebAclRuleOverrideActionPtrOutput() 
 }
 
 func (i *webAclRuleOverrideActionPtrType) ToWebAclRuleOverrideActionPtrOutputWithContext(ctx context.Context) WebAclRuleOverrideActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleOverrideActionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(WebAclRuleOverrideActionOutput).ToWebAclRuleOverrideActionPtrOutput()
 }
 
 type WebAclRuleOverrideActionOutput struct{ *pulumi.OutputState }

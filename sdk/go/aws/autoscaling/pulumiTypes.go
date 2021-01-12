@@ -189,7 +189,7 @@ func (i GroupInstanceRefreshArgs) ToGroupInstanceRefreshPtrOutput() GroupInstanc
 }
 
 func (i GroupInstanceRefreshArgs) ToGroupInstanceRefreshPtrOutputWithContext(ctx context.Context) GroupInstanceRefreshPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupInstanceRefreshOutput).ToGroupInstanceRefreshPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupInstanceRefreshOutput).ToGroupInstanceRefreshPtrOutput()
 }
 
 // GroupInstanceRefreshPtrInput is an input type that accepts GroupInstanceRefreshArgs, GroupInstanceRefreshPtr and GroupInstanceRefreshPtrOutput values.
@@ -222,7 +222,7 @@ func (i *groupInstanceRefreshPtrType) ToGroupInstanceRefreshPtrOutput() GroupIns
 }
 
 func (i *groupInstanceRefreshPtrType) ToGroupInstanceRefreshPtrOutputWithContext(ctx context.Context) GroupInstanceRefreshPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupInstanceRefreshPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupInstanceRefreshOutput).ToGroupInstanceRefreshPtrOutput()
 }
 
 type GroupInstanceRefreshOutput struct{ *pulumi.OutputState }
@@ -352,7 +352,7 @@ func (i GroupInstanceRefreshPreferencesArgs) ToGroupInstanceRefreshPreferencesPt
 }
 
 func (i GroupInstanceRefreshPreferencesArgs) ToGroupInstanceRefreshPreferencesPtrOutputWithContext(ctx context.Context) GroupInstanceRefreshPreferencesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupInstanceRefreshPreferencesOutput).ToGroupInstanceRefreshPreferencesPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupInstanceRefreshPreferencesOutput).ToGroupInstanceRefreshPreferencesPtrOutput()
 }
 
 // GroupInstanceRefreshPreferencesPtrInput is an input type that accepts GroupInstanceRefreshPreferencesArgs, GroupInstanceRefreshPreferencesPtr and GroupInstanceRefreshPreferencesPtrOutput values.
@@ -385,7 +385,7 @@ func (i *groupInstanceRefreshPreferencesPtrType) ToGroupInstanceRefreshPreferenc
 }
 
 func (i *groupInstanceRefreshPreferencesPtrType) ToGroupInstanceRefreshPreferencesPtrOutputWithContext(ctx context.Context) GroupInstanceRefreshPreferencesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupInstanceRefreshPreferencesPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupInstanceRefreshPreferencesOutput).ToGroupInstanceRefreshPreferencesPtrOutput()
 }
 
 type GroupInstanceRefreshPreferencesOutput struct{ *pulumi.OutputState }
@@ -503,7 +503,7 @@ func (i GroupLaunchTemplateArgs) ToGroupLaunchTemplatePtrOutput() GroupLaunchTem
 }
 
 func (i GroupLaunchTemplateArgs) ToGroupLaunchTemplatePtrOutputWithContext(ctx context.Context) GroupLaunchTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupLaunchTemplateOutput).ToGroupLaunchTemplatePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupLaunchTemplateOutput).ToGroupLaunchTemplatePtrOutput()
 }
 
 // GroupLaunchTemplatePtrInput is an input type that accepts GroupLaunchTemplateArgs, GroupLaunchTemplatePtr and GroupLaunchTemplatePtrOutput values.
@@ -536,7 +536,7 @@ func (i *groupLaunchTemplatePtrType) ToGroupLaunchTemplatePtrOutput() GroupLaunc
 }
 
 func (i *groupLaunchTemplatePtrType) ToGroupLaunchTemplatePtrOutputWithContext(ctx context.Context) GroupLaunchTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupLaunchTemplatePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupLaunchTemplateOutput).ToGroupLaunchTemplatePtrOutput()
 }
 
 type GroupLaunchTemplateOutput struct{ *pulumi.OutputState }
@@ -668,7 +668,7 @@ func (i GroupMixedInstancesPolicyArgs) ToGroupMixedInstancesPolicyPtrOutput() Gr
 }
 
 func (i GroupMixedInstancesPolicyArgs) ToGroupMixedInstancesPolicyPtrOutputWithContext(ctx context.Context) GroupMixedInstancesPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupMixedInstancesPolicyOutput).ToGroupMixedInstancesPolicyPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMixedInstancesPolicyOutput).ToGroupMixedInstancesPolicyPtrOutput()
 }
 
 // GroupMixedInstancesPolicyPtrInput is an input type that accepts GroupMixedInstancesPolicyArgs, GroupMixedInstancesPolicyPtr and GroupMixedInstancesPolicyPtrOutput values.
@@ -701,7 +701,7 @@ func (i *groupMixedInstancesPolicyPtrType) ToGroupMixedInstancesPolicyPtrOutput(
 }
 
 func (i *groupMixedInstancesPolicyPtrType) ToGroupMixedInstancesPolicyPtrOutputWithContext(ctx context.Context) GroupMixedInstancesPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupMixedInstancesPolicyPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMixedInstancesPolicyOutput).ToGroupMixedInstancesPolicyPtrOutput()
 }
 
 type GroupMixedInstancesPolicyOutput struct{ *pulumi.OutputState }
@@ -836,7 +836,7 @@ func (i GroupMixedInstancesPolicyInstancesDistributionArgs) ToGroupMixedInstance
 }
 
 func (i GroupMixedInstancesPolicyInstancesDistributionArgs) ToGroupMixedInstancesPolicyInstancesDistributionPtrOutputWithContext(ctx context.Context) GroupMixedInstancesPolicyInstancesDistributionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupMixedInstancesPolicyInstancesDistributionOutput).ToGroupMixedInstancesPolicyInstancesDistributionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMixedInstancesPolicyInstancesDistributionOutput).ToGroupMixedInstancesPolicyInstancesDistributionPtrOutput()
 }
 
 // GroupMixedInstancesPolicyInstancesDistributionPtrInput is an input type that accepts GroupMixedInstancesPolicyInstancesDistributionArgs, GroupMixedInstancesPolicyInstancesDistributionPtr and GroupMixedInstancesPolicyInstancesDistributionPtrOutput values.
@@ -869,7 +869,7 @@ func (i *groupMixedInstancesPolicyInstancesDistributionPtrType) ToGroupMixedInst
 }
 
 func (i *groupMixedInstancesPolicyInstancesDistributionPtrType) ToGroupMixedInstancesPolicyInstancesDistributionPtrOutputWithContext(ctx context.Context) GroupMixedInstancesPolicyInstancesDistributionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupMixedInstancesPolicyInstancesDistributionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMixedInstancesPolicyInstancesDistributionOutput).ToGroupMixedInstancesPolicyInstancesDistributionPtrOutput()
 }
 
 type GroupMixedInstancesPolicyInstancesDistributionOutput struct{ *pulumi.OutputState }
@@ -1050,7 +1050,7 @@ func (i GroupMixedInstancesPolicyLaunchTemplateArgs) ToGroupMixedInstancesPolicy
 }
 
 func (i GroupMixedInstancesPolicyLaunchTemplateArgs) ToGroupMixedInstancesPolicyLaunchTemplatePtrOutputWithContext(ctx context.Context) GroupMixedInstancesPolicyLaunchTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupMixedInstancesPolicyLaunchTemplateOutput).ToGroupMixedInstancesPolicyLaunchTemplatePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMixedInstancesPolicyLaunchTemplateOutput).ToGroupMixedInstancesPolicyLaunchTemplatePtrOutput()
 }
 
 // GroupMixedInstancesPolicyLaunchTemplatePtrInput is an input type that accepts GroupMixedInstancesPolicyLaunchTemplateArgs, GroupMixedInstancesPolicyLaunchTemplatePtr and GroupMixedInstancesPolicyLaunchTemplatePtrOutput values.
@@ -1083,7 +1083,7 @@ func (i *groupMixedInstancesPolicyLaunchTemplatePtrType) ToGroupMixedInstancesPo
 }
 
 func (i *groupMixedInstancesPolicyLaunchTemplatePtrType) ToGroupMixedInstancesPolicyLaunchTemplatePtrOutputWithContext(ctx context.Context) GroupMixedInstancesPolicyLaunchTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupMixedInstancesPolicyLaunchTemplatePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMixedInstancesPolicyLaunchTemplateOutput).ToGroupMixedInstancesPolicyLaunchTemplatePtrOutput()
 }
 
 type GroupMixedInstancesPolicyLaunchTemplateOutput struct{ *pulumi.OutputState }
@@ -1208,7 +1208,7 @@ func (i GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs) 
 }
 
 func (i GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs) ToGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationPtrOutputWithContext(ctx context.Context) GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationOutput).ToGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationOutput).ToGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationPtrOutput()
 }
 
 // GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationPtrInput is an input type that accepts GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs, GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationPtr and GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationPtrOutput values.
@@ -1241,7 +1241,7 @@ func (i *groupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationPtrTy
 }
 
 func (i *groupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationPtrType) ToGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationPtrOutputWithContext(ctx context.Context) GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationOutput).ToGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationPtrOutput()
 }
 
 type GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationOutput struct{ *pulumi.OutputState }
@@ -1747,7 +1747,7 @@ func (i PolicyTargetTrackingConfigurationArgs) ToPolicyTargetTrackingConfigurati
 }
 
 func (i PolicyTargetTrackingConfigurationArgs) ToPolicyTargetTrackingConfigurationPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingConfigurationOutput).ToPolicyTargetTrackingConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingConfigurationOutput).ToPolicyTargetTrackingConfigurationPtrOutput()
 }
 
 // PolicyTargetTrackingConfigurationPtrInput is an input type that accepts PolicyTargetTrackingConfigurationArgs, PolicyTargetTrackingConfigurationPtr and PolicyTargetTrackingConfigurationPtrOutput values.
@@ -1780,7 +1780,7 @@ func (i *policyTargetTrackingConfigurationPtrType) ToPolicyTargetTrackingConfigu
 }
 
 func (i *policyTargetTrackingConfigurationPtrType) ToPolicyTargetTrackingConfigurationPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingConfigurationOutput).ToPolicyTargetTrackingConfigurationPtrOutput()
 }
 
 type PolicyTargetTrackingConfigurationOutput struct{ *pulumi.OutputState }
@@ -1943,7 +1943,7 @@ func (i PolicyTargetTrackingConfigurationCustomizedMetricSpecificationArgs) ToPo
 }
 
 func (i PolicyTargetTrackingConfigurationCustomizedMetricSpecificationArgs) ToPolicyTargetTrackingConfigurationCustomizedMetricSpecificationPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingConfigurationCustomizedMetricSpecificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingConfigurationCustomizedMetricSpecificationOutput).ToPolicyTargetTrackingConfigurationCustomizedMetricSpecificationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingConfigurationCustomizedMetricSpecificationOutput).ToPolicyTargetTrackingConfigurationCustomizedMetricSpecificationPtrOutput()
 }
 
 // PolicyTargetTrackingConfigurationCustomizedMetricSpecificationPtrInput is an input type that accepts PolicyTargetTrackingConfigurationCustomizedMetricSpecificationArgs, PolicyTargetTrackingConfigurationCustomizedMetricSpecificationPtr and PolicyTargetTrackingConfigurationCustomizedMetricSpecificationPtrOutput values.
@@ -1976,7 +1976,7 @@ func (i *policyTargetTrackingConfigurationCustomizedMetricSpecificationPtrType) 
 }
 
 func (i *policyTargetTrackingConfigurationCustomizedMetricSpecificationPtrType) ToPolicyTargetTrackingConfigurationCustomizedMetricSpecificationPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingConfigurationCustomizedMetricSpecificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingConfigurationCustomizedMetricSpecificationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingConfigurationCustomizedMetricSpecificationOutput).ToPolicyTargetTrackingConfigurationCustomizedMetricSpecificationPtrOutput()
 }
 
 type PolicyTargetTrackingConfigurationCustomizedMetricSpecificationOutput struct{ *pulumi.OutputState }
@@ -2252,7 +2252,7 @@ func (i PolicyTargetTrackingConfigurationPredefinedMetricSpecificationArgs) ToPo
 }
 
 func (i PolicyTargetTrackingConfigurationPredefinedMetricSpecificationArgs) ToPolicyTargetTrackingConfigurationPredefinedMetricSpecificationPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingConfigurationPredefinedMetricSpecificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingConfigurationPredefinedMetricSpecificationOutput).ToPolicyTargetTrackingConfigurationPredefinedMetricSpecificationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingConfigurationPredefinedMetricSpecificationOutput).ToPolicyTargetTrackingConfigurationPredefinedMetricSpecificationPtrOutput()
 }
 
 // PolicyTargetTrackingConfigurationPredefinedMetricSpecificationPtrInput is an input type that accepts PolicyTargetTrackingConfigurationPredefinedMetricSpecificationArgs, PolicyTargetTrackingConfigurationPredefinedMetricSpecificationPtr and PolicyTargetTrackingConfigurationPredefinedMetricSpecificationPtrOutput values.
@@ -2285,7 +2285,7 @@ func (i *policyTargetTrackingConfigurationPredefinedMetricSpecificationPtrType) 
 }
 
 func (i *policyTargetTrackingConfigurationPredefinedMetricSpecificationPtrType) ToPolicyTargetTrackingConfigurationPredefinedMetricSpecificationPtrOutputWithContext(ctx context.Context) PolicyTargetTrackingConfigurationPredefinedMetricSpecificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingConfigurationPredefinedMetricSpecificationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTargetTrackingConfigurationPredefinedMetricSpecificationOutput).ToPolicyTargetTrackingConfigurationPredefinedMetricSpecificationPtrOutput()
 }
 
 type PolicyTargetTrackingConfigurationPredefinedMetricSpecificationOutput struct{ *pulumi.OutputState }

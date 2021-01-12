@@ -185,7 +185,7 @@ func (i DistributionConfigurationDistributionAmiDistributionConfigurationArgs) T
 }
 
 func (i DistributionConfigurationDistributionAmiDistributionConfigurationArgs) ToDistributionConfigurationDistributionAmiDistributionConfigurationPtrOutputWithContext(ctx context.Context) DistributionConfigurationDistributionAmiDistributionConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionConfigurationDistributionAmiDistributionConfigurationOutput).ToDistributionConfigurationDistributionAmiDistributionConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionConfigurationDistributionAmiDistributionConfigurationOutput).ToDistributionConfigurationDistributionAmiDistributionConfigurationPtrOutput()
 }
 
 // DistributionConfigurationDistributionAmiDistributionConfigurationPtrInput is an input type that accepts DistributionConfigurationDistributionAmiDistributionConfigurationArgs, DistributionConfigurationDistributionAmiDistributionConfigurationPtr and DistributionConfigurationDistributionAmiDistributionConfigurationPtrOutput values.
@@ -218,7 +218,7 @@ func (i *distributionConfigurationDistributionAmiDistributionConfigurationPtrTyp
 }
 
 func (i *distributionConfigurationDistributionAmiDistributionConfigurationPtrType) ToDistributionConfigurationDistributionAmiDistributionConfigurationPtrOutputWithContext(ctx context.Context) DistributionConfigurationDistributionAmiDistributionConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionConfigurationDistributionAmiDistributionConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionConfigurationDistributionAmiDistributionConfigurationOutput).ToDistributionConfigurationDistributionAmiDistributionConfigurationPtrOutput()
 }
 
 type DistributionConfigurationDistributionAmiDistributionConfigurationOutput struct{ *pulumi.OutputState }
@@ -405,7 +405,7 @@ func (i DistributionConfigurationDistributionAmiDistributionConfigurationLaunchP
 }
 
 func (i DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionArgs) ToDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionPtrOutputWithContext(ctx context.Context) DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionOutput).ToDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionOutput).ToDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionPtrOutput()
 }
 
 // DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionPtrInput is an input type that accepts DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionArgs, DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionPtr and DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionPtrOutput values.
@@ -438,7 +438,7 @@ func (i *distributionConfigurationDistributionAmiDistributionConfigurationLaunch
 }
 
 func (i *distributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionPtrType) ToDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionPtrOutputWithContext(ctx context.Context) DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionOutput).ToDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionPtrOutput()
 }
 
 type DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionOutput struct{ *pulumi.OutputState }
@@ -561,7 +561,7 @@ func (i ImagePipelineImageTestsConfigurationArgs) ToImagePipelineImageTestsConfi
 }
 
 func (i ImagePipelineImageTestsConfigurationArgs) ToImagePipelineImageTestsConfigurationPtrOutputWithContext(ctx context.Context) ImagePipelineImageTestsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImagePipelineImageTestsConfigurationOutput).ToImagePipelineImageTestsConfigurationPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ImagePipelineImageTestsConfigurationOutput).ToImagePipelineImageTestsConfigurationPtrOutput()
 }
 
 // ImagePipelineImageTestsConfigurationPtrInput is an input type that accepts ImagePipelineImageTestsConfigurationArgs, ImagePipelineImageTestsConfigurationPtr and ImagePipelineImageTestsConfigurationPtrOutput values.
@@ -594,7 +594,7 @@ func (i *imagePipelineImageTestsConfigurationPtrType) ToImagePipelineImageTestsC
 }
 
 func (i *imagePipelineImageTestsConfigurationPtrType) ToImagePipelineImageTestsConfigurationPtrOutputWithContext(ctx context.Context) ImagePipelineImageTestsConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImagePipelineImageTestsConfigurationPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ImagePipelineImageTestsConfigurationOutput).ToImagePipelineImageTestsConfigurationPtrOutput()
 }
 
 type ImagePipelineImageTestsConfigurationOutput struct{ *pulumi.OutputState }
@@ -711,7 +711,7 @@ func (i ImagePipelineScheduleArgs) ToImagePipelineSchedulePtrOutput() ImagePipel
 }
 
 func (i ImagePipelineScheduleArgs) ToImagePipelineSchedulePtrOutputWithContext(ctx context.Context) ImagePipelineSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImagePipelineScheduleOutput).ToImagePipelineSchedulePtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ImagePipelineScheduleOutput).ToImagePipelineSchedulePtrOutput()
 }
 
 // ImagePipelineSchedulePtrInput is an input type that accepts ImagePipelineScheduleArgs, ImagePipelineSchedulePtr and ImagePipelineSchedulePtrOutput values.
@@ -744,7 +744,7 @@ func (i *imagePipelineSchedulePtrType) ToImagePipelineSchedulePtrOutput() ImageP
 }
 
 func (i *imagePipelineSchedulePtrType) ToImagePipelineSchedulePtrOutputWithContext(ctx context.Context) ImagePipelineSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImagePipelineSchedulePtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ImagePipelineScheduleOutput).ToImagePipelineSchedulePtrOutput()
 }
 
 type ImagePipelineScheduleOutput struct{ *pulumi.OutputState }
@@ -1005,7 +1005,7 @@ func (i ImageRecipeBlockDeviceMappingEbsArgs) ToImageRecipeBlockDeviceMappingEbs
 }
 
 func (i ImageRecipeBlockDeviceMappingEbsArgs) ToImageRecipeBlockDeviceMappingEbsPtrOutputWithContext(ctx context.Context) ImageRecipeBlockDeviceMappingEbsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageRecipeBlockDeviceMappingEbsOutput).ToImageRecipeBlockDeviceMappingEbsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(ImageRecipeBlockDeviceMappingEbsOutput).ToImageRecipeBlockDeviceMappingEbsPtrOutput()
 }
 
 // ImageRecipeBlockDeviceMappingEbsPtrInput is an input type that accepts ImageRecipeBlockDeviceMappingEbsArgs, ImageRecipeBlockDeviceMappingEbsPtr and ImageRecipeBlockDeviceMappingEbsPtrOutput values.
@@ -1038,7 +1038,7 @@ func (i *imageRecipeBlockDeviceMappingEbsPtrType) ToImageRecipeBlockDeviceMappin
 }
 
 func (i *imageRecipeBlockDeviceMappingEbsPtrType) ToImageRecipeBlockDeviceMappingEbsPtrOutputWithContext(ctx context.Context) ImageRecipeBlockDeviceMappingEbsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ImageRecipeBlockDeviceMappingEbsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(ImageRecipeBlockDeviceMappingEbsOutput).ToImageRecipeBlockDeviceMappingEbsPtrOutput()
 }
 
 type ImageRecipeBlockDeviceMappingEbsOutput struct{ *pulumi.OutputState }
@@ -1323,7 +1323,7 @@ func (i InfrastructureConfigurationLoggingArgs) ToInfrastructureConfigurationLog
 }
 
 func (i InfrastructureConfigurationLoggingArgs) ToInfrastructureConfigurationLoggingPtrOutputWithContext(ctx context.Context) InfrastructureConfigurationLoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureConfigurationLoggingOutput).ToInfrastructureConfigurationLoggingPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureConfigurationLoggingOutput).ToInfrastructureConfigurationLoggingPtrOutput()
 }
 
 // InfrastructureConfigurationLoggingPtrInput is an input type that accepts InfrastructureConfigurationLoggingArgs, InfrastructureConfigurationLoggingPtr and InfrastructureConfigurationLoggingPtrOutput values.
@@ -1356,7 +1356,7 @@ func (i *infrastructureConfigurationLoggingPtrType) ToInfrastructureConfiguratio
 }
 
 func (i *infrastructureConfigurationLoggingPtrType) ToInfrastructureConfigurationLoggingPtrOutputWithContext(ctx context.Context) InfrastructureConfigurationLoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureConfigurationLoggingPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureConfigurationLoggingOutput).ToInfrastructureConfigurationLoggingPtrOutput()
 }
 
 type InfrastructureConfigurationLoggingOutput struct{ *pulumi.OutputState }
@@ -1458,7 +1458,7 @@ func (i InfrastructureConfigurationLoggingS3LogsArgs) ToInfrastructureConfigurat
 }
 
 func (i InfrastructureConfigurationLoggingS3LogsArgs) ToInfrastructureConfigurationLoggingS3LogsPtrOutputWithContext(ctx context.Context) InfrastructureConfigurationLoggingS3LogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureConfigurationLoggingS3LogsOutput).ToInfrastructureConfigurationLoggingS3LogsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureConfigurationLoggingS3LogsOutput).ToInfrastructureConfigurationLoggingS3LogsPtrOutput()
 }
 
 // InfrastructureConfigurationLoggingS3LogsPtrInput is an input type that accepts InfrastructureConfigurationLoggingS3LogsArgs, InfrastructureConfigurationLoggingS3LogsPtr and InfrastructureConfigurationLoggingS3LogsPtrOutput values.
@@ -1491,7 +1491,7 @@ func (i *infrastructureConfigurationLoggingS3LogsPtrType) ToInfrastructureConfig
 }
 
 func (i *infrastructureConfigurationLoggingS3LogsPtrType) ToInfrastructureConfigurationLoggingS3LogsPtrOutputWithContext(ctx context.Context) InfrastructureConfigurationLoggingS3LogsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureConfigurationLoggingS3LogsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureConfigurationLoggingS3LogsOutput).ToInfrastructureConfigurationLoggingS3LogsPtrOutput()
 }
 
 type InfrastructureConfigurationLoggingS3LogsOutput struct{ *pulumi.OutputState }

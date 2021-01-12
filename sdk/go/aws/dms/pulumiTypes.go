@@ -60,7 +60,7 @@ func (i EndpointElasticsearchSettingsArgs) ToEndpointElasticsearchSettingsPtrOut
 }
 
 func (i EndpointElasticsearchSettingsArgs) ToEndpointElasticsearchSettingsPtrOutputWithContext(ctx context.Context) EndpointElasticsearchSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointElasticsearchSettingsOutput).ToEndpointElasticsearchSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointElasticsearchSettingsOutput).ToEndpointElasticsearchSettingsPtrOutput()
 }
 
 // EndpointElasticsearchSettingsPtrInput is an input type that accepts EndpointElasticsearchSettingsArgs, EndpointElasticsearchSettingsPtr and EndpointElasticsearchSettingsPtrOutput values.
@@ -93,7 +93,7 @@ func (i *endpointElasticsearchSettingsPtrType) ToEndpointElasticsearchSettingsPt
 }
 
 func (i *endpointElasticsearchSettingsPtrType) ToEndpointElasticsearchSettingsPtrOutputWithContext(ctx context.Context) EndpointElasticsearchSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointElasticsearchSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointElasticsearchSettingsOutput).ToEndpointElasticsearchSettingsPtrOutput()
 }
 
 type EndpointElasticsearchSettingsOutput struct{ *pulumi.OutputState }
@@ -240,7 +240,7 @@ func (i EndpointKafkaSettingsArgs) ToEndpointKafkaSettingsPtrOutput() EndpointKa
 }
 
 func (i EndpointKafkaSettingsArgs) ToEndpointKafkaSettingsPtrOutputWithContext(ctx context.Context) EndpointKafkaSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointKafkaSettingsOutput).ToEndpointKafkaSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointKafkaSettingsOutput).ToEndpointKafkaSettingsPtrOutput()
 }
 
 // EndpointKafkaSettingsPtrInput is an input type that accepts EndpointKafkaSettingsArgs, EndpointKafkaSettingsPtr and EndpointKafkaSettingsPtrOutput values.
@@ -273,7 +273,7 @@ func (i *endpointKafkaSettingsPtrType) ToEndpointKafkaSettingsPtrOutput() Endpoi
 }
 
 func (i *endpointKafkaSettingsPtrType) ToEndpointKafkaSettingsPtrOutputWithContext(ctx context.Context) EndpointKafkaSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointKafkaSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointKafkaSettingsOutput).ToEndpointKafkaSettingsPtrOutput()
 }
 
 type EndpointKafkaSettingsOutput struct{ *pulumi.OutputState }
@@ -394,7 +394,7 @@ func (i EndpointKinesisSettingsArgs) ToEndpointKinesisSettingsPtrOutput() Endpoi
 }
 
 func (i EndpointKinesisSettingsArgs) ToEndpointKinesisSettingsPtrOutputWithContext(ctx context.Context) EndpointKinesisSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointKinesisSettingsOutput).ToEndpointKinesisSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointKinesisSettingsOutput).ToEndpointKinesisSettingsPtrOutput()
 }
 
 // EndpointKinesisSettingsPtrInput is an input type that accepts EndpointKinesisSettingsArgs, EndpointKinesisSettingsPtr and EndpointKinesisSettingsPtrOutput values.
@@ -427,7 +427,7 @@ func (i *endpointKinesisSettingsPtrType) ToEndpointKinesisSettingsPtrOutput() En
 }
 
 func (i *endpointKinesisSettingsPtrType) ToEndpointKinesisSettingsPtrOutputWithContext(ctx context.Context) EndpointKinesisSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointKinesisSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointKinesisSettingsOutput).ToEndpointKinesisSettingsPtrOutput()
 }
 
 type EndpointKinesisSettingsOutput struct{ *pulumi.OutputState }
@@ -575,7 +575,7 @@ func (i EndpointMongodbSettingsArgs) ToEndpointMongodbSettingsPtrOutput() Endpoi
 }
 
 func (i EndpointMongodbSettingsArgs) ToEndpointMongodbSettingsPtrOutputWithContext(ctx context.Context) EndpointMongodbSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointMongodbSettingsOutput).ToEndpointMongodbSettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointMongodbSettingsOutput).ToEndpointMongodbSettingsPtrOutput()
 }
 
 // EndpointMongodbSettingsPtrInput is an input type that accepts EndpointMongodbSettingsArgs, EndpointMongodbSettingsPtr and EndpointMongodbSettingsPtrOutput values.
@@ -608,7 +608,7 @@ func (i *endpointMongodbSettingsPtrType) ToEndpointMongodbSettingsPtrOutput() En
 }
 
 func (i *endpointMongodbSettingsPtrType) ToEndpointMongodbSettingsPtrOutputWithContext(ctx context.Context) EndpointMongodbSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointMongodbSettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointMongodbSettingsOutput).ToEndpointMongodbSettingsPtrOutput()
 }
 
 type EndpointMongodbSettingsOutput struct{ *pulumi.OutputState }
@@ -805,7 +805,7 @@ func (i EndpointS3SettingsArgs) ToEndpointS3SettingsPtrOutput() EndpointS3Settin
 }
 
 func (i EndpointS3SettingsArgs) ToEndpointS3SettingsPtrOutputWithContext(ctx context.Context) EndpointS3SettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointS3SettingsOutput).ToEndpointS3SettingsPtrOutputWithContext(ctx)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointS3SettingsOutput).ToEndpointS3SettingsPtrOutput()
 }
 
 // EndpointS3SettingsPtrInput is an input type that accepts EndpointS3SettingsArgs, EndpointS3SettingsPtr and EndpointS3SettingsPtrOutput values.
@@ -838,7 +838,7 @@ func (i *endpointS3SettingsPtrType) ToEndpointS3SettingsPtrOutput() EndpointS3Se
 }
 
 func (i *endpointS3SettingsPtrType) ToEndpointS3SettingsPtrOutputWithContext(ctx context.Context) EndpointS3SettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EndpointS3SettingsPtrOutput)
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointS3SettingsOutput).ToEndpointS3SettingsPtrOutput()
 }
 
 type EndpointS3SettingsOutput struct{ *pulumi.OutputState }
