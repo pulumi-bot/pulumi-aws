@@ -591,6 +591,7 @@ github.com/pulumi/pulumi/pkg/v2 v2.15.1-0.20201202214525-260620430c4c h1:M4BMhdO
 github.com/pulumi/pulumi/pkg/v2 v2.15.1-0.20201202214525-260620430c4c/go.mod h1:xLEDqsipr92IXfe8EJrl8bANoEUtwmBJGBE8X8PKmP0=
 github.com/pulumi/pulumi/pkg/v2 v2.16.2 h1:7/BYWaO9HQD4dWNtIOK+Bg91Nz5A2o1BqvkczR270u4=
 github.com/pulumi/pulumi/pkg/v2 v2.16.2/go.mod h1:bAbzFeU3gHu1diqcckqUqaFf5dP02BfJlP8dnHwm00k=
+github.com/pulumi/pulumi/pkg/v2 v2.18.0/go.mod h1:bAbzFeU3gHu1diqcckqUqaFf5dP02BfJlP8dnHwm00k=
 github.com/pulumi/pulumi/sdk v0.0.0-20200321193742-f095e64d0f8e/go.mod h1:ZCVEM4V8vr5IogqUhSu28+FEEn3bIjGYpEOSHRureO0=
 github.com/pulumi/pulumi/sdk v0.0.0-20200325225746-80f1989600a3 h1:O7Kt01GMn4lP61yHLg97TIl2D7l8BoBp4eawjqwefxY=
 github.com/pulumi/pulumi/sdk v0.0.0-20200325225746-80f1989600a3/go.mod h1:0jjygtqEwLnjNEL3zIn3ynjT/37ZJ42DZE6k2+2NAUM=
@@ -600,6 +601,7 @@ github.com/pulumi/pulumi/sdk/v2 v2.15.1-0.20201202214525-260620430c4c h1:nYFMU38
 github.com/pulumi/pulumi/sdk/v2 v2.15.1-0.20201202214525-260620430c4c/go.mod h1:Z9ifPo/Q0+hUpAyguVx2gp5Sx+CBumnWvYQDhrM8l3E=
 github.com/pulumi/pulumi/sdk/v2 v2.16.2 h1:ciz+J66OkwNwFYb5BuXndpHAT9GgffBDGRcrytnU8sM=
 github.com/pulumi/pulumi/sdk/v2 v2.16.2/go.mod h1:fCFhRV6NmidWetmgDPA76efL+s0JqLlS54JJIwfOt+o=
+github.com/pulumi/pulumi/sdk/v2 v2.18.0/go.mod h1:fCFhRV6NmidWetmgDPA76efL+s0JqLlS54JJIwfOt+o=
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e h1:Dik4Qe/+xguB8JagPyXNlbOnRiXGmq/PSPQTGunYnTk=
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20201218231525-9cca98608a5e h1:jl43csgF3BSlNRmjo+TGgjW/uXk9h7+NoR3doKQ0BT4=
