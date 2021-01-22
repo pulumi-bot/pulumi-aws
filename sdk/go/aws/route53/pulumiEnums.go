@@ -46,3 +46,11 @@ func (e RecordType) ToStringPtrOutput() pulumi.StringPtrOutput {
 func (e RecordType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
+
+func (e RecordType) Valid() bool {
+	switch e {
+	case RecordTypeA, RecordTypeAAAA, RecordTypeCNAME, RecordTypeCAA, RecordTypeMX, RecordTypeNAPTR, RecordTypeNS, RecordTypePTR, RecordTypeSOA, RecordTypeSPF, RecordTypeSRV, RecordTypeTXT:
+		return true
+	}
+	return false
+}

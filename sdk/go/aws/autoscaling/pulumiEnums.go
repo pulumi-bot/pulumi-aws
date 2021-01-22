@@ -49,6 +49,14 @@ func (e Metric) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringP
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+func (e Metric) Valid() bool {
+	switch e {
+	case MetricGroupMinSize, MetricGroupMaxSize, MetricGroupDesiredCapacity, MetricGroupInServiceInstances, MetricGroupInServiceCapacity, MetricGroupPendingInstances, MetricGroupPendingCapacity, MetricGroupStandbyInstances, MetricGroupStandbyCapacity, MetricGroupTerminatingInstances, MetricGroupTerminatingCapacity, MetricGroupTotalInstances, MetricGroupTotalCapacity:
+		return true
+	}
+	return false
+}
+
 // See https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html
 type MetricsGranularity pulumi.String
 
@@ -74,6 +82,14 @@ func (e MetricsGranularity) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e MetricsGranularity) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+func (e MetricsGranularity) Valid() bool {
+	switch e {
+	case MetricsGranularityOneMinute:
+		return true
+	}
+	return false
 }
 
 // See https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_NotificationConfiguration.html
@@ -105,4 +121,12 @@ func (e NotificationType) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e NotificationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+func (e NotificationType) Valid() bool {
+	switch e {
+	case NotificationTypeInstanceLaunch, NotificationTypeInstanceTerminate, NotificationTypeInstanceLaunchError, NotificationTypeInstanceTerminateError, NotificationTypeTestNotification:
+		return true
+	}
+	return false
 }

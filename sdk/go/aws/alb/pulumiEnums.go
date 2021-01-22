@@ -37,6 +37,14 @@ func (e IpAddressType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+func (e IpAddressType) Valid() bool {
+	switch e {
+	case IpAddressTypeIpv4, IpAddressTypeDualstack:
+		return true
+	}
+	return false
+}
+
 type LoadBalancerType pulumi.String
 
 const (
@@ -62,4 +70,12 @@ func (e LoadBalancerType) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e LoadBalancerType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+func (e LoadBalancerType) Valid() bool {
+	switch e {
+	case LoadBalancerTypeApplication, LoadBalancerTypeNetwork:
+		return true
+	}
+	return false
 }

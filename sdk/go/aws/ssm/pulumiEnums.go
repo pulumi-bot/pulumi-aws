@@ -37,3 +37,11 @@ func (e ParameterType) ToStringPtrOutput() pulumi.StringPtrOutput {
 func (e ParameterType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
+
+func (e ParameterType) Valid() bool {
+	switch e {
+	case ParameterTypeString, ParameterTypeStringList, ParameterTypeSecureString:
+		return true
+	}
+	return false
+}

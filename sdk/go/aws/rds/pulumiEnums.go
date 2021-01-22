@@ -39,6 +39,14 @@ func (e EngineMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.Str
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+func (e EngineMode) Valid() bool {
+	switch e {
+	case EngineModeProvisioned, EngineModeServerless, EngineModeParallelQuery, EngineModeGlobal:
+		return true
+	}
+	return false
+}
+
 type EngineType pulumi.String
 
 const (
@@ -65,6 +73,14 @@ func (e EngineType) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e EngineType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+func (e EngineType) Valid() bool {
+	switch e {
+	case EngineTypeAurora, EngineTypeAuroraMysql, EngineTypeAuroraPostgresql:
+		return true
+	}
+	return false
 }
 
 type InstanceType pulumi.String
@@ -151,6 +167,14 @@ func (e InstanceType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.S
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+func (e InstanceType) Valid() bool {
+	switch e {
+	case InstanceType_T3_Micro, InstanceType_T3_Small, InstanceType_T3_Medium, InstanceType_T3_Large, InstanceType_T3_XLarge, InstanceType_T3_2XLarge, InstanceType_T2_Micro, InstanceType_T2_Small, InstanceType_T2_Medium, InstanceType_T2_Large, InstanceType_T2_XLarge, InstanceType_T2_2XLarge, InstanceType_M1_Small, InstanceType_M1_Medium, InstanceType_M1_Large, InstanceType_M1_XLarge, InstanceType_M2_XLarge, InstanceType_M2_2XLarge, InstanceType_M2_4XLarge, InstanceType_M3_Medium, InstanceType_M3_Large, InstanceType_M3_XLarge, InstanceType_M3_2XLarge, InstanceType_M4_Large, InstanceType_M4_XLarge, InstanceType_M4_2XLarge, InstanceType_M4_4XLarge, InstanceType_M4_10XLarge, InstanceType_M4_16XLarge, InstanceType_M5_Large, InstanceType_M5_XLarge, InstanceType_M5_2XLarge, InstanceType_M5_4XLarge, InstanceType_M5_12XLarge, InstanceType_M5_24XLarge, InstanceType_R3_Large, InstanceType_R3_XLarge, InstanceType_R3_2XLarge, InstanceType_R3_4XLarge, InstanceType_R3_8XLarge, InstanceType_R4_Large, InstanceType_R4_XLarge, InstanceType_R4_2XLarge, InstanceType_R4_4XLarge, InstanceType_R4_8XLarge, InstanceType_R4_16XLarge, InstanceType_R5_Large, InstanceType_R5_XLarge, InstanceType_R5_2XLarge, InstanceType_R5_4XLarge, InstanceType_R5_12XLarge, InstanceType_R5_24XLarge, InstanceType_X1_16XLarge, InstanceType_X1_32XLarge, InstanceType_X1E_XLarge, InstanceType_X1E_2XLarge, InstanceType_X1E_4XLarge, InstanceType_X1E_8XLarge, InstanceType_X1E_32XLarge:
+		return true
+	}
+	return false
+}
+
 type StorageType pulumi.String
 
 const (
@@ -177,4 +201,12 @@ func (e StorageType) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e StorageType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+func (e StorageType) Valid() bool {
+	switch e {
+	case StorageTypeStandard, StorageTypeGP2, StorageTypeIO1:
+		return true
+	}
+	return false
 }

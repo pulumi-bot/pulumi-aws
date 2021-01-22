@@ -59,3 +59,11 @@ func (e Region) ToStringPtrOutput() pulumi.StringPtrOutput {
 func (e Region) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
+
+func (e Region) Valid() bool {
+	switch e {
+	case RegionAFSouth1, RegionAPEast1, RegionAPNortheast1, RegionAPNortheast2, RegionAPSouth1, RegionAPSoutheast2, RegionAPSoutheast1, RegionCACentral, RegionCNNorth1, RegionCNNorthwest1, RegionEUCentral1, RegionEUNorth1, RegionEUWest1, RegionEUWest2, RegionEUWest3, RegionEUSouth1, RegionMESouth1, RegionSAEast1, RegionUSGovEast1, RegionUSGovWest1, RegionUSEast1, RegionUSEast2, RegionUSWest1, RegionUSWest2:
+		return true
+	}
+	return false
+}

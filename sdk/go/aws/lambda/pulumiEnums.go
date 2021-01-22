@@ -51,3 +51,11 @@ func (e Runtime) ToStringPtrOutput() pulumi.StringPtrOutput {
 func (e Runtime) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
+
+func (e Runtime) Valid() bool {
+	switch e {
+	case RuntimeDotnetCore2d1, RuntimeDotnetCore3d1, RuntimeGo1dx, RuntimeJava8, RuntimeJava8AL2, RuntimeJava11, RuntimeRuby2d5, RuntimeRuby2d7, RuntimeNodeJS10dX, RuntimeNodeJS12dX, RuntimePython2d7, RuntimePython3d6, RuntimePython3d7, RuntimePython3d8, RuntimeCustom, RuntimeCustomAL2:
+		return true
+	}
+	return false
+}

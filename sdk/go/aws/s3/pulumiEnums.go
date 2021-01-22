@@ -43,3 +43,11 @@ func (e CannedAcl) ToStringPtrOutput() pulumi.StringPtrOutput {
 func (e CannedAcl) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
+
+func (e CannedAcl) Valid() bool {
+	switch e {
+	case CannedAclPrivate, CannedAclPublicRead, CannedAclPublicReadWrite, CannedAclAwsExecRead, CannedAclAuthenticatedRead, CannedAclBucketOwnerRead, CannedAclBucketOwnerFullControl, CannedAclLogDeliveryWrite:
+		return true
+	}
+	return false
+}
