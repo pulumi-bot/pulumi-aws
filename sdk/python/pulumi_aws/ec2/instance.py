@@ -61,31 +61,6 @@ class Instance(pulumi.CustomResource):
         Provides an EC2 instance resource. This allows instances to be created, updated, and deleted.
 
         ## Example Usage
-        ### Basic Example Using AMI Lookup
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-
-        ubuntu = aws.get_ami(most_recent=True,
-            filters=[
-                aws.GetAmiFilterArgs(
-                    name="name",
-                    values=["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"],
-                ),
-                aws.GetAmiFilterArgs(
-                    name="virtualization-type",
-                    values=["hvm"],
-                ),
-            ],
-            owners=["099720109477"])
-        web = aws.ec2.Instance("web",
-            ami=ubuntu.id,
-            instance_type="t3.micro",
-            tags={
-                "Name": "HelloWorld",
-            })
-        ```
         ### Network and Credit Specification Example
 
         ```python
