@@ -111,6 +111,147 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        The access key for API operations. You can retrieve this from the 'Security & Credentials' section of the AWS console.
+        """
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="allowedAccountIds")
+    def allowed_account_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        return pulumi.get(self, "allowed_account_ids")
+
+    @property
+    @pulumi.getter(name="assumeRole")
+    def assume_role(self) -> pulumi.Output[Optional['outputs.ProviderAssumeRole']]:
+        return pulumi.get(self, "assume_role")
+
+    @property
+    @pulumi.getter
+    def endpoints(self) -> pulumi.Output[Optional[Sequence['outputs.ProviderEndpoint']]]:
+        return pulumi.get(self, "endpoints")
+
+    @property
+    @pulumi.getter(name="forbiddenAccountIds")
+    def forbidden_account_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        return pulumi.get(self, "forbidden_account_ids")
+
+    @property
+    @pulumi.getter(name="ignoreTags")
+    def ignore_tags(self) -> pulumi.Output[Optional['outputs.ProviderIgnoreTags']]:
+        """
+        Configuration block with settings to ignore resource tags across all resources.
+        """
+        return pulumi.get(self, "ignore_tags")
+
+    @property
+    @pulumi.getter
+    def insecure(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Explicitly allow the provider to perform "insecure" SSL requests. If omitted,default value is `false`
+        """
+        return pulumi.get(self, "insecure")
+
+    @property
+    @pulumi.getter(name="maxRetries")
+    def max_retries(self) -> pulumi.Output[Optional[int]]:
+        """
+        The maximum number of times an AWS API request is being executed. If the API request still fails, an error is thrown.
+        """
+        return pulumi.get(self, "max_retries")
+
+    @property
+    @pulumi.getter
+    def profile(self) -> pulumi.Output[Optional[str]]:
+        """
+        The profile for API operations. If not set, the default profile created with `aws configure` will be used.
+        """
+        return pulumi.get(self, "profile")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[Optional[str]]:
+        """
+        The region where AWS operations will take place. Examples are us-east-1, us-west-2, etc.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="s3ForcePathStyle")
+    def s3_force_path_style(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Set this to true to force the request to use path-style addressing, i.e., http://s3.amazonaws.com/BUCKET/KEY. By
+        default, the S3 client will use virtual hosted bucket addressing when possible (http://BUCKET.s3.amazonaws.com/KEY).
+        Specific to the Amazon S3 service.
+        """
+        return pulumi.get(self, "s3_force_path_style")
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        The secret key for API operations. You can retrieve this from the 'Security & Credentials' section of the AWS console.
+        """
+        return pulumi.get(self, "secret_key")
+
+    @property
+    @pulumi.getter(name="sharedCredentialsFile")
+    def shared_credentials_file(self) -> pulumi.Output[Optional[str]]:
+        """
+        The path to the shared credentials file. If not set this defaults to ~/.aws/credentials.
+        """
+        return pulumi.get(self, "shared_credentials_file")
+
+    @property
+    @pulumi.getter(name="skipCredentialsValidation")
+    def skip_credentials_validation(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Skip the credentials validation via STS API. Used for AWS API implementations that do not have STS
+        available/implemented.
+        """
+        return pulumi.get(self, "skip_credentials_validation")
+
+    @property
+    @pulumi.getter(name="skipGetEc2Platforms")
+    def skip_get_ec2_platforms(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Skip getting the supported EC2 platforms. Used by users that don't have ec2:DescribeAccountAttributes permissions.
+        """
+        return pulumi.get(self, "skip_get_ec2_platforms")
+
+    @property
+    @pulumi.getter(name="skipMetadataApiCheck")
+    def skip_metadata_api_check(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "skip_metadata_api_check")
+
+    @property
+    @pulumi.getter(name="skipRegionValidation")
+    def skip_region_validation(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Skip static validation of region name. Used by users of alternative AWS-like APIs or users w/ access to regions that are
+        not public (yet).
+        """
+        return pulumi.get(self, "skip_region_validation")
+
+    @property
+    @pulumi.getter(name="skipRequestingAccountId")
+    def skip_requesting_account_id(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Skip requesting the account ID. Used for AWS API implementations that do not have IAM/STS API and/or metadata API.
+        """
+        return pulumi.get(self, "skip_requesting_account_id")
+
+    @property
+    @pulumi.getter
+    def token(self) -> pulumi.Output[Optional[str]]:
+        """
+        session token. A session token is only required if you are using temporary security credentials.
+        """
+        return pulumi.get(self, "token")
+
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
