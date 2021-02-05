@@ -31,7 +31,7 @@ namespace Pulumi.Aws.Elb
         ///         var elbLogs = new Aws.S3.Bucket("elbLogs", new Aws.S3.BucketArgs
         ///         {
         ///             Acl = "private",
-        ///             Policy = main.Apply(main =&gt; @$"{{
+        ///             Policy = main.Apply(main =&gt; Output.Format(@$"{{
         ///   ""Id"": ""Policy"",
         ///   ""Version"": ""2012-10-17"",
         ///   ""Statement"": [
@@ -49,7 +49,7 @@ namespace Pulumi.Aws.Elb
         ///     }}
         ///   ]
         /// }}
-        /// "),
+        /// ")),
         ///         });
         ///         var bar = new Aws.Elb.LoadBalancer("bar", new Aws.Elb.LoadBalancerArgs
         ///         {

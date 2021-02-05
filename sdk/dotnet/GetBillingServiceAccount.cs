@@ -34,7 +34,7 @@ namespace Pulumi.Aws
         ///             {
         ///                 var main = values.Item1;
         ///                 var main1 = values.Item2;
-        ///                 return @$"{{
+        ///                 return Output.Format(@$"{{
         ///   ""Id"": ""Policy"",
         ///   ""Version"": ""2012-10-17"",
         ///   ""Statement"": [
@@ -65,7 +65,7 @@ namespace Pulumi.Aws
         ///   ]
         /// }}
         /// 
-        /// ";
+        /// ");
         ///             }),
         ///         });
         ///     }

@@ -42,7 +42,7 @@ namespace Pulumi.Aws.CloudTrail
     ///                 var bucketId = values.Item1;
     ///                 var bucketId1 = values.Item2;
     ///                 var current = values.Item3;
-    ///                 return @$"  {{
+    ///                 return Output.Format(@$"  {{
     ///       ""Version"": ""2012-10-17"",
     ///       ""Statement"": [
     ///           {{
@@ -70,7 +70,7 @@ namespace Pulumi.Aws.CloudTrail
     ///           }}
     ///       ]
     ///   }}
-    /// ";
+    /// ");
     ///             }),
     ///         });
     ///         var foobar = new Aws.CloudTrail.Trail("foobar", new Aws.CloudTrail.TrailArgs
@@ -185,7 +185,7 @@ namespace Pulumi.Aws.CloudTrail
     ///                             Type = "AWS::S3::Object",
     ///                             Values = 
     ///                             {
-    ///                                 important_bucket.Apply(important_bucket =&gt; $"{important_bucket.Arn}/"),
+    ///                                 important_bucket.Apply(important_bucket =&gt; Output.Format($"{important_bucket.Arn}/")),
     ///                             },
     ///                         },
     ///                     },
@@ -214,7 +214,7 @@ namespace Pulumi.Aws.CloudTrail
     ///         });
     ///         var testRole = new Aws.Iam.Role("testRole", new Aws.Iam.RoleArgs
     ///         {
-    ///             AssumeRolePolicy = current.Apply(current =&gt; @$"{{
+    ///             AssumeRolePolicy = current.Apply(current =&gt; Output.Format(@$"{{
     ///   ""Version"": ""2012-10-17"",
     ///   ""Statement"": [
     ///     {{
@@ -227,12 +227,12 @@ namespace Pulumi.Aws.CloudTrail
     ///     }}
     ///   ]
     /// }}
-    /// "),
+    /// ")),
     ///         });
     ///         var testRolePolicy = new Aws.Iam.RolePolicy("testRolePolicy", new Aws.Iam.RolePolicyArgs
     ///         {
     ///             Role = testRole.Id,
-    ///             Policy = @$"{{
+    ///             Policy = Output.Format(@$"{{
     ///   ""Version"": ""2012-10-17"",
     ///   ""Statement"": [
     ///     {{
@@ -246,13 +246,13 @@ namespace Pulumi.Aws.CloudTrail
     ///     }}
     ///   ]
     /// }}
-    /// ",
+    /// "),
     ///         });
     ///         // ... other configuration ...
     ///         var exampleTrail = new Aws.CloudTrail.Trail("exampleTrail", new Aws.CloudTrail.TrailArgs
     ///         {
     ///             CloudWatchLogsRoleArn = testRole.Arn,
-    ///             CloudWatchLogsGroupArn = exampleLogGroup.Arn.Apply(arn =&gt; $"{arn}:*"),
+    ///             CloudWatchLogsGroupArn = exampleLogGroup.Arn.Apply(arn =&gt; Output.Format($"{arn}:*")),
     ///         });
     ///         // CloudTrail requires the Log Stream wildcard
     ///     }

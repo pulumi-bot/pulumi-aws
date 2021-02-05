@@ -64,12 +64,12 @@ namespace Pulumi.Aws.Glue
         ///                         new Aws.Glue.Inputs.GetScriptDagNodeArgArgs
         ///                         {
         ///                             Name = "database",
-        ///                             Value = $"\"{aws_glue_catalog_database.Source.Name}\"",
+        ///                             Value = Output.Format($"\"{aws_glue_catalog_database.Source.Name}\""),
         ///                         },
         ///                         new Aws.Glue.Inputs.GetScriptDagNodeArgArgs
         ///                         {
         ///                             Name = "table_name",
-        ///                             Value = $"\"{aws_glue_catalog_table.Source.Name}\"",
+        ///                             Value = Output.Format($"\"{aws_glue_catalog_table.Source.Name}\""),
         ///                         },
         ///                     },
         ///                 },
@@ -113,12 +113,12 @@ namespace Pulumi.Aws.Glue
         ///                         new Aws.Glue.Inputs.GetScriptDagNodeArgArgs
         ///                         {
         ///                             Name = "database",
-        ///                             Value = $"\"{aws_glue_catalog_database.Destination.Name}\"",
+        ///                             Value = Output.Format($"\"{aws_glue_catalog_database.Destination.Name}\""),
         ///                         },
         ///                         new Aws.Glue.Inputs.GetScriptDagNodeArgArgs
         ///                         {
         ///                             Name = "table_name",
-        ///                             Value = $"\"{aws_glue_catalog_table.Destination.Name}\"",
+        ///                             Value = Output.Format($"\"{aws_glue_catalog_table.Destination.Name}\""),
         ///                         },
         ///                     },
         ///                 },
@@ -131,12 +131,12 @@ namespace Pulumi.Aws.Glue
         ///                         new Aws.Glue.Inputs.GetScriptDagNodeArgArgs
         ///                         {
         ///                             Name = "database",
-        ///                             Value = $"\"{aws_glue_catalog_database.Destination.Name}\"",
+        ///                             Value = Output.Format($"\"{aws_glue_catalog_database.Destination.Name}\""),
         ///                         },
         ///                         new Aws.Glue.Inputs.GetScriptDagNodeArgArgs
         ///                         {
         ///                             Name = "table_name",
-        ///                             Value = $"\"{aws_glue_catalog_table.Destination.Name}\"",
+        ///                             Value = Output.Format($"\"{aws_glue_catalog_table.Destination.Name}\""),
         ///                         },
         ///                     },
         ///                 },
@@ -198,12 +198,12 @@ namespace Pulumi.Aws.Glue
         ///                         new Aws.Glue.Inputs.GetScriptDagNodeArgArgs
         ///                         {
         ///                             Name = "database",
-        ///                             Value = $"\"{aws_glue_catalog_database.Source.Name}\"",
+        ///                             Value = Output.Format($"\"{aws_glue_catalog_database.Source.Name}\""),
         ///                         },
         ///                         new Aws.Glue.Inputs.GetScriptDagNodeArgArgs
         ///                         {
         ///                             Name = "table_name",
-        ///                             Value = $"\"{aws_glue_catalog_table.Source.Name}\"",
+        ///                             Value = Output.Format($"\"{aws_glue_catalog_table.Source.Name}\""),
         ///                         },
         ///                     },
         ///                 },
@@ -247,12 +247,12 @@ namespace Pulumi.Aws.Glue
         ///                         new Aws.Glue.Inputs.GetScriptDagNodeArgArgs
         ///                         {
         ///                             Name = "database",
-        ///                             Value = $"\"{aws_glue_catalog_database.Destination.Name}\"",
+        ///                             Value = Output.Format($"\"{aws_glue_catalog_database.Destination.Name}\""),
         ///                         },
         ///                         new Aws.Glue.Inputs.GetScriptDagNodeArgArgs
         ///                         {
         ///                             Name = "table_name",
-        ///                             Value = $"\"{aws_glue_catalog_table.Destination.Name}\"",
+        ///                             Value = Output.Format($"\"{aws_glue_catalog_table.Destination.Name}\""),
         ///                         },
         ///                     },
         ///                 },
@@ -265,12 +265,12 @@ namespace Pulumi.Aws.Glue
         ///                         new Aws.Glue.Inputs.GetScriptDagNodeArgArgs
         ///                         {
         ///                             Name = "database",
-        ///                             Value = $"\"{aws_glue_catalog_database.Destination.Name}\"",
+        ///                             Value = Output.Format($"\"{aws_glue_catalog_database.Destination.Name}\""),
         ///                         },
         ///                         new Aws.Glue.Inputs.GetScriptDagNodeArgArgs
         ///                         {
         ///                             Name = "table_name",
-        ///                             Value = $"\"{aws_glue_catalog_table.Destination.Name}\"",
+        ///                             Value = Output.Format($"\"{aws_glue_catalog_table.Destination.Name}\""),
         ///                         },
         ///                     },
         ///                 },

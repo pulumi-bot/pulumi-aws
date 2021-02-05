@@ -62,7 +62,7 @@ namespace Pulumi.Aws.ApiGatewayV2
     ///                 {
     ///                     "example",
     ///                 },
-    ///                 Issuer = $"https://{aws_cognito_user_pool.Example.Endpoint}",
+    ///                 Issuer = Output.Format($"https://{aws_cognito_user_pool.Example.Endpoint}"),
     ///             },
     ///         });
     ///     }

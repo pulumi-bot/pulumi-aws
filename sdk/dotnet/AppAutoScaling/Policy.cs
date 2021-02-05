@@ -127,7 +127,7 @@ namespace Pulumi.Aws.AppAutoScaling
     ///         {
     ///             ServiceNamespace = "rds",
     ///             ScalableDimension = "rds:cluster:ReadReplicaCount",
-    ///             ResourceId = $"cluster:{aws_rds_cluster.Example.Id}",
+    ///             ResourceId = Output.Format($"cluster:{aws_rds_cluster.Example.Id}"),
     ///             MinCapacity = 1,
     ///             MaxCapacity = 15,
     ///         });

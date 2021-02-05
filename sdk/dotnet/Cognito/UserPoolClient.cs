@@ -101,7 +101,7 @@ namespace Pulumi.Aws.Cognito
     ///             {
     ///                 var current = values.Item1;
     ///                 var applicationId = values.Item2;
-    ///                 return @$"{{
+    ///                 return Output.Format(@$"{{
     ///   ""Version"": ""2012-10-17"",
     ///   ""Statement"": [
     ///     {{
@@ -114,7 +114,7 @@ namespace Pulumi.Aws.Cognito
     ///     }}
     ///   ]
     /// }}
-    /// ";
+    /// ");
     ///             }),
     ///         });
     ///         var testUserPoolClient = new Aws.Cognito.UserPoolClient("testUserPoolClient", new Aws.Cognito.UserPoolClientArgs

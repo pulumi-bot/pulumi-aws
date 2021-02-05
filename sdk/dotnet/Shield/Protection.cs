@@ -38,7 +38,7 @@ namespace Pulumi.Aws.Shield
     ///                 var currentRegion = values.Item1;
     ///                 var currentCallerIdentity = values.Item2;
     ///                 var id = values.Item3;
-    ///                 return $"arn:aws:ec2:{currentRegion.Name}:{currentCallerIdentity.AccountId}:eip-allocation/{id}";
+    ///                 return Output.Format($"arn:aws:ec2:{currentRegion.Name}:{currentCallerIdentity.AccountId}:eip-allocation/{id}");
     ///             }),
     ///         });
     ///     }

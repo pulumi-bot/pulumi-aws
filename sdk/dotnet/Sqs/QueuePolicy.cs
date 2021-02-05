@@ -29,7 +29,7 @@ namespace Pulumi.Aws.Sqs
     ///         var test = new Aws.Sqs.QueuePolicy("test", new Aws.Sqs.QueuePolicyArgs
     ///         {
     ///             QueueUrl = queue.Id,
-    ///             Policy = queue.Arn.Apply(arn =&gt; @$"{{
+    ///             Policy = queue.Arn.Apply(arn =&gt; Output.Format(@$"{{
     ///   ""Version"": ""2012-10-17"",
     ///   ""Id"": ""sqspolicy"",
     ///   ""Statement"": [
@@ -47,7 +47,7 @@ namespace Pulumi.Aws.Sqs
     ///     }}
     ///   ]
     /// }}
-    /// "),
+    /// ")),
     ///         });
     ///     }
     /// 

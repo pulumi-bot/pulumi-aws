@@ -97,7 +97,7 @@ namespace Pulumi.Aws.CloudFormation
     ///                     Effect = "Allow",
     ///                     Resources = 
     ///                     {
-    ///                         $"arn:aws:iam::*:role/{executionRoleName}",
+    ///                         Output.Format($"arn:aws:iam::*:role/{executionRoleName}"),
     ///                     },
     ///                 },
     ///             },

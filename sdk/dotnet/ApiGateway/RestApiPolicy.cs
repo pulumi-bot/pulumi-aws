@@ -31,7 +31,7 @@ namespace Pulumi.Aws.ApiGateway
     ///         var testRestApiPolicy = new Aws.ApiGateway.RestApiPolicy("testRestApiPolicy", new Aws.ApiGateway.RestApiPolicyArgs
     ///         {
     ///             RestApiId = testRestApi.Id,
-    ///             Policy = testRestApi.ExecutionArn.Apply(executionArn =&gt; @$"{{
+    ///             Policy = testRestApi.ExecutionArn.Apply(executionArn =&gt; Output.Format(@$"{{
     ///   ""Version"": ""2012-10-17"",
     ///   ""Statement"": [
     ///     {{
@@ -49,7 +49,7 @@ namespace Pulumi.Aws.ApiGateway
     ///     }}
     ///   ]
     /// }}
-    /// "),
+    /// ")),
     ///         });
     ///     }
     /// 

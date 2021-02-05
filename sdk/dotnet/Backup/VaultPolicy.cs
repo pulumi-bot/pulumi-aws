@@ -28,7 +28,7 @@ namespace Pulumi.Aws.Backup
     ///         var exampleVaultPolicy = new Aws.Backup.VaultPolicy("exampleVaultPolicy", new Aws.Backup.VaultPolicyArgs
     ///         {
     ///             BackupVaultName = exampleVault.Name,
-    ///             Policy = exampleVault.Arn.Apply(arn =&gt; @$"{{
+    ///             Policy = exampleVault.Arn.Apply(arn =&gt; Output.Format(@$"{{
     ///   ""Version"": ""2012-10-17"",
     ///   ""Id"": ""default"",
     ///   ""Statement"": [
@@ -52,7 +52,7 @@ namespace Pulumi.Aws.Backup
     ///     }}
     ///   ]
     /// }}
-    /// "),
+    /// ")),
     ///         });
     ///     }
     /// 

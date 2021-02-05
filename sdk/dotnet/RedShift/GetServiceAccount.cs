@@ -35,7 +35,7 @@ namespace Pulumi.Aws.RedShift
         ///             {
         ///                 var main = values.Item1;
         ///                 var main1 = values.Item2;
-        ///                 return @$"{{
+        ///                 return Output.Format(@$"{{
         /// 	""Version"": ""2008-10-17"",
         /// 	""Statement"": [
         /// 		{{
@@ -59,7 +59,7 @@ namespace Pulumi.Aws.RedShift
         /// 	]
         /// }}
         /// 
-        /// ";
+        /// ");
         ///             }),
         ///         });
         ///     }

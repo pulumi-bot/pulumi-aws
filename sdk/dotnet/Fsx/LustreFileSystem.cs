@@ -24,7 +24,7 @@ namespace Pulumi.Aws.Fsx
     ///     {
     ///         var example = new Aws.Fsx.LustreFileSystem("example", new Aws.Fsx.LustreFileSystemArgs
     ///         {
-    ///             ImportPath = $"s3://{aws_s3_bucket.Example.Bucket}",
+    ///             ImportPath = Output.Format($"s3://{aws_s3_bucket.Example.Bucket}"),
     ///             StorageCapacity = 1200,
     ///             SubnetIds = 
     ///             {

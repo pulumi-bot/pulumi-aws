@@ -67,7 +67,7 @@ namespace Pulumi.Aws.Iot
     ///         var iamPolicyForLambda = new Aws.Iam.RolePolicy("iamPolicyForLambda", new Aws.Iam.RolePolicyArgs
     ///         {
     ///             Role = role.Id,
-    ///             Policy = mytopic.Arn.Apply(arn =&gt; @$"{{
+    ///             Policy = mytopic.Arn.Apply(arn =&gt; Output.Format(@$"{{
     ///   ""Version"": ""2012-10-17"",
     ///   ""Statement"": [
     ///     {{
@@ -79,7 +79,7 @@ namespace Pulumi.Aws.Iot
     ///     }}
     ///   ]
     /// }}
-    /// "),
+    /// ")),
     ///         });
     ///     }
     /// 

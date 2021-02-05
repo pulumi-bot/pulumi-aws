@@ -30,7 +30,7 @@ namespace Pulumi.Aws.Athena
     ///                 PublishCloudwatchMetricsEnabled = true,
     ///                 ResultConfiguration = new Aws.Athena.Inputs.WorkgroupConfigurationResultConfigurationArgs
     ///                 {
-    ///                     OutputLocation = $"s3://{aws_s3_bucket.Example.Bucket}/output/",
+    ///                     OutputLocation = Output.Format($"s3://{aws_s3_bucket.Example.Bucket}/output/"),
     ///                     EncryptionConfiguration = new Aws.Athena.Inputs.WorkgroupConfigurationResultConfigurationEncryptionConfigurationArgs
     ///                     {
     ///                         EncryptionOption = "SSE_KMS",

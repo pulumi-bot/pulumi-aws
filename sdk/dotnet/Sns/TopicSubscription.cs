@@ -144,7 +144,7 @@ namespace Pulumi.Aws.Sns
     ///                     },
     ///                     Resources = 
     ///                     {
-    ///                         $"arn:aws:sns:{sns.Region}:{sns.Account_id}:{sns.Name}",
+    ///                         Output.Format($"arn:aws:sns:{sns.Region}:{sns.Account_id}:{sns.Name}"),
     ///                     },
     ///                     Sid = "__default_statement_ID",
     ///                 },
@@ -163,7 +163,7 @@ namespace Pulumi.Aws.Sns
     ///                             Variable = "SNS:Endpoint",
     ///                             Values = 
     ///                             {
-    ///                                 $"arn:aws:sqs:{sqs.Region}:{sqs.Account_id}:{sqs.Name}",
+    ///                                 Output.Format($"arn:aws:sqs:{sqs.Region}:{sqs.Account_id}:{sqs.Name}"),
     ///                             },
     ///                         },
     ///                     },
@@ -181,7 +181,7 @@ namespace Pulumi.Aws.Sns
     ///                     },
     ///                     Resources = 
     ///                     {
-    ///                         $"arn:aws:sns:{sns.Region}:{sns.Account_id}:{sns.Name}",
+    ///                         Output.Format($"arn:aws:sns:{sns.Region}:{sns.Account_id}:{sns.Name}"),
     ///                     },
     ///                     Sid = "__console_sub_0",
     ///                 },
@@ -189,7 +189,7 @@ namespace Pulumi.Aws.Sns
     ///         }));
     ///         var sqs_queue_policy = Output.Create(Aws.Iam.GetPolicyDocument.InvokeAsync(new Aws.Iam.GetPolicyDocumentArgs
     ///         {
-    ///             PolicyId = $"arn:aws:sqs:{sqs.Region}:{sqs.Account_id}:{sqs.Name}/SQSDefaultPolicy",
+    ///             PolicyId = Output.Format($"arn:aws:sqs:{sqs.Region}:{sqs.Account_id}:{sqs.Name}/SQSDefaultPolicy"),
     ///             Statements = 
     ///             {
     ///                 new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
@@ -213,7 +213,7 @@ namespace Pulumi.Aws.Sns
     ///                     },
     ///                     Resources = 
     ///                     {
-    ///                         $"arn:aws:sqs:{sqs.Region}:{sqs.Account_id}:{sqs.Name}",
+    ///                         Output.Format($"arn:aws:sqs:{sqs.Region}:{sqs.Account_id}:{sqs.Name}"),
     ///                     },
     ///                     Conditions = 
     ///                     {
@@ -223,7 +223,7 @@ namespace Pulumi.Aws.Sns
     ///                             Variable = "aws:SourceArn",
     ///                             Values = 
     ///                             {
-    ///                                 $"arn:aws:sns:{sns.Region}:{sns.Account_id}:{sns.Name}",
+    ///                                 Output.Format($"arn:aws:sns:{sns.Region}:{sns.Account_id}:{sns.Name}"),
     ///                             },
     ///                         },
     ///                     },
@@ -236,8 +236,8 @@ namespace Pulumi.Aws.Sns
     ///             Region = sns.Region,
     ///             AssumeRole = new Aws.Config.Inputs.AssumeRoleArgs
     ///             {
-    ///                 RoleArn = $"arn:aws:iam::{sns.Account_id}:role/{sns.Role_name}",
-    ///                 SessionName = $"sns-{sns.Region}",
+    ///                 RoleArn = Output.Format($"arn:aws:iam::{sns.Account_id}:role/{sns.Role_name}"),
+    ///                 SessionName = Output.Format($"sns-{sns.Region}"),
     ///             },
     ///         });
     ///         // provider to manage SQS queues
@@ -246,8 +246,8 @@ namespace Pulumi.Aws.Sns
     ///             Region = sqs.Region,
     ///             AssumeRole = new Aws.Config.Inputs.AssumeRoleArgs
     ///             {
-    ///                 RoleArn = $"arn:aws:iam::{sqs.Account_id}:role/{sqs.Role_name}",
-    ///                 SessionName = $"sqs-{sqs.Region}",
+    ///                 RoleArn = Output.Format($"arn:aws:iam::{sqs.Account_id}:role/{sqs.Role_name}"),
+    ///                 SessionName = Output.Format($"sqs-{sqs.Region}"),
     ///             },
     ///         });
     ///         // provider to subscribe SQS to SNS (using the SQS account but the SNS region)
@@ -256,8 +256,8 @@ namespace Pulumi.Aws.Sns
     ///             Region = sns.Region,
     ///             AssumeRole = new Aws.Config.Inputs.AssumeRoleArgs
     ///             {
-    ///                 RoleArn = $"arn:aws:iam::{sqs.Account_id}:role/{sqs.Role_name}",
-    ///                 SessionName = $"sns2sqs-{sns.Region}",
+    ///                 RoleArn = Output.Format($"arn:aws:iam::{sqs.Account_id}:role/{sqs.Role_name}"),
+    ///                 SessionName = Output.Format($"sns2sqs-{sns.Region}"),
     ///             },
     ///         });
     ///         var sns_topicTopic = new Aws.Sns.Topic("sns-topicTopic", new Aws.Sns.TopicArgs

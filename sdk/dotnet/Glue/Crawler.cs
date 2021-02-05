@@ -84,7 +84,7 @@ namespace Pulumi.Aws.Glue
     ///             {
     ///                 new Aws.Glue.Inputs.CrawlerS3TargetArgs
     ///                 {
-    ///                     Path = $"s3://{aws_s3_bucket.Example.Bucket}",
+    ///                     Path = Output.Format($"s3://{aws_s3_bucket.Example.Bucket}"),
     ///                 },
     ///             },
     ///         });
@@ -197,7 +197,7 @@ namespace Pulumi.Aws.Glue
     ///             {
     ///                 new Aws.Glue.Inputs.CrawlerS3TargetArgs
     ///                 {
-    ///                     Path = $"s3://{aws_s3_bucket.Data_lake_bucket.Bucket}",
+    ///                     Path = Output.Format($"s3://{aws_s3_bucket.Data_lake_bucket.Bucket}"),
     ///                 },
     ///             },
     ///         });

@@ -49,7 +49,7 @@ namespace Pulumi.Aws.CodeBuild
     ///             {
     ///                 var exampleBucketArn = values.Item1;
     ///                 var exampleBucketArn1 = values.Item2;
-    ///                 return @$"{{
+    ///                 return Output.Format(@$"{{
     ///   ""Version"": ""2012-10-17"",
     ///   ""Statement"": [
     ///     {{
@@ -106,7 +106,7 @@ namespace Pulumi.Aws.CodeBuild
     ///     }}
     ///   ]
     /// }}
-    /// ";
+    /// ");
     ///             }),
     ///         });
     ///         var exampleProject = new Aws.CodeBuild.Project("exampleProject", new Aws.CodeBuild.ProjectArgs
@@ -154,7 +154,7 @@ namespace Pulumi.Aws.CodeBuild
     ///                 S3Logs = new Aws.CodeBuild.Inputs.ProjectLogsConfigS3LogsArgs
     ///                 {
     ///                     Status = "ENABLED",
-    ///                     Location = exampleBucket.Id.Apply(id =&gt; $"{id}/build-log"),
+    ///                     Location = exampleBucket.Id.Apply(id =&gt; Output.Format($"{id}/build-log")),
     ///                 },
     ///             },
     ///             Source = new Aws.CodeBuild.Inputs.ProjectSourceArgs

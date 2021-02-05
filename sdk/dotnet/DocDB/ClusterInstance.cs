@@ -48,7 +48,7 @@ namespace Pulumi.Aws.DocDB
     ///             var range = new { Value = rangeIndex };
     ///             clusterInstances.Add(new Aws.DocDB.ClusterInstance($"clusterInstances-{range.Value}", new Aws.DocDB.ClusterInstanceArgs
     ///             {
-    ///                 Identifier = $"docdb-cluster-demo-{range.Value}",
+    ///                 Identifier = Output.Format($"docdb-cluster-demo-{range.Value}"),
     ///                 ClusterIdentifier = @default.Id,
     ///                 InstanceClass = "db.r5.large",
     ///             }));

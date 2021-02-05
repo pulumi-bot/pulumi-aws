@@ -36,7 +36,7 @@ namespace Pulumi.Aws.Fms
     ///             },
     ///             SecurityServicePolicyData = new Aws.Fms.Inputs.PolicySecurityServicePolicyDataArgs
     ///             {
-    ///                 ManagedServiceData = test.Id.Apply(id =&gt; @$"      {{
+    ///                 ManagedServiceData = test.Id.Apply(id =&gt; Output.Format(@$"      {{
     ///         ""type"": ""WAF"",
     ///         ""ruleGroups"":
     ///           [{{
@@ -52,7 +52,7 @@ namespace Pulumi.Aws.Fms
     ///         ""overrideCustomerWebACLAssociation"": false
     ///       }}
     /// 
-    /// "),
+    /// ")),
     ///                 Type = "WAF",
     ///             },
     ///         });

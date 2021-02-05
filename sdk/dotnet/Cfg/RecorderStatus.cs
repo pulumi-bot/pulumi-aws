@@ -74,7 +74,7 @@ namespace Pulumi.Aws.Cfg
     ///             {
     ///                 var bucketArn = values.Item1;
     ///                 var bucketArn1 = values.Item2;
-    ///                 return @$"{{
+    ///                 return Output.Format(@$"{{
     ///   ""Version"": ""2012-10-17"",
     ///   ""Statement"": [
     ///     {{
@@ -89,7 +89,7 @@ namespace Pulumi.Aws.Cfg
     ///     }}
     ///   ]
     /// }}
-    /// ";
+    /// ");
     ///             }),
     ///         });
     ///     }

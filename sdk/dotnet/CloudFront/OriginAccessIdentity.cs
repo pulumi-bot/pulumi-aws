@@ -99,7 +99,7 @@ namespace Pulumi.Aws.CloudFront
     ///                     },
     ///                     Resources = 
     ///                     {
-    ///                         $"{aws_s3_bucket.Example.Arn}/*",
+    ///                         Output.Format($"{aws_s3_bucket.Example.Arn}/*"),
     ///                     },
     ///                     Principals = 
     ///                     {

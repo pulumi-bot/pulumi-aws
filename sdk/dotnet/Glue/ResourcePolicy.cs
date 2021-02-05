@@ -42,7 +42,7 @@ namespace Pulumi.Aws.Glue
     ///                         },
     ///                         Resources = 
     ///                         {
-    ///                             $"arn:{currentPartition.Partition}:glue:{currentRegion.Name}:{currentCallerIdentity.AccountId}:*",
+    ///                             Output.Format($"arn:{currentPartition.Partition}:glue:{currentRegion.Name}:{currentCallerIdentity.AccountId}:*"),
     ///                         },
     ///                         Principals = 
     ///                         {

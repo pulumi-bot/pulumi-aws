@@ -52,7 +52,7 @@ namespace Pulumi.Aws.Glue
     ///         {
     ///             ConnectionProperties = 
     ///             {
-    ///                 { "JDBC_CONNECTION_URL", $"jdbc:mysql://{aws_rds_cluster.Example.Endpoint}/exampledatabase" },
+    ///                 { "JDBC_CONNECTION_URL", Output.Format($"jdbc:mysql://{aws_rds_cluster.Example.Endpoint}/exampledatabase") },
     ///                 { "PASSWORD", "examplepassword" },
     ///                 { "USERNAME", "exampleusername" },
     ///             },

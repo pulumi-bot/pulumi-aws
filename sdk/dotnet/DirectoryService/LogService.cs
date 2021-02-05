@@ -50,7 +50,7 @@ namespace Pulumi.Aws.DirectoryService
     ///                     },
     ///                     Resources = 
     ///                     {
-    ///                         $"{arn}:*",
+    ///                         Output.Format($"{arn}:*"),
     ///                     },
     ///                     Effect = "Allow",
     ///                 },

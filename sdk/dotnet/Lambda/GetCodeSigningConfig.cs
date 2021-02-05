@@ -30,7 +30,7 @@ namespace Pulumi.Aws.Lambda
         ///     {
         ///         var existingCsc = Output.Create(Aws.Lambda.GetCodeSigningConfig.InvokeAsync(new Aws.Lambda.GetCodeSigningConfigArgs
         ///         {
-        ///             Arn = $"arn:aws:lambda:{@var.Aws_region}:{@var.Aws_account}:code-signing-config:csc-0f6c334abcdea4d8b",
+        ///             Arn = Output.Format($"arn:aws:lambda:{@var.Aws_region}:{@var.Aws_account}:code-signing-config:csc-0f6c334abcdea4d8b"),
         ///         }));
         ///     }
         /// 

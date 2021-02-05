@@ -31,7 +31,7 @@ namespace Pulumi.Aws.Ec2
         ///         var current = Output.Create(Aws.GetRegion.InvokeAsync());
         ///         var example = current.Apply(current =&gt; Output.Create(Aws.Ec2.GetManagedPrefixList.InvokeAsync(new Aws.Ec2.GetManagedPrefixListArgs
         ///         {
-        ///             Name = $"com.amazonaws.{current.Name}.dynamodb",
+        ///             Name = Output.Format($"com.amazonaws.{current.Name}.dynamodb"),
         ///         })));
         ///     }
         /// 

@@ -33,7 +33,7 @@ namespace Pulumi.Aws.Cognito
     ///         });
     ///         var authenticatedRole = new Aws.Iam.Role("authenticatedRole", new Aws.Iam.RoleArgs
     ///         {
-    ///             AssumeRolePolicy = mainIdentityPool.Id.Apply(id =&gt; @$"{{
+    ///             AssumeRolePolicy = mainIdentityPool.Id.Apply(id =&gt; Output.Format(@$"{{
     ///   ""Version"": ""2012-10-17"",
     ///   ""Statement"": [
     ///     {{
@@ -53,7 +53,7 @@ namespace Pulumi.Aws.Cognito
     ///     }}
     ///   ]
     /// }}
-    /// "),
+    /// ")),
     ///         });
     ///         var authenticatedRolePolicy = new Aws.Iam.RolePolicy("authenticatedRolePolicy", new Aws.Iam.RolePolicyArgs
     ///         {

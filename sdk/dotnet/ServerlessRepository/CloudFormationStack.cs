@@ -38,7 +38,7 @@ namespace Pulumi.Aws.ServerlessRepository
     ///                 {
     ///                     var currentRegion = values.Item1;
     ///                     var currentPartition = values.Item2;
-    ///                     return $"secretsmanager.{currentRegion.Name}.{currentPartition.DnsSuffix}";
+    ///                     return Output.Format($"secretsmanager.{currentRegion.Name}.{currentPartition.DnsSuffix}");
     ///                 }) },
     ///                 { "functionName", "func-postgres-rotator" },
     ///             },

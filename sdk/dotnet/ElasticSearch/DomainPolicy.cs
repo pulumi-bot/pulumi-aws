@@ -29,7 +29,7 @@ namespace Pulumi.Aws.ElasticSearch
     ///         var main = new Aws.ElasticSearch.DomainPolicy("main", new Aws.ElasticSearch.DomainPolicyArgs
     ///         {
     ///             DomainName = example.DomainName,
-    ///             AccessPolicies = example.Arn.Apply(arn =&gt; @$"{{
+    ///             AccessPolicies = example.Arn.Apply(arn =&gt; Output.Format(@$"{{
     ///     ""Version"": ""2012-10-17"",
     ///     ""Statement"": [
     ///         {{
@@ -43,7 +43,7 @@ namespace Pulumi.Aws.ElasticSearch
     ///         }}
     ///     ]
     /// }}
-    /// "),
+    /// ")),
     ///         });
     ///     }
     /// 

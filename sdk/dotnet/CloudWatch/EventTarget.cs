@@ -222,7 +222,7 @@ namespace Pulumi.Aws.CloudWatch
     ///         });
     ///         var stopInstancesEventTarget = new Aws.CloudWatch.EventTarget("stopInstancesEventTarget", new Aws.CloudWatch.EventTargetArgs
     ///         {
-    ///             Arn = $"arn:aws:ssm:{@var.Aws_region}::document/AWS-RunShellScript",
+    ///             Arn = Output.Format($"arn:aws:ssm:{@var.Aws_region}::document/AWS-RunShellScript"),
     ///             Input = "{\"commands\":[\"halt\"]}",
     ///             Rule = stopInstancesEventRule.Name,
     ///             RoleArn = aws_iam_role.Ssm_lifecycle.Arn,

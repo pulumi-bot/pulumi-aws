@@ -75,7 +75,7 @@ namespace Pulumi.Aws.Acmpca
     ///                         Resources = 
     ///                         {
     ///                             exampleBucketArn,
-    ///                             $"{exampleBucketArn1}/*",
+    ///                             Output.Format($"{exampleBucketArn1}/*"),
     ///                         },
     ///                         Principals = 
     ///                         {

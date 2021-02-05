@@ -40,7 +40,7 @@ namespace Pulumi.Aws.CodeArtifact
     ///         {
     ///             Repository = exampleRepository.RepositoryName,
     ///             Domain = exampleDomain.DomainName,
-    ///             PolicyDocument = exampleDomain.Arn.Apply(arn =&gt; @$"{{
+    ///             PolicyDocument = exampleDomain.Arn.Apply(arn =&gt; Output.Format(@$"{{
     ///     ""Version"": ""2012-10-17"",
     ///     ""Statement"": [
     ///         {{
@@ -51,7 +51,7 @@ namespace Pulumi.Aws.CodeArtifact
     ///         }}
     ///     ]
     /// }}
-    /// "),
+    /// ")),
     ///         });
     ///     }
     /// 

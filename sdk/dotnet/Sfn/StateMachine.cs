@@ -27,7 +27,7 @@ namespace Pulumi.Aws.Sfn
     ///         var sfnStateMachine = new Aws.Sfn.StateMachine("sfnStateMachine", new Aws.Sfn.StateMachineArgs
     ///         {
     ///             RoleArn = aws_iam_role.Iam_for_sfn.Arn,
-    ///             Definition = @$"{{
+    ///             Definition = Output.Format(@$"{{
     ///   ""Comment"": ""A Hello World example of the Amazon States Language using an AWS Lambda Function"",
     ///   ""StartAt"": ""HelloWorld"",
     ///   ""States"": {{
@@ -38,7 +38,7 @@ namespace Pulumi.Aws.Sfn
     ///     }}
     ///   }}
     /// }}
-    /// ",
+    /// "),
     ///         });
     ///     }
     /// 
@@ -59,7 +59,7 @@ namespace Pulumi.Aws.Sfn
     ///         {
     ///             RoleArn = aws_iam_role.Iam_for_sfn.Arn,
     ///             Type = "EXPRESS",
-    ///             Definition = @$"{{
+    ///             Definition = Output.Format(@$"{{
     ///   ""Comment"": ""A Hello World example of the Amazon States Language using an AWS Lambda Function"",
     ///   ""StartAt"": ""HelloWorld"",
     ///   ""States"": {{
@@ -70,7 +70,7 @@ namespace Pulumi.Aws.Sfn
     ///     }}
     ///   }}
     /// }}
-    /// ",
+    /// "),
     ///         });
     ///     }
     /// 
@@ -92,7 +92,7 @@ namespace Pulumi.Aws.Sfn
     ///         var sfnStateMachine = new Aws.Sfn.StateMachine("sfnStateMachine", new Aws.Sfn.StateMachineArgs
     ///         {
     ///             RoleArn = aws_iam_role.Iam_for_sfn.Arn,
-    ///             Definition = @$"{{
+    ///             Definition = Output.Format(@$"{{
     ///   ""Comment"": ""A Hello World example of the Amazon States Language using an AWS Lambda Function"",
     ///   ""StartAt"": ""HelloWorld"",
     ///   ""States"": {{
@@ -103,7 +103,7 @@ namespace Pulumi.Aws.Sfn
     ///     }}
     ///   }}
     /// }}
-    /// ",
+    /// "),
     ///             LoggingConfiguration = new Aws.Sfn.Inputs.StateMachineLoggingConfigurationArgs
     ///             {
     ///                 LogDestination = aws_cloudwatch_log_group.Log_group_for_sfn.Arn,

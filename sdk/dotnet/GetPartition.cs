@@ -39,7 +39,7 @@ namespace Pulumi.Aws
         ///                     },
         ///                     Resources = 
         ///                     {
-        ///                         $"arn:{current.Partition}:s3:::my-bucket",
+        ///                         Output.Format($"arn:{current.Partition}:s3:::my-bucket"),
         ///                     },
         ///                     Sid = "1",
         ///                 },

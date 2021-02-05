@@ -32,7 +32,7 @@ namespace Pulumi.Aws.Ses
     ///         var exampleMailFrom = new Aws.Ses.MailFrom("exampleMailFrom", new Aws.Ses.MailFromArgs
     ///         {
     ///             Domain = exampleDomainIdentity.Domain,
-    ///             MailFromDomain = exampleDomainIdentity.Domain.Apply(domain =&gt; $"bounce.{domain}"),
+    ///             MailFromDomain = exampleDomainIdentity.Domain.Apply(domain =&gt; Output.Format($"bounce.{domain}")),
     ///         });
     ///         // Example Route53 MX record
     ///         var exampleSesDomainMailFromMx = new Aws.Route53.Record("exampleSesDomainMailFromMx", new Aws.Route53.RecordArgs

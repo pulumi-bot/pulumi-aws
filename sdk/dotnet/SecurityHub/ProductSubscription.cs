@@ -28,7 +28,7 @@ namespace Pulumi.Aws.SecurityHub
     ///         var current = Output.Create(Aws.GetRegion.InvokeAsync());
     ///         var exampleProductSubscription = new Aws.SecurityHub.ProductSubscription("exampleProductSubscription", new Aws.SecurityHub.ProductSubscriptionArgs
     ///         {
-    ///             ProductArn = current.Apply(current =&gt; $"arn:aws:securityhub:{current.Name}:733251395267:product/alertlogic/althreatmanagement"),
+    ///             ProductArn = current.Apply(current =&gt; Output.Format($"arn:aws:securityhub:{current.Name}:733251395267:product/alertlogic/althreatmanagement")),
     ///         }, new CustomResourceOptions
     ///         {
     ///             DependsOn = 

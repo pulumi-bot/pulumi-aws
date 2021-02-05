@@ -30,7 +30,7 @@ namespace Pulumi.Aws.Glue
     ///             RoleArn = aws_iam_role.Example.Arn,
     ///             Command = new Aws.Glue.Inputs.JobCommandArgs
     ///             {
-    ///                 ScriptLocation = $"s3://{aws_s3_bucket.Example.Bucket}/example.py",
+    ///                 ScriptLocation = Output.Format($"s3://{aws_s3_bucket.Example.Bucket}/example.py"),
     ///             },
     ///         });
     ///     }
@@ -52,7 +52,7 @@ namespace Pulumi.Aws.Glue
     ///             RoleArn = aws_iam_role.Example.Arn,
     ///             Command = new Aws.Glue.Inputs.JobCommandArgs
     ///             {
-    ///                 ScriptLocation = $"s3://{aws_s3_bucket.Example.Bucket}/example.scala",
+    ///                 ScriptLocation = Output.Format($"s3://{aws_s3_bucket.Example.Bucket}/example.scala"),
     ///             },
     ///             DefaultArguments = 
     ///             {

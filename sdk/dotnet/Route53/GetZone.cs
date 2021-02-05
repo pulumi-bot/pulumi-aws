@@ -39,7 +39,7 @@ namespace Pulumi.Aws.Route53
         ///         var www = new Aws.Route53.Record("www", new Aws.Route53.RecordArgs
         ///         {
         ///             ZoneId = selected.Apply(selected =&gt; selected.ZoneId),
-        ///             Name = selected.Apply(selected =&gt; $"www.{selected.Name}"),
+        ///             Name = selected.Apply(selected =&gt; Output.Format($"www.{selected.Name}")),
         ///             Type = "A",
         ///             Ttl = 300,
         ///             Records = 

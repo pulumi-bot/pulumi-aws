@@ -65,7 +65,7 @@ namespace Pulumi.Aws.ElasticSearch
     ///             {
     ///                 var currentRegion = values.Item1;
     ///                 var currentCallerIdentity = values.Item2;
-    ///                 return @$"{{
+    ///                 return Output.Format(@$"{{
     ///   ""Version"": ""2012-10-17"",
     ///   ""Statement"": [
     ///     {{
@@ -79,7 +79,7 @@ namespace Pulumi.Aws.ElasticSearch
     ///     }}
     ///   ]
     /// }}
-    /// ";
+    /// ");
     ///             }),
     ///         });
     ///     }
@@ -216,7 +216,7 @@ namespace Pulumi.Aws.ElasticSearch
     ///             {
     ///                 var currentRegion = values.Item1;
     ///                 var currentCallerIdentity = values.Item2;
-    ///                 return @$"{{
+    ///                 return Output.Format(@$"{{
     /// 	""Version"": ""2012-10-17"",
     /// 	""Statement"": [
     /// 		{{
@@ -227,7 +227,7 @@ namespace Pulumi.Aws.ElasticSearch
     /// 		}}
     /// 	]
     /// }}
-    /// ";
+    /// ");
     ///             }),
     ///             SnapshotOptions = new Aws.ElasticSearch.Inputs.DomainSnapshotOptionsArgs
     ///             {

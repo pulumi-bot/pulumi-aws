@@ -36,7 +36,7 @@ namespace Pulumi.Aws.MediaStore
     ///                 var currentRegion = values.Item2;
     ///                 var currentCallerIdentity1 = values.Item3;
     ///                 var name = values.Item4;
-    ///                 return @$"{{
+    ///                 return Output.Format(@$"{{
     /// 	""Version"": ""2012-10-17"",
     /// 	""Statement"": [{{
     /// 		""Sid"": ""MediaStoreFullAccess"",
@@ -49,7 +49,7 @@ namespace Pulumi.Aws.MediaStore
     /// 		}}
     /// 	}}]
     /// }}
-    /// ";
+    /// ");
     ///             }),
     ///         });
     ///     }

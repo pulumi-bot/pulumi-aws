@@ -46,7 +46,7 @@ namespace Pulumi.Aws.GuardDuty
     ///                         },
     ///                         Resources = 
     ///                         {
-    ///                             $"{gdBucketArn}/*",
+    ///                             Output.Format($"{gdBucketArn}/*"),
     ///                         },
     ///                         Principals = 
     ///                         {
@@ -106,7 +106,7 @@ namespace Pulumi.Aws.GuardDuty
     ///                         },
     ///                         Resources = 
     ///                         {
-    ///                             $"arn:aws:kms:{currentRegion.Name}:{currentCallerIdentity.AccountId}:key/*",
+    ///                             Output.Format($"arn:aws:kms:{currentRegion.Name}:{currentCallerIdentity.AccountId}:key/*"),
     ///                         },
     ///                         Principals = 
     ///                         {
@@ -129,7 +129,7 @@ namespace Pulumi.Aws.GuardDuty
     ///                         },
     ///                         Resources = 
     ///                         {
-    ///                             $"arn:aws:kms:{currentRegion1.Name}:{currentCallerIdentity1.AccountId}:key/*",
+    ///                             Output.Format($"arn:aws:kms:{currentRegion1.Name}:{currentCallerIdentity1.AccountId}:key/*"),
     ///                         },
     ///                         Principals = 
     ///                         {
@@ -138,7 +138,7 @@ namespace Pulumi.Aws.GuardDuty
     ///                                 Type = "AWS",
     ///                                 Identifiers = 
     ///                                 {
-    ///                                     $"arn:aws:iam::{currentCallerIdentity2.AccountId}:root",
+    ///                                     Output.Format($"arn:aws:iam::{currentCallerIdentity2.AccountId}:root"),
     ///                                 },
     ///                             },
     ///                         },

@@ -30,7 +30,7 @@ namespace Pulumi.Aws.S3
     ///         });
     ///         var topic = new Aws.Sns.Topic("topic", new Aws.Sns.TopicArgs
     ///         {
-    ///             Policy = bucket.Arn.Apply(arn =&gt; @$"{{
+    ///             Policy = bucket.Arn.Apply(arn =&gt; Output.Format(@$"{{
     ///     ""Version"":""2012-10-17"",
     ///     ""Statement"":[{{
     ///         ""Effect"": ""Allow"",
@@ -42,7 +42,7 @@ namespace Pulumi.Aws.S3
     ///         }}
     ///     }}]
     /// }}
-    /// "),
+    /// ")),
     ///         });
     ///         var bucketNotification = new Aws.S3.BucketNotification("bucketNotification", new Aws.S3.BucketNotificationArgs
     ///         {
@@ -79,7 +79,7 @@ namespace Pulumi.Aws.S3
     ///         });
     ///         var queue = new Aws.Sqs.Queue("queue", new Aws.Sqs.QueueArgs
     ///         {
-    ///             Policy = bucket.Arn.Apply(arn =&gt; @$"{{
+    ///             Policy = bucket.Arn.Apply(arn =&gt; Output.Format(@$"{{
     ///   ""Version"": ""2012-10-17"",
     ///   ""Statement"": [
     ///     {{
@@ -93,7 +93,7 @@ namespace Pulumi.Aws.S3
     ///     }}
     ///   ]
     /// }}
-    /// "),
+    /// ")),
     ///         });
     ///         var bucketNotification = new Aws.S3.BucketNotification("bucketNotification", new Aws.S3.BucketNotificationArgs
     ///         {
@@ -294,7 +294,7 @@ namespace Pulumi.Aws.S3
     ///         });
     ///         var queue = new Aws.Sqs.Queue("queue", new Aws.Sqs.QueueArgs
     ///         {
-    ///             Policy = bucket.Arn.Apply(arn =&gt; @$"{{
+    ///             Policy = bucket.Arn.Apply(arn =&gt; Output.Format(@$"{{
     ///   ""Version"": ""2012-10-17"",
     ///   ""Statement"": [
     ///     {{
@@ -308,7 +308,7 @@ namespace Pulumi.Aws.S3
     ///     }}
     ///   ]
     /// }}
-    /// "),
+    /// ")),
     ///         });
     ///         var bucketNotification = new Aws.S3.BucketNotification("bucketNotification", new Aws.S3.BucketNotificationArgs
     ///         {

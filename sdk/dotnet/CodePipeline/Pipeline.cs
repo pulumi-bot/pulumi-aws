@@ -153,7 +153,7 @@ namespace Pulumi.Aws.CodePipeline
     ///             {
     ///                 var codepipelineBucketArn = values.Item1;
     ///                 var codepipelineBucketArn1 = values.Item2;
-    ///                 return @$"{{
+    ///                 return Output.Format(@$"{{
     ///   ""Version"": ""2012-10-17"",
     ///   ""Statement"": [
     ///     {{
@@ -179,7 +179,7 @@ namespace Pulumi.Aws.CodePipeline
     ///     }}
     ///   ]
     /// }}
-    /// ";
+    /// ");
     ///             }),
     ///         });
     ///     }

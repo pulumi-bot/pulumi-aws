@@ -48,7 +48,7 @@ namespace Pulumi.Aws.RedShift
         ///                 {
         ///                     var testCluster = values.Item1;
         ///                     var testCluster1 = values.Item2;
-        ///                     return $"jdbc:redshift://{testCluster.Endpoint}/{testCluster1.DatabaseName}";
+        ///                     return Output.Format($"jdbc:redshift://{testCluster.Endpoint}/{testCluster1.DatabaseName}");
         ///                 }),
         ///                 Username = "testuser",
         ///                 Password = "T3stPass",

@@ -29,7 +29,7 @@ namespace Pulumi.Aws.AppAutoScaling
     ///         {
     ///             MaxCapacity = 100,
     ///             MinCapacity = 5,
-    ///             ResourceId = $"table/{aws_dynamodb_table.Example.Name}",
+    ///             ResourceId = Output.Format($"table/{aws_dynamodb_table.Example.Name}"),
     ///             ScalableDimension = "dynamodb:table:ReadCapacityUnits",
     ///             ServiceNamespace = "dynamodb",
     ///         });
@@ -51,7 +51,7 @@ namespace Pulumi.Aws.AppAutoScaling
     ///         {
     ///             MaxCapacity = 100,
     ///             MinCapacity = 5,
-    ///             ResourceId = $"table/{aws_dynamodb_table.Example.Name}/index/{@var.Index_name}",
+    ///             ResourceId = Output.Format($"table/{aws_dynamodb_table.Example.Name}/index/{@var.Index_name}"),
     ///             ScalableDimension = "dynamodb:index:ReadCapacityUnits",
     ///             ServiceNamespace = "dynamodb",
     ///         });
@@ -73,7 +73,7 @@ namespace Pulumi.Aws.AppAutoScaling
     ///         {
     ///             MaxCapacity = 4,
     ///             MinCapacity = 1,
-    ///             ResourceId = $"service/{aws_ecs_cluster.Example.Name}/{aws_ecs_service.Example.Name}",
+    ///             ResourceId = Output.Format($"service/{aws_ecs_cluster.Example.Name}/{aws_ecs_service.Example.Name}"),
     ///             ScalableDimension = "ecs:service:DesiredCount",
     ///             ServiceNamespace = "ecs",
     ///         });
@@ -95,7 +95,7 @@ namespace Pulumi.Aws.AppAutoScaling
     ///         {
     ///             MaxCapacity = 15,
     ///             MinCapacity = 1,
-    ///             ResourceId = $"cluster:{aws_rds_cluster.Example.Id}",
+    ///             ResourceId = Output.Format($"cluster:{aws_rds_cluster.Example.Id}"),
     ///             ScalableDimension = "rds:cluster:ReadReplicaCount",
     ///             ServiceNamespace = "rds",
     ///         });

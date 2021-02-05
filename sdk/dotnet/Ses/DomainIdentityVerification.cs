@@ -35,7 +35,7 @@ namespace Pulumi.Aws.Ses
     ///         var exampleAmazonsesVerificationRecord = new Aws.Route53.Record("exampleAmazonsesVerificationRecord", new Aws.Route53.RecordArgs
     ///         {
     ///             ZoneId = aws_route53_zone.Example.Zone_id,
-    ///             Name = example.Id.Apply(id =&gt; $"_amazonses.{id}"),
+    ///             Name = example.Id.Apply(id =&gt; Output.Format($"_amazonses.{id}")),
     ///             Type = "TXT",
     ///             Ttl = 600,
     ///             Records = 

@@ -53,7 +53,7 @@ namespace Pulumi.Aws.Athena
     ///         {
     ///             Workgroup = testWorkgroup.Id,
     ///             Database = hogeDatabase.Name,
-    ///             Query = hogeDatabase.Name.Apply(name =&gt; $"SELECT * FROM {name} limit 10;"),
+    ///             Query = hogeDatabase.Name.Apply(name =&gt; Output.Format($"SELECT * FROM {name} limit 10;")),
     ///         });
     ///     }
     /// 

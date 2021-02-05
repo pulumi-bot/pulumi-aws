@@ -138,7 +138,7 @@ namespace Pulumi.Aws.Lambda
     ///             Action = "lambda:InvokeFunction",
     ///             Function = "MyDemoFunction",
     ///             Principal = "apigateway.amazonaws.com",
-    ///             SourceArn = myDemoAPI.ExecutionArn.Apply(executionArn =&gt; $"{executionArn}/*/*/*"),
+    ///             SourceArn = myDemoAPI.ExecutionArn.Apply(executionArn =&gt; Output.Format($"{executionArn}/*/*/*")),
     ///         });
     ///     }
     /// 

@@ -28,7 +28,7 @@ namespace Pulumi.Aws.Efs
     ///         var policy = new Aws.Efs.FileSystemPolicy("policy", new Aws.Efs.FileSystemPolicyArgs
     ///         {
     ///             FileSystemId = fs.Id,
-    ///             Policy = @$"{{
+    ///             Policy = Output.Format(@$"{{
     ///     ""Version"": ""2012-10-17"",
     ///     ""Id"": ""ExamplePolicy01"",
     ///     ""Statement"": [
@@ -51,7 +51,7 @@ namespace Pulumi.Aws.Efs
     ///         }}
     ///     ]
     /// }}
-    /// ",
+    /// "),
     ///         });
     ///     }
     /// 

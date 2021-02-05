@@ -51,7 +51,7 @@ namespace Pulumi.Aws.Iam
         ///                     },
         ///                     Resources = 
         ///                     {
-        ///                         $"arn:aws:s3:::{@var.S3_bucket_name}",
+        ///                         Output.Format($"arn:aws:s3:::{@var.S3_bucket_name}"),
         ///                     },
         ///                     Conditions = 
         ///                     {
@@ -76,8 +76,8 @@ namespace Pulumi.Aws.Iam
         ///                     },
         ///                     Resources = 
         ///                     {
-        ///                         $"arn:aws:s3:::{@var.S3_bucket_name}/home/&amp;{{aws:username}}",
-        ///                         $"arn:aws:s3:::{@var.S3_bucket_name}/home/&amp;{{aws:username}}/*",
+        ///                         Output.Format($"arn:aws:s3:::{@var.S3_bucket_name}/home/&amp;{{aws:username}}"),
+        ///                         Output.Format($"arn:aws:s3:::{@var.S3_bucket_name}/home/&amp;{{aws:username}}/*"),
         ///                     },
         ///                 },
         ///             },
@@ -159,7 +159,7 @@ namespace Pulumi.Aws.Iam
         ///                             Type = "Federated",
         ///                             Identifiers = 
         ///                             {
-        ///                                 $"arn:aws:iam::{@var.Account_id}:saml-provider/{@var.Provider_name}",
+        ///                                 Output.Format($"arn:aws:iam::{@var.Account_id}:saml-provider/{@var.Provider_name}"),
         ///                                 "cognito-identity.amazonaws.com",
         ///                             },
         ///                         },

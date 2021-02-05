@@ -332,7 +332,7 @@ namespace Pulumi.Aws.S3
     ///                 var bucketArn = values.Item1;
     ///                 var bucketArn1 = values.Item2;
     ///                 var destinationArn = values.Item3;
-    ///                 return @$"{{
+    ///                 return Output.Format(@$"{{
     ///   ""Version"": ""2012-10-17"",
     ///   ""Statement"": [
     ///     {{
@@ -365,7 +365,7 @@ namespace Pulumi.Aws.S3
     ///     }}
     ///   ]
     /// }}
-    /// ";
+    /// ");
     ///             }),
     ///         });
     ///         var replicationRolePolicyAttachment = new Aws.Iam.RolePolicyAttachment("replicationRolePolicyAttachment", new Aws.Iam.RolePolicyAttachmentArgs

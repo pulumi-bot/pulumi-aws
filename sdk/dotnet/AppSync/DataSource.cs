@@ -55,7 +55,7 @@ namespace Pulumi.Aws.AppSync
     ///         var exampleRolePolicy = new Aws.Iam.RolePolicy("exampleRolePolicy", new Aws.Iam.RolePolicyArgs
     ///         {
     ///             Role = exampleRole.Id,
-    ///             Policy = exampleTable.Arn.Apply(arn =&gt; @$"{{
+    ///             Policy = exampleTable.Arn.Apply(arn =&gt; Output.Format(@$"{{
     ///   ""Version"": ""2012-10-17"",
     ///   ""Statement"": [
     ///     {{
@@ -69,7 +69,7 @@ namespace Pulumi.Aws.AppSync
     ///     }}
     ///   ]
     /// }}
-    /// "),
+    /// ")),
     ///         });
     ///         var exampleGraphQLApi = new Aws.AppSync.GraphQLApi("exampleGraphQLApi", new Aws.AppSync.GraphQLApiArgs
     ///         {

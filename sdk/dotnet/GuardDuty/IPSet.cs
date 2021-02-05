@@ -49,7 +49,7 @@ namespace Pulumi.Aws.GuardDuty
     ///             {
     ///                 var bucket = values.Item1;
     ///                 var key = values.Item2;
-    ///                 return $"https://s3.amazonaws.com/{bucket}/{key}";
+    ///                 return Output.Format($"https://s3.amazonaws.com/{bucket}/{key}");
     ///             }),
     ///         });
     ///     }

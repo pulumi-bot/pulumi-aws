@@ -90,7 +90,7 @@ namespace Pulumi.Aws.Kinesis
     ///                                 new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorParameterArgs
     ///                                 {
     ///                                     ParameterName = "LambdaArn",
-    ///                                     ParameterValue = lambdaProcessor.Arn.Apply(arn =&gt; $"{arn}:$LATEST"),
+    ///                                     ParameterValue = lambdaProcessor.Arn.Apply(arn =&gt; Output.Format($"{arn}:$LATEST")),
     ///                                 },
     ///                             },
     ///                         },
@@ -183,7 +183,7 @@ namespace Pulumi.Aws.Kinesis
     ///                 {
     ///                     var endpoint = values.Item1;
     ///                     var databaseName = values.Item2;
-    ///                     return $"jdbc:redshift://{endpoint}/{databaseName}";
+    ///                     return Output.Format($"jdbc:redshift://{endpoint}/{databaseName}");
     ///                 }),
     ///                 Username = "testuser",
     ///                 Password = "T3stPass",
@@ -248,7 +248,7 @@ namespace Pulumi.Aws.Kinesis
     ///                                 new Aws.Kinesis.Inputs.FirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorParameterArgs
     ///                                 {
     ///                                     ParameterName = "LambdaArn",
-    ///                                     ParameterValue = $"{aws_lambda_function.Lambda_processor.Arn}:$LATEST",
+    ///                                     ParameterValue = Output.Format($"{aws_lambda_function.Lambda_processor.Arn}:$LATEST"),
     ///                                 },
     ///                             },
     ///                         },
@@ -303,7 +303,7 @@ namespace Pulumi.Aws.Kinesis
     ///             {
     ///                 var testClusterArn = values.Item1;
     ///                 var testClusterArn1 = values.Item2;
-    ///                 return @$"{{
+    ///                 return Output.Format(@$"{{
     ///   ""Version"": ""2012-10-17"",
     ///   ""Statement"": [
     ///     {{
@@ -334,7 +334,7 @@ namespace Pulumi.Aws.Kinesis
     ///         }}
     ///   ]
     /// }}
-    /// ";
+    /// ");
     ///             }),
     ///         });
     ///         var test = new Aws.Kinesis.FirehoseDeliveryStream("test", new Aws.Kinesis.FirehoseDeliveryStreamArgs
