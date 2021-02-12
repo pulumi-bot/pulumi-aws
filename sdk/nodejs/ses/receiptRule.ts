@@ -135,7 +135,8 @@ export class ReceiptRule extends pulumi.CustomResource {
     constructor(name: string, args: ReceiptRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ReceiptRuleArgs | ReceiptRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ReceiptRuleState | undefined;
             inputs["addHeaderActions"] = state ? state.addHeaderActions : undefined;
             inputs["after"] = state ? state.after : undefined;
@@ -153,7 +154,7 @@ export class ReceiptRule extends pulumi.CustomResource {
             inputs["workmailActions"] = state ? state.workmailActions : undefined;
         } else {
             const args = argsOrState as ReceiptRuleArgs | undefined;
-            if ((!args || args.ruleSetName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.ruleSetName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ruleSetName'");
             }
             inputs["addHeaderActions"] = args ? args.addHeaderActions : undefined;
@@ -171,12 +172,8 @@ export class ReceiptRule extends pulumi.CustomResource {
             inputs["tlsPolicy"] = args ? args.tlsPolicy : undefined;
             inputs["workmailActions"] = args ? args.workmailActions : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ReceiptRule.__pulumiType, name, inputs, opts);
     }
