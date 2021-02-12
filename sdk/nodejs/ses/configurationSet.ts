@@ -67,22 +67,19 @@ export class ConfigurationSet extends pulumi.CustomResource {
     constructor(name: string, args?: ConfigurationSetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConfigurationSetArgs | ConfigurationSetState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ConfigurationSetState | undefined;
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as ConfigurationSetArgs | undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         const aliasOpts = { aliases: [{ type: "aws:ses/confgurationSet:ConfgurationSet" }] };
-        opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ConfigurationSet.__pulumiType, name, inputs, opts);
     }
 }
