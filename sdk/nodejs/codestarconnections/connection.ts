@@ -111,7 +111,8 @@ export class Connection extends pulumi.CustomResource {
     constructor(name: string, args: ConnectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectionArgs | ConnectionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
             inputs["arn"] = state ? state.arn : undefined;
             inputs["connectionStatus"] = state ? state.connectionStatus : undefined;
@@ -119,7 +120,7 @@ export class Connection extends pulumi.CustomResource {
             inputs["providerType"] = state ? state.providerType : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if ((!args || args.providerType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.providerType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'providerType'");
             }
             inputs["name"] = args ? args.name : undefined;
@@ -127,12 +128,8 @@ export class Connection extends pulumi.CustomResource {
             inputs["arn"] = undefined /*out*/;
             inputs["connectionStatus"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Connection.__pulumiType, name, inputs, opts);
     }
