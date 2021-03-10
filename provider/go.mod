@@ -3,11 +3,13 @@ module github.com/pulumi/pulumi-aws/provider/v3
 go 1.15
 
 require (
+	contrib.go.opencensus.io/resource v0.1.1 // indirect
+	github.com/googleapis/gax-go v2.0.2+incompatible // indirect
 	github.com/hashicorp/aws-sdk-go-base v0.7.0
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/pulumi/pulumi-terraform-bridge/v2 v2.19.0
-	github.com/pulumi/pulumi/pkg/v2 v2.20.1-0.20210212181059-f4b0fa86fedc
-	github.com/pulumi/pulumi/sdk/v2 v2.20.1-0.20210212181059-f4b0fa86fedc
+	github.com/pulumi/pulumi/pkg/v2 v2.22.1-0.20210310211618-1f16423ede4c
+	github.com/pulumi/pulumi/sdk/v2 v2.22.1-0.20210310211618-1f16423ede4c
 	github.com/terraform-providers/terraform-provider-aws v0.0.0-20191010190908-1261a98537f2
 )
 
@@ -17,3 +19,5 @@ replace (
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 	github.com/terraform-providers/terraform-provider-aws => github.com/pulumi/terraform-provider-aws v1.38.1-0.20210305112646-46d5288ff760
 )
+
+replace github.com/pulumi/pulumi-terraform-bridge/v2 => ../../pulumi-terraform-bridge
