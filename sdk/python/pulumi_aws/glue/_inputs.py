@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
 __all__ = [
@@ -2591,13 +2591,13 @@ class UserDefinedFunctionResourceUriArgs:
 @pulumi.input_type
 class GetScriptDagEdgeArgs:
     def __init__(__self__, *,
-                 source: str,
-                 target: str,
-                 target_parameter: Optional[str] = None):
+                 source: pulumi.Input[str],
+                 target: pulumi.Input[str],
+                 target_parameter: Optional[pulumi.Input[str]] = None):
         """
-        :param str source: The ID of the node at which the edge starts.
-        :param str target: The ID of the node at which the edge ends.
-        :param str target_parameter: The target of the edge.
+        :param pulumi.Input[str] source: The ID of the node at which the edge starts.
+        :param pulumi.Input[str] target: The ID of the node at which the edge ends.
+        :param pulumi.Input[str] target_parameter: The target of the edge.
         """
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "target", target)
@@ -2606,53 +2606,53 @@ class GetScriptDagEdgeArgs:
 
     @property
     @pulumi.getter
-    def source(self) -> str:
+    def source(self) -> pulumi.Input[str]:
         """
         The ID of the node at which the edge starts.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: str):
+    def source(self, value: pulumi.Input[str]):
         pulumi.set(self, "source", value)
 
     @property
     @pulumi.getter
-    def target(self) -> str:
+    def target(self) -> pulumi.Input[str]:
         """
         The ID of the node at which the edge ends.
         """
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: str):
+    def target(self, value: pulumi.Input[str]):
         pulumi.set(self, "target", value)
 
     @property
     @pulumi.getter(name="targetParameter")
-    def target_parameter(self) -> Optional[str]:
+    def target_parameter(self) -> Optional[pulumi.Input[str]]:
         """
         The target of the edge.
         """
         return pulumi.get(self, "target_parameter")
 
     @target_parameter.setter
-    def target_parameter(self, value: Optional[str]):
+    def target_parameter(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target_parameter", value)
 
 
 @pulumi.input_type
 class GetScriptDagNodeArgs:
     def __init__(__self__, *,
-                 args: Sequence['GetScriptDagNodeArgArgs'],
-                 id: str,
-                 node_type: str,
-                 line_number: Optional[int] = None):
+                 args: pulumi.Input[Sequence[pulumi.Input['GetScriptDagNodeArgArgs']]],
+                 id: pulumi.Input[str],
+                 node_type: pulumi.Input[str],
+                 line_number: Optional[pulumi.Input[int]] = None):
         """
-        :param Sequence['GetScriptDagNodeArgArgs'] args: Nested configuration an argument or property of a node. Defined below.
-        :param str id: A node identifier that is unique within the node's graph.
-        :param str node_type: The type of node this is.
-        :param int line_number: The line number of the node.
+        :param pulumi.Input[Sequence[pulumi.Input['GetScriptDagNodeArgArgs']]] args: Nested configuration an argument or property of a node. Defined below.
+        :param pulumi.Input[str] id: A node identifier that is unique within the node's graph.
+        :param pulumi.Input[str] node_type: The type of node this is.
+        :param pulumi.Input[int] line_number: The line number of the node.
         """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "id", id)
@@ -2662,63 +2662,63 @@ class GetScriptDagNodeArgs:
 
     @property
     @pulumi.getter
-    def args(self) -> Sequence['GetScriptDagNodeArgArgs']:
+    def args(self) -> pulumi.Input[Sequence[pulumi.Input['GetScriptDagNodeArgArgs']]]:
         """
         Nested configuration an argument or property of a node. Defined below.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Sequence['GetScriptDagNodeArgArgs']):
+    def args(self, value: pulumi.Input[Sequence[pulumi.Input['GetScriptDagNodeArgArgs']]]):
         pulumi.set(self, "args", value)
 
     @property
     @pulumi.getter
-    def id(self) -> str:
+    def id(self) -> pulumi.Input[str]:
         """
         A node identifier that is unique within the node's graph.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: str):
+    def id(self, value: pulumi.Input[str]):
         pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter(name="nodeType")
-    def node_type(self) -> str:
+    def node_type(self) -> pulumi.Input[str]:
         """
         The type of node this is.
         """
         return pulumi.get(self, "node_type")
 
     @node_type.setter
-    def node_type(self, value: str):
+    def node_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "node_type", value)
 
     @property
     @pulumi.getter(name="lineNumber")
-    def line_number(self) -> Optional[int]:
+    def line_number(self) -> Optional[pulumi.Input[int]]:
         """
         The line number of the node.
         """
         return pulumi.get(self, "line_number")
 
     @line_number.setter
-    def line_number(self, value: Optional[int]):
+    def line_number(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "line_number", value)
 
 
 @pulumi.input_type
 class GetScriptDagNodeArgArgs:
     def __init__(__self__, *,
-                 name: str,
-                 value: str,
-                 param: Optional[bool] = None):
+                 name: pulumi.Input[str],
+                 value: pulumi.Input[str],
+                 param: Optional[pulumi.Input[bool]] = None):
         """
-        :param str name: The name of the argument or property.
-        :param str value: The value of the argument or property.
-        :param bool param: Boolean if the value is used as a parameter. Defaults to `false`.
+        :param pulumi.Input[str] name: The name of the argument or property.
+        :param pulumi.Input[str] value: The value of the argument or property.
+        :param pulumi.Input[bool] param: Boolean if the value is used as a parameter. Defaults to `false`.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -2727,38 +2727,38 @@ class GetScriptDagNodeArgArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the argument or property.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> pulumi.Input[str]:
         """
         The value of the argument or property.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: str):
+    def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter
-    def param(self) -> Optional[bool]:
+    def param(self) -> Optional[pulumi.Input[bool]]:
         """
         Boolean if the value is used as a parameter. Defaults to `false`.
         """
         return pulumi.get(self, "param")
 
     @param.setter
-    def param(self, value: Optional[bool]):
+    def param(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "param", value)
 
 

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
 __all__ = [
@@ -16,74 +16,74 @@ __all__ = [
 @pulumi.input_type
 class GetGroupFilterArgs:
     def __init__(__self__, *,
-                 attribute_path: str,
-                 attribute_value: str):
+                 attribute_path: pulumi.Input[str],
+                 attribute_value: pulumi.Input[str]):
         """
-        :param str attribute_path: The attribute path that is used to specify which attribute name to search. Currently, `DisplayName` is the only valid attribute path.
-        :param str attribute_value: The value for an attribute.
+        :param pulumi.Input[str] attribute_path: The attribute path that is used to specify which attribute name to search. Currently, `DisplayName` is the only valid attribute path.
+        :param pulumi.Input[str] attribute_value: The value for an attribute.
         """
         pulumi.set(__self__, "attribute_path", attribute_path)
         pulumi.set(__self__, "attribute_value", attribute_value)
 
     @property
     @pulumi.getter(name="attributePath")
-    def attribute_path(self) -> str:
+    def attribute_path(self) -> pulumi.Input[str]:
         """
         The attribute path that is used to specify which attribute name to search. Currently, `DisplayName` is the only valid attribute path.
         """
         return pulumi.get(self, "attribute_path")
 
     @attribute_path.setter
-    def attribute_path(self, value: str):
+    def attribute_path(self, value: pulumi.Input[str]):
         pulumi.set(self, "attribute_path", value)
 
     @property
     @pulumi.getter(name="attributeValue")
-    def attribute_value(self) -> str:
+    def attribute_value(self) -> pulumi.Input[str]:
         """
         The value for an attribute.
         """
         return pulumi.get(self, "attribute_value")
 
     @attribute_value.setter
-    def attribute_value(self, value: str):
+    def attribute_value(self, value: pulumi.Input[str]):
         pulumi.set(self, "attribute_value", value)
 
 
 @pulumi.input_type
 class GetUserFilterArgs:
     def __init__(__self__, *,
-                 attribute_path: str,
-                 attribute_value: str):
+                 attribute_path: pulumi.Input[str],
+                 attribute_value: pulumi.Input[str]):
         """
-        :param str attribute_path: The attribute path that is used to specify which attribute name to search. Currently, `UserName` is the only valid attribute path.
-        :param str attribute_value: The value for an attribute.
+        :param pulumi.Input[str] attribute_path: The attribute path that is used to specify which attribute name to search. Currently, `UserName` is the only valid attribute path.
+        :param pulumi.Input[str] attribute_value: The value for an attribute.
         """
         pulumi.set(__self__, "attribute_path", attribute_path)
         pulumi.set(__self__, "attribute_value", attribute_value)
 
     @property
     @pulumi.getter(name="attributePath")
-    def attribute_path(self) -> str:
+    def attribute_path(self) -> pulumi.Input[str]:
         """
         The attribute path that is used to specify which attribute name to search. Currently, `UserName` is the only valid attribute path.
         """
         return pulumi.get(self, "attribute_path")
 
     @attribute_path.setter
-    def attribute_path(self, value: str):
+    def attribute_path(self, value: pulumi.Input[str]):
         pulumi.set(self, "attribute_path", value)
 
     @property
     @pulumi.getter(name="attributeValue")
-    def attribute_value(self) -> str:
+    def attribute_value(self) -> pulumi.Input[str]:
         """
         The value for an attribute.
         """
         return pulumi.get(self, "attribute_value")
 
     @attribute_value.setter
-    def attribute_value(self, value: str):
+    def attribute_value(self, value: pulumi.Input[str]):
         pulumi.set(self, "attribute_value", value)
 
 

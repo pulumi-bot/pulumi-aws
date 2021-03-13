@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from ._enums import *
 
@@ -323,27 +323,27 @@ class ZoneVpcArgs:
 @pulumi.input_type
 class GetResolverEndpointFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 

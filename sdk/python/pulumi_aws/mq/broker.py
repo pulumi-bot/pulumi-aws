@@ -5,15 +5,332 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Broker']
+__all__ = ['BrokerArgs', 'Broker']
+
+@pulumi.input_type
+class BrokerArgs:
+    def __init__(__self__, *,
+                 broker_name: pulumi.Input[str],
+                 engine_type: pulumi.Input[str],
+                 engine_version: pulumi.Input[str],
+                 host_instance_type: pulumi.Input[str],
+                 security_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 users: pulumi.Input[Sequence[pulumi.Input['BrokerUserArgs']]],
+                 apply_immediately: Optional[pulumi.Input[bool]] = None,
+                 auto_minor_version_upgrade: Optional[pulumi.Input[bool]] = None,
+                 configuration: Optional[pulumi.Input['BrokerConfigurationArgs']] = None,
+                 deployment_mode: Optional[pulumi.Input[str]] = None,
+                 encryption_options: Optional[pulumi.Input['BrokerEncryptionOptionsArgs']] = None,
+                 logs: Optional[pulumi.Input['BrokerLogsArgs']] = None,
+                 maintenance_window_start_time: Optional[pulumi.Input['BrokerMaintenanceWindowStartTimeArgs']] = None,
+                 publicly_accessible: Optional[pulumi.Input[bool]] = None,
+                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a Broker resource.
+        :param pulumi.Input[str] broker_name: The name of the broker.
+        :param pulumi.Input[str] engine_type: The type of broker engine. Currently, Amazon MQ supports only `ActiveMQ`.
+        :param pulumi.Input[str] engine_version: The version of the broker engine. See the [AmazonMQ Broker Engine docs](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html) for supported versions.
+        :param pulumi.Input[str] host_instance_type: The broker's instance type. e.g. `mq.t2.micro` or `mq.m4.large`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: The list of security group IDs assigned to the broker.
+        :param pulumi.Input[Sequence[pulumi.Input['BrokerUserArgs']]] users: The list of all ActiveMQ usernames for the specified broker. See below.
+        :param pulumi.Input[bool] apply_immediately: Specifies whether any broker modifications
+               are applied immediately, or during the next maintenance window. Default is `false`.
+        :param pulumi.Input[bool] auto_minor_version_upgrade: Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions.
+        :param pulumi.Input['BrokerConfigurationArgs'] configuration: Configuration of the broker. See below.
+        :param pulumi.Input[str] deployment_mode: The deployment mode of the broker. Supported: `SINGLE_INSTANCE` and `ACTIVE_STANDBY_MULTI_AZ`. Defaults to `SINGLE_INSTANCE`.
+        :param pulumi.Input['BrokerEncryptionOptionsArgs'] encryption_options: Configuration block containing encryption options. See below.
+        :param pulumi.Input['BrokerLogsArgs'] logs: Logging configuration of the broker. See below.
+        :param pulumi.Input['BrokerMaintenanceWindowStartTimeArgs'] maintenance_window_start_time: Maintenance window start time. See below.
+        :param pulumi.Input[bool] publicly_accessible: Whether to enable connections from applications outside of the VPC that hosts the broker's subnets.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: The list of subnet IDs in which to launch the broker. A `SINGLE_INSTANCE` deployment requires one subnet. An `ACTIVE_STANDBY_MULTI_AZ` deployment requires two subnets.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
+        """
+        pulumi.set(__self__, "broker_name", broker_name)
+        pulumi.set(__self__, "engine_type", engine_type)
+        pulumi.set(__self__, "engine_version", engine_version)
+        pulumi.set(__self__, "host_instance_type", host_instance_type)
+        pulumi.set(__self__, "security_groups", security_groups)
+        pulumi.set(__self__, "users", users)
+        if apply_immediately is not None:
+            pulumi.set(__self__, "apply_immediately", apply_immediately)
+        if auto_minor_version_upgrade is not None:
+            pulumi.set(__self__, "auto_minor_version_upgrade", auto_minor_version_upgrade)
+        if configuration is not None:
+            pulumi.set(__self__, "configuration", configuration)
+        if deployment_mode is not None:
+            pulumi.set(__self__, "deployment_mode", deployment_mode)
+        if encryption_options is not None:
+            pulumi.set(__self__, "encryption_options", encryption_options)
+        if logs is not None:
+            pulumi.set(__self__, "logs", logs)
+        if maintenance_window_start_time is not None:
+            pulumi.set(__self__, "maintenance_window_start_time", maintenance_window_start_time)
+        if publicly_accessible is not None:
+            pulumi.set(__self__, "publicly_accessible", publicly_accessible)
+        if subnet_ids is not None:
+            pulumi.set(__self__, "subnet_ids", subnet_ids)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="brokerName")
+    def broker_name(self) -> pulumi.Input[str]:
+        """
+        The name of the broker.
+        """
+        return pulumi.get(self, "broker_name")
+
+    @broker_name.setter
+    def broker_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "broker_name", value)
+
+    @property
+    @pulumi.getter(name="engineType")
+    def engine_type(self) -> pulumi.Input[str]:
+        """
+        The type of broker engine. Currently, Amazon MQ supports only `ActiveMQ`.
+        """
+        return pulumi.get(self, "engine_type")
+
+    @engine_type.setter
+    def engine_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "engine_type", value)
+
+    @property
+    @pulumi.getter(name="engineVersion")
+    def engine_version(self) -> pulumi.Input[str]:
+        """
+        The version of the broker engine. See the [AmazonMQ Broker Engine docs](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html) for supported versions.
+        """
+        return pulumi.get(self, "engine_version")
+
+    @engine_version.setter
+    def engine_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "engine_version", value)
+
+    @property
+    @pulumi.getter(name="hostInstanceType")
+    def host_instance_type(self) -> pulumi.Input[str]:
+        """
+        The broker's instance type. e.g. `mq.t2.micro` or `mq.m4.large`
+        """
+        return pulumi.get(self, "host_instance_type")
+
+    @host_instance_type.setter
+    def host_instance_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host_instance_type", value)
+
+    @property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The list of security group IDs assigned to the broker.
+        """
+        return pulumi.get(self, "security_groups")
+
+    @security_groups.setter
+    def security_groups(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "security_groups", value)
+
+    @property
+    @pulumi.getter
+    def users(self) -> pulumi.Input[Sequence[pulumi.Input['BrokerUserArgs']]]:
+        """
+        The list of all ActiveMQ usernames for the specified broker. See below.
+        """
+        return pulumi.get(self, "users")
+
+    @users.setter
+    def users(self, value: pulumi.Input[Sequence[pulumi.Input['BrokerUserArgs']]]):
+        pulumi.set(self, "users", value)
+
+    @property
+    @pulumi.getter(name="applyImmediately")
+    def apply_immediately(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether any broker modifications
+        are applied immediately, or during the next maintenance window. Default is `false`.
+        """
+        return pulumi.get(self, "apply_immediately")
+
+    @apply_immediately.setter
+    def apply_immediately(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "apply_immediately", value)
+
+    @property
+    @pulumi.getter(name="autoMinorVersionUpgrade")
+    def auto_minor_version_upgrade(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions.
+        """
+        return pulumi.get(self, "auto_minor_version_upgrade")
+
+    @auto_minor_version_upgrade.setter
+    def auto_minor_version_upgrade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_minor_version_upgrade", value)
+
+    @property
+    @pulumi.getter
+    def configuration(self) -> Optional[pulumi.Input['BrokerConfigurationArgs']]:
+        """
+        Configuration of the broker. See below.
+        """
+        return pulumi.get(self, "configuration")
+
+    @configuration.setter
+    def configuration(self, value: Optional[pulumi.Input['BrokerConfigurationArgs']]):
+        pulumi.set(self, "configuration", value)
+
+    @property
+    @pulumi.getter(name="deploymentMode")
+    def deployment_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The deployment mode of the broker. Supported: `SINGLE_INSTANCE` and `ACTIVE_STANDBY_MULTI_AZ`. Defaults to `SINGLE_INSTANCE`.
+        """
+        return pulumi.get(self, "deployment_mode")
+
+    @deployment_mode.setter
+    def deployment_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deployment_mode", value)
+
+    @property
+    @pulumi.getter(name="encryptionOptions")
+    def encryption_options(self) -> Optional[pulumi.Input['BrokerEncryptionOptionsArgs']]:
+        """
+        Configuration block containing encryption options. See below.
+        """
+        return pulumi.get(self, "encryption_options")
+
+    @encryption_options.setter
+    def encryption_options(self, value: Optional[pulumi.Input['BrokerEncryptionOptionsArgs']]):
+        pulumi.set(self, "encryption_options", value)
+
+    @property
+    @pulumi.getter
+    def logs(self) -> Optional[pulumi.Input['BrokerLogsArgs']]:
+        """
+        Logging configuration of the broker. See below.
+        """
+        return pulumi.get(self, "logs")
+
+    @logs.setter
+    def logs(self, value: Optional[pulumi.Input['BrokerLogsArgs']]):
+        pulumi.set(self, "logs", value)
+
+    @property
+    @pulumi.getter(name="maintenanceWindowStartTime")
+    def maintenance_window_start_time(self) -> Optional[pulumi.Input['BrokerMaintenanceWindowStartTimeArgs']]:
+        """
+        Maintenance window start time. See below.
+        """
+        return pulumi.get(self, "maintenance_window_start_time")
+
+    @maintenance_window_start_time.setter
+    def maintenance_window_start_time(self, value: Optional[pulumi.Input['BrokerMaintenanceWindowStartTimeArgs']]):
+        pulumi.set(self, "maintenance_window_start_time", value)
+
+    @property
+    @pulumi.getter(name="publiclyAccessible")
+    def publicly_accessible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable connections from applications outside of the VPC that hosts the broker's subnets.
+        """
+        return pulumi.get(self, "publicly_accessible")
+
+    @publicly_accessible.setter
+    def publicly_accessible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "publicly_accessible", value)
+
+    @property
+    @pulumi.getter(name="subnetIds")
+    def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of subnet IDs in which to launch the broker. A `SINGLE_INSTANCE` deployment requires one subnet. An `ACTIVE_STANDBY_MULTI_AZ` deployment requires two subnets.
+        """
+        return pulumi.get(self, "subnet_ids")
+
+    @subnet_ids.setter
+    def subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "subnet_ids", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class Broker(pulumi.CustomResource):
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[BrokerArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides an MQ Broker Resource. This resources also manages users for the broker.
+
+        For more information on Amazon MQ, see [Amazon MQ documentation](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/welcome.html).
+
+        Changes to an MQ Broker can occur when you change a
+        parameter, such as `configuration` or `user`, and are reflected in the next maintenance
+        window. Because of this, this provider may report a difference in its planning
+        phase because a modification has not yet taken place. You can use the
+        `apply_immediately` flag to instruct the service to apply the change immediately
+        (see documentation below).
+
+        > **Note:** using `apply_immediately` can result in a
+        brief downtime as the broker reboots.
+
+        > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+
+        example = aws.mq.Broker("example",
+            broker_name="example",
+            configuration=aws.mq.BrokerConfigurationArgs(
+                id=aws_mq_configuration["test"]["id"],
+                revision=aws_mq_configuration["test"]["latest_revision"],
+            ),
+            engine_type="ActiveMQ",
+            engine_version="5.15.0",
+            host_instance_type="mq.t2.micro",
+            security_groups=[aws_security_group["test"]["id"]],
+            users=[aws.mq.BrokerUserArgs(
+                username="ExampleUser",
+                password="MindTheGap",
+            )])
+        ```
+
+        ## Import
+
+        MQ Brokers can be imported using their broker id, e.g.
+
+        ```sh
+         $ pulumi import aws:mq/broker:Broker example a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param BrokerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -103,6 +420,36 @@ class Broker(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BrokerUserArgs']]]] users: The list of all ActiveMQ usernames for the specified broker. See below.
         """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(BrokerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+        	__self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+        	__self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 apply_immediately: Optional[pulumi.Input[bool]] = None,
+                 auto_minor_version_upgrade: Optional[pulumi.Input[bool]] = None,
+                 broker_name: Optional[pulumi.Input[str]] = None,
+                 configuration: Optional[pulumi.Input[pulumi.InputType['BrokerConfigurationArgs']]] = None,
+                 deployment_mode: Optional[pulumi.Input[str]] = None,
+                 encryption_options: Optional[pulumi.Input[pulumi.InputType['BrokerEncryptionOptionsArgs']]] = None,
+                 engine_type: Optional[pulumi.Input[str]] = None,
+                 engine_version: Optional[pulumi.Input[str]] = None,
+                 host_instance_type: Optional[pulumi.Input[str]] = None,
+                 logs: Optional[pulumi.Input[pulumi.InputType['BrokerLogsArgs']]] = None,
+                 maintenance_window_start_time: Optional[pulumi.Input[pulumi.InputType['BrokerMaintenanceWindowStartTimeArgs']]] = None,
+                 publicly_accessible: Optional[pulumi.Input[bool]] = None,
+                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BrokerUserArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

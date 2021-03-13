@@ -5,15 +5,121 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DefaultNetworkAcl']
+__all__ = ['DefaultNetworkAclArgs', 'DefaultNetworkAcl']
+
+@pulumi.input_type
+class DefaultNetworkAclArgs:
+    def __init__(__self__, *,
+                 default_network_acl_id: pulumi.Input[str],
+                 egress: Optional[pulumi.Input[Sequence[pulumi.Input['DefaultNetworkAclEgressArgs']]]] = None,
+                 ingress: Optional[pulumi.Input[Sequence[pulumi.Input['DefaultNetworkAclIngressArgs']]]] = None,
+                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a DefaultNetworkAcl resource.
+        :param pulumi.Input[str] default_network_acl_id: Network ACL ID to manage. This attribute is exported from `ec2.Vpc`, or manually found via the AWS Console.
+        :param pulumi.Input[Sequence[pulumi.Input['DefaultNetworkAclEgressArgs']]] egress: Configuration block for an egress rule. Detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input['DefaultNetworkAclIngressArgs']]] ingress: Configuration block for an ingress rule. Detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: List of Subnet IDs to apply the ACL to. See the notes below on managing Subnets in the Default Network ACL
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags to assign to the resource.
+        """
+        pulumi.set(__self__, "default_network_acl_id", default_network_acl_id)
+        if egress is not None:
+            pulumi.set(__self__, "egress", egress)
+        if ingress is not None:
+            pulumi.set(__self__, "ingress", ingress)
+        if subnet_ids is not None:
+            pulumi.set(__self__, "subnet_ids", subnet_ids)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="defaultNetworkAclId")
+    def default_network_acl_id(self) -> pulumi.Input[str]:
+        """
+        Network ACL ID to manage. This attribute is exported from `ec2.Vpc`, or manually found via the AWS Console.
+        """
+        return pulumi.get(self, "default_network_acl_id")
+
+    @default_network_acl_id.setter
+    def default_network_acl_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "default_network_acl_id", value)
+
+    @property
+    @pulumi.getter
+    def egress(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DefaultNetworkAclEgressArgs']]]]:
+        """
+        Configuration block for an egress rule. Detailed below.
+        """
+        return pulumi.get(self, "egress")
+
+    @egress.setter
+    def egress(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DefaultNetworkAclEgressArgs']]]]):
+        pulumi.set(self, "egress", value)
+
+    @property
+    @pulumi.getter
+    def ingress(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DefaultNetworkAclIngressArgs']]]]:
+        """
+        Configuration block for an ingress rule. Detailed below.
+        """
+        return pulumi.get(self, "ingress")
+
+    @ingress.setter
+    def ingress(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DefaultNetworkAclIngressArgs']]]]):
+        pulumi.set(self, "ingress", value)
+
+    @property
+    @pulumi.getter(name="subnetIds")
+    def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of Subnet IDs to apply the ACL to. See the notes below on managing Subnets in the Default Network ACL
+        """
+        return pulumi.get(self, "subnet_ids")
+
+    @subnet_ids.setter
+    def subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "subnet_ids", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class DefaultNetworkAcl(pulumi.CustomResource):
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[DefaultNetworkAclArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Default Network ACLs can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import aws:ec2/defaultNetworkAcl:DefaultNetworkAcl sample acl-7aaabd18
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DefaultNetworkAclArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -42,6 +148,25 @@ class DefaultNetworkAcl(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: List of Subnet IDs to apply the ACL to. See the notes below on managing Subnets in the Default Network ACL
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags to assign to the resource.
         """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DefaultNetworkAclArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+        	__self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+        	__self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 default_network_acl_id: Optional[pulumi.Input[str]] = None,
+                 egress: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DefaultNetworkAclEgressArgs']]]]] = None,
+                 ingress: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DefaultNetworkAclIngressArgs']]]]] = None,
+                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

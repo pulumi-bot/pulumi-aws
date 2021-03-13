@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
 __all__ = [
@@ -15,37 +15,37 @@ __all__ = [
 @pulumi.input_type
 class GetProductFilterArgs:
     def __init__(__self__, *,
-                 field: str,
-                 value: str):
+                 field: pulumi.Input[str],
+                 value: pulumi.Input[str]):
         """
-        :param str field: The product attribute name that you want to filter on.
-        :param str value: The product attribute value that you want to filter on.
+        :param pulumi.Input[str] field: The product attribute name that you want to filter on.
+        :param pulumi.Input[str] value: The product attribute value that you want to filter on.
         """
         pulumi.set(__self__, "field", field)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def field(self) -> str:
+    def field(self) -> pulumi.Input[str]:
         """
         The product attribute name that you want to filter on.
         """
         return pulumi.get(self, "field")
 
     @field.setter
-    def field(self, value: str):
+    def field(self, value: pulumi.Input[str]):
         pulumi.set(self, "field", value)
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> pulumi.Input[str]:
         """
         The product attribute value that you want to filter on.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: str):
+    def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
 

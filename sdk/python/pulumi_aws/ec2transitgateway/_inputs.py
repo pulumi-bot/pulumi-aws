@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
 __all__ = [
@@ -20,49 +20,49 @@ __all__ = [
 @pulumi.input_type
 class GetDirectConnectGatewayAttachmentFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the filter field. Valid values can be found in the [EC2 DescribeTransitGatewayAttachments API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html).
-        :param Sequence[str] values: Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+        :param pulumi.Input[str] name: The name of the filter field. Valid values can be found in the [EC2 DescribeTransitGatewayAttachments API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the filter field. Valid values can be found in the [EC2 DescribeTransitGatewayAttachments API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetPeeringAttachmentFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter by, as defined by
+        :param pulumi.Input[str] name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayPeeringAttachments.html).
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field.
                An EC2 Transit Gateway Peering Attachment be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -70,7 +70,7 @@ class GetPeeringAttachmentFilterArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter by, as defined by
         [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayPeeringAttachments.html).
@@ -78,12 +78,12 @@ class GetPeeringAttachmentFilterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field.
         An EC2 Transit Gateway Peering Attachment be selected if any one of the given values matches.
@@ -91,155 +91,155 @@ class GetPeeringAttachmentFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetRouteTableFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: Name of the filter.
-        :param Sequence[str] values: List of one or more values for the filter.
+        :param pulumi.Input[str] name: Name of the filter.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: List of one or more values for the filter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         Name of the filter.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         List of one or more values for the filter.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetTransitGatewayFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: Name of the filter.
-        :param Sequence[str] values: List of one or more values for the filter.
+        :param pulumi.Input[str] name: Name of the filter.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: List of one or more values for the filter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         Name of the filter.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         List of one or more values for the filter.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetVpcAttachmentFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: Name of the filter.
-        :param Sequence[str] values: List of one or more values for the filter.
+        :param pulumi.Input[str] name: Name of the filter.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: List of one or more values for the filter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         Name of the filter.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         List of one or more values for the filter.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetVpnAttachmentFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the filter field. Valid values can be found in the [EC2 DescribeTransitGatewayAttachments API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html).
-        :param Sequence[str] values: Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+        :param pulumi.Input[str] name: The name of the filter field. Valid values can be found in the [EC2 DescribeTransitGatewayAttachments API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the filter field. Valid values can be found in the [EC2 DescribeTransitGatewayAttachments API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 

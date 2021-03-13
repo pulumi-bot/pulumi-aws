@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
 __all__ = [
@@ -300,27 +300,27 @@ class BrokerUserArgs:
 @pulumi.input_type
 class GetBrokerLogsArgs:
     def __init__(__self__, *,
-                 audit: bool,
-                 general: bool):
+                 audit: pulumi.Input[bool],
+                 general: pulumi.Input[bool]):
         pulumi.set(__self__, "audit", audit)
         pulumi.set(__self__, "general", general)
 
     @property
     @pulumi.getter
-    def audit(self) -> bool:
+    def audit(self) -> pulumi.Input[bool]:
         return pulumi.get(self, "audit")
 
     @audit.setter
-    def audit(self, value: bool):
+    def audit(self, value: pulumi.Input[bool]):
         pulumi.set(self, "audit", value)
 
     @property
     @pulumi.getter
-    def general(self) -> bool:
+    def general(self) -> pulumi.Input[bool]:
         return pulumi.get(self, "general")
 
     @general.setter
-    def general(self, value: bool):
+    def general(self, value: pulumi.Input[bool]):
         pulumi.set(self, "general", value)
 
 

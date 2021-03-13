@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
 __all__ = [
@@ -380,26 +380,26 @@ class CertificateAuthorityRevocationConfigurationCrlConfigurationArgs:
 @pulumi.input_type
 class GetCertificateAuthorityRevocationConfigurationArgs:
     def __init__(__self__, *,
-                 crl_configurations: Sequence['GetCertificateAuthorityRevocationConfigurationCrlConfigurationArgs']):
+                 crl_configurations: pulumi.Input[Sequence[pulumi.Input['GetCertificateAuthorityRevocationConfigurationCrlConfigurationArgs']]]):
         pulumi.set(__self__, "crl_configurations", crl_configurations)
 
     @property
     @pulumi.getter(name="crlConfigurations")
-    def crl_configurations(self) -> Sequence['GetCertificateAuthorityRevocationConfigurationCrlConfigurationArgs']:
+    def crl_configurations(self) -> pulumi.Input[Sequence[pulumi.Input['GetCertificateAuthorityRevocationConfigurationCrlConfigurationArgs']]]:
         return pulumi.get(self, "crl_configurations")
 
     @crl_configurations.setter
-    def crl_configurations(self, value: Sequence['GetCertificateAuthorityRevocationConfigurationCrlConfigurationArgs']):
+    def crl_configurations(self, value: pulumi.Input[Sequence[pulumi.Input['GetCertificateAuthorityRevocationConfigurationCrlConfigurationArgs']]]):
         pulumi.set(self, "crl_configurations", value)
 
 
 @pulumi.input_type
 class GetCertificateAuthorityRevocationConfigurationCrlConfigurationArgs:
     def __init__(__self__, *,
-                 custom_cname: str,
-                 enabled: bool,
-                 expiration_in_days: int,
-                 s3_bucket_name: str):
+                 custom_cname: pulumi.Input[str],
+                 enabled: pulumi.Input[bool],
+                 expiration_in_days: pulumi.Input[int],
+                 s3_bucket_name: pulumi.Input[str]):
         pulumi.set(__self__, "custom_cname", custom_cname)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "expiration_in_days", expiration_in_days)
@@ -407,38 +407,38 @@ class GetCertificateAuthorityRevocationConfigurationCrlConfigurationArgs:
 
     @property
     @pulumi.getter(name="customCname")
-    def custom_cname(self) -> str:
+    def custom_cname(self) -> pulumi.Input[str]:
         return pulumi.get(self, "custom_cname")
 
     @custom_cname.setter
-    def custom_cname(self, value: str):
+    def custom_cname(self, value: pulumi.Input[str]):
         pulumi.set(self, "custom_cname", value)
 
     @property
     @pulumi.getter
-    def enabled(self) -> bool:
+    def enabled(self) -> pulumi.Input[bool]:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: bool):
+    def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter(name="expirationInDays")
-    def expiration_in_days(self) -> int:
+    def expiration_in_days(self) -> pulumi.Input[int]:
         return pulumi.get(self, "expiration_in_days")
 
     @expiration_in_days.setter
-    def expiration_in_days(self, value: int):
+    def expiration_in_days(self, value: pulumi.Input[int]):
         pulumi.set(self, "expiration_in_days", value)
 
     @property
     @pulumi.getter(name="s3BucketName")
-    def s3_bucket_name(self) -> str:
+    def s3_bucket_name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "s3_bucket_name")
 
     @s3_bucket_name.setter
-    def s3_bucket_name(self, value: str):
+    def s3_bucket_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "s3_bucket_name", value)
 
 
