@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
 __all__ = [
@@ -414,27 +414,27 @@ class TableTtlArgs:
 @pulumi.input_type
 class GetTableServerSideEncryptionArgs:
     def __init__(__self__, *,
-                 enabled: bool,
-                 kms_key_arn: str):
+                 enabled: pulumi.Input[bool],
+                 kms_key_arn: pulumi.Input[str]):
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "kms_key_arn", kms_key_arn)
 
     @property
     @pulumi.getter
-    def enabled(self) -> bool:
+    def enabled(self) -> pulumi.Input[bool]:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: bool):
+    def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter(name="kmsKeyArn")
-    def kms_key_arn(self) -> str:
+    def kms_key_arn(self) -> pulumi.Input[str]:
         return pulumi.get(self, "kms_key_arn")
 
     @kms_key_arn.setter
-    def kms_key_arn(self, value: str):
+    def kms_key_arn(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_arn", value)
 
 

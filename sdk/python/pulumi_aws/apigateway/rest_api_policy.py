@@ -5,13 +5,101 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['RestApiPolicy']
+__all__ = ['RestApiPolicyArgs', 'RestApiPolicy']
+
+@pulumi.input_type
+class RestApiPolicyArgs:
+    def __init__(__self__, *,
+                 policy: pulumi.Input[str],
+                 rest_api_id: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a RestApiPolicy resource.
+        :param pulumi.Input[str] rest_api_id: The ID of the REST API.
+        """
+        pulumi.set(__self__, "policy", policy)
+        pulumi.set(__self__, "rest_api_id", rest_api_id)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy", value)
+
+    @property
+    @pulumi.getter(name="restApiId")
+    def rest_api_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the REST API.
+        """
+        return pulumi.get(self, "rest_api_id")
+
+    @rest_api_id.setter
+    def rest_api_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "rest_api_id", value)
 
 
 class RestApiPolicy(pulumi.CustomResource):
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RestApiPolicyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides an API Gateway REST API Policy.
+
+        > **Note:** Amazon API Gateway Version 1 resources are used for creating and deploying REST APIs. To create and deploy WebSocket and HTTP APIs, use Amazon API Gateway Version 2 [resources](https://www.terraform.io/docs/providers/aws/r/apigatewayv2_api.html).
+
+        ## Example Usage
+        ### Basic
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+
+        test_rest_api = aws.apigateway.RestApi("testRestApi")
+        test_rest_api_policy = aws.apigateway.RestApiPolicy("testRestApiPolicy",
+            rest_api_id=test_rest_api.id,
+            policy=test_rest_api.execution_arn.apply(lambda execution_arn: f\"\"\"{{
+          "Version": "2012-10-17",
+          "Statement": [
+            {{
+              "Effect": "Allow",
+              "Principal": {{
+                "AWS": "*"
+              }},
+              "Action": "execute-api:Invoke",
+              "Resource": "{execution_arn}",
+              "Condition": {{
+                "IpAddress": {{
+                  "aws:SourceIp": "123.123.123.123/32"
+                }}
+              }}
+            }}
+          ]
+        }}
+        \"\"\"))
+        ```
+
+        ## Import
+
+        `aws_api_gateway_rest_api_policy` can be imported by using the REST API ID, e.g.
+
+        ```sh
+         $ pulumi import aws:apigateway/restApiPolicy:RestApiPolicy example 12345abcde
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RestApiPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -68,6 +156,22 @@ class RestApiPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] rest_api_id: The ID of the REST API.
         """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RestApiPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
+                 rest_api_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

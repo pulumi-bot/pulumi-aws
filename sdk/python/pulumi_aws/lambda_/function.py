@@ -5,16 +5,450 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['Function']
+__all__ = ['FunctionArgs', 'Function']
+
+@pulumi.input_type
+class FunctionArgs:
+    def __init__(__self__, *,
+                 role: pulumi.Input[str],
+                 code: Optional[pulumi.Input[pulumi.Archive]] = None,
+                 code_signing_config_arn: Optional[pulumi.Input[str]] = None,
+                 dead_letter_config: Optional[pulumi.Input['FunctionDeadLetterConfigArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 environment: Optional[pulumi.Input['FunctionEnvironmentArgs']] = None,
+                 file_system_config: Optional[pulumi.Input['FunctionFileSystemConfigArgs']] = None,
+                 handler: Optional[pulumi.Input[str]] = None,
+                 image_config: Optional[pulumi.Input['FunctionImageConfigArgs']] = None,
+                 image_uri: Optional[pulumi.Input[str]] = None,
+                 kms_key_arn: Optional[pulumi.Input[str]] = None,
+                 layers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 memory_size: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 package_type: Optional[pulumi.Input[str]] = None,
+                 publish: Optional[pulumi.Input[bool]] = None,
+                 reserved_concurrent_executions: Optional[pulumi.Input[int]] = None,
+                 runtime: Optional[pulumi.Input[Union[str, 'Runtime']]] = None,
+                 s3_bucket: Optional[pulumi.Input[str]] = None,
+                 s3_key: Optional[pulumi.Input[str]] = None,
+                 s3_object_version: Optional[pulumi.Input[str]] = None,
+                 source_code_hash: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 timeout: Optional[pulumi.Input[int]] = None,
+                 tracing_config: Optional[pulumi.Input['FunctionTracingConfigArgs']] = None,
+                 vpc_config: Optional[pulumi.Input['FunctionVpcConfigArgs']] = None):
+        """
+        The set of arguments for constructing a Function resource.
+        :param pulumi.Input[str] role: Amazon Resource Name (ARN) of the function's execution role. The role provides the function's identity and access to AWS services and resources.
+        :param pulumi.Input[pulumi.Archive] code: Path to the function's deployment package within the local filesystem. Conflicts with `image_uri`, `s3_bucket`, `s3_key`, and `s3_object_version`.
+        :param pulumi.Input[str] code_signing_config_arn: To enable code signing for this function, specify the ARN of a code-signing configuration. A code-signing configuration includes a set of signing profiles, which define the trusted publishers for this function.
+        :param pulumi.Input['FunctionDeadLetterConfigArgs'] dead_letter_config: Configuration block. Detailed below.
+        :param pulumi.Input[str] description: Description of what your Lambda Function does.
+        :param pulumi.Input['FunctionEnvironmentArgs'] environment: Configuration block. Detailed below.
+        :param pulumi.Input['FunctionFileSystemConfigArgs'] file_system_config: Configuration block. Detailed below.
+        :param pulumi.Input[str] handler: Function [entrypoint](https://docs.aws.amazon.com/lambda/latest/dg/walkthrough-custom-events-create-test-function.html) in your code.
+        :param pulumi.Input['FunctionImageConfigArgs'] image_config: Configuration block. Detailed below.
+        :param pulumi.Input[str] image_uri: ECR image URI containing the function's deployment package. Conflicts with `filename`, `s3_bucket`, `s3_key`, and `s3_object_version`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] layers: List of Lambda Layer Version ARNs (maximum of 5) to attach to your Lambda Function. See [Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
+        :param pulumi.Input[int] memory_size: Amount of memory in MB your Lambda Function can use at runtime. Defaults to `128`. See [Limits](https://docs.aws.amazon.com/lambda/latest/dg/limits.html)
+        :param pulumi.Input[str] name: Unique name for your Lambda Function.
+        :param pulumi.Input[str] package_type: Lambda deployment package type. Valid values are `Zip` and `Image`. Defaults to `Zip`.
+        :param pulumi.Input[bool] publish: Whether to publish creation/change as new Lambda Function Version. Defaults to `false`.
+        :param pulumi.Input[int] reserved_concurrent_executions: Amount of reserved concurrent executions for this lambda function. A value of `0` disables lambda from being triggered and `-1` removes any concurrency limitations. Defaults to Unreserved Concurrency Limits `-1`. See [Managing Concurrency](https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html)
+        :param pulumi.Input[Union[str, 'Runtime']] runtime: Identifier of the function's runtime. See [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-Runtime) for valid values.
+        :param pulumi.Input[str] s3_bucket: S3 bucket location containing the function's deployment package. Conflicts with `filename` and `image_uri`. This bucket must reside in the same AWS region where you are creating the Lambda function.
+        :param pulumi.Input[str] s3_key: S3 key of an object containing the function's deployment package. Conflicts with `filename` and `image_uri`.
+        :param pulumi.Input[str] s3_object_version: Object version containing the function's deployment package. Conflicts with `filename` and `image_uri`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Map of tags to assign to the object.
+        :param pulumi.Input[int] timeout: Amount of time your Lambda Function has to run in seconds. Defaults to `3`. See [Limits](https://docs.aws.amazon.com/lambda/latest/dg/limits.html).
+        :param pulumi.Input['FunctionTracingConfigArgs'] tracing_config: Configuration block. Detailed below.
+        :param pulumi.Input['FunctionVpcConfigArgs'] vpc_config: Configuration block. Detailed below.
+        """
+        pulumi.set(__self__, "role", role)
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if code_signing_config_arn is not None:
+            pulumi.set(__self__, "code_signing_config_arn", code_signing_config_arn)
+        if dead_letter_config is not None:
+            pulumi.set(__self__, "dead_letter_config", dead_letter_config)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if file_system_config is not None:
+            pulumi.set(__self__, "file_system_config", file_system_config)
+        if handler is not None:
+            pulumi.set(__self__, "handler", handler)
+        if image_config is not None:
+            pulumi.set(__self__, "image_config", image_config)
+        if image_uri is not None:
+            pulumi.set(__self__, "image_uri", image_uri)
+        if kms_key_arn is not None:
+            pulumi.set(__self__, "kms_key_arn", kms_key_arn)
+        if layers is not None:
+            pulumi.set(__self__, "layers", layers)
+        if memory_size is not None:
+            pulumi.set(__self__, "memory_size", memory_size)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if package_type is not None:
+            pulumi.set(__self__, "package_type", package_type)
+        if publish is not None:
+            pulumi.set(__self__, "publish", publish)
+        if reserved_concurrent_executions is not None:
+            pulumi.set(__self__, "reserved_concurrent_executions", reserved_concurrent_executions)
+        if runtime is not None:
+            pulumi.set(__self__, "runtime", runtime)
+        if s3_bucket is not None:
+            pulumi.set(__self__, "s3_bucket", s3_bucket)
+        if s3_key is not None:
+            pulumi.set(__self__, "s3_key", s3_key)
+        if s3_object_version is not None:
+            pulumi.set(__self__, "s3_object_version", s3_object_version)
+        if source_code_hash is not None:
+            pulumi.set(__self__, "source_code_hash", source_code_hash)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if tracing_config is not None:
+            pulumi.set(__self__, "tracing_config", tracing_config)
+        if vpc_config is not None:
+            pulumi.set(__self__, "vpc_config", vpc_config)
+
+    @property
+    @pulumi.getter
+    def role(self) -> pulumi.Input[str]:
+        """
+        Amazon Resource Name (ARN) of the function's execution role. The role provides the function's identity and access to AWS services and resources.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[pulumi.Archive]]:
+        """
+        Path to the function's deployment package within the local filesystem. Conflicts with `image_uri`, `s3_bucket`, `s3_key`, and `s3_object_version`.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[pulumi.Archive]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter(name="codeSigningConfigArn")
+    def code_signing_config_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        To enable code signing for this function, specify the ARN of a code-signing configuration. A code-signing configuration includes a set of signing profiles, which define the trusted publishers for this function.
+        """
+        return pulumi.get(self, "code_signing_config_arn")
+
+    @code_signing_config_arn.setter
+    def code_signing_config_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "code_signing_config_arn", value)
+
+    @property
+    @pulumi.getter(name="deadLetterConfig")
+    def dead_letter_config(self) -> Optional[pulumi.Input['FunctionDeadLetterConfigArgs']]:
+        """
+        Configuration block. Detailed below.
+        """
+        return pulumi.get(self, "dead_letter_config")
+
+    @dead_letter_config.setter
+    def dead_letter_config(self, value: Optional[pulumi.Input['FunctionDeadLetterConfigArgs']]):
+        pulumi.set(self, "dead_letter_config", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of what your Lambda Function does.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input['FunctionEnvironmentArgs']]:
+        """
+        Configuration block. Detailed below.
+        """
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input['FunctionEnvironmentArgs']]):
+        pulumi.set(self, "environment", value)
+
+    @property
+    @pulumi.getter(name="fileSystemConfig")
+    def file_system_config(self) -> Optional[pulumi.Input['FunctionFileSystemConfigArgs']]:
+        """
+        Configuration block. Detailed below.
+        """
+        return pulumi.get(self, "file_system_config")
+
+    @file_system_config.setter
+    def file_system_config(self, value: Optional[pulumi.Input['FunctionFileSystemConfigArgs']]):
+        pulumi.set(self, "file_system_config", value)
+
+    @property
+    @pulumi.getter
+    def handler(self) -> Optional[pulumi.Input[str]]:
+        """
+        Function [entrypoint](https://docs.aws.amazon.com/lambda/latest/dg/walkthrough-custom-events-create-test-function.html) in your code.
+        """
+        return pulumi.get(self, "handler")
+
+    @handler.setter
+    def handler(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "handler", value)
+
+    @property
+    @pulumi.getter(name="imageConfig")
+    def image_config(self) -> Optional[pulumi.Input['FunctionImageConfigArgs']]:
+        """
+        Configuration block. Detailed below.
+        """
+        return pulumi.get(self, "image_config")
+
+    @image_config.setter
+    def image_config(self, value: Optional[pulumi.Input['FunctionImageConfigArgs']]):
+        pulumi.set(self, "image_config", value)
+
+    @property
+    @pulumi.getter(name="imageUri")
+    def image_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        ECR image URI containing the function's deployment package. Conflicts with `filename`, `s3_bucket`, `s3_key`, and `s3_object_version`.
+        """
+        return pulumi.get(self, "image_uri")
+
+    @image_uri.setter
+    def image_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_uri", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyArn")
+    def kms_key_arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kms_key_arn")
+
+    @kms_key_arn.setter
+    def kms_key_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_arn", value)
+
+    @property
+    @pulumi.getter
+    def layers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of Lambda Layer Version ARNs (maximum of 5) to attach to your Lambda Function. See [Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
+        """
+        return pulumi.get(self, "layers")
+
+    @layers.setter
+    def layers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "layers", value)
+
+    @property
+    @pulumi.getter(name="memorySize")
+    def memory_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of memory in MB your Lambda Function can use at runtime. Defaults to `128`. See [Limits](https://docs.aws.amazon.com/lambda/latest/dg/limits.html)
+        """
+        return pulumi.get(self, "memory_size")
+
+    @memory_size.setter
+    def memory_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "memory_size", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique name for your Lambda Function.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="packageType")
+    def package_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Lambda deployment package type. Valid values are `Zip` and `Image`. Defaults to `Zip`.
+        """
+        return pulumi.get(self, "package_type")
+
+    @package_type.setter
+    def package_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "package_type", value)
+
+    @property
+    @pulumi.getter
+    def publish(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to publish creation/change as new Lambda Function Version. Defaults to `false`.
+        """
+        return pulumi.get(self, "publish")
+
+    @publish.setter
+    def publish(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "publish", value)
+
+    @property
+    @pulumi.getter(name="reservedConcurrentExecutions")
+    def reserved_concurrent_executions(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of reserved concurrent executions for this lambda function. A value of `0` disables lambda from being triggered and `-1` removes any concurrency limitations. Defaults to Unreserved Concurrency Limits `-1`. See [Managing Concurrency](https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html)
+        """
+        return pulumi.get(self, "reserved_concurrent_executions")
+
+    @reserved_concurrent_executions.setter
+    def reserved_concurrent_executions(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "reserved_concurrent_executions", value)
+
+    @property
+    @pulumi.getter
+    def runtime(self) -> Optional[pulumi.Input[Union[str, 'Runtime']]]:
+        """
+        Identifier of the function's runtime. See [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-Runtime) for valid values.
+        """
+        return pulumi.get(self, "runtime")
+
+    @runtime.setter
+    def runtime(self, value: Optional[pulumi.Input[Union[str, 'Runtime']]]):
+        pulumi.set(self, "runtime", value)
+
+    @property
+    @pulumi.getter(name="s3Bucket")
+    def s3_bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        S3 bucket location containing the function's deployment package. Conflicts with `filename` and `image_uri`. This bucket must reside in the same AWS region where you are creating the Lambda function.
+        """
+        return pulumi.get(self, "s3_bucket")
+
+    @s3_bucket.setter
+    def s3_bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "s3_bucket", value)
+
+    @property
+    @pulumi.getter(name="s3Key")
+    def s3_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        S3 key of an object containing the function's deployment package. Conflicts with `filename` and `image_uri`.
+        """
+        return pulumi.get(self, "s3_key")
+
+    @s3_key.setter
+    def s3_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "s3_key", value)
+
+    @property
+    @pulumi.getter(name="s3ObjectVersion")
+    def s3_object_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Object version containing the function's deployment package. Conflicts with `filename` and `image_uri`.
+        """
+        return pulumi.get(self, "s3_object_version")
+
+    @s3_object_version.setter
+    def s3_object_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "s3_object_version", value)
+
+    @property
+    @pulumi.getter(name="sourceCodeHash")
+    def source_code_hash(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "source_code_hash")
+
+    @source_code_hash.setter
+    def source_code_hash(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_code_hash", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map of tags to assign to the object.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of time your Lambda Function has to run in seconds. Defaults to `3`. See [Limits](https://docs.aws.amazon.com/lambda/latest/dg/limits.html).
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout", value)
+
+    @property
+    @pulumi.getter(name="tracingConfig")
+    def tracing_config(self) -> Optional[pulumi.Input['FunctionTracingConfigArgs']]:
+        """
+        Configuration block. Detailed below.
+        """
+        return pulumi.get(self, "tracing_config")
+
+    @tracing_config.setter
+    def tracing_config(self, value: Optional[pulumi.Input['FunctionTracingConfigArgs']]):
+        pulumi.set(self, "tracing_config", value)
+
+    @property
+    @pulumi.getter(name="vpcConfig")
+    def vpc_config(self) -> Optional[pulumi.Input['FunctionVpcConfigArgs']]:
+        """
+        Configuration block. Detailed below.
+        """
+        return pulumi.get(self, "vpc_config")
+
+    @vpc_config.setter
+    def vpc_config(self, value: Optional[pulumi.Input['FunctionVpcConfigArgs']]):
+        pulumi.set(self, "vpc_config", value)
 
 
 class Function(pulumi.CustomResource):
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: FunctionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        Lambda Functions can be imported using the `function_name`, e.g.
+
+        ```sh
+         $ pulumi import aws:lambda/function:Function test_lambda my_test_lambda_function
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param FunctionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -83,6 +517,46 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['FunctionTracingConfigArgs']] tracing_config: Configuration block. Detailed below.
         :param pulumi.Input[pulumi.InputType['FunctionVpcConfigArgs']] vpc_config: Configuration block. Detailed below.
         """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(FunctionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 code: Optional[pulumi.Input[pulumi.Archive]] = None,
+                 code_signing_config_arn: Optional[pulumi.Input[str]] = None,
+                 dead_letter_config: Optional[pulumi.Input[pulumi.InputType['FunctionDeadLetterConfigArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 environment: Optional[pulumi.Input[pulumi.InputType['FunctionEnvironmentArgs']]] = None,
+                 file_system_config: Optional[pulumi.Input[pulumi.InputType['FunctionFileSystemConfigArgs']]] = None,
+                 handler: Optional[pulumi.Input[str]] = None,
+                 image_config: Optional[pulumi.Input[pulumi.InputType['FunctionImageConfigArgs']]] = None,
+                 image_uri: Optional[pulumi.Input[str]] = None,
+                 kms_key_arn: Optional[pulumi.Input[str]] = None,
+                 layers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 memory_size: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 package_type: Optional[pulumi.Input[str]] = None,
+                 publish: Optional[pulumi.Input[bool]] = None,
+                 reserved_concurrent_executions: Optional[pulumi.Input[int]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 runtime: Optional[pulumi.Input[Union[str, 'Runtime']]] = None,
+                 s3_bucket: Optional[pulumi.Input[str]] = None,
+                 s3_key: Optional[pulumi.Input[str]] = None,
+                 s3_object_version: Optional[pulumi.Input[str]] = None,
+                 source_code_hash: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 timeout: Optional[pulumi.Input[int]] = None,
+                 tracing_config: Optional[pulumi.Input[pulumi.InputType['FunctionTracingConfigArgs']]] = None,
+                 vpc_config: Optional[pulumi.Input[pulumi.InputType['FunctionVpcConfigArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,15 +5,72 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['BucketLifecycleConfiguration']
+__all__ = ['BucketLifecycleConfigurationArgs', 'BucketLifecycleConfiguration']
+
+@pulumi.input_type
+class BucketLifecycleConfigurationArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 rules: pulumi.Input[Sequence[pulumi.Input['BucketLifecycleConfigurationRuleArgs']]]):
+        """
+        The set of arguments for constructing a BucketLifecycleConfiguration resource.
+        :param pulumi.Input[str] bucket: Amazon Resource Name (ARN) of the bucket.
+        :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleConfigurationRuleArgs']]] rules: Configuration block(s) containing lifecycle rules for the bucket.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        Amazon Resource Name (ARN) of the bucket.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['BucketLifecycleConfigurationRuleArgs']]]:
+        """
+        Configuration block(s) containing lifecycle rules for the bucket.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['BucketLifecycleConfigurationRuleArgs']]]):
+        pulumi.set(self, "rules", value)
 
 
 class BucketLifecycleConfiguration(pulumi.CustomResource):
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: BucketLifecycleConfigurationArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        ## Import
+
+        S3 Control Bucket Lifecycle Configurations can be imported using the Amazon Resource Name (ARN), e.g.
+
+        ```sh
+         $ pulumi import aws:s3control/bucketLifecycleConfiguration:BucketLifecycleConfiguration example arn:aws:s3-outposts:us-east-1:123456789012:outpost/op-12345678/bucket/example
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param BucketLifecycleConfigurationArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -36,6 +93,22 @@ class BucketLifecycleConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] bucket: Amazon Resource Name (ARN) of the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleConfigurationRuleArgs']]]] rules: Configuration block(s) containing lifecycle rules for the bucket.
         """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(BucketLifecycleConfigurationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bucket: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleConfigurationRuleArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
