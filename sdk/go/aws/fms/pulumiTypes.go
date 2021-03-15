@@ -19,7 +19,7 @@ type PolicyExcludeMap struct {
 // PolicyExcludeMapInput is an input type that accepts PolicyExcludeMap and PolicyExcludeMapOutput values.
 // You can construct a concrete instance of `PolicyExcludeMapInput` via:
 //
-//          PolicyExcludeMap{ "key": PolicyExcludeArgs{...} }
+//          PolicyExcludeMap{ "key": PolicyExcludeMapArgs{...} }
 type PolicyExcludeMapInput interface {
 	pulumi.Input
 
@@ -165,7 +165,7 @@ type PolicyIncludeMap struct {
 // PolicyIncludeMapInput is an input type that accepts PolicyIncludeMap and PolicyIncludeMapOutput values.
 // You can construct a concrete instance of `PolicyIncludeMapInput` via:
 //
-//          PolicyIncludeMap{ "key": PolicyIncludeArgs{...} }
+//          PolicyIncludeMap{ "key": PolicyIncludeMapArgs{...} }
 type PolicyIncludeMapInput interface {
 	pulumi.Input
 

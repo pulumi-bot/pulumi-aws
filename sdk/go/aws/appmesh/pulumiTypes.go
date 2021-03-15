@@ -19480,7 +19480,7 @@ type VirtualNodeSpecServiceDiscoveryAwsCloudMap struct {
 // VirtualNodeSpecServiceDiscoveryAwsCloudMapInput is an input type that accepts VirtualNodeSpecServiceDiscoveryAwsCloudMap and VirtualNodeSpecServiceDiscoveryAwsCloudMapOutput values.
 // You can construct a concrete instance of `VirtualNodeSpecServiceDiscoveryAwsCloudMapInput` via:
 //
-//          VirtualNodeSpecServiceDiscoveryAwsCloudMap{ "key": VirtualNodeSpecServiceDiscoveryAwsCloudArgs{...} }
+//          VirtualNodeSpecServiceDiscoveryAwsCloudMap{ "key": VirtualNodeSpecServiceDiscoveryAwsCloudMapArgs{...} }
 type VirtualNodeSpecServiceDiscoveryAwsCloudMapInput interface {
 	pulumi.Input
 
