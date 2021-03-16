@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from ._enums import *
 
@@ -6578,72 +6578,72 @@ class VpnConnectionVgwTelemetryArgs:
 @pulumi.input_type
 class GetAmiFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the AMI that was provided during image creation.
+        :param pulumi.Input[str] name: The name of the AMI that was provided during image creation.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the AMI that was provided during image creation.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetAmiIdsFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetCoipPoolFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter by, as defined by
+        :param pulumi.Input[str] name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCoipPools.html).
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field.
                A COIP Pool will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -6651,7 +6651,7 @@ class GetCoipPoolFilterArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter by, as defined by
         [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCoipPools.html).
@@ -6659,12 +6659,12 @@ class GetCoipPoolFilterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field.
         A COIP Pool will be selected if any one of the given values matches.
@@ -6672,19 +6672,19 @@ class GetCoipPoolFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetCoipPoolsFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter by, as defined by
+        :param pulumi.Input[str] name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCoipPools.html).
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field.
                A COIP Pool will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -6692,7 +6692,7 @@ class GetCoipPoolsFilterArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter by, as defined by
         [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCoipPools.html).
@@ -6700,12 +6700,12 @@ class GetCoipPoolsFilterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field.
         A COIP Pool will be selected if any one of the given values matches.
@@ -6713,100 +6713,100 @@ class GetCoipPoolsFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetCustomerGatewayFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetElasticIpFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetInstanceFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetInstanceTypeFpgaArgs:
     def __init__(__self__, *,
-                 count: int,
-                 manufacturer: str,
-                 memory_size: int,
-                 name: str):
+                 count: pulumi.Input[int],
+                 manufacturer: pulumi.Input[str],
+                 memory_size: pulumi.Input[int],
+                 name: pulumi.Input[str]):
         """
-        :param int memory_size: Size of the instance memory, in MiB.
+        :param pulumi.Input[int] memory_size: Size of the instance memory, in MiB.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "manufacturer", manufacturer)
@@ -6815,53 +6815,53 @@ class GetInstanceTypeFpgaArgs:
 
     @property
     @pulumi.getter
-    def count(self) -> int:
+    def count(self) -> pulumi.Input[int]:
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: int):
+    def count(self, value: pulumi.Input[int]):
         pulumi.set(self, "count", value)
 
     @property
     @pulumi.getter
-    def manufacturer(self) -> str:
+    def manufacturer(self) -> pulumi.Input[str]:
         return pulumi.get(self, "manufacturer")
 
     @manufacturer.setter
-    def manufacturer(self, value: str):
+    def manufacturer(self, value: pulumi.Input[str]):
         pulumi.set(self, "manufacturer", value)
 
     @property
     @pulumi.getter(name="memorySize")
-    def memory_size(self) -> int:
+    def memory_size(self) -> pulumi.Input[int]:
         """
         Size of the instance memory, in MiB.
         """
         return pulumi.get(self, "memory_size")
 
     @memory_size.setter
-    def memory_size(self, value: int):
+    def memory_size(self, value: pulumi.Input[int]):
         pulumi.set(self, "memory_size", value)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class GetInstanceTypeGpusArgs:
     def __init__(__self__, *,
-                 count: int,
-                 manufacturer: str,
-                 memory_size: int,
-                 name: str):
+                 count: pulumi.Input[int],
+                 manufacturer: pulumi.Input[str],
+                 memory_size: pulumi.Input[int],
+                 name: pulumi.Input[str]):
         """
-        :param int memory_size: Size of the instance memory, in MiB.
+        :param pulumi.Input[int] memory_size: Size of the instance memory, in MiB.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "manufacturer", manufacturer)
@@ -6870,230 +6870,230 @@ class GetInstanceTypeGpusArgs:
 
     @property
     @pulumi.getter
-    def count(self) -> int:
+    def count(self) -> pulumi.Input[int]:
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: int):
+    def count(self, value: pulumi.Input[int]):
         pulumi.set(self, "count", value)
 
     @property
     @pulumi.getter
-    def manufacturer(self) -> str:
+    def manufacturer(self) -> pulumi.Input[str]:
         return pulumi.get(self, "manufacturer")
 
     @manufacturer.setter
-    def manufacturer(self, value: str):
+    def manufacturer(self, value: pulumi.Input[str]):
         pulumi.set(self, "manufacturer", value)
 
     @property
     @pulumi.getter(name="memorySize")
-    def memory_size(self) -> int:
+    def memory_size(self) -> pulumi.Input[int]:
         """
         Size of the instance memory, in MiB.
         """
         return pulumi.get(self, "memory_size")
 
     @memory_size.setter
-    def memory_size(self, value: int):
+    def memory_size(self, value: pulumi.Input[int]):
         pulumi.set(self, "memory_size", value)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class GetInstanceTypeInferenceAcceleratorArgs:
     def __init__(__self__, *,
-                 count: int,
-                 manufacturer: str,
-                 name: str):
+                 count: pulumi.Input[int],
+                 manufacturer: pulumi.Input[str],
+                 name: pulumi.Input[str]):
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "manufacturer", manufacturer)
         pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
-    def count(self) -> int:
+    def count(self) -> pulumi.Input[int]:
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: int):
+    def count(self, value: pulumi.Input[int]):
         pulumi.set(self, "count", value)
 
     @property
     @pulumi.getter
-    def manufacturer(self) -> str:
+    def manufacturer(self) -> pulumi.Input[str]:
         return pulumi.get(self, "manufacturer")
 
     @manufacturer.setter
-    def manufacturer(self, value: str):
+    def manufacturer(self, value: pulumi.Input[str]):
         pulumi.set(self, "manufacturer", value)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class GetInstanceTypeInstanceDiskArgs:
     def __init__(__self__, *,
-                 count: int,
-                 size: int,
-                 type: str):
+                 count: pulumi.Input[int],
+                 size: pulumi.Input[int],
+                 type: pulumi.Input[str]):
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
-    def count(self) -> int:
+    def count(self) -> pulumi.Input[int]:
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: int):
+    def count(self, value: pulumi.Input[int]):
         pulumi.set(self, "count", value)
 
     @property
     @pulumi.getter
-    def size(self) -> int:
+    def size(self) -> pulumi.Input[int]:
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: int):
+    def size(self, value: pulumi.Input[int]):
         pulumi.set(self, "size", value)
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Input[str]:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: str):
+    def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class GetInstanceTypeOfferingFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: Name of the filter. The `location` filter depends on the top-level `location_type` argument and if not specified, defaults to the current region.
-        :param Sequence[str] values: List of one or more values for the filter.
+        :param pulumi.Input[str] name: Name of the filter. The `location` filter depends on the top-level `location_type` argument and if not specified, defaults to the current region.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: List of one or more values for the filter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         Name of the filter. The `location` filter depends on the top-level `location_type` argument and if not specified, defaults to the current region.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         List of one or more values for the filter.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetInstanceTypeOfferingsFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: Name of the filter. The `location` filter depends on the top-level `location_type` argument and if not specified, defaults to the current region.
-        :param Sequence[str] values: List of one or more values for the filter.
+        :param pulumi.Input[str] name: Name of the filter. The `location` filter depends on the top-level `location_type` argument and if not specified, defaults to the current region.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: List of one or more values for the filter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         Name of the filter. The `location` filter depends on the top-level `location_type` argument and if not specified, defaults to the current region.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         List of one or more values for the filter.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetInstancesFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetInternetGatewayFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter by, as defined by
+        :param pulumi.Input[str] name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInternetGateways.html).
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field.
                An Internet Gateway will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -7101,7 +7101,7 @@ class GetInternetGatewayFilterArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter by, as defined by
         [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInternetGateways.html).
@@ -7109,12 +7109,12 @@ class GetInternetGatewayFilterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field.
         An Internet Gateway will be selected if any one of the given values matches.
@@ -7122,56 +7122,56 @@ class GetInternetGatewayFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetLaunchTemplateFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
-        :param Sequence[str] values: Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+        :param pulumi.Input[str] name: The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetLocalGatewayFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter by, as defined by
+        :param pulumi.Input[str] name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGateways.html).
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field.
                A Local Gateway will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -7179,7 +7179,7 @@ class GetLocalGatewayFilterArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter by, as defined by
         [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGateways.html).
@@ -7187,12 +7187,12 @@ class GetLocalGatewayFilterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field.
         A Local Gateway will be selected if any one of the given values matches.
@@ -7200,19 +7200,19 @@ class GetLocalGatewayFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetLocalGatewayRouteTableFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter by, as defined by
+        :param pulumi.Input[str] name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayRouteTables.html).
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field.
                A local gateway route table will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -7220,7 +7220,7 @@ class GetLocalGatewayRouteTableFilterArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter by, as defined by
         [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayRouteTables.html).
@@ -7228,12 +7228,12 @@ class GetLocalGatewayRouteTableFilterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field.
         A local gateway route table will be selected if any one of the given values matches.
@@ -7241,19 +7241,19 @@ class GetLocalGatewayRouteTableFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetLocalGatewayRouteTablesFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter by, as defined by
+        :param pulumi.Input[str] name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayRouteTables.html).
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field.
                A Local Gateway Route Table will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -7261,7 +7261,7 @@ class GetLocalGatewayRouteTablesFilterArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter by, as defined by
         [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayRouteTables.html).
@@ -7269,12 +7269,12 @@ class GetLocalGatewayRouteTablesFilterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field.
         A Local Gateway Route Table will be selected if any one of the given values matches.
@@ -7282,130 +7282,130 @@ class GetLocalGatewayRouteTablesFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetLocalGatewayVirtualInterfaceFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: Name of the filter.
-        :param Sequence[str] values: List of one or more values for the filter.
+        :param pulumi.Input[str] name: Name of the filter.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: List of one or more values for the filter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         Name of the filter.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         List of one or more values for the filter.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetLocalGatewayVirtualInterfaceGroupFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: Name of the filter.
-        :param Sequence[str] values: List of one or more values for the filter.
+        :param pulumi.Input[str] name: Name of the filter.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: List of one or more values for the filter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         Name of the filter.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         List of one or more values for the filter.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetLocalGatewayVirtualInterfaceGroupsFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: Name of the filter.
-        :param Sequence[str] values: List of one or more values for the filter.
+        :param pulumi.Input[str] name: Name of the filter.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: List of one or more values for the filter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         Name of the filter.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         List of one or more values for the filter.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetLocalGatewaysFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter by, as defined by
+        :param pulumi.Input[str] name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGateways.html).
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field.
                A Local Gateway will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -7413,7 +7413,7 @@ class GetLocalGatewaysFilterArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter by, as defined by
         [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGateways.html).
@@ -7421,12 +7421,12 @@ class GetLocalGatewaysFilterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field.
         A Local Gateway will be selected if any one of the given values matches.
@@ -7434,56 +7434,56 @@ class GetLocalGatewaysFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetManagedPrefixListFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the filter field. Valid values can be found in the EC2 [DescribeManagedPrefixLists](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeManagedPrefixLists.html) API Reference.
-        :param Sequence[str] values: Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+        :param pulumi.Input[str] name: The name of the filter field. Valid values can be found in the EC2 [DescribeManagedPrefixLists](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeManagedPrefixLists.html) API Reference.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the filter field. Valid values can be found in the EC2 [DescribeManagedPrefixLists](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeManagedPrefixLists.html) API Reference.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetNatGatewayFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter by, as defined by
+        :param pulumi.Input[str] name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNatGateways.html).
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field.
                An Nat Gateway will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -7491,7 +7491,7 @@ class GetNatGatewayFilterArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter by, as defined by
         [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNatGateways.html).
@@ -7499,12 +7499,12 @@ class GetNatGatewayFilterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field.
         An Nat Gateway will be selected if any one of the given values matches.
@@ -7512,19 +7512,19 @@ class GetNatGatewayFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetNetworkAclsFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter by, as defined by
+        :param pulumi.Input[str] name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNetworkAcls.html).
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field.
                A VPC will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -7532,7 +7532,7 @@ class GetNetworkAclsFilterArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter by, as defined by
         [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNetworkAcls.html).
@@ -7540,12 +7540,12 @@ class GetNetworkAclsFilterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field.
         A VPC will be selected if any one of the given values matches.
@@ -7553,53 +7553,53 @@ class GetNetworkAclsFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetNetworkInterfaceFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetNetworkInterfacesFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter by, as defined by
+        :param pulumi.Input[str] name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNetworkInterfaces.html).
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter by, as defined by
         [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNetworkInterfaces.html).
@@ -7607,105 +7607,105 @@ class GetNetworkInterfacesFilterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetPrefixListFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the filter field. Valid values can be found in the [EC2 DescribePrefixLists API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribePrefixLists.html).
-        :param Sequence[str] values: Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+        :param pulumi.Input[str] name: The name of the filter field. Valid values can be found in the [EC2 DescribePrefixLists API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribePrefixLists.html).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the filter field. Valid values can be found in the [EC2 DescribePrefixLists API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribePrefixLists.html).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetRouteTableFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: Name of the field to filter by, as defined by [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRouteTables.html).
-        :param Sequence[str] values: Set of values that are accepted for the given field. A Route Table will be selected if any one of the given values matches.
+        :param pulumi.Input[str] name: Name of the field to filter by, as defined by [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRouteTables.html).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field. A Route Table will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         Name of the field to filter by, as defined by [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRouteTables.html).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field. A Route Table will be selected if any one of the given values matches.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetRouteTablesFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter by, as defined by
+        :param pulumi.Input[str] name: The name of the field to filter by, as defined by
                [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRouteTables.html).
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field.
                A Route Table will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -7713,7 +7713,7 @@ class GetRouteTablesFilterArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter by, as defined by
         [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRouteTables.html).
@@ -7721,12 +7721,12 @@ class GetRouteTablesFilterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field.
         A Route Table will be selected if any one of the given values matches.
@@ -7734,19 +7734,19 @@ class GetRouteTablesFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetSecurityGroupFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter by, as defined by
+        :param pulumi.Input[str] name: The name of the field to filter by, as defined by
                [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroups.html).
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field.
                A Security Group will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -7754,7 +7754,7 @@ class GetSecurityGroupFilterArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter by, as defined by
         [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroups.html).
@@ -7762,12 +7762,12 @@ class GetSecurityGroupFilterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field.
         A Security Group will be selected if any one of the given values matches.
@@ -7775,121 +7775,121 @@ class GetSecurityGroupFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetSecurityGroupsFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetSpotPriceFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: Name of the filter.
-        :param Sequence[str] values: List of one or more values for the filter.
+        :param pulumi.Input[str] name: Name of the filter.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: List of one or more values for the filter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         Name of the filter.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         List of one or more values for the filter.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetSubnetFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter by, as defined by [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSubnets.html).
-        :param Sequence[str] values: Set of values that are accepted for the given field. A subnet will be selected if any one of the given values matches.
+        :param pulumi.Input[str] name: The name of the field to filter by, as defined by [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSubnets.html).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field. A subnet will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter by, as defined by [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSubnets.html).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field. A subnet will be selected if any one of the given values matches.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetSubnetIdsFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter by, as defined by
+        :param pulumi.Input[str] name: The name of the field to filter by, as defined by
                [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSubnets.html).
                For example, if matching against tag `Name`, use:
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field.
                Subnet IDs will be selected if any one of the given values match.
         """
         pulumi.set(__self__, "name", name)
@@ -7897,7 +7897,7 @@ class GetSubnetIdsFilterArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter by, as defined by
         [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSubnets.html).
@@ -7906,12 +7906,12 @@ class GetSubnetIdsFilterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field.
         Subnet IDs will be selected if any one of the given values match.
@@ -7919,56 +7919,56 @@ class GetSubnetIdsFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetVpcDhcpOptionsFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter.
-        :param Sequence[str] values: Set of values for filtering.
+        :param pulumi.Input[str] name: The name of the field to filter.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values for filtering.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values for filtering.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetVpcEndpointFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter by, as defined by
+        :param pulumi.Input[str] name: The name of the field to filter by, as defined by
                [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpoints.html).
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field.
                A VPC Endpoint will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -7976,7 +7976,7 @@ class GetVpcEndpointFilterArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter by, as defined by
         [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpoints.html).
@@ -7984,12 +7984,12 @@ class GetVpcEndpointFilterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field.
         A VPC Endpoint will be selected if any one of the given values matches.
@@ -7997,56 +7997,56 @@ class GetVpcEndpointFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetVpcEndpointServiceFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the filter field. Valid values can be found in the [EC2 DescribeVpcEndpointServices API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpointServices.html).
-        :param Sequence[str] values: Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
+        :param pulumi.Input[str] name: The name of the filter field. Valid values can be found in the [EC2 DescribeVpcEndpointServices API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpointServices.html).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the filter field. Valid values can be found in the [EC2 DescribeVpcEndpointServices API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpointServices.html).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetVpcFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter by, as defined by
+        :param pulumi.Input[str] name: The name of the field to filter by, as defined by
                [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcs.html).
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field.
                A VPC will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -8054,7 +8054,7 @@ class GetVpcFilterArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter by, as defined by
         [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcs.html).
@@ -8062,12 +8062,12 @@ class GetVpcFilterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field.
         A VPC will be selected if any one of the given values matches.
@@ -8075,19 +8075,19 @@ class GetVpcFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetVpcPeeringConnectionFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter by, as defined by
+        :param pulumi.Input[str] name: The name of the field to filter by, as defined by
                [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcPeeringConnections.html).
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field.
                A VPC Peering Connection will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -8095,7 +8095,7 @@ class GetVpcPeeringConnectionFilterArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter by, as defined by
         [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcPeeringConnections.html).
@@ -8103,12 +8103,12 @@ class GetVpcPeeringConnectionFilterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field.
         A VPC Peering Connection will be selected if any one of the given values matches.
@@ -8116,19 +8116,19 @@ class GetVpcPeeringConnectionFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetVpcPeeringConnectionsFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter by, as defined by
+        :param pulumi.Input[str] name: The name of the field to filter by, as defined by
                [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcPeeringConnections.html).
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field.
                A VPC Peering Connection will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -8136,7 +8136,7 @@ class GetVpcPeeringConnectionsFilterArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter by, as defined by
         [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcPeeringConnections.html).
@@ -8144,12 +8144,12 @@ class GetVpcPeeringConnectionsFilterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field.
         A VPC Peering Connection will be selected if any one of the given values matches.
@@ -8157,19 +8157,19 @@ class GetVpcPeeringConnectionsFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetVpcsFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter by, as defined by
+        :param pulumi.Input[str] name: The name of the field to filter by, as defined by
                [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcs.html).
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field.
                A VPC will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -8177,7 +8177,7 @@ class GetVpcsFilterArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter by, as defined by
         [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcs.html).
@@ -8185,12 +8185,12 @@ class GetVpcsFilterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field.
         A VPC will be selected if any one of the given values matches.
@@ -8198,19 +8198,19 @@ class GetVpcsFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class GetVpnGatewayFilterArgs:
     def __init__(__self__, *,
-                 name: str,
-                 values: Sequence[str]):
+                 name: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        :param str name: The name of the field to filter by, as defined by
+        :param pulumi.Input[str] name: The name of the field to filter by, as defined by
                [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpnGateways.html).
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Set of values that are accepted for the given field.
                A VPN Gateway will be selected if any one of the given values matches.
         """
         pulumi.set(__self__, "name", name)
@@ -8218,7 +8218,7 @@ class GetVpnGatewayFilterArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the field to filter by, as defined by
         [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpnGateways.html).
@@ -8226,12 +8226,12 @@ class GetVpnGatewayFilterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of values that are accepted for the given field.
         A VPN Gateway will be selected if any one of the given values matches.
@@ -8239,7 +8239,7 @@ class GetVpnGatewayFilterArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Sequence[str]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 

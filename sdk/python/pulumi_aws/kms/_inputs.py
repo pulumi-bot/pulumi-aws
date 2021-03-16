@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
 __all__ = [
@@ -56,10 +56,10 @@ class GrantConstraintArgs:
 @pulumi.input_type
 class GetSecretSecretArgs:
     def __init__(__self__, *,
-                 name: str,
-                 payload: str,
-                 context: Optional[Mapping[str, str]] = None,
-                 grant_tokens: Optional[Sequence[str]] = None):
+                 name: pulumi.Input[str],
+                 payload: pulumi.Input[str],
+                 context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 grant_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "payload", payload)
         if context is not None:
@@ -69,53 +69,53 @@ class GetSecretSecretArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def payload(self) -> str:
+    def payload(self) -> pulumi.Input[str]:
         return pulumi.get(self, "payload")
 
     @payload.setter
-    def payload(self, value: str):
+    def payload(self, value: pulumi.Input[str]):
         pulumi.set(self, "payload", value)
 
     @property
     @pulumi.getter
-    def context(self) -> Optional[Mapping[str, str]]:
+    def context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "context")
 
     @context.setter
-    def context(self, value: Optional[Mapping[str, str]]):
+    def context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "context", value)
 
     @property
     @pulumi.getter(name="grantTokens")
-    def grant_tokens(self) -> Optional[Sequence[str]]:
+    def grant_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "grant_tokens")
 
     @grant_tokens.setter
-    def grant_tokens(self, value: Optional[Sequence[str]]):
+    def grant_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "grant_tokens", value)
 
 
 @pulumi.input_type
 class GetSecretsSecretArgs:
     def __init__(__self__, *,
-                 name: str,
-                 payload: str,
-                 context: Optional[Mapping[str, str]] = None,
-                 grant_tokens: Optional[Sequence[str]] = None):
+                 name: pulumi.Input[str],
+                 payload: pulumi.Input[str],
+                 context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 grant_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param str name: The name to export this secret under in the attributes.
-        :param str payload: Base64 encoded payload, as returned from a KMS encrypt operation.
-        :param Mapping[str, str] context: An optional mapping that makes up the Encryption Context for the secret.
-        :param Sequence[str] grant_tokens: An optional list of Grant Tokens for the secret.
+        :param pulumi.Input[str] name: The name to export this secret under in the attributes.
+        :param pulumi.Input[str] payload: Base64 encoded payload, as returned from a KMS encrypt operation.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] context: An optional mapping that makes up the Encryption Context for the secret.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_tokens: An optional list of Grant Tokens for the secret.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "payload", payload)
@@ -126,50 +126,50 @@ class GetSecretsSecretArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         The name to export this secret under in the attributes.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def payload(self) -> str:
+    def payload(self) -> pulumi.Input[str]:
         """
         Base64 encoded payload, as returned from a KMS encrypt operation.
         """
         return pulumi.get(self, "payload")
 
     @payload.setter
-    def payload(self, value: str):
+    def payload(self, value: pulumi.Input[str]):
         pulumi.set(self, "payload", value)
 
     @property
     @pulumi.getter
-    def context(self) -> Optional[Mapping[str, str]]:
+    def context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         An optional mapping that makes up the Encryption Context for the secret.
         """
         return pulumi.get(self, "context")
 
     @context.setter
-    def context(self, value: Optional[Mapping[str, str]]):
+    def context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "context", value)
 
     @property
     @pulumi.getter(name="grantTokens")
-    def grant_tokens(self) -> Optional[Sequence[str]]:
+    def grant_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An optional list of Grant Tokens for the secret.
         """
         return pulumi.get(self, "grant_tokens")
 
     @grant_tokens.setter
-    def grant_tokens(self, value: Optional[Sequence[str]]):
+    def grant_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "grant_tokens", value)
 
 

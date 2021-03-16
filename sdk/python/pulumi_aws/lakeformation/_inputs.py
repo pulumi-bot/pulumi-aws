@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
 __all__ = [
@@ -333,89 +333,89 @@ class PermissionsTableWithColumnsArgs:
 @pulumi.input_type
 class GetPermissionsDataLocationArgs:
     def __init__(__self__, *,
-                 arn: str,
-                 catalog_id: str):
+                 arn: pulumi.Input[str],
+                 catalog_id: pulumi.Input[str]):
         """
-        :param str arn: Amazon Resource Name (ARN) that uniquely identifies the data location resource.
-        :param str catalog_id: Identifier for the Data Catalog. By default, it is the account ID of the caller.
+        :param pulumi.Input[str] arn: Amazon Resource Name (ARN) that uniquely identifies the data location resource.
+        :param pulumi.Input[str] catalog_id: Identifier for the Data Catalog. By default, it is the account ID of the caller.
         """
         pulumi.set(__self__, "arn", arn)
         pulumi.set(__self__, "catalog_id", catalog_id)
 
     @property
     @pulumi.getter
-    def arn(self) -> str:
+    def arn(self) -> pulumi.Input[str]:
         """
         Amazon Resource Name (ARN) that uniquely identifies the data location resource.
         """
         return pulumi.get(self, "arn")
 
     @arn.setter
-    def arn(self, value: str):
+    def arn(self, value: pulumi.Input[str]):
         pulumi.set(self, "arn", value)
 
     @property
     @pulumi.getter(name="catalogId")
-    def catalog_id(self) -> str:
+    def catalog_id(self) -> pulumi.Input[str]:
         """
         Identifier for the Data Catalog. By default, it is the account ID of the caller.
         """
         return pulumi.get(self, "catalog_id")
 
     @catalog_id.setter
-    def catalog_id(self, value: str):
+    def catalog_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "catalog_id", value)
 
 
 @pulumi.input_type
 class GetPermissionsDatabaseArgs:
     def __init__(__self__, *,
-                 catalog_id: str,
-                 name: str):
+                 catalog_id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
         """
-        :param str catalog_id: Identifier for the Data Catalog. By default, it is the account ID of the caller.
-        :param str name: Name of the table resource.
+        :param pulumi.Input[str] catalog_id: Identifier for the Data Catalog. By default, it is the account ID of the caller.
+        :param pulumi.Input[str] name: Name of the table resource.
         """
         pulumi.set(__self__, "catalog_id", catalog_id)
         pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="catalogId")
-    def catalog_id(self) -> str:
+    def catalog_id(self) -> pulumi.Input[str]:
         """
         Identifier for the Data Catalog. By default, it is the account ID of the caller.
         """
         return pulumi.get(self, "catalog_id")
 
     @catalog_id.setter
-    def catalog_id(self, value: str):
+    def catalog_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "catalog_id", value)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         Name of the table resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class GetPermissionsTableArgs:
     def __init__(__self__, *,
-                 catalog_id: str,
-                 database_name: str,
-                 name: str,
-                 wildcard: Optional[bool] = None):
+                 catalog_id: pulumi.Input[str],
+                 database_name: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 wildcard: Optional[pulumi.Input[bool]] = None):
         """
-        :param str catalog_id: Identifier for the Data Catalog. By default, it is the account ID of the caller.
-        :param str database_name: Name of the database for the table with columns resource. Unique to the Data Catalog.
-        :param str name: Name of the table resource.
-        :param bool wildcard: Whether to use a wildcard representing every table under a database. At least one of `name` or `wildcard` is required. Defaults to `false`.
+        :param pulumi.Input[str] catalog_id: Identifier for the Data Catalog. By default, it is the account ID of the caller.
+        :param pulumi.Input[str] database_name: Name of the database for the table with columns resource. Unique to the Data Catalog.
+        :param pulumi.Input[str] name: Name of the table resource.
+        :param pulumi.Input[bool] wildcard: Whether to use a wildcard representing every table under a database. At least one of `name` or `wildcard` is required. Defaults to `false`.
         """
         pulumi.set(__self__, "catalog_id", catalog_id)
         pulumi.set(__self__, "database_name", database_name)
@@ -425,67 +425,67 @@ class GetPermissionsTableArgs:
 
     @property
     @pulumi.getter(name="catalogId")
-    def catalog_id(self) -> str:
+    def catalog_id(self) -> pulumi.Input[str]:
         """
         Identifier for the Data Catalog. By default, it is the account ID of the caller.
         """
         return pulumi.get(self, "catalog_id")
 
     @catalog_id.setter
-    def catalog_id(self, value: str):
+    def catalog_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "catalog_id", value)
 
     @property
     @pulumi.getter(name="databaseName")
-    def database_name(self) -> str:
+    def database_name(self) -> pulumi.Input[str]:
         """
         Name of the database for the table with columns resource. Unique to the Data Catalog.
         """
         return pulumi.get(self, "database_name")
 
     @database_name.setter
-    def database_name(self, value: str):
+    def database_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "database_name", value)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         Name of the table resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def wildcard(self) -> Optional[bool]:
+    def wildcard(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to use a wildcard representing every table under a database. At least one of `name` or `wildcard` is required. Defaults to `false`.
         """
         return pulumi.get(self, "wildcard")
 
     @wildcard.setter
-    def wildcard(self, value: Optional[bool]):
+    def wildcard(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "wildcard", value)
 
 
 @pulumi.input_type
 class GetPermissionsTableWithColumnsArgs:
     def __init__(__self__, *,
-                 catalog_id: str,
-                 database_name: str,
-                 name: str,
-                 column_names: Optional[Sequence[str]] = None,
-                 excluded_column_names: Optional[Sequence[str]] = None):
+                 catalog_id: pulumi.Input[str],
+                 database_name: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 column_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excluded_column_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param str catalog_id: Identifier for the Data Catalog. By default, it is the account ID of the caller.
-        :param str database_name: Name of the database for the table with columns resource. Unique to the Data Catalog.
-        :param str name: Name of the table resource.
-        :param Sequence[str] column_names: List of column names for the table. At least one of `column_names` or `excluded_column_names` is required.
-        :param Sequence[str] excluded_column_names: List of column names for the table to exclude. At least one of `column_names` or `excluded_column_names` is required.
+        :param pulumi.Input[str] catalog_id: Identifier for the Data Catalog. By default, it is the account ID of the caller.
+        :param pulumi.Input[str] database_name: Name of the database for the table with columns resource. Unique to the Data Catalog.
+        :param pulumi.Input[str] name: Name of the table resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] column_names: List of column names for the table. At least one of `column_names` or `excluded_column_names` is required.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_column_names: List of column names for the table to exclude. At least one of `column_names` or `excluded_column_names` is required.
         """
         pulumi.set(__self__, "catalog_id", catalog_id)
         pulumi.set(__self__, "database_name", database_name)
@@ -497,62 +497,62 @@ class GetPermissionsTableWithColumnsArgs:
 
     @property
     @pulumi.getter(name="catalogId")
-    def catalog_id(self) -> str:
+    def catalog_id(self) -> pulumi.Input[str]:
         """
         Identifier for the Data Catalog. By default, it is the account ID of the caller.
         """
         return pulumi.get(self, "catalog_id")
 
     @catalog_id.setter
-    def catalog_id(self, value: str):
+    def catalog_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "catalog_id", value)
 
     @property
     @pulumi.getter(name="databaseName")
-    def database_name(self) -> str:
+    def database_name(self) -> pulumi.Input[str]:
         """
         Name of the database for the table with columns resource. Unique to the Data Catalog.
         """
         return pulumi.get(self, "database_name")
 
     @database_name.setter
-    def database_name(self, value: str):
+    def database_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "database_name", value)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Input[str]:
         """
         Name of the table resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: str):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="columnNames")
-    def column_names(self) -> Optional[Sequence[str]]:
+    def column_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of column names for the table. At least one of `column_names` or `excluded_column_names` is required.
         """
         return pulumi.get(self, "column_names")
 
     @column_names.setter
-    def column_names(self, value: Optional[Sequence[str]]):
+    def column_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "column_names", value)
 
     @property
     @pulumi.getter(name="excludedColumnNames")
-    def excluded_column_names(self) -> Optional[Sequence[str]]:
+    def excluded_column_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of column names for the table to exclude. At least one of `column_names` or `excluded_column_names` is required.
         """
         return pulumi.get(self, "excluded_column_names")
 
     @excluded_column_names.setter
-    def excluded_column_names(self, value: Optional[Sequence[str]]):
+    def excluded_column_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "excluded_column_names", value)
 
 
