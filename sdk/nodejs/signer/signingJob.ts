@@ -296,17 +296,17 @@ export interface SigningJobArgs {
     /**
      * The S3 bucket in which to save your signed object. See Destination below for details.
      */
-    readonly destination: pulumi.Input<inputs.signer.SigningJobDestination>;
+    destination: pulumi.Input<inputs.signer.SigningJobDestination>;
     /**
      * Set this argument to `true` to ignore signing job failures and retrieve failed status and reason. Default `false`.
      */
-    readonly ignoreSigningJobFailure?: pulumi.Input<boolean>;
+    ignoreSigningJobFailure?: pulumi.Input<boolean>;
     /**
      * The name of the profile to initiate the signing operation.
      */
-    readonly profileName: pulumi.Input<string>;
+    profileName: pulumi.Input<string>;
     /**
      * The S3 bucket that contains the object to sign. See Source below for details.
      */
-    readonly source: pulumi.Input<inputs.signer.SigningJobSource>;
+    source: pulumi.Input<inputs.signer.SigningJobSource>;
 }

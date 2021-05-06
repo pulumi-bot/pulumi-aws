@@ -328,41 +328,41 @@ export interface StoredIscsiVolumeArgs {
     /**
      * The unique identifier for the gateway local disk that is configured as a stored volume.
      */
-    readonly diskId: pulumi.Input<string>;
+    diskId: pulumi.Input<string>;
     /**
      * The Amazon Resource Name (ARN) of the gateway.
      */
-    readonly gatewayArn: pulumi.Input<string>;
+    gatewayArn: pulumi.Input<string>;
     /**
      * `true` to use Amazon S3 server side encryption with your own AWS KMS key, or `false` to use a key managed by Amazon S3. Optional.
      */
-    readonly kmsEncrypted?: pulumi.Input<boolean>;
+    kmsEncrypted?: pulumi.Input<boolean>;
     /**
      * The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server side encryption. This value can only be set when `kmsEncrypted` is `true`.
      */
-    readonly kmsKey?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string>;
     /**
      * The network interface of the gateway on which to expose the iSCSI target. Only IPv4 addresses are accepted.
      */
-    readonly networkInterfaceId: pulumi.Input<string>;
+    networkInterfaceId: pulumi.Input<string>;
     /**
      * Specify this field as `true` if you want to preserve the data on the local disk. Otherwise, specifying this field as false creates an empty volume.
      */
-    readonly preserveExistingData: pulumi.Input<boolean>;
+    preserveExistingData: pulumi.Input<boolean>;
     /**
      * The snapshot ID of the snapshot to restore as the new stored volume. e.g. `snap-1122aabb`.
      */
-    readonly snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string>;
     /**
      * Key-value mapping of resource tags. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. The target name must be unique across all volumes of a gateway.
      */
-    readonly targetName: pulumi.Input<string>;
+    targetName: pulumi.Input<string>;
 }

@@ -266,29 +266,29 @@ export interface StateMachineArgs {
     /**
      * The Amazon States Language definition of the state machine.
      */
-    readonly definition: pulumi.Input<string>;
+    definition: pulumi.Input<string>;
     /**
      * Defines what execution history events are logged and where they are logged. The `loggingConfiguration` parameter is only valid when `type` is set to `EXPRESS`. Defaults to `OFF`. For more information see [Logging Express Workflows](https://docs.aws.amazon.com/step-functions/latest/dg/cw-logs.html) and [Log Levels](https://docs.aws.amazon.com/step-functions/latest/dg/cloudwatch-log-level.html) in the AWS Step Functions User Guide.
      */
-    readonly loggingConfiguration?: pulumi.Input<inputs.sfn.StateMachineLoggingConfiguration>;
+    loggingConfiguration?: pulumi.Input<inputs.sfn.StateMachineLoggingConfiguration>;
     /**
      * The name of the state machine.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Amazon Resource Name (ARN) of the IAM role to use for this state machine.
      */
-    readonly roleArn: pulumi.Input<string>;
+    roleArn: pulumi.Input<string>;
     /**
      * Key-value map of resource tags. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Determines whether a Standard or Express state machine is created. The default is STANDARD. You cannot update the type of a state machine once it has been created. Valid Values: STANDARD | EXPRESS
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }

@@ -157,15 +157,15 @@ export interface TrafficMirrorTargetArgs {
     /**
      * A description of the traffic mirror session.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The network interface ID that is associated with the target.
      */
-    readonly networkInterfaceId?: pulumi.Input<string>;
+    networkInterfaceId?: pulumi.Input<string>;
     /**
      * The Amazon Resource Name (ARN) of the Network Load Balancer that is associated with the target.
      */
-    readonly networkLoadBalancerArn?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    networkLoadBalancerArn?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

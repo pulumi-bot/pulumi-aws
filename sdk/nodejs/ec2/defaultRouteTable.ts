@@ -205,18 +205,18 @@ export interface DefaultRouteTableArgs {
     /**
      * ID of the default route table.
      */
-    readonly defaultRouteTableId: pulumi.Input<string>;
+    defaultRouteTableId: pulumi.Input<string>;
     /**
      * List of virtual gateways for propagation.
      */
-    readonly propagatingVgws?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly routes?: pulumi.Input<pulumi.Input<inputs.ec2.DefaultRouteTableRoute>[]>;
+    propagatingVgws?: pulumi.Input<pulumi.Input<string>[]>;
+    routes?: pulumi.Input<pulumi.Input<inputs.ec2.DefaultRouteTableRoute>[]>;
     /**
      * Map of tags to assign to the resource. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

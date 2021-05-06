@@ -132,13 +132,13 @@ export interface KeyGroupArgs {
     /**
      * A comment to describe the key group..
      */
-    readonly comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string>;
     /**
      * A list of the identifiers of the public keys in the key group.
      */
-    readonly items: pulumi.Input<pulumi.Input<string>[]>;
+    items: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A name to identify the key group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

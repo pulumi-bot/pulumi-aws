@@ -161,14 +161,14 @@ export interface ResourceServerArgs {
     /**
      * An identifier for the resource server.
      */
-    readonly identifier: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * A name for the resource server.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A list of Authorization Scope.
      */
-    readonly scopes?: pulumi.Input<pulumi.Input<inputs.cognito.ResourceServerScope>[]>;
-    readonly userPoolId: pulumi.Input<string>;
+    scopes?: pulumi.Input<pulumi.Input<inputs.cognito.ResourceServerScope>[]>;
+    userPoolId: pulumi.Input<string>;
 }

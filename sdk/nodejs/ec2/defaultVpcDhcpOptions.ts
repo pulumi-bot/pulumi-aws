@@ -170,14 +170,14 @@ export interface DefaultVpcDhcpOptionsArgs {
     /**
      * List of NETBIOS name servers.
      */
-    readonly netbiosNameServers?: pulumi.Input<pulumi.Input<string>[]>;
+    netbiosNameServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The NetBIOS node type (1, 2, 4, or 8). AWS recommends to specify 2 since broadcast and multicast are not supported in their network. For more information about these node types, see [RFC 2132](http://www.ietf.org/rfc/rfc2132.txt).
      */
-    readonly netbiosNodeType?: pulumi.Input<string>;
+    netbiosNodeType?: pulumi.Input<string>;
     /**
      * A map of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -205,26 +205,26 @@ export interface ResolverEndpointArgs {
      * Valid values are `INBOUND` (resolver forwards DNS queries to the DNS service for a VPC from your network or another VPC)
      * or `OUTBOUND` (resolver forwards DNS queries from the DNS service for a VPC to your network or another VPC).
      */
-    readonly direction: pulumi.Input<string>;
+    direction: pulumi.Input<string>;
     /**
      * The subnets and IP addresses in your VPC that you want DNS queries to pass through on the way from your VPCs
      * to your network (for outbound endpoints) or on the way from your network to your VPCs (for inbound endpoints). Described below.
      */
-    readonly ipAddresses: pulumi.Input<pulumi.Input<inputs.route53.ResolverEndpointIpAddress>[]>;
+    ipAddresses: pulumi.Input<pulumi.Input<inputs.route53.ResolverEndpointIpAddress>[]>;
     /**
      * The friendly name of the Route 53 Resolver endpoint.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of one or more security groups that you want to use to control access to this VPC.
      */
-    readonly securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A map of tags to assign to the resource. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

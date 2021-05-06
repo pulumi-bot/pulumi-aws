@@ -114,5 +114,5 @@ export interface EmailIdentityArgs {
     /**
      * The email address to assign to SES
      */
-    readonly email: pulumi.Input<string>;
+    email: pulumi.Input<string>;
 }

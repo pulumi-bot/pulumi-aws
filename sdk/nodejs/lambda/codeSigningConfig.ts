@@ -166,13 +166,13 @@ export interface CodeSigningConfigArgs {
     /**
      * A configuration block of allowed publishers as signing profiles for this code signing configuration. Detailed below.
      */
-    readonly allowedPublishers: pulumi.Input<inputs.lambda.CodeSigningConfigAllowedPublishers>;
+    allowedPublishers: pulumi.Input<inputs.lambda.CodeSigningConfigAllowedPublishers>;
     /**
      * Descriptive name for this code signing configuration.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A configuration block of code signing policies that define the actions to take if the validation checks fail. Detailed below.
      */
-    readonly policies?: pulumi.Input<inputs.lambda.CodeSigningConfigPolicies>;
+    policies?: pulumi.Input<inputs.lambda.CodeSigningConfigPolicies>;
 }

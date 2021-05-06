@@ -151,21 +151,21 @@ export interface CatalogDatabaseArgs {
     /**
      * ID of the Glue Catalog to create the database in. If omitted, this defaults to the AWS Account ID.
      */
-    readonly catalogId?: pulumi.Input<string>;
+    catalogId?: pulumi.Input<string>;
     /**
      * Description of the database.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The location of the database (for example, an HDFS path).
      */
-    readonly locationUri?: pulumi.Input<string>;
+    locationUri?: pulumi.Input<string>;
     /**
      * The name of the database. The acceptable characters are lowercase letters, numbers, and the underscore character.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A list of key-value pairs that define parameters and properties of the database.
      */
-    readonly parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

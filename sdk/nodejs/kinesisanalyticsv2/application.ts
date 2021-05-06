@@ -428,35 +428,35 @@ export interface ApplicationArgs {
     /**
      * The application's configuration
      */
-    readonly applicationConfiguration?: pulumi.Input<inputs.kinesisanalyticsv2.ApplicationApplicationConfiguration>;
+    applicationConfiguration?: pulumi.Input<inputs.kinesisanalyticsv2.ApplicationApplicationConfiguration>;
     /**
      * A CloudWatch log stream to monitor application configuration errors.
      */
-    readonly cloudwatchLoggingOptions?: pulumi.Input<inputs.kinesisanalyticsv2.ApplicationCloudwatchLoggingOptions>;
+    cloudwatchLoggingOptions?: pulumi.Input<inputs.kinesisanalyticsv2.ApplicationCloudwatchLoggingOptions>;
     /**
      * A summary description of the application.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether to force stop an unresponsive Flink-based application.
      */
-    readonly forceStop?: pulumi.Input<boolean>;
+    forceStop?: pulumi.Input<boolean>;
     /**
      * The name of the application.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The runtime environment for the application. Valid values: `SQL-1_0`, `FLINK-1_6`, `FLINK-1_8`, `FLINK-1_11`.
      */
-    readonly runtimeEnvironment: pulumi.Input<string>;
+    runtimeEnvironment: pulumi.Input<string>;
     /**
      * The ARN of the IAM role used by the application to access Kinesis data streams, Kinesis Data Firehose delivery streams, Amazon S3 objects, and other external resources.
      */
-    readonly serviceExecutionRole: pulumi.Input<string>;
+    serviceExecutionRole: pulumi.Input<string>;
     /**
      * Whether to start or stop the application.
      */
-    readonly startApplication?: pulumi.Input<boolean>;
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    startApplication?: pulumi.Input<boolean>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

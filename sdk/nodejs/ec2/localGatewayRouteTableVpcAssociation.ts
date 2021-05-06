@@ -134,11 +134,11 @@ export interface LocalGatewayRouteTableVpcAssociationArgs {
     /**
      * Identifier of EC2 Local Gateway Route Table.
      */
-    readonly localGatewayRouteTableId: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    localGatewayRouteTableId: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Identifier of EC2 VPC.
      */
-    readonly vpcId: pulumi.Input<string>;
+    vpcId: pulumi.Input<string>;
 }

@@ -228,26 +228,26 @@ export interface SnapshotCopyArgs {
     /**
      * A description of what the snapshot is.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether the snapshot is encrypted.
      */
-    readonly encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean>;
     /**
      * The ARN for the KMS encryption key.
      */
-    readonly kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string>;
     /**
      * The region of the source snapshot.
      */
-    readonly sourceRegion: pulumi.Input<string>;
+    sourceRegion: pulumi.Input<string>;
     /**
      * The ARN for the snapshot to be copied.
      */
-    readonly sourceSnapshotId: pulumi.Input<string>;
+    sourceSnapshotId: pulumi.Input<string>;
     /**
      * A map of tags for the snapshot.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -131,9 +131,9 @@ export interface MainRouteTableAssociationArgs {
      * The ID of the Route Table to set as the new
      * main route table for the target VPC
      */
-    readonly routeTableId: pulumi.Input<string>;
+    routeTableId: pulumi.Input<string>;
     /**
      * The ID of the VPC whose main route table should be set
      */
-    readonly vpcId: pulumi.Input<string>;
+    vpcId: pulumi.Input<string>;
 }

@@ -117,5 +117,5 @@ export interface RegistryPolicyState {
  * The set of arguments for constructing a RegistryPolicy resource.
  */
 export interface RegistryPolicyArgs {
-    readonly policy: pulumi.Input<string>;
+    policy: pulumi.Input<string>;
 }

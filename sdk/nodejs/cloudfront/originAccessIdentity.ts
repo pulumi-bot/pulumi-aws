@@ -221,5 +221,5 @@ export interface OriginAccessIdentityArgs {
     /**
      * An optional comment for the origin access identity.
      */
-    readonly comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string>;
 }

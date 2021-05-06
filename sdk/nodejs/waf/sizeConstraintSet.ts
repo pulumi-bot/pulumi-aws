@@ -129,9 +129,9 @@ export interface SizeConstraintSetArgs {
     /**
      * The name or description of the Size Constraint Set.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Specifies the parts of web requests that you want to inspect the size of.
      */
-    readonly sizeConstraints?: pulumi.Input<pulumi.Input<inputs.waf.SizeConstraintSetSizeConstraint>[]>;
+    sizeConstraints?: pulumi.Input<pulumi.Input<inputs.waf.SizeConstraintSetSizeConstraint>[]>;
 }

@@ -295,37 +295,37 @@ export interface DomainArgs {
     /**
      * Specifies the VPC used for non-EFS traffic. The default value is `PublicInternetOnly`. Valid values are `PublicInternetOnly` and `VpcOnly`.
      */
-    readonly appNetworkAccessType?: pulumi.Input<string>;
+    appNetworkAccessType?: pulumi.Input<string>;
     /**
      * The mode of authentication that members use to access the domain. Valid values are `IAM` and `SSO`.
      */
-    readonly authMode: pulumi.Input<string>;
+    authMode: pulumi.Input<string>;
     /**
      * The default user settings. See Default User Settings below.
      */
-    readonly defaultUserSettings: pulumi.Input<inputs.sagemaker.DomainDefaultUserSettings>;
+    defaultUserSettings: pulumi.Input<inputs.sagemaker.DomainDefaultUserSettings>;
     /**
      * The domain name.
      */
-    readonly domainName: pulumi.Input<string>;
+    domainName: pulumi.Input<string>;
     /**
      * The AWS KMS customer managed CMK used to encrypt the EFS volume attached to the domain.
      */
-    readonly kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string>;
     /**
      * The VPC subnets that Studio uses for communication.
      */
-    readonly subnetIds: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A map of tags to assign to the resource. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the Amazon Virtual Private Cloud (VPC) that Studio uses for communication.
      */
-    readonly vpcId: pulumi.Input<string>;
+    vpcId: pulumi.Input<string>;
 }

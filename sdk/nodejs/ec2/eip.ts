@@ -350,35 +350,35 @@ export interface EipArgs {
     /**
      * IP address from an EC2 BYOIP pool. This option is only available for VPC EIPs.
      */
-    readonly address?: pulumi.Input<string>;
+    address?: pulumi.Input<string>;
     /**
      * User-specified primary or secondary private IP address to associate with the Elastic IP address. If no private IP address is specified, the Elastic IP address is associated with the primary private IP address.
      */
-    readonly associateWithPrivateIp?: pulumi.Input<string>;
+    associateWithPrivateIp?: pulumi.Input<string>;
     /**
      * ID  of a customer-owned address pool. For more on customer owned IP addressed check out [Customer-owned IP addresses guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing).
      */
-    readonly customerOwnedIpv4Pool?: pulumi.Input<string>;
+    customerOwnedIpv4Pool?: pulumi.Input<string>;
     /**
      * EC2 instance ID.
      */
-    readonly instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string>;
     /**
      * Location from which the IP address is advertised. Use this parameter to limit the address to this location.
      */
-    readonly networkBorderGroup?: pulumi.Input<string>;
+    networkBorderGroup?: pulumi.Input<string>;
     /**
      * Network interface ID to associate with.
      */
-    readonly networkInterface?: pulumi.Input<string>;
+    networkInterface?: pulumi.Input<string>;
     /**
      * EC2 IPv4 address pool identifier or `amazon`. This option is only available for VPC EIPs.
      */
-    readonly publicIpv4Pool?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    publicIpv4Pool?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Boolean if the EIP is in a VPC or not.
      */
-    readonly vpc?: pulumi.Input<boolean>;
+    vpc?: pulumi.Input<boolean>;
 }

@@ -255,21 +255,21 @@ export interface CloudFormationTypeArgs {
     /**
      * Amazon Resource Name (ARN) of the IAM Role for CloudFormation to assume when invoking the extension. If your extension calls AWS APIs in any of its handlers, you must create an IAM execution role that includes the necessary permissions to call those AWS APIs, and provision that execution role in your account. When CloudFormation needs to invoke the extension handler, CloudFormation assumes this execution role to create a temporary session token, which it then passes to the extension handler, thereby supplying your extension with the appropriate credentials.
      */
-    readonly executionRoleArn?: pulumi.Input<string>;
+    executionRoleArn?: pulumi.Input<string>;
     /**
      * Configuration block containing logging configuration.
      */
-    readonly loggingConfig?: pulumi.Input<inputs.cloudformation.CloudFormationTypeLoggingConfig>;
+    loggingConfig?: pulumi.Input<inputs.cloudformation.CloudFormationTypeLoggingConfig>;
     /**
      * URL to the S3 bucket containing the extension project package that contains the necessary files for the extension you want to register. Must begin with `s3://` or `https://`. For example, `s3://example-bucket/example-object`.
      */
-    readonly schemaHandlerPackage: pulumi.Input<string>;
+    schemaHandlerPackage: pulumi.Input<string>;
     /**
      * CloudFormation Registry Type. For example, `RESOURCE` or `MODULE`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * CloudFormation Type name. For example, `ExampleCompany::ExampleService::ExampleResource`.
      */
-    readonly typeName: pulumi.Input<string>;
+    typeName: pulumi.Input<string>;
 }

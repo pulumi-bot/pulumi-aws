@@ -236,9 +236,9 @@ export interface ClusterSnapshotArgs {
     /**
      * The DB Cluster Identifier from which to take the snapshot.
      */
-    readonly dbClusterIdentifier: pulumi.Input<string>;
+    dbClusterIdentifier: pulumi.Input<string>;
     /**
      * The Identifier for the snapshot.
      */
-    readonly dbClusterSnapshotIdentifier: pulumi.Input<string>;
+    dbClusterSnapshotIdentifier: pulumi.Input<string>;
 }

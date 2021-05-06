@@ -170,17 +170,17 @@ export interface HsmArgs {
     /**
      * The IDs of AZ in which HSM module will be located. Do not use together with subnet_id.
      */
-    readonly availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string>;
     /**
      * The ID of Cloud HSM v2 cluster to which HSM will be added.
      */
-    readonly clusterId: pulumi.Input<string>;
+    clusterId: pulumi.Input<string>;
     /**
      * The IP address of HSM module. Must be within the CIDR of selected subnet.
      */
-    readonly ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string>;
     /**
      * The ID of subnet in which HSM module will be located.
      */
-    readonly subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string>;
 }

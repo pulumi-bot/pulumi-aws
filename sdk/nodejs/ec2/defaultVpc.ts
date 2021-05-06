@@ -278,19 +278,19 @@ export interface DefaultVpcArgs {
      * for the VPC. Only valid in regions and accounts that support EC2 Classic.
      * See the [ClassicLink documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) for more information. Defaults false.
      */
-    readonly enableClassiclink?: pulumi.Input<boolean>;
-    readonly enableClassiclinkDnsSupport?: pulumi.Input<boolean>;
+    enableClassiclink?: pulumi.Input<boolean>;
+    enableClassiclinkDnsSupport?: pulumi.Input<boolean>;
     /**
      * A boolean flag to enable/disable DNS hostnames in the VPC. Defaults false.
      */
-    readonly enableDnsHostnames?: pulumi.Input<boolean>;
+    enableDnsHostnames?: pulumi.Input<boolean>;
     /**
      * A boolean flag to enable/disable DNS support in the VPC. Defaults true.
      */
-    readonly enableDnsSupport?: pulumi.Input<boolean>;
+    enableDnsSupport?: pulumi.Input<boolean>;
     /**
      * A map of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

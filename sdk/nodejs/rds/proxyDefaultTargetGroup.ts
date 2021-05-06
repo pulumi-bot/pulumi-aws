@@ -163,9 +163,9 @@ export interface ProxyDefaultTargetGroupArgs {
     /**
      * The settings that determine the size and behavior of the connection pool for the target group.
      */
-    readonly connectionPoolConfig?: pulumi.Input<inputs.rds.ProxyDefaultTargetGroupConnectionPoolConfig>;
+    connectionPoolConfig?: pulumi.Input<inputs.rds.ProxyDefaultTargetGroupConnectionPoolConfig>;
     /**
      * Name of the RDS DB Proxy.
      */
-    readonly dbProxyName: pulumi.Input<string>;
+    dbProxyName: pulumi.Input<string>;
 }

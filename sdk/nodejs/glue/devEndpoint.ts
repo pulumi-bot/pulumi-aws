@@ -352,62 +352,62 @@ export interface DevEndpointArgs {
     /**
      * A map of arguments used to configure the endpoint.
      */
-    readonly arguments?: pulumi.Input<{[key: string]: any}>;
+    arguments?: pulumi.Input<{[key: string]: any}>;
     /**
      * Path to one or more Java Jars in an S3 bucket that should be loaded in this endpoint.
      */
-    readonly extraJarsS3Path?: pulumi.Input<string>;
+    extraJarsS3Path?: pulumi.Input<string>;
     /**
      * Path(s) to one or more Python libraries in an S3 bucket that should be loaded in this endpoint. Multiple values must be complete paths separated by a comma.
      */
-    readonly extraPythonLibsS3Path?: pulumi.Input<string>;
+    extraPythonLibsS3Path?: pulumi.Input<string>;
     /**
      * -  Specifies the versions of Python and Apache Spark to use. Defaults to AWS Glue version 0.9.
      */
-    readonly glueVersion?: pulumi.Input<string>;
+    glueVersion?: pulumi.Input<string>;
     /**
      * The name of this endpoint. It must be unique in your account.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The number of AWS Glue Data Processing Units (DPUs) to allocate to this endpoint. Conflicts with `workerType`.
      */
-    readonly numberOfNodes?: pulumi.Input<number>;
+    numberOfNodes?: pulumi.Input<number>;
     /**
      * The number of workers of a defined worker type that are allocated to this endpoint. This field is available only when you choose worker type G.1X or G.2X.
      */
-    readonly numberOfWorkers?: pulumi.Input<number>;
+    numberOfWorkers?: pulumi.Input<number>;
     /**
      * The public key to be used by this endpoint for authentication.
      */
-    readonly publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string>;
     /**
      * A list of public keys to be used by this endpoint for authentication.
      */
-    readonly publicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    publicKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The IAM role for this endpoint.
      */
-    readonly roleArn: pulumi.Input<string>;
+    roleArn: pulumi.Input<string>;
     /**
      * The name of the Security Configuration structure to be used with this endpoint.
      */
-    readonly securityConfiguration?: pulumi.Input<string>;
+    securityConfiguration?: pulumi.Input<string>;
     /**
      * Security group IDs for the security groups to be used by this endpoint.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The subnet ID for the new endpoint to use.
      */
-    readonly subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string>;
     /**
      * Key-value map of resource tags. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The type of predefined worker that is allocated to this endpoint. Accepts a value of Standard, G.1X, or G.2X.
      */
-    readonly workerType?: pulumi.Input<string>;
+    workerType?: pulumi.Input<string>;
 }

@@ -111,9 +111,9 @@ export interface PatchGroupArgs {
     /**
      * The ID of the patch baseline to register the patch group with.
      */
-    readonly baselineId: pulumi.Input<string>;
+    baselineId: pulumi.Input<string>;
     /**
      * The name of the patch group that should be registered with the patch baseline.
      */
-    readonly patchGroup: pulumi.Input<string>;
+    patchGroup: pulumi.Input<string>;
 }

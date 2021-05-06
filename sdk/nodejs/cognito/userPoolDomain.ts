@@ -196,13 +196,13 @@ export interface UserPoolDomainArgs {
     /**
      * The ARN of an ISSUED ACM certificate in us-east-1 for a custom domain.
      */
-    readonly certificateArn?: pulumi.Input<string>;
+    certificateArn?: pulumi.Input<string>;
     /**
      * The domain string.
      */
-    readonly domain: pulumi.Input<string>;
+    domain: pulumi.Input<string>;
     /**
      * The user pool ID.
      */
-    readonly userPoolId: pulumi.Input<string>;
+    userPoolId: pulumi.Input<string>;
 }

@@ -159,9 +159,9 @@ export interface TopicPolicyArgs {
     /**
      * The ARN of the SNS topic
      */
-    readonly arn: pulumi.Input<string>;
+    arn: pulumi.Input<string>;
     /**
      * The fully-formed AWS policy as JSON.
      */
-    readonly policy: pulumi.Input<string>;
+    policy: pulumi.Input<string>;
 }

@@ -326,37 +326,37 @@ export interface AnalyticsApplicationArgs {
      * The CloudWatch log stream options to monitor application errors.
      * See CloudWatch Logging Options below for more details.
      */
-    readonly cloudwatchLoggingOptions?: pulumi.Input<inputs.kinesis.AnalyticsApplicationCloudwatchLoggingOptions>;
+    cloudwatchLoggingOptions?: pulumi.Input<inputs.kinesis.AnalyticsApplicationCloudwatchLoggingOptions>;
     /**
      * SQL Code to transform input data, and generate output.
      */
-    readonly code?: pulumi.Input<string>;
+    code?: pulumi.Input<string>;
     /**
      * Description of the application.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Input configuration of the application. See Inputs below for more details.
      */
-    readonly inputs?: pulumi.Input<inputs.kinesis.AnalyticsApplicationInputs>;
+    inputs?: pulumi.Input<inputs.kinesis.AnalyticsApplicationInputs>;
     /**
      * Name of the Kinesis Analytics Application.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Output destination configuration of the application. See Outputs below for more details.
      */
-    readonly outputs?: pulumi.Input<pulumi.Input<inputs.kinesis.AnalyticsApplicationOutput>[]>;
+    outputs?: pulumi.Input<pulumi.Input<inputs.kinesis.AnalyticsApplicationOutput>[]>;
     /**
      * An S3 Reference Data Source for the application.
      * See Reference Data Sources below for more details.
      */
-    readonly referenceDataSources?: pulumi.Input<inputs.kinesis.AnalyticsApplicationReferenceDataSources>;
+    referenceDataSources?: pulumi.Input<inputs.kinesis.AnalyticsApplicationReferenceDataSources>;
     /**
      * Whether to start or stop the Kinesis Analytics Application. To start an application, an input with a defined `startingPosition` must be configured.
      * To modify an application's starting position, first stop the application by setting `startApplication = false`, then update `startingPosition` and set `startApplication = true`.
      */
-    readonly startApplication?: pulumi.Input<boolean>;
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    startApplication?: pulumi.Input<boolean>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -305,43 +305,43 @@ export interface CertificateArgs {
     /**
      * ARN of an ACM PCA
      */
-    readonly certificateAuthorityArn?: pulumi.Input<string>;
+    certificateAuthorityArn?: pulumi.Input<string>;
     /**
      * The certificate's PEM-formatted public key
      */
-    readonly certificateBody?: pulumi.Input<string>;
+    certificateBody?: pulumi.Input<string>;
     /**
      * The certificate's PEM-formatted chain
      * * Creating a private CA issued certificate
      */
-    readonly certificateChain?: pulumi.Input<string>;
+    certificateChain?: pulumi.Input<string>;
     /**
      * A domain name for which the certificate should be issued
      */
-    readonly domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string>;
     /**
      * Configuration block used to set certificate options. Detailed below.
      * * Importing an existing certificate
      */
-    readonly options?: pulumi.Input<inputs.acm.CertificateOptions>;
+    options?: pulumi.Input<inputs.acm.CertificateOptions>;
     /**
      * The certificate's PEM-formatted private key
      */
-    readonly privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string>;
     /**
      * Set of domains that should be SANs in the issued certificate. To remove all elements of a previously configured list, set this value equal to an empty list (`[]`).
      */
-    readonly subjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[]>;
+    subjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A map of tags to assign to the resource..
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Which method to use for validation. `DNS` or `EMAIL` are valid, `NONE` can be used for certificates that were imported into ACM and then into the provider.
      */
-    readonly validationMethod?: pulumi.Input<string>;
+    validationMethod?: pulumi.Input<string>;
 }

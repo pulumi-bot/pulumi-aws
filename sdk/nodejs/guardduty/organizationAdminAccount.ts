@@ -109,5 +109,5 @@ export interface OrganizationAdminAccountArgs {
     /**
      * AWS account identifier to designate as a delegated administrator for GuardDuty.
      */
-    readonly adminAccountId: pulumi.Input<string>;
+    adminAccountId: pulumi.Input<string>;
 }

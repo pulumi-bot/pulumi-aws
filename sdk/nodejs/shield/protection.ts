@@ -122,9 +122,9 @@ export interface ProtectionArgs {
     /**
      * A friendly name for the Protection you are creating.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ARN (Amazon Resource Name) of the resource to be protected.
      */
-    readonly resourceArn: pulumi.Input<string>;
+    resourceArn: pulumi.Input<string>;
 }

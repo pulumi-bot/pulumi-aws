@@ -206,21 +206,21 @@ export interface CertificateArgs {
     /**
      * Amazon Resource Name (ARN) of the certificate authority.
      */
-    readonly certificateAuthorityArn: pulumi.Input<string>;
+    certificateAuthorityArn: pulumi.Input<string>;
     /**
      * Certificate Signing Request in PEM format.
      */
-    readonly certificateSigningRequest: pulumi.Input<string>;
+    certificateSigningRequest: pulumi.Input<string>;
     /**
      * Algorithm to use to sign certificate requests. Valid values: `SHA256WITHRSA`, `SHA256WITHECDSA`, `SHA384WITHRSA`, `SHA384WITHECDSA`, `SHA512WITHRSA`, `SHA512WITHECDSA`
      */
-    readonly signingAlgorithm: pulumi.Input<string>;
+    signingAlgorithm: pulumi.Input<string>;
     /**
      * The template to use when issuing a certificate. See [ACM PCA Documentation](https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html) for more information.
      */
-    readonly templateArn?: pulumi.Input<string>;
+    templateArn?: pulumi.Input<string>;
     /**
      * Configures end of the validity period for the certificate. See validity block below.
      */
-    readonly validity: pulumi.Input<inputs.acmpca.CertificateValidity>;
+    validity: pulumi.Input<inputs.acmpca.CertificateValidity>;
 }

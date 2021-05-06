@@ -138,9 +138,9 @@ export interface RouteTableAssociationArgs {
     /**
      * Identifier of EC2 Transit Gateway Attachment.
      */
-    readonly transitGatewayAttachmentId: pulumi.Input<string>;
+    transitGatewayAttachmentId: pulumi.Input<string>;
     /**
      * Identifier of EC2 Transit Gateway Route Table.
      */
-    readonly transitGatewayRouteTableId: pulumi.Input<string>;
+    transitGatewayRouteTableId: pulumi.Input<string>;
 }

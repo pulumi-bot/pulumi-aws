@@ -131,9 +131,9 @@ export interface GroupArgs {
     /**
      * The group's name. The name must consist of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: `=,.@-_.`. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Path in which to create the group.
      */
-    readonly path?: pulumi.Input<string>;
+    path?: pulumi.Input<string>;
 }

@@ -163,13 +163,13 @@ export interface VaultNotificationsArgs {
     /**
      * An array of events that indicate the status of jobs to back up resources to the backup vault.
      */
-    readonly backupVaultEvents: pulumi.Input<pulumi.Input<string>[]>;
+    backupVaultEvents: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the backup vault to add notifications for.
      */
-    readonly backupVaultName: pulumi.Input<string>;
+    backupVaultName: pulumi.Input<string>;
     /**
      * The Amazon Resource Name (ARN) that specifies the topic for a backup vault’s events
      */
-    readonly snsTopicArn: pulumi.Input<string>;
+    snsTopicArn: pulumi.Input<string>;
 }

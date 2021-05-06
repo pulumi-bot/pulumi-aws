@@ -329,35 +329,35 @@ export interface AmiFromInstanceArgs {
     /**
      * A longer, human-readable description for the AMI.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Nested block describing an EBS block device that should be
      * attached to created instances. The structure of this block is described below.
      */
-    readonly ebsBlockDevices?: pulumi.Input<pulumi.Input<inputs.ec2.AmiFromInstanceEbsBlockDevice>[]>;
+    ebsBlockDevices?: pulumi.Input<pulumi.Input<inputs.ec2.AmiFromInstanceEbsBlockDevice>[]>;
     /**
      * Nested block describing an ephemeral block device that
      * should be attached to created instances. The structure of this block is described below.
      */
-    readonly ephemeralBlockDevices?: pulumi.Input<pulumi.Input<inputs.ec2.AmiFromInstanceEphemeralBlockDevice>[]>;
+    ephemeralBlockDevices?: pulumi.Input<pulumi.Input<inputs.ec2.AmiFromInstanceEphemeralBlockDevice>[]>;
     /**
      * A region-unique name for the AMI.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Boolean that overrides the behavior of stopping
      * the instance before snapshotting. This is risky since it may cause a snapshot of an
      * inconsistent filesystem state, but can be used to avoid downtime if the user otherwise
      * guarantees that no filesystem writes will be underway at the time of snapshot.
      */
-    readonly snapshotWithoutReboot?: pulumi.Input<boolean>;
+    snapshotWithoutReboot?: pulumi.Input<boolean>;
     /**
      * The id of the instance to use as the basis of the AMI.
      */
-    readonly sourceInstanceId: pulumi.Input<string>;
+    sourceInstanceId: pulumi.Input<string>;
     /**
      * A map of tags to assign to the resource. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -95,5 +95,5 @@ export interface EncryptionByDefaultArgs {
     /**
      * Whether or not default EBS encryption is enabled. Valid values are `true` or `false`. Defaults to `true`.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
 }

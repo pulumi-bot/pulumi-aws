@@ -179,17 +179,17 @@ export interface RouteArgs {
     /**
      * The ID of the Client VPN endpoint.
      */
-    readonly clientVpnEndpointId: pulumi.Input<string>;
+    clientVpnEndpointId: pulumi.Input<string>;
     /**
      * A brief description of the authorization rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The IPv4 address range, in CIDR notation, of the route destination.
      */
-    readonly destinationCidrBlock: pulumi.Input<string>;
+    destinationCidrBlock: pulumi.Input<string>;
     /**
      * The ID of the Subnet to route the traffic through. It must already be attached to the Client VPN.
      */
-    readonly targetVpcSubnetId: pulumi.Input<string>;
+    targetVpcSubnetId: pulumi.Input<string>;
 }

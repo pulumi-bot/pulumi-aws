@@ -123,5 +123,5 @@ export interface StaticIpArgs {
     /**
      * The name for the allocated static IP
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

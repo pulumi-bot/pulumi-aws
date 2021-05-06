@@ -141,5 +141,5 @@ export interface DomainIdentityArgs {
     /**
      * The domain name to assign to SES
      */
-    readonly domain: pulumi.Input<string>;
+    domain: pulumi.Input<string>;
 }

@@ -153,17 +153,17 @@ export interface SmsChannelArgs {
     /**
      * The application ID.
      */
-    readonly applicationId: pulumi.Input<string>;
+    applicationId: pulumi.Input<string>;
     /**
      * Whether the channel is enabled or disabled. Defaults to `true`.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Sender identifier of your messages.
      */
-    readonly senderId?: pulumi.Input<string>;
+    senderId?: pulumi.Input<string>;
     /**
      * The Short Code registered with the phone provider.
      */
-    readonly shortCode?: pulumi.Input<string>;
+    shortCode?: pulumi.Input<string>;
 }

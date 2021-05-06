@@ -273,49 +273,49 @@ export interface ProductArgs {
     /**
      * Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
      */
-    readonly acceptLanguage?: pulumi.Input<string>;
+    acceptLanguage?: pulumi.Input<string>;
     /**
      * Description of the provisioning artifact (i.e., version), including how it differs from the previous provisioning artifact.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Distributor (i.e., vendor) of the product.
      */
-    readonly distributor?: pulumi.Input<string>;
+    distributor?: pulumi.Input<string>;
     /**
      * Name of the provisioning artifact (for example, `v1`, `v2beta`). No spaces are allowed.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Owner of the product.
      */
-    readonly owner: pulumi.Input<string>;
+    owner: pulumi.Input<string>;
     /**
      * Configuration block for provisioning artifact (i.e., version) parameters. Detailed below.
      */
-    readonly provisioningArtifactParameters: pulumi.Input<inputs.servicecatalog.ProductProvisioningArtifactParameters>;
+    provisioningArtifactParameters: pulumi.Input<inputs.servicecatalog.ProductProvisioningArtifactParameters>;
     /**
      * Support information about the product.
      */
-    readonly supportDescription?: pulumi.Input<string>;
+    supportDescription?: pulumi.Input<string>;
     /**
      * Contact email for product support.
      */
-    readonly supportEmail?: pulumi.Input<string>;
+    supportEmail?: pulumi.Input<string>;
     /**
      * Contact URL for product support.
      */
-    readonly supportUrl?: pulumi.Input<string>;
+    supportUrl?: pulumi.Input<string>;
     /**
      * Tags to apply to the product. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Type of provisioning artifact. Valid values: `CLOUD_FORMATION_TEMPLATE`, `MARKETPLACE_AMI`, `MARKETPLACE_CAR` (Marketplace Clusters and AWS Resources).
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
 }

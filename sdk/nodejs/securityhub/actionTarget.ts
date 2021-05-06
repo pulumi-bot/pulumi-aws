@@ -141,13 +141,13 @@ export interface ActionTargetArgs {
     /**
      * The name of the custom action target.
      */
-    readonly description: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * The ID for the custom action target.
      */
-    readonly identifier: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     /**
      * The description for the custom action target.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

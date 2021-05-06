@@ -120,5 +120,5 @@ export interface DomainIdentityVerificationArgs {
     /**
      * The domain name of the SES domain identity to verify.
      */
-    readonly domain: pulumi.Input<string>;
+    domain: pulumi.Input<string>;
 }

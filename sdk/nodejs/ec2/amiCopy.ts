@@ -353,44 +353,44 @@ export interface AmiCopyArgs {
     /**
      * A longer, human-readable description for the AMI.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Nested block describing an EBS block device that should be
      * attached to created instances. The structure of this block is described below.
      */
-    readonly ebsBlockDevices?: pulumi.Input<pulumi.Input<inputs.ec2.AmiCopyEbsBlockDevice>[]>;
+    ebsBlockDevices?: pulumi.Input<pulumi.Input<inputs.ec2.AmiCopyEbsBlockDevice>[]>;
     /**
      * Boolean controlling whether the created EBS volumes will be encrypted. Can't be used with `snapshotId`.
      */
-    readonly encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean>;
     /**
      * Nested block describing an ephemeral block device that
      * should be attached to created instances. The structure of this block is described below.
      */
-    readonly ephemeralBlockDevices?: pulumi.Input<pulumi.Input<inputs.ec2.AmiCopyEphemeralBlockDevice>[]>;
+    ephemeralBlockDevices?: pulumi.Input<pulumi.Input<inputs.ec2.AmiCopyEphemeralBlockDevice>[]>;
     /**
      * The full ARN of the AWS Key Management Service (AWS KMS) CMK to use when encrypting the snapshots of
      * an image during a copy operation. This parameter is only required if you want to use a non-default CMK;
      * if this parameter is not specified, the default CMK for EBS is used
      */
-    readonly kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string>;
     /**
      * A region-unique name for the AMI.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The id of the AMI to copy. This id must be valid in the region
      * given by `sourceAmiRegion`.
      */
-    readonly sourceAmiId: pulumi.Input<string>;
+    sourceAmiId: pulumi.Input<string>;
     /**
      * The region from which the AMI will be copied. This may be the
      * same as the AWS provider region in order to create a copy within the same region.
      */
-    readonly sourceAmiRegion: pulumi.Input<string>;
+    sourceAmiRegion: pulumi.Input<string>;
     /**
      * A map of tags to assign to the resource. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

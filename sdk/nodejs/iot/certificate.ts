@@ -167,7 +167,7 @@ export interface CertificateArgs {
     /**
      * Boolean flag to indicate if the certificate should be active
      */
-    readonly active: pulumi.Input<boolean>;
+    active: pulumi.Input<boolean>;
     /**
      * The certificate signing request. Review
      * [CreateCertificateFromCsr](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateCertificateFromCsr.html)
@@ -175,5 +175,5 @@ export interface CertificateArgs {
      * If none is specified both the certificate and keys will be generated, review [CreateKeysAndCertificate](https://docs.aws.amazon.com/iot/latest/apireference/API_CreateKeysAndCertificate.html)
      * for more information on generating keys and a certificate.
      */
-    readonly csr?: pulumi.Input<string>;
+    csr?: pulumi.Input<string>;
 }

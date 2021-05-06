@@ -126,5 +126,5 @@ export interface InviteAccepterArgs {
     /**
      * The account ID of the master Security Hub account whose invitation you're accepting.
      */
-    readonly masterId: pulumi.Input<string>;
+    masterId: pulumi.Input<string>;
 }

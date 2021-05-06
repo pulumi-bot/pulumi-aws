@@ -118,9 +118,9 @@ export interface VpcEndpointSubnetAssociationArgs {
     /**
      * The ID of the subnet to be associated with the VPC endpoint.
      */
-    readonly subnetId: pulumi.Input<string>;
+    subnetId: pulumi.Input<string>;
     /**
      * The ID of the VPC endpoint with which the subnet will be associated.
      */
-    readonly vpcEndpointId: pulumi.Input<string>;
+    vpcEndpointId: pulumi.Input<string>;
 }

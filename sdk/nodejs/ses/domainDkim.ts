@@ -135,5 +135,5 @@ export interface DomainDkimArgs {
     /**
      * Verified domain name to generate DKIM tokens for.
      */
-    readonly domain: pulumi.Input<string>;
+    domain: pulumi.Input<string>;
 }

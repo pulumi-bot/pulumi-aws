@@ -141,15 +141,15 @@ export interface ApplicationState {
  * The set of arguments for constructing a Application resource.
  */
 export interface ApplicationArgs {
-    readonly appversionLifecycle?: pulumi.Input<inputs.elasticbeanstalk.ApplicationAppversionLifecycle>;
+    appversionLifecycle?: pulumi.Input<inputs.elasticbeanstalk.ApplicationAppversionLifecycle>;
     /**
      * Short description of the application
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the application, must be unique within your account
      */
-    readonly name?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    name?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

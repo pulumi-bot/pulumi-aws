@@ -130,14 +130,14 @@ export interface SecurityGroupArgs {
     /**
      * description for the cache security group. Defaults to "Managed by Pulumi".
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Name for the cache security group. This value is stored as a lowercase string.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * List of EC2 security group names to be
      * authorized for ingress to the cache security group
      */
-    readonly securityGroupNames: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupNames: pulumi.Input<pulumi.Input<string>[]>;
 }

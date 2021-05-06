@@ -153,9 +153,9 @@ export interface VaultPolicyArgs {
     /**
      * Name of the backup vault to add policy for.
      */
-    readonly backupVaultName: pulumi.Input<string>;
+    backupVaultName: pulumi.Input<string>;
     /**
      * The backup vault access policy document in JSON format.
      */
-    readonly policy: pulumi.Input<string>;
+    policy: pulumi.Input<string>;
 }

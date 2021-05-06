@@ -211,29 +211,29 @@ export interface ActivationArgs {
     /**
      * The description of the resource that you want to register.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * UTC timestamp in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) by which this activation request should expire. The default value is 24 hours from resource creation time. This provider will only perform drift detection of its value when present in a configuration.
      */
-    readonly expirationDate?: pulumi.Input<string>;
+    expirationDate?: pulumi.Input<string>;
     /**
      * The IAM Role to attach to the managed instance.
      */
-    readonly iamRole: pulumi.Input<string>;
+    iamRole: pulumi.Input<string>;
     /**
      * The default name of the registered managed instance.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The maximum number of managed instances you want to register. The default value is 1 instance.
      */
-    readonly registrationLimit?: pulumi.Input<number>;
+    registrationLimit?: pulumi.Input<number>;
     /**
      * A map of tags to assign to the object. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

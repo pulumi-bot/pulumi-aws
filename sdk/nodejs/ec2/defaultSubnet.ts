@@ -217,17 +217,17 @@ export interface DefaultSubnetArgs {
     /**
      * AZ for the subnet.
      */
-    readonly availabilityZone: pulumi.Input<string>;
-    readonly customerOwnedIpv4Pool?: pulumi.Input<string>;
-    readonly mapCustomerOwnedIpOnLaunch?: pulumi.Input<boolean>;
+    availabilityZone: pulumi.Input<string>;
+    customerOwnedIpv4Pool?: pulumi.Input<string>;
+    mapCustomerOwnedIpOnLaunch?: pulumi.Input<boolean>;
     /**
      * Whether instances launched into the subnet should be assigned a public IP address.
      */
-    readonly mapPublicIpOnLaunch?: pulumi.Input<boolean>;
-    readonly outpostArn?: pulumi.Input<string>;
+    mapPublicIpOnLaunch?: pulumi.Input<boolean>;
+    outpostArn?: pulumi.Input<string>;
     /**
      * Map of tags to assign to the resource.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

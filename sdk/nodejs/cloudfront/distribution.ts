@@ -665,99 +665,99 @@ export interface DistributionArgs {
      * Extra CNAMEs (alternate domain names), if any, for
      * this distribution.
      */
-    readonly aliases?: pulumi.Input<pulumi.Input<string>[]>;
+    aliases?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Any comments you want to include about the
      * distribution.
      */
-    readonly comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string>;
     /**
      * One or more custom error response elements (multiples allowed).
      */
-    readonly customErrorResponses?: pulumi.Input<pulumi.Input<inputs.cloudfront.DistributionCustomErrorResponse>[]>;
+    customErrorResponses?: pulumi.Input<pulumi.Input<inputs.cloudfront.DistributionCustomErrorResponse>[]>;
     /**
      * The default cache behavior for this distribution (maximum
      * one).
      */
-    readonly defaultCacheBehavior: pulumi.Input<inputs.cloudfront.DistributionDefaultCacheBehavior>;
+    defaultCacheBehavior: pulumi.Input<inputs.cloudfront.DistributionDefaultCacheBehavior>;
     /**
      * The object that you want CloudFront to
      * return (for example, index.html) when an end user requests the root URL.
      */
-    readonly defaultRootObject?: pulumi.Input<string>;
+    defaultRootObject?: pulumi.Input<string>;
     /**
      * Whether the distribution is enabled to accept end
      * user requests for content.
      */
-    readonly enabled: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
     /**
      * The maximum HTTP version to support on the
      * distribution. Allowed values are `http1.1` and `http2`. The default is
      * `http2`.
      */
-    readonly httpVersion?: pulumi.Input<string>;
+    httpVersion?: pulumi.Input<string>;
     /**
      * Whether the IPv6 is enabled for the distribution.
      */
-    readonly isIpv6Enabled?: pulumi.Input<boolean>;
+    isIpv6Enabled?: pulumi.Input<boolean>;
     /**
      * The logging
      * configuration that controls how logs are written
      * to your distribution (maximum one).
      */
-    readonly loggingConfig?: pulumi.Input<inputs.cloudfront.DistributionLoggingConfig>;
+    loggingConfig?: pulumi.Input<inputs.cloudfront.DistributionLoggingConfig>;
     /**
      * An ordered list of cache behaviors
      * resource for this distribution. List from top to bottom
      * in order of precedence. The topmost cache behavior will have precedence 0.
      */
-    readonly orderedCacheBehaviors?: pulumi.Input<pulumi.Input<inputs.cloudfront.DistributionOrderedCacheBehavior>[]>;
+    orderedCacheBehaviors?: pulumi.Input<pulumi.Input<inputs.cloudfront.DistributionOrderedCacheBehavior>[]>;
     /**
      * One or more originGroup for this
      * distribution (multiples allowed).
      */
-    readonly originGroups?: pulumi.Input<pulumi.Input<inputs.cloudfront.DistributionOriginGroup>[]>;
+    originGroups?: pulumi.Input<pulumi.Input<inputs.cloudfront.DistributionOriginGroup>[]>;
     /**
      * One or more origins for this
      * distribution (multiples allowed).
      */
-    readonly origins: pulumi.Input<pulumi.Input<inputs.cloudfront.DistributionOrigin>[]>;
+    origins: pulumi.Input<pulumi.Input<inputs.cloudfront.DistributionOrigin>[]>;
     /**
      * The price class for this distribution. One of
      * `PriceClass_All`, `PriceClass_200`, `PriceClass_100`
      */
-    readonly priceClass?: pulumi.Input<string>;
+    priceClass?: pulumi.Input<string>;
     /**
      * The restriction
      * configuration for this distribution (maximum one).
      */
-    readonly restrictions: pulumi.Input<inputs.cloudfront.DistributionRestrictions>;
+    restrictions: pulumi.Input<inputs.cloudfront.DistributionRestrictions>;
     /**
      * Disables the distribution instead of
      * deleting it when destroying the resource. If this is set,
      * the distribution needs to be deleted manually afterwards. Default: `false`.
      */
-    readonly retainOnDelete?: pulumi.Input<boolean>;
+    retainOnDelete?: pulumi.Input<boolean>;
     /**
      * A map of tags to assign to the resource. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The SSL
      * configuration for this distribution (maximum
      * one).
      */
-    readonly viewerCertificate: pulumi.Input<inputs.cloudfront.DistributionViewerCertificate>;
+    viewerCertificate: pulumi.Input<inputs.cloudfront.DistributionViewerCertificate>;
     /**
      * If enabled, the resource will wait for
      * the distribution status to change from `InProgress` to `Deployed`. Setting
      * this to`false` will skip the process. Default: `true`.
      */
-    readonly waitForDeployment?: pulumi.Input<boolean>;
+    waitForDeployment?: pulumi.Input<boolean>;
     /**
      * A unique identifier that specifies the AWS WAF web ACL,
      * if any, to associate with this distribution.
@@ -767,5 +767,5 @@ export interface DistributionArgs {
      * The WAF Web ACL must exist in the WAF Global (CloudFront) region and the
      * credentials configuring this argument must have `waf:GetWebACL` permissions assigned.
      */
-    readonly webAclId?: pulumi.Input<string>;
+    webAclId?: pulumi.Input<string>;
 }

@@ -134,9 +134,9 @@ export interface ContainerPolicyArgs {
     /**
      * The name of the container.
      */
-    readonly containerName: pulumi.Input<string>;
+    containerName: pulumi.Input<string>;
     /**
      * The contents of the policy.
      */
-    readonly policy: pulumi.Input<string>;
+    policy: pulumi.Input<string>;
 }

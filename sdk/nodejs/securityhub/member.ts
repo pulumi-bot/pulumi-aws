@@ -152,13 +152,13 @@ export interface MemberArgs {
     /**
      * The ID of the member AWS account.
      */
-    readonly accountId: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
      * The email of the member AWS account.
      */
-    readonly email: pulumi.Input<string>;
+    email: pulumi.Input<string>;
     /**
      * Boolean whether to invite the account to Security Hub as a member. Defaults to `false`.
      */
-    readonly invite?: pulumi.Input<boolean>;
+    invite?: pulumi.Input<boolean>;
 }

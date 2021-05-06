@@ -376,49 +376,49 @@ export interface ClusterArgs {
     /**
      * Configuration block for the broker nodes of the Kafka cluster.
      */
-    readonly brokerNodeGroupInfo: pulumi.Input<inputs.msk.ClusterBrokerNodeGroupInfo>;
+    brokerNodeGroupInfo: pulumi.Input<inputs.msk.ClusterBrokerNodeGroupInfo>;
     /**
      * Configuration block for specifying a client authentication. See below.
      */
-    readonly clientAuthentication?: pulumi.Input<inputs.msk.ClusterClientAuthentication>;
+    clientAuthentication?: pulumi.Input<inputs.msk.ClusterClientAuthentication>;
     /**
      * Name of the MSK cluster.
      */
-    readonly clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string>;
     /**
      * Configuration block for specifying a MSK Configuration to attach to Kafka brokers. See below.
      */
-    readonly configurationInfo?: pulumi.Input<inputs.msk.ClusterConfigurationInfo>;
+    configurationInfo?: pulumi.Input<inputs.msk.ClusterConfigurationInfo>;
     /**
      * Configuration block for specifying encryption. See below.
      */
-    readonly encryptionInfo?: pulumi.Input<inputs.msk.ClusterEncryptionInfo>;
+    encryptionInfo?: pulumi.Input<inputs.msk.ClusterEncryptionInfo>;
     /**
      * Specify the desired enhanced MSK CloudWatch monitoring level.  See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html)
      */
-    readonly enhancedMonitoring?: pulumi.Input<string>;
+    enhancedMonitoring?: pulumi.Input<string>;
     /**
      * Specify the desired Kafka software version.
      */
-    readonly kafkaVersion: pulumi.Input<string>;
+    kafkaVersion: pulumi.Input<string>;
     /**
      * Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See below.
      */
-    readonly loggingInfo?: pulumi.Input<inputs.msk.ClusterLoggingInfo>;
+    loggingInfo?: pulumi.Input<inputs.msk.ClusterLoggingInfo>;
     /**
      * The desired total number of broker nodes in the kafka cluster.  It must be a multiple of the number of specified client subnets.
      */
-    readonly numberOfBrokerNodes: pulumi.Input<number>;
+    numberOfBrokerNodes: pulumi.Input<number>;
     /**
      * Configuration block for JMX and Node monitoring for the MSK cluster. See below.
      */
-    readonly openMonitoring?: pulumi.Input<inputs.msk.ClusterOpenMonitoring>;
+    openMonitoring?: pulumi.Input<inputs.msk.ClusterOpenMonitoring>;
     /**
      * A map of tags to assign to the resource. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

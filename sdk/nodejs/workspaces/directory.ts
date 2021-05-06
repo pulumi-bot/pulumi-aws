@@ -355,33 +355,33 @@ export interface DirectoryArgs {
     /**
      * The directory identifier for registration in WorkSpaces service.
      */
-    readonly directoryId: pulumi.Input<string>;
+    directoryId: pulumi.Input<string>;
     /**
      * The identifiers of the IP access control groups associated with the directory.
      */
-    readonly ipGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    ipGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Permissions to enable or disable self-service capabilities. Defined below.
      */
-    readonly selfServicePermissions?: pulumi.Input<inputs.workspaces.DirectorySelfServicePermissions>;
+    selfServicePermissions?: pulumi.Input<inputs.workspaces.DirectorySelfServicePermissions>;
     /**
      * The identifiers of the subnets where the directory resides.
      */
-    readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A map of tags assigned to the WorkSpaces directory. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Specifies which devices and operating systems users can use to access their WorkSpaces. Defined below.
      */
-    readonly workspaceAccessProperties?: pulumi.Input<inputs.workspaces.DirectoryWorkspaceAccessProperties>;
+    workspaceAccessProperties?: pulumi.Input<inputs.workspaces.DirectoryWorkspaceAccessProperties>;
     /**
      * Default properties that are used for creating WorkSpaces. Defined below.
      */
-    readonly workspaceCreationProperties?: pulumi.Input<inputs.workspaces.DirectoryWorkspaceCreationProperties>;
+    workspaceCreationProperties?: pulumi.Input<inputs.workspaces.DirectoryWorkspaceCreationProperties>;
 }

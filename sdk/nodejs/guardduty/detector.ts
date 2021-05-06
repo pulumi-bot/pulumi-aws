@@ -147,14 +147,14 @@ export interface DetectorArgs {
     /**
      * Enable monitoring and feedback reporting. Setting to `false` is equivalent to "suspending" GuardDuty. Defaults to `true`.
      */
-    readonly enable?: pulumi.Input<boolean>;
-    readonly findingPublishingFrequency?: pulumi.Input<string>;
+    enable?: pulumi.Input<boolean>;
+    findingPublishingFrequency?: pulumi.Input<string>;
     /**
      * Key-value map of resource tags.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

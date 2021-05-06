@@ -119,9 +119,9 @@ export interface ResourceArgs {
     /**
      * Amazon Resource Name (ARN) of the resource, an S3 path.
      */
-    readonly arn: pulumi.Input<string>;
+    arn: pulumi.Input<string>;
     /**
      * Role that has read/write access to the resource. If not provided, the Lake Formation service-linked role must exist and is used.
      */
-    readonly roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string>;
 }

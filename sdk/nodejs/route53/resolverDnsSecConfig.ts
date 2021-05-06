@@ -137,5 +137,5 @@ export interface ResolverDnsSecConfigArgs {
     /**
      * The ID of the virtual private cloud (VPC) that you're updating the DNSSEC validation status for.
      */
-    readonly resourceId: pulumi.Input<string>;
+    resourceId: pulumi.Input<string>;
 }

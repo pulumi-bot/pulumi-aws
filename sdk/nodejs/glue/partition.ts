@@ -187,22 +187,22 @@ export interface PartitionArgs {
     /**
      * ID of the Glue Catalog and database to create the table in. If omitted, this defaults to the AWS Account ID plus the database name.
      */
-    readonly catalogId?: pulumi.Input<string>;
+    catalogId?: pulumi.Input<string>;
     /**
      * Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
      */
-    readonly databaseName: pulumi.Input<string>;
+    databaseName: pulumi.Input<string>;
     /**
      * A map of initialization parameters for the SerDe, in key-value form.
      */
-    readonly parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The values that define the partition.
      */
-    readonly partitionValues: pulumi.Input<pulumi.Input<string>[]>;
+    partitionValues: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A storage descriptor object containing information about the physical storage of this table. You can refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor) for a full explanation of this object.
      */
-    readonly storageDescriptor?: pulumi.Input<inputs.glue.PartitionStorageDescriptor>;
-    readonly tableName: pulumi.Input<string>;
+    storageDescriptor?: pulumi.Input<inputs.glue.PartitionStorageDescriptor>;
+    tableName: pulumi.Input<string>;
 }

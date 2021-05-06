@@ -399,66 +399,66 @@ export interface EnvironmentArgs {
      * Name of the application that contains the version
      * to be deployed
      */
-    readonly application: pulumi.Input<string | Application>;
+    application: pulumi.Input<string | Application>;
     /**
      * Prefix to use for the fully qualified DNS name of
      * the Environment.
      */
-    readonly cnamePrefix?: pulumi.Input<string>;
+    cnamePrefix?: pulumi.Input<string>;
     /**
      * Short description of the Environment
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A unique name for this Environment. This name is used
      * in the application URL
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) of the Elastic Beanstalk [Platform](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-beanstalk-environment.html#cfn-beanstalk-environment-platformarn)
      * to use in deployment
      */
-    readonly platformArn?: pulumi.Input<string>;
+    platformArn?: pulumi.Input<string>;
     /**
      * The time between polling the AWS API to
      * check if changes have been applied. Use this to adjust the rate of API calls
      * for any `create` or `update` action. Minimum `10s`, maximum `180s`. Omit this to
      * use the default behavior, which is an exponential backoff
      */
-    readonly pollInterval?: pulumi.Input<string>;
+    pollInterval?: pulumi.Input<string>;
     /**
      * Option settings to configure the new Environment. These
      * override specific values that are set as defaults. The format is detailed
      * below in Option Settings
      */
-    readonly settings?: pulumi.Input<pulumi.Input<inputs.elasticbeanstalk.EnvironmentSetting>[]>;
+    settings?: pulumi.Input<pulumi.Input<inputs.elasticbeanstalk.EnvironmentSetting>[]>;
     /**
      * A solution stack to base your environment
      * off of. Example stacks can be found in the [Amazon API documentation](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html)
      */
-    readonly solutionStackName?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    solutionStackName?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the Elastic Beanstalk Configuration
      * template to use in deployment
      */
-    readonly templateName?: pulumi.Input<string>;
+    templateName?: pulumi.Input<string>;
     /**
      * Elastic Beanstalk Environment tier. Valid values are `Worker`
      * or `WebServer`. If tier is left blank `WebServer` will be used.
      */
-    readonly tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string>;
     /**
      * The name of the Elastic Beanstalk Application Version
      * to use in deployment.
      */
-    readonly version?: pulumi.Input<ApplicationVersion>;
+    version?: pulumi.Input<ApplicationVersion>;
     /**
      * The maximum
      * [duration](https://golang.org/pkg/time/#ParseDuration) that this provider should
      * wait for an Elastic Beanstalk Environment to be in a ready state before timing
      * out.
      */
-    readonly waitForReadyTimeout?: pulumi.Input<string>;
+    waitForReadyTimeout?: pulumi.Input<string>;
 }

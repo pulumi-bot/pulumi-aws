@@ -149,9 +149,9 @@ export interface ImageVersionArgs {
     /**
      * The registry path of the container image on which this image version is based.
      */
-    readonly baseImage: pulumi.Input<string>;
+    baseImage: pulumi.Input<string>;
     /**
      * The name of the image. Must be unique to your account.
      */
-    readonly imageName: pulumi.Input<string>;
+    imageName: pulumi.Input<string>;
 }

@@ -254,26 +254,26 @@ export interface VpcPeeringConnectionAccepterArgs {
      * A configuration block that describes [VPC Peering Connection]
      * (https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the accepter VPC.
      */
-    readonly accepter?: pulumi.Input<inputs.ec2.VpcPeeringConnectionAccepterAccepter>;
+    accepter?: pulumi.Input<inputs.ec2.VpcPeeringConnectionAccepterAccepter>;
     /**
      * Whether or not to accept the peering request. Defaults to `false`.
      */
-    readonly autoAccept?: pulumi.Input<boolean>;
+    autoAccept?: pulumi.Input<boolean>;
     /**
      * A configuration block that describes [VPC Peering Connection]
      * (https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the requester VPC.
      */
-    readonly requester?: pulumi.Input<inputs.ec2.VpcPeeringConnectionAccepterRequester>;
+    requester?: pulumi.Input<inputs.ec2.VpcPeeringConnectionAccepterRequester>;
     /**
      * A map of tags to assign to the resource. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The VPC Peering Connection ID to manage.
      */
-    readonly vpcPeeringConnectionId: pulumi.Input<string>;
+    vpcPeeringConnectionId: pulumi.Input<string>;
 }

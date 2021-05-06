@@ -303,41 +303,41 @@ export interface VpcArgs {
      * block with a /56 prefix length for the VPC. You cannot specify the range of IP addresses, or
      * the size of the CIDR block. Default is `false`.
      */
-    readonly assignGeneratedIpv6CidrBlock?: pulumi.Input<boolean>;
+    assignGeneratedIpv6CidrBlock?: pulumi.Input<boolean>;
     /**
      * The CIDR block for the VPC.
      */
-    readonly cidrBlock: pulumi.Input<string>;
+    cidrBlock: pulumi.Input<string>;
     /**
      * A boolean flag to enable/disable ClassicLink
      * for the VPC. Only valid in regions and accounts that support EC2 Classic.
      * See the [ClassicLink documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) for more information. Defaults false.
      */
-    readonly enableClassiclink?: pulumi.Input<boolean>;
+    enableClassiclink?: pulumi.Input<boolean>;
     /**
      * A boolean flag to enable/disable ClassicLink DNS Support for the VPC.
      * Only valid in regions and accounts that support EC2 Classic.
      */
-    readonly enableClassiclinkDnsSupport?: pulumi.Input<boolean>;
+    enableClassiclinkDnsSupport?: pulumi.Input<boolean>;
     /**
      * A boolean flag to enable/disable DNS hostnames in the VPC. Defaults false.
      */
-    readonly enableDnsHostnames?: pulumi.Input<boolean>;
+    enableDnsHostnames?: pulumi.Input<boolean>;
     /**
      * A boolean flag to enable/disable DNS support in the VPC. Defaults true.
      */
-    readonly enableDnsSupport?: pulumi.Input<boolean>;
+    enableDnsSupport?: pulumi.Input<boolean>;
     /**
      * A tenancy option for instances launched into the VPC. Default is `default`, which
      * makes your instances shared on the host. Using either of the other options (`dedicated` or `host`) costs at least $2/hr.
      */
-    readonly instanceTenancy?: pulumi.Input<string>;
+    instanceTenancy?: pulumi.Input<string>;
     /**
      * A map of tags to assign to the resource. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

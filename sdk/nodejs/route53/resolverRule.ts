@@ -224,31 +224,31 @@ export interface ResolverRuleArgs {
     /**
      * DNS queries for this domain name are forwarded to the IP addresses that are specified using `targetIp`.
      */
-    readonly domainName: pulumi.Input<string>;
+    domainName: pulumi.Input<string>;
     /**
      * A friendly name that lets you easily find a rule in the Resolver dashboard in the Route 53 console.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the outbound resolver endpoint that you want to use to route DNS queries to the IP addresses that you specify using `targetIp`.
      * This argument should only be specified for `FORWARD` type rules.
      */
-    readonly resolverEndpointId?: pulumi.Input<string>;
+    resolverEndpointId?: pulumi.Input<string>;
     /**
      * The rule type. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`.
      */
-    readonly ruleType: pulumi.Input<string>;
+    ruleType: pulumi.Input<string>;
     /**
      * A map of tags to assign to the resource. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Configuration block(s) indicating the IPs that you want Resolver to forward DNS queries to (documented below).
      * This argument should only be specified for `FORWARD` type rules.
      */
-    readonly targetIps?: pulumi.Input<pulumi.Input<inputs.route53.ResolverRuleTargetIp>[]>;
+    targetIps?: pulumi.Input<pulumi.Input<inputs.route53.ResolverRuleTargetIp>[]>;
 }

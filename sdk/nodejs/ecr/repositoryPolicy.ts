@@ -159,9 +159,9 @@ export interface RepositoryPolicyArgs {
     /**
      * The policy document. This is a JSON formatted string.
      */
-    readonly policy: pulumi.Input<string | PolicyDocument>;
+    policy: pulumi.Input<string | PolicyDocument>;
     /**
      * Name of the repository to apply the policy.
      */
-    readonly repository: pulumi.Input<string>;
+    repository: pulumi.Input<string>;
 }

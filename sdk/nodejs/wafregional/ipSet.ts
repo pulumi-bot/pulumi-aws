@@ -131,9 +131,9 @@ export interface IpSetArgs {
     /**
      * One or more pairs specifying the IP address type (IPV4 or IPV6) and the IP address range (in CIDR notation) from which web requests originate.
      */
-    readonly ipSetDescriptors?: pulumi.Input<pulumi.Input<inputs.wafregional.IpSetIpSetDescriptor>[]>;
+    ipSetDescriptors?: pulumi.Input<pulumi.Input<inputs.wafregional.IpSetIpSetDescriptor>[]>;
     /**
      * The name or description of the IPSet.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

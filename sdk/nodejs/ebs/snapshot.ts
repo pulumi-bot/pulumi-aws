@@ -208,14 +208,14 @@ export interface SnapshotArgs {
     /**
      * A description of what the snapshot is.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A map of tags for the snapshot.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The Volume ID of which to make a snapshot.
      */
-    readonly volumeId: pulumi.Input<string>;
+    volumeId: pulumi.Input<string>;
 }

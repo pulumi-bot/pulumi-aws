@@ -153,13 +153,13 @@ export interface ThingArgs {
     /**
      * Map of attributes of the thing.
      */
-    readonly attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the thing.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The thing type name.
      */
-    readonly thingTypeName?: pulumi.Input<string>;
+    thingTypeName?: pulumi.Input<string>;
 }

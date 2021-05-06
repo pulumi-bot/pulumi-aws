@@ -206,14 +206,14 @@ export interface AccessKeyArgs {
      * keybase username in the form `keybase:some_person_that_exists`, for use
      * in the `encryptedSecret` output attribute.
      */
-    readonly pgpKey?: pulumi.Input<string>;
+    pgpKey?: pulumi.Input<string>;
     /**
      * The access key status to apply. Defaults to `Active`.
      * Valid values are `Active` and `Inactive`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The IAM user to associate with this access key.
      */
-    readonly user: pulumi.Input<string>;
+    user: pulumi.Input<string>;
 }

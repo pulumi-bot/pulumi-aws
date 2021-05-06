@@ -39,7 +39,7 @@ export interface GetRateBasedModArgs {
     /**
      * The name of the WAF Regional rate based rule.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**

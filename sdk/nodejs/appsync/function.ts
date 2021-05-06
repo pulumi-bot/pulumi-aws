@@ -239,29 +239,29 @@ export interface FunctionArgs {
     /**
      * The ID of the associated AppSync API.
      */
-    readonly apiId: pulumi.Input<string>;
+    apiId: pulumi.Input<string>;
     /**
      * The Function DataSource name.
      */
-    readonly dataSource: pulumi.Input<string>;
+    dataSource: pulumi.Input<string>;
     /**
      * The Function description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The version of the request mapping template. Currently the supported value is `2018-05-29`.
      */
-    readonly functionVersion?: pulumi.Input<string>;
+    functionVersion?: pulumi.Input<string>;
     /**
      * The Function name. The function name does not have to be unique.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Function request mapping template. Functions support only the 2018-05-29 version of the request mapping template.
      */
-    readonly requestMappingTemplate: pulumi.Input<string>;
+    requestMappingTemplate: pulumi.Input<string>;
     /**
      * The Function response mapping template.
      */
-    readonly responseMappingTemplate: pulumi.Input<string>;
+    responseMappingTemplate: pulumi.Input<string>;
 }

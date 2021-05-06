@@ -198,19 +198,19 @@ export interface ManagedPrefixListArgs {
     /**
      * Address family (`IPv4` or `IPv6`) of this prefix list.
      */
-    readonly addressFamily: pulumi.Input<string>;
+    addressFamily: pulumi.Input<string>;
     /**
      * Configuration block for prefix list entry. Detailed below. Different entries may have overlapping CIDR blocks, but a particular CIDR should not be duplicated.
      */
-    readonly entries?: pulumi.Input<pulumi.Input<inputs.ec2.ManagedPrefixListEntry>[]>;
+    entries?: pulumi.Input<pulumi.Input<inputs.ec2.ManagedPrefixListEntry>[]>;
     /**
      * Maximum number of entries that this prefix list can contain.
      */
-    readonly maxEntries: pulumi.Input<number>;
+    maxEntries: pulumi.Input<number>;
     /**
      * Name of this resource. The name must not start with `com.amazonaws`.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    name?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

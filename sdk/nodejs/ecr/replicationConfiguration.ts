@@ -119,5 +119,5 @@ export interface ReplicationConfigurationArgs {
     /**
      * Replication configuration for a registry. See Replication Configuration.
      */
-    readonly replicationConfiguration?: pulumi.Input<inputs.ecr.ReplicationConfigurationReplicationConfiguration>;
+    replicationConfiguration?: pulumi.Input<inputs.ecr.ReplicationConfigurationReplicationConfiguration>;
 }

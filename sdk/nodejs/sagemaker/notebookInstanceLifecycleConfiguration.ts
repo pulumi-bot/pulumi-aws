@@ -120,13 +120,13 @@ export interface NotebookInstanceLifecycleConfigurationArgs {
     /**
      * The name of the lifecycle configuration (must be unique). If omitted, this provider will assign a random, unique name.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A shell script (base64-encoded) that runs only once when the SageMaker Notebook Instance is created.
      */
-    readonly onCreate?: pulumi.Input<string>;
+    onCreate?: pulumi.Input<string>;
     /**
      * A shell script (base64-encoded) that runs every time the SageMaker Notebook Instance is started including the time it's created.
      */
-    readonly onStart?: pulumi.Input<string>;
+    onStart?: pulumi.Input<string>;
 }

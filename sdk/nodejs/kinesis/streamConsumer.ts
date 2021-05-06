@@ -139,9 +139,9 @@ export interface StreamConsumerArgs {
     /**
      * Name of the stream consumer.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Amazon Resource Name (ARN) of the data stream the consumer is registered with.
      */
-    readonly streamArn: pulumi.Input<string>;
+    streamArn: pulumi.Input<string>;
 }

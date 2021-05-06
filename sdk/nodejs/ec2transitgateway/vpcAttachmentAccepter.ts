@@ -208,18 +208,18 @@ export interface VpcAttachmentAccepterState {
  * The set of arguments for constructing a VpcAttachmentAccepter resource.
  */
 export interface VpcAttachmentAccepterArgs {
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the EC2 Transit Gateway Attachment to manage.
      */
-    readonly transitGatewayAttachmentId: pulumi.Input<string>;
+    transitGatewayAttachmentId: pulumi.Input<string>;
     /**
      * Boolean whether the VPC Attachment should be associated with the EC2 Transit Gateway association default route table. Default value: `true`.
      */
-    readonly transitGatewayDefaultRouteTableAssociation?: pulumi.Input<boolean>;
+    transitGatewayDefaultRouteTableAssociation?: pulumi.Input<boolean>;
     /**
      * Boolean whether the VPC Attachment should propagate routes with the EC2 Transit Gateway propagation default route table. Default value: `true`.
      */
-    readonly transitGatewayDefaultRouteTablePropagation?: pulumi.Input<boolean>;
+    transitGatewayDefaultRouteTablePropagation?: pulumi.Input<boolean>;
 }

@@ -249,13 +249,13 @@ export interface GlobalReplicationGroupArgs {
     /**
      * A user-created description for the global replication group.
      */
-    readonly globalReplicationGroupDescription?: pulumi.Input<string>;
+    globalReplicationGroupDescription?: pulumi.Input<string>;
     /**
      * The suffix name of a Global Datastore. If `globalReplicationGroupIdSuffix` is changed, creates a new resource.
      */
-    readonly globalReplicationGroupIdSuffix: pulumi.Input<string>;
+    globalReplicationGroupIdSuffix: pulumi.Input<string>;
     /**
      * The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. If `primaryReplicationGroupId` is changed, creates a new resource.
      */
-    readonly primaryReplicationGroupId: pulumi.Input<string>;
+    primaryReplicationGroupId: pulumi.Input<string>;
 }

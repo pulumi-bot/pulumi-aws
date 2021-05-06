@@ -135,9 +135,9 @@ export interface XssMatchSetArgs {
     /**
      * The name or description of the SizeConstraintSet.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The parts of web requests that you want to inspect for cross-site scripting attacks.
      */
-    readonly xssMatchTuples?: pulumi.Input<pulumi.Input<inputs.waf.XssMatchSetXssMatchTuple>[]>;
+    xssMatchTuples?: pulumi.Input<pulumi.Input<inputs.waf.XssMatchSetXssMatchTuple>[]>;
 }

@@ -234,17 +234,17 @@ export interface ProxyTargetArgs {
     /**
      * DB cluster identifier.
      */
-    readonly dbClusterIdentifier?: pulumi.Input<string>;
+    dbClusterIdentifier?: pulumi.Input<string>;
     /**
      * DB instance identifier.
      */
-    readonly dbInstanceIdentifier?: pulumi.Input<string>;
+    dbInstanceIdentifier?: pulumi.Input<string>;
     /**
      * The name of the DB proxy.
      */
-    readonly dbProxyName: pulumi.Input<string>;
+    dbProxyName: pulumi.Input<string>;
     /**
      * The name of the target group.
      */
-    readonly targetGroupName: pulumi.Input<string>;
+    targetGroupName: pulumi.Input<string>;
 }

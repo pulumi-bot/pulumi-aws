@@ -231,30 +231,30 @@ export interface SchemaArgs {
     /**
      * The compatibility mode of the schema. Values values are: `NONE`, `DISABLED`, `BACKWARD`, `BACKWARD_ALL`, `FORWARD`, `FORWARD_ALL`, `FULL`, and `FULL_ALL`.
      */
-    readonly compatibility: pulumi.Input<string>;
+    compatibility: pulumi.Input<string>;
     /**
      * The data format of the schema definition. Currently only `AVRO` is supported.
      */
-    readonly dataFormat: pulumi.Input<string>;
+    dataFormat: pulumi.Input<string>;
     /**
      * A description of the schema.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The ARN of the Glue Registry to create the schema in.
      */
-    readonly registryArn?: pulumi.Input<string>;
+    registryArn?: pulumi.Input<string>;
     /**
      * The schema definition using the `dataFormat` setting for `schemaName`.
      */
-    readonly schemaDefinition: pulumi.Input<string>;
+    schemaDefinition: pulumi.Input<string>;
     /**
      * The Name of the schema.
      */
-    readonly schemaName: pulumi.Input<string>;
+    schemaName: pulumi.Input<string>;
     /**
      * Key-value map of resource tags. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

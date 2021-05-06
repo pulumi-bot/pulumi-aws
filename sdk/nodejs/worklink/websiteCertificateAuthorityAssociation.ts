@@ -138,13 +138,13 @@ export interface WebsiteCertificateAuthorityAssociationArgs {
     /**
      * The root certificate of the Certificate Authority.
      */
-    readonly certificate: pulumi.Input<string>;
+    certificate: pulumi.Input<string>;
     /**
      * The certificate name to display.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * The ARN of the fleet.
      */
-    readonly fleetArn: pulumi.Input<string>;
+    fleetArn: pulumi.Input<string>;
 }

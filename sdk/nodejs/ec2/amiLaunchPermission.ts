@@ -118,9 +118,9 @@ export interface AmiLaunchPermissionArgs {
     /**
      * An AWS Account ID to add launch permissions.
      */
-    readonly accountId: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
      * A region-unique name for the AMI.
      */
-    readonly imageId: pulumi.Input<string>;
+    imageId: pulumi.Input<string>;
 }

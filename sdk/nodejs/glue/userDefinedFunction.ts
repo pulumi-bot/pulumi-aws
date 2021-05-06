@@ -191,29 +191,29 @@ export interface UserDefinedFunctionArgs {
     /**
      * ID of the Glue Catalog to create the function in. If omitted, this defaults to the AWS Account ID.
      */
-    readonly catalogId?: pulumi.Input<string>;
+    catalogId?: pulumi.Input<string>;
     /**
      * The Java class that contains the function code.
      */
-    readonly className: pulumi.Input<string>;
+    className: pulumi.Input<string>;
     /**
      * The name of the Database to create the Function.
      */
-    readonly databaseName: pulumi.Input<string>;
+    databaseName: pulumi.Input<string>;
     /**
      * The name of the function.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The owner of the function.
      */
-    readonly ownerName: pulumi.Input<string>;
+    ownerName: pulumi.Input<string>;
     /**
      * The owner type. can be one of `USER`, `ROLE`, and `GROUP`.
      */
-    readonly ownerType: pulumi.Input<string>;
+    ownerType: pulumi.Input<string>;
     /**
      * The configuration block for Resource URIs. See resource uris below for more details.
      */
-    readonly resourceUris?: pulumi.Input<pulumi.Input<inputs.glue.UserDefinedFunctionResourceUri>[]>;
+    resourceUris?: pulumi.Input<pulumi.Input<inputs.glue.UserDefinedFunctionResourceUri>[]>;
 }

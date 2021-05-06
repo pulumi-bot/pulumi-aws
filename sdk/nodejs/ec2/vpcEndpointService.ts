@@ -265,29 +265,29 @@ export interface VpcEndpointServiceArgs {
     /**
      * Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
      */
-    readonly acceptanceRequired: pulumi.Input<boolean>;
+    acceptanceRequired: pulumi.Input<boolean>;
     /**
      * The ARNs of one or more principals allowed to discover the endpoint service.
      */
-    readonly allowedPrincipals?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPrincipals?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Amazon Resource Names (ARNs) of one or more Gateway Load Balancers for the endpoint service.
      */
-    readonly gatewayLoadBalancerArns?: pulumi.Input<pulumi.Input<string>[]>;
+    gatewayLoadBalancerArns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Amazon Resource Names (ARNs) of one or more Network Load Balancers for the endpoint service.
      */
-    readonly networkLoadBalancerArns?: pulumi.Input<pulumi.Input<string>[]>;
+    networkLoadBalancerArns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The private DNS name for the service.
      */
-    readonly privateDnsName?: pulumi.Input<string>;
+    privateDnsName?: pulumi.Input<string>;
     /**
      * A map of tags to assign to the resource. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

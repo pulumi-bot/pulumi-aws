@@ -144,13 +144,13 @@ export interface NetworkInterfaceAttachmentArgs {
     /**
      * Network interface index (int).
      */
-    readonly deviceIndex: pulumi.Input<number>;
+    deviceIndex: pulumi.Input<number>;
     /**
      * Instance ID to attach.
      */
-    readonly instanceId: pulumi.Input<string>;
+    instanceId: pulumi.Input<string>;
     /**
      * ENI ID to attach.
      */
-    readonly networkInterfaceId: pulumi.Input<string>;
+    networkInterfaceId: pulumi.Input<string>;
 }

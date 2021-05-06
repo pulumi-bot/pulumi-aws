@@ -198,13 +198,13 @@ export interface WebhookArgs {
     /**
      * A regular expression used to determine which branches get built. Default is all branches are built. It is recommended to use `filterGroup` over `branchFilter`.
      */
-    readonly branchFilter?: pulumi.Input<string>;
+    branchFilter?: pulumi.Input<string>;
     /**
      * Information about the webhook's trigger. Filter group blocks are documented below.
      */
-    readonly filterGroups?: pulumi.Input<pulumi.Input<inputs.codebuild.WebhookFilterGroup>[]>;
+    filterGroups?: pulumi.Input<pulumi.Input<inputs.codebuild.WebhookFilterGroup>[]>;
     /**
      * The name of the build project.
      */
-    readonly projectName: pulumi.Input<string>;
+    projectName: pulumi.Input<string>;
 }

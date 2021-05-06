@@ -308,17 +308,17 @@ export interface SnapshotArgs {
     /**
      * The DB Instance Identifier from which to take the snapshot.
      */
-    readonly dbInstanceIdentifier: pulumi.Input<string>;
+    dbInstanceIdentifier: pulumi.Input<string>;
     /**
      * The Identifier for the snapshot.
      */
-    readonly dbSnapshotIdentifier: pulumi.Input<string>;
+    dbSnapshotIdentifier: pulumi.Input<string>;
     /**
      * Key-value map of resource tags. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

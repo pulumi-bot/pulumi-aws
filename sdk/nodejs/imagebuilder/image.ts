@@ -240,29 +240,29 @@ export interface ImageArgs {
     /**
      * Amazon Resource Name (ARN) of the Image Builder Distribution Configuration.
      */
-    readonly distributionConfigurationArn?: pulumi.Input<string>;
+    distributionConfigurationArn?: pulumi.Input<string>;
     /**
      * Whether additional information about the image being created is collected. Defaults to `true`.
      */
-    readonly enhancedImageMetadataEnabled?: pulumi.Input<boolean>;
+    enhancedImageMetadataEnabled?: pulumi.Input<boolean>;
     /**
      * Amazon Resource Name (ARN) of the Image Builder Infrastructure Recipe.
      */
-    readonly imageRecipeArn: pulumi.Input<string>;
+    imageRecipeArn: pulumi.Input<string>;
     /**
      * Configuration block with image tests configuration. Detailed below.
      */
-    readonly imageTestsConfiguration?: pulumi.Input<inputs.imagebuilder.ImageImageTestsConfiguration>;
+    imageTestsConfiguration?: pulumi.Input<inputs.imagebuilder.ImageImageTestsConfiguration>;
     /**
      * Amazon Resource Name (ARN) of the Image Builder Infrastructure Configuration.
      */
-    readonly infrastructureConfigurationArn: pulumi.Input<string>;
+    infrastructureConfigurationArn: pulumi.Input<string>;
     /**
      * Key-value map of resource tags for the Image Builder Image. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

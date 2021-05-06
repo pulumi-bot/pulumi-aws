@@ -188,25 +188,25 @@ export interface AcceleratorArgs {
     /**
      * The attributes of the accelerator. Fields documented below.
      */
-    readonly attributes?: pulumi.Input<inputs.globalaccelerator.AcceleratorAttributes>;
+    attributes?: pulumi.Input<inputs.globalaccelerator.AcceleratorAttributes>;
     /**
      * Indicates whether the accelerator is enabled. Defaults to `true`. Valid values: `true`, `false`.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The value for the address type. Defaults to `IPV4`. Valid values: `IPV4`.
      */
-    readonly ipAddressType?: pulumi.Input<string>;
+    ipAddressType?: pulumi.Input<string>;
     /**
      * The name of the accelerator.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A map of tags to assign to the resource. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -239,48 +239,48 @@ export interface PolicyArgs {
     /**
      * Specifies whether the adjustment is an absolute number or a percentage of the current capacity. Valid values are `ChangeInCapacity`, `ExactCapacity`, and `PercentChangeInCapacity`.
      */
-    readonly adjustmentType?: pulumi.Input<string>;
+    adjustmentType?: pulumi.Input<string>;
     /**
      * The name of the autoscaling group.
      */
-    readonly autoscalingGroupName: pulumi.Input<string>;
+    autoscalingGroupName: pulumi.Input<string>;
     /**
      * The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
      */
-    readonly cooldown?: pulumi.Input<number>;
+    cooldown?: pulumi.Input<number>;
     /**
      * The estimated time, in seconds, until a newly launched instance will contribute CloudWatch metrics. Without a value, AWS will default to the group's specified cooldown period.
      */
-    readonly estimatedInstanceWarmup?: pulumi.Input<number>;
+    estimatedInstanceWarmup?: pulumi.Input<number>;
     /**
      * The aggregation type for the policy's metrics. Valid values are "Minimum", "Maximum", and "Average". Without a value, AWS will treat the aggregation type as "Average".
      */
-    readonly metricAggregationType?: pulumi.Input<string>;
+    metricAggregationType?: pulumi.Input<string>;
     /**
      * Minimum value to scale by when `adjustmentType` is set to `PercentChangeInCapacity`.
      */
-    readonly minAdjustmentMagnitude?: pulumi.Input<number>;
+    minAdjustmentMagnitude?: pulumi.Input<number>;
     /**
      * The name of the dimension.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The policy type, either "SimpleScaling", "StepScaling" or "TargetTrackingScaling". If this value isn't provided, AWS will default to "SimpleScaling."
      */
-    readonly policyType?: pulumi.Input<string>;
+    policyType?: pulumi.Input<string>;
     /**
      * The number of members by which to
      * scale, when the adjustment bounds are breached. A positive value scales
      * up. A negative value scales down.
      */
-    readonly scalingAdjustment?: pulumi.Input<number>;
+    scalingAdjustment?: pulumi.Input<number>;
     /**
      * A set of adjustments that manage
      * group scaling. These have the following structure:
      */
-    readonly stepAdjustments?: pulumi.Input<pulumi.Input<inputs.autoscaling.PolicyStepAdjustment>[]>;
+    stepAdjustments?: pulumi.Input<pulumi.Input<inputs.autoscaling.PolicyStepAdjustment>[]>;
     /**
      * A target tracking policy. These have the following structure:
      */
-    readonly targetTrackingConfiguration?: pulumi.Input<inputs.autoscaling.PolicyTargetTrackingConfiguration>;
+    targetTrackingConfiguration?: pulumi.Input<inputs.autoscaling.PolicyTargetTrackingConfiguration>;
 }

@@ -106,5 +106,5 @@ export interface AccountAliasArgs {
     /**
      * The account alias
      */
-    readonly accountAlias: pulumi.Input<string>;
+    accountAlias: pulumi.Input<string>;
 }

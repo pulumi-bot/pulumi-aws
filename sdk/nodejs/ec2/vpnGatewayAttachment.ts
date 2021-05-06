@@ -127,9 +127,9 @@ export interface VpnGatewayAttachmentArgs {
     /**
      * The ID of the VPC.
      */
-    readonly vpcId: pulumi.Input<string>;
+    vpcId: pulumi.Input<string>;
     /**
      * The ID of the Virtual Private Gateway.
      */
-    readonly vpnGatewayId: pulumi.Input<string>;
+    vpnGatewayId: pulumi.Input<string>;
 }

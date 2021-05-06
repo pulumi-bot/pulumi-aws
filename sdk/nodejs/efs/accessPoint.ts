@@ -155,15 +155,15 @@ export interface AccessPointArgs {
     /**
      * ID of the file system for which the access point is intended.
      */
-    readonly fileSystemId: pulumi.Input<string>;
+    fileSystemId: pulumi.Input<string>;
     /**
      * Operating system user and group applied to all file system requests made using the access point. Detailed below.
      */
-    readonly posixUser?: pulumi.Input<inputs.efs.AccessPointPosixUser>;
+    posixUser?: pulumi.Input<inputs.efs.AccessPointPosixUser>;
     /**
      * Directory on the Amazon EFS file system that the access point provides access to. Detailed below.
      */
-    readonly rootDirectory?: pulumi.Input<inputs.efs.AccessPointRootDirectory>;
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    rootDirectory?: pulumi.Input<inputs.efs.AccessPointRootDirectory>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

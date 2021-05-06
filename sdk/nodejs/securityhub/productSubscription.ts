@@ -116,5 +116,5 @@ export interface ProductSubscriptionArgs {
     /**
      * The ARN of the product that generates findings that you want to import into Security Hub - see below.
      */
-    readonly productArn: pulumi.Input<string>;
+    productArn: pulumi.Input<string>;
 }

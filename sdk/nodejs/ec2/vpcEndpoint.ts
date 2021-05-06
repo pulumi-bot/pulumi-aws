@@ -346,46 +346,46 @@ export interface VpcEndpointArgs {
     /**
      * Accept the VPC endpoint (the VPC endpoint and service need to be in the same AWS account).
      */
-    readonly autoAccept?: pulumi.Input<boolean>;
+    autoAccept?: pulumi.Input<boolean>;
     /**
      * A policy to attach to the endpoint that controls access to the service. Defaults to full access. All `Gateway` and some `Interface` endpoints support policies - see the [relevant AWS documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints-access.html) for more details.
      */
-    readonly policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string>;
     /**
      * Whether or not to associate a private hosted zone with the specified VPC. Applicable for endpoints of type `Interface`.
      * Defaults to `false`.
      */
-    readonly privateDnsEnabled?: pulumi.Input<boolean>;
+    privateDnsEnabled?: pulumi.Input<boolean>;
     /**
      * One or more route table IDs. Applicable for endpoints of type `Gateway`.
      */
-    readonly routeTableIds?: pulumi.Input<pulumi.Input<string>[]>;
+    routeTableIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of one or more security groups to associate with the network interface. Required for endpoints of type `Interface`.
      */
-    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The service name. For AWS services the service name is usually in the form `com.amazonaws.<region>.<service>` (the SageMaker Notebook service is an exception to this rule, the service name is in the form `aws.sagemaker.<region>.notebook`).
      */
-    readonly serviceName: pulumi.Input<string>;
+    serviceName: pulumi.Input<string>;
     /**
      * The ID of one or more subnets in which to create a network interface for the endpoint. Applicable for endpoints of type `GatewayLoadBalancer` and `Interface`.
      */
-    readonly subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A map of tags to assign to the resource. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The VPC endpoint type, `Gateway`, `GatewayLoadBalancer`, or `Interface`. Defaults to `Gateway`.
      */
-    readonly vpcEndpointType?: pulumi.Input<string>;
+    vpcEndpointType?: pulumi.Input<string>;
     /**
      * The ID of the VPC in which the endpoint will be used.
      */
-    readonly vpcId: pulumi.Input<string>;
+    vpcId: pulumi.Input<string>;
 }

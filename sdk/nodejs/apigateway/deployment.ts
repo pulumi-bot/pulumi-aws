@@ -182,25 +182,25 @@ export interface DeploymentArgs {
     /**
      * Description of the deployment
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * REST API identifier.
      */
-    readonly restApi: pulumi.Input<string | RestApi>;
+    restApi: pulumi.Input<string | RestApi>;
     /**
      * Description to set on the stage managed by the `stageName` argument.
      */
-    readonly stageDescription?: pulumi.Input<string>;
+    stageDescription?: pulumi.Input<string>;
     /**
      * Name of the stage to create with this deployment. If the specified stage already exists, it will be updated to point to the new deployment. It is recommended to use the `aws.apigateway.Stage` resource instead to manage stages.
      */
-    readonly stageName?: pulumi.Input<string>;
+    stageName?: pulumi.Input<string>;
     /**
      * Map of arbitrary keys and values that, when changed, will trigger a redeployment.
      */
-    readonly triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map to set on the stage managed by the `stageName` argument.
      */
-    readonly variables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    variables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

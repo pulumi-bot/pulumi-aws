@@ -106,5 +106,5 @@ export interface ActiveReceiptRuleSetArgs {
     /**
      * The name of the rule set
      */
-    readonly ruleSetName: pulumi.Input<string>;
+    ruleSetName: pulumi.Input<string>;
 }

@@ -304,29 +304,29 @@ export interface CertificateAuthorityArgs {
     /**
      * Nested argument containing algorithms and certificate subject information. Defined below.
      */
-    readonly certificateAuthorityConfiguration: pulumi.Input<inputs.acmpca.CertificateAuthorityCertificateAuthorityConfiguration>;
+    certificateAuthorityConfiguration: pulumi.Input<inputs.acmpca.CertificateAuthorityCertificateAuthorityConfiguration>;
     /**
      * Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. Defaults to `false`.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The number of days to make a CA restorable after it has been deleted, must be between 7 to 30 days, with default to 30 days.
      */
-    readonly permanentDeletionTimeInDays?: pulumi.Input<number>;
+    permanentDeletionTimeInDays?: pulumi.Input<number>;
     /**
      * Nested argument containing revocation configuration. Defined below.
      */
-    readonly revocationConfiguration?: pulumi.Input<inputs.acmpca.CertificateAuthorityRevocationConfiguration>;
+    revocationConfiguration?: pulumi.Input<inputs.acmpca.CertificateAuthorityRevocationConfiguration>;
     /**
      * Specifies a key-value map of user-defined tags that are attached to the certificate authority. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The type of the certificate authority. Defaults to `SUBORDINATE`. Valid values: `ROOT` and `SUBORDINATE`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }

@@ -171,21 +171,21 @@ export interface S3LocationArgs {
     /**
      * Amazon Resource Name (ARN) of the S3 Bucket.
      */
-    readonly s3BucketArn: pulumi.Input<ARN>;
+    s3BucketArn: pulumi.Input<ARN>;
     /**
      * Configuration block containing information for connecting to S3.
      */
-    readonly s3Config: pulumi.Input<inputs.datasync.S3LocationS3Config>;
+    s3Config: pulumi.Input<inputs.datasync.S3LocationS3Config>;
     /**
      * Prefix to perform actions as source or destination.
      */
-    readonly subdirectory: pulumi.Input<string>;
+    subdirectory: pulumi.Input<string>;
     /**
      * Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

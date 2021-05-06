@@ -167,17 +167,17 @@ export interface UserPoolUICustomizationArgs {
     /**
      * The client ID for the client app. Defaults to `ALL`. If `ALL` is specified, the `css` and/or `imageFile` settings will be used for every client that has no UI customization set previously.
      */
-    readonly clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string>;
     /**
      * The CSS values in the UI customization, provided as a String. At least one of `css` or `imageFile` is required.
      */
-    readonly css?: pulumi.Input<string>;
+    css?: pulumi.Input<string>;
     /**
      * The uploaded logo image for the UI customization, provided as a base64-encoded String. Drift detection is not possible for this argument. At least one of `css` or `imageFile` is required.
      */
-    readonly imageFile?: pulumi.Input<string>;
+    imageFile?: pulumi.Input<string>;
     /**
      * The user pool ID for the user pool.
      */
-    readonly userPoolId: pulumi.Input<string>;
+    userPoolId: pulumi.Input<string>;
 }

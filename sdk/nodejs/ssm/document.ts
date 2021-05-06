@@ -380,41 +380,41 @@ export interface DocumentArgs {
     /**
      * One or more configuration blocks describing attachments sources to a version of a document. Defined below.
      */
-    readonly attachmentsSources?: pulumi.Input<pulumi.Input<inputs.ssm.DocumentAttachmentsSource>[]>;
+    attachmentsSources?: pulumi.Input<pulumi.Input<inputs.ssm.DocumentAttachmentsSource>[]>;
     /**
      * The JSON or YAML content of the document.
      */
-    readonly content: pulumi.Input<string>;
+    content: pulumi.Input<string>;
     /**
      * The format of the document. Valid document types include: `JSON` and `YAML`
      */
-    readonly documentFormat?: pulumi.Input<string>;
+    documentFormat?: pulumi.Input<string>;
     /**
      * The type of the document. Valid document types include: `Automation`, `Command`, `Package`, `Policy`, and `Session`
      */
-    readonly documentType: pulumi.Input<string>;
+    documentType: pulumi.Input<string>;
     /**
      * The name of the document.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Additional Permissions to attach to the document. See Permissions below for details.
      */
-    readonly permissions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    permissions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags to assign to the object. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The target type which defines the kinds of resources the document can run on. For example, /AWS::EC2::Instance. For a list of valid resource types, see AWS Resource Types Reference (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
      */
-    readonly targetType?: pulumi.Input<string>;
+    targetType?: pulumi.Input<string>;
     /**
      * A field specifying the version of the artifact you are creating with the document. For example, "Release 12, Update 6". This value is unique across all versions of a document and cannot be changed for an existing document version.
      */
-    readonly versionName?: pulumi.Input<string>;
+    versionName?: pulumi.Input<string>;
 }

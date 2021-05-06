@@ -128,9 +128,9 @@ export interface SnapshotScheduleAssociationArgs {
     /**
      * The cluster identifier.
      */
-    readonly clusterIdentifier: pulumi.Input<string>;
+    clusterIdentifier: pulumi.Input<string>;
     /**
      * The snapshot schedule identifier.
      */
-    readonly scheduleIdentifier: pulumi.Input<string>;
+    scheduleIdentifier: pulumi.Input<string>;
 }

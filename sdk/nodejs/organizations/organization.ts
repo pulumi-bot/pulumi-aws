@@ -198,13 +198,13 @@ export interface OrganizationArgs {
     /**
      * List of AWS service principal names for which you want to enable integration with your organization. This is typically in the form of a URL, such as service-abbreviation.amazonaws.com. Organization must have `featureSet` set to `ALL`. For additional information, see the [AWS Organizations User Guide](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html).
      */
-    readonly awsServiceAccessPrincipals?: pulumi.Input<pulumi.Input<string>[]>;
+    awsServiceAccessPrincipals?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of Organizations policy types to enable in the Organization Root. Organization must have `featureSet` set to `ALL`. For additional information about valid policy types (e.g. `BACKUP_POLICY`, `SERVICE_CONTROL_POLICY`, and `TAG_POLICY`), see the [AWS Organizations API Reference](https://docs.aws.amazon.com/organizations/latest/APIReference/API_EnablePolicyType.html).
      */
-    readonly enabledPolicyTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledPolicyTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Specify "ALL" (default) or "CONSOLIDATED_BILLING".
      */
-    readonly featureSet?: pulumi.Input<string>;
+    featureSet?: pulumi.Input<string>;
 }

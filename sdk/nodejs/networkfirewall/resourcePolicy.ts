@@ -150,9 +150,9 @@ export interface ResourcePolicyState {
  * The set of arguments for constructing a ResourcePolicy resource.
  */
 export interface ResourcePolicyArgs {
-    readonly policy: pulumi.Input<string>;
+    policy: pulumi.Input<string>;
     /**
      * The Amazon Resource Name (ARN) of the rule group or firewall policy.
      */
-    readonly resourceArn: pulumi.Input<string>;
+    resourceArn: pulumi.Input<string>;
 }

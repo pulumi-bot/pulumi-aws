@@ -202,21 +202,21 @@ export interface FirewallPolicyArgs {
     /**
      * A friendly description of the firewall policy.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A configuration block describing the rule groups and policy actions to use in the firewall policy. See Firewall Policy below for details.
      */
-    readonly firewallPolicy: pulumi.Input<inputs.networkfirewall.FirewallPolicyFirewallPolicy>;
+    firewallPolicy: pulumi.Input<inputs.networkfirewall.FirewallPolicyFirewallPolicy>;
     /**
      * A friendly name of the firewall policy.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Map of resource tags to associate with the resource. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

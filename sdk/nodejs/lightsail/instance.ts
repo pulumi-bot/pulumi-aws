@@ -315,34 +315,34 @@ export interface InstanceArgs {
      * The Availability Zone in which to create your
      * instance (see list below)
      */
-    readonly availabilityZone: pulumi.Input<string>;
+    availabilityZone: pulumi.Input<string>;
     /**
      * The ID for a virtual private server image. A list of available blueprint IDs can be obtained using the AWS CLI command: `aws lightsail get-blueprints`
      */
-    readonly blueprintId: pulumi.Input<string>;
+    blueprintId: pulumi.Input<string>;
     /**
      * The bundle of specification information (see list below)
      */
-    readonly bundleId: pulumi.Input<string>;
+    bundleId: pulumi.Input<string>;
     /**
      * The name of your key pair. Created in the
      * Lightsail console (cannot use `aws.ec2.KeyPair` at this time)
      */
-    readonly keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string>;
     /**
      * The name of the Lightsail Instance. Names be unique within each AWS Region in your Lightsail account.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * launch script to configure server with additional user data
      */
-    readonly userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string>;
 }

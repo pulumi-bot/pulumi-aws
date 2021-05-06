@@ -138,10 +138,10 @@ export interface RepositoryArgs {
     /**
      * Catalog data configuration for the repository. See below for schema.
      */
-    readonly catalogData?: pulumi.Input<inputs.ecrpublic.RepositoryCatalogData>;
-    readonly forceDestroy?: pulumi.Input<boolean>;
+    catalogData?: pulumi.Input<inputs.ecrpublic.RepositoryCatalogData>;
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * Name of the repository.
      */
-    readonly repositoryName: pulumi.Input<string>;
+    repositoryName: pulumi.Input<string>;
 }

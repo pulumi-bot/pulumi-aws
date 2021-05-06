@@ -192,5 +192,5 @@ export interface ResourceShareAccepterArgs {
     /**
      * The ARN of the resource share.
      */
-    readonly shareArn: pulumi.Input<string>;
+    shareArn: pulumi.Input<string>;
 }

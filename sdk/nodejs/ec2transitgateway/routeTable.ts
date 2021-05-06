@@ -137,10 +137,10 @@ export interface RouteTableState {
  * The set of arguments for constructing a RouteTable resource.
  */
 export interface RouteTableArgs {
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Identifier of EC2 Transit Gateway.
      */
-    readonly transitGatewayId: pulumi.Input<string>;
+    transitGatewayId: pulumi.Input<string>;
 }

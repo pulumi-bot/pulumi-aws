@@ -123,5 +123,5 @@ export interface WorkspaceArgs {
     /**
      * The alias of the prometheus workspace. See more [in AWS Docs](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-onboard-create-workspace.html).
      */
-    readonly alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string>;
 }

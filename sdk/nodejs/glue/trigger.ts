@@ -291,38 +291,38 @@ export interface TriggerArgs {
     /**
      * List of actions initiated by this trigger when it fires. See Actions Below.
      */
-    readonly actions: pulumi.Input<pulumi.Input<inputs.glue.TriggerAction>[]>;
+    actions: pulumi.Input<pulumi.Input<inputs.glue.TriggerAction>[]>;
     /**
      * A description of the new trigger.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Start the trigger. Defaults to `true`.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The name of the trigger.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A predicate to specify when the new trigger should fire. Required when trigger type is `CONDITIONAL`. See Predicate Below.
      */
-    readonly predicate?: pulumi.Input<inputs.glue.TriggerPredicate>;
+    predicate?: pulumi.Input<inputs.glue.TriggerPredicate>;
     /**
      * A cron expression used to specify the schedule. [Time-Based Schedules for Jobs and Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html)
      */
-    readonly schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string>;
     /**
      * Key-value map of resource tags. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The type of trigger. Valid values are `CONDITIONAL`, `ON_DEMAND`, and `SCHEDULED`.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
     /**
      * A workflow to which the trigger should be associated to. Every workflow graph (DAG) needs a starting trigger (`ON_DEMAND` or `SCHEDULED` type) and can contain multiple additional `CONDITIONAL` triggers.
      */
-    readonly workflowName?: pulumi.Input<string>;
+    workflowName?: pulumi.Input<string>;
 }

@@ -178,25 +178,25 @@ export interface MemberArgs {
     /**
      * AWS account ID for member account.
      */
-    readonly accountId: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
      * The detector ID of the GuardDuty account where you want to create member accounts.
      */
-    readonly detectorId: pulumi.Input<string>;
+    detectorId: pulumi.Input<string>;
     /**
      * Boolean whether an email notification is sent to the accounts. Defaults to `false`.
      */
-    readonly disableEmailNotification?: pulumi.Input<boolean>;
+    disableEmailNotification?: pulumi.Input<boolean>;
     /**
      * Email address for member account.
      */
-    readonly email: pulumi.Input<string>;
+    email: pulumi.Input<string>;
     /**
      * Message for invitation.
      */
-    readonly invitationMessage?: pulumi.Input<string>;
+    invitationMessage?: pulumi.Input<string>;
     /**
      * Boolean whether to invite the account to GuardDuty as a member. Defaults to `false`. To detect if an invitation needs to be (re-)sent, the this provider state value is `true` based on a `relationshipStatus` of `Disabled`, `Enabled`, `Invited`, or `EmailVerificationInProgress`.
      */
-    readonly invite?: pulumi.Input<boolean>;
+    invite?: pulumi.Input<boolean>;
 }

@@ -161,17 +161,17 @@ export interface HostArgs {
     /**
      * The name of the host to be created. The name must be unique in the calling AWS account.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The endpoint of the infrastructure to be represented by the host after it is created.
      */
-    readonly providerEndpoint: pulumi.Input<string>;
+    providerEndpoint: pulumi.Input<string>;
     /**
      * The name of the external provider where your third-party code repository is configured.
      */
-    readonly providerType: pulumi.Input<string>;
+    providerType: pulumi.Input<string>;
     /**
      * The VPC configuration to be provisioned for the host. A VPC must be configured, and the infrastructure to be represented by the host must already be connected to the VPC.
      */
-    readonly vpcConfiguration?: pulumi.Input<inputs.codestarconnections.HostVpcConfiguration>;
+    vpcConfiguration?: pulumi.Input<inputs.codestarconnections.HostVpcConfiguration>;
 }

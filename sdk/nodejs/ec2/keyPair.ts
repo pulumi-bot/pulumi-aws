@@ -170,15 +170,15 @@ export interface KeyPairArgs {
     /**
      * The name for the key pair.
      */
-    readonly keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string>;
     /**
      * Creates a unique name beginning with the specified prefix. Conflicts with `keyName`.
      */
-    readonly keyNamePrefix?: pulumi.Input<string>;
+    keyNamePrefix?: pulumi.Input<string>;
     /**
      * The public key material.
      */
-    readonly publicKey: pulumi.Input<string>;
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    publicKey: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

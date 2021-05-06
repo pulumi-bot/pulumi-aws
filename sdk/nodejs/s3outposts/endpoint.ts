@@ -173,13 +173,13 @@ export interface EndpointArgs {
     /**
      * Identifier of the Outpost to contain this endpoint.
      */
-    readonly outpostId: pulumi.Input<string>;
+    outpostId: pulumi.Input<string>;
     /**
      * Identifier of the EC2 Security Group.
      */
-    readonly securityGroupId: pulumi.Input<string>;
+    securityGroupId: pulumi.Input<string>;
     /**
      * Identifier of the EC2 Subnet.
      */
-    readonly subnetId: pulumi.Input<string>;
+    subnetId: pulumi.Input<string>;
 }

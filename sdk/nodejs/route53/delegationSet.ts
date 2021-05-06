@@ -116,5 +116,5 @@ export interface DelegationSetArgs {
      * This is a reference name used in Caller Reference
      * (helpful for identifying single delegation set amongst others)
      */
-    readonly referenceName?: pulumi.Input<string>;
+    referenceName?: pulumi.Input<string>;
 }

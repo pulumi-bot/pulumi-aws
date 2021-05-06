@@ -114,5 +114,5 @@ export interface ProjectArgs {
     /**
      * The name of the project
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

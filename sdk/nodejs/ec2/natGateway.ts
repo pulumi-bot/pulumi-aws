@@ -183,17 +183,17 @@ export interface NatGatewayArgs {
     /**
      * The Allocation ID of the Elastic IP address for the gateway.
      */
-    readonly allocationId: pulumi.Input<string>;
+    allocationId: pulumi.Input<string>;
     /**
      * The Subnet ID of the subnet in which to place the gateway.
      */
-    readonly subnetId: pulumi.Input<string>;
+    subnetId: pulumi.Input<string>;
     /**
      * A map of tags to assign to the resource. If configured with a provider [`defaultTags` configuration block](https://www.terraform.io/docs/providers/aws/index.html#default_tags-configuration-block) present, tags with matching keys will overwrite those defined at the provider-level.
      */
-    readonly tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A map of tags assigned to the resource, including those inherited from the provider .
      */
-    readonly tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tagsAll?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

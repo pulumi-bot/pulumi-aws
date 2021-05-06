@@ -112,5 +112,5 @@ export interface DomainArgs {
     /**
      * The name of the Lightsail domain to manage
      */
-    readonly domainName: pulumi.Input<string>;
+    domainName: pulumi.Input<string>;
 }

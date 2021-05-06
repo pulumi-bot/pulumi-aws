@@ -156,9 +156,9 @@ export interface CodeRepositoryArgs {
     /**
      * The name of the Code Repository (must be unique).
      */
-    readonly codeRepositoryName: pulumi.Input<string>;
+    codeRepositoryName: pulumi.Input<string>;
     /**
      * Specifies details about the repository. see Git Config details below.
      */
-    readonly gitConfig: pulumi.Input<inputs.sagemaker.CodeRepositoryGitConfig>;
+    gitConfig: pulumi.Input<inputs.sagemaker.CodeRepositoryGitConfig>;
 }
