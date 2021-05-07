@@ -38,7 +38,7 @@ export interface GetHostedZoneArgs {
     /**
      * The region you'd like the zone for. By default, fetches the current region.
      */
-    readonly region?: string;
+    region?: string;
 }
 
 /**

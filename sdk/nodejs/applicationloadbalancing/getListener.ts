@@ -57,15 +57,15 @@ export interface GetListenerArgs {
     /**
      * ARN of the listener. Required if `loadBalancerArn` and `port` is not set.
      */
-    readonly arn?: string;
+    arn?: string;
     /**
      * ARN of the load balancer. Required if `arn` is not set.
      */
-    readonly loadBalancerArn?: string;
+    loadBalancerArn?: string;
     /**
      * Port of the listener. Required if `arn` is not set.
      */
-    readonly port?: number;
+    port?: number;
 }
 
 /**

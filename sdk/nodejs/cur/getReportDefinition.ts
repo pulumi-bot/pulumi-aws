@@ -43,7 +43,7 @@ export interface GetReportDefinitionArgs {
     /**
      * The name of the report definition to match.
      */
-    readonly reportName: string;
+    reportName: string;
 }
 
 /**

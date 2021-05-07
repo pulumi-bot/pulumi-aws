@@ -41,11 +41,11 @@ export interface GetCertificateArgs {
     /**
      * Certificate identifier. For example, `rds-ca-2019`.
      */
-    readonly id?: string;
+    id?: string;
     /**
      * When enabled, returns the certificate with the latest `ValidTill`.
      */
-    readonly latestValidTill?: boolean;
+    latestValidTill?: boolean;
 }
 
 /**

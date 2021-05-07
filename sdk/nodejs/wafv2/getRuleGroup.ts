@@ -41,11 +41,11 @@ export interface GetRuleGroupArgs {
     /**
      * The name of the WAFv2 Rule Group.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
      */
-    readonly scope: string;
+    scope: string;
 }
 
 /**

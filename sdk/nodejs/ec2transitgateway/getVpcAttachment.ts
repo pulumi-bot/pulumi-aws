@@ -56,15 +56,15 @@ export interface GetVpcAttachmentArgs {
     /**
      * One or more configuration blocks containing name-values filters. Detailed below.
      */
-    readonly filters?: inputs.ec2transitgateway.GetVpcAttachmentFilter[];
+    filters?: inputs.ec2transitgateway.GetVpcAttachmentFilter[];
     /**
      * Identifier of the EC2 Transit Gateway VPC Attachment.
      */
-    readonly id?: string;
+    id?: string;
     /**
      * Key-value tags for the EC2 Transit Gateway VPC Attachment
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**

@@ -40,7 +40,7 @@ export interface GetServerArgs {
     /**
      * ID for an SFTP server.
      */
-    readonly serverId: string;
+    serverId: string;
 }
 
 /**

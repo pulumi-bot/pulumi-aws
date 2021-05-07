@@ -38,7 +38,7 @@ export interface GetAuthorizationTokenArgs {
     /**
      * AWS account ID of the ECR Repository. If not specified the default account is assumed.
      */
-    readonly registryId?: string;
+    registryId?: string;
 }
 
 /**

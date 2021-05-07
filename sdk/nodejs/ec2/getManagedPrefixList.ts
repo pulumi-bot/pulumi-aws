@@ -59,19 +59,19 @@ export interface GetManagedPrefixListArgs {
     /**
      * Configuration block(s) for filtering. Detailed below.
      */
-    readonly filters?: inputs.ec2.GetManagedPrefixListFilter[];
+    filters?: inputs.ec2.GetManagedPrefixListFilter[];
     /**
      * The ID of the prefix list to select.
      */
-    readonly id?: string;
+    id?: string;
     /**
      * The name of the filter field. Valid values can be found in the EC2 [DescribeManagedPrefixLists](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeManagedPrefixLists.html) API Reference.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * A map of tags assigned to the resource.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
