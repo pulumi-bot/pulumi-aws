@@ -39,7 +39,7 @@ export interface GetRuleArgs {
     /**
      * The name of the WAF Regional rule.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**

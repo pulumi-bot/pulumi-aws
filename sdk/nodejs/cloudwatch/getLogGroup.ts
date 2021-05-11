@@ -40,11 +40,11 @@ export interface GetLogGroupArgs {
     /**
      * The name of the Cloudwatch log group
      */
-    readonly name: string;
+    name: string;
     /**
      * A map of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**

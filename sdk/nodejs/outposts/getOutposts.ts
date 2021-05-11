@@ -42,15 +42,15 @@ export interface GetOutpostsArgs {
     /**
      * Availability Zone name.
      */
-    readonly availabilityZone?: string;
+    availabilityZone?: string;
     /**
      * Availability Zone identifier.
      */
-    readonly availabilityZoneId?: string;
+    availabilityZoneId?: string;
     /**
      * Site identifier.
      */
-    readonly siteId?: string;
+    siteId?: string;
 }
 
 /**

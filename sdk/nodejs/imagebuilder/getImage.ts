@@ -41,11 +41,11 @@ export interface GetImageArgs {
     /**
      * Amazon Resource Name (ARN) of the image. The suffix can either be specified with wildcards (`x.x.x`) to fetch the latest build version or a full build version (e.g. `2020.11.26/1`) to fetch an exact version.
      */
-    readonly arn: string;
+    arn: string;
     /**
      * Key-value map of resource tags for the image.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
