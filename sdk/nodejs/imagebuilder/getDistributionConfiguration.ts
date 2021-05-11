@@ -40,11 +40,11 @@ export interface GetDistributionConfigurationArgs {
     /**
      * Amazon Resource Name (ARN) of the distribution configuration.
      */
-    readonly arn: string;
+    arn: string;
     /**
      * Key-value map of resource tags for the distribution configuration.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**

@@ -42,7 +42,7 @@ export interface GetEventSourceArgs {
     /**
      * Specifying this limits the results to only those partner event sources with names that start with the specified prefix
      */
-    readonly namePrefix?: string;
+    namePrefix?: string;
 }
 
 /**
