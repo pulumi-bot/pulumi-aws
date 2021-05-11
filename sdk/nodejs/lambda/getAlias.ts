@@ -41,11 +41,11 @@ export interface GetAliasArgs {
     /**
      * Name of the aliased Lambda function.
      */
-    readonly functionName: string;
+    functionName: string;
     /**
      * Name of the Lambda alias.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
