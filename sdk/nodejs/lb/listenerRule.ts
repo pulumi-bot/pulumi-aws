@@ -279,23 +279,23 @@ export interface ListenerRuleState {
     /**
      * An Action block. Action blocks are documented below.
      */
-    readonly actions?: pulumi.Input<pulumi.Input<inputs.lb.ListenerRuleAction>[]>;
+    actions?: pulumi.Input<pulumi.Input<inputs.lb.ListenerRuleAction>[]>;
     /**
      * The Amazon Resource Name (ARN) of the target group.
      */
-    readonly arn?: pulumi.Input<string>;
+    arn?: pulumi.Input<string>;
     /**
      * A Condition block. Multiple condition blocks of different types can be set and all must be satisfied for the rule to match. Condition blocks are documented below.
      */
-    readonly conditions?: pulumi.Input<pulumi.Input<inputs.lb.ListenerRuleCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.lb.ListenerRuleCondition>[]>;
     /**
      * The ARN of the listener to which to attach the rule.
      */
-    readonly listenerArn?: pulumi.Input<string>;
+    listenerArn?: pulumi.Input<string>;
     /**
      * The priority for the rule between `1` and `50000`. Leaving it unset will automatically set the rule with next available priority after currently existing highest rule. A listener can't have multiple rules with the same priority.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
 }
 
 /**
@@ -305,17 +305,17 @@ export interface ListenerRuleArgs {
     /**
      * An Action block. Action blocks are documented below.
      */
-    readonly actions: pulumi.Input<pulumi.Input<inputs.lb.ListenerRuleAction>[]>;
+    actions: pulumi.Input<pulumi.Input<inputs.lb.ListenerRuleAction>[]>;
     /**
      * A Condition block. Multiple condition blocks of different types can be set and all must be satisfied for the rule to match. Condition blocks are documented below.
      */
-    readonly conditions: pulumi.Input<pulumi.Input<inputs.lb.ListenerRuleCondition>[]>;
+    conditions: pulumi.Input<pulumi.Input<inputs.lb.ListenerRuleCondition>[]>;
     /**
      * The ARN of the listener to which to attach the rule.
      */
-    readonly listenerArn: pulumi.Input<string>;
+    listenerArn: pulumi.Input<string>;
     /**
      * The priority for the rule between `1` and `50000`. Leaving it unset will automatically set the rule with next available priority after currently existing highest rule. A listener can't have multiple rules with the same priority.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
 }

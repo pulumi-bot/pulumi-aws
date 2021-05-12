@@ -39,7 +39,7 @@ export interface GetSigningJobArgs {
     /**
      * The ID of the signing job on output.
      */
-    readonly jobId: string;
+    jobId: string;
 }
 
 /**

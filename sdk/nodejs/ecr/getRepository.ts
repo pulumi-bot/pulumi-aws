@@ -41,15 +41,15 @@ export interface GetRepositoryArgs {
     /**
      * The name of the ECR Repository.
      */
-    readonly name: string;
+    name: string;
     /**
      * The registry ID where the repository was created.
      */
-    readonly registryId?: string;
+    registryId?: string;
     /**
      * A map of tags assigned to the resource.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
