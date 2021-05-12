@@ -46,8 +46,8 @@ export interface GetDedicatedHostArgs {
     /**
      * The host ID.
      */
-    readonly hostId: string;
-    readonly tags?: {[key: string]: string};
+    hostId: string;
+    tags?: {[key: string]: string};
 }
 
 /**

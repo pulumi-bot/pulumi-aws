@@ -41,7 +41,7 @@ export interface GetTopicArgs {
     /**
      * The friendly name of the topic to match.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**

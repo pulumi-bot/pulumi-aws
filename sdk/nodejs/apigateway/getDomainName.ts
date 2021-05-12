@@ -40,11 +40,11 @@ export interface GetDomainNameArgs {
     /**
      * The fully-qualified domain name to look up. If no domain name is found, an error will be returned.
      */
-    readonly domainName: string;
+    domainName: string;
     /**
      * Key-value map of tags for the resource.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**

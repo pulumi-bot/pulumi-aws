@@ -39,7 +39,7 @@ export interface GetAccessPointsArgs {
     /**
      * EFS File System identifier.
      */
-    readonly fileSystemId: string;
+    fileSystemId: string;
 }
 
 /**
