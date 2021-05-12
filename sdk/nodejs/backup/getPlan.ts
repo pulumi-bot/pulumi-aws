@@ -40,11 +40,11 @@ export interface GetPlanArgs {
     /**
      * The backup plan ID.
      */
-    readonly planId: string;
+    planId: string;
     /**
      * Metadata that you can assign to help organize the plans you create.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**

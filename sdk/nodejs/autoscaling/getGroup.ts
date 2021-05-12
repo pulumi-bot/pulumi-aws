@@ -39,7 +39,7 @@ export interface GetGroupArgs {
     /**
      * Specify the exact name of the desired autoscaling group.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**

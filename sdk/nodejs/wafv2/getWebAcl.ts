@@ -41,11 +41,11 @@ export interface GetWebAclArgs {
     /**
      * The name of the WAFv2 Web ACL.
      */
-    readonly name: string;
+    name: string;
     /**
      * Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
      */
-    readonly scope: string;
+    scope: string;
 }
 
 /**

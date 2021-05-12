@@ -322,35 +322,35 @@ export interface ListenerState {
     /**
      * Name of the Application-Layer Protocol Negotiation (ALPN) policy. Can be set if `protocol` is `TLS`. Valid values are `HTTP1Only`, `HTTP2Only`, `HTTP2Optional`, `HTTP2Preferred`, and `None`.
      */
-    readonly alpnPolicy?: pulumi.Input<string>;
+    alpnPolicy?: pulumi.Input<string>;
     /**
      * ARN of the target group.
      */
-    readonly arn?: pulumi.Input<string>;
+    arn?: pulumi.Input<string>;
     /**
      * ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the `aws.lb.ListenerCertificate` resource.
      */
-    readonly certificateArn?: pulumi.Input<string>;
+    certificateArn?: pulumi.Input<string>;
     /**
      * Configuration block for default actions. Detailed below.
      */
-    readonly defaultActions?: pulumi.Input<pulumi.Input<inputs.applicationloadbalancing.ListenerDefaultAction>[]>;
+    defaultActions?: pulumi.Input<pulumi.Input<inputs.applicationloadbalancing.ListenerDefaultAction>[]>;
     /**
      * ARN of the load balancer.
      */
-    readonly loadBalancerArn?: pulumi.Input<string>;
+    loadBalancerArn?: pulumi.Input<string>;
     /**
      * Port. Specify a value from `1` to `65535` or `#{port}`. Defaults to `#{port}`.
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * Protocol. Valid values are `HTTP`, `HTTPS`, or `#{protocol}`. Defaults to `#{protocol}`.
      */
-    readonly protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * Name of the SSL Policy for the listener. Required if `protocol` is `HTTPS` or `TLS`.
      */
-    readonly sslPolicy?: pulumi.Input<string>;
+    sslPolicy?: pulumi.Input<string>;
 }
 
 /**
@@ -360,29 +360,29 @@ export interface ListenerArgs {
     /**
      * Name of the Application-Layer Protocol Negotiation (ALPN) policy. Can be set if `protocol` is `TLS`. Valid values are `HTTP1Only`, `HTTP2Only`, `HTTP2Optional`, `HTTP2Preferred`, and `None`.
      */
-    readonly alpnPolicy?: pulumi.Input<string>;
+    alpnPolicy?: pulumi.Input<string>;
     /**
      * ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the `aws.lb.ListenerCertificate` resource.
      */
-    readonly certificateArn?: pulumi.Input<string>;
+    certificateArn?: pulumi.Input<string>;
     /**
      * Configuration block for default actions. Detailed below.
      */
-    readonly defaultActions: pulumi.Input<pulumi.Input<inputs.applicationloadbalancing.ListenerDefaultAction>[]>;
+    defaultActions: pulumi.Input<pulumi.Input<inputs.applicationloadbalancing.ListenerDefaultAction>[]>;
     /**
      * ARN of the load balancer.
      */
-    readonly loadBalancerArn: pulumi.Input<string>;
+    loadBalancerArn: pulumi.Input<string>;
     /**
      * Port. Specify a value from `1` to `65535` or `#{port}`. Defaults to `#{port}`.
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * Protocol. Valid values are `HTTP`, `HTTPS`, or `#{protocol}`. Defaults to `#{protocol}`.
      */
-    readonly protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string>;
     /**
      * Name of the SSL Policy for the listener. Required if `protocol` is `HTTPS` or `TLS`.
      */
-    readonly sslPolicy?: pulumi.Input<string>;
+    sslPolicy?: pulumi.Input<string>;
 }

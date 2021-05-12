@@ -40,11 +40,11 @@ export interface GetDirectoryArgs {
     /**
      * The directory identifier for registration in WorkSpaces service.
      */
-    readonly directoryId: string;
+    directoryId: string;
     /**
      * A map of tags assigned to the WorkSpaces directory.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**

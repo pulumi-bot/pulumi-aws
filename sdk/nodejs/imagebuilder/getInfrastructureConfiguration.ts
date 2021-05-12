@@ -41,15 +41,15 @@ export interface GetInfrastructureConfigurationArgs {
     /**
      * Amazon Resource Name (ARN) of the infrastructure configuration.
      */
-    readonly arn: string;
+    arn: string;
     /**
      * Key-value map of resource tags for the infrastructure created by the infrastructure configuration.
      */
-    readonly resourceTags?: {[key: string]: string};
+    resourceTags?: {[key: string]: string};
     /**
      * Key-value map of resource tags for the infrastructure configuration.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**

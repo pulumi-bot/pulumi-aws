@@ -39,7 +39,7 @@ export interface GetImageArgs {
     /**
      * The ID of the image.
      */
-    readonly imageId: string;
+    imageId: string;
 }
 
 /**
