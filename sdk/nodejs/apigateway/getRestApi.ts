@@ -43,11 +43,11 @@ export interface GetRestApiArgs {
     /**
      * The name of the REST API to look up. If no REST API is found with this name, an error will be returned. If multiple REST APIs are found with this name, an error will be returned.
      */
-    readonly name: string;
+    name: string;
     /**
      * Key-value map of resource tags.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**

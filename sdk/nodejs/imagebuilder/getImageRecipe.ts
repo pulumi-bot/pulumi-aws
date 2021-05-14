@@ -40,11 +40,11 @@ export interface GetImageRecipeArgs {
     /**
      * Amazon Resource Name (ARN) of the image recipe.
      */
-    readonly arn: string;
+    arn: string;
     /**
      * Key-value map of resource tags for the image recipe.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**

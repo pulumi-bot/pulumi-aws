@@ -42,15 +42,15 @@ export interface GetOutpostArgs {
     /**
      * Amazon Resource Name (ARN).
      */
-    readonly arn?: string;
+    arn?: string;
     /**
      * Identifier of the Outpost.
      */
-    readonly id?: string;
+    id?: string;
     /**
      * Name of the Outpost.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**

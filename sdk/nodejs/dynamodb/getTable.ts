@@ -41,9 +41,9 @@ export interface GetTableArgs {
     /**
      * The name of the DynamoDB table.
      */
-    readonly name: string;
-    readonly serverSideEncryption?: inputs.dynamodb.GetTableServerSideEncryption;
-    readonly tags?: {[key: string]: string};
+    name: string;
+    serverSideEncryption?: inputs.dynamodb.GetTableServerSideEncryption;
+    tags?: {[key: string]: string};
 }
 
 /**

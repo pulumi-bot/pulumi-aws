@@ -39,7 +39,7 @@ export interface GetRateBasedRuleArgs {
     /**
      * The name of the WAF rate based rule.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
