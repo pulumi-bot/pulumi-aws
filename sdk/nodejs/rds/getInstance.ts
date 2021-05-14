@@ -40,8 +40,8 @@ export interface GetInstanceArgs {
     /**
      * The name of the RDS instance
      */
-    readonly dbInstanceIdentifier: string;
-    readonly tags?: {[key: string]: string};
+    dbInstanceIdentifier: string;
+    tags?: {[key: string]: string};
 }
 
 /**
