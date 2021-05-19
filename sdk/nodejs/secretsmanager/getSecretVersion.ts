@@ -55,15 +55,15 @@ export interface GetSecretVersionArgs {
     /**
      * Specifies the secret containing the version that you want to retrieve. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
      */
-    readonly secretId: string;
+    secretId: string;
     /**
      * Specifies the unique identifier of the version of the secret that you want to retrieve. Overrides `versionStage`.
      */
-    readonly versionId?: string;
+    versionId?: string;
     /**
      * Specifies the secret version that you want to retrieve by the staging label attached to the version. Defaults to `AWSCURRENT`.
      */
-    readonly versionStage?: string;
+    versionStage?: string;
 }
 
 /**
@@ -93,4 +93,26 @@ export interface GetSecretVersionResult {
     readonly versionId: string;
     readonly versionStage?: string;
     readonly versionStages: string[];
+}
+
+export function getSecretVersionOutput(args: GetSecretVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretVersionResult> {
+    return pulumi.output(args).apply(a => getSecretVersion(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSecretVersion.
+ */
+export interface GetSecretVersionOutputArgs {
+    /**
+     * Specifies the secret containing the version that you want to retrieve. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
+     */
+    secretId: pulumi.Input<string>;
+    /**
+     * Specifies the unique identifier of the version of the secret that you want to retrieve. Overrides `versionStage`.
+     */
+    versionId?: pulumi.Input<string>;
+    /**
+     * Specifies the secret version that you want to retrieve by the staging label attached to the version. Defaults to `AWSCURRENT`.
+     */
+    versionStage?: pulumi.Input<string>;
 }

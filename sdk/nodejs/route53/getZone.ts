@@ -57,27 +57,27 @@ export interface GetZoneArgs {
     /**
      * The Hosted Zone name of the desired Hosted Zone.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * Used with `name` field to get a private Hosted Zone.
      */
-    readonly privateZone?: boolean;
+    privateZone?: boolean;
     /**
      * The number of Record Set in the Hosted Zone.
      */
-    readonly resourceRecordSetCount?: number;
+    resourceRecordSetCount?: number;
     /**
      * Used with `name` field. A map of tags, each pair of which must exactly match a pair on the desired Hosted Zone.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
     /**
      * Used with `name` field to get a private Hosted Zone associated with the vpcId (in this case, privateZone is not mandatory).
      */
-    readonly vpcId?: string;
+    vpcId?: string;
     /**
      * The Hosted Zone id of the desired Hosted Zone.
      */
-    readonly zoneId?: string;
+    zoneId?: string;
 }
 
 /**
@@ -117,4 +117,38 @@ export interface GetZoneResult {
     readonly tags: {[key: string]: string};
     readonly vpcId: string;
     readonly zoneId: string;
+}
+
+export function getZoneOutput(args?: GetZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneResult> {
+    return pulumi.output(args).apply(a => getZone(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getZone.
+ */
+export interface GetZoneOutputArgs {
+    /**
+     * The Hosted Zone name of the desired Hosted Zone.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Used with `name` field to get a private Hosted Zone.
+     */
+    privateZone?: pulumi.Input<boolean>;
+    /**
+     * The number of Record Set in the Hosted Zone.
+     */
+    resourceRecordSetCount?: pulumi.Input<number>;
+    /**
+     * Used with `name` field. A map of tags, each pair of which must exactly match a pair on the desired Hosted Zone.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Used with `name` field to get a private Hosted Zone associated with the vpcId (in this case, privateZone is not mandatory).
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * The Hosted Zone id of the desired Hosted Zone.
+     */
+    zoneId?: pulumi.Input<string>;
 }

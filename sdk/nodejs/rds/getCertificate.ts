@@ -41,11 +41,11 @@ export interface GetCertificateArgs {
     /**
      * Certificate identifier. For example, `rds-ca-2019`.
      */
-    readonly id?: string;
+    id?: string;
     /**
      * When enabled, returns the certificate with the latest `ValidTill`.
      */
-    readonly latestValidTill?: boolean;
+    latestValidTill?: boolean;
 }
 
 /**
@@ -82,4 +82,22 @@ export interface GetCertificateResult {
      * [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) of certificate ending validity date.
      */
     readonly validTill: string;
+}
+
+export function getCertificateOutput(args?: GetCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateResult> {
+    return pulumi.output(args).apply(a => getCertificate(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCertificate.
+ */
+export interface GetCertificateOutputArgs {
+    /**
+     * Certificate identifier. For example, `rds-ca-2019`.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * When enabled, returns the certificate with the latest `ValidTill`.
+     */
+    latestValidTill?: pulumi.Input<boolean>;
 }

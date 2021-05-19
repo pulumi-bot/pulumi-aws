@@ -31,16 +31,16 @@ export interface GetRouteTablesArgs {
     /**
      * Custom filter block as described below.
      */
-    readonly filters?: inputs.ec2.GetRouteTablesFilter[];
+    filters?: inputs.ec2.GetRouteTablesFilter[];
     /**
      * A map of tags, each pair of which must exactly match
      * a pair on the desired route tables.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
     /**
      * The VPC ID that you want to filter from.
      */
-    readonly vpcId?: string;
+    vpcId?: string;
 }
 
 /**
@@ -58,4 +58,27 @@ export interface GetRouteTablesResult {
     readonly ids: string[];
     readonly tags: {[key: string]: string};
     readonly vpcId?: string;
+}
+
+export function getRouteTablesOutput(args?: GetRouteTablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteTablesResult> {
+    return pulumi.output(args).apply(a => getRouteTables(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRouteTables.
+ */
+export interface GetRouteTablesOutputArgs {
+    /**
+     * Custom filter block as described below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.ec2.GetRouteTablesFilter>[]>;
+    /**
+     * A map of tags, each pair of which must exactly match
+     * a pair on the desired route tables.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The VPC ID that you want to filter from.
+     */
+    vpcId?: pulumi.Input<string>;
 }

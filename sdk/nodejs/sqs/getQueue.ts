@@ -42,11 +42,11 @@ export interface GetQueueArgs {
     /**
      * The name of the queue to match.
      */
-    readonly name: string;
+    name: string;
     /**
      * A map of tags for the resource.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -70,4 +70,22 @@ export interface GetQueueResult {
      * The URL of the queue.
      */
     readonly url: string;
+}
+
+export function getQueueOutput(args: GetQueueOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQueueResult> {
+    return pulumi.output(args).apply(a => getQueue(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getQueue.
+ */
+export interface GetQueueOutputArgs {
+    /**
+     * The name of the queue to match.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A map of tags for the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

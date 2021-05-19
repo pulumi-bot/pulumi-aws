@@ -60,19 +60,19 @@ export interface GetPatchBaselineArgs {
     /**
      * Filters the results against the baselines defaultBaseline field.
      */
-    readonly defaultBaseline?: boolean;
+    defaultBaseline?: boolean;
     /**
      * Filter results by the baseline name prefix.
      */
-    readonly namePrefix?: string;
+    namePrefix?: string;
     /**
      * The specified OS for the baseline.
      */
-    readonly operatingSystem?: string;
+    operatingSystem?: string;
     /**
      * The owner of the baseline. Valid values: `All`, `AWS`, `Self` (the current account).
      */
-    readonly owner: string;
+    owner: string;
 }
 
 /**
@@ -95,4 +95,30 @@ export interface GetPatchBaselineResult {
     readonly namePrefix?: string;
     readonly operatingSystem?: string;
     readonly owner: string;
+}
+
+export function getPatchBaselineOutput(args: GetPatchBaselineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPatchBaselineResult> {
+    return pulumi.output(args).apply(a => getPatchBaseline(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPatchBaseline.
+ */
+export interface GetPatchBaselineOutputArgs {
+    /**
+     * Filters the results against the baselines defaultBaseline field.
+     */
+    defaultBaseline?: pulumi.Input<boolean>;
+    /**
+     * Filter results by the baseline name prefix.
+     */
+    namePrefix?: pulumi.Input<string>;
+    /**
+     * The specified OS for the baseline.
+     */
+    operatingSystem?: pulumi.Input<string>;
+    /**
+     * The owner of the baseline. Valid values: `All`, `AWS`, `Self` (the current account).
+     */
+    owner: pulumi.Input<string>;
 }

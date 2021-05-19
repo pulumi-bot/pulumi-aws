@@ -29,7 +29,7 @@ export interface GetTaskDefinitionArgs {
     /**
      * The family for the latest ACTIVE revision, family and revision (family:revision) for a specific revision in the family, the ARN of the task definition to access to.
      */
-    readonly taskDefinition: string;
+    taskDefinition: string;
 }
 
 /**
@@ -61,4 +61,18 @@ export interface GetTaskDefinitionResult {
      * The ARN of the IAM role that containers in this task can assume
      */
     readonly taskRoleArn: string;
+}
+
+export function getTaskDefinitionOutput(args: GetTaskDefinitionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTaskDefinitionResult> {
+    return pulumi.output(args).apply(a => getTaskDefinition(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTaskDefinition.
+ */
+export interface GetTaskDefinitionOutputArgs {
+    /**
+     * The family for the latest ACTIVE revision, family and revision (family:revision) for a specific revision in the family, the ARN of the task definition to access to.
+     */
+    taskDefinition: pulumi.Input<string>;
 }

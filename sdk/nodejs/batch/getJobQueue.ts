@@ -41,11 +41,11 @@ export interface GetJobQueueArgs {
     /**
      * The name of the job queue.
      */
-    readonly name: string;
+    name: string;
     /**
      * Key-value map of resource tags
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -90,4 +90,22 @@ export interface GetJobQueueResult {
      * Key-value map of resource tags
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getJobQueueOutput(args: GetJobQueueOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobQueueResult> {
+    return pulumi.output(args).apply(a => getJobQueue(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getJobQueue.
+ */
+export interface GetJobQueueOutputArgs {
+    /**
+     * The name of the job queue.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Key-value map of resource tags
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

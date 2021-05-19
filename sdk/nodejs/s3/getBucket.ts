@@ -69,7 +69,7 @@ export interface GetBucketArgs {
     /**
      * The name of the bucket
      */
-    readonly bucket: string;
+    bucket: string;
 }
 
 /**
@@ -109,4 +109,18 @@ export interface GetBucketResult {
      * The website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
      */
     readonly websiteEndpoint: string;
+}
+
+export function getBucketOutput(args: GetBucketOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketResult> {
+    return pulumi.output(args).apply(a => getBucket(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBucket.
+ */
+export interface GetBucketOutputArgs {
+    /**
+     * The name of the bucket
+     */
+    bucket: pulumi.Input<string>;
 }

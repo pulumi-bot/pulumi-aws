@@ -41,11 +41,11 @@ export interface GetIntentArgs {
     /**
      * The name of the intent. The name is case sensitive.
      */
-    readonly name: string;
+    name: string;
     /**
      * The version of the intent.
      */
-    readonly version?: string;
+    version?: string;
 }
 
 /**
@@ -92,4 +92,22 @@ export interface GetIntentResult {
      * The version of the bot.
      */
     readonly version?: string;
+}
+
+export function getIntentOutput(args: GetIntentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntentResult> {
+    return pulumi.output(args).apply(a => getIntent(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getIntent.
+ */
+export interface GetIntentOutputArgs {
+    /**
+     * The name of the intent. The name is case sensitive.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The version of the intent.
+     */
+    version?: pulumi.Input<string>;
 }

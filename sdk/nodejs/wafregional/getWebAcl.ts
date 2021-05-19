@@ -39,7 +39,7 @@ export interface GetWebAclArgs {
     /**
      * The name of the WAF Regional Web ACL.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -51,4 +51,18 @@ export interface GetWebAclResult {
      */
     readonly id: string;
     readonly name: string;
+}
+
+export function getWebAclOutput(args: GetWebAclOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAclResult> {
+    return pulumi.output(args).apply(a => getWebAcl(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getWebAcl.
+ */
+export interface GetWebAclOutputArgs {
+    /**
+     * The name of the WAF Regional Web ACL.
+     */
+    name: pulumi.Input<string>;
 }

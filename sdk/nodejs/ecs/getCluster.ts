@@ -40,7 +40,7 @@ export interface GetClusterArgs {
     /**
      * The name of the ECS Cluster
      */
-    readonly clusterName: string;
+    clusterName: string;
 }
 
 /**
@@ -76,4 +76,18 @@ export interface GetClusterResult {
      * The status of the ECS Cluster
      */
     readonly status: string;
+}
+
+export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
+    return pulumi.output(args).apply(a => getCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCluster.
+ */
+export interface GetClusterOutputArgs {
+    /**
+     * The name of the ECS Cluster
+     */
+    clusterName: pulumi.Input<string>;
 }

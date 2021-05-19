@@ -56,16 +56,16 @@ export interface GetPeeringAttachmentArgs {
     /**
      * One or more configuration blocks containing name-values filters. Detailed below.
      */
-    readonly filters?: inputs.ec2transitgateway.GetPeeringAttachmentFilter[];
+    filters?: inputs.ec2transitgateway.GetPeeringAttachmentFilter[];
     /**
      * Identifier of the EC2 Transit Gateway Peering Attachment.
      */
-    readonly id?: string;
+    id?: string;
     /**
      * A mapping of tags, each pair of which must exactly match
      * a pair on the specific EC2 Transit Gateway Peering Attachment to retrieve.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -91,4 +91,27 @@ export interface GetPeeringAttachmentResult {
      * Identifier of the local EC2 Transit Gateway
      */
     readonly transitGatewayId: string;
+}
+
+export function getPeeringAttachmentOutput(args?: GetPeeringAttachmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeringAttachmentResult> {
+    return pulumi.output(args).apply(a => getPeeringAttachment(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPeeringAttachment.
+ */
+export interface GetPeeringAttachmentOutputArgs {
+    /**
+     * One or more configuration blocks containing name-values filters. Detailed below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.ec2transitgateway.GetPeeringAttachmentFilter>[]>;
+    /**
+     * Identifier of the EC2 Transit Gateway Peering Attachment.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * A mapping of tags, each pair of which must exactly match
+     * a pair on the specific EC2 Transit Gateway Peering Attachment to retrieve.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

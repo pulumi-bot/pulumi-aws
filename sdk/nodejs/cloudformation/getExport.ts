@@ -47,7 +47,7 @@ export interface GetExportArgs {
     /**
      * The name of the export as it appears in the console or from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -67,4 +67,18 @@ export interface GetExportResult {
      * The value from Cloudformation export identified by the export name found from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
      */
     readonly value: string;
+}
+
+export function getExportOutput(args: GetExportOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExportResult> {
+    return pulumi.output(args).apply(a => getExport(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getExport.
+ */
+export interface GetExportOutputArgs {
+    /**
+     * The name of the export as it appears in the console or from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
+     */
+    name: pulumi.Input<string>;
 }

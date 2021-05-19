@@ -47,7 +47,7 @@ export interface GetUserPoolsArgs {
     /**
      * Name of the cognito user pools. Name is not a unique attribute for cognito user pool, so multiple pools might be returned with given name.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -64,4 +64,18 @@ export interface GetUserPoolsResult {
      */
     readonly ids: string[];
     readonly name: string;
+}
+
+export function getUserPoolsOutput(args: GetUserPoolsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserPoolsResult> {
+    return pulumi.output(args).apply(a => getUserPools(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getUserPools.
+ */
+export interface GetUserPoolsOutputArgs {
+    /**
+     * Name of the cognito user pools. Name is not a unique attribute for cognito user pool, so multiple pools might be returned with given name.
+     */
+    name: pulumi.Input<string>;
 }

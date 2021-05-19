@@ -51,32 +51,32 @@ export interface GetVpnGatewayArgs {
     /**
      * The Autonomous System Number (ASN) for the Amazon side of the specific VPN Gateway to retrieve.
      */
-    readonly amazonSideAsn?: string;
+    amazonSideAsn?: string;
     /**
      * The ID of a VPC attached to the specific VPN Gateway to retrieve.
      */
-    readonly attachedVpcId?: string;
+    attachedVpcId?: string;
     /**
      * The Availability Zone of the specific VPN Gateway to retrieve.
      */
-    readonly availabilityZone?: string;
+    availabilityZone?: string;
     /**
      * Custom filter block as described below.
      */
-    readonly filters?: inputs.ec2.GetVpnGatewayFilter[];
+    filters?: inputs.ec2.GetVpnGatewayFilter[];
     /**
      * The ID of the specific VPN Gateway to retrieve.
      */
-    readonly id?: string;
+    id?: string;
     /**
      * The state of the specific VPN Gateway to retrieve.
      */
-    readonly state?: string;
+    state?: string;
     /**
      * A map of tags, each pair of which must exactly match
      * a pair on the desired VPN Gateway.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -91,4 +91,43 @@ export interface GetVpnGatewayResult {
     readonly id: string;
     readonly state: string;
     readonly tags: {[key: string]: string};
+}
+
+export function getVpnGatewayOutput(args?: GetVpnGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpnGatewayResult> {
+    return pulumi.output(args).apply(a => getVpnGateway(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVpnGateway.
+ */
+export interface GetVpnGatewayOutputArgs {
+    /**
+     * The Autonomous System Number (ASN) for the Amazon side of the specific VPN Gateway to retrieve.
+     */
+    amazonSideAsn?: pulumi.Input<string>;
+    /**
+     * The ID of a VPC attached to the specific VPN Gateway to retrieve.
+     */
+    attachedVpcId?: pulumi.Input<string>;
+    /**
+     * The Availability Zone of the specific VPN Gateway to retrieve.
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
+     * Custom filter block as described below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.ec2.GetVpnGatewayFilter>[]>;
+    /**
+     * The ID of the specific VPN Gateway to retrieve.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The state of the specific VPN Gateway to retrieve.
+     */
+    state?: pulumi.Input<string>;
+    /**
+     * A map of tags, each pair of which must exactly match
+     * a pair on the desired VPN Gateway.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -22,7 +22,7 @@ export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getSecret.
  */
 export interface GetSecretArgs {
-    readonly secrets: inputs.kms.GetSecretSecret[];
+    secrets: inputs.kms.GetSecretSecret[];
 }
 
 /**
@@ -34,4 +34,15 @@ export interface GetSecretResult {
      */
     readonly id: string;
     readonly secrets: outputs.kms.GetSecretSecret[];
+}
+
+export function getSecretOutput(args: GetSecretOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretResult> {
+    return pulumi.output(args).apply(a => getSecret(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSecret.
+ */
+export interface GetSecretOutputArgs {
+    secrets: pulumi.Input<pulumi.Input<inputs.kms.GetSecretSecret>[]>;
 }

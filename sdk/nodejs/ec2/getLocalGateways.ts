@@ -46,12 +46,12 @@ export interface GetLocalGatewaysArgs {
     /**
      * Custom filter block as described below.
      */
-    readonly filters?: inputs.ec2.GetLocalGatewaysFilter[];
+    filters?: inputs.ec2.GetLocalGatewaysFilter[];
     /**
      * A mapping of tags, each pair of which must exactly match
      * a pair on the desired local_gateways.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -68,4 +68,23 @@ export interface GetLocalGatewaysResult {
      */
     readonly ids: string[];
     readonly tags: {[key: string]: string};
+}
+
+export function getLocalGatewaysOutput(args?: GetLocalGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLocalGatewaysResult> {
+    return pulumi.output(args).apply(a => getLocalGateways(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getLocalGateways.
+ */
+export interface GetLocalGatewaysOutputArgs {
+    /**
+     * Custom filter block as described below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.ec2.GetLocalGatewaysFilter>[]>;
+    /**
+     * A mapping of tags, each pair of which must exactly match
+     * a pair on the desired local_gateways.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

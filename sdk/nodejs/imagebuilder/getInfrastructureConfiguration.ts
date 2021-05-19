@@ -41,15 +41,15 @@ export interface GetInfrastructureConfigurationArgs {
     /**
      * Amazon Resource Name (ARN) of the infrastructure configuration.
      */
-    readonly arn: string;
+    arn: string;
     /**
      * Key-value map of resource tags for the infrastructure created by the infrastructure configuration.
      */
-    readonly resourceTags?: {[key: string]: string};
+    resourceTags?: {[key: string]: string};
     /**
      * Key-value map of resource tags for the infrastructure configuration.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -114,4 +114,26 @@ export interface GetInfrastructureConfigurationResult {
      * Whether instances are terminated on failure.
      */
     readonly terminateInstanceOnFailure: boolean;
+}
+
+export function getInfrastructureConfigurationOutput(args: GetInfrastructureConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInfrastructureConfigurationResult> {
+    return pulumi.output(args).apply(a => getInfrastructureConfiguration(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInfrastructureConfiguration.
+ */
+export interface GetInfrastructureConfigurationOutputArgs {
+    /**
+     * Amazon Resource Name (ARN) of the infrastructure configuration.
+     */
+    arn: pulumi.Input<string>;
+    /**
+     * Key-value map of resource tags for the infrastructure created by the infrastructure configuration.
+     */
+    resourceTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Key-value map of resource tags for the infrastructure configuration.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

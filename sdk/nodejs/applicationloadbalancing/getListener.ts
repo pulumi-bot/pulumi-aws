@@ -58,16 +58,16 @@ export interface GetListenerArgs {
     /**
      * ARN of the listener. Required if `loadBalancerArn` and `port` is not set.
      */
-    readonly arn?: string;
+    arn?: string;
     /**
      * ARN of the load balancer. Required if `arn` is not set.
      */
-    readonly loadBalancerArn?: string;
+    loadBalancerArn?: string;
     /**
      * Port of the listener. Required if `arn` is not set.
      */
-    readonly port?: number;
-    readonly tags?: {[key: string]: string};
+    port?: number;
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -87,4 +87,27 @@ export interface GetListenerResult {
     readonly protocol: string;
     readonly sslPolicy: string;
     readonly tags: {[key: string]: string};
+}
+
+export function getListenerOutput(args?: GetListenerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListenerResult> {
+    return pulumi.output(args).apply(a => getListener(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getListener.
+ */
+export interface GetListenerOutputArgs {
+    /**
+     * ARN of the listener. Required if `loadBalancerArn` and `port` is not set.
+     */
+    arn?: pulumi.Input<string>;
+    /**
+     * ARN of the load balancer. Required if `arn` is not set.
+     */
+    loadBalancerArn?: pulumi.Input<string>;
+    /**
+     * Port of the listener. Required if `arn` is not set.
+     */
+    port?: pulumi.Input<number>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

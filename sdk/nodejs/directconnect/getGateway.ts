@@ -39,7 +39,7 @@ export interface GetGatewayArgs {
     /**
      * The name of the gateway to retrieve.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -59,4 +59,18 @@ export interface GetGatewayResult {
      * AWS Account ID of the gateway.
      */
     readonly ownerAccountId: string;
+}
+
+export function getGatewayOutput(args: GetGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayResult> {
+    return pulumi.output(args).apply(a => getGateway(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGateway.
+ */
+export interface GetGatewayOutputArgs {
+    /**
+     * The name of the gateway to retrieve.
+     */
+    name: pulumi.Input<string>;
 }

@@ -40,11 +40,11 @@ export interface GetDomainNameArgs {
     /**
      * The fully-qualified domain name to look up. If no domain name is found, an error will be returned.
      */
-    readonly domainName: string;
+    domainName: string;
     /**
      * Key-value map of tags for the resource.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -108,4 +108,22 @@ export interface GetDomainNameResult {
      * Key-value map of tags for the resource.
      */
     readonly tags?: {[key: string]: string};
+}
+
+export function getDomainNameOutput(args: GetDomainNameOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainNameResult> {
+    return pulumi.output(args).apply(a => getDomainName(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDomainName.
+ */
+export interface GetDomainNameOutputArgs {
+    /**
+     * The fully-qualified domain name to look up. If no domain name is found, an error will be returned.
+     */
+    domainName: pulumi.Input<string>;
+    /**
+     * Key-value map of tags for the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

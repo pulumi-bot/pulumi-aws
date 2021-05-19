@@ -43,23 +43,23 @@ export interface GetAvailabilityZoneArgs {
     /**
      * Set to `true` to include all Availability Zones and Local Zones regardless of your opt in status.
      */
-    readonly allAvailabilityZones?: boolean;
+    allAvailabilityZones?: boolean;
     /**
      * Configuration block(s) for filtering. Detailed below.
      */
-    readonly filters?: inputs.GetAvailabilityZoneFilter[];
+    filters?: inputs.GetAvailabilityZoneFilter[];
     /**
      * The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
      */
-    readonly name?: string;
+    name?: string;
     /**
      * A specific availability zone state to require. May be any of `"available"`, `"information"` or `"impaired"`.
      */
-    readonly state?: string;
+    state?: string;
     /**
      * The zone ID of the availability zone to select.
      */
-    readonly zoneId?: string;
+    zoneId?: string;
 }
 
 /**
@@ -109,4 +109,34 @@ export interface GetAvailabilityZoneResult {
      * The type of zone. Values are `availability-zone`, `local-zone`, and `wavelength-zone`.
      */
     readonly zoneType: string;
+}
+
+export function getAvailabilityZoneOutput(args?: GetAvailabilityZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAvailabilityZoneResult> {
+    return pulumi.output(args).apply(a => getAvailabilityZone(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAvailabilityZone.
+ */
+export interface GetAvailabilityZoneOutputArgs {
+    /**
+     * Set to `true` to include all Availability Zones and Local Zones regardless of your opt in status.
+     */
+    allAvailabilityZones?: pulumi.Input<boolean>;
+    /**
+     * Configuration block(s) for filtering. Detailed below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.GetAvailabilityZoneFilter>[]>;
+    /**
+     * The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * A specific availability zone state to require. May be any of `"available"`, `"information"` or `"impaired"`.
+     */
+    state?: pulumi.Input<string>;
+    /**
+     * The zone ID of the availability zone to select.
+     */
+    zoneId?: pulumi.Input<string>;
 }

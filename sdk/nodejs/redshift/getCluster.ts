@@ -59,11 +59,11 @@ export interface GetClusterArgs {
     /**
      * The cluster identifier
      */
-    readonly clusterIdentifier: string;
+    clusterIdentifier: string;
     /**
      * The tags associated to the cluster
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -191,4 +191,22 @@ export interface GetClusterResult {
      * The VPC security group Ids associated with the cluster
      */
     readonly vpcSecurityGroupIds: string[];
+}
+
+export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
+    return pulumi.output(args).apply(a => getCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCluster.
+ */
+export interface GetClusterOutputArgs {
+    /**
+     * The cluster identifier
+     */
+    clusterIdentifier: pulumi.Input<string>;
+    /**
+     * The tags associated to the cluster
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

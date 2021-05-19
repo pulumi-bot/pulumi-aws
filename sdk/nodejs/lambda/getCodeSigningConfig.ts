@@ -41,7 +41,7 @@ export interface GetCodeSigningConfigArgs {
     /**
      * The Amazon Resource Name (ARN) of the code signing configuration.
      */
-    readonly arn: string;
+    arn: string;
 }
 
 /**
@@ -73,4 +73,18 @@ export interface GetCodeSigningConfigResult {
      * List of code signing policies that control the validation failure action for signature mismatch or expiry.
      */
     readonly policies: outputs.lambda.GetCodeSigningConfigPolicy[];
+}
+
+export function getCodeSigningConfigOutput(args: GetCodeSigningConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCodeSigningConfigResult> {
+    return pulumi.output(args).apply(a => getCodeSigningConfig(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCodeSigningConfig.
+ */
+export interface GetCodeSigningConfigOutputArgs {
+    /**
+     * The Amazon Resource Name (ARN) of the code signing configuration.
+     */
+    arn: pulumi.Input<string>;
 }

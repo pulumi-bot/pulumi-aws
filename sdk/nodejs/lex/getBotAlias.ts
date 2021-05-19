@@ -41,11 +41,11 @@ export interface GetBotAliasArgs {
     /**
      * The name of the bot.
      */
-    readonly botName: string;
+    botName: string;
     /**
      * The name of the bot alias. The name is case sensitive.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -88,4 +88,22 @@ export interface GetBotAliasResult {
      * The name of the alias. The name is not case sensitive.
      */
     readonly name: string;
+}
+
+export function getBotAliasOutput(args: GetBotAliasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBotAliasResult> {
+    return pulumi.output(args).apply(a => getBotAlias(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBotAlias.
+ */
+export interface GetBotAliasOutputArgs {
+    /**
+     * The name of the bot.
+     */
+    botName: pulumi.Input<string>;
+    /**
+     * The name of the bot alias. The name is case sensitive.
+     */
+    name: pulumi.Input<string>;
 }

@@ -39,7 +39,7 @@ export interface GetReplicationGroupArgs {
     /**
      * The identifier for the replication group.
      */
-    readonly replicationGroupId: string;
+    replicationGroupId: string;
 }
 
 /**
@@ -107,4 +107,18 @@ export interface GetReplicationGroupResult {
      * The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group (shard).
      */
     readonly snapshotWindow: string;
+}
+
+export function getReplicationGroupOutput(args: GetReplicationGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReplicationGroupResult> {
+    return pulumi.output(args).apply(a => getReplicationGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getReplicationGroup.
+ */
+export interface GetReplicationGroupOutputArgs {
+    /**
+     * The identifier for the replication group.
+     */
+    replicationGroupId: pulumi.Input<string>;
 }

@@ -40,11 +40,11 @@ export interface GetDirectoryArgs {
     /**
      * The directory identifier for registration in WorkSpaces service.
      */
-    readonly directoryId: string;
+    directoryId: string;
     /**
      * A map of tags assigned to the WorkSpaces directory.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -112,4 +112,22 @@ export interface GetDirectoryResult {
      * The identifier of the security group that is assigned to new WorkSpaces. Defined below.
      */
     readonly workspaceSecurityGroupId: string;
+}
+
+export function getDirectoryOutput(args: GetDirectoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDirectoryResult> {
+    return pulumi.output(args).apply(a => getDirectory(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDirectory.
+ */
+export interface GetDirectoryOutputArgs {
+    /**
+     * The directory identifier for registration in WorkSpaces service.
+     */
+    directoryId: pulumi.Input<string>;
+    /**
+     * A map of tags assigned to the WorkSpaces directory.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

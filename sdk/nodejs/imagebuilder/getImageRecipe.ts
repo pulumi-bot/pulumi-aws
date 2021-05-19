@@ -40,11 +40,11 @@ export interface GetImageRecipeArgs {
     /**
      * Amazon Resource Name (ARN) of the image recipe.
      */
-    readonly arn: string;
+    arn: string;
     /**
      * Key-value map of resource tags for the image recipe.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -100,4 +100,22 @@ export interface GetImageRecipeResult {
      * The working directory used during build and test workflows.
      */
     readonly workingDirectory: string;
+}
+
+export function getImageRecipeOutput(args: GetImageRecipeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageRecipeResult> {
+    return pulumi.output(args).apply(a => getImageRecipe(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getImageRecipe.
+ */
+export interface GetImageRecipeOutputArgs {
+    /**
+     * Amazon Resource Name (ARN) of the image recipe.
+     */
+    arn: pulumi.Input<string>;
+    /**
+     * Key-value map of resource tags for the image recipe.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

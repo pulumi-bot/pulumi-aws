@@ -39,7 +39,7 @@ export interface GetDelegatedServicesArgs {
     /**
      * The account ID number of a delegated administrator account in the organization.
      */
-    readonly accountId: string;
+    accountId: string;
 }
 
 /**
@@ -55,4 +55,18 @@ export interface GetDelegatedServicesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+}
+
+export function getDelegatedServicesOutput(args: GetDelegatedServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDelegatedServicesResult> {
+    return pulumi.output(args).apply(a => getDelegatedServices(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDelegatedServices.
+ */
+export interface GetDelegatedServicesOutputArgs {
+    /**
+     * The account ID number of a delegated administrator account in the organization.
+     */
+    accountId: pulumi.Input<string>;
 }

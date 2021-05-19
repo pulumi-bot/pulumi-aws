@@ -40,11 +40,11 @@ export interface GetPlanArgs {
     /**
      * The backup plan ID.
      */
-    readonly planId: string;
+    planId: string;
     /**
      * Metadata that you can assign to help organize the plans you create.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -72,4 +72,22 @@ export interface GetPlanResult {
      * Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
      */
     readonly version: string;
+}
+
+export function getPlanOutput(args: GetPlanOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPlanResult> {
+    return pulumi.output(args).apply(a => getPlan(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPlan.
+ */
+export interface GetPlanOutputArgs {
+    /**
+     * The backup plan ID.
+     */
+    planId: pulumi.Input<string>;
+    /**
+     * Metadata that you can assign to help organize the plans you create.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

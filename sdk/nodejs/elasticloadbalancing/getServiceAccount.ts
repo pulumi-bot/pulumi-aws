@@ -77,7 +77,7 @@ export interface GetServiceAccountArgs {
      * Name of the region whose AWS ELB account ID is desired.
      * Defaults to the region from the AWS provider configuration.
      */
-    readonly region?: string;
+    region?: string;
 }
 
 /**
@@ -93,4 +93,19 @@ export interface GetServiceAccountResult {
      */
     readonly id: string;
     readonly region?: string;
+}
+
+export function getServiceAccountOutput(args?: GetServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceAccountResult> {
+    return pulumi.output(args).apply(a => getServiceAccount(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServiceAccount.
+ */
+export interface GetServiceAccountOutputArgs {
+    /**
+     * Name of the region whose AWS ELB account ID is desired.
+     * Defaults to the region from the AWS provider configuration.
+     */
+    region?: pulumi.Input<string>;
 }

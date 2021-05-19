@@ -56,15 +56,15 @@ export interface GetTransitGatewayArgs {
     /**
      * One or more configuration blocks containing name-values filters. Detailed below.
      */
-    readonly filters?: inputs.ec2transitgateway.GetTransitGatewayFilter[];
+    filters?: inputs.ec2transitgateway.GetTransitGatewayFilter[];
     /**
      * Identifier of the EC2 Transit Gateway.
      */
-    readonly id?: string;
+    id?: string;
     /**
      * Key-value tags for the EC2 Transit Gateway
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -124,4 +124,26 @@ export interface GetTransitGatewayResult {
      * Whether VPN Equal Cost Multipath Protocol support is enabled.
      */
     readonly vpnEcmpSupport: string;
+}
+
+export function getTransitGatewayOutput(args?: GetTransitGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitGatewayResult> {
+    return pulumi.output(args).apply(a => getTransitGateway(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTransitGateway.
+ */
+export interface GetTransitGatewayOutputArgs {
+    /**
+     * One or more configuration blocks containing name-values filters. Detailed below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.ec2transitgateway.GetTransitGatewayFilter>[]>;
+    /**
+     * Identifier of the EC2 Transit Gateway.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Key-value tags for the EC2 Transit Gateway
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

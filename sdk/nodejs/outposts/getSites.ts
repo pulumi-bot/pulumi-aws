@@ -42,3 +42,7 @@ export interface GetSitesResult {
      */
     readonly ids: string[];
 }
+
+export function getSitesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetSitesResult> {
+    return pulumi.output(getSites(opts))
+}

@@ -45,11 +45,11 @@ export interface GetApplicationArgs {
     /**
      * The ARN of the application.
      */
-    readonly applicationId: string;
+    applicationId: string;
     /**
      * The requested version of the application. By default, retrieves the latest version.
      */
-    readonly semanticVersion?: string;
+    semanticVersion?: string;
 }
 
 /**
@@ -81,4 +81,22 @@ export interface GetApplicationResult {
      * A URL pointing to the Cloud Formation template for the application version.
      */
     readonly templateUrl: string;
+}
+
+export function getApplicationOutput(args: GetApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationResult> {
+    return pulumi.output(args).apply(a => getApplication(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getApplication.
+ */
+export interface GetApplicationOutputArgs {
+    /**
+     * The ARN of the application.
+     */
+    applicationId: pulumi.Input<string>;
+    /**
+     * The requested version of the application. By default, retrieves the latest version.
+     */
+    semanticVersion?: pulumi.Input<string>;
 }

@@ -40,7 +40,7 @@ export interface GetConnectionArgs {
      * A concatenation of the catalog ID and connection name. For example, if your account ID is
      * `123456789123` and the connection name is `conn` then the ID is `123456789123:conn`.
      */
-    readonly id: string;
+    id: string;
 }
 
 /**
@@ -77,4 +77,19 @@ export interface GetConnectionResult {
      * A map of physical connection requirements, such as VPC and SecurityGroup.
      */
     readonly physicalConnectionRequirements: outputs.glue.GetConnectionPhysicalConnectionRequirement[];
+}
+
+export function getConnectionOutput(args: GetConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionResult> {
+    return pulumi.output(args).apply(a => getConnection(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getConnection.
+ */
+export interface GetConnectionOutputArgs {
+    /**
+     * A concatenation of the catalog ID and connection name. For example, if your account ID is
+     * `123456789123` and the connection name is `conn` then the ID is `123456789123:conn`.
+     */
+    id: pulumi.Input<string>;
 }

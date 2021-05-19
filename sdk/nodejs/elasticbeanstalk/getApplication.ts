@@ -41,7 +41,7 @@ export interface GetApplicationArgs {
     /**
      * The name of the application
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -62,4 +62,18 @@ export interface GetApplicationResult {
      */
     readonly id: string;
     readonly name: string;
+}
+
+export function getApplicationOutput(args: GetApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationResult> {
+    return pulumi.output(args).apply(a => getApplication(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getApplication.
+ */
+export interface GetApplicationOutputArgs {
+    /**
+     * The name of the application
+     */
+    name: pulumi.Input<string>;
 }

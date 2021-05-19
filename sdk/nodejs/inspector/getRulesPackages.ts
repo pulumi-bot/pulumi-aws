@@ -54,3 +54,7 @@ export interface GetRulesPackagesResult {
      */
     readonly id: string;
 }
+
+export function getRulesPackagesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesPackagesResult> {
+    return pulumi.output(getRulesPackages(opts))
+}

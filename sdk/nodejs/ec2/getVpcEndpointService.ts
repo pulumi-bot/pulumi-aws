@@ -77,23 +77,23 @@ export interface GetVpcEndpointServiceArgs {
     /**
      * Configuration block(s) for filtering. Detailed below.
      */
-    readonly filters?: inputs.ec2.GetVpcEndpointServiceFilter[];
+    filters?: inputs.ec2.GetVpcEndpointServiceFilter[];
     /**
      * The common name of an AWS service (e.g. `s3`).
      */
-    readonly service?: string;
+    service?: string;
     /**
      * The service name that is specified when creating a VPC endpoint. For AWS services the service name is usually in the form `com.amazonaws.<region>.<service>` (the SageMaker Notebook service is an exception to this rule, the service name is in the form `aws.sagemaker.<region>.notebook`).
      */
-    readonly serviceName?: string;
+    serviceName?: string;
     /**
      * The service type, `Gateway` or `Interface`.
      */
-    readonly serviceType?: string;
+    serviceType?: string;
     /**
      * A map of tags, each pair of which must exactly match a pair on the desired VPC Endpoint Service.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -148,4 +148,34 @@ export interface GetVpcEndpointServiceResult {
      * Whether or not the service supports endpoint policies - `true` or `false`.
      */
     readonly vpcEndpointPolicySupported: boolean;
+}
+
+export function getVpcEndpointServiceOutput(args?: GetVpcEndpointServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointServiceResult> {
+    return pulumi.output(args).apply(a => getVpcEndpointService(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVpcEndpointService.
+ */
+export interface GetVpcEndpointServiceOutputArgs {
+    /**
+     * Configuration block(s) for filtering. Detailed below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.ec2.GetVpcEndpointServiceFilter>[]>;
+    /**
+     * The common name of an AWS service (e.g. `s3`).
+     */
+    service?: pulumi.Input<string>;
+    /**
+     * The service name that is specified when creating a VPC endpoint. For AWS services the service name is usually in the form `com.amazonaws.<region>.<service>` (the SageMaker Notebook service is an exception to this rule, the service name is in the form `aws.sagemaker.<region>.notebook`).
+     */
+    serviceName?: pulumi.Input<string>;
+    /**
+     * The service type, `Gateway` or `Interface`.
+     */
+    serviceType?: pulumi.Input<string>;
+    /**
+     * A map of tags, each pair of which must exactly match a pair on the desired VPC Endpoint Service.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

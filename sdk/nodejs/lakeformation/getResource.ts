@@ -39,7 +39,7 @@ export interface GetResourceArgs {
     /**
      * Amazon Resource Name (ARN) of the resource, an S3 path.
      */
-    readonly arn: string;
+    arn: string;
 }
 
 /**
@@ -59,4 +59,18 @@ export interface GetResourceResult {
      * Role that the resource was registered with.
      */
     readonly roleArn: string;
+}
+
+export function getResourceOutput(args: GetResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceResult> {
+    return pulumi.output(args).apply(a => getResource(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getResource.
+ */
+export interface GetResourceOutputArgs {
+    /**
+     * Amazon Resource Name (ARN) of the resource, an S3 path.
+     */
+    arn: pulumi.Input<string>;
 }

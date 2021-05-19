@@ -112,3 +112,7 @@ export interface GetOrganizationResult {
      */
     readonly roots: outputs.organizations.GetOrganizationRoot[];
 }
+
+export function getOrganizationOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationResult> {
+    return pulumi.output(getOrganization(opts))
+}

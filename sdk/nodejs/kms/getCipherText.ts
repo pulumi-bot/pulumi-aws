@@ -53,15 +53,15 @@ export interface GetCipherTextArgs {
     /**
      * An optional mapping that makes up the encryption context.
      */
-    readonly context?: {[key: string]: string};
+    context?: {[key: string]: string};
     /**
      * Globally unique key ID for the customer master key.
      */
-    readonly keyId: string;
+    keyId: string;
     /**
      * Data to be encrypted. Note that this may show up in logs, and it will be stored in the state file.
      */
-    readonly plaintext: string;
+    plaintext: string;
 }
 
 /**
@@ -79,4 +79,26 @@ export interface GetCipherTextResult {
     readonly id: string;
     readonly keyId: string;
     readonly plaintext: string;
+}
+
+export function getCipherTextOutput(args: GetCipherTextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCipherTextResult> {
+    return pulumi.output(args).apply(a => getCipherText(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCipherText.
+ */
+export interface GetCipherTextOutputArgs {
+    /**
+     * An optional mapping that makes up the encryption context.
+     */
+    context?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Globally unique key ID for the customer master key.
+     */
+    keyId: pulumi.Input<string>;
+    /**
+     * Data to be encrypted. Note that this may show up in logs, and it will be stored in the state file.
+     */
+    plaintext: pulumi.Input<string>;
 }

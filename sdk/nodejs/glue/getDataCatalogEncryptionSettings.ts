@@ -39,7 +39,7 @@ export interface GetDataCatalogEncryptionSettingsArgs {
     /**
      * The ID of the Data Catalog. This is typically the AWS account ID.
      */
-    readonly catalogId: string;
+    catalogId: string;
 }
 
 /**
@@ -55,4 +55,18 @@ export interface GetDataCatalogEncryptionSettingsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+}
+
+export function getDataCatalogEncryptionSettingsOutput(args: GetDataCatalogEncryptionSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataCatalogEncryptionSettingsResult> {
+    return pulumi.output(args).apply(a => getDataCatalogEncryptionSettings(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDataCatalogEncryptionSettings.
+ */
+export interface GetDataCatalogEncryptionSettingsOutputArgs {
+    /**
+     * The ID of the Data Catalog. This is typically the AWS account ID.
+     */
+    catalogId: pulumi.Input<string>;
 }

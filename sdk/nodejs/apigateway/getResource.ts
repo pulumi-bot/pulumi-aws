@@ -45,11 +45,11 @@ export interface GetResourceArgs {
     /**
      * The full path of the resource.  If no path is found, an error will be returned.
      */
-    readonly path: string;
+    path: string;
     /**
      * The REST API id that owns the resource. If no REST API is found, an error will be returned.
      */
-    readonly restApiId: string;
+    restApiId: string;
 }
 
 /**
@@ -70,4 +70,22 @@ export interface GetResourceResult {
      */
     readonly pathPart: string;
     readonly restApiId: string;
+}
+
+export function getResourceOutput(args: GetResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceResult> {
+    return pulumi.output(args).apply(a => getResource(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getResource.
+ */
+export interface GetResourceOutputArgs {
+    /**
+     * The full path of the resource.  If no path is found, an error will be returned.
+     */
+    path: pulumi.Input<string>;
+    /**
+     * The REST API id that owns the resource. If no REST API is found, an error will be returned.
+     */
+    restApiId: pulumi.Input<string>;
 }

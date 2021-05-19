@@ -41,15 +41,15 @@ export interface GetRepositoryArgs {
     /**
      * The name of the ECR Repository.
      */
-    readonly name: string;
+    name: string;
     /**
      * The registry ID where the repository was created.
      */
-    readonly registryId?: string;
+    registryId?: string;
     /**
      * A map of tags assigned to the resource.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -86,4 +86,26 @@ export interface GetRepositoryResult {
      * A map of tags assigned to the resource.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getRepositoryOutput(args: GetRepositoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryResult> {
+    return pulumi.output(args).apply(a => getRepository(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRepository.
+ */
+export interface GetRepositoryOutputArgs {
+    /**
+     * The name of the ECR Repository.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The registry ID where the repository was created.
+     */
+    registryId?: pulumi.Input<string>;
+    /**
+     * A map of tags assigned to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

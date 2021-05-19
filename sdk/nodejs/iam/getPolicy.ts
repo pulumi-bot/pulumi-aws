@@ -55,19 +55,19 @@ export interface GetPolicyArgs {
     /**
      * The ARN of the IAM policy.
      */
-    readonly arn?: string;
+    arn?: string;
     /**
      * The name of the IAM policy.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The prefix of the path to the IAM policy. Defaults to a slash (`/`).
      */
-    readonly pathPrefix?: string;
+    pathPrefix?: string;
     /**
      * Key-value mapping of tags for the IAM Policy.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -101,4 +101,30 @@ export interface GetPolicyResult {
      * Key-value mapping of tags for the IAM Policy.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getPolicyOutput(args?: GetPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyResult> {
+    return pulumi.output(args).apply(a => getPolicy(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPolicy.
+ */
+export interface GetPolicyOutputArgs {
+    /**
+     * The ARN of the IAM policy.
+     */
+    arn?: pulumi.Input<string>;
+    /**
+     * The name of the IAM policy.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The prefix of the path to the IAM policy. Defaults to a slash (`/`).
+     */
+    pathPrefix?: pulumi.Input<string>;
+    /**
+     * Key-value mapping of tags for the IAM Policy.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

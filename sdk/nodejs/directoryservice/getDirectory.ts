@@ -40,11 +40,11 @@ export interface GetDirectoryArgs {
     /**
      * The ID of the directory.
      */
-    readonly directoryId: string;
+    directoryId: string;
     /**
      * A map of tags assigned to the directory/connector.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -106,4 +106,22 @@ export interface GetDirectoryResult {
      */
     readonly type: string;
     readonly vpcSettings: outputs.directoryservice.GetDirectoryVpcSetting[];
+}
+
+export function getDirectoryOutput(args: GetDirectoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDirectoryResult> {
+    return pulumi.output(args).apply(a => getDirectory(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDirectory.
+ */
+export interface GetDirectoryOutputArgs {
+    /**
+     * The ID of the directory.
+     */
+    directoryId: pulumi.Input<string>;
+    /**
+     * A map of tags assigned to the directory/connector.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

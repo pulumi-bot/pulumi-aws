@@ -40,7 +40,7 @@ export interface GetDataLakeSettingsArgs {
     /**
      * Identifier for the Data Catalog. By default, the account ID.
      */
-    readonly catalogId?: string;
+    catalogId?: string;
 }
 
 /**
@@ -68,4 +68,18 @@ export interface GetDataLakeSettingsResult {
      * List of the resource-owning account IDs that the caller's account can use to share their user access details (user ARNs).
      */
     readonly trustedResourceOwners: string[];
+}
+
+export function getDataLakeSettingsOutput(args?: GetDataLakeSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataLakeSettingsResult> {
+    return pulumi.output(args).apply(a => getDataLakeSettings(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDataLakeSettings.
+ */
+export interface GetDataLakeSettingsOutputArgs {
+    /**
+     * Identifier for the Data Catalog. By default, the account ID.
+     */
+    catalogId?: pulumi.Input<string>;
 }

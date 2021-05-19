@@ -62,15 +62,15 @@ export interface GetVpcDhcpOptionsArgs {
     /**
      * The EC2 DHCP Options ID.
      */
-    readonly dhcpOptionsId?: string;
+    dhcpOptionsId?: string;
     /**
      * List of custom filters as described below.
      */
-    readonly filters?: inputs.ec2.GetVpcDhcpOptionsFilter[];
+    filters?: inputs.ec2.GetVpcDhcpOptionsFilter[];
     /**
      * A map of tags assigned to the resource.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -118,4 +118,26 @@ export interface GetVpcDhcpOptionsResult {
      * A map of tags assigned to the resource.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getVpcDhcpOptionsOutput(args?: GetVpcDhcpOptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcDhcpOptionsResult> {
+    return pulumi.output(args).apply(a => getVpcDhcpOptions(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVpcDhcpOptions.
+ */
+export interface GetVpcDhcpOptionsOutputArgs {
+    /**
+     * The EC2 DHCP Options ID.
+     */
+    dhcpOptionsId?: pulumi.Input<string>;
+    /**
+     * List of custom filters as described below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.ec2.GetVpcDhcpOptionsFilter>[]>;
+    /**
+     * A map of tags assigned to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

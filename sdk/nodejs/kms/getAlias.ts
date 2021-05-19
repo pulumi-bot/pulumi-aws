@@ -41,7 +41,7 @@ export interface GetAliasArgs {
     /**
      * The display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/)
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -65,4 +65,18 @@ export interface GetAliasResult {
      * Key identifier pointed to by the alias.
      */
     readonly targetKeyId: string;
+}
+
+export function getAliasOutput(args: GetAliasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAliasResult> {
+    return pulumi.output(args).apply(a => getAlias(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAlias.
+ */
+export interface GetAliasOutputArgs {
+    /**
+     * The display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/)
+     */
+    name: pulumi.Input<string>;
 }

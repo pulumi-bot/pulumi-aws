@@ -38,7 +38,7 @@ export interface GetDetectorArgs {
     /**
      * The ID of the detector.
      */
-    readonly id?: string;
+    id?: string;
 }
 
 /**
@@ -58,4 +58,18 @@ export interface GetDetectorResult {
      * The current status of the detector.
      */
     readonly status: string;
+}
+
+export function getDetectorOutput(args?: GetDetectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDetectorResult> {
+    return pulumi.output(args).apply(a => getDetector(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDetector.
+ */
+export interface GetDetectorOutputArgs {
+    /**
+     * The ID of the detector.
+     */
+    id?: pulumi.Input<string>;
 }

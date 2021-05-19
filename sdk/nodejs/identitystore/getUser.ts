@@ -30,15 +30,15 @@ export interface GetUserArgs {
     /**
      * Configuration block(s) for filtering. Currently, the AWS Identity Store API supports only 1 filter. Detailed below.
      */
-    readonly filters: inputs.identitystore.GetUserFilter[];
+    filters: inputs.identitystore.GetUserFilter[];
     /**
      * The Identity Store ID associated with the Single Sign-On Instance.
      */
-    readonly identityStoreId: string;
+    identityStoreId: string;
     /**
      * The identifier for a user in the Identity Store.
      */
-    readonly userId?: string;
+    userId?: string;
 }
 
 /**
@@ -56,4 +56,26 @@ export interface GetUserResult {
      * The user's user name value.
      */
     readonly userName: string;
+}
+
+export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
+    return pulumi.output(args).apply(a => getUser(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getUser.
+ */
+export interface GetUserOutputArgs {
+    /**
+     * Configuration block(s) for filtering. Currently, the AWS Identity Store API supports only 1 filter. Detailed below.
+     */
+    filters: pulumi.Input<pulumi.Input<inputs.identitystore.GetUserFilter>[]>;
+    /**
+     * The Identity Store ID associated with the Single Sign-On Instance.
+     */
+    identityStoreId: pulumi.Input<string>;
+    /**
+     * The identifier for a user in the Identity Store.
+     */
+    userId?: pulumi.Input<string>;
 }

@@ -40,8 +40,8 @@ export interface GetInstanceArgs {
     /**
      * The name of the RDS instance
      */
-    readonly dbInstanceIdentifier: string;
-    readonly tags?: {[key: string]: string};
+    dbInstanceIdentifier: string;
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -202,4 +202,19 @@ export interface GetInstanceResult {
      * Provides a list of VPC security group elements that the DB instance belongs to.
      */
     readonly vpcSecurityGroups: string[];
+}
+
+export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {
+    return pulumi.output(args).apply(a => getInstance(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getInstance.
+ */
+export interface GetInstanceOutputArgs {
+    /**
+     * The name of the RDS instance
+     */
+    dbInstanceIdentifier: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

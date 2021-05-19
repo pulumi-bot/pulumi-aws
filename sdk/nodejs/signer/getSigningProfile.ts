@@ -40,11 +40,11 @@ export interface GetSigningProfileArgs {
     /**
      * The name of the target signing profile.
      */
-    readonly name: string;
+    name: string;
     /**
      * A list of tags associated with the signing profile.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -92,4 +92,22 @@ export interface GetSigningProfileResult {
      * The signing profile ARN, including the profile version.
      */
     readonly versionArn: string;
+}
+
+export function getSigningProfileOutput(args: GetSigningProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSigningProfileResult> {
+    return pulumi.output(args).apply(a => getSigningProfile(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSigningProfile.
+ */
+export interface GetSigningProfileOutputArgs {
+    /**
+     * The name of the target signing profile.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of tags associated with the signing profile.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
