@@ -28,6 +28,75 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    /**
+     * The access key for API operations. You can retrieve this from the 'Security & Credentials' section of the AWS console.
+     */
+    public readonly accessKey!: pulumi.Output<string | undefined>;
+    public readonly allowedAccountIds!: pulumi.Output<string[] | undefined>;
+    public readonly assumeRole!: pulumi.Output<outputs.ProviderAssumeRole | undefined>;
+    /**
+     * Configuration block with settings to default resource tags across all resources.
+     */
+    public readonly defaultTags!: pulumi.Output<outputs.ProviderDefaultTags | undefined>;
+    public readonly endpoints!: pulumi.Output<outputs.ProviderEndpoint[] | undefined>;
+    public readonly forbiddenAccountIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * Configuration block with settings to ignore resource tags across all resources.
+     */
+    public readonly ignoreTags!: pulumi.Output<outputs.ProviderIgnoreTags | undefined>;
+    /**
+     * Explicitly allow the provider to perform "insecure" SSL requests. If omitted,default value is `false`
+     */
+    public readonly insecure!: pulumi.Output<boolean | undefined>;
+    /**
+     * The maximum number of times an AWS API request is being executed. If the API request still fails, an error is thrown.
+     */
+    public readonly maxRetries!: pulumi.Output<number | undefined>;
+    /**
+     * The profile for API operations. If not set, the default profile created with `aws configure` will be used.
+     */
+    public readonly profile!: pulumi.Output<string | undefined>;
+    /**
+     * The region where AWS operations will take place. Examples are us-east-1, us-west-2, etc.
+     */
+    public readonly region!: pulumi.Output<Region | undefined>;
+    /**
+     * Set this to true to force the request to use path-style addressing, i.e., http://s3.amazonaws.com/BUCKET/KEY. By
+     * default, the S3 client will use virtual hosted bucket addressing when possible (http://BUCKET.s3.amazonaws.com/KEY).
+     * Specific to the Amazon S3 service.
+     */
+    public readonly s3ForcePathStyle!: pulumi.Output<boolean | undefined>;
+    /**
+     * The secret key for API operations. You can retrieve this from the 'Security & Credentials' section of the AWS console.
+     */
+    public readonly secretKey!: pulumi.Output<string | undefined>;
+    /**
+     * The path to the shared credentials file. If not set this defaults to ~/.aws/credentials.
+     */
+    public readonly sharedCredentialsFile!: pulumi.Output<string | undefined>;
+    /**
+     * Skip the credentials validation via STS API. Used for AWS API implementations that do not have STS
+     * available/implemented.
+     */
+    public readonly skipCredentialsValidation!: pulumi.Output<boolean | undefined>;
+    /**
+     * Skip getting the supported EC2 platforms. Used by users that don't have ec2:DescribeAccountAttributes permissions.
+     */
+    public readonly skipGetEc2Platforms!: pulumi.Output<boolean | undefined>;
+    public readonly skipMetadataApiCheck!: pulumi.Output<boolean | undefined>;
+    /**
+     * Skip static validation of region name. Used by users of alternative AWS-like APIs or users w/ access to regions that are
+     * not public (yet).
+     */
+    public readonly skipRegionValidation!: pulumi.Output<boolean | undefined>;
+    /**
+     * Skip requesting the account ID. Used for AWS API implementations that do not have IAM/STS API and/or metadata API.
+     */
+    public readonly skipRequestingAccountId!: pulumi.Output<boolean | undefined>;
+    /**
+     * session token. A session token is only required if you are using temporary security credentials.
+     */
+    public readonly token!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.

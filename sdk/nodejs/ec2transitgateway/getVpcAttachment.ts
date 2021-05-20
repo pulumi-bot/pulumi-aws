@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *         name: "vpc-id",
  *         values: ["vpc-12345678"],
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  * ### By Identifier
  *
@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.ec2transitgateway.getVpcAttachment({
  *     id: "tgw-attach-12345678",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getVpcAttachment(args?: GetVpcAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcAttachmentResult> {

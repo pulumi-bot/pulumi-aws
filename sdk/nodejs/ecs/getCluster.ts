@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const ecs_mongo = pulumi.output(aws.ecs.getCluster({
  *     clusterName: "ecs-mongo-production",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {

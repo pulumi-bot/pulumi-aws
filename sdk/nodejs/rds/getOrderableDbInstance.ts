@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *         "db.t3.small",
  *     ],
  *     storageType: "standard",
- * }, { async: true }));
+ * }));
  * ```
  *
  * Valid parameter combinations can also be found with `preferredEngineVersions` and/or `preferredInstanceClasses`.
@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  *         "db.t3.medium",
  *         "db.t3.large",
  *     ],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getOrderableDbInstance(args: GetOrderableDbInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetOrderableDbInstanceResult> {

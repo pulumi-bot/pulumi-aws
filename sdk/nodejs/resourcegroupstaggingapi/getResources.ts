@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  *
- * const test = pulumi.output(aws.resourcegroupstaggingapi.getResources({ async: true }));
+ * const test = pulumi.output(aws.resourcegroupstaggingapi.getResources());
  * ```
  * ### Filter By Tag Key and Value
  *
@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *             "tag-value-2",
  *         ],
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  * ### Filter By Resource Type
  *
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *
  * const test = pulumi.output(aws.resourcegroupstaggingapi.getResources({
  *     resourceTypeFilters: ["ec2:instance"],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getResources(args?: GetResourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetResourcesResult> {

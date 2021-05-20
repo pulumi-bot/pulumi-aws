@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const productionSigningProfile = pulumi.output(aws.signer.getSigningProfile({
  *     name: "prod_profile_DdW3Mk1foYL88fajut4mTVFGpuwfd4ACO6ANL0D1uIj7lrn8adK",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSigningProfile(args: GetSigningProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetSigningProfileResult> {

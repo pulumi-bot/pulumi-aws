@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *         name: "options.amazon-side-asn",
  *         values: ["64512"],
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  * ### By Identifier
  *
@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.ec2transitgateway.getTransitGateway({
  *     id: "tgw-12345678",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getTransitGateway(args?: GetTransitGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitGatewayResult> {

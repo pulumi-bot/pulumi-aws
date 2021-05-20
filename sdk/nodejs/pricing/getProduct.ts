@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  *     serviceCode: "AmazonEC2",
- * }, { async: true }));
+ * }));
  * ```
  *
  * ```typescript
@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  *     serviceCode: "AmazonRedshift",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getProduct(args: GetProductArgs, opts?: pulumi.InvokeOptions): Promise<GetProductResult> {

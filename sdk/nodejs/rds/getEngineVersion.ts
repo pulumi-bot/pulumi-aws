@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *         "5.7.19",
  *         "5.7.17",
  *     ],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getEngineVersion(args: GetEngineVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineVersionResult> {

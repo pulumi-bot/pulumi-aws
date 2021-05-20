@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const myApiKey = pulumi.output(aws.apigateway.getKey({
  *     id: "ru3mpjgse6",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getKey(args: GetKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyResult> {

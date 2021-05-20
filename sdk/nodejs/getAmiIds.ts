@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *         values: ["ubuntu/images/ubuntu-*-*-amd64-server-*"],
  *     }],
  *     owners: ["099720109477"],
- * }, { async: true }));
+ * }));
  * ```
  */
 /** @deprecated aws.getAmiIds has been deprecated in favor of aws.ec2.getAmiIds */

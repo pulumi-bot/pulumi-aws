@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.imagebuilder.getImagePipeline({
  *     arn: "arn:aws:imagebuilder:us-west-2:aws:image-pipeline/example",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getImagePipeline(args: GetImagePipelineArgs, opts?: pulumi.InvokeOptions): Promise<GetImagePipelineResult> {

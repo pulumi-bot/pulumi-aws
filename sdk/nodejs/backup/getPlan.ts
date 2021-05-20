@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.backup.getPlan({
  *     planId: "tf_example_backup_plan_id",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getPlan(args: GetPlanArgs, opts?: pulumi.InvokeOptions): Promise<GetPlanResult> {

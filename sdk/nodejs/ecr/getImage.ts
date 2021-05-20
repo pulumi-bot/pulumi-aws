@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const serviceImage = pulumi.output(aws.ecr.getImage({
  *     imageTag: "latest",
  *     repositoryName: "my/service",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getImage(args: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {

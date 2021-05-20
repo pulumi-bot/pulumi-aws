@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     ],
  *     mostRecent: true,
  *     owners: ["self"],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSnapshot(args?: GetSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotResult> {

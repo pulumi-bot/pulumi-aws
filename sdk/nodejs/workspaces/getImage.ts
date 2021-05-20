@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.workspaces.getImage({
  *     imageId: "wsi-ten5h0y19",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getImage(args: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {

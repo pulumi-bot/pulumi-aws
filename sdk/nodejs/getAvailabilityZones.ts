@@ -47,7 +47,7 @@ import * as utilities from "./utilities";
  *             "opted-in",
  *         ],
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  *
  * Only Availability Zones (no Local Zones):
@@ -61,7 +61,7 @@ import * as utilities from "./utilities";
  *         name: "opt-in-status",
  *         values: ["opt-in-not-required"],
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getAvailabilityZones(args?: GetAvailabilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailabilityZonesResult> {

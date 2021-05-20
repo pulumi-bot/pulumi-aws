@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.imagebuilder.getImageRecipe({
  *     arn: "arn:aws:imagebuilder:us-east-1:aws:image-recipe/example/1.0.0",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getImageRecipe(args: GetImageRecipeArgs, opts?: pulumi.InvokeOptions): Promise<GetImageRecipeResult> {

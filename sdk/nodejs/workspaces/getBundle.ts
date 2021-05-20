@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.workspaces.getBundle({
  *     bundleId: "wsb-b0s22j3d7",
- * }, { async: true }));
+ * }));
  * ```
  * ### By Owner & Name
  *
@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * const example = pulumi.output(aws.workspaces.getBundle({
  *     name: "Value with Windows 10 and Office 2016",
  *     owner: "AMAZON",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getBundle(args?: GetBundleArgs, opts?: pulumi.InvokeOptions): Promise<GetBundleResult> {

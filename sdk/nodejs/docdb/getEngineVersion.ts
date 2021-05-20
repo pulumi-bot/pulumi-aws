@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const test = pulumi.output(aws.docdb.getEngineVersion({
  *     version: "3.6.0",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getEngineVersion(args?: GetEngineVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineVersionResult> {

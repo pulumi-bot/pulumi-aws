@@ -15,9 +15,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  *
- * const available = pulumi.output(aws.getAvailabilityZones({ async: true }));
- * const currentRegion = pulumi.output(aws.getRegion({ async: true }));
- * const currentCallerIdentity = pulumi.output(aws.getCallerIdentity({ async: true }));
+ * const available = pulumi.output(aws.getAvailabilityZones());
+ * const currentRegion = pulumi.output(aws.getRegion());
+ * const currentCallerIdentity = pulumi.output(aws.getCallerIdentity());
  * const exampleEip = new aws.ec2.Eip("example", {
  *     vpc: true,
  * });

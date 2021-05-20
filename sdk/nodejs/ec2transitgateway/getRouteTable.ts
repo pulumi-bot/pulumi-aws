@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *             values: ["tgw-12345678"],
  *         },
  *     ],
- * }, { async: true }));
+ * }));
  * ```
  * ### By Identifier
  *
@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.ec2transitgateway.getRouteTable({
  *     id: "tgw-rtb-12345678",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getRouteTable(args?: GetRouteTableArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteTableResult> {

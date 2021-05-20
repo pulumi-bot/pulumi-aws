@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  *     instanceId: "i-instanceid",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getInstance(args?: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {

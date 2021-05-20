@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  *         name: "tag:Name",
  *         values: ["yakdriver"],
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSubnet(args?: GetSubnetArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetResult> {

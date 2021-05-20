@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * const example = pulumi.output(aws.route53.getResolverRule({
  *     domainName: "subdomain.example.com",
  *     ruleType: "SYSTEM",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getResolverRule(args?: GetResolverRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetResolverRuleResult> {

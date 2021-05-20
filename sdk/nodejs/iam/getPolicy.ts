@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.iam.getPolicy({
  *     arn: "arn:aws:iam::123456789012:policy/UsersManageOwnCredentials",
- * }, { async: true }));
+ * }));
  * ```
  * ### By Name
  *
@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.iam.getPolicy({
  *     name: "test_policy",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getPolicy(args?: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {

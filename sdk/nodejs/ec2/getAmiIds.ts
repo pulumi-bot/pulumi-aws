@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *         values: ["ubuntu/images/ubuntu-*-*-amd64-server-*"],
  *     }],
  *     owners: ["099720109477"],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getAmiIds(args: GetAmiIdsArgs, opts?: pulumi.InvokeOptions): Promise<GetAmiIdsResult> {

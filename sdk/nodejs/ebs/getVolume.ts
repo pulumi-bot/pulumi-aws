@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  *     mostRecent: true,
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getVolume(args?: GetVolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeResult> {

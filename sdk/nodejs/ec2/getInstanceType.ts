@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.ec2.getInstanceType({
  *     instanceType: "t2.micro",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getInstanceType(args: GetInstanceTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypeResult> {

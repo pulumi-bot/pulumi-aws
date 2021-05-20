@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *         "db.r4.large",
  *         "db.t3.medium",
  *     ],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getOrderableDbInstance(args?: GetOrderableDbInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetOrderableDbInstanceResult> {

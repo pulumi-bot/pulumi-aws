@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.workspaces.getWorkspace({
  *     workspaceId: "ws-cj5xcxsz5",
- * }, { async: true }));
+ * }));
  * ```
  * ### Filter By Directory ID & User Name
  *
@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * const example = pulumi.output(aws.workspaces.getWorkspace({
  *     directoryId: "d-9967252f57",
  *     userName: "Example",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getWorkspace(args?: GetWorkspaceArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceResult> {

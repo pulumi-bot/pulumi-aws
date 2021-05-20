@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const clusterName = pulumi.output(aws.rds.getCluster({
  *     clusterIdentifier: "clusterName",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {

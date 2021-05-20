@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const bar = pulumi.output(aws.ec2.getNetworkInterface({
  *     id: "eni-01234567",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getNetworkInterface(args?: GetNetworkInterfaceArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkInterfaceResult> {

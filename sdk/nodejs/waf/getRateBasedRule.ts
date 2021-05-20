@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.waf.getRateBasedRule({
  *     name: "tfWAFRateBasedRule",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getRateBasedRule(args: GetRateBasedRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetRateBasedRuleResult> {

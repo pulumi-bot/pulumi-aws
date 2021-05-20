@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  *
- * const token = pulumi.output(aws.ecr.getAuthorizationToken({ async: true }));
+ * const token = pulumi.output(aws.ecr.getAuthorizationToken());
  * ```
  */
 export function getAuthorizationToken(args?: GetAuthorizationTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthorizationTokenResult> {

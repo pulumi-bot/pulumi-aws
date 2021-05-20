@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const orderFlowersProd = pulumi.output(aws.lex.getBotAlias({
  *     botName: "OrderFlowers",
  *     name: "OrderFlowersProd",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getBotAlias(args: GetBotAliasArgs, opts?: pulumi.InvokeOptions): Promise<GetBotAliasResult> {

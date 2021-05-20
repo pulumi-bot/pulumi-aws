@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const example = pulumi.output(aws.cloudformation.getCloudFormationType({
  *     type: "RESOURCE",
  *     typeName: "AWS::Athena::WorkGroup",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getCloudFormationType(args?: GetCloudFormationTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudFormationTypeResult> {

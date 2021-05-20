@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.ec2.getVpcDhcpOptions({
  *     dhcpOptionsId: "dopts-12345678",
- * }, { async: true }));
+ * }));
  * ```
  * ### Lookup by Filter
  *
@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *             values: ["example.com"],
  *         },
  *     ],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getVpcDhcpOptions(args?: GetVpcDhcpOptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcDhcpOptionsResult> {

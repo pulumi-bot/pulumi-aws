@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.apigatewayv2.getApis({
  *     protocolType: "HTTP",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getApis(args?: GetApisArgs, opts?: pulumi.InvokeOptions): Promise<GetApisResult> {

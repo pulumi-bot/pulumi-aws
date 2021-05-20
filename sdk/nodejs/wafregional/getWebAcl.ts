@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.wafregional.getWebAcl({
  *     name: "tfWAFRegionalWebACL",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getWebAcl(args: GetWebAclArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAclResult> {

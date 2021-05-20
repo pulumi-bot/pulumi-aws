@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const production = pulumi.output(aws.lambda.getAlias({
  *     functionName: "my-lambda-func",
  *     name: "production",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getAlias(args: GetAliasArgs, opts?: pulumi.InvokeOptions): Promise<GetAliasResult> {

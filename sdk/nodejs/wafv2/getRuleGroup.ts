@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const example = pulumi.output(aws.wafv2.getRuleGroup({
  *     name: "some-rule-group",
  *     scope: "REGIONAL",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getRuleGroup(args: GetRuleGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleGroupResult> {

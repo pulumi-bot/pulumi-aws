@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  *     locationType: "availability-zone-id",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getInstanceTypeOfferings(args?: GetInstanceTypeOfferingsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypeOfferingsResult> {

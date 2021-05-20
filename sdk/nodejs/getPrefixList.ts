@@ -50,7 +50,7 @@ import * as utilities from "./utilities";
  *         name: "prefix-list-id",
  *         values: ["pl-68a54001"],
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  */
 /** @deprecated aws.getPrefixList has been deprecated in favor of aws.ec2.getPrefixList */

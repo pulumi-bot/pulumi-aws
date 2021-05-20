@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const example = pulumi.output(aws.ram.getResourceShare({
  *     name: "example",
  *     resourceOwner: "SELF",
- * }, { async: true }));
+ * }));
  * ```
  * ## Search by filters
  *
@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *     }],
  *     name: "MyResourceName",
  *     resourceOwner: "SELF",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getResourceShare(args: GetResourceShareArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceShareResult> {

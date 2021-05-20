@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *         values: ["Linux/UNIX"],
  *     }],
  *     instanceType: "t3.medium",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSpotPrice(args?: GetSpotPriceArgs, opts?: pulumi.InvokeOptions): Promise<GetSpotPriceResult> {

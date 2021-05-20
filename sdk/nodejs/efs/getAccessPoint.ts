@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const test = pulumi.output(aws.efs.getAccessPoint({
  *     accessPointId: "fsap-12345678",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getAccessPoint(args: GetAccessPointArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPointResult> {

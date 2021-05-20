@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *         name: "prefix-list-id",
  *         values: ["pl-68a54001"],
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getPrefixList(args?: GetPrefixListArgs, opts?: pulumi.InvokeOptions): Promise<GetPrefixListResult> {

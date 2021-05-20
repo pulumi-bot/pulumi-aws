@@ -19,6 +19,116 @@ namespace Pulumi.Aws
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
+        /// The access key for API operations. You can retrieve this from the 'Security &amp; Credentials' section of the AWS console.
+        /// </summary>
+        [Output("accessKey")]
+        public Output<string?> AccessKey { get; private set; } = null!;
+
+        [Output("allowedAccountIds")]
+        public Output<string?> AllowedAccountIds { get; private set; } = null!;
+
+        [Output("assumeRole")]
+        public Output<string?> AssumeRole { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration block with settings to default resource tags across all resources.
+        /// </summary>
+        [Output("defaultTags")]
+        public Output<string?> DefaultTags { get; private set; } = null!;
+
+        [Output("endpoints")]
+        public Output<string?> Endpoints { get; private set; } = null!;
+
+        [Output("forbiddenAccountIds")]
+        public Output<string?> ForbiddenAccountIds { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration block with settings to ignore resource tags across all resources.
+        /// </summary>
+        [Output("ignoreTags")]
+        public Output<string?> IgnoreTags { get; private set; } = null!;
+
+        /// <summary>
+        /// Explicitly allow the provider to perform "insecure" SSL requests. If omitted,default value is `false`
+        /// </summary>
+        [Output("insecure")]
+        public Output<bool?> Insecure { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum number of times an AWS API request is being executed. If the API request still fails, an error is thrown.
+        /// </summary>
+        [Output("maxRetries")]
+        public Output<int?> MaxRetries { get; private set; } = null!;
+
+        /// <summary>
+        /// The profile for API operations. If not set, the default profile created with `aws configure` will be used.
+        /// </summary>
+        [Output("profile")]
+        public Output<string?> Profile { get; private set; } = null!;
+
+        /// <summary>
+        /// The region where AWS operations will take place. Examples are us-east-1, us-west-2, etc.
+        /// </summary>
+        [Output("region")]
+        public Output<string?> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// Set this to true to force the request to use path-style addressing, i.e., http://s3.amazonaws.com/BUCKET/KEY. By
+        /// default, the S3 client will use virtual hosted bucket addressing when possible (http://BUCKET.s3.amazonaws.com/KEY).
+        /// Specific to the Amazon S3 service.
+        /// </summary>
+        [Output("s3ForcePathStyle")]
+        public Output<bool?> S3ForcePathStyle { get; private set; } = null!;
+
+        /// <summary>
+        /// The secret key for API operations. You can retrieve this from the 'Security &amp; Credentials' section of the AWS console.
+        /// </summary>
+        [Output("secretKey")]
+        public Output<string?> SecretKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The path to the shared credentials file. If not set this defaults to ~/.aws/credentials.
+        /// </summary>
+        [Output("sharedCredentialsFile")]
+        public Output<string?> SharedCredentialsFile { get; private set; } = null!;
+
+        /// <summary>
+        /// Skip the credentials validation via STS API. Used for AWS API implementations that do not have STS
+        /// available/implemented.
+        /// </summary>
+        [Output("skipCredentialsValidation")]
+        public Output<bool?> SkipCredentialsValidation { get; private set; } = null!;
+
+        /// <summary>
+        /// Skip getting the supported EC2 platforms. Used by users that don't have ec2:DescribeAccountAttributes permissions.
+        /// </summary>
+        [Output("skipGetEc2Platforms")]
+        public Output<bool?> SkipGetEc2Platforms { get; private set; } = null!;
+
+        [Output("skipMetadataApiCheck")]
+        public Output<bool?> SkipMetadataApiCheck { get; private set; } = null!;
+
+        /// <summary>
+        /// Skip static validation of region name. Used by users of alternative AWS-like APIs or users w/ access to regions that are
+        /// not public (yet).
+        /// </summary>
+        [Output("skipRegionValidation")]
+        public Output<bool?> SkipRegionValidation { get; private set; } = null!;
+
+        /// <summary>
+        /// Skip requesting the account ID. Used for AWS API implementations that do not have IAM/STS API and/or metadata API.
+        /// </summary>
+        [Output("skipRequestingAccountId")]
+        public Output<bool?> SkipRequestingAccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// session token. A session token is only required if you are using temporary security credentials.
+        /// </summary>
+        [Output("token")]
+        public Output<string?> Token { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>
         ///

@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.apigateway.getDomainName({
  *     domainName: "api.example.com",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getDomainName(args: GetDomainNameArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainNameResult> {

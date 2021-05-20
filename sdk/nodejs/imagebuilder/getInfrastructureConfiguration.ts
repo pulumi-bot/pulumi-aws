@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.imagebuilder.getInfrastructureConfiguration({
  *     arn: "arn:aws:imagebuilder:us-west-2:aws:infrastructure-configuration/example",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getInfrastructureConfiguration(args: GetInfrastructureConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetInfrastructureConfigurationResult> {

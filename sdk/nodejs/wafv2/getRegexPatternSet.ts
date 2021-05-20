@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const example = pulumi.output(aws.wafv2.getRegexPatternSet({
  *     name: "some-regex-pattern-set",
  *     scope: "REGIONAL",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getRegexPatternSet(args: GetRegexPatternSetArgs, opts?: pulumi.InvokeOptions): Promise<GetRegexPatternSetResult> {

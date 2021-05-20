@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const tableName = pulumi.output(aws.dynamodb.getTable({
  *     name: "tableName",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getTable(args: GetTableArgs, opts?: pulumi.InvokeOptions): Promise<GetTableResult> {

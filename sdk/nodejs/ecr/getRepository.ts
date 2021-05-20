@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const service = pulumi.output(aws.ecr.getRepository({
  *     name: "ecr-repository",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getRepository(args: GetRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryResult> {

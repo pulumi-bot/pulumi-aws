@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * const dset = pulumi.output(aws.route53.getDelegationSet({
  *     id: "MQWGHCBFAKEID",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getDelegationSet(args: GetDelegationSetArgs, opts?: pulumi.InvokeOptions): Promise<GetDelegationSetResult> {

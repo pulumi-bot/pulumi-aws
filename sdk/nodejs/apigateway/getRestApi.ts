@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * const myRestApi = pulumi.output(aws.apigateway.getRestApi({
  *     name: "my-rest-api",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getRestApi(args: GetRestApiArgs, opts?: pulumi.InvokeOptions): Promise<GetRestApiResult> {

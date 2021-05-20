@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const sfnActivity = pulumi.output(aws.sfn.getActivity({
  *     name: "my-activity",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getActivity(args?: GetActivityArgs, opts?: pulumi.InvokeOptions): Promise<GetActivityResult> {

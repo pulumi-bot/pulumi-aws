@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const multiDocker = pulumi.output(aws.elasticbeanstalk.getSolutionStack({
  *     mostRecent: true,
  *     nameRegex: "^64bit Amazon Linux (.*) Multi-container Docker (.*)$",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getSolutionStack(args: GetSolutionStackArgs, opts?: pulumi.InvokeOptions): Promise<GetSolutionStackResult> {

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * const myApiGatewayVpcLink = pulumi.output(aws.apigateway.getVpcLink({
  *     name: "my-vpc-link",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getVpcLink(args: GetVpcLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcLinkResult> {

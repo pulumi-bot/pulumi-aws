@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const test = pulumi.output(aws.sagemaker.getPrebuiltEcrImage({
  *     imageTag: "2.2-1.0.11.0",
  *     repositoryName: "sagemaker-scikit-learn",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getPrebuiltEcrImage(args: GetPrebuiltEcrImageArgs, opts?: pulumi.InvokeOptions): Promise<GetPrebuiltEcrImageResult> {

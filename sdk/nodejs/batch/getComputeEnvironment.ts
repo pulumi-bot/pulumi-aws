@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const batch_mongo = pulumi.output(aws.batch.getComputeEnvironment({
  *     computeEnvironmentName: "batch-mongo-production",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getComputeEnvironment(args: GetComputeEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetComputeEnvironmentResult> {

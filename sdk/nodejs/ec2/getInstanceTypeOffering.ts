@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *         "t3.micro",
  *         "t2.micro",
  *     ],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getInstanceTypeOffering(args?: GetInstanceTypeOfferingArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypeOfferingResult> {

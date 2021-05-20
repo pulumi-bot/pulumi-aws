@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const myDomain = pulumi.output(aws.elasticsearch.getDomain({
  *     domainName: "my-domain-name",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {

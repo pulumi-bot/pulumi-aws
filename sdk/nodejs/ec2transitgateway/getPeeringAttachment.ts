@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *         name: "transit-gateway-attachment-id",
  *         values: ["tgw-attach-12345678"],
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  * ### By Identifier
  *
@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *
  * const attachment = pulumi.output(aws.ec2transitgateway.getPeeringAttachment({
  *     id: "tgw-attach-12345678",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getPeeringAttachment(args?: GetPeeringAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetPeeringAttachmentResult> {

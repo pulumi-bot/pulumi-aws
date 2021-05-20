@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const test = pulumi.output(aws.cloudfront.getDistribution({
  *     id: "EDFDVBD632BHDS5",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getDistribution(args: GetDistributionArgs, opts?: pulumi.InvokeOptions): Promise<GetDistributionResult> {

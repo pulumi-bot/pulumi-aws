@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *         "1.0.2.2",
  *         "1.0.2.1",
  *     ],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getEngineVersion(args?: GetEngineVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineVersionResult> {

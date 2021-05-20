@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.route53.getResolverEndpoint({
  *     resolverEndpointId: "rslvr-in-1abc2345ef678g91h",
- * }, { async: true }));
+ * }));
  * ```
  *
  * ```typescript
@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *         name: "NAME",
  *         values: ["MyResolverExampleName"],
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getResolverEndpoint(args?: GetResolverEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetResolverEndpointResult> {

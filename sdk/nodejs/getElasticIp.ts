@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * const byAllocationId = pulumi.output(aws.ec2.getElasticIp({
  *     id: "eipalloc-12345678",
- * }, { async: true }));
+ * }));
  * ```
  * ### Search By Filters (EC2-Classic or VPC)
  *
@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *         name: "tag:Name",
  *         values: ["exampleNameTagValue"],
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  * ### Search By Public IP (EC2-Classic or VPC)
  *
@@ -40,7 +40,7 @@ import * as utilities from "./utilities";
  *
  * const byPublicIp = pulumi.output(aws.ec2.getElasticIp({
  *     publicIp: "1.2.3.4",
- * }, { async: true }));
+ * }));
  * ```
  * ### Search By Tags (EC2-Classic or VPC)
  *
@@ -52,7 +52,7 @@ import * as utilities from "./utilities";
  *     tags: {
  *         Name: "exampleNameTagValue",
  *     },
- * }, { async: true }));
+ * }));
  * ```
  */
 /** @deprecated aws.getElasticIp has been deprecated in favor of aws.ec2.getElasticIp */

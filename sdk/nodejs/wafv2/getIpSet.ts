@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const example = pulumi.output(aws.wafv2.getIpSet({
  *     name: "some-ip-set",
  *     scope: "REGIONAL",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getIpSet(args: GetIpSetArgs, opts?: pulumi.InvokeOptions): Promise<GetIpSetResult> {

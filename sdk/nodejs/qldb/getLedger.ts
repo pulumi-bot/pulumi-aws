@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.qldb.getLedger({
  *     name: "an_example_ledger",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getLedger(args: GetLedgerArgs, opts?: pulumi.InvokeOptions): Promise<GetLedgerResult> {

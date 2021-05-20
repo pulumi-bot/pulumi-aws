@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.lakeformation.getResource({
  *     arn: "arn:aws:s3:::tf-acc-test-9151654063908211878",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getResource(args: GetResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceResult> {

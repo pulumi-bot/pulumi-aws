@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *         name: "resource-id",
  *         values: ["some-resource"],
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getVpnAttachment(args?: GetVpnAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnAttachmentResult> {

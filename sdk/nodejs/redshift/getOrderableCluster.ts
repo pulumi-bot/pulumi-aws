@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *         "dc2.large",
  *         "ds2.xlarge",
  *     ],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getOrderableCluster(args?: GetOrderableClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetOrderableClusterResult> {

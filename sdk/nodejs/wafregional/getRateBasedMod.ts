@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.wafregional.getRateBasedMod({
  *     name: "tfWAFRegionalRateBasedRule",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getRateBasedMod(args: GetRateBasedModArgs, opts?: pulumi.InvokeOptions): Promise<GetRateBasedModResult> {

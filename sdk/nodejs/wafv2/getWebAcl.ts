@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const example = pulumi.output(aws.wafv2.getWebAcl({
  *     name: "some-web-acl",
  *     scope: "REGIONAL",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getWebAcl(args: GetWebAclArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAclResult> {

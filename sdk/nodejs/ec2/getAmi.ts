@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *     mostRecent: true,
  *     nameRegex: "^myami-\\d{3}",
  *     owners: ["self"],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getAmi(args: GetAmiArgs, opts?: pulumi.InvokeOptions): Promise<GetAmiResult> {

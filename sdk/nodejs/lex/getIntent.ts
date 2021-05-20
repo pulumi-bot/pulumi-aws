@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const orderFlowers = pulumi.output(aws.lex.getIntent({
  *     name: "OrderFlowers",
  *     version: "$LATEST",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getIntent(args: GetIntentArgs, opts?: pulumi.InvokeOptions): Promise<GetIntentResult> {

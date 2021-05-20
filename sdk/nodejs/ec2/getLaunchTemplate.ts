@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const defaultLaunchTemplate = pulumi.output(aws.ec2.getLaunchTemplate({
  *     name: "my-launch-template",
- * }, { async: true }));
+ * }));
  * ```
  * ### Filter
  *
@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *         name: "launch-template-name",
  *         values: ["some-template"],
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getLaunchTemplate(args?: GetLaunchTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetLaunchTemplateResult> {

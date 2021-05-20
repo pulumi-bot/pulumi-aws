@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const bar = pulumi.output(aws.elasticache.getReplicationGroup({
  *     replicationGroupId: "example",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getReplicationGroup(args: GetReplicationGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetReplicationGroupResult> {

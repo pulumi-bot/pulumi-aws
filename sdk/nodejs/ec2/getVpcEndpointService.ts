@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *
  * const custome = pulumi.output(aws.ec2.getVpcEndpointService({
  *     serviceName: "com.amazonaws.vpce.us-west-2.vpce-svc-0e87519c997c63cd8",
- * }, { async: true }));
+ * }));
  * ```
  * ### Filter
  *
@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  *         name: "service-name",
  *         values: ["some-service"],
  *     }],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getVpcEndpointService(args?: GetVpcEndpointServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointServiceResult> {

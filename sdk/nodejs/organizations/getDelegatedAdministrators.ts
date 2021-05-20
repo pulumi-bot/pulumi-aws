@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.organizations.getDelegatedAdministrators({
  *     servicePrincipal: "SERVICE PRINCIPAL",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getDelegatedAdministrators(args?: GetDelegatedAdministratorsArgs, opts?: pulumi.InvokeOptions): Promise<GetDelegatedAdministratorsResult> {

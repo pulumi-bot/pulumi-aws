@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     ownerId: "Route 53 Resolver",
  *     ruleType: "RECURSIVE",
  *     shareStatus: "NOT_SHARED",
- * }, { async: true }));
+ * }));
  * ```
  *
  * ```typescript
@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * const example = pulumi.output(aws.route53.getResolverRules({
  *     ruleType: "FORWARD",
  *     shareStatus: "SHARED_WITH_ME",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getResolverRules(args?: GetResolverRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetResolverRulesResult> {

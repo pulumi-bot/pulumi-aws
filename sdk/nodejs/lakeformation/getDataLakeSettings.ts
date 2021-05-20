@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * const example = pulumi.output(aws.lakeformation.getDataLakeSettings({
  *     catalogId: "14916253649",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getDataLakeSettings(args?: GetDataLakeSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetDataLakeSettingsResult> {

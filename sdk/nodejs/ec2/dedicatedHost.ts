@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * });
  * const testData = test.id.apply(id => aws.ec2.getDedicatedHost({
  *     hostId: id,
- * }, { async: true }));
+ * }));
  * ```
  *
  * ## Import

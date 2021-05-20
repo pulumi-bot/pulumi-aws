@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  *     mostRecent: true,
  *     nameRegex: "^myami-\\d{3}",
  *     owners: ["self"],
- * }, { async: true }));
+ * }));
  * ```
  */
 /** @deprecated aws.getAmi has been deprecated in favor of aws.ec2.getAmi */
