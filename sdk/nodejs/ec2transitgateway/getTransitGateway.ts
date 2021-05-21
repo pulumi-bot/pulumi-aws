@@ -56,15 +56,15 @@ export interface GetTransitGatewayArgs {
     /**
      * One or more configuration blocks containing name-values filters. Detailed below.
      */
-    readonly filters?: inputs.ec2transitgateway.GetTransitGatewayFilter[];
+    filters?: inputs.ec2transitgateway.GetTransitGatewayFilter[];
     /**
      * Identifier of the EC2 Transit Gateway.
      */
-    readonly id?: string;
+    id?: string;
     /**
      * Key-value tags for the EC2 Transit Gateway
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**

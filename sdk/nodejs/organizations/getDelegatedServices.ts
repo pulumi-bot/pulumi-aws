@@ -39,7 +39,7 @@ export interface GetDelegatedServicesArgs {
     /**
      * The account ID number of a delegated administrator account in the organization.
      */
-    readonly accountId: string;
+    accountId: string;
 }
 
 /**

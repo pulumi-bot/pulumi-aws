@@ -40,8 +40,8 @@ export interface GetClusterArgs {
     /**
      * The cluster identifier of the RDS cluster.
      */
-    readonly clusterIdentifier: string;
-    readonly tags?: {[key: string]: string};
+    clusterIdentifier: string;
+    tags?: {[key: string]: string};
 }
 
 /**
