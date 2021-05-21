@@ -41,11 +41,11 @@ export interface GetSlotTypeArgs {
     /**
      * The name of the slot type. The name is case sensitive.
      */
-    readonly name: string;
+    name: string;
     /**
      * The version of the slot type.
      */
-    readonly version?: string;
+    version?: string;
 }
 
 /**

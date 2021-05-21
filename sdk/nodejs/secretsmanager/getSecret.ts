@@ -52,11 +52,11 @@ export interface GetSecretArgs {
     /**
      * The Amazon Resource Name (ARN) of the secret to retrieve.
      */
-    readonly arn?: string;
+    arn?: string;
     /**
      * The name of the secret to retrieve.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**

@@ -42,11 +42,11 @@ export interface GetParameterArgs {
     /**
      * The name of the parameter.
      */
-    readonly name: string;
+    name: string;
     /**
      * Whether to return decrypted `SecureString` value. Defaults to `true`.
      */
-    readonly withDecryption?: boolean;
+    withDecryption?: boolean;
 }
 
 /**
