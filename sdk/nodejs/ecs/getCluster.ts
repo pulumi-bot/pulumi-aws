@@ -40,7 +40,7 @@ export interface GetClusterArgs {
     /**
      * The name of the ECS Cluster
      */
-    readonly clusterName: string;
+    clusterName: string;
 }
 
 /**
