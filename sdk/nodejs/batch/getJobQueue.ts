@@ -41,11 +41,11 @@ export interface GetJobQueueArgs {
     /**
      * The name of the job queue.
      */
-    readonly name: string;
+    name: string;
     /**
      * Key-value map of resource tags
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**

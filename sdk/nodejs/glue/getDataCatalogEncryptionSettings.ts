@@ -39,7 +39,7 @@ export interface GetDataCatalogEncryptionSettingsArgs {
     /**
      * The ID of the Data Catalog. This is typically the AWS account ID.
      */
-    readonly catalogId: string;
+    catalogId: string;
 }
 
 /**

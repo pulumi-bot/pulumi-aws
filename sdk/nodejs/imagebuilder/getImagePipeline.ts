@@ -40,11 +40,11 @@ export interface GetImagePipelineArgs {
     /**
      * Amazon Resource Name (ARN) of the image pipeline.
      */
-    readonly arn: string;
+    arn: string;
     /**
      * Key-value map of resource tags for the image pipeline.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**

@@ -39,7 +39,7 @@ export interface GetLedgerArgs {
     /**
      * The friendly name of the ledger to match.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
