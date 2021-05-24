@@ -40,11 +40,11 @@ export interface GetClusterArgs {
     /**
      * The id of Cloud HSM v2 cluster.
      */
-    readonly clusterId: string;
+    clusterId: string;
     /**
      * The state of the cluster to be found.
      */
-    readonly clusterState?: string;
+    clusterState?: string;
 }
 
 /**

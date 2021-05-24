@@ -39,7 +39,7 @@ export interface GetArnArgs {
     /**
      * The ARN to parse.
      */
-    readonly arn: string;
+    arn: string;
 }
 
 /**
