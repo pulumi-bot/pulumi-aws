@@ -40,11 +40,11 @@ export interface GetComponentArgs {
     /**
      * Amazon Resource Name (ARN) of the component.
      */
-    readonly arn: string;
+    arn: string;
     /**
      * Key-value map of resource tags for the component.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**

@@ -39,7 +39,7 @@ export interface GetWebAclArgs {
     /**
      * The name of the WAF Web ACL.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
