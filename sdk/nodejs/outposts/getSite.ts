@@ -41,11 +41,11 @@ export interface GetSiteArgs {
     /**
      * Identifier of the Site.
      */
-    readonly id?: string;
+    id?: string;
     /**
      * Name of the Site.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**

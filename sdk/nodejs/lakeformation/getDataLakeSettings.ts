@@ -40,7 +40,7 @@ export interface GetDataLakeSettingsArgs {
     /**
      * Identifier for the Data Catalog. By default, the account ID.
      */
-    readonly catalogId?: string;
+    catalogId?: string;
 }
 
 /**

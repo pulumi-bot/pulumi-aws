@@ -41,7 +41,7 @@ export interface GetStateMachineArgs {
     /**
      * The friendly name of the state machine to match.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**

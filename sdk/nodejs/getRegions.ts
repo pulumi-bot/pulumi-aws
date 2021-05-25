@@ -67,11 +67,11 @@ export interface GetRegionsArgs {
     /**
      * If true the source will query all regions regardless of availability.
      */
-    readonly allRegions?: boolean;
+    allRegions?: boolean;
     /**
      * Configuration block(s) to use as filters. Detailed below.
      */
-    readonly filters?: inputs.GetRegionsFilter[];
+    filters?: inputs.GetRegionsFilter[];
 }
 
 /**
