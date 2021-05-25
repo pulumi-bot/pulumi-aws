@@ -41,11 +41,11 @@ export interface GetOriginRequestPolicyArgs {
     /**
      * The identifier for the origin request policy.
      */
-    readonly id?: string;
+    id?: string;
     /**
      * Unique name to identify the origin request policy.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**

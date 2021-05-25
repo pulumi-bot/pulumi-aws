@@ -39,7 +39,7 @@ export interface GetIpsetArgs {
     /**
      * The name of the WAF Regional IP set.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**

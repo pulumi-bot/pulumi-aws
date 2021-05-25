@@ -41,7 +41,7 @@ export interface GetInstanceProfileArgs {
     /**
      * The friendly IAM instance profile name to match.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**

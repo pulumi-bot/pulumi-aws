@@ -40,11 +40,11 @@ export interface GetApiArgs {
     /**
      * The API identifier.
      */
-    readonly apiId: string;
+    apiId: string;
     /**
      * A map of resource tags.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**

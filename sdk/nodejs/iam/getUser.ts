@@ -42,11 +42,11 @@ export interface GetUserArgs {
     /**
      * Map of key-value pairs associated with the user.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
     /**
      * The friendly IAM user name to match.
      */
-    readonly userName: string;
+    userName: string;
 }
 
 /**
