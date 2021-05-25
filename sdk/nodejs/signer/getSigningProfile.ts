@@ -40,11 +40,11 @@ export interface GetSigningProfileArgs {
     /**
      * The name of the target signing profile.
      */
-    readonly name: string;
+    name: string;
     /**
      * A list of tags associated with the signing profile.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**

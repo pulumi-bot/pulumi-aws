@@ -43,7 +43,7 @@ export interface GetDelegationSetArgs {
     /**
      * The Hosted Zone id of the desired delegation set.
      */
-    readonly id: string;
+    id: string;
 }
 
 /**

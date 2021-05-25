@@ -40,11 +40,11 @@ export interface GetClusterArgs {
     /**
      * Group identifier.
      */
-    readonly clusterId: string;
+    clusterId: string;
     /**
      * The tags assigned to the resource
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
