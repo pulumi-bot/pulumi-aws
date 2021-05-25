@@ -76,15 +76,15 @@ export interface GetPrefixListArgs {
     /**
      * Configuration block(s) for filtering. Detailed below.
      */
-    readonly filters?: inputs.ec2.GetPrefixListFilter[];
+    filters?: inputs.ec2.GetPrefixListFilter[];
     /**
      * The name of the filter field. Valid values can be found in the [EC2 DescribePrefixLists API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribePrefixLists.html).
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The ID of the prefix list to select.
      */
-    readonly prefixListId?: string;
+    prefixListId?: string;
 }
 
 /**
