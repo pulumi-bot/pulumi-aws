@@ -40,11 +40,11 @@ export interface GetVaultArgs {
     /**
      * The name of the backup vault.
      */
-    readonly name: string;
+    name: string;
     /**
      * Metadata that you can assign to help organize the resources that you create.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**

@@ -62,15 +62,15 @@ export interface GetVpcDhcpOptionsArgs {
     /**
      * The EC2 DHCP Options ID.
      */
-    readonly dhcpOptionsId?: string;
+    dhcpOptionsId?: string;
     /**
      * List of custom filters as described below.
      */
-    readonly filters?: inputs.ec2.GetVpcDhcpOptionsFilter[];
+    filters?: inputs.ec2.GetVpcDhcpOptionsFilter[];
     /**
      * A map of tags assigned to the resource.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
