@@ -42,11 +42,11 @@ export interface GetRoleArgs {
     /**
      * The friendly IAM role name to match.
      */
-    readonly name: string;
+    name: string;
     /**
      * The tags attached to the role.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**

@@ -41,7 +41,7 @@ export interface GetCodeSigningConfigArgs {
     /**
      * The Amazon Resource Name (ARN) of the code signing configuration.
      */
-    readonly arn: string;
+    arn: string;
 }
 
 /**

@@ -41,11 +41,11 @@ export interface GetCertificateArgs {
     /**
      * Amazon Resource Name (ARN) of the certificate issued by the private certificate authority.
      */
-    readonly arn: string;
+    arn: string;
     /**
      * Amazon Resource Name (ARN) of the certificate authority.
      */
-    readonly certificateAuthorityArn: string;
+    certificateAuthorityArn: string;
 }
 
 /**

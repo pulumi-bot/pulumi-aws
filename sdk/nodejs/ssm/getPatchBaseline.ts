@@ -60,19 +60,19 @@ export interface GetPatchBaselineArgs {
     /**
      * Filters the results against the baselines defaultBaseline field.
      */
-    readonly defaultBaseline?: boolean;
+    defaultBaseline?: boolean;
     /**
      * Filter results by the baseline name prefix.
      */
-    readonly namePrefix?: string;
+    namePrefix?: string;
     /**
      * The specified OS for the baseline.
      */
-    readonly operatingSystem?: string;
+    operatingSystem?: string;
     /**
      * The owner of the baseline. Valid values: `All`, `AWS`, `Self` (the current account).
      */
-    readonly owner: string;
+    owner: string;
 }
 
 /**

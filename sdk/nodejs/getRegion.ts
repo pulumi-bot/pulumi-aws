@@ -47,11 +47,11 @@ export interface GetRegionArgs {
     /**
      * The EC2 endpoint of the region to select.
      */
-    readonly endpoint?: string;
+    endpoint?: string;
     /**
      * The full name of the region to select.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**

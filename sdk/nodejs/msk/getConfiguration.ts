@@ -39,7 +39,7 @@ export interface GetConfigurationArgs {
     /**
      * Name of the configuration.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
