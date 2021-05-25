@@ -41,11 +41,11 @@ export interface GetCachePolicyArgs {
     /**
      * The identifier for the cache policy.
      */
-    readonly id?: string;
+    id?: string;
     /**
      * A unique name to identify the cache policy.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**

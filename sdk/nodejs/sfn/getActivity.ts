@@ -41,11 +41,11 @@ export interface GetActivityArgs {
     /**
      * The Amazon Resource Name (ARN) that identifies the activity.
      */
-    readonly arn?: string;
+    arn?: string;
     /**
      * The name that identifies the activity.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**

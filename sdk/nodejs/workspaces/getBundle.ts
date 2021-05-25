@@ -54,15 +54,15 @@ export interface GetBundleArgs {
     /**
      * The ID of the bundle.
      */
-    readonly bundleId?: string;
+    bundleId?: string;
     /**
      * The name of the bundle. You cannot combine this parameter with `bundleId`.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The owner of the bundles. You have to leave it blank for own bundles. You cannot combine this parameter with `bundleId`.
      */
-    readonly owner?: string;
+    owner?: string;
 }
 
 /**

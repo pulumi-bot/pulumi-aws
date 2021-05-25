@@ -39,7 +39,7 @@ export interface GetRepositoryArgs {
     /**
      * The name for the repository. This needs to be less than 100 characters.
      */
-    readonly repositoryName: string;
+    repositoryName: string;
 }
 
 /**

@@ -41,11 +41,11 @@ export interface GetIntentArgs {
     /**
      * The name of the intent. The name is case sensitive.
      */
-    readonly name: string;
+    name: string;
     /**
      * The version of the intent.
      */
-    readonly version?: string;
+    version?: string;
 }
 
 /**

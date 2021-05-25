@@ -40,11 +40,11 @@ export interface GetClusterArgs {
     /**
      * Name of the cluster.
      */
-    readonly clusterName: string;
+    clusterName: string;
     /**
      * Map of key-value pairs assigned to the cluster.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**

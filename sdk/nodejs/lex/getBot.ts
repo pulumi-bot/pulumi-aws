@@ -41,11 +41,11 @@ export interface GetBotArgs {
     /**
      * The name of the bot. The name is case sensitive.
      */
-    readonly name: string;
+    name: string;
     /**
      * The version or alias of the bot.
      */
-    readonly version?: string;
+    version?: string;
 }
 
 /**

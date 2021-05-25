@@ -39,7 +39,7 @@ export interface GetLaunchConfigurationArgs {
     /**
      * The name of the launch configuration.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
