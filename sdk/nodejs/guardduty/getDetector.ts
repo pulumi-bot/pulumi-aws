@@ -38,7 +38,7 @@ export interface GetDetectorArgs {
     /**
      * The ID of the detector.
      */
-    readonly id?: string;
+    id?: string;
 }
 
 /**
