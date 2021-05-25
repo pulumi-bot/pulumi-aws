@@ -40,11 +40,11 @@ export interface GetAccessPointArgs {
     /**
      * The ID that identifies the file system.
      */
-    readonly accessPointId: string;
+    accessPointId: string;
     /**
      * Key-value mapping of resource tags.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
