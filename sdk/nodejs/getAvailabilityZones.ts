@@ -89,26 +89,26 @@ export interface GetAvailabilityZonesArgs {
     /**
      * Set to `true` to include all Availability Zones and Local Zones regardless of your opt in status.
      */
-    readonly allAvailabilityZones?: boolean;
+    allAvailabilityZones?: boolean;
     /**
      * List of Availability Zone names to exclude.
      */
-    readonly excludeNames?: string[];
+    excludeNames?: string[];
     /**
      * List of Availability Zone IDs to exclude.
      */
-    readonly excludeZoneIds?: string[];
+    excludeZoneIds?: string[];
     /**
      * Configuration block(s) for filtering. Detailed below.
      */
-    readonly filters?: inputs.GetAvailabilityZonesFilter[];
+    filters?: inputs.GetAvailabilityZonesFilter[];
     /**
      * Allows to filter list of Availability Zones based on their
      * current state. Can be either `"available"`, `"information"`, `"impaired"` or
      * `"unavailable"`. By default the list includes a complete set of Availability Zones
      * to which the underlying AWS account has access, regardless of their state.
      */
-    readonly state?: string;
+    state?: string;
 }
 
 /**
