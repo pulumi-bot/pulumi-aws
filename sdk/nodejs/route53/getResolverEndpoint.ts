@@ -57,11 +57,11 @@ export interface GetResolverEndpointArgs {
      * several valid keys, for a full reference, check out
      * [Route53resolver Filter value in the AWS API reference][1].
      */
-    readonly filters?: inputs.route53.GetResolverEndpointFilter[];
+    filters?: inputs.route53.GetResolverEndpointFilter[];
     /**
      * The ID of the Route53 Resolver Endpoint.
      */
-    readonly resolverEndpointId?: string;
+    resolverEndpointId?: string;
 }
 
 /**

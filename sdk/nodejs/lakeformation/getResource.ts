@@ -39,7 +39,7 @@ export interface GetResourceArgs {
     /**
      * Amazon Resource Name (ARN) of the resource, an S3 path.
      */
-    readonly arn: string;
+    arn: string;
 }
 
 /**

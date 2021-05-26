@@ -40,7 +40,7 @@ export interface GetConnectionArgs {
      * A concatenation of the catalog ID and connection name. For example, if your account ID is
      * `123456789123` and the connection name is `conn` then the ID is `123456789123:conn`.
      */
-    readonly id: string;
+    id: string;
 }
 
 /**
