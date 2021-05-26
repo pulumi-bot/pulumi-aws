@@ -67,7 +67,7 @@ export interface GetServiceAccountArgs {
      * Name of the region whose AWS Redshift account ID is desired.
      * Defaults to the region from the AWS provider configuration.
      */
-    readonly region?: string;
+    region?: string;
 }
 
 /**

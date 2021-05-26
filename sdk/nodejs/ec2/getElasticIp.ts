@@ -79,19 +79,19 @@ export interface GetElasticIpArgs {
     /**
      * One or more name/value pairs to use as filters. There are several valid keys, for a full reference, check out the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAddresses.html).
      */
-    readonly filters?: inputs.ec2.GetElasticIpFilter[];
+    filters?: inputs.ec2.GetElasticIpFilter[];
     /**
      * The allocation id of the specific VPC EIP to retrieve. If a classic EIP is required, do NOT set `id`, only set `publicIp`
      */
-    readonly id?: string;
+    id?: string;
     /**
      * The public IP of the specific EIP to retrieve.
      */
-    readonly publicIp?: string;
+    publicIp?: string;
     /**
      * A map of tags, each pair of which must exactly match a pair on the desired Elastic IP
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**

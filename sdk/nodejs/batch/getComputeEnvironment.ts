@@ -41,11 +41,11 @@ export interface GetComputeEnvironmentArgs {
     /**
      * The name of the Batch Compute Environment
      */
-    readonly computeEnvironmentName: string;
+    computeEnvironmentName: string;
     /**
      * Key-value map of resource tags
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
