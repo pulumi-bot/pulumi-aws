@@ -218,3 +218,12 @@ def get_workspace(directory_id: Optional[str] = None,
         volume_encryption_key=__ret__.volume_encryption_key,
         workspace_id=__ret__.workspace_id,
         workspace_properties=__ret__.workspace_properties)
+
+
+@_utilities.lift_output_func(get_workspace)
+def get_workspace_apply(directory_id: Optional[pulumi.Input[str]] = None,
+                        tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                        user_name: Optional[pulumi.Input[str]] = None,
+                        workspace_id: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkspaceResult]:
+    ...

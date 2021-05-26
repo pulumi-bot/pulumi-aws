@@ -240,3 +240,11 @@ def get_layer_version(compatible_runtime: Optional[str] = None,
         source_code_hash=__ret__.source_code_hash,
         source_code_size=__ret__.source_code_size,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_layer_version)
+def get_layer_version_apply(compatible_runtime: Optional[pulumi.Input[str]] = None,
+                            layer_name: Optional[pulumi.Input[str]] = None,
+                            version: Optional[pulumi.Input[int]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLayerVersionResult]:
+    ...

@@ -4,6 +4,9 @@
 package lambda
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -81,4 +84,163 @@ type LookupLayerVersionResult struct {
 	SourceCodeSize int `pulumi:"sourceCodeSize"`
 	// This Lamba Layer version.
 	Version int `pulumi:"version"`
+}
+
+func LookupLayerVersionApply(ctx *pulumi.Context, args LookupLayerVersionApplyInput, opts ...pulumi.InvokeOption) LookupLayerVersionResultOutput {
+	return args.ToLookupLayerVersionApplyOutput().ApplyT(func(v LookupLayerVersionArgs) (LookupLayerVersionResult, error) {
+		r, err := LookupLayerVersion(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupLayerVersionResultOutput)
+}
+
+// LookupLayerVersionApplyInput is an input type that accepts LookupLayerVersionApplyArgs and LookupLayerVersionApplyOutput values.
+// You can construct a concrete instance of `LookupLayerVersionApplyInput` via:
+//
+//          LookupLayerVersionApplyArgs{...}
+type LookupLayerVersionApplyInput interface {
+	pulumi.Input
+
+	ToLookupLayerVersionApplyOutput() LookupLayerVersionApplyOutput
+	ToLookupLayerVersionApplyOutputWithContext(context.Context) LookupLayerVersionApplyOutput
+}
+
+// A collection of arguments for invoking getLayerVersion.
+type LookupLayerVersionApplyArgs struct {
+	// Specific runtime the layer version must support. Conflicts with `version`. If specified, the latest available layer version supporting the provided runtime will be used.
+	CompatibleRuntime pulumi.StringPtrInput `pulumi:"compatibleRuntime"`
+	// Name of the lambda layer.
+	LayerName pulumi.StringInput `pulumi:"layerName"`
+	// Specific layer version. Conflicts with `compatibleRuntime`. If omitted, the latest available layer version will be used.
+	Version pulumi.IntPtrInput `pulumi:"version"`
+}
+
+func (LookupLayerVersionApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupLayerVersionArgs)(nil)).Elem()
+}
+
+func (i LookupLayerVersionApplyArgs) ToLookupLayerVersionApplyOutput() LookupLayerVersionApplyOutput {
+	return i.ToLookupLayerVersionApplyOutputWithContext(context.Background())
+}
+
+func (i LookupLayerVersionApplyArgs) ToLookupLayerVersionApplyOutputWithContext(ctx context.Context) LookupLayerVersionApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupLayerVersionApplyOutput)
+}
+
+// A collection of arguments for invoking getLayerVersion.
+type LookupLayerVersionApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupLayerVersionApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupLayerVersionArgs)(nil)).Elem()
+}
+
+func (o LookupLayerVersionApplyOutput) ToLookupLayerVersionApplyOutput() LookupLayerVersionApplyOutput {
+	return o
+}
+
+func (o LookupLayerVersionApplyOutput) ToLookupLayerVersionApplyOutputWithContext(ctx context.Context) LookupLayerVersionApplyOutput {
+	return o
+}
+
+// Specific runtime the layer version must support. Conflicts with `version`. If specified, the latest available layer version supporting the provided runtime will be used.
+func (o LookupLayerVersionApplyOutput) CompatibleRuntime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupLayerVersionArgs) *string { return v.CompatibleRuntime }).(pulumi.StringPtrOutput)
+}
+
+// Name of the lambda layer.
+func (o LookupLayerVersionApplyOutput) LayerName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLayerVersionArgs) string { return v.LayerName }).(pulumi.StringOutput)
+}
+
+// Specific layer version. Conflicts with `compatibleRuntime`. If omitted, the latest available layer version will be used.
+func (o LookupLayerVersionApplyOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupLayerVersionArgs) *int { return v.Version }).(pulumi.IntPtrOutput)
+}
+
+// A collection of values returned by getLayerVersion.
+type LookupLayerVersionResultOutput struct{ *pulumi.OutputState }
+
+func (LookupLayerVersionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupLayerVersionResult)(nil)).Elem()
+}
+
+func (o LookupLayerVersionResultOutput) ToLookupLayerVersionResultOutput() LookupLayerVersionResultOutput {
+	return o
+}
+
+func (o LookupLayerVersionResultOutput) ToLookupLayerVersionResultOutputWithContext(ctx context.Context) LookupLayerVersionResultOutput {
+	return o
+}
+
+// The Amazon Resource Name (ARN) of the Lambda Layer with version.
+func (o LookupLayerVersionResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLayerVersionResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+func (o LookupLayerVersionResultOutput) CompatibleRuntime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupLayerVersionResult) *string { return v.CompatibleRuntime }).(pulumi.StringPtrOutput)
+}
+
+// A list of [Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/API_GetLayerVersion.html#SSS-GetLayerVersion-response-CompatibleRuntimes) the specific Lambda Layer version is compatible with.
+func (o LookupLayerVersionResultOutput) CompatibleRuntimes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupLayerVersionResult) []string { return v.CompatibleRuntimes }).(pulumi.StringArrayOutput)
+}
+
+// The date this resource was created.
+func (o LookupLayerVersionResultOutput) CreatedDate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLayerVersionResult) string { return v.CreatedDate }).(pulumi.StringOutput)
+}
+
+// Description of the specific Lambda Layer version.
+func (o LookupLayerVersionResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLayerVersionResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupLayerVersionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLayerVersionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Amazon Resource Name (ARN) of the Lambda Layer without version.
+func (o LookupLayerVersionResultOutput) LayerArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLayerVersionResult) string { return v.LayerArn }).(pulumi.StringOutput)
+}
+
+func (o LookupLayerVersionResultOutput) LayerName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLayerVersionResult) string { return v.LayerName }).(pulumi.StringOutput)
+}
+
+// License info associated with the specific Lambda Layer version.
+func (o LookupLayerVersionResultOutput) LicenseInfo() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLayerVersionResult) string { return v.LicenseInfo }).(pulumi.StringOutput)
+}
+
+// The Amazon Resource Name (ARN) of a signing job.
+func (o LookupLayerVersionResultOutput) SigningJobArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLayerVersionResult) string { return v.SigningJobArn }).(pulumi.StringOutput)
+}
+
+// The Amazon Resource Name (ARN) for a signing profile version.
+func (o LookupLayerVersionResultOutput) SigningProfileVersionArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLayerVersionResult) string { return v.SigningProfileVersionArn }).(pulumi.StringOutput)
+}
+
+// Base64-encoded representation of raw SHA-256 sum of the zip file.
+func (o LookupLayerVersionResultOutput) SourceCodeHash() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLayerVersionResult) string { return v.SourceCodeHash }).(pulumi.StringOutput)
+}
+
+// The size in bytes of the function .zip file.
+func (o LookupLayerVersionResultOutput) SourceCodeSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupLayerVersionResult) int { return v.SourceCodeSize }).(pulumi.IntOutput)
+}
+
+// This Lamba Layer version.
+func (o LookupLayerVersionResultOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupLayerVersionResult) int { return v.Version }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupLayerVersionApplyOutput{})
+	pulumi.RegisterOutputType(LookupLayerVersionResultOutput{})
 }

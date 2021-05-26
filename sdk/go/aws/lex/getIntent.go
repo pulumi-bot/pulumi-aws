@@ -4,6 +4,9 @@
 package lex
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,4 +79,137 @@ type LookupIntentResult struct {
 	ParentIntentSignature string `pulumi:"parentIntentSignature"`
 	// The version of the bot.
 	Version *string `pulumi:"version"`
+}
+
+func LookupIntentApply(ctx *pulumi.Context, args LookupIntentApplyInput, opts ...pulumi.InvokeOption) LookupIntentResultOutput {
+	return args.ToLookupIntentApplyOutput().ApplyT(func(v LookupIntentArgs) (LookupIntentResult, error) {
+		r, err := LookupIntent(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupIntentResultOutput)
+}
+
+// LookupIntentApplyInput is an input type that accepts LookupIntentApplyArgs and LookupIntentApplyOutput values.
+// You can construct a concrete instance of `LookupIntentApplyInput` via:
+//
+//          LookupIntentApplyArgs{...}
+type LookupIntentApplyInput interface {
+	pulumi.Input
+
+	ToLookupIntentApplyOutput() LookupIntentApplyOutput
+	ToLookupIntentApplyOutputWithContext(context.Context) LookupIntentApplyOutput
+}
+
+// A collection of arguments for invoking getIntent.
+type LookupIntentApplyArgs struct {
+	// The name of the intent. The name is case sensitive.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The version of the intent.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (LookupIntentApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupIntentArgs)(nil)).Elem()
+}
+
+func (i LookupIntentApplyArgs) ToLookupIntentApplyOutput() LookupIntentApplyOutput {
+	return i.ToLookupIntentApplyOutputWithContext(context.Background())
+}
+
+func (i LookupIntentApplyArgs) ToLookupIntentApplyOutputWithContext(ctx context.Context) LookupIntentApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupIntentApplyOutput)
+}
+
+// A collection of arguments for invoking getIntent.
+type LookupIntentApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupIntentApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupIntentArgs)(nil)).Elem()
+}
+
+func (o LookupIntentApplyOutput) ToLookupIntentApplyOutput() LookupIntentApplyOutput {
+	return o
+}
+
+func (o LookupIntentApplyOutput) ToLookupIntentApplyOutputWithContext(ctx context.Context) LookupIntentApplyOutput {
+	return o
+}
+
+// The name of the intent. The name is case sensitive.
+func (o LookupIntentApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntentArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The version of the intent.
+func (o LookupIntentApplyOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupIntentArgs) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getIntent.
+type LookupIntentResultOutput struct{ *pulumi.OutputState }
+
+func (LookupIntentResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupIntentResult)(nil)).Elem()
+}
+
+func (o LookupIntentResultOutput) ToLookupIntentResultOutput() LookupIntentResultOutput {
+	return o
+}
+
+func (o LookupIntentResultOutput) ToLookupIntentResultOutputWithContext(ctx context.Context) LookupIntentResultOutput {
+	return o
+}
+
+// The ARN of the Lex intent.
+func (o LookupIntentResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntentResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// Checksum identifying the version of the intent that was created. The checksum is not
+// included as an argument because the resource will add it automatically when updating the intent.
+func (o LookupIntentResultOutput) Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntentResult) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// The date when the intent version was created.
+func (o LookupIntentResultOutput) CreatedDate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntentResult) string { return v.CreatedDate }).(pulumi.StringOutput)
+}
+
+// A description of the intent.
+func (o LookupIntentResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntentResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupIntentResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntentResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The date when the $LATEST version of this intent was updated.
+func (o LookupIntentResultOutput) LastUpdatedDate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntentResult) string { return v.LastUpdatedDate }).(pulumi.StringOutput)
+}
+
+// The name of the intent, not case sensitive.
+func (o LookupIntentResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntentResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A unique identifier for the built-in intent to base this
+// intent on. To find the signature for an intent, see
+// [Standard Built-in Intents](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents)
+// in the Alexa Skills Kit.
+func (o LookupIntentResultOutput) ParentIntentSignature() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntentResult) string { return v.ParentIntentSignature }).(pulumi.StringOutput)
+}
+
+// The version of the bot.
+func (o LookupIntentResultOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupIntentResult) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupIntentApplyOutput{})
+	pulumi.RegisterOutputType(LookupIntentResultOutput{})
 }

@@ -78,20 +78,20 @@ export interface GetBucketObjectArgs {
     /**
      * The name of the bucket to read the object from. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified
      */
-    readonly bucket: string;
+    bucket: string;
     /**
      * The full path to the object inside the bucket
      */
-    readonly key: string;
-    readonly range?: string;
+    key: string;
+    range?: string;
     /**
      * A map of tags assigned to the object.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
     /**
      * Specific version ID of the object returned (defaults to latest version)
      */
-    readonly versionId?: string;
+    versionId?: string;
 }
 
 /**
@@ -193,4 +193,31 @@ export interface GetBucketObjectResult {
      * If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Amazon S3 stores the value of this header in the object metadata.
      */
     readonly websiteRedirectLocation: string;
+}
+
+export function getBucketObjectApply(args: GetBucketObjectApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketObjectResult> {
+    return pulumi.output(args).apply(a => getBucketObject(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBucketObject.
+ */
+export interface GetBucketObjectApplyArgs {
+    /**
+     * The name of the bucket to read the object from. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified
+     */
+    bucket: pulumi.Input<string>;
+    /**
+     * The full path to the object inside the bucket
+     */
+    key: pulumi.Input<string>;
+    range?: pulumi.Input<string>;
+    /**
+     * A map of tags assigned to the object.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Specific version ID of the object returned (defaults to latest version)
+     */
+    versionId?: pulumi.Input<string>;
 }

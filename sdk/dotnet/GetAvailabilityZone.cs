@@ -26,6 +26,26 @@ namespace Pulumi.Aws
         /// </summary>
         public static Task<GetAvailabilityZoneResult> InvokeAsync(GetAvailabilityZoneArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAvailabilityZoneResult>("aws:index/getAvailabilityZone:getAvailabilityZone", args ?? new GetAvailabilityZoneArgs(), options.WithVersion());
+
+        public static Output<GetAvailabilityZoneResult> Apply(GetAvailabilityZoneApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetAvailabilityZoneApplyArgs();
+            return Pulumi.Output.All(
+                args.AllAvailabilityZones.Box(),
+                args.Filters.Box(),
+                args.Name.Box(),
+                args.State.Box(),
+                args.ZoneId.Box()
+            ).Apply(a => {
+                    var args = new GetAvailabilityZoneArgs();
+                    a[0].Set(args, nameof(args.AllAvailabilityZones));
+                    a[1].Set(args, nameof(args.Filters));
+                    a[2].Set(args, nameof(args.Name));
+                    a[3].Set(args, nameof(args.State));
+                    a[4].Set(args, nameof(args.ZoneId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -68,6 +88,49 @@ namespace Pulumi.Aws
         public string? ZoneId { get; set; }
 
         public GetAvailabilityZoneArgs()
+        {
+        }
+    }
+
+    public sealed class GetAvailabilityZoneApplyArgs
+    {
+        /// <summary>
+        /// Set to `true` to include all Availability Zones and Local Zones regardless of your opt in status.
+        /// </summary>
+        [Input("allAvailabilityZones")]
+        public Input<bool>? AllAvailabilityZones { get; set; }
+
+        [Input("filters")]
+        private InputList<Inputs.GetAvailabilityZoneFilterArgs>? _filters;
+
+        /// <summary>
+        /// Configuration block(s) for filtering. Detailed below.
+        /// </summary>
+        public InputList<Inputs.GetAvailabilityZoneFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetAvailabilityZoneFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// The name of the filter field. Valid values can be found in the [EC2 DescribeAvailabilityZones API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html).
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// A specific availability zone state to require. May be any of `"available"`, `"information"` or `"impaired"`.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// The zone ID of the availability zone to select.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
+        public GetAvailabilityZoneApplyArgs()
         {
         }
     }

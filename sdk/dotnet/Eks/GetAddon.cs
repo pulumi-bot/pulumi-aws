@@ -43,6 +43,21 @@ namespace Pulumi.Aws.Eks
         /// </summary>
         public static Task<GetAddonResult> InvokeAsync(GetAddonArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAddonResult>("aws:eks/getAddon:getAddon", args ?? new GetAddonArgs(), options.WithVersion());
+
+        public static Output<GetAddonResult> Apply(GetAddonApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.AddonName.Box(),
+                args.ClusterName.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetAddonArgs();
+                    a[0].Set(args, nameof(args.AddonName));
+                    a[1].Set(args, nameof(args.ClusterName));
+                    a[2].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -70,6 +85,34 @@ namespace Pulumi.Aws.Eks
         }
 
         public GetAddonArgs()
+        {
+        }
+    }
+
+    public sealed class GetAddonApplyArgs
+    {
+        /// <summary>
+        /// Name of the EKS add-on. The name must match one of
+        /// the names returned by [list-addon](https://docs.aws.amazon.com/cli/latest/reference/eks/list-addons.html).
+        /// </summary>
+        [Input("addonName", required: true)]
+        public Input<string> AddonName { get; set; } = null!;
+
+        /// <summary>
+        /// Name of the EKS Cluster. Must be between 1-100 characters in length. Must begin with an alphanumeric character, and must only contain alphanumeric characters, dashes and underscores (`^[0-9A-Za-z][A-Za-z0-9\-_]+$`).
+        /// </summary>
+        [Input("clusterName", required: true)]
+        public Input<string> ClusterName { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetAddonApplyArgs()
         {
         }
     }

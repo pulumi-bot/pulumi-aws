@@ -4,6 +4,9 @@
 package outposts
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -57,4 +60,106 @@ type GetSiteResult struct {
 	Description string `pulumi:"description"`
 	Id          string `pulumi:"id"`
 	Name        string `pulumi:"name"`
+}
+
+func GetSiteApply(ctx *pulumi.Context, args GetSiteApplyInput, opts ...pulumi.InvokeOption) GetSiteResultOutput {
+	return args.ToGetSiteApplyOutput().ApplyT(func(v GetSiteArgs) (GetSiteResult, error) {
+		r, err := GetSite(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetSiteResultOutput)
+}
+
+// GetSiteApplyInput is an input type that accepts GetSiteApplyArgs and GetSiteApplyOutput values.
+// You can construct a concrete instance of `GetSiteApplyInput` via:
+//
+//          GetSiteApplyArgs{...}
+type GetSiteApplyInput interface {
+	pulumi.Input
+
+	ToGetSiteApplyOutput() GetSiteApplyOutput
+	ToGetSiteApplyOutputWithContext(context.Context) GetSiteApplyOutput
+}
+
+// A collection of arguments for invoking getSite.
+type GetSiteApplyArgs struct {
+	// Identifier of the Site.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Name of the Site.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (GetSiteApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSiteArgs)(nil)).Elem()
+}
+
+func (i GetSiteApplyArgs) ToGetSiteApplyOutput() GetSiteApplyOutput {
+	return i.ToGetSiteApplyOutputWithContext(context.Background())
+}
+
+func (i GetSiteApplyArgs) ToGetSiteApplyOutputWithContext(ctx context.Context) GetSiteApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSiteApplyOutput)
+}
+
+// A collection of arguments for invoking getSite.
+type GetSiteApplyOutput struct{ *pulumi.OutputState }
+
+func (GetSiteApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSiteArgs)(nil)).Elem()
+}
+
+func (o GetSiteApplyOutput) ToGetSiteApplyOutput() GetSiteApplyOutput {
+	return o
+}
+
+func (o GetSiteApplyOutput) ToGetSiteApplyOutputWithContext(ctx context.Context) GetSiteApplyOutput {
+	return o
+}
+
+// Identifier of the Site.
+func (o GetSiteApplyOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSiteArgs) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Site.
+func (o GetSiteApplyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSiteArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getSite.
+type GetSiteResultOutput struct{ *pulumi.OutputState }
+
+func (GetSiteResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSiteResult)(nil)).Elem()
+}
+
+func (o GetSiteResultOutput) ToGetSiteResultOutput() GetSiteResultOutput {
+	return o
+}
+
+func (o GetSiteResultOutput) ToGetSiteResultOutputWithContext(ctx context.Context) GetSiteResultOutput {
+	return o
+}
+
+// AWS Account identifier.
+func (o GetSiteResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSiteResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Description.
+func (o GetSiteResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSiteResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetSiteResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSiteResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetSiteResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSiteResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSiteApplyOutput{})
+	pulumi.RegisterOutputType(GetSiteResultOutput{})
 }

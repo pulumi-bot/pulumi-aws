@@ -39,6 +39,19 @@ namespace Pulumi.Aws.Workspaces
         /// </summary>
         public static Task<GetDirectoryResult> InvokeAsync(GetDirectoryArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDirectoryResult>("aws:workspaces/getDirectory:getDirectory", args ?? new GetDirectoryArgs(), options.WithVersion());
+
+        public static Output<GetDirectoryResult> Apply(GetDirectoryApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.DirectoryId.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetDirectoryArgs();
+                    a[0].Set(args, nameof(args.DirectoryId));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -63,6 +76,31 @@ namespace Pulumi.Aws.Workspaces
         }
 
         public GetDirectoryArgs()
+        {
+        }
+    }
+
+    public sealed class GetDirectoryApplyArgs
+    {
+        /// <summary>
+        /// The directory identifier for registration in WorkSpaces service.
+        /// </summary>
+        [Input("directoryId", required: true)]
+        public Input<string> DirectoryId { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the WorkSpaces directory.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetDirectoryApplyArgs()
         {
         }
     }

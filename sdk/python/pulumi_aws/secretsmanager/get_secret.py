@@ -208,3 +208,10 @@ def get_secret(arn: Optional[str] = None,
         rotation_lambda_arn=__ret__.rotation_lambda_arn,
         rotation_rules=__ret__.rotation_rules,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_secret)
+def get_secret_apply(arn: Optional[pulumi.Input[str]] = None,
+                     name: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretResult]:
+    ...

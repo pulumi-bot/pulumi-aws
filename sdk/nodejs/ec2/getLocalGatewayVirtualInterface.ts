@@ -42,15 +42,15 @@ export interface GetLocalGatewayVirtualInterfaceArgs {
     /**
      * One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayVirtualInterfaces.html) for supported filters. Detailed below.
      */
-    readonly filters?: inputs.ec2.GetLocalGatewayVirtualInterfaceFilter[];
+    filters?: inputs.ec2.GetLocalGatewayVirtualInterfaceFilter[];
     /**
      * Identifier of EC2 Local Gateway Virtual Interface.
      */
-    readonly id?: string;
+    id?: string;
     /**
      * Key-value map of resource tags, each pair of which must exactly match a pair on the desired local gateway route table.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -85,4 +85,26 @@ export interface GetLocalGatewayVirtualInterfaceResult {
      * Virtual Local Area Network.
      */
     readonly vlan: number;
+}
+
+export function getLocalGatewayVirtualInterfaceApply(args?: GetLocalGatewayVirtualInterfaceApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLocalGatewayVirtualInterfaceResult> {
+    return pulumi.output(args).apply(a => getLocalGatewayVirtualInterface(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getLocalGatewayVirtualInterface.
+ */
+export interface GetLocalGatewayVirtualInterfaceApplyArgs {
+    /**
+     * One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayVirtualInterfaces.html) for supported filters. Detailed below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.ec2.GetLocalGatewayVirtualInterfaceFilter>[]>;
+    /**
+     * Identifier of EC2 Local Gateway Virtual Interface.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Key-value map of resource tags, each pair of which must exactly match a pair on the desired local gateway route table.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -21,6 +21,17 @@ namespace Pulumi.Aws.Eks
         /// </summary>
         public static Task<GetClusterAuthResult> InvokeAsync(GetClusterAuthArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterAuthResult>("aws:eks/getClusterAuth:getClusterAuth", args ?? new GetClusterAuthArgs(), options.WithVersion());
+
+        public static Output<GetClusterAuthResult> Apply(GetClusterAuthApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetClusterAuthArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -33,6 +44,19 @@ namespace Pulumi.Aws.Eks
         public string Name { get; set; } = null!;
 
         public GetClusterAuthArgs()
+        {
+        }
+    }
+
+    public sealed class GetClusterAuthApplyArgs
+    {
+        /// <summary>
+        /// The name of the cluster
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetClusterAuthApplyArgs()
         {
         }
     }

@@ -4,6 +4,9 @@
 package waf
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,4 +54,90 @@ type LookupRateBasedRuleResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
+}
+
+func LookupRateBasedRuleApply(ctx *pulumi.Context, args LookupRateBasedRuleApplyInput, opts ...pulumi.InvokeOption) LookupRateBasedRuleResultOutput {
+	return args.ToLookupRateBasedRuleApplyOutput().ApplyT(func(v LookupRateBasedRuleArgs) (LookupRateBasedRuleResult, error) {
+		r, err := LookupRateBasedRule(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupRateBasedRuleResultOutput)
+}
+
+// LookupRateBasedRuleApplyInput is an input type that accepts LookupRateBasedRuleApplyArgs and LookupRateBasedRuleApplyOutput values.
+// You can construct a concrete instance of `LookupRateBasedRuleApplyInput` via:
+//
+//          LookupRateBasedRuleApplyArgs{...}
+type LookupRateBasedRuleApplyInput interface {
+	pulumi.Input
+
+	ToLookupRateBasedRuleApplyOutput() LookupRateBasedRuleApplyOutput
+	ToLookupRateBasedRuleApplyOutputWithContext(context.Context) LookupRateBasedRuleApplyOutput
+}
+
+// A collection of arguments for invoking getRateBasedRule.
+type LookupRateBasedRuleApplyArgs struct {
+	// The name of the WAF rate based rule.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupRateBasedRuleApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRateBasedRuleArgs)(nil)).Elem()
+}
+
+func (i LookupRateBasedRuleApplyArgs) ToLookupRateBasedRuleApplyOutput() LookupRateBasedRuleApplyOutput {
+	return i.ToLookupRateBasedRuleApplyOutputWithContext(context.Background())
+}
+
+func (i LookupRateBasedRuleApplyArgs) ToLookupRateBasedRuleApplyOutputWithContext(ctx context.Context) LookupRateBasedRuleApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupRateBasedRuleApplyOutput)
+}
+
+// A collection of arguments for invoking getRateBasedRule.
+type LookupRateBasedRuleApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupRateBasedRuleApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRateBasedRuleArgs)(nil)).Elem()
+}
+
+func (o LookupRateBasedRuleApplyOutput) ToLookupRateBasedRuleApplyOutput() LookupRateBasedRuleApplyOutput {
+	return o
+}
+
+func (o LookupRateBasedRuleApplyOutput) ToLookupRateBasedRuleApplyOutputWithContext(ctx context.Context) LookupRateBasedRuleApplyOutput {
+	return o
+}
+
+// The name of the WAF rate based rule.
+func (o LookupRateBasedRuleApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRateBasedRuleArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getRateBasedRule.
+type LookupRateBasedRuleResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRateBasedRuleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRateBasedRuleResult)(nil)).Elem()
+}
+
+func (o LookupRateBasedRuleResultOutput) ToLookupRateBasedRuleResultOutput() LookupRateBasedRuleResultOutput {
+	return o
+}
+
+func (o LookupRateBasedRuleResultOutput) ToLookupRateBasedRuleResultOutputWithContext(ctx context.Context) LookupRateBasedRuleResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupRateBasedRuleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRateBasedRuleResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupRateBasedRuleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRateBasedRuleResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRateBasedRuleApplyOutput{})
+	pulumi.RegisterOutputType(LookupRateBasedRuleResultOutput{})
 }

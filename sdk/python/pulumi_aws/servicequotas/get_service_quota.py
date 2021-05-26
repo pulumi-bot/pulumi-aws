@@ -186,3 +186,11 @@ def get_service_quota(quota_code: Optional[str] = None,
         service_code=__ret__.service_code,
         service_name=__ret__.service_name,
         value=__ret__.value)
+
+
+@_utilities.lift_output_func(get_service_quota)
+def get_service_quota_apply(quota_code: Optional[pulumi.Input[str]] = None,
+                            quota_name: Optional[pulumi.Input[str]] = None,
+                            service_code: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceQuotaResult]:
+    ...

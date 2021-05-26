@@ -168,3 +168,11 @@ def get_instances(filters: Optional[Sequence[pulumi.InputType['GetInstancesFilte
         instance_tags=__ret__.instance_tags,
         private_ips=__ret__.private_ips,
         public_ips=__ret__.public_ips)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetInstancesFilterArgs']]]]] = None,
+                        instance_state_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                        instance_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    ...

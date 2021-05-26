@@ -41,6 +41,22 @@ namespace Pulumi.Aws.Efs
         /// </summary>
         public static Task<GetMountTargetResult> InvokeAsync(GetMountTargetArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMountTargetResult>("aws:efs/getMountTarget:getMountTarget", args ?? new GetMountTargetArgs(), options.WithVersion());
+
+        public static Output<GetMountTargetResult> Apply(GetMountTargetApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetMountTargetApplyArgs();
+            return Pulumi.Output.All(
+                args.AccessPointId.Box(),
+                args.FileSystemId.Box(),
+                args.MountTargetId.Box()
+            ).Apply(a => {
+                    var args = new GetMountTargetArgs();
+                    a[0].Set(args, nameof(args.AccessPointId));
+                    a[1].Set(args, nameof(args.FileSystemId));
+                    a[2].Set(args, nameof(args.MountTargetId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -65,6 +81,31 @@ namespace Pulumi.Aws.Efs
         public string? MountTargetId { get; set; }
 
         public GetMountTargetArgs()
+        {
+        }
+    }
+
+    public sealed class GetMountTargetApplyArgs
+    {
+        /// <summary>
+        /// ID or ARN of the access point whose mount target that you want to find. It must be included if a `file_system_id` and `mount_target_id` are not included.
+        /// </summary>
+        [Input("accessPointId")]
+        public Input<string>? AccessPointId { get; set; }
+
+        /// <summary>
+        /// ID or ARN of the file system whose mount target that you want to find. It must be included if an `access_point_id` and `mount_target_id` are not included.
+        /// </summary>
+        [Input("fileSystemId")]
+        public Input<string>? FileSystemId { get; set; }
+
+        /// <summary>
+        /// ID or ARN of the mount target that you want to find. It must be included in your request if an `access_point_id` and `file_system_id` are not included.
+        /// </summary>
+        [Input("mountTargetId")]
+        public Input<string>? MountTargetId { get; set; }
+
+        public GetMountTargetApplyArgs()
         {
         }
     }

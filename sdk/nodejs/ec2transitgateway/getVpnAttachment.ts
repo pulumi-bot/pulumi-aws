@@ -60,19 +60,19 @@ export interface GetVpnAttachmentArgs {
     /**
      * Configuration block(s) for filtering. Detailed below.
      */
-    readonly filters?: inputs.ec2transitgateway.GetVpnAttachmentFilter[];
+    filters?: inputs.ec2transitgateway.GetVpnAttachmentFilter[];
     /**
      * A map of tags, each pair of which must exactly match a pair on the desired Transit Gateway VPN Attachment.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
     /**
      * Identifier of the EC2 Transit Gateway.
      */
-    readonly transitGatewayId?: string;
+    transitGatewayId?: string;
     /**
      * Identifier of the EC2 VPN Connection.
      */
-    readonly vpnConnectionId?: string;
+    vpnConnectionId?: string;
 }
 
 /**
@@ -90,4 +90,30 @@ export interface GetVpnAttachmentResult {
     readonly tags: {[key: string]: string};
     readonly transitGatewayId?: string;
     readonly vpnConnectionId?: string;
+}
+
+export function getVpnAttachmentApply(args?: GetVpnAttachmentApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpnAttachmentResult> {
+    return pulumi.output(args).apply(a => getVpnAttachment(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVpnAttachment.
+ */
+export interface GetVpnAttachmentApplyArgs {
+    /**
+     * Configuration block(s) for filtering. Detailed below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.ec2transitgateway.GetVpnAttachmentFilter>[]>;
+    /**
+     * A map of tags, each pair of which must exactly match a pair on the desired Transit Gateway VPN Attachment.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Identifier of the EC2 Transit Gateway.
+     */
+    transitGatewayId?: pulumi.Input<string>;
+    /**
+     * Identifier of the EC2 VPN Connection.
+     */
+    vpnConnectionId?: pulumi.Input<string>;
 }

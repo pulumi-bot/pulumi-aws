@@ -111,3 +111,10 @@ def get_transit_gateway_route_tables(filters: Optional[Sequence[pulumi.InputType
         id=__ret__.id,
         ids=__ret__.ids,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_transit_gateway_route_tables)
+def get_transit_gateway_route_tables_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetTransitGatewayRouteTablesFilterArgs']]]]] = None,
+                                           tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitGatewayRouteTablesResult]:
+    ...

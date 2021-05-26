@@ -39,6 +39,19 @@ namespace Pulumi.Aws.CloudFront
         /// </summary>
         public static Task<GetDistributionResult> InvokeAsync(GetDistributionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDistributionResult>("aws:cloudfront/getDistribution:getDistribution", args ?? new GetDistributionArgs(), options.WithVersion());
+
+        public static Output<GetDistributionResult> Apply(GetDistributionApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Id.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetDistributionArgs();
+                    a[0].Set(args, nameof(args.Id));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -59,6 +72,27 @@ namespace Pulumi.Aws.CloudFront
         }
 
         public GetDistributionArgs()
+        {
+        }
+    }
+
+    public sealed class GetDistributionApplyArgs
+    {
+        /// <summary>
+        /// The identifier for the distribution. For example: `EDFDVBD632BHDS5`.
+        /// </summary>
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetDistributionApplyArgs()
         {
         }
     }

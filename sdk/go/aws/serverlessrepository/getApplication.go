@@ -4,6 +4,9 @@
 package serverlessrepository
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -78,4 +81,122 @@ type GetApplicationResult struct {
 	SourceCodeUrl string `pulumi:"sourceCodeUrl"`
 	// A URL pointing to the Cloud Formation template for the application version.
 	TemplateUrl string `pulumi:"templateUrl"`
+}
+
+func GetApplicationApply(ctx *pulumi.Context, args GetApplicationApplyInput, opts ...pulumi.InvokeOption) GetApplicationResultOutput {
+	return args.ToGetApplicationApplyOutput().ApplyT(func(v GetApplicationArgs) (GetApplicationResult, error) {
+		r, err := GetApplication(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetApplicationResultOutput)
+}
+
+// GetApplicationApplyInput is an input type that accepts GetApplicationApplyArgs and GetApplicationApplyOutput values.
+// You can construct a concrete instance of `GetApplicationApplyInput` via:
+//
+//          GetApplicationApplyArgs{...}
+type GetApplicationApplyInput interface {
+	pulumi.Input
+
+	ToGetApplicationApplyOutput() GetApplicationApplyOutput
+	ToGetApplicationApplyOutputWithContext(context.Context) GetApplicationApplyOutput
+}
+
+// A collection of arguments for invoking getApplication.
+type GetApplicationApplyArgs struct {
+	// The ARN of the application.
+	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
+	// The requested version of the application. By default, retrieves the latest version.
+	SemanticVersion pulumi.StringPtrInput `pulumi:"semanticVersion"`
+}
+
+func (GetApplicationApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationArgs)(nil)).Elem()
+}
+
+func (i GetApplicationApplyArgs) ToGetApplicationApplyOutput() GetApplicationApplyOutput {
+	return i.ToGetApplicationApplyOutputWithContext(context.Background())
+}
+
+func (i GetApplicationApplyArgs) ToGetApplicationApplyOutputWithContext(ctx context.Context) GetApplicationApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationApplyOutput)
+}
+
+// A collection of arguments for invoking getApplication.
+type GetApplicationApplyOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationArgs)(nil)).Elem()
+}
+
+func (o GetApplicationApplyOutput) ToGetApplicationApplyOutput() GetApplicationApplyOutput {
+	return o
+}
+
+func (o GetApplicationApplyOutput) ToGetApplicationApplyOutputWithContext(ctx context.Context) GetApplicationApplyOutput {
+	return o
+}
+
+// The ARN of the application.
+func (o GetApplicationApplyOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationArgs) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// The requested version of the application. By default, retrieves the latest version.
+func (o GetApplicationApplyOutput) SemanticVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationArgs) *string { return v.SemanticVersion }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getApplication.
+type GetApplicationResultOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationResult)(nil)).Elem()
+}
+
+func (o GetApplicationResultOutput) ToGetApplicationResultOutput() GetApplicationResultOutput {
+	return o
+}
+
+func (o GetApplicationResultOutput) ToGetApplicationResultOutputWithContext(ctx context.Context) GetApplicationResultOutput {
+	return o
+}
+
+// The ARN of the application.
+func (o GetApplicationResultOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationResult) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetApplicationResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the application.
+func (o GetApplicationResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of capabilities describing the permissions needed to deploy the application.
+func (o GetApplicationResultOutput) RequiredCapabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationResult) []string { return v.RequiredCapabilities }).(pulumi.StringArrayOutput)
+}
+
+func (o GetApplicationResultOutput) SemanticVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationResult) string { return v.SemanticVersion }).(pulumi.StringOutput)
+}
+
+// A URL pointing to the source code of the application version.
+func (o GetApplicationResultOutput) SourceCodeUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationResult) string { return v.SourceCodeUrl }).(pulumi.StringOutput)
+}
+
+// A URL pointing to the Cloud Formation template for the application version.
+func (o GetApplicationResultOutput) TemplateUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationResult) string { return v.TemplateUrl }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetApplicationApplyOutput{})
+	pulumi.RegisterOutputType(GetApplicationResultOutput{})
 }

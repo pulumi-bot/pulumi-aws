@@ -265,3 +265,15 @@ def get_vpc(cidr_block: Optional[str] = None,
         owner_id=__ret__.owner_id,
         state=__ret__.state,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_vpc)
+def get_vpc_apply(cidr_block: Optional[pulumi.Input[str]] = None,
+                  default: Optional[pulumi.Input[bool]] = None,
+                  dhcp_options_id: Optional[pulumi.Input[str]] = None,
+                  filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetVpcFilterArgs']]]]] = None,
+                  id: Optional[pulumi.Input[str]] = None,
+                  state: Optional[pulumi.Input[str]] = None,
+                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcResult]:
+    ...

@@ -317,3 +317,9 @@ def get_launch_configuration(name: Optional[str] = None,
         user_data=__ret__.user_data,
         vpc_classic_link_id=__ret__.vpc_classic_link_id,
         vpc_classic_link_security_groups=__ret__.vpc_classic_link_security_groups)
+
+
+@_utilities.lift_output_func(get_launch_configuration)
+def get_launch_configuration_apply(name: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLaunchConfigurationResult]:
+    ...

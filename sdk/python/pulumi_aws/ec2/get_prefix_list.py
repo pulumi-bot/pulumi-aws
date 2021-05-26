@@ -153,3 +153,11 @@ def get_prefix_list(filters: Optional[Sequence[pulumi.InputType['GetPrefixListFi
         id=__ret__.id,
         name=__ret__.name,
         prefix_list_id=__ret__.prefix_list_id)
+
+
+@_utilities.lift_output_func(get_prefix_list)
+def get_prefix_list_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetPrefixListFilterArgs']]]]] = None,
+                          name: Optional[pulumi.Input[str]] = None,
+                          prefix_list_id: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrefixListResult]:
+    ...

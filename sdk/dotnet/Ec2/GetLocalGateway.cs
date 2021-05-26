@@ -43,6 +43,24 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetLocalGatewayResult> InvokeAsync(GetLocalGatewayArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLocalGatewayResult>("aws:ec2/getLocalGateway:getLocalGateway", args ?? new GetLocalGatewayArgs(), options.WithVersion());
+
+        public static Output<GetLocalGatewayResult> Apply(GetLocalGatewayApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetLocalGatewayApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.Box(),
+                args.Id.Box(),
+                args.State.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetLocalGatewayArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Id));
+                    a[2].Set(args, nameof(args.State));
+                    a[3].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -87,6 +105,51 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetLocalGatewayArgs()
+        {
+        }
+    }
+
+    public sealed class GetLocalGatewayApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetLocalGatewayFilterArgs>? _filters;
+
+        /// <summary>
+        /// Custom filter block as described below.
+        /// </summary>
+        public InputList<Inputs.GetLocalGatewayFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetLocalGatewayFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// The id of the specific Local Gateway to retrieve.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// The current state of the desired Local Gateway.
+        /// Can be either `"pending"` or `"available"`.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags, each pair of which must exactly match
+        /// a pair on the desired Local Gateway.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetLocalGatewayApplyArgs()
         {
         }
     }

@@ -44,6 +44,23 @@ namespace Pulumi.Aws.Sagemaker
         /// </summary>
         public static Task<GetPrebuiltEcrImageResult> InvokeAsync(GetPrebuiltEcrImageArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPrebuiltEcrImageResult>("aws:sagemaker/getPrebuiltEcrImage:getPrebuiltEcrImage", args ?? new GetPrebuiltEcrImageArgs(), options.WithVersion());
+
+        public static Output<GetPrebuiltEcrImageResult> Apply(GetPrebuiltEcrImageApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.DnsSuffix.Box(),
+                args.ImageTag.Box(),
+                args.Region.Box(),
+                args.RepositoryName.Box()
+            ).Apply(a => {
+                    var args = new GetPrebuiltEcrImageArgs();
+                    a[0].Set(args, nameof(args.DnsSuffix));
+                    a[1].Set(args, nameof(args.ImageTag));
+                    a[2].Set(args, nameof(args.Region));
+                    a[3].Set(args, nameof(args.RepositoryName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -74,6 +91,37 @@ namespace Pulumi.Aws.Sagemaker
         public string RepositoryName { get; set; } = null!;
 
         public GetPrebuiltEcrImageArgs()
+        {
+        }
+    }
+
+    public sealed class GetPrebuiltEcrImageApplyArgs
+    {
+        /// <summary>
+        /// The DNS suffix to use in the registry path. If not specified, the AWS provider sets it to the DNS suffix for the current region.
+        /// </summary>
+        [Input("dnsSuffix")]
+        public Input<string>? DnsSuffix { get; set; }
+
+        /// <summary>
+        /// The image tag for the Docker image. If not specified, the AWS provider sets the value to `1`, which for many repositories indicates the latest version. Some repositories, such as XGBoost, do not support `1` or `latest` and specific version must be used.
+        /// </summary>
+        [Input("imageTag")]
+        public Input<string>? ImageTag { get; set; }
+
+        /// <summary>
+        /// The region to use in the registry path. If not specified, the AWS provider sets it to the current region.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The name of the repository, which is generally the algorithm or library. Values include `blazingtext`, `factorization-machines`, `forecasting-deepar`, `image-classification`, `ipinsights`, `kmeans`, `knn`, `lda`, `linear-learner`, `mxnet-inference-eia`, `mxnet-inference`, `mxnet-training`, `ntm`, `object-detection`, `object2vec`, `pca`, `pytorch-inference-eia`, `pytorch-inference`, `pytorch-training`, `randomcutforest`, `sagemaker-scikit-learn`, `sagemaker-sparkml-serving`, `sagemaker-xgboost`, `semantic-segmentation`, `seq2seq`, `tensorflow-inference-eia`, `tensorflow-inference`, and `tensorflow-training`.
+        /// </summary>
+        [Input("repositoryName", required: true)]
+        public Input<string> RepositoryName { get; set; } = null!;
+
+        public GetPrebuiltEcrImageApplyArgs()
         {
         }
     }

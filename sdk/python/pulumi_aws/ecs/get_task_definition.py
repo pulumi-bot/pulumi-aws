@@ -136,3 +136,9 @@ def get_task_definition(task_definition: Optional[str] = None,
         status=__ret__.status,
         task_definition=__ret__.task_definition,
         task_role_arn=__ret__.task_role_arn)
+
+
+@_utilities.lift_output_func(get_task_definition)
+def get_task_definition_apply(task_definition: Optional[pulumi.Input[str]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTaskDefinitionResult]:
+    ...

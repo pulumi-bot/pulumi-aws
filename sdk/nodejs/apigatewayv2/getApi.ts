@@ -40,11 +40,11 @@ export interface GetApiArgs {
     /**
      * The API identifier.
      */
-    readonly apiId: string;
+    apiId: string;
     /**
      * A map of resource tags.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -108,4 +108,22 @@ export interface GetApiResult {
      * A version identifier for the API.
      */
     readonly version: string;
+}
+
+export function getApiApply(args: GetApiApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiResult> {
+    return pulumi.output(args).apply(a => getApi(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getApi.
+ */
+export interface GetApiApplyArgs {
+    /**
+     * The API identifier.
+     */
+    apiId: pulumi.Input<string>;
+    /**
+     * A map of resource tags.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

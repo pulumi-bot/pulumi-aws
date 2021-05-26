@@ -4,6 +4,9 @@
 package waf
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,4 +54,90 @@ type LookupWebAclResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
+}
+
+func LookupWebAclApply(ctx *pulumi.Context, args LookupWebAclApplyInput, opts ...pulumi.InvokeOption) LookupWebAclResultOutput {
+	return args.ToLookupWebAclApplyOutput().ApplyT(func(v LookupWebAclArgs) (LookupWebAclResult, error) {
+		r, err := LookupWebAcl(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupWebAclResultOutput)
+}
+
+// LookupWebAclApplyInput is an input type that accepts LookupWebAclApplyArgs and LookupWebAclApplyOutput values.
+// You can construct a concrete instance of `LookupWebAclApplyInput` via:
+//
+//          LookupWebAclApplyArgs{...}
+type LookupWebAclApplyInput interface {
+	pulumi.Input
+
+	ToLookupWebAclApplyOutput() LookupWebAclApplyOutput
+	ToLookupWebAclApplyOutputWithContext(context.Context) LookupWebAclApplyOutput
+}
+
+// A collection of arguments for invoking getWebAcl.
+type LookupWebAclApplyArgs struct {
+	// The name of the WAF Web ACL.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupWebAclApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWebAclArgs)(nil)).Elem()
+}
+
+func (i LookupWebAclApplyArgs) ToLookupWebAclApplyOutput() LookupWebAclApplyOutput {
+	return i.ToLookupWebAclApplyOutputWithContext(context.Background())
+}
+
+func (i LookupWebAclApplyArgs) ToLookupWebAclApplyOutputWithContext(ctx context.Context) LookupWebAclApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupWebAclApplyOutput)
+}
+
+// A collection of arguments for invoking getWebAcl.
+type LookupWebAclApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupWebAclApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWebAclArgs)(nil)).Elem()
+}
+
+func (o LookupWebAclApplyOutput) ToLookupWebAclApplyOutput() LookupWebAclApplyOutput {
+	return o
+}
+
+func (o LookupWebAclApplyOutput) ToLookupWebAclApplyOutputWithContext(ctx context.Context) LookupWebAclApplyOutput {
+	return o
+}
+
+// The name of the WAF Web ACL.
+func (o LookupWebAclApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAclArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getWebAcl.
+type LookupWebAclResultOutput struct{ *pulumi.OutputState }
+
+func (LookupWebAclResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWebAclResult)(nil)).Elem()
+}
+
+func (o LookupWebAclResultOutput) ToLookupWebAclResultOutput() LookupWebAclResultOutput {
+	return o
+}
+
+func (o LookupWebAclResultOutput) ToLookupWebAclResultOutputWithContext(ctx context.Context) LookupWebAclResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupWebAclResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAclResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupWebAclResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAclResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupWebAclApplyOutput{})
+	pulumi.RegisterOutputType(LookupWebAclResultOutput{})
 }

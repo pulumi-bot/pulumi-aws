@@ -4,6 +4,9 @@
 package eks
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,4 +38,95 @@ type GetClusterAuthResult struct {
 	Name string `pulumi:"name"`
 	// The token to use to authenticate with the cluster.
 	Token string `pulumi:"token"`
+}
+
+func GetClusterAuthApply(ctx *pulumi.Context, args GetClusterAuthApplyInput, opts ...pulumi.InvokeOption) GetClusterAuthResultOutput {
+	return args.ToGetClusterAuthApplyOutput().ApplyT(func(v GetClusterAuthArgs) (GetClusterAuthResult, error) {
+		r, err := GetClusterAuth(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetClusterAuthResultOutput)
+}
+
+// GetClusterAuthApplyInput is an input type that accepts GetClusterAuthApplyArgs and GetClusterAuthApplyOutput values.
+// You can construct a concrete instance of `GetClusterAuthApplyInput` via:
+//
+//          GetClusterAuthApplyArgs{...}
+type GetClusterAuthApplyInput interface {
+	pulumi.Input
+
+	ToGetClusterAuthApplyOutput() GetClusterAuthApplyOutput
+	ToGetClusterAuthApplyOutputWithContext(context.Context) GetClusterAuthApplyOutput
+}
+
+// A collection of arguments for invoking getClusterAuth.
+type GetClusterAuthApplyArgs struct {
+	// The name of the cluster
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetClusterAuthApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAuthArgs)(nil)).Elem()
+}
+
+func (i GetClusterAuthApplyArgs) ToGetClusterAuthApplyOutput() GetClusterAuthApplyOutput {
+	return i.ToGetClusterAuthApplyOutputWithContext(context.Background())
+}
+
+func (i GetClusterAuthApplyArgs) ToGetClusterAuthApplyOutputWithContext(ctx context.Context) GetClusterAuthApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAuthApplyOutput)
+}
+
+// A collection of arguments for invoking getClusterAuth.
+type GetClusterAuthApplyOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAuthApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAuthArgs)(nil)).Elem()
+}
+
+func (o GetClusterAuthApplyOutput) ToGetClusterAuthApplyOutput() GetClusterAuthApplyOutput {
+	return o
+}
+
+func (o GetClusterAuthApplyOutput) ToGetClusterAuthApplyOutputWithContext(ctx context.Context) GetClusterAuthApplyOutput {
+	return o
+}
+
+// The name of the cluster
+func (o GetClusterAuthApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterAuthArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getClusterAuth.
+type GetClusterAuthResultOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAuthResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAuthResult)(nil)).Elem()
+}
+
+func (o GetClusterAuthResultOutput) ToGetClusterAuthResultOutput() GetClusterAuthResultOutput {
+	return o
+}
+
+func (o GetClusterAuthResultOutput) ToGetClusterAuthResultOutputWithContext(ctx context.Context) GetClusterAuthResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetClusterAuthResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterAuthResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetClusterAuthResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterAuthResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The token to use to authenticate with the cluster.
+func (o GetClusterAuthResultOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterAuthResult) string { return v.Token }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetClusterAuthApplyOutput{})
+	pulumi.RegisterOutputType(GetClusterAuthResultOutput{})
 }

@@ -41,11 +41,11 @@ export interface GetComputeEnvironmentArgs {
     /**
      * The name of the Batch Compute Environment
      */
-    readonly computeEnvironmentName: string;
+    computeEnvironmentName: string;
     /**
      * Key-value map of resource tags
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -89,4 +89,22 @@ export interface GetComputeEnvironmentResult {
      * The type of the compute environment (for example, `MANAGED` or `UNMANAGED`).
      */
     readonly type: string;
+}
+
+export function getComputeEnvironmentApply(args: GetComputeEnvironmentApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComputeEnvironmentResult> {
+    return pulumi.output(args).apply(a => getComputeEnvironment(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getComputeEnvironment.
+ */
+export interface GetComputeEnvironmentApplyArgs {
+    /**
+     * The name of the Batch Compute Environment
+     */
+    computeEnvironmentName: pulumi.Input<string>;
+    /**
+     * Key-value map of resource tags
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

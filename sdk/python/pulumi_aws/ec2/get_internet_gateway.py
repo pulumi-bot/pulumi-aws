@@ -149,3 +149,11 @@ def get_internet_gateway(filters: Optional[Sequence[pulumi.InputType['GetInterne
         internet_gateway_id=__ret__.internet_gateway_id,
         owner_id=__ret__.owner_id,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_internet_gateway)
+def get_internet_gateway_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetInternetGatewayFilterArgs']]]]] = None,
+                               internet_gateway_id: Optional[pulumi.Input[str]] = None,
+                               tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInternetGatewayResult]:
+    ...

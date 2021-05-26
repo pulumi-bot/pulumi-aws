@@ -76,3 +76,7 @@ export interface GetBillingServiceAccountResult {
      */
     readonly id: string;
 }
+
+export function getBillingServiceAccountApply(opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingServiceAccountResult> {
+    return pulumi.output(getBillingServiceAccount(opts))
+}

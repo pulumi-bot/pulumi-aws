@@ -4,6 +4,9 @@
 package cloudwatch
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,4 +65,110 @@ type GetEventSourceResult struct {
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The state of the event source (`ACTIVE` or `PENDING`)
 	State string `pulumi:"state"`
+}
+
+func GetEventSourceApply(ctx *pulumi.Context, args GetEventSourceApplyInput, opts ...pulumi.InvokeOption) GetEventSourceResultOutput {
+	return args.ToGetEventSourceApplyOutput().ApplyT(func(v GetEventSourceArgs) (GetEventSourceResult, error) {
+		r, err := GetEventSource(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetEventSourceResultOutput)
+}
+
+// GetEventSourceApplyInput is an input type that accepts GetEventSourceApplyArgs and GetEventSourceApplyOutput values.
+// You can construct a concrete instance of `GetEventSourceApplyInput` via:
+//
+//          GetEventSourceApplyArgs{...}
+type GetEventSourceApplyInput interface {
+	pulumi.Input
+
+	ToGetEventSourceApplyOutput() GetEventSourceApplyOutput
+	ToGetEventSourceApplyOutputWithContext(context.Context) GetEventSourceApplyOutput
+}
+
+// A collection of arguments for invoking getEventSource.
+type GetEventSourceApplyArgs struct {
+	// Specifying this limits the results to only those partner event sources with names that start with the specified prefix
+	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
+}
+
+func (GetEventSourceApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventSourceArgs)(nil)).Elem()
+}
+
+func (i GetEventSourceApplyArgs) ToGetEventSourceApplyOutput() GetEventSourceApplyOutput {
+	return i.ToGetEventSourceApplyOutputWithContext(context.Background())
+}
+
+func (i GetEventSourceApplyArgs) ToGetEventSourceApplyOutputWithContext(ctx context.Context) GetEventSourceApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventSourceApplyOutput)
+}
+
+// A collection of arguments for invoking getEventSource.
+type GetEventSourceApplyOutput struct{ *pulumi.OutputState }
+
+func (GetEventSourceApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventSourceArgs)(nil)).Elem()
+}
+
+func (o GetEventSourceApplyOutput) ToGetEventSourceApplyOutput() GetEventSourceApplyOutput {
+	return o
+}
+
+func (o GetEventSourceApplyOutput) ToGetEventSourceApplyOutputWithContext(ctx context.Context) GetEventSourceApplyOutput {
+	return o
+}
+
+// Specifying this limits the results to only those partner event sources with names that start with the specified prefix
+func (o GetEventSourceApplyOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEventSourceArgs) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getEventSource.
+type GetEventSourceResultOutput struct{ *pulumi.OutputState }
+
+func (GetEventSourceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventSourceResult)(nil)).Elem()
+}
+
+func (o GetEventSourceResultOutput) ToGetEventSourceResultOutput() GetEventSourceResultOutput {
+	return o
+}
+
+func (o GetEventSourceResultOutput) ToGetEventSourceResultOutputWithContext(ctx context.Context) GetEventSourceResultOutput {
+	return o
+}
+
+// The ARN of the partner event source
+func (o GetEventSourceResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventSourceResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The name of the SaaS partner that created the event source
+func (o GetEventSourceResultOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventSourceResult) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetEventSourceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventSourceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the event source
+func (o GetEventSourceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventSourceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetEventSourceResultOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEventSourceResult) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// The state of the event source (`ACTIVE` or `PENDING`)
+func (o GetEventSourceResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventSourceResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetEventSourceApplyOutput{})
+	pulumi.RegisterOutputType(GetEventSourceResultOutput{})
 }

@@ -387,3 +387,14 @@ def get_snapshot(db_instance_identifier: Optional[str] = None,
         status=__ret__.status,
         storage_type=__ret__.storage_type,
         vpc_id=__ret__.vpc_id)
+
+
+@_utilities.lift_output_func(get_snapshot)
+def get_snapshot_apply(db_instance_identifier: Optional[pulumi.Input[str]] = None,
+                       db_snapshot_identifier: Optional[pulumi.Input[str]] = None,
+                       include_public: Optional[pulumi.Input[bool]] = None,
+                       include_shared: Optional[pulumi.Input[bool]] = None,
+                       most_recent: Optional[pulumi.Input[bool]] = None,
+                       snapshot_type: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotResult]:
+    ...

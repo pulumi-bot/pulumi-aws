@@ -4,6 +4,9 @@
 package apigateway
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,124 @@ type LookupVpcLinkResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The list of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
 	TargetArns []string `pulumi:"targetArns"`
+}
+
+func LookupVpcLinkApply(ctx *pulumi.Context, args LookupVpcLinkApplyInput, opts ...pulumi.InvokeOption) LookupVpcLinkResultOutput {
+	return args.ToLookupVpcLinkApplyOutput().ApplyT(func(v LookupVpcLinkArgs) (LookupVpcLinkResult, error) {
+		r, err := LookupVpcLink(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupVpcLinkResultOutput)
+}
+
+// LookupVpcLinkApplyInput is an input type that accepts LookupVpcLinkApplyArgs and LookupVpcLinkApplyOutput values.
+// You can construct a concrete instance of `LookupVpcLinkApplyInput` via:
+//
+//          LookupVpcLinkApplyArgs{...}
+type LookupVpcLinkApplyInput interface {
+	pulumi.Input
+
+	ToLookupVpcLinkApplyOutput() LookupVpcLinkApplyOutput
+	ToLookupVpcLinkApplyOutputWithContext(context.Context) LookupVpcLinkApplyOutput
+}
+
+// A collection of arguments for invoking getVpcLink.
+type LookupVpcLinkApplyArgs struct {
+	// The name of the API Gateway VPC Link to look up. If no API Gateway VPC Link is found with this name, an error will be returned.
+	// If multiple API Gateway VPC Links are found with this name, an error will be returned.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Key-value map of resource tags
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupVpcLinkApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVpcLinkArgs)(nil)).Elem()
+}
+
+func (i LookupVpcLinkApplyArgs) ToLookupVpcLinkApplyOutput() LookupVpcLinkApplyOutput {
+	return i.ToLookupVpcLinkApplyOutputWithContext(context.Background())
+}
+
+func (i LookupVpcLinkApplyArgs) ToLookupVpcLinkApplyOutputWithContext(ctx context.Context) LookupVpcLinkApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupVpcLinkApplyOutput)
+}
+
+// A collection of arguments for invoking getVpcLink.
+type LookupVpcLinkApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupVpcLinkApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVpcLinkArgs)(nil)).Elem()
+}
+
+func (o LookupVpcLinkApplyOutput) ToLookupVpcLinkApplyOutput() LookupVpcLinkApplyOutput {
+	return o
+}
+
+func (o LookupVpcLinkApplyOutput) ToLookupVpcLinkApplyOutputWithContext(ctx context.Context) LookupVpcLinkApplyOutput {
+	return o
+}
+
+// The name of the API Gateway VPC Link to look up. If no API Gateway VPC Link is found with this name, an error will be returned.
+// If multiple API Gateway VPC Links are found with this name, an error will be returned.
+func (o LookupVpcLinkApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcLinkArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Key-value map of resource tags
+func (o LookupVpcLinkApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupVpcLinkArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getVpcLink.
+type LookupVpcLinkResultOutput struct{ *pulumi.OutputState }
+
+func (LookupVpcLinkResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVpcLinkResult)(nil)).Elem()
+}
+
+func (o LookupVpcLinkResultOutput) ToLookupVpcLinkResultOutput() LookupVpcLinkResultOutput {
+	return o
+}
+
+func (o LookupVpcLinkResultOutput) ToLookupVpcLinkResultOutputWithContext(ctx context.Context) LookupVpcLinkResultOutput {
+	return o
+}
+
+// The description of the VPC link.
+func (o LookupVpcLinkResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcLinkResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Set to the ID of the found API Gateway VPC Link.
+func (o LookupVpcLinkResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcLinkResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupVpcLinkResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcLinkResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The status of the VPC link.
+func (o LookupVpcLinkResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcLinkResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The status message of the VPC link.
+func (o LookupVpcLinkResultOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcLinkResult) string { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// Key-value map of resource tags
+func (o LookupVpcLinkResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupVpcLinkResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The list of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
+func (o LookupVpcLinkResultOutput) TargetArns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupVpcLinkResult) []string { return v.TargetArns }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupVpcLinkApplyOutput{})
+	pulumi.RegisterOutputType(LookupVpcLinkResultOutput{})
 }

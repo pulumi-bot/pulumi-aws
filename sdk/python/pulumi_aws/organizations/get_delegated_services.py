@@ -93,3 +93,9 @@ def get_delegated_services(account_id: Optional[str] = None,
         account_id=__ret__.account_id,
         delegated_services=__ret__.delegated_services,
         id=__ret__.id)
+
+
+@_utilities.lift_output_func(get_delegated_services)
+def get_delegated_services_apply(account_id: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDelegatedServicesResult]:
+    ...

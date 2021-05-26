@@ -4,6 +4,9 @@
 package aws
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -112,4 +115,106 @@ type GetRegionsResult struct {
 	Id string `pulumi:"id"`
 	// Names of regions that meets the criteria.
 	Names []string `pulumi:"names"`
+}
+
+func GetRegionsApply(ctx *pulumi.Context, args GetRegionsApplyInput, opts ...pulumi.InvokeOption) GetRegionsResultOutput {
+	return args.ToGetRegionsApplyOutput().ApplyT(func(v GetRegionsArgs) (GetRegionsResult, error) {
+		r, err := GetRegions(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetRegionsResultOutput)
+}
+
+// GetRegionsApplyInput is an input type that accepts GetRegionsApplyArgs and GetRegionsApplyOutput values.
+// You can construct a concrete instance of `GetRegionsApplyInput` via:
+//
+//          GetRegionsApplyArgs{...}
+type GetRegionsApplyInput interface {
+	pulumi.Input
+
+	ToGetRegionsApplyOutput() GetRegionsApplyOutput
+	ToGetRegionsApplyOutputWithContext(context.Context) GetRegionsApplyOutput
+}
+
+// A collection of arguments for invoking getRegions.
+type GetRegionsApplyArgs struct {
+	// If true the source will query all regions regardless of availability.
+	AllRegions pulumi.BoolPtrInput `pulumi:"allRegions"`
+	// Configuration block(s) to use as filters. Detailed below.
+	Filters GetRegionsFilterArrayInput `pulumi:"filters"`
+}
+
+func (GetRegionsApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsArgs)(nil)).Elem()
+}
+
+func (i GetRegionsApplyArgs) ToGetRegionsApplyOutput() GetRegionsApplyOutput {
+	return i.ToGetRegionsApplyOutputWithContext(context.Background())
+}
+
+func (i GetRegionsApplyArgs) ToGetRegionsApplyOutputWithContext(ctx context.Context) GetRegionsApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsApplyOutput)
+}
+
+// A collection of arguments for invoking getRegions.
+type GetRegionsApplyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionsApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsArgs)(nil)).Elem()
+}
+
+func (o GetRegionsApplyOutput) ToGetRegionsApplyOutput() GetRegionsApplyOutput {
+	return o
+}
+
+func (o GetRegionsApplyOutput) ToGetRegionsApplyOutputWithContext(ctx context.Context) GetRegionsApplyOutput {
+	return o
+}
+
+// If true the source will query all regions regardless of availability.
+func (o GetRegionsApplyOutput) AllRegions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRegionsArgs) *bool { return v.AllRegions }).(pulumi.BoolPtrOutput)
+}
+
+// Configuration block(s) to use as filters. Detailed below.
+func (o GetRegionsApplyOutput) Filters() GetRegionsFilterArrayOutput {
+	return o.ApplyT(func(v GetRegionsArgs) []GetRegionsFilter { return v.Filters }).(GetRegionsFilterArrayOutput)
+}
+
+// A collection of values returned by getRegions.
+type GetRegionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetRegionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsResult)(nil)).Elem()
+}
+
+func (o GetRegionsResultOutput) ToGetRegionsResultOutput() GetRegionsResultOutput {
+	return o
+}
+
+func (o GetRegionsResultOutput) ToGetRegionsResultOutputWithContext(ctx context.Context) GetRegionsResultOutput {
+	return o
+}
+
+func (o GetRegionsResultOutput) AllRegions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRegionsResult) *bool { return v.AllRegions }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetRegionsResultOutput) Filters() GetRegionsFilterArrayOutput {
+	return o.ApplyT(func(v GetRegionsResult) []GetRegionsFilter { return v.Filters }).(GetRegionsFilterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRegionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Names of regions that meets the criteria.
+func (o GetRegionsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRegionsApplyOutput{})
+	pulumi.RegisterOutputType(GetRegionsResultOutput{})
 }

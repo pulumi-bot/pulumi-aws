@@ -4,6 +4,9 @@
 package ssm
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -93,4 +96,127 @@ type LookupDocumentResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
+}
+
+func LookupDocumentApply(ctx *pulumi.Context, args LookupDocumentApplyInput, opts ...pulumi.InvokeOption) LookupDocumentResultOutput {
+	return args.ToLookupDocumentApplyOutput().ApplyT(func(v LookupDocumentArgs) (LookupDocumentResult, error) {
+		r, err := LookupDocument(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupDocumentResultOutput)
+}
+
+// LookupDocumentApplyInput is an input type that accepts LookupDocumentApplyArgs and LookupDocumentApplyOutput values.
+// You can construct a concrete instance of `LookupDocumentApplyInput` via:
+//
+//          LookupDocumentApplyArgs{...}
+type LookupDocumentApplyInput interface {
+	pulumi.Input
+
+	ToLookupDocumentApplyOutput() LookupDocumentApplyOutput
+	ToLookupDocumentApplyOutputWithContext(context.Context) LookupDocumentApplyOutput
+}
+
+// A collection of arguments for invoking getDocument.
+type LookupDocumentApplyArgs struct {
+	// Returns the document in the specified format. The document format can be either JSON or YAML. JSON is the default format.
+	DocumentFormat pulumi.StringPtrInput `pulumi:"documentFormat"`
+	// The document version for which you want information.
+	DocumentVersion pulumi.StringPtrInput `pulumi:"documentVersion"`
+	// The name of the Systems Manager document.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupDocumentApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDocumentArgs)(nil)).Elem()
+}
+
+func (i LookupDocumentApplyArgs) ToLookupDocumentApplyOutput() LookupDocumentApplyOutput {
+	return i.ToLookupDocumentApplyOutputWithContext(context.Background())
+}
+
+func (i LookupDocumentApplyArgs) ToLookupDocumentApplyOutputWithContext(ctx context.Context) LookupDocumentApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupDocumentApplyOutput)
+}
+
+// A collection of arguments for invoking getDocument.
+type LookupDocumentApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupDocumentApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDocumentArgs)(nil)).Elem()
+}
+
+func (o LookupDocumentApplyOutput) ToLookupDocumentApplyOutput() LookupDocumentApplyOutput {
+	return o
+}
+
+func (o LookupDocumentApplyOutput) ToLookupDocumentApplyOutputWithContext(ctx context.Context) LookupDocumentApplyOutput {
+	return o
+}
+
+// Returns the document in the specified format. The document format can be either JSON or YAML. JSON is the default format.
+func (o LookupDocumentApplyOutput) DocumentFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDocumentArgs) *string { return v.DocumentFormat }).(pulumi.StringPtrOutput)
+}
+
+// The document version for which you want information.
+func (o LookupDocumentApplyOutput) DocumentVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDocumentArgs) *string { return v.DocumentVersion }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Systems Manager document.
+func (o LookupDocumentApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDocumentArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getDocument.
+type LookupDocumentResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDocumentResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDocumentResult)(nil)).Elem()
+}
+
+func (o LookupDocumentResultOutput) ToLookupDocumentResultOutput() LookupDocumentResultOutput {
+	return o
+}
+
+func (o LookupDocumentResultOutput) ToLookupDocumentResultOutputWithContext(ctx context.Context) LookupDocumentResultOutput {
+	return o
+}
+
+// The ARN of the document.
+func (o LookupDocumentResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDocumentResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The contents of the document.
+func (o LookupDocumentResultOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDocumentResult) string { return v.Content }).(pulumi.StringOutput)
+}
+
+func (o LookupDocumentResultOutput) DocumentFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDocumentResult) *string { return v.DocumentFormat }).(pulumi.StringPtrOutput)
+}
+
+// The type of the document.
+func (o LookupDocumentResultOutput) DocumentType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDocumentResult) string { return v.DocumentType }).(pulumi.StringOutput)
+}
+
+func (o LookupDocumentResultOutput) DocumentVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDocumentResult) *string { return v.DocumentVersion }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDocumentResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDocumentResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupDocumentResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDocumentResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDocumentApplyOutput{})
+	pulumi.RegisterOutputType(LookupDocumentResultOutput{})
 }

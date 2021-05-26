@@ -41,11 +41,11 @@ export interface GetSlotTypeArgs {
     /**
      * The name of the slot type. The name is case sensitive.
      */
-    readonly name: string;
+    name: string;
     /**
      * The version of the slot type.
      */
-    readonly version?: string;
+    version?: string;
 }
 
 /**
@@ -94,4 +94,22 @@ export interface GetSlotTypeResult {
      * The version of the slot type.
      */
     readonly version?: string;
+}
+
+export function getSlotTypeApply(args: GetSlotTypeApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSlotTypeResult> {
+    return pulumi.output(args).apply(a => getSlotType(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSlotType.
+ */
+export interface GetSlotTypeApplyArgs {
+    /**
+     * The name of the slot type. The name is case sensitive.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The version of the slot type.
+     */
+    version?: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package kms
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,4 +33,95 @@ type GetSecretsResult struct {
 	// Map containing each `secret` `name` as the key with its decrypted plaintext value
 	Plaintext map[string]string  `pulumi:"plaintext"`
 	Secrets   []GetSecretsSecret `pulumi:"secrets"`
+}
+
+func GetSecretsApply(ctx *pulumi.Context, args GetSecretsApplyInput, opts ...pulumi.InvokeOption) GetSecretsResultOutput {
+	return args.ToGetSecretsApplyOutput().ApplyT(func(v GetSecretsArgs) (GetSecretsResult, error) {
+		r, err := GetSecrets(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetSecretsResultOutput)
+}
+
+// GetSecretsApplyInput is an input type that accepts GetSecretsApplyArgs and GetSecretsApplyOutput values.
+// You can construct a concrete instance of `GetSecretsApplyInput` via:
+//
+//          GetSecretsApplyArgs{...}
+type GetSecretsApplyInput interface {
+	pulumi.Input
+
+	ToGetSecretsApplyOutput() GetSecretsApplyOutput
+	ToGetSecretsApplyOutputWithContext(context.Context) GetSecretsApplyOutput
+}
+
+// A collection of arguments for invoking getSecrets.
+type GetSecretsApplyArgs struct {
+	// One or more encrypted payload definitions from the KMS service. See the Secret Definitions below.
+	Secrets GetSecretsSecretArrayInput `pulumi:"secrets"`
+}
+
+func (GetSecretsApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretsArgs)(nil)).Elem()
+}
+
+func (i GetSecretsApplyArgs) ToGetSecretsApplyOutput() GetSecretsApplyOutput {
+	return i.ToGetSecretsApplyOutputWithContext(context.Background())
+}
+
+func (i GetSecretsApplyArgs) ToGetSecretsApplyOutputWithContext(ctx context.Context) GetSecretsApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretsApplyOutput)
+}
+
+// A collection of arguments for invoking getSecrets.
+type GetSecretsApplyOutput struct{ *pulumi.OutputState }
+
+func (GetSecretsApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretsArgs)(nil)).Elem()
+}
+
+func (o GetSecretsApplyOutput) ToGetSecretsApplyOutput() GetSecretsApplyOutput {
+	return o
+}
+
+func (o GetSecretsApplyOutput) ToGetSecretsApplyOutputWithContext(ctx context.Context) GetSecretsApplyOutput {
+	return o
+}
+
+// One or more encrypted payload definitions from the KMS service. See the Secret Definitions below.
+func (o GetSecretsApplyOutput) Secrets() GetSecretsSecretArrayOutput {
+	return o.ApplyT(func(v GetSecretsArgs) []GetSecretsSecret { return v.Secrets }).(GetSecretsSecretArrayOutput)
+}
+
+// A collection of values returned by getSecrets.
+type GetSecretsResultOutput struct{ *pulumi.OutputState }
+
+func (GetSecretsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretsResult)(nil)).Elem()
+}
+
+func (o GetSecretsResultOutput) ToGetSecretsResultOutput() GetSecretsResultOutput {
+	return o
+}
+
+func (o GetSecretsResultOutput) ToGetSecretsResultOutputWithContext(ctx context.Context) GetSecretsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSecretsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Map containing each `secret` `name` as the key with its decrypted plaintext value
+func (o GetSecretsResultOutput) Plaintext() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretsResult) map[string]string { return v.Plaintext }).(pulumi.StringMapOutput)
+}
+
+func (o GetSecretsResultOutput) Secrets() GetSecretsSecretArrayOutput {
+	return o.ApplyT(func(v GetSecretsResult) []GetSecretsSecret { return v.Secrets }).(GetSecretsSecretArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSecretsApplyOutput{})
+	pulumi.RegisterOutputType(GetSecretsResultOutput{})
 }

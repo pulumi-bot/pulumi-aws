@@ -93,3 +93,9 @@ def get_hosted_zone_id(region: Optional[str] = None,
     return AwaitableGetHostedZoneIdResult(
         id=__ret__.id,
         region=__ret__.region)
+
+
+@_utilities.lift_output_func(get_hosted_zone_id)
+def get_hosted_zone_id_apply(region: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostedZoneIdResult]:
+    ...

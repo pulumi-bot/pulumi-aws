@@ -4,6 +4,9 @@
 package docdb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -78,4 +81,150 @@ type GetOrderableDbInstanceResult struct {
 	LicenseModel             *string  `pulumi:"licenseModel"`
 	PreferredInstanceClasses []string `pulumi:"preferredInstanceClasses"`
 	Vpc                      bool     `pulumi:"vpc"`
+}
+
+func GetOrderableDbInstanceApply(ctx *pulumi.Context, args GetOrderableDbInstanceApplyInput, opts ...pulumi.InvokeOption) GetOrderableDbInstanceResultOutput {
+	return args.ToGetOrderableDbInstanceApplyOutput().ApplyT(func(v GetOrderableDbInstanceArgs) (GetOrderableDbInstanceResult, error) {
+		r, err := GetOrderableDbInstance(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetOrderableDbInstanceResultOutput)
+}
+
+// GetOrderableDbInstanceApplyInput is an input type that accepts GetOrderableDbInstanceApplyArgs and GetOrderableDbInstanceApplyOutput values.
+// You can construct a concrete instance of `GetOrderableDbInstanceApplyInput` via:
+//
+//          GetOrderableDbInstanceApplyArgs{...}
+type GetOrderableDbInstanceApplyInput interface {
+	pulumi.Input
+
+	ToGetOrderableDbInstanceApplyOutput() GetOrderableDbInstanceApplyOutput
+	ToGetOrderableDbInstanceApplyOutputWithContext(context.Context) GetOrderableDbInstanceApplyOutput
+}
+
+// A collection of arguments for invoking getOrderableDbInstance.
+type GetOrderableDbInstanceApplyArgs struct {
+	// DB engine. Default: `docdb`
+	Engine pulumi.StringPtrInput `pulumi:"engine"`
+	// Version of the DB engine.
+	EngineVersion pulumi.StringPtrInput `pulumi:"engineVersion"`
+	// DB instance class. Examples of classes are `db.r5.12xlarge`, `db.r5.24xlarge`, `db.r5.2xlarge`, `db.r5.4xlarge`, `db.r5.large`, `db.r5.xlarge`, and `db.t3.medium`. (Conflicts with `preferredInstanceClasses`.)
+	InstanceClass pulumi.StringPtrInput `pulumi:"instanceClass"`
+	// License model. Default: `na`
+	LicenseModel pulumi.StringPtrInput `pulumi:"licenseModel"`
+	// Ordered list of preferred DocumentDB DB instance classes. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. (Conflicts with `instanceClass`.)
+	PreferredInstanceClasses pulumi.StringArrayInput `pulumi:"preferredInstanceClasses"`
+	// Enable to show only VPC.
+	Vpc pulumi.BoolPtrInput `pulumi:"vpc"`
+}
+
+func (GetOrderableDbInstanceApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrderableDbInstanceArgs)(nil)).Elem()
+}
+
+func (i GetOrderableDbInstanceApplyArgs) ToGetOrderableDbInstanceApplyOutput() GetOrderableDbInstanceApplyOutput {
+	return i.ToGetOrderableDbInstanceApplyOutputWithContext(context.Background())
+}
+
+func (i GetOrderableDbInstanceApplyArgs) ToGetOrderableDbInstanceApplyOutputWithContext(ctx context.Context) GetOrderableDbInstanceApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrderableDbInstanceApplyOutput)
+}
+
+// A collection of arguments for invoking getOrderableDbInstance.
+type GetOrderableDbInstanceApplyOutput struct{ *pulumi.OutputState }
+
+func (GetOrderableDbInstanceApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrderableDbInstanceArgs)(nil)).Elem()
+}
+
+func (o GetOrderableDbInstanceApplyOutput) ToGetOrderableDbInstanceApplyOutput() GetOrderableDbInstanceApplyOutput {
+	return o
+}
+
+func (o GetOrderableDbInstanceApplyOutput) ToGetOrderableDbInstanceApplyOutputWithContext(ctx context.Context) GetOrderableDbInstanceApplyOutput {
+	return o
+}
+
+// DB engine. Default: `docdb`
+func (o GetOrderableDbInstanceApplyOutput) Engine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrderableDbInstanceArgs) *string { return v.Engine }).(pulumi.StringPtrOutput)
+}
+
+// Version of the DB engine.
+func (o GetOrderableDbInstanceApplyOutput) EngineVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrderableDbInstanceArgs) *string { return v.EngineVersion }).(pulumi.StringPtrOutput)
+}
+
+// DB instance class. Examples of classes are `db.r5.12xlarge`, `db.r5.24xlarge`, `db.r5.2xlarge`, `db.r5.4xlarge`, `db.r5.large`, `db.r5.xlarge`, and `db.t3.medium`. (Conflicts with `preferredInstanceClasses`.)
+func (o GetOrderableDbInstanceApplyOutput) InstanceClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrderableDbInstanceArgs) *string { return v.InstanceClass }).(pulumi.StringPtrOutput)
+}
+
+// License model. Default: `na`
+func (o GetOrderableDbInstanceApplyOutput) LicenseModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrderableDbInstanceArgs) *string { return v.LicenseModel }).(pulumi.StringPtrOutput)
+}
+
+// Ordered list of preferred DocumentDB DB instance classes. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. (Conflicts with `instanceClass`.)
+func (o GetOrderableDbInstanceApplyOutput) PreferredInstanceClasses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetOrderableDbInstanceArgs) []string { return v.PreferredInstanceClasses }).(pulumi.StringArrayOutput)
+}
+
+// Enable to show only VPC.
+func (o GetOrderableDbInstanceApplyOutput) Vpc() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOrderableDbInstanceArgs) *bool { return v.Vpc }).(pulumi.BoolPtrOutput)
+}
+
+// A collection of values returned by getOrderableDbInstance.
+type GetOrderableDbInstanceResultOutput struct{ *pulumi.OutputState }
+
+func (GetOrderableDbInstanceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrderableDbInstanceResult)(nil)).Elem()
+}
+
+func (o GetOrderableDbInstanceResultOutput) ToGetOrderableDbInstanceResultOutput() GetOrderableDbInstanceResultOutput {
+	return o
+}
+
+func (o GetOrderableDbInstanceResultOutput) ToGetOrderableDbInstanceResultOutputWithContext(ctx context.Context) GetOrderableDbInstanceResultOutput {
+	return o
+}
+
+// Availability zones where the instance is available.
+func (o GetOrderableDbInstanceResultOutput) AvailabilityZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetOrderableDbInstanceResult) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
+}
+
+func (o GetOrderableDbInstanceResultOutput) Engine() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrderableDbInstanceResult) *string { return v.Engine }).(pulumi.StringPtrOutput)
+}
+
+func (o GetOrderableDbInstanceResultOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrderableDbInstanceResult) string { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetOrderableDbInstanceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrderableDbInstanceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetOrderableDbInstanceResultOutput) InstanceClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrderableDbInstanceResult) string { return v.InstanceClass }).(pulumi.StringOutput)
+}
+
+func (o GetOrderableDbInstanceResultOutput) LicenseModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrderableDbInstanceResult) *string { return v.LicenseModel }).(pulumi.StringPtrOutput)
+}
+
+func (o GetOrderableDbInstanceResultOutput) PreferredInstanceClasses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetOrderableDbInstanceResult) []string { return v.PreferredInstanceClasses }).(pulumi.StringArrayOutput)
+}
+
+func (o GetOrderableDbInstanceResultOutput) Vpc() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrderableDbInstanceResult) bool { return v.Vpc }).(pulumi.BoolOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetOrderableDbInstanceApplyOutput{})
+	pulumi.RegisterOutputType(GetOrderableDbInstanceResultOutput{})
 }

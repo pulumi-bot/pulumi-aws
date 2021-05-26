@@ -4,6 +4,9 @@
 package ec2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,4 +59,115 @@ type GetLocalGatewayVirtualInterfaceGroupsResult struct {
 	// Set of EC2 Local Gateway Virtual Interface identifiers.
 	LocalGatewayVirtualInterfaceIds []string          `pulumi:"localGatewayVirtualInterfaceIds"`
 	Tags                            map[string]string `pulumi:"tags"`
+}
+
+func GetLocalGatewayVirtualInterfaceGroupsApply(ctx *pulumi.Context, args GetLocalGatewayVirtualInterfaceGroupsApplyInput, opts ...pulumi.InvokeOption) GetLocalGatewayVirtualInterfaceGroupsResultOutput {
+	return args.ToGetLocalGatewayVirtualInterfaceGroupsApplyOutput().ApplyT(func(v GetLocalGatewayVirtualInterfaceGroupsArgs) (GetLocalGatewayVirtualInterfaceGroupsResult, error) {
+		r, err := GetLocalGatewayVirtualInterfaceGroups(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetLocalGatewayVirtualInterfaceGroupsResultOutput)
+}
+
+// GetLocalGatewayVirtualInterfaceGroupsApplyInput is an input type that accepts GetLocalGatewayVirtualInterfaceGroupsApplyArgs and GetLocalGatewayVirtualInterfaceGroupsApplyOutput values.
+// You can construct a concrete instance of `GetLocalGatewayVirtualInterfaceGroupsApplyInput` via:
+//
+//          GetLocalGatewayVirtualInterfaceGroupsApplyArgs{...}
+type GetLocalGatewayVirtualInterfaceGroupsApplyInput interface {
+	pulumi.Input
+
+	ToGetLocalGatewayVirtualInterfaceGroupsApplyOutput() GetLocalGatewayVirtualInterfaceGroupsApplyOutput
+	ToGetLocalGatewayVirtualInterfaceGroupsApplyOutputWithContext(context.Context) GetLocalGatewayVirtualInterfaceGroupsApplyOutput
+}
+
+// A collection of arguments for invoking getLocalGatewayVirtualInterfaceGroups.
+type GetLocalGatewayVirtualInterfaceGroupsApplyArgs struct {
+	// One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayVirtualInterfaceGroups.html) for supported filters. Detailed below.
+	Filters GetLocalGatewayVirtualInterfaceGroupsFilterArrayInput `pulumi:"filters"`
+	// Key-value map of resource tags, each pair of which must exactly match a pair on the desired local gateway route table.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetLocalGatewayVirtualInterfaceGroupsApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocalGatewayVirtualInterfaceGroupsArgs)(nil)).Elem()
+}
+
+func (i GetLocalGatewayVirtualInterfaceGroupsApplyArgs) ToGetLocalGatewayVirtualInterfaceGroupsApplyOutput() GetLocalGatewayVirtualInterfaceGroupsApplyOutput {
+	return i.ToGetLocalGatewayVirtualInterfaceGroupsApplyOutputWithContext(context.Background())
+}
+
+func (i GetLocalGatewayVirtualInterfaceGroupsApplyArgs) ToGetLocalGatewayVirtualInterfaceGroupsApplyOutputWithContext(ctx context.Context) GetLocalGatewayVirtualInterfaceGroupsApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLocalGatewayVirtualInterfaceGroupsApplyOutput)
+}
+
+// A collection of arguments for invoking getLocalGatewayVirtualInterfaceGroups.
+type GetLocalGatewayVirtualInterfaceGroupsApplyOutput struct{ *pulumi.OutputState }
+
+func (GetLocalGatewayVirtualInterfaceGroupsApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocalGatewayVirtualInterfaceGroupsArgs)(nil)).Elem()
+}
+
+func (o GetLocalGatewayVirtualInterfaceGroupsApplyOutput) ToGetLocalGatewayVirtualInterfaceGroupsApplyOutput() GetLocalGatewayVirtualInterfaceGroupsApplyOutput {
+	return o
+}
+
+func (o GetLocalGatewayVirtualInterfaceGroupsApplyOutput) ToGetLocalGatewayVirtualInterfaceGroupsApplyOutputWithContext(ctx context.Context) GetLocalGatewayVirtualInterfaceGroupsApplyOutput {
+	return o
+}
+
+// One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayVirtualInterfaceGroups.html) for supported filters. Detailed below.
+func (o GetLocalGatewayVirtualInterfaceGroupsApplyOutput) Filters() GetLocalGatewayVirtualInterfaceGroupsFilterArrayOutput {
+	return o.ApplyT(func(v GetLocalGatewayVirtualInterfaceGroupsArgs) []GetLocalGatewayVirtualInterfaceGroupsFilter {
+		return v.Filters
+	}).(GetLocalGatewayVirtualInterfaceGroupsFilterArrayOutput)
+}
+
+// Key-value map of resource tags, each pair of which must exactly match a pair on the desired local gateway route table.
+func (o GetLocalGatewayVirtualInterfaceGroupsApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetLocalGatewayVirtualInterfaceGroupsArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getLocalGatewayVirtualInterfaceGroups.
+type GetLocalGatewayVirtualInterfaceGroupsResultOutput struct{ *pulumi.OutputState }
+
+func (GetLocalGatewayVirtualInterfaceGroupsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocalGatewayVirtualInterfaceGroupsResult)(nil)).Elem()
+}
+
+func (o GetLocalGatewayVirtualInterfaceGroupsResultOutput) ToGetLocalGatewayVirtualInterfaceGroupsResultOutput() GetLocalGatewayVirtualInterfaceGroupsResultOutput {
+	return o
+}
+
+func (o GetLocalGatewayVirtualInterfaceGroupsResultOutput) ToGetLocalGatewayVirtualInterfaceGroupsResultOutputWithContext(ctx context.Context) GetLocalGatewayVirtualInterfaceGroupsResultOutput {
+	return o
+}
+
+func (o GetLocalGatewayVirtualInterfaceGroupsResultOutput) Filters() GetLocalGatewayVirtualInterfaceGroupsFilterArrayOutput {
+	return o.ApplyT(func(v GetLocalGatewayVirtualInterfaceGroupsResult) []GetLocalGatewayVirtualInterfaceGroupsFilter {
+		return v.Filters
+	}).(GetLocalGatewayVirtualInterfaceGroupsFilterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetLocalGatewayVirtualInterfaceGroupsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocalGatewayVirtualInterfaceGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Set of EC2 Local Gateway Virtual Interface Group identifiers.
+func (o GetLocalGatewayVirtualInterfaceGroupsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLocalGatewayVirtualInterfaceGroupsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// Set of EC2 Local Gateway Virtual Interface identifiers.
+func (o GetLocalGatewayVirtualInterfaceGroupsResultOutput) LocalGatewayVirtualInterfaceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLocalGatewayVirtualInterfaceGroupsResult) []string { return v.LocalGatewayVirtualInterfaceIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetLocalGatewayVirtualInterfaceGroupsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetLocalGatewayVirtualInterfaceGroupsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetLocalGatewayVirtualInterfaceGroupsApplyOutput{})
+	pulumi.RegisterOutputType(GetLocalGatewayVirtualInterfaceGroupsResultOutput{})
 }

@@ -4,6 +4,9 @@
 package ec2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,4 +74,204 @@ type LookupVpcResult struct {
 	// The State of the association.
 	State string            `pulumi:"state"`
 	Tags  map[string]string `pulumi:"tags"`
+}
+
+func LookupVpcApply(ctx *pulumi.Context, args LookupVpcApplyInput, opts ...pulumi.InvokeOption) LookupVpcResultOutput {
+	return args.ToLookupVpcApplyOutput().ApplyT(func(v LookupVpcArgs) (LookupVpcResult, error) {
+		r, err := LookupVpc(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupVpcResultOutput)
+}
+
+// LookupVpcApplyInput is an input type that accepts LookupVpcApplyArgs and LookupVpcApplyOutput values.
+// You can construct a concrete instance of `LookupVpcApplyInput` via:
+//
+//          LookupVpcApplyArgs{...}
+type LookupVpcApplyInput interface {
+	pulumi.Input
+
+	ToLookupVpcApplyOutput() LookupVpcApplyOutput
+	ToLookupVpcApplyOutputWithContext(context.Context) LookupVpcApplyOutput
+}
+
+// A collection of arguments for invoking getVpc.
+type LookupVpcApplyArgs struct {
+	// The cidr block of the desired VPC.
+	CidrBlock pulumi.StringPtrInput `pulumi:"cidrBlock"`
+	// Boolean constraint on whether the desired VPC is
+	// the default VPC for the region.
+	Default pulumi.BoolPtrInput `pulumi:"default"`
+	// The DHCP options id of the desired VPC.
+	DhcpOptionsId pulumi.StringPtrInput `pulumi:"dhcpOptionsId"`
+	// Custom filter block as described below.
+	Filters GetVpcFilterArrayInput `pulumi:"filters"`
+	// The id of the specific VPC to retrieve.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The current state of the desired VPC.
+	// Can be either `"pending"` or `"available"`.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// A map of tags, each pair of which must exactly match
+	// a pair on the desired VPC.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupVpcApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVpcArgs)(nil)).Elem()
+}
+
+func (i LookupVpcApplyArgs) ToLookupVpcApplyOutput() LookupVpcApplyOutput {
+	return i.ToLookupVpcApplyOutputWithContext(context.Background())
+}
+
+func (i LookupVpcApplyArgs) ToLookupVpcApplyOutputWithContext(ctx context.Context) LookupVpcApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupVpcApplyOutput)
+}
+
+// A collection of arguments for invoking getVpc.
+type LookupVpcApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupVpcApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVpcArgs)(nil)).Elem()
+}
+
+func (o LookupVpcApplyOutput) ToLookupVpcApplyOutput() LookupVpcApplyOutput {
+	return o
+}
+
+func (o LookupVpcApplyOutput) ToLookupVpcApplyOutputWithContext(ctx context.Context) LookupVpcApplyOutput {
+	return o
+}
+
+// The cidr block of the desired VPC.
+func (o LookupVpcApplyOutput) CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVpcArgs) *string { return v.CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+// Boolean constraint on whether the desired VPC is
+// the default VPC for the region.
+func (o LookupVpcApplyOutput) Default() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupVpcArgs) *bool { return v.Default }).(pulumi.BoolPtrOutput)
+}
+
+// The DHCP options id of the desired VPC.
+func (o LookupVpcApplyOutput) DhcpOptionsId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVpcArgs) *string { return v.DhcpOptionsId }).(pulumi.StringPtrOutput)
+}
+
+// Custom filter block as described below.
+func (o LookupVpcApplyOutput) Filters() GetVpcFilterArrayOutput {
+	return o.ApplyT(func(v LookupVpcArgs) []GetVpcFilter { return v.Filters }).(GetVpcFilterArrayOutput)
+}
+
+// The id of the specific VPC to retrieve.
+func (o LookupVpcApplyOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVpcArgs) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The current state of the desired VPC.
+// Can be either `"pending"` or `"available"`.
+func (o LookupVpcApplyOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVpcArgs) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// A map of tags, each pair of which must exactly match
+// a pair on the desired VPC.
+func (o LookupVpcApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupVpcArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getVpc.
+type LookupVpcResultOutput struct{ *pulumi.OutputState }
+
+func (LookupVpcResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupVpcResult)(nil)).Elem()
+}
+
+func (o LookupVpcResultOutput) ToLookupVpcResultOutput() LookupVpcResultOutput {
+	return o
+}
+
+func (o LookupVpcResultOutput) ToLookupVpcResultOutputWithContext(ctx context.Context) LookupVpcResultOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN) of VPC
+func (o LookupVpcResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The CIDR block for the association.
+func (o LookupVpcResultOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcResult) string { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+func (o LookupVpcResultOutput) CidrBlockAssociations() GetVpcCidrBlockAssociationArrayOutput {
+	return o.ApplyT(func(v LookupVpcResult) []GetVpcCidrBlockAssociation { return v.CidrBlockAssociations }).(GetVpcCidrBlockAssociationArrayOutput)
+}
+
+func (o LookupVpcResultOutput) Default() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupVpcResult) bool { return v.Default }).(pulumi.BoolOutput)
+}
+
+func (o LookupVpcResultOutput) DhcpOptionsId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcResult) string { return v.DhcpOptionsId }).(pulumi.StringOutput)
+}
+
+// Whether or not the VPC has DNS hostname support
+func (o LookupVpcResultOutput) EnableDnsHostnames() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupVpcResult) bool { return v.EnableDnsHostnames }).(pulumi.BoolOutput)
+}
+
+// Whether or not the VPC has DNS support
+func (o LookupVpcResultOutput) EnableDnsSupport() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupVpcResult) bool { return v.EnableDnsSupport }).(pulumi.BoolOutput)
+}
+
+func (o LookupVpcResultOutput) Filters() GetVpcFilterArrayOutput {
+	return o.ApplyT(func(v LookupVpcResult) []GetVpcFilter { return v.Filters }).(GetVpcFilterArrayOutput)
+}
+
+func (o LookupVpcResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The allowed tenancy of instances launched into the
+// selected VPC. May be any of `"default"`, `"dedicated"`, or `"host"`.
+func (o LookupVpcResultOutput) InstanceTenancy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcResult) string { return v.InstanceTenancy }).(pulumi.StringOutput)
+}
+
+// The association ID for the IPv6 CIDR block.
+func (o LookupVpcResultOutput) Ipv6AssociationId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcResult) string { return v.Ipv6AssociationId }).(pulumi.StringOutput)
+}
+
+// The IPv6 CIDR block.
+func (o LookupVpcResultOutput) Ipv6CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcResult) string { return v.Ipv6CidrBlock }).(pulumi.StringOutput)
+}
+
+// The ID of the main route table associated with this VPC.
+func (o LookupVpcResultOutput) MainRouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcResult) string { return v.MainRouteTableId }).(pulumi.StringOutput)
+}
+
+// The ID of the AWS account that owns the VPC.
+func (o LookupVpcResultOutput) OwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcResult) string { return v.OwnerId }).(pulumi.StringOutput)
+}
+
+// The State of the association.
+func (o LookupVpcResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o LookupVpcResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupVpcResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupVpcApplyOutput{})
+	pulumi.RegisterOutputType(LookupVpcResultOutput{})
 }

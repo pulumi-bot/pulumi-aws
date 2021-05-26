@@ -94,3 +94,9 @@ def get_organizational_units(parent_id: Optional[str] = None,
         childrens=__ret__.childrens,
         id=__ret__.id,
         parent_id=__ret__.parent_id)
+
+
+@_utilities.lift_output_func(get_organizational_units)
+def get_organizational_units_apply(parent_id: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationalUnitsResult]:
+    ...

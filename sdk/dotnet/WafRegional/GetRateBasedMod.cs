@@ -39,6 +39,17 @@ namespace Pulumi.Aws.WafRegional
         /// </summary>
         public static Task<GetRateBasedModResult> InvokeAsync(GetRateBasedModArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRateBasedModResult>("aws:wafregional/getRateBasedMod:getRateBasedMod", args ?? new GetRateBasedModArgs(), options.WithVersion());
+
+        public static Output<GetRateBasedModResult> Apply(GetRateBasedModApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetRateBasedModArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +62,19 @@ namespace Pulumi.Aws.WafRegional
         public string Name { get; set; } = null!;
 
         public GetRateBasedModArgs()
+        {
+        }
+    }
+
+    public sealed class GetRateBasedModApplyArgs
+    {
+        /// <summary>
+        /// The name of the WAF Regional rate based rule.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetRateBasedModApplyArgs()
         {
         }
     }

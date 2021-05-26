@@ -4,6 +4,9 @@
 package lakeformation
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,4 +63,114 @@ type LookupDataLakeSettingsResult struct {
 	Id string `pulumi:"id"`
 	// List of the resource-owning account IDs that the caller's account can use to share their user access details (user ARNs).
 	TrustedResourceOwners []string `pulumi:"trustedResourceOwners"`
+}
+
+func LookupDataLakeSettingsApply(ctx *pulumi.Context, args LookupDataLakeSettingsApplyInput, opts ...pulumi.InvokeOption) LookupDataLakeSettingsResultOutput {
+	return args.ToLookupDataLakeSettingsApplyOutput().ApplyT(func(v LookupDataLakeSettingsArgs) (LookupDataLakeSettingsResult, error) {
+		r, err := LookupDataLakeSettings(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupDataLakeSettingsResultOutput)
+}
+
+// LookupDataLakeSettingsApplyInput is an input type that accepts LookupDataLakeSettingsApplyArgs and LookupDataLakeSettingsApplyOutput values.
+// You can construct a concrete instance of `LookupDataLakeSettingsApplyInput` via:
+//
+//          LookupDataLakeSettingsApplyArgs{...}
+type LookupDataLakeSettingsApplyInput interface {
+	pulumi.Input
+
+	ToLookupDataLakeSettingsApplyOutput() LookupDataLakeSettingsApplyOutput
+	ToLookupDataLakeSettingsApplyOutputWithContext(context.Context) LookupDataLakeSettingsApplyOutput
+}
+
+// A collection of arguments for invoking getDataLakeSettings.
+type LookupDataLakeSettingsApplyArgs struct {
+	// Identifier for the Data Catalog. By default, the account ID.
+	CatalogId pulumi.StringPtrInput `pulumi:"catalogId"`
+}
+
+func (LookupDataLakeSettingsApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDataLakeSettingsArgs)(nil)).Elem()
+}
+
+func (i LookupDataLakeSettingsApplyArgs) ToLookupDataLakeSettingsApplyOutput() LookupDataLakeSettingsApplyOutput {
+	return i.ToLookupDataLakeSettingsApplyOutputWithContext(context.Background())
+}
+
+func (i LookupDataLakeSettingsApplyArgs) ToLookupDataLakeSettingsApplyOutputWithContext(ctx context.Context) LookupDataLakeSettingsApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupDataLakeSettingsApplyOutput)
+}
+
+// A collection of arguments for invoking getDataLakeSettings.
+type LookupDataLakeSettingsApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupDataLakeSettingsApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDataLakeSettingsArgs)(nil)).Elem()
+}
+
+func (o LookupDataLakeSettingsApplyOutput) ToLookupDataLakeSettingsApplyOutput() LookupDataLakeSettingsApplyOutput {
+	return o
+}
+
+func (o LookupDataLakeSettingsApplyOutput) ToLookupDataLakeSettingsApplyOutputWithContext(ctx context.Context) LookupDataLakeSettingsApplyOutput {
+	return o
+}
+
+// Identifier for the Data Catalog. By default, the account ID.
+func (o LookupDataLakeSettingsApplyOutput) CatalogId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDataLakeSettingsArgs) *string { return v.CatalogId }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getDataLakeSettings.
+type LookupDataLakeSettingsResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDataLakeSettingsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDataLakeSettingsResult)(nil)).Elem()
+}
+
+func (o LookupDataLakeSettingsResultOutput) ToLookupDataLakeSettingsResultOutput() LookupDataLakeSettingsResultOutput {
+	return o
+}
+
+func (o LookupDataLakeSettingsResultOutput) ToLookupDataLakeSettingsResultOutputWithContext(ctx context.Context) LookupDataLakeSettingsResultOutput {
+	return o
+}
+
+// List of ARNs of AWS Lake Formation principals (IAM users or roles).
+func (o LookupDataLakeSettingsResultOutput) Admins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDataLakeSettingsResult) []string { return v.Admins }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupDataLakeSettingsResultOutput) CatalogId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDataLakeSettingsResult) *string { return v.CatalogId }).(pulumi.StringPtrOutput)
+}
+
+// Up to three configuration blocks of principal permissions for default create database permissions. Detailed below.
+func (o LookupDataLakeSettingsResultOutput) CreateDatabaseDefaultPermissions() GetDataLakeSettingsCreateDatabaseDefaultPermissionArrayOutput {
+	return o.ApplyT(func(v LookupDataLakeSettingsResult) []GetDataLakeSettingsCreateDatabaseDefaultPermission {
+		return v.CreateDatabaseDefaultPermissions
+	}).(GetDataLakeSettingsCreateDatabaseDefaultPermissionArrayOutput)
+}
+
+// Up to three configuration blocks of principal permissions for default create table permissions. Detailed below.
+func (o LookupDataLakeSettingsResultOutput) CreateTableDefaultPermissions() GetDataLakeSettingsCreateTableDefaultPermissionArrayOutput {
+	return o.ApplyT(func(v LookupDataLakeSettingsResult) []GetDataLakeSettingsCreateTableDefaultPermission {
+		return v.CreateTableDefaultPermissions
+	}).(GetDataLakeSettingsCreateTableDefaultPermissionArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDataLakeSettingsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDataLakeSettingsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// List of the resource-owning account IDs that the caller's account can use to share their user access details (user ARNs).
+func (o LookupDataLakeSettingsResultOutput) TrustedResourceOwners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDataLakeSettingsResult) []string { return v.TrustedResourceOwners }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDataLakeSettingsApplyOutput{})
+	pulumi.RegisterOutputType(LookupDataLakeSettingsResultOutput{})
 }

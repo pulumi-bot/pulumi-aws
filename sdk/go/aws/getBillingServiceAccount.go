@@ -4,6 +4,9 @@
 package aws
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,4 +57,41 @@ type GetBillingServiceAccountResult struct {
 	Arn string `pulumi:"arn"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+}
+
+func GetBillingServiceAccountApply(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetBillingServiceAccountResultOutput {
+	return pulumi.Any(opts).ApplyT(func(v interface{}) (GetBillingServiceAccountResult, error) {
+		r, err := GetBillingServiceAccount(ctx, opts...)
+		return *r, err
+
+	}).(GetBillingServiceAccountResultOutput)
+}
+
+// A collection of values returned by getBillingServiceAccount.
+type GetBillingServiceAccountResultOutput struct{ *pulumi.OutputState }
+
+func (GetBillingServiceAccountResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBillingServiceAccountResult)(nil)).Elem()
+}
+
+func (o GetBillingServiceAccountResultOutput) ToGetBillingServiceAccountResultOutput() GetBillingServiceAccountResultOutput {
+	return o
+}
+
+func (o GetBillingServiceAccountResultOutput) ToGetBillingServiceAccountResultOutputWithContext(ctx context.Context) GetBillingServiceAccountResultOutput {
+	return o
+}
+
+// The ARN of the AWS billing service account.
+func (o GetBillingServiceAccountResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBillingServiceAccountResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetBillingServiceAccountResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBillingServiceAccountResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetBillingServiceAccountResultOutput{})
 }

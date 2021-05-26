@@ -4,6 +4,9 @@
 package apigateway
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,4 +82,162 @@ type LookupDomainNameResult struct {
 	SecurityPolicy string `pulumi:"securityPolicy"`
 	// Key-value map of tags for the resource.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupDomainNameApply(ctx *pulumi.Context, args LookupDomainNameApplyInput, opts ...pulumi.InvokeOption) LookupDomainNameResultOutput {
+	return args.ToLookupDomainNameApplyOutput().ApplyT(func(v LookupDomainNameArgs) (LookupDomainNameResult, error) {
+		r, err := LookupDomainName(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupDomainNameResultOutput)
+}
+
+// LookupDomainNameApplyInput is an input type that accepts LookupDomainNameApplyArgs and LookupDomainNameApplyOutput values.
+// You can construct a concrete instance of `LookupDomainNameApplyInput` via:
+//
+//          LookupDomainNameApplyArgs{...}
+type LookupDomainNameApplyInput interface {
+	pulumi.Input
+
+	ToLookupDomainNameApplyOutput() LookupDomainNameApplyOutput
+	ToLookupDomainNameApplyOutputWithContext(context.Context) LookupDomainNameApplyOutput
+}
+
+// A collection of arguments for invoking getDomainName.
+type LookupDomainNameApplyArgs struct {
+	// The fully-qualified domain name to look up. If no domain name is found, an error will be returned.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// Key-value map of tags for the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupDomainNameApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDomainNameArgs)(nil)).Elem()
+}
+
+func (i LookupDomainNameApplyArgs) ToLookupDomainNameApplyOutput() LookupDomainNameApplyOutput {
+	return i.ToLookupDomainNameApplyOutputWithContext(context.Background())
+}
+
+func (i LookupDomainNameApplyArgs) ToLookupDomainNameApplyOutputWithContext(ctx context.Context) LookupDomainNameApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupDomainNameApplyOutput)
+}
+
+// A collection of arguments for invoking getDomainName.
+type LookupDomainNameApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupDomainNameApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDomainNameArgs)(nil)).Elem()
+}
+
+func (o LookupDomainNameApplyOutput) ToLookupDomainNameApplyOutput() LookupDomainNameApplyOutput {
+	return o
+}
+
+func (o LookupDomainNameApplyOutput) ToLookupDomainNameApplyOutputWithContext(ctx context.Context) LookupDomainNameApplyOutput {
+	return o
+}
+
+// The fully-qualified domain name to look up. If no domain name is found, an error will be returned.
+func (o LookupDomainNameApplyOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainNameArgs) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// Key-value map of tags for the resource.
+func (o LookupDomainNameApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupDomainNameArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getDomainName.
+type LookupDomainNameResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDomainNameResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDomainNameResult)(nil)).Elem()
+}
+
+func (o LookupDomainNameResultOutput) ToLookupDomainNameResultOutput() LookupDomainNameResultOutput {
+	return o
+}
+
+func (o LookupDomainNameResultOutput) ToLookupDomainNameResultOutputWithContext(ctx context.Context) LookupDomainNameResultOutput {
+	return o
+}
+
+// The ARN of the found custom domain name.
+func (o LookupDomainNameResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainNameResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The ARN for an AWS-managed certificate that is used by edge-optimized endpoint for this domain name.
+func (o LookupDomainNameResultOutput) CertificateArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainNameResult) string { return v.CertificateArn }).(pulumi.StringOutput)
+}
+
+// The name of the certificate that is used by edge-optimized endpoint for this domain name.
+func (o LookupDomainNameResultOutput) CertificateName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainNameResult) string { return v.CertificateName }).(pulumi.StringOutput)
+}
+
+// The upload date associated with the domain certificate.
+func (o LookupDomainNameResultOutput) CertificateUploadDate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainNameResult) string { return v.CertificateUploadDate }).(pulumi.StringOutput)
+}
+
+// The hostname created by Cloudfront to represent the distribution that implements this domain name mapping.
+func (o LookupDomainNameResultOutput) CloudfrontDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainNameResult) string { return v.CloudfrontDomainName }).(pulumi.StringOutput)
+}
+
+// For convenience, the hosted zone ID (`Z2FDTNDATAQYW2`) that can be used to create a Route53 alias record for the distribution.
+func (o LookupDomainNameResultOutput) CloudfrontZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainNameResult) string { return v.CloudfrontZoneId }).(pulumi.StringOutput)
+}
+
+func (o LookupDomainNameResultOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainNameResult) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// List of objects with the endpoint configuration of this domain name.
+func (o LookupDomainNameResultOutput) EndpointConfigurations() GetDomainNameEndpointConfigurationArrayOutput {
+	return o.ApplyT(func(v LookupDomainNameResult) []GetDomainNameEndpointConfiguration { return v.EndpointConfigurations }).(GetDomainNameEndpointConfigurationArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDomainNameResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainNameResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ARN for an AWS-managed certificate that is used for validating the regional domain name.
+func (o LookupDomainNameResultOutput) RegionalCertificateArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainNameResult) string { return v.RegionalCertificateArn }).(pulumi.StringOutput)
+}
+
+// The user-friendly name of the certificate that is used by regional endpoint for this domain name.
+func (o LookupDomainNameResultOutput) RegionalCertificateName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainNameResult) string { return v.RegionalCertificateName }).(pulumi.StringOutput)
+}
+
+// The hostname for the custom domain's regional endpoint.
+func (o LookupDomainNameResultOutput) RegionalDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainNameResult) string { return v.RegionalDomainName }).(pulumi.StringOutput)
+}
+
+// The hosted zone ID that can be used to create a Route53 alias record for the regional endpoint.
+func (o LookupDomainNameResultOutput) RegionalZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainNameResult) string { return v.RegionalZoneId }).(pulumi.StringOutput)
+}
+
+// The security policy for the domain name.
+func (o LookupDomainNameResultOutput) SecurityPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainNameResult) string { return v.SecurityPolicy }).(pulumi.StringOutput)
+}
+
+// Key-value map of tags for the resource.
+func (o LookupDomainNameResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupDomainNameResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDomainNameApplyOutput{})
+	pulumi.RegisterOutputType(LookupDomainNameResultOutput{})
 }

@@ -39,6 +39,19 @@ namespace Pulumi.Aws.Rds
         /// </summary>
         public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("aws:rds/getInstance:getInstance", args ?? new GetInstanceArgs(), options.WithVersion());
+
+        public static Output<GetInstanceResult> Apply(GetInstanceApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.DbInstanceIdentifier.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetInstanceArgs();
+                    a[0].Set(args, nameof(args.DbInstanceIdentifier));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -59,6 +72,27 @@ namespace Pulumi.Aws.Rds
         }
 
         public GetInstanceArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceApplyArgs
+    {
+        /// <summary>
+        /// The name of the RDS instance
+        /// </summary>
+        [Input("dbInstanceIdentifier", required: true)]
+        public Input<string> DbInstanceIdentifier { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetInstanceApplyArgs()
         {
         }
     }

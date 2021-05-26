@@ -42,11 +42,11 @@ export interface GetRoleArgs {
     /**
      * The friendly IAM role name to match.
      */
-    readonly name: string;
+    name: string;
     /**
      * The tags attached to the role.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -94,4 +94,22 @@ export interface GetRoleResult {
      * The stable and unique string identifying the role.
      */
     readonly uniqueId: string;
+}
+
+export function getRoleApply(args: GetRoleApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleResult> {
+    return pulumi.output(args).apply(a => getRole(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRole.
+ */
+export interface GetRoleApplyArgs {
+    /**
+     * The friendly IAM role name to match.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The tags attached to the role.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -346,3 +346,10 @@ def get_cluster(cluster_id: Optional[str] = None,
         snapshot_window=__ret__.snapshot_window,
         subnet_group_name=__ret__.subnet_group_name,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_cluster)
+def get_cluster_apply(cluster_id: Optional[pulumi.Input[str]] = None,
+                      tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
+    ...

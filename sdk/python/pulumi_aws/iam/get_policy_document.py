@@ -194,3 +194,15 @@ def get_policy_document(override_json: Optional[str] = None,
         source_policy_documents=__ret__.source_policy_documents,
         statements=__ret__.statements,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_policy_document)
+def get_policy_document_apply(override_json: Optional[pulumi.Input[str]] = None,
+                              override_policy_documents: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                              policy_id: Optional[pulumi.Input[str]] = None,
+                              source_json: Optional[pulumi.Input[str]] = None,
+                              source_policy_documents: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                              statements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetPolicyDocumentStatementArgs']]]]] = None,
+                              version: Optional[pulumi.Input[str]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyDocumentResult]:
+    ...

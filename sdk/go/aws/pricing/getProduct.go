@@ -4,6 +4,9 @@
 package pricing
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -118,4 +121,106 @@ type GetProductResult struct {
 	// Set to the product returned from the API.
 	Result      string `pulumi:"result"`
 	ServiceCode string `pulumi:"serviceCode"`
+}
+
+func GetProductApply(ctx *pulumi.Context, args GetProductApplyInput, opts ...pulumi.InvokeOption) GetProductResultOutput {
+	return args.ToGetProductApplyOutput().ApplyT(func(v GetProductArgs) (GetProductResult, error) {
+		r, err := GetProduct(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetProductResultOutput)
+}
+
+// GetProductApplyInput is an input type that accepts GetProductApplyArgs and GetProductApplyOutput values.
+// You can construct a concrete instance of `GetProductApplyInput` via:
+//
+//          GetProductApplyArgs{...}
+type GetProductApplyInput interface {
+	pulumi.Input
+
+	ToGetProductApplyOutput() GetProductApplyOutput
+	ToGetProductApplyOutputWithContext(context.Context) GetProductApplyOutput
+}
+
+// A collection of arguments for invoking getProduct.
+type GetProductApplyArgs struct {
+	// A list of filters. Passed directly to the API (see GetProducts API reference). These filters must describe a single product, this resource will fail if more than one product is returned by the API.
+	Filters GetProductFilterArrayInput `pulumi:"filters"`
+	// The code of the service. Available service codes can be fetched using the DescribeServices pricing API call.
+	ServiceCode pulumi.StringInput `pulumi:"serviceCode"`
+}
+
+func (GetProductApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProductArgs)(nil)).Elem()
+}
+
+func (i GetProductApplyArgs) ToGetProductApplyOutput() GetProductApplyOutput {
+	return i.ToGetProductApplyOutputWithContext(context.Background())
+}
+
+func (i GetProductApplyArgs) ToGetProductApplyOutputWithContext(ctx context.Context) GetProductApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProductApplyOutput)
+}
+
+// A collection of arguments for invoking getProduct.
+type GetProductApplyOutput struct{ *pulumi.OutputState }
+
+func (GetProductApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProductArgs)(nil)).Elem()
+}
+
+func (o GetProductApplyOutput) ToGetProductApplyOutput() GetProductApplyOutput {
+	return o
+}
+
+func (o GetProductApplyOutput) ToGetProductApplyOutputWithContext(ctx context.Context) GetProductApplyOutput {
+	return o
+}
+
+// A list of filters. Passed directly to the API (see GetProducts API reference). These filters must describe a single product, this resource will fail if more than one product is returned by the API.
+func (o GetProductApplyOutput) Filters() GetProductFilterArrayOutput {
+	return o.ApplyT(func(v GetProductArgs) []GetProductFilter { return v.Filters }).(GetProductFilterArrayOutput)
+}
+
+// The code of the service. Available service codes can be fetched using the DescribeServices pricing API call.
+func (o GetProductApplyOutput) ServiceCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProductArgs) string { return v.ServiceCode }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getProduct.
+type GetProductResultOutput struct{ *pulumi.OutputState }
+
+func (GetProductResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProductResult)(nil)).Elem()
+}
+
+func (o GetProductResultOutput) ToGetProductResultOutput() GetProductResultOutput {
+	return o
+}
+
+func (o GetProductResultOutput) ToGetProductResultOutputWithContext(ctx context.Context) GetProductResultOutput {
+	return o
+}
+
+func (o GetProductResultOutput) Filters() GetProductFilterArrayOutput {
+	return o.ApplyT(func(v GetProductResult) []GetProductFilter { return v.Filters }).(GetProductFilterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetProductResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProductResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Set to the product returned from the API.
+func (o GetProductResultOutput) Result() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProductResult) string { return v.Result }).(pulumi.StringOutput)
+}
+
+func (o GetProductResultOutput) ServiceCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProductResult) string { return v.ServiceCode }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetProductApplyOutput{})
+	pulumi.RegisterOutputType(GetProductResultOutput{})
 }

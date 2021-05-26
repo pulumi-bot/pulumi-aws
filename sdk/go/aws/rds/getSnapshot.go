@@ -4,6 +4,9 @@
 package rds
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -126,4 +129,241 @@ type LookupSnapshotResult struct {
 	StorageType string `pulumi:"storageType"`
 	// Specifies the ID of the VPC associated with the DB snapshot.
 	VpcId string `pulumi:"vpcId"`
+}
+
+func LookupSnapshotApply(ctx *pulumi.Context, args LookupSnapshotApplyInput, opts ...pulumi.InvokeOption) LookupSnapshotResultOutput {
+	return args.ToLookupSnapshotApplyOutput().ApplyT(func(v LookupSnapshotArgs) (LookupSnapshotResult, error) {
+		r, err := LookupSnapshot(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupSnapshotResultOutput)
+}
+
+// LookupSnapshotApplyInput is an input type that accepts LookupSnapshotApplyArgs and LookupSnapshotApplyOutput values.
+// You can construct a concrete instance of `LookupSnapshotApplyInput` via:
+//
+//          LookupSnapshotApplyArgs{...}
+type LookupSnapshotApplyInput interface {
+	pulumi.Input
+
+	ToLookupSnapshotApplyOutput() LookupSnapshotApplyOutput
+	ToLookupSnapshotApplyOutputWithContext(context.Context) LookupSnapshotApplyOutput
+}
+
+// A collection of arguments for invoking getSnapshot.
+type LookupSnapshotApplyArgs struct {
+	// Returns the list of snapshots created by the specific db_instance
+	DbInstanceIdentifier pulumi.StringPtrInput `pulumi:"dbInstanceIdentifier"`
+	// Returns information on a specific snapshot_id.
+	DbSnapshotIdentifier pulumi.StringPtrInput `pulumi:"dbSnapshotIdentifier"`
+	// Set this value to true to include manual DB snapshots that are public and can be
+	// copied or restored by any AWS account, otherwise set this value to false. The default is `false`.
+	IncludePublic pulumi.BoolPtrInput `pulumi:"includePublic"`
+	// Set this value to true to include shared manual DB snapshots from other
+	// AWS accounts that this AWS account has been given permission to copy or restore, otherwise set this value to false.
+	// The default is `false`.
+	IncludeShared pulumi.BoolPtrInput `pulumi:"includeShared"`
+	// If more than one result is returned, use the most
+	// recent Snapshot.
+	MostRecent pulumi.BoolPtrInput `pulumi:"mostRecent"`
+	// The type of snapshots to be returned. If you don't specify a SnapshotType
+	// value, then both automated and manual snapshots are returned. Shared and public DB snapshots are not
+	// included in the returned results by default. Possible values are, `automated`, `manual`, `shared`, `public` and `awsbackup`.
+	SnapshotType pulumi.StringPtrInput `pulumi:"snapshotType"`
+}
+
+func (LookupSnapshotApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSnapshotArgs)(nil)).Elem()
+}
+
+func (i LookupSnapshotApplyArgs) ToLookupSnapshotApplyOutput() LookupSnapshotApplyOutput {
+	return i.ToLookupSnapshotApplyOutputWithContext(context.Background())
+}
+
+func (i LookupSnapshotApplyArgs) ToLookupSnapshotApplyOutputWithContext(ctx context.Context) LookupSnapshotApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupSnapshotApplyOutput)
+}
+
+// A collection of arguments for invoking getSnapshot.
+type LookupSnapshotApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupSnapshotApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSnapshotArgs)(nil)).Elem()
+}
+
+func (o LookupSnapshotApplyOutput) ToLookupSnapshotApplyOutput() LookupSnapshotApplyOutput {
+	return o
+}
+
+func (o LookupSnapshotApplyOutput) ToLookupSnapshotApplyOutputWithContext(ctx context.Context) LookupSnapshotApplyOutput {
+	return o
+}
+
+// Returns the list of snapshots created by the specific db_instance
+func (o LookupSnapshotApplyOutput) DbInstanceIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSnapshotArgs) *string { return v.DbInstanceIdentifier }).(pulumi.StringPtrOutput)
+}
+
+// Returns information on a specific snapshot_id.
+func (o LookupSnapshotApplyOutput) DbSnapshotIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSnapshotArgs) *string { return v.DbSnapshotIdentifier }).(pulumi.StringPtrOutput)
+}
+
+// Set this value to true to include manual DB snapshots that are public and can be
+// copied or restored by any AWS account, otherwise set this value to false. The default is `false`.
+func (o LookupSnapshotApplyOutput) IncludePublic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupSnapshotArgs) *bool { return v.IncludePublic }).(pulumi.BoolPtrOutput)
+}
+
+// Set this value to true to include shared manual DB snapshots from other
+// AWS accounts that this AWS account has been given permission to copy or restore, otherwise set this value to false.
+// The default is `false`.
+func (o LookupSnapshotApplyOutput) IncludeShared() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupSnapshotArgs) *bool { return v.IncludeShared }).(pulumi.BoolPtrOutput)
+}
+
+// If more than one result is returned, use the most
+// recent Snapshot.
+func (o LookupSnapshotApplyOutput) MostRecent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupSnapshotArgs) *bool { return v.MostRecent }).(pulumi.BoolPtrOutput)
+}
+
+// The type of snapshots to be returned. If you don't specify a SnapshotType
+// value, then both automated and manual snapshots are returned. Shared and public DB snapshots are not
+// included in the returned results by default. Possible values are, `automated`, `manual`, `shared`, `public` and `awsbackup`.
+func (o LookupSnapshotApplyOutput) SnapshotType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSnapshotArgs) *string { return v.SnapshotType }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getSnapshot.
+type LookupSnapshotResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSnapshotResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSnapshotResult)(nil)).Elem()
+}
+
+func (o LookupSnapshotResultOutput) ToLookupSnapshotResultOutput() LookupSnapshotResultOutput {
+	return o
+}
+
+func (o LookupSnapshotResultOutput) ToLookupSnapshotResultOutputWithContext(ctx context.Context) LookupSnapshotResultOutput {
+	return o
+}
+
+// Specifies the allocated storage size in gigabytes (GB).
+func (o LookupSnapshotResultOutput) AllocatedStorage() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) int { return v.AllocatedStorage }).(pulumi.IntOutput)
+}
+
+// Specifies the name of the Availability Zone the DB instance was located in at the time of the DB snapshot.
+func (o LookupSnapshotResultOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+func (o LookupSnapshotResultOutput) DbInstanceIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) *string { return v.DbInstanceIdentifier }).(pulumi.StringPtrOutput)
+}
+
+// The Amazon Resource Name (ARN) for the DB snapshot.
+func (o LookupSnapshotResultOutput) DbSnapshotArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.DbSnapshotArn }).(pulumi.StringOutput)
+}
+
+func (o LookupSnapshotResultOutput) DbSnapshotIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) *string { return v.DbSnapshotIdentifier }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the DB snapshot is encrypted.
+func (o LookupSnapshotResultOutput) Encrypted() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) bool { return v.Encrypted }).(pulumi.BoolOutput)
+}
+
+// Specifies the name of the database engine.
+func (o LookupSnapshotResultOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.Engine }).(pulumi.StringOutput)
+}
+
+// Specifies the version of the database engine.
+func (o LookupSnapshotResultOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupSnapshotResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupSnapshotResultOutput) IncludePublic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) *bool { return v.IncludePublic }).(pulumi.BoolPtrOutput)
+}
+
+func (o LookupSnapshotResultOutput) IncludeShared() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) *bool { return v.IncludeShared }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.
+func (o LookupSnapshotResultOutput) Iops() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) int { return v.Iops }).(pulumi.IntOutput)
+}
+
+// The ARN for the KMS encryption key.
+func (o LookupSnapshotResultOutput) KmsKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.KmsKeyId }).(pulumi.StringOutput)
+}
+
+// License model information for the restored DB instance.
+func (o LookupSnapshotResultOutput) LicenseModel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.LicenseModel }).(pulumi.StringOutput)
+}
+
+func (o LookupSnapshotResultOutput) MostRecent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) *bool { return v.MostRecent }).(pulumi.BoolPtrOutput)
+}
+
+// Provides the option group name for the DB snapshot.
+func (o LookupSnapshotResultOutput) OptionGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.OptionGroupName }).(pulumi.StringOutput)
+}
+
+func (o LookupSnapshotResultOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Provides the time when the snapshot was taken, in Universal Coordinated Time (UTC).
+func (o LookupSnapshotResultOutput) SnapshotCreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SnapshotCreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupSnapshotResultOutput) SnapshotType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) *string { return v.SnapshotType }).(pulumi.StringPtrOutput)
+}
+
+// The DB snapshot Arn that the DB snapshot was copied from. It only has value in case of cross customer or cross region copy.
+func (o LookupSnapshotResultOutput) SourceDbSnapshotIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SourceDbSnapshotIdentifier }).(pulumi.StringOutput)
+}
+
+// The region that the DB snapshot was created in or copied from.
+func (o LookupSnapshotResultOutput) SourceRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SourceRegion }).(pulumi.StringOutput)
+}
+
+// Specifies the status of this DB snapshot.
+func (o LookupSnapshotResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Specifies the storage type associated with DB snapshot.
+func (o LookupSnapshotResultOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.StorageType }).(pulumi.StringOutput)
+}
+
+// Specifies the ID of the VPC associated with the DB snapshot.
+func (o LookupSnapshotResultOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSnapshotApplyOutput{})
+	pulumi.RegisterOutputType(LookupSnapshotResultOutput{})
 }

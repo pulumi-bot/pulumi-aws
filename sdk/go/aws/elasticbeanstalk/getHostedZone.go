@@ -4,6 +4,9 @@
 package elasticbeanstalk
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -50,4 +53,91 @@ type GetHostedZoneResult struct {
 	Id string `pulumi:"id"`
 	// The region of the hosted zone.
 	Region *string `pulumi:"region"`
+}
+
+func GetHostedZoneApply(ctx *pulumi.Context, args GetHostedZoneApplyInput, opts ...pulumi.InvokeOption) GetHostedZoneResultOutput {
+	return args.ToGetHostedZoneApplyOutput().ApplyT(func(v GetHostedZoneArgs) (GetHostedZoneResult, error) {
+		r, err := GetHostedZone(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetHostedZoneResultOutput)
+}
+
+// GetHostedZoneApplyInput is an input type that accepts GetHostedZoneApplyArgs and GetHostedZoneApplyOutput values.
+// You can construct a concrete instance of `GetHostedZoneApplyInput` via:
+//
+//          GetHostedZoneApplyArgs{...}
+type GetHostedZoneApplyInput interface {
+	pulumi.Input
+
+	ToGetHostedZoneApplyOutput() GetHostedZoneApplyOutput
+	ToGetHostedZoneApplyOutputWithContext(context.Context) GetHostedZoneApplyOutput
+}
+
+// A collection of arguments for invoking getHostedZone.
+type GetHostedZoneApplyArgs struct {
+	// The region you'd like the zone for. By default, fetches the current region.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (GetHostedZoneApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostedZoneArgs)(nil)).Elem()
+}
+
+func (i GetHostedZoneApplyArgs) ToGetHostedZoneApplyOutput() GetHostedZoneApplyOutput {
+	return i.ToGetHostedZoneApplyOutputWithContext(context.Background())
+}
+
+func (i GetHostedZoneApplyArgs) ToGetHostedZoneApplyOutputWithContext(ctx context.Context) GetHostedZoneApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostedZoneApplyOutput)
+}
+
+// A collection of arguments for invoking getHostedZone.
+type GetHostedZoneApplyOutput struct{ *pulumi.OutputState }
+
+func (GetHostedZoneApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostedZoneArgs)(nil)).Elem()
+}
+
+func (o GetHostedZoneApplyOutput) ToGetHostedZoneApplyOutput() GetHostedZoneApplyOutput {
+	return o
+}
+
+func (o GetHostedZoneApplyOutput) ToGetHostedZoneApplyOutputWithContext(ctx context.Context) GetHostedZoneApplyOutput {
+	return o
+}
+
+// The region you'd like the zone for. By default, fetches the current region.
+func (o GetHostedZoneApplyOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHostedZoneArgs) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getHostedZone.
+type GetHostedZoneResultOutput struct{ *pulumi.OutputState }
+
+func (GetHostedZoneResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostedZoneResult)(nil)).Elem()
+}
+
+func (o GetHostedZoneResultOutput) ToGetHostedZoneResultOutput() GetHostedZoneResultOutput {
+	return o
+}
+
+func (o GetHostedZoneResultOutput) ToGetHostedZoneResultOutputWithContext(ctx context.Context) GetHostedZoneResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetHostedZoneResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostedZoneResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The region of the hosted zone.
+func (o GetHostedZoneResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHostedZoneResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetHostedZoneApplyOutput{})
+	pulumi.RegisterOutputType(GetHostedZoneResultOutput{})
 }

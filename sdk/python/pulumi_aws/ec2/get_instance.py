@@ -589,3 +589,14 @@ def get_instance(filters: Optional[Sequence[pulumi.InputType['GetInstanceFilterA
         user_data=__ret__.user_data,
         user_data_base64=__ret__.user_data_base64,
         vpc_security_group_ids=__ret__.vpc_security_group_ids)
+
+
+@_utilities.lift_output_func(get_instance)
+def get_instance_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetInstanceFilterArgs']]]]] = None,
+                       get_password_data: Optional[pulumi.Input[bool]] = None,
+                       get_user_data: Optional[pulumi.Input[bool]] = None,
+                       instance_id: Optional[pulumi.Input[str]] = None,
+                       instance_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                       tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceResult]:
+    ...

@@ -39,6 +39,19 @@ namespace Pulumi.Aws.ElasticSearch
         /// </summary>
         public static Task<GetDomainResult> InvokeAsync(GetDomainArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("aws:elasticsearch/getDomain:getDomain", args ?? new GetDomainArgs(), options.WithVersion());
+
+        public static Output<GetDomainResult> Apply(GetDomainApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.DomainName.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetDomainArgs();
+                    a[0].Set(args, nameof(args.DomainName));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -63,6 +76,31 @@ namespace Pulumi.Aws.ElasticSearch
         }
 
         public GetDomainArgs()
+        {
+        }
+    }
+
+    public sealed class GetDomainApplyArgs
+    {
+        /// <summary>
+        /// Name of the domain.
+        /// </summary>
+        [Input("domainName", required: true)]
+        public Input<string> DomainName { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tags assigned to the domain.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetDomainApplyArgs()
         {
         }
     }

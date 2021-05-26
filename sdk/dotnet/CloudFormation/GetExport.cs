@@ -48,6 +48,17 @@ namespace Pulumi.Aws.CloudFormation
         /// </summary>
         public static Task<GetExportResult> InvokeAsync(GetExportArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetExportResult>("aws:cloudformation/getExport:getExport", args ?? new GetExportArgs(), options.WithVersion());
+
+        public static Output<GetExportResult> Apply(GetExportApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetExportArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -60,6 +71,19 @@ namespace Pulumi.Aws.CloudFormation
         public string Name { get; set; } = null!;
 
         public GetExportArgs()
+        {
+        }
+    }
+
+    public sealed class GetExportApplyArgs
+    {
+        /// <summary>
+        /// The name of the export as it appears in the console or from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetExportApplyArgs()
         {
         }
     }

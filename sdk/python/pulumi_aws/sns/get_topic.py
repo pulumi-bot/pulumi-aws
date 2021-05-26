@@ -94,3 +94,9 @@ def get_topic(name: Optional[str] = None,
         arn=__ret__.arn,
         id=__ret__.id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_topic)
+def get_topic_apply(name: Optional[pulumi.Input[str]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTopicResult]:
+    ...

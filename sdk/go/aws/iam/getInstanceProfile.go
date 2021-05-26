@@ -4,6 +4,9 @@
 package iam
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,4 +69,121 @@ type LookupInstanceProfileResult struct {
 	RoleId string `pulumi:"roleId"`
 	// The role name associated with this instance profile.
 	RoleName string `pulumi:"roleName"`
+}
+
+func LookupInstanceProfileApply(ctx *pulumi.Context, args LookupInstanceProfileApplyInput, opts ...pulumi.InvokeOption) LookupInstanceProfileResultOutput {
+	return args.ToLookupInstanceProfileApplyOutput().ApplyT(func(v LookupInstanceProfileArgs) (LookupInstanceProfileResult, error) {
+		r, err := LookupInstanceProfile(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupInstanceProfileResultOutput)
+}
+
+// LookupInstanceProfileApplyInput is an input type that accepts LookupInstanceProfileApplyArgs and LookupInstanceProfileApplyOutput values.
+// You can construct a concrete instance of `LookupInstanceProfileApplyInput` via:
+//
+//          LookupInstanceProfileApplyArgs{...}
+type LookupInstanceProfileApplyInput interface {
+	pulumi.Input
+
+	ToLookupInstanceProfileApplyOutput() LookupInstanceProfileApplyOutput
+	ToLookupInstanceProfileApplyOutputWithContext(context.Context) LookupInstanceProfileApplyOutput
+}
+
+// A collection of arguments for invoking getInstanceProfile.
+type LookupInstanceProfileApplyArgs struct {
+	// The friendly IAM instance profile name to match.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupInstanceProfileApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceProfileArgs)(nil)).Elem()
+}
+
+func (i LookupInstanceProfileApplyArgs) ToLookupInstanceProfileApplyOutput() LookupInstanceProfileApplyOutput {
+	return i.ToLookupInstanceProfileApplyOutputWithContext(context.Background())
+}
+
+func (i LookupInstanceProfileApplyArgs) ToLookupInstanceProfileApplyOutputWithContext(ctx context.Context) LookupInstanceProfileApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupInstanceProfileApplyOutput)
+}
+
+// A collection of arguments for invoking getInstanceProfile.
+type LookupInstanceProfileApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupInstanceProfileApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceProfileArgs)(nil)).Elem()
+}
+
+func (o LookupInstanceProfileApplyOutput) ToLookupInstanceProfileApplyOutput() LookupInstanceProfileApplyOutput {
+	return o
+}
+
+func (o LookupInstanceProfileApplyOutput) ToLookupInstanceProfileApplyOutputWithContext(ctx context.Context) LookupInstanceProfileApplyOutput {
+	return o
+}
+
+// The friendly IAM instance profile name to match.
+func (o LookupInstanceProfileApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceProfileArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getInstanceProfile.
+type LookupInstanceProfileResultOutput struct{ *pulumi.OutputState }
+
+func (LookupInstanceProfileResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceProfileResult)(nil)).Elem()
+}
+
+func (o LookupInstanceProfileResultOutput) ToLookupInstanceProfileResultOutput() LookupInstanceProfileResultOutput {
+	return o
+}
+
+func (o LookupInstanceProfileResultOutput) ToLookupInstanceProfileResultOutputWithContext(ctx context.Context) LookupInstanceProfileResultOutput {
+	return o
+}
+
+// The Amazon Resource Name (ARN) specifying the instance profile.
+func (o LookupInstanceProfileResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceProfileResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The string representation of the date the instance profile
+// was created.
+func (o LookupInstanceProfileResultOutput) CreateDate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceProfileResult) string { return v.CreateDate }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupInstanceProfileResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceProfileResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceProfileResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceProfileResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The path to the instance profile.
+func (o LookupInstanceProfileResultOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceProfileResult) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The role arn associated with this instance profile.
+func (o LookupInstanceProfileResultOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceProfileResult) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+// The role id associated with this instance profile.
+func (o LookupInstanceProfileResultOutput) RoleId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceProfileResult) string { return v.RoleId }).(pulumi.StringOutput)
+}
+
+// The role name associated with this instance profile.
+func (o LookupInstanceProfileResultOutput) RoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceProfileResult) string { return v.RoleName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupInstanceProfileApplyOutput{})
+	pulumi.RegisterOutputType(LookupInstanceProfileResultOutput{})
 }

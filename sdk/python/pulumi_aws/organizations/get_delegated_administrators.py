@@ -93,3 +93,9 @@ def get_delegated_administrators(service_principal: Optional[str] = None,
         delegated_administrators=__ret__.delegated_administrators,
         id=__ret__.id,
         service_principal=__ret__.service_principal)
+
+
+@_utilities.lift_output_func(get_delegated_administrators)
+def get_delegated_administrators_apply(service_principal: Optional[pulumi.Input[str]] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDelegatedAdministratorsResult]:
+    ...

@@ -119,3 +119,10 @@ def get_region(endpoint: Optional[str] = None,
         endpoint=__ret__.endpoint,
         id=__ret__.id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_region)
+def get_region_apply(endpoint: Optional[pulumi.Input[str]] = None,
+                     name: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionResult]:
+    ...

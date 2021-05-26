@@ -4,6 +4,9 @@
 package ec2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,4 +74,133 @@ type GetLocalGatewayResult struct {
 	// State of the local gateway.
 	State string            `pulumi:"state"`
 	Tags  map[string]string `pulumi:"tags"`
+}
+
+func GetLocalGatewayApply(ctx *pulumi.Context, args GetLocalGatewayApplyInput, opts ...pulumi.InvokeOption) GetLocalGatewayResultOutput {
+	return args.ToGetLocalGatewayApplyOutput().ApplyT(func(v GetLocalGatewayArgs) (GetLocalGatewayResult, error) {
+		r, err := GetLocalGateway(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetLocalGatewayResultOutput)
+}
+
+// GetLocalGatewayApplyInput is an input type that accepts GetLocalGatewayApplyArgs and GetLocalGatewayApplyOutput values.
+// You can construct a concrete instance of `GetLocalGatewayApplyInput` via:
+//
+//          GetLocalGatewayApplyArgs{...}
+type GetLocalGatewayApplyInput interface {
+	pulumi.Input
+
+	ToGetLocalGatewayApplyOutput() GetLocalGatewayApplyOutput
+	ToGetLocalGatewayApplyOutputWithContext(context.Context) GetLocalGatewayApplyOutput
+}
+
+// A collection of arguments for invoking getLocalGateway.
+type GetLocalGatewayApplyArgs struct {
+	// Custom filter block as described below.
+	Filters GetLocalGatewayFilterArrayInput `pulumi:"filters"`
+	// The id of the specific Local Gateway to retrieve.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The current state of the desired Local Gateway.
+	// Can be either `"pending"` or `"available"`.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// A mapping of tags, each pair of which must exactly match
+	// a pair on the desired Local Gateway.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetLocalGatewayApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocalGatewayArgs)(nil)).Elem()
+}
+
+func (i GetLocalGatewayApplyArgs) ToGetLocalGatewayApplyOutput() GetLocalGatewayApplyOutput {
+	return i.ToGetLocalGatewayApplyOutputWithContext(context.Background())
+}
+
+func (i GetLocalGatewayApplyArgs) ToGetLocalGatewayApplyOutputWithContext(ctx context.Context) GetLocalGatewayApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLocalGatewayApplyOutput)
+}
+
+// A collection of arguments for invoking getLocalGateway.
+type GetLocalGatewayApplyOutput struct{ *pulumi.OutputState }
+
+func (GetLocalGatewayApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocalGatewayArgs)(nil)).Elem()
+}
+
+func (o GetLocalGatewayApplyOutput) ToGetLocalGatewayApplyOutput() GetLocalGatewayApplyOutput {
+	return o
+}
+
+func (o GetLocalGatewayApplyOutput) ToGetLocalGatewayApplyOutputWithContext(ctx context.Context) GetLocalGatewayApplyOutput {
+	return o
+}
+
+// Custom filter block as described below.
+func (o GetLocalGatewayApplyOutput) Filters() GetLocalGatewayFilterArrayOutput {
+	return o.ApplyT(func(v GetLocalGatewayArgs) []GetLocalGatewayFilter { return v.Filters }).(GetLocalGatewayFilterArrayOutput)
+}
+
+// The id of the specific Local Gateway to retrieve.
+func (o GetLocalGatewayApplyOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLocalGatewayArgs) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The current state of the desired Local Gateway.
+// Can be either `"pending"` or `"available"`.
+func (o GetLocalGatewayApplyOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLocalGatewayArgs) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags, each pair of which must exactly match
+// a pair on the desired Local Gateway.
+func (o GetLocalGatewayApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetLocalGatewayArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getLocalGateway.
+type GetLocalGatewayResultOutput struct{ *pulumi.OutputState }
+
+func (GetLocalGatewayResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocalGatewayResult)(nil)).Elem()
+}
+
+func (o GetLocalGatewayResultOutput) ToGetLocalGatewayResultOutput() GetLocalGatewayResultOutput {
+	return o
+}
+
+func (o GetLocalGatewayResultOutput) ToGetLocalGatewayResultOutputWithContext(ctx context.Context) GetLocalGatewayResultOutput {
+	return o
+}
+
+func (o GetLocalGatewayResultOutput) Filters() GetLocalGatewayFilterArrayOutput {
+	return o.ApplyT(func(v GetLocalGatewayResult) []GetLocalGatewayFilter { return v.Filters }).(GetLocalGatewayFilterArrayOutput)
+}
+
+func (o GetLocalGatewayResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocalGatewayResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Amazon Resource Name (ARN) of Outpost
+func (o GetLocalGatewayResultOutput) OutpostArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocalGatewayResult) string { return v.OutpostArn }).(pulumi.StringOutput)
+}
+
+// AWS account identifier that owns the Local Gateway.
+func (o GetLocalGatewayResultOutput) OwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocalGatewayResult) string { return v.OwnerId }).(pulumi.StringOutput)
+}
+
+// State of the local gateway.
+func (o GetLocalGatewayResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocalGatewayResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o GetLocalGatewayResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetLocalGatewayResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetLocalGatewayApplyOutput{})
+	pulumi.RegisterOutputType(GetLocalGatewayResultOutput{})
 }

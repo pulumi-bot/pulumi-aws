@@ -4,6 +4,9 @@
 package ec2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -111,4 +114,150 @@ type LookupManagedPrefixListResult struct {
 	// A map of tags assigned to the resource.
 	Tags    map[string]string `pulumi:"tags"`
 	Version int               `pulumi:"version"`
+}
+
+func LookupManagedPrefixListApply(ctx *pulumi.Context, args LookupManagedPrefixListApplyInput, opts ...pulumi.InvokeOption) LookupManagedPrefixListResultOutput {
+	return args.ToLookupManagedPrefixListApplyOutput().ApplyT(func(v LookupManagedPrefixListArgs) (LookupManagedPrefixListResult, error) {
+		r, err := LookupManagedPrefixList(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupManagedPrefixListResultOutput)
+}
+
+// LookupManagedPrefixListApplyInput is an input type that accepts LookupManagedPrefixListApplyArgs and LookupManagedPrefixListApplyOutput values.
+// You can construct a concrete instance of `LookupManagedPrefixListApplyInput` via:
+//
+//          LookupManagedPrefixListApplyArgs{...}
+type LookupManagedPrefixListApplyInput interface {
+	pulumi.Input
+
+	ToLookupManagedPrefixListApplyOutput() LookupManagedPrefixListApplyOutput
+	ToLookupManagedPrefixListApplyOutputWithContext(context.Context) LookupManagedPrefixListApplyOutput
+}
+
+// A collection of arguments for invoking getManagedPrefixList.
+type LookupManagedPrefixListApplyArgs struct {
+	// Configuration block(s) for filtering. Detailed below.
+	Filters GetManagedPrefixListFilterArrayInput `pulumi:"filters"`
+	// The ID of the prefix list to select.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The name of the filter field. Valid values can be found in the EC2 [DescribeManagedPrefixLists](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeManagedPrefixLists.html) API Reference.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// A map of tags assigned to the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupManagedPrefixListApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupManagedPrefixListArgs)(nil)).Elem()
+}
+
+func (i LookupManagedPrefixListApplyArgs) ToLookupManagedPrefixListApplyOutput() LookupManagedPrefixListApplyOutput {
+	return i.ToLookupManagedPrefixListApplyOutputWithContext(context.Background())
+}
+
+func (i LookupManagedPrefixListApplyArgs) ToLookupManagedPrefixListApplyOutputWithContext(ctx context.Context) LookupManagedPrefixListApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupManagedPrefixListApplyOutput)
+}
+
+// A collection of arguments for invoking getManagedPrefixList.
+type LookupManagedPrefixListApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupManagedPrefixListApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupManagedPrefixListArgs)(nil)).Elem()
+}
+
+func (o LookupManagedPrefixListApplyOutput) ToLookupManagedPrefixListApplyOutput() LookupManagedPrefixListApplyOutput {
+	return o
+}
+
+func (o LookupManagedPrefixListApplyOutput) ToLookupManagedPrefixListApplyOutputWithContext(ctx context.Context) LookupManagedPrefixListApplyOutput {
+	return o
+}
+
+// Configuration block(s) for filtering. Detailed below.
+func (o LookupManagedPrefixListApplyOutput) Filters() GetManagedPrefixListFilterArrayOutput {
+	return o.ApplyT(func(v LookupManagedPrefixListArgs) []GetManagedPrefixListFilter { return v.Filters }).(GetManagedPrefixListFilterArrayOutput)
+}
+
+// The ID of the prefix list to select.
+func (o LookupManagedPrefixListApplyOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupManagedPrefixListArgs) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The name of the filter field. Valid values can be found in the EC2 [DescribeManagedPrefixLists](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeManagedPrefixLists.html) API Reference.
+func (o LookupManagedPrefixListApplyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupManagedPrefixListArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// A map of tags assigned to the resource.
+func (o LookupManagedPrefixListApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupManagedPrefixListArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getManagedPrefixList.
+type LookupManagedPrefixListResultOutput struct{ *pulumi.OutputState }
+
+func (LookupManagedPrefixListResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupManagedPrefixListResult)(nil)).Elem()
+}
+
+func (o LookupManagedPrefixListResultOutput) ToLookupManagedPrefixListResultOutput() LookupManagedPrefixListResultOutput {
+	return o
+}
+
+func (o LookupManagedPrefixListResultOutput) ToLookupManagedPrefixListResultOutputWithContext(ctx context.Context) LookupManagedPrefixListResultOutput {
+	return o
+}
+
+// The address family of the prefix list. Valid values are `IPv4` and `IPv6`.
+func (o LookupManagedPrefixListResultOutput) AddressFamily() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedPrefixListResult) string { return v.AddressFamily }).(pulumi.StringOutput)
+}
+
+// The ARN of the selected prefix list.
+func (o LookupManagedPrefixListResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedPrefixListResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The set of entries in this prefix list. Each entry is an object with `cidr` and `description`.
+func (o LookupManagedPrefixListResultOutput) Entries() GetManagedPrefixListEntryArrayOutput {
+	return o.ApplyT(func(v LookupManagedPrefixListResult) []GetManagedPrefixListEntry { return v.Entries }).(GetManagedPrefixListEntryArrayOutput)
+}
+
+func (o LookupManagedPrefixListResultOutput) Filters() GetManagedPrefixListFilterArrayOutput {
+	return o.ApplyT(func(v LookupManagedPrefixListResult) []GetManagedPrefixListFilter { return v.Filters }).(GetManagedPrefixListFilterArrayOutput)
+}
+
+// The ID of the selected prefix list.
+func (o LookupManagedPrefixListResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedPrefixListResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// When then prefix list is managed, the maximum number of entries it supports, or null otherwise.
+func (o LookupManagedPrefixListResultOutput) MaxEntries() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupManagedPrefixListResult) int { return v.MaxEntries }).(pulumi.IntOutput)
+}
+
+// The name of the selected prefix list.
+func (o LookupManagedPrefixListResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedPrefixListResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Account ID of the owner of a customer-managed prefix list, or `AWS` otherwise.
+func (o LookupManagedPrefixListResultOutput) OwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedPrefixListResult) string { return v.OwnerId }).(pulumi.StringOutput)
+}
+
+// A map of tags assigned to the resource.
+func (o LookupManagedPrefixListResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupManagedPrefixListResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o LookupManagedPrefixListResultOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupManagedPrefixListResult) int { return v.Version }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupManagedPrefixListApplyOutput{})
+	pulumi.RegisterOutputType(LookupManagedPrefixListResultOutput{})
 }

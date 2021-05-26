@@ -161,3 +161,10 @@ def get_distribution_configuration(arn: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_distribution_configuration)
+def get_distribution_configuration_apply(arn: Optional[pulumi.Input[str]] = None,
+                                         tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDistributionConfigurationResult]:
+    ...

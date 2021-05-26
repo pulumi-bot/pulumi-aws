@@ -39,6 +39,19 @@ namespace Pulumi.Aws.Backup
         /// </summary>
         public static Task<GetVaultResult> InvokeAsync(GetVaultArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVaultResult>("aws:backup/getVault:getVault", args ?? new GetVaultArgs(), options.WithVersion());
+
+        public static Output<GetVaultResult> Apply(GetVaultApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetVaultArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -63,6 +76,31 @@ namespace Pulumi.Aws.Backup
         }
 
         public GetVaultArgs()
+        {
+        }
+    }
+
+    public sealed class GetVaultApplyArgs
+    {
+        /// <summary>
+        /// The name of the backup vault.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Metadata that you can assign to help organize the resources that you create.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetVaultApplyArgs()
         {
         }
     }

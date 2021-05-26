@@ -42,16 +42,16 @@ export interface GetApisArgs {
     /**
      * The API name.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * The API protocol.
      */
-    readonly protocolType?: string;
+    protocolType?: string;
     /**
      * A map of tags, each pair of which must exactly match
      * a pair on the desired APIs.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -69,4 +69,27 @@ export interface GetApisResult {
     readonly name?: string;
     readonly protocolType?: string;
     readonly tags?: {[key: string]: string};
+}
+
+export function getApisApply(args?: GetApisApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApisResult> {
+    return pulumi.output(args).apply(a => getApis(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getApis.
+ */
+export interface GetApisApplyArgs {
+    /**
+     * The API name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The API protocol.
+     */
+    protocolType?: pulumi.Input<string>;
+    /**
+     * A map of tags, each pair of which must exactly match
+     * a pair on the desired APIs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

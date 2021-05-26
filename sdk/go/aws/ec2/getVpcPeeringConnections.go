@@ -4,6 +4,9 @@
 package ec2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,4 +38,108 @@ type GetVpcPeeringConnectionsResult struct {
 	// The IDs of the VPC Peering Connections.
 	Ids  []string          `pulumi:"ids"`
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func GetVpcPeeringConnectionsApply(ctx *pulumi.Context, args GetVpcPeeringConnectionsApplyInput, opts ...pulumi.InvokeOption) GetVpcPeeringConnectionsResultOutput {
+	return args.ToGetVpcPeeringConnectionsApplyOutput().ApplyT(func(v GetVpcPeeringConnectionsArgs) (GetVpcPeeringConnectionsResult, error) {
+		r, err := GetVpcPeeringConnections(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetVpcPeeringConnectionsResultOutput)
+}
+
+// GetVpcPeeringConnectionsApplyInput is an input type that accepts GetVpcPeeringConnectionsApplyArgs and GetVpcPeeringConnectionsApplyOutput values.
+// You can construct a concrete instance of `GetVpcPeeringConnectionsApplyInput` via:
+//
+//          GetVpcPeeringConnectionsApplyArgs{...}
+type GetVpcPeeringConnectionsApplyInput interface {
+	pulumi.Input
+
+	ToGetVpcPeeringConnectionsApplyOutput() GetVpcPeeringConnectionsApplyOutput
+	ToGetVpcPeeringConnectionsApplyOutputWithContext(context.Context) GetVpcPeeringConnectionsApplyOutput
+}
+
+// A collection of arguments for invoking getVpcPeeringConnections.
+type GetVpcPeeringConnectionsApplyArgs struct {
+	// Custom filter block as described below.
+	Filters GetVpcPeeringConnectionsFilterArrayInput `pulumi:"filters"`
+	// A mapping of tags, each pair of which must exactly match
+	// a pair on the desired VPC Peering Connection.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetVpcPeeringConnectionsApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcPeeringConnectionsArgs)(nil)).Elem()
+}
+
+func (i GetVpcPeeringConnectionsApplyArgs) ToGetVpcPeeringConnectionsApplyOutput() GetVpcPeeringConnectionsApplyOutput {
+	return i.ToGetVpcPeeringConnectionsApplyOutputWithContext(context.Background())
+}
+
+func (i GetVpcPeeringConnectionsApplyArgs) ToGetVpcPeeringConnectionsApplyOutputWithContext(ctx context.Context) GetVpcPeeringConnectionsApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcPeeringConnectionsApplyOutput)
+}
+
+// A collection of arguments for invoking getVpcPeeringConnections.
+type GetVpcPeeringConnectionsApplyOutput struct{ *pulumi.OutputState }
+
+func (GetVpcPeeringConnectionsApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcPeeringConnectionsArgs)(nil)).Elem()
+}
+
+func (o GetVpcPeeringConnectionsApplyOutput) ToGetVpcPeeringConnectionsApplyOutput() GetVpcPeeringConnectionsApplyOutput {
+	return o
+}
+
+func (o GetVpcPeeringConnectionsApplyOutput) ToGetVpcPeeringConnectionsApplyOutputWithContext(ctx context.Context) GetVpcPeeringConnectionsApplyOutput {
+	return o
+}
+
+// Custom filter block as described below.
+func (o GetVpcPeeringConnectionsApplyOutput) Filters() GetVpcPeeringConnectionsFilterArrayOutput {
+	return o.ApplyT(func(v GetVpcPeeringConnectionsArgs) []GetVpcPeeringConnectionsFilter { return v.Filters }).(GetVpcPeeringConnectionsFilterArrayOutput)
+}
+
+// A mapping of tags, each pair of which must exactly match
+// a pair on the desired VPC Peering Connection.
+func (o GetVpcPeeringConnectionsApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetVpcPeeringConnectionsArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getVpcPeeringConnections.
+type GetVpcPeeringConnectionsResultOutput struct{ *pulumi.OutputState }
+
+func (GetVpcPeeringConnectionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcPeeringConnectionsResult)(nil)).Elem()
+}
+
+func (o GetVpcPeeringConnectionsResultOutput) ToGetVpcPeeringConnectionsResultOutput() GetVpcPeeringConnectionsResultOutput {
+	return o
+}
+
+func (o GetVpcPeeringConnectionsResultOutput) ToGetVpcPeeringConnectionsResultOutputWithContext(ctx context.Context) GetVpcPeeringConnectionsResultOutput {
+	return o
+}
+
+func (o GetVpcPeeringConnectionsResultOutput) Filters() GetVpcPeeringConnectionsFilterArrayOutput {
+	return o.ApplyT(func(v GetVpcPeeringConnectionsResult) []GetVpcPeeringConnectionsFilter { return v.Filters }).(GetVpcPeeringConnectionsFilterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetVpcPeeringConnectionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcPeeringConnectionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The IDs of the VPC Peering Connections.
+func (o GetVpcPeeringConnectionsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpcPeeringConnectionsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetVpcPeeringConnectionsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetVpcPeeringConnectionsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetVpcPeeringConnectionsApplyOutput{})
+	pulumi.RegisterOutputType(GetVpcPeeringConnectionsResultOutput{})
 }

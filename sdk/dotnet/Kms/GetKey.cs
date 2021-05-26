@@ -54,6 +54,19 @@ namespace Pulumi.Aws.Kms
         /// </summary>
         public static Task<GetKeyResult> InvokeAsync(GetKeyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyResult>("aws:kms/getKey:getKey", args ?? new GetKeyArgs(), options.WithVersion());
+
+        public static Output<GetKeyResult> Apply(GetKeyApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.GrantTokens.Box(),
+                args.KeyId.Box()
+            ).Apply(a => {
+                    var args = new GetKeyArgs();
+                    a[0].Set(args, nameof(args.GrantTokens));
+                    a[1].Set(args, nameof(args.KeyId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -82,6 +95,35 @@ namespace Pulumi.Aws.Kms
         public string KeyId { get; set; } = null!;
 
         public GetKeyArgs()
+        {
+        }
+    }
+
+    public sealed class GetKeyApplyArgs
+    {
+        [Input("grantTokens")]
+        private InputList<string>? _grantTokens;
+
+        /// <summary>
+        /// List of grant tokens
+        /// </summary>
+        public InputList<string> GrantTokens
+        {
+            get => _grantTokens ?? (_grantTokens = new InputList<string>());
+            set => _grantTokens = value;
+        }
+
+        /// <summary>
+        /// Key identifier which can be one of the following format:
+        /// * Key ID. E.g: `1234abcd-12ab-34cd-56ef-1234567890ab`
+        /// * Key ARN. E.g.: `arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+        /// * Alias name. E.g.: `alias/my-key`
+        /// * Alias ARN: E.g.: `arn:aws:kms:us-east-1:111122223333:alias/my-key`
+        /// </summary>
+        [Input("keyId", required: true)]
+        public Input<string> KeyId { get; set; } = null!;
+
+        public GetKeyApplyArgs()
         {
         }
     }

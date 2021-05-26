@@ -4,6 +4,9 @@
 package wafv2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,4 +62,111 @@ type LookupRuleGroupResult struct {
 	Id    string `pulumi:"id"`
 	Name  string `pulumi:"name"`
 	Scope string `pulumi:"scope"`
+}
+
+func LookupRuleGroupApply(ctx *pulumi.Context, args LookupRuleGroupApplyInput, opts ...pulumi.InvokeOption) LookupRuleGroupResultOutput {
+	return args.ToLookupRuleGroupApplyOutput().ApplyT(func(v LookupRuleGroupArgs) (LookupRuleGroupResult, error) {
+		r, err := LookupRuleGroup(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupRuleGroupResultOutput)
+}
+
+// LookupRuleGroupApplyInput is an input type that accepts LookupRuleGroupApplyArgs and LookupRuleGroupApplyOutput values.
+// You can construct a concrete instance of `LookupRuleGroupApplyInput` via:
+//
+//          LookupRuleGroupApplyArgs{...}
+type LookupRuleGroupApplyInput interface {
+	pulumi.Input
+
+	ToLookupRuleGroupApplyOutput() LookupRuleGroupApplyOutput
+	ToLookupRuleGroupApplyOutputWithContext(context.Context) LookupRuleGroupApplyOutput
+}
+
+// A collection of arguments for invoking getRuleGroup.
+type LookupRuleGroupApplyArgs struct {
+	// The name of the WAFv2 Rule Group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
+	Scope pulumi.StringInput `pulumi:"scope"`
+}
+
+func (LookupRuleGroupApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRuleGroupArgs)(nil)).Elem()
+}
+
+func (i LookupRuleGroupApplyArgs) ToLookupRuleGroupApplyOutput() LookupRuleGroupApplyOutput {
+	return i.ToLookupRuleGroupApplyOutputWithContext(context.Background())
+}
+
+func (i LookupRuleGroupApplyArgs) ToLookupRuleGroupApplyOutputWithContext(ctx context.Context) LookupRuleGroupApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupRuleGroupApplyOutput)
+}
+
+// A collection of arguments for invoking getRuleGroup.
+type LookupRuleGroupApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupRuleGroupApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRuleGroupArgs)(nil)).Elem()
+}
+
+func (o LookupRuleGroupApplyOutput) ToLookupRuleGroupApplyOutput() LookupRuleGroupApplyOutput {
+	return o
+}
+
+func (o LookupRuleGroupApplyOutput) ToLookupRuleGroupApplyOutputWithContext(ctx context.Context) LookupRuleGroupApplyOutput {
+	return o
+}
+
+// The name of the WAFv2 Rule Group.
+func (o LookupRuleGroupApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRuleGroupArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
+func (o LookupRuleGroupApplyOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRuleGroupArgs) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getRuleGroup.
+type LookupRuleGroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRuleGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRuleGroupResult)(nil)).Elem()
+}
+
+func (o LookupRuleGroupResultOutput) ToLookupRuleGroupResultOutput() LookupRuleGroupResultOutput {
+	return o
+}
+
+func (o LookupRuleGroupResultOutput) ToLookupRuleGroupResultOutputWithContext(ctx context.Context) LookupRuleGroupResultOutput {
+	return o
+}
+
+// The Amazon Resource Name (ARN) of the entity.
+func (o LookupRuleGroupResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRuleGroupResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The description of the rule group that helps with identification.
+func (o LookupRuleGroupResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRuleGroupResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupRuleGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRuleGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupRuleGroupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRuleGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupRuleGroupResultOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRuleGroupResult) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRuleGroupApplyOutput{})
+	pulumi.RegisterOutputType(LookupRuleGroupResultOutput{})
 }

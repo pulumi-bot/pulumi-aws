@@ -80,6 +80,49 @@ namespace Pulumi.Aws.Rds
         /// </summary>
         public static Task<GetOrderableDbInstanceResult> InvokeAsync(GetOrderableDbInstanceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOrderableDbInstanceResult>("aws:rds/getOrderableDbInstance:getOrderableDbInstance", args ?? new GetOrderableDbInstanceArgs(), options.WithVersion());
+
+        public static Output<GetOrderableDbInstanceResult> Apply(GetOrderableDbInstanceApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.AvailabilityZoneGroup.Box(),
+                args.Engine.Box(),
+                args.EngineVersion.Box(),
+                args.InstanceClass.Box(),
+                args.LicenseModel.Box(),
+                args.PreferredEngineVersions.Box(),
+                args.PreferredInstanceClasses.Box(),
+                args.StorageType.Box(),
+                args.SupportsEnhancedMonitoring.Box(),
+                args.SupportsGlobalDatabases.Box(),
+                args.SupportsIamDatabaseAuthentication.Box(),
+                args.SupportsIops.Box(),
+                args.SupportsKerberosAuthentication.Box(),
+                args.SupportsPerformanceInsights.Box(),
+                args.SupportsStorageAutoscaling.Box(),
+                args.SupportsStorageEncryption.Box(),
+                args.Vpc.Box()
+            ).Apply(a => {
+                    var args = new GetOrderableDbInstanceArgs();
+                    a[0].Set(args, nameof(args.AvailabilityZoneGroup));
+                    a[1].Set(args, nameof(args.Engine));
+                    a[2].Set(args, nameof(args.EngineVersion));
+                    a[3].Set(args, nameof(args.InstanceClass));
+                    a[4].Set(args, nameof(args.LicenseModel));
+                    a[5].Set(args, nameof(args.PreferredEngineVersions));
+                    a[6].Set(args, nameof(args.PreferredInstanceClasses));
+                    a[7].Set(args, nameof(args.StorageType));
+                    a[8].Set(args, nameof(args.SupportsEnhancedMonitoring));
+                    a[9].Set(args, nameof(args.SupportsGlobalDatabases));
+                    a[10].Set(args, nameof(args.SupportsIamDatabaseAuthentication));
+                    a[11].Set(args, nameof(args.SupportsIops));
+                    a[12].Set(args, nameof(args.SupportsKerberosAuthentication));
+                    a[13].Set(args, nameof(args.SupportsPerformanceInsights));
+                    a[14].Set(args, nameof(args.SupportsStorageAutoscaling));
+                    a[15].Set(args, nameof(args.SupportsStorageEncryption));
+                    a[16].Set(args, nameof(args.Vpc));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -200,6 +243,127 @@ namespace Pulumi.Aws.Rds
         public bool? Vpc { get; set; }
 
         public GetOrderableDbInstanceArgs()
+        {
+        }
+    }
+
+    public sealed class GetOrderableDbInstanceApplyArgs
+    {
+        /// <summary>
+        /// Availability zone group.
+        /// </summary>
+        [Input("availabilityZoneGroup")]
+        public Input<string>? AvailabilityZoneGroup { get; set; }
+
+        /// <summary>
+        /// DB engine. Engine values include `aurora`, `aurora-mysql`, `aurora-postgresql`, `docdb`, `mariadb`, `mysql`, `neptune`, `oracle-ee`, `oracle-se`, `oracle-se1`, `oracle-se2`, `postgres`, `sqlserver-ee`, `sqlserver-ex`, `sqlserver-se`, and `sqlserver-web`.
+        /// </summary>
+        [Input("engine", required: true)]
+        public Input<string> Engine { get; set; } = null!;
+
+        /// <summary>
+        /// Version of the DB engine. If none is provided, the AWS-defined default version will be used.
+        /// </summary>
+        [Input("engineVersion")]
+        public Input<string>? EngineVersion { get; set; }
+
+        /// <summary>
+        /// DB instance class. Examples of classes are `db.m3.2xlarge`, `db.t2.small`, and `db.m3.medium`.
+        /// </summary>
+        [Input("instanceClass")]
+        public Input<string>? InstanceClass { get; set; }
+
+        /// <summary>
+        /// License model. Examples of license models are `general-public-license`, `bring-your-own-license`, and `amazon-license`.
+        /// </summary>
+        [Input("licenseModel")]
+        public Input<string>? LicenseModel { get; set; }
+
+        [Input("preferredEngineVersions")]
+        private InputList<string>? _preferredEngineVersions;
+
+        /// <summary>
+        /// Ordered list of preferred RDS DB instance engine versions. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned.
+        /// </summary>
+        public InputList<string> PreferredEngineVersions
+        {
+            get => _preferredEngineVersions ?? (_preferredEngineVersions = new InputList<string>());
+            set => _preferredEngineVersions = value;
+        }
+
+        [Input("preferredInstanceClasses")]
+        private InputList<string>? _preferredInstanceClasses;
+
+        /// <summary>
+        /// Ordered list of preferred RDS DB instance classes. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned.
+        /// </summary>
+        public InputList<string> PreferredInstanceClasses
+        {
+            get => _preferredInstanceClasses ?? (_preferredInstanceClasses = new InputList<string>());
+            set => _preferredInstanceClasses = value;
+        }
+
+        /// <summary>
+        /// Storage types. Examples of storage types are `standard`, `io1`, `gp2`, and `aurora`.
+        /// </summary>
+        [Input("storageType")]
+        public Input<string>? StorageType { get; set; }
+
+        /// <summary>
+        /// Enable this to ensure a DB instance supports Enhanced Monitoring at intervals from 1 to 60 seconds.
+        /// </summary>
+        [Input("supportsEnhancedMonitoring")]
+        public Input<bool>? SupportsEnhancedMonitoring { get; set; }
+
+        /// <summary>
+        /// Enable this to ensure a DB instance supports Aurora global databases with a specific combination of other DB engine attributes.
+        /// </summary>
+        [Input("supportsGlobalDatabases")]
+        public Input<bool>? SupportsGlobalDatabases { get; set; }
+
+        /// <summary>
+        /// Enable this to ensure a DB instance supports IAM database authentication.
+        /// </summary>
+        [Input("supportsIamDatabaseAuthentication")]
+        public Input<bool>? SupportsIamDatabaseAuthentication { get; set; }
+
+        /// <summary>
+        /// Enable this to ensure a DB instance supports provisioned IOPS.
+        /// </summary>
+        [Input("supportsIops")]
+        public Input<bool>? SupportsIops { get; set; }
+
+        /// <summary>
+        /// Enable this to ensure a DB instance supports Kerberos Authentication.
+        /// </summary>
+        [Input("supportsKerberosAuthentication")]
+        public Input<bool>? SupportsKerberosAuthentication { get; set; }
+
+        /// <summary>
+        /// Enable this to ensure a DB instance supports Performance Insights.
+        /// </summary>
+        [Input("supportsPerformanceInsights")]
+        public Input<bool>? SupportsPerformanceInsights { get; set; }
+
+        /// <summary>
+        /// Enable this to ensure Amazon RDS can automatically scale storage for DB instances that use the specified DB instance class.
+        /// </summary>
+        [Input("supportsStorageAutoscaling")]
+        public Input<bool>? SupportsStorageAutoscaling { get; set; }
+
+        /// <summary>
+        /// Enable this to ensure a DB instance supports encrypted storage.
+        /// </summary>
+        [Input("supportsStorageEncryption")]
+        public Input<bool>? SupportsStorageEncryption { get; set; }
+
+        /// <summary>
+        /// Boolean that indicates whether to show only VPC or non-VPC offerings.
+        /// </summary>
+        [Input("vpc")]
+        public Input<bool>? Vpc { get; set; }
+
+        public GetOrderableDbInstanceApplyArgs()
         {
         }
     }

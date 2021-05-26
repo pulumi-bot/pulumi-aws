@@ -16,6 +16,17 @@ namespace Pulumi.Aws.Kms
         /// </summary>
         public static Task<GetSecretsResult> InvokeAsync(GetSecretsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecretsResult>("aws:kms/getSecrets:getSecrets", args ?? new GetSecretsArgs(), options.WithVersion());
+
+        public static Output<GetSecretsResult> Apply(GetSecretsApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Secrets.Box()
+            ).Apply(a => {
+                    var args = new GetSecretsArgs();
+                    a[0].Set(args, nameof(args.Secrets));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -34,6 +45,25 @@ namespace Pulumi.Aws.Kms
         }
 
         public GetSecretsArgs()
+        {
+        }
+    }
+
+    public sealed class GetSecretsApplyArgs
+    {
+        [Input("secrets", required: true)]
+        private InputList<Inputs.GetSecretsSecretArgs>? _secrets;
+
+        /// <summary>
+        /// One or more encrypted payload definitions from the KMS service. See the Secret Definitions below.
+        /// </summary>
+        public InputList<Inputs.GetSecretsSecretArgs> Secrets
+        {
+            get => _secrets ?? (_secrets = new InputList<Inputs.GetSecretsSecretArgs>());
+            set => _secrets = value;
+        }
+
+        public GetSecretsApplyArgs()
         {
         }
     }

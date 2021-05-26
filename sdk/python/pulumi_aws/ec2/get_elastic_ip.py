@@ -302,3 +302,12 @@ def get_elastic_ip(filters: Optional[Sequence[pulumi.InputType['GetElasticIpFilt
         public_ip=__ret__.public_ip,
         public_ipv4_pool=__ret__.public_ipv4_pool,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_elastic_ip)
+def get_elastic_ip_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetElasticIpFilterArgs']]]]] = None,
+                         id: Optional[pulumi.Input[str]] = None,
+                         public_ip: Optional[pulumi.Input[str]] = None,
+                         tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetElasticIpResult]:
+    ...

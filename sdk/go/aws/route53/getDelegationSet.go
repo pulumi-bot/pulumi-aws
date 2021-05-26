@@ -4,6 +4,9 @@
 package route53
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,4 +58,93 @@ type LookupDelegationSetResult struct {
 	CallerReference string   `pulumi:"callerReference"`
 	Id              string   `pulumi:"id"`
 	NameServers     []string `pulumi:"nameServers"`
+}
+
+func LookupDelegationSetApply(ctx *pulumi.Context, args LookupDelegationSetApplyInput, opts ...pulumi.InvokeOption) LookupDelegationSetResultOutput {
+	return args.ToLookupDelegationSetApplyOutput().ApplyT(func(v LookupDelegationSetArgs) (LookupDelegationSetResult, error) {
+		r, err := LookupDelegationSet(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupDelegationSetResultOutput)
+}
+
+// LookupDelegationSetApplyInput is an input type that accepts LookupDelegationSetApplyArgs and LookupDelegationSetApplyOutput values.
+// You can construct a concrete instance of `LookupDelegationSetApplyInput` via:
+//
+//          LookupDelegationSetApplyArgs{...}
+type LookupDelegationSetApplyInput interface {
+	pulumi.Input
+
+	ToLookupDelegationSetApplyOutput() LookupDelegationSetApplyOutput
+	ToLookupDelegationSetApplyOutputWithContext(context.Context) LookupDelegationSetApplyOutput
+}
+
+// A collection of arguments for invoking getDelegationSet.
+type LookupDelegationSetApplyArgs struct {
+	// The Hosted Zone id of the desired delegation set.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (LookupDelegationSetApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDelegationSetArgs)(nil)).Elem()
+}
+
+func (i LookupDelegationSetApplyArgs) ToLookupDelegationSetApplyOutput() LookupDelegationSetApplyOutput {
+	return i.ToLookupDelegationSetApplyOutputWithContext(context.Background())
+}
+
+func (i LookupDelegationSetApplyArgs) ToLookupDelegationSetApplyOutputWithContext(ctx context.Context) LookupDelegationSetApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupDelegationSetApplyOutput)
+}
+
+// A collection of arguments for invoking getDelegationSet.
+type LookupDelegationSetApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupDelegationSetApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDelegationSetArgs)(nil)).Elem()
+}
+
+func (o LookupDelegationSetApplyOutput) ToLookupDelegationSetApplyOutput() LookupDelegationSetApplyOutput {
+	return o
+}
+
+func (o LookupDelegationSetApplyOutput) ToLookupDelegationSetApplyOutputWithContext(ctx context.Context) LookupDelegationSetApplyOutput {
+	return o
+}
+
+// The Hosted Zone id of the desired delegation set.
+func (o LookupDelegationSetApplyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDelegationSetArgs) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getDelegationSet.
+type LookupDelegationSetResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDelegationSetResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDelegationSetResult)(nil)).Elem()
+}
+
+func (o LookupDelegationSetResultOutput) ToLookupDelegationSetResultOutput() LookupDelegationSetResultOutput {
+	return o
+}
+
+func (o LookupDelegationSetResultOutput) ToLookupDelegationSetResultOutputWithContext(ctx context.Context) LookupDelegationSetResultOutput {
+	return o
+}
+
+func (o LookupDelegationSetResultOutput) CallerReference() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDelegationSetResult) string { return v.CallerReference }).(pulumi.StringOutput)
+}
+
+func (o LookupDelegationSetResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDelegationSetResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupDelegationSetResultOutput) NameServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDelegationSetResult) []string { return v.NameServers }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDelegationSetApplyOutput{})
+	pulumi.RegisterOutputType(LookupDelegationSetResultOutput{})
 }

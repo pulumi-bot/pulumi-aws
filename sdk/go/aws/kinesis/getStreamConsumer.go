@@ -4,6 +4,9 @@
 package kinesis
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,4 +68,122 @@ type LookupStreamConsumerResult struct {
 	// The current status of the stream consumer.
 	Status    string `pulumi:"status"`
 	StreamArn string `pulumi:"streamArn"`
+}
+
+func LookupStreamConsumerApply(ctx *pulumi.Context, args LookupStreamConsumerApplyInput, opts ...pulumi.InvokeOption) LookupStreamConsumerResultOutput {
+	return args.ToLookupStreamConsumerApplyOutput().ApplyT(func(v LookupStreamConsumerArgs) (LookupStreamConsumerResult, error) {
+		r, err := LookupStreamConsumer(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupStreamConsumerResultOutput)
+}
+
+// LookupStreamConsumerApplyInput is an input type that accepts LookupStreamConsumerApplyArgs and LookupStreamConsumerApplyOutput values.
+// You can construct a concrete instance of `LookupStreamConsumerApplyInput` via:
+//
+//          LookupStreamConsumerApplyArgs{...}
+type LookupStreamConsumerApplyInput interface {
+	pulumi.Input
+
+	ToLookupStreamConsumerApplyOutput() LookupStreamConsumerApplyOutput
+	ToLookupStreamConsumerApplyOutputWithContext(context.Context) LookupStreamConsumerApplyOutput
+}
+
+// A collection of arguments for invoking getStreamConsumer.
+type LookupStreamConsumerApplyArgs struct {
+	// Amazon Resource Name (ARN) of the stream consumer.
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// Name of the stream consumer.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Amazon Resource Name (ARN) of the data stream the consumer is registered with.
+	StreamArn pulumi.StringInput `pulumi:"streamArn"`
+}
+
+func (LookupStreamConsumerApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupStreamConsumerArgs)(nil)).Elem()
+}
+
+func (i LookupStreamConsumerApplyArgs) ToLookupStreamConsumerApplyOutput() LookupStreamConsumerApplyOutput {
+	return i.ToLookupStreamConsumerApplyOutputWithContext(context.Background())
+}
+
+func (i LookupStreamConsumerApplyArgs) ToLookupStreamConsumerApplyOutputWithContext(ctx context.Context) LookupStreamConsumerApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupStreamConsumerApplyOutput)
+}
+
+// A collection of arguments for invoking getStreamConsumer.
+type LookupStreamConsumerApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupStreamConsumerApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupStreamConsumerArgs)(nil)).Elem()
+}
+
+func (o LookupStreamConsumerApplyOutput) ToLookupStreamConsumerApplyOutput() LookupStreamConsumerApplyOutput {
+	return o
+}
+
+func (o LookupStreamConsumerApplyOutput) ToLookupStreamConsumerApplyOutputWithContext(ctx context.Context) LookupStreamConsumerApplyOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN) of the stream consumer.
+func (o LookupStreamConsumerApplyOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupStreamConsumerArgs) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// Name of the stream consumer.
+func (o LookupStreamConsumerApplyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupStreamConsumerArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Amazon Resource Name (ARN) of the data stream the consumer is registered with.
+func (o LookupStreamConsumerApplyOutput) StreamArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamConsumerArgs) string { return v.StreamArn }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getStreamConsumer.
+type LookupStreamConsumerResultOutput struct{ *pulumi.OutputState }
+
+func (LookupStreamConsumerResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupStreamConsumerResult)(nil)).Elem()
+}
+
+func (o LookupStreamConsumerResultOutput) ToLookupStreamConsumerResultOutput() LookupStreamConsumerResultOutput {
+	return o
+}
+
+func (o LookupStreamConsumerResultOutput) ToLookupStreamConsumerResultOutputWithContext(ctx context.Context) LookupStreamConsumerResultOutput {
+	return o
+}
+
+func (o LookupStreamConsumerResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamConsumerResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// Approximate timestamp in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) of when the stream consumer was created.
+func (o LookupStreamConsumerResultOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamConsumerResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupStreamConsumerResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamConsumerResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupStreamConsumerResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamConsumerResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The current status of the stream consumer.
+func (o LookupStreamConsumerResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamConsumerResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o LookupStreamConsumerResultOutput) StreamArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamConsumerResult) string { return v.StreamArn }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupStreamConsumerApplyOutput{})
+	pulumi.RegisterOutputType(LookupStreamConsumerResultOutput{})
 }

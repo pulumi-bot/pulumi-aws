@@ -4,6 +4,9 @@
 package workspaces
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -60,4 +63,114 @@ type GetImageResult struct {
 	RequiredTenancy string `pulumi:"requiredTenancy"`
 	// The status of the image.
 	State string `pulumi:"state"`
+}
+
+func GetImageApply(ctx *pulumi.Context, args GetImageApplyInput, opts ...pulumi.InvokeOption) GetImageResultOutput {
+	return args.ToGetImageApplyOutput().ApplyT(func(v GetImageArgs) (GetImageResult, error) {
+		r, err := GetImage(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetImageResultOutput)
+}
+
+// GetImageApplyInput is an input type that accepts GetImageApplyArgs and GetImageApplyOutput values.
+// You can construct a concrete instance of `GetImageApplyInput` via:
+//
+//          GetImageApplyArgs{...}
+type GetImageApplyInput interface {
+	pulumi.Input
+
+	ToGetImageApplyOutput() GetImageApplyOutput
+	ToGetImageApplyOutputWithContext(context.Context) GetImageApplyOutput
+}
+
+// A collection of arguments for invoking getImage.
+type GetImageApplyArgs struct {
+	// The ID of the image.
+	ImageId pulumi.StringInput `pulumi:"imageId"`
+}
+
+func (GetImageApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageArgs)(nil)).Elem()
+}
+
+func (i GetImageApplyArgs) ToGetImageApplyOutput() GetImageApplyOutput {
+	return i.ToGetImageApplyOutputWithContext(context.Background())
+}
+
+func (i GetImageApplyArgs) ToGetImageApplyOutputWithContext(ctx context.Context) GetImageApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImageApplyOutput)
+}
+
+// A collection of arguments for invoking getImage.
+type GetImageApplyOutput struct{ *pulumi.OutputState }
+
+func (GetImageApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageArgs)(nil)).Elem()
+}
+
+func (o GetImageApplyOutput) ToGetImageApplyOutput() GetImageApplyOutput {
+	return o
+}
+
+func (o GetImageApplyOutput) ToGetImageApplyOutputWithContext(ctx context.Context) GetImageApplyOutput {
+	return o
+}
+
+// The ID of the image.
+func (o GetImageApplyOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageArgs) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getImage.
+type GetImageResultOutput struct{ *pulumi.OutputState }
+
+func (GetImageResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageResult)(nil)).Elem()
+}
+
+func (o GetImageResultOutput) ToGetImageResultOutput() GetImageResultOutput {
+	return o
+}
+
+func (o GetImageResultOutput) ToGetImageResultOutputWithContext(ctx context.Context) GetImageResultOutput {
+	return o
+}
+
+// The description of the image.
+func (o GetImageResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetImageResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetImageResultOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageResult) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// The name of the image.
+func (o GetImageResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetImageResultOutput) OperatingSystemType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageResult) string { return v.OperatingSystemType }).(pulumi.StringOutput)
+}
+
+// Specifies whether the image is running on dedicated hardware. When Bring Your Own License (BYOL) is enabled, this value is set to DEDICATED. For more information, see [Bring Your Own Windows Desktop Images](https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
+func (o GetImageResultOutput) RequiredTenancy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageResult) string { return v.RequiredTenancy }).(pulumi.StringOutput)
+}
+
+// The status of the image.
+func (o GetImageResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetImageApplyOutput{})
+	pulumi.RegisterOutputType(GetImageResultOutput{})
 }

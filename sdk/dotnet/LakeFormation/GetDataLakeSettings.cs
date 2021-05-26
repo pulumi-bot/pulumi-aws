@@ -39,6 +39,18 @@ namespace Pulumi.Aws.LakeFormation
         /// </summary>
         public static Task<GetDataLakeSettingsResult> InvokeAsync(GetDataLakeSettingsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDataLakeSettingsResult>("aws:lakeformation/getDataLakeSettings:getDataLakeSettings", args ?? new GetDataLakeSettingsArgs(), options.WithVersion());
+
+        public static Output<GetDataLakeSettingsResult> Apply(GetDataLakeSettingsApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetDataLakeSettingsApplyArgs();
+            return Pulumi.Output.All(
+                args.CatalogId.Box()
+            ).Apply(a => {
+                    var args = new GetDataLakeSettingsArgs();
+                    a[0].Set(args, nameof(args.CatalogId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +63,19 @@ namespace Pulumi.Aws.LakeFormation
         public string? CatalogId { get; set; }
 
         public GetDataLakeSettingsArgs()
+        {
+        }
+    }
+
+    public sealed class GetDataLakeSettingsApplyArgs
+    {
+        /// <summary>
+        /// Identifier for the Data Catalog. By default, the account ID.
+        /// </summary>
+        [Input("catalogId")]
+        public Input<string>? CatalogId { get; set; }
+
+        public GetDataLakeSettingsApplyArgs()
         {
         }
     }

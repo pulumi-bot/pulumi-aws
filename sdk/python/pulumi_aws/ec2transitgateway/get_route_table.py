@@ -153,3 +153,11 @@ def get_route_table(filters: Optional[Sequence[pulumi.InputType['GetRouteTableFi
         id=__ret__.id,
         tags=__ret__.tags,
         transit_gateway_id=__ret__.transit_gateway_id)
+
+
+@_utilities.lift_output_func(get_route_table)
+def get_route_table_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetRouteTableFilterArgs']]]]] = None,
+                          id: Optional[pulumi.Input[str]] = None,
+                          tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteTableResult]:
+    ...

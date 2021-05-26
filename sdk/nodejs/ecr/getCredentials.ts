@@ -22,7 +22,7 @@ export function getCredentials(args: GetCredentialsArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getCredentials.
  */
 export interface GetCredentialsArgs {
-    readonly registryId: string;
+    registryId: string;
 }
 
 /**
@@ -37,4 +37,15 @@ export interface GetCredentialsResult {
     readonly id: string;
     readonly proxyEndpoint: string;
     readonly registryId: string;
+}
+
+export function getCredentialsApply(args: GetCredentialsApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCredentialsResult> {
+    return pulumi.output(args).apply(a => getCredentials(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCredentials.
+ */
+export interface GetCredentialsApplyArgs {
+    registryId: pulumi.Input<string>;
 }

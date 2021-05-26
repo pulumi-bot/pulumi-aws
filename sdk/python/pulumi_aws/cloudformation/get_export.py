@@ -112,3 +112,9 @@ def get_export(name: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         value=__ret__.value)
+
+
+@_utilities.lift_output_func(get_export)
+def get_export_apply(name: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExportResult]:
+    ...

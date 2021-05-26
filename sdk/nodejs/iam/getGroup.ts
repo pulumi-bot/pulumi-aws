@@ -41,7 +41,7 @@ export interface GetGroupArgs {
     /**
      * The friendly IAM group name to match.
      */
-    readonly groupName: string;
+    groupName: string;
 }
 
 /**
@@ -69,4 +69,18 @@ export interface GetGroupResult {
      * List of objects containing group member information. See supported fields below.
      */
     readonly users: outputs.iam.GetGroupUser[];
+}
+
+export function getGroupApply(args: GetGroupApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupResult> {
+    return pulumi.output(args).apply(a => getGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGroup.
+ */
+export interface GetGroupApplyArgs {
+    /**
+     * The friendly IAM group name to match.
+     */
+    groupName: pulumi.Input<string>;
 }

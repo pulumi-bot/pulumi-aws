@@ -39,6 +39,22 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetNetworkInterfaceResult> InvokeAsync(GetNetworkInterfaceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkInterfaceResult>("aws:ec2/getNetworkInterface:getNetworkInterface", args ?? new GetNetworkInterfaceArgs(), options.WithVersion());
+
+        public static Output<GetNetworkInterfaceResult> Apply(GetNetworkInterfaceApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetNetworkInterfaceApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.Box(),
+                args.Id.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetNetworkInterfaceArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Id));
+                    a[2].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -75,6 +91,43 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetNetworkInterfaceArgs()
+        {
+        }
+    }
+
+    public sealed class GetNetworkInterfaceApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetNetworkInterfaceFilterArgs>? _filters;
+
+        /// <summary>
+        /// One or more name/value pairs to filter off of. There are several valid keys, for a full reference, check out [describe-network-interfaces](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-network-interfaces.html) in the AWS CLI reference.
+        /// </summary>
+        public InputList<Inputs.GetNetworkInterfaceFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetNetworkInterfaceFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// The identifier for the network interface.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Any tags assigned to the network interface.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetNetworkInterfaceApplyArgs()
         {
         }
     }

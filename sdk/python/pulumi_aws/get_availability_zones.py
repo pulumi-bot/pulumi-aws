@@ -213,3 +213,13 @@ def get_availability_zones(all_availability_zones: Optional[bool] = None,
         names=__ret__.names,
         state=__ret__.state,
         zone_ids=__ret__.zone_ids)
+
+
+@_utilities.lift_output_func(get_availability_zones)
+def get_availability_zones_apply(all_availability_zones: Optional[pulumi.Input[bool]] = None,
+                                 exclude_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                                 exclude_zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetAvailabilityZonesFilterArgs']]]]] = None,
+                                 state: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAvailabilityZonesResult]:
+    ...

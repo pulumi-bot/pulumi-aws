@@ -4,6 +4,9 @@
 package lakeformation
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,4 +58,100 @@ type LookupResourceResult struct {
 	LastModified string `pulumi:"lastModified"`
 	// Role that the resource was registered with.
 	RoleArn string `pulumi:"roleArn"`
+}
+
+func LookupResourceApply(ctx *pulumi.Context, args LookupResourceApplyInput, opts ...pulumi.InvokeOption) LookupResourceResultOutput {
+	return args.ToLookupResourceApplyOutput().ApplyT(func(v LookupResourceArgs) (LookupResourceResult, error) {
+		r, err := LookupResource(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupResourceResultOutput)
+}
+
+// LookupResourceApplyInput is an input type that accepts LookupResourceApplyArgs and LookupResourceApplyOutput values.
+// You can construct a concrete instance of `LookupResourceApplyInput` via:
+//
+//          LookupResourceApplyArgs{...}
+type LookupResourceApplyInput interface {
+	pulumi.Input
+
+	ToLookupResourceApplyOutput() LookupResourceApplyOutput
+	ToLookupResourceApplyOutputWithContext(context.Context) LookupResourceApplyOutput
+}
+
+// A collection of arguments for invoking getResource.
+type LookupResourceApplyArgs struct {
+	// Amazon Resource Name (ARN) of the resource, an S3 path.
+	Arn pulumi.StringInput `pulumi:"arn"`
+}
+
+func (LookupResourceApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupResourceArgs)(nil)).Elem()
+}
+
+func (i LookupResourceApplyArgs) ToLookupResourceApplyOutput() LookupResourceApplyOutput {
+	return i.ToLookupResourceApplyOutputWithContext(context.Background())
+}
+
+func (i LookupResourceApplyArgs) ToLookupResourceApplyOutputWithContext(ctx context.Context) LookupResourceApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupResourceApplyOutput)
+}
+
+// A collection of arguments for invoking getResource.
+type LookupResourceApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupResourceApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupResourceArgs)(nil)).Elem()
+}
+
+func (o LookupResourceApplyOutput) ToLookupResourceApplyOutput() LookupResourceApplyOutput {
+	return o
+}
+
+func (o LookupResourceApplyOutput) ToLookupResourceApplyOutputWithContext(ctx context.Context) LookupResourceApplyOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN) of the resource, an S3 path.
+func (o LookupResourceApplyOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceArgs) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getResource.
+type LookupResourceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupResourceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupResourceResult)(nil)).Elem()
+}
+
+func (o LookupResourceResultOutput) ToLookupResourceResultOutput() LookupResourceResultOutput {
+	return o
+}
+
+func (o LookupResourceResultOutput) ToLookupResourceResultOutputWithContext(ctx context.Context) LookupResourceResultOutput {
+	return o
+}
+
+func (o LookupResourceResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupResourceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The date and time the resource was last modified in [RFC 3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
+func (o LookupResourceResultOutput) LastModified() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceResult) string { return v.LastModified }).(pulumi.StringOutput)
+}
+
+// Role that the resource was registered with.
+func (o LookupResourceResultOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceResult) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupResourceApplyOutput{})
+	pulumi.RegisterOutputType(LookupResourceResultOutput{})
 }

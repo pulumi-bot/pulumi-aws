@@ -16,6 +16,17 @@ namespace Pulumi.Aws.Glue
         /// </summary>
         public static Task<GetDataCatalogEncryptionSettingsResult> InvokeAsync(GetDataCatalogEncryptionSettingsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDataCatalogEncryptionSettingsResult>("aws:glue/getDataCatalogEncryptionSettings:getDataCatalogEncryptionSettings", args ?? new GetDataCatalogEncryptionSettingsArgs(), options.WithVersion());
+
+        public static Output<GetDataCatalogEncryptionSettingsResult> Apply(GetDataCatalogEncryptionSettingsApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.CatalogId.Box()
+            ).Apply(a => {
+                    var args = new GetDataCatalogEncryptionSettingsArgs();
+                    a[0].Set(args, nameof(args.CatalogId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -28,6 +39,19 @@ namespace Pulumi.Aws.Glue
         public string CatalogId { get; set; } = null!;
 
         public GetDataCatalogEncryptionSettingsArgs()
+        {
+        }
+    }
+
+    public sealed class GetDataCatalogEncryptionSettingsApplyArgs
+    {
+        /// <summary>
+        /// The ID of the Data Catalog. This is typically the AWS account ID.
+        /// </summary>
+        [Input("catalogId", required: true)]
+        public Input<string> CatalogId { get; set; } = null!;
+
+        public GetDataCatalogEncryptionSettingsApplyArgs()
         {
         }
     }

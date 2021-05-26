@@ -243,3 +243,10 @@ def get_api(api_id: Optional[str] = None,
         route_selection_expression=__ret__.route_selection_expression,
         tags=__ret__.tags,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_api)
+def get_api_apply(api_id: Optional[pulumi.Input[str]] = None,
+                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApiResult]:
+    ...

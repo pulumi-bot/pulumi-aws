@@ -98,3 +98,10 @@ def get_instance_type_offerings(filters: Optional[Sequence[pulumi.InputType['Get
         id=__ret__.id,
         instance_types=__ret__.instance_types,
         location_type=__ret__.location_type)
+
+
+@_utilities.lift_output_func(get_instance_type_offerings)
+def get_instance_type_offerings_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetInstanceTypeOfferingsFilterArgs']]]]] = None,
+                                      location_type: Optional[pulumi.Input[str]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTypeOfferingsResult]:
+    ...

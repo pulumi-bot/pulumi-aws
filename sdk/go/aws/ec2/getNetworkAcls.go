@@ -4,6 +4,9 @@
 package ec2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,4 +39,119 @@ type GetNetworkAclsResult struct {
 	Ids   []string          `pulumi:"ids"`
 	Tags  map[string]string `pulumi:"tags"`
 	VpcId *string           `pulumi:"vpcId"`
+}
+
+func GetNetworkAclsApply(ctx *pulumi.Context, args GetNetworkAclsApplyInput, opts ...pulumi.InvokeOption) GetNetworkAclsResultOutput {
+	return args.ToGetNetworkAclsApplyOutput().ApplyT(func(v GetNetworkAclsArgs) (GetNetworkAclsResult, error) {
+		r, err := GetNetworkAcls(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetNetworkAclsResultOutput)
+}
+
+// GetNetworkAclsApplyInput is an input type that accepts GetNetworkAclsApplyArgs and GetNetworkAclsApplyOutput values.
+// You can construct a concrete instance of `GetNetworkAclsApplyInput` via:
+//
+//          GetNetworkAclsApplyArgs{...}
+type GetNetworkAclsApplyInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclsApplyOutput() GetNetworkAclsApplyOutput
+	ToGetNetworkAclsApplyOutputWithContext(context.Context) GetNetworkAclsApplyOutput
+}
+
+// A collection of arguments for invoking getNetworkAcls.
+type GetNetworkAclsApplyArgs struct {
+	// Custom filter block as described below.
+	Filters GetNetworkAclsFilterArrayInput `pulumi:"filters"`
+	// A map of tags, each pair of which must exactly match
+	// a pair on the desired network ACLs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The VPC ID that you want to filter from.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+}
+
+func (GetNetworkAclsApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclsArgs)(nil)).Elem()
+}
+
+func (i GetNetworkAclsApplyArgs) ToGetNetworkAclsApplyOutput() GetNetworkAclsApplyOutput {
+	return i.ToGetNetworkAclsApplyOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclsApplyArgs) ToGetNetworkAclsApplyOutputWithContext(ctx context.Context) GetNetworkAclsApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclsApplyOutput)
+}
+
+// A collection of arguments for invoking getNetworkAcls.
+type GetNetworkAclsApplyOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclsApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclsArgs)(nil)).Elem()
+}
+
+func (o GetNetworkAclsApplyOutput) ToGetNetworkAclsApplyOutput() GetNetworkAclsApplyOutput {
+	return o
+}
+
+func (o GetNetworkAclsApplyOutput) ToGetNetworkAclsApplyOutputWithContext(ctx context.Context) GetNetworkAclsApplyOutput {
+	return o
+}
+
+// Custom filter block as described below.
+func (o GetNetworkAclsApplyOutput) Filters() GetNetworkAclsFilterArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclsArgs) []GetNetworkAclsFilter { return v.Filters }).(GetNetworkAclsFilterArrayOutput)
+}
+
+// A map of tags, each pair of which must exactly match
+// a pair on the desired network ACLs.
+func (o GetNetworkAclsApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNetworkAclsArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The VPC ID that you want to filter from.
+func (o GetNetworkAclsApplyOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkAclsArgs) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getNetworkAcls.
+type GetNetworkAclsResultOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclsResult)(nil)).Elem()
+}
+
+func (o GetNetworkAclsResultOutput) ToGetNetworkAclsResultOutput() GetNetworkAclsResultOutput {
+	return o
+}
+
+func (o GetNetworkAclsResultOutput) ToGetNetworkAclsResultOutputWithContext(ctx context.Context) GetNetworkAclsResultOutput {
+	return o
+}
+
+func (o GetNetworkAclsResultOutput) Filters() GetNetworkAclsFilterArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclsResult) []GetNetworkAclsFilter { return v.Filters }).(GetNetworkAclsFilterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetNetworkAclsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of all the network ACL ids found. This data source will fail if none are found.
+func (o GetNetworkAclsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNetworkAclsResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNetworkAclsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o GetNetworkAclsResultOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkAclsResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetNetworkAclsApplyOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclsResultOutput{})
 }

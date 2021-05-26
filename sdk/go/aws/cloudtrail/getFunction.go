@@ -4,6 +4,9 @@
 package cloudtrail
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,4 +48,136 @@ type GetFunctionResult struct {
 	Stage   string `pulumi:"stage"`
 	// Status of the function. Can be `UNPUBLISHED`, `UNASSOCIATED` or `ASSOCIATED`.
 	Status string `pulumi:"status"`
+}
+
+func GetFunctionApply(ctx *pulumi.Context, args GetFunctionApplyInput, opts ...pulumi.InvokeOption) GetFunctionResultOutput {
+	return args.ToGetFunctionApplyOutput().ApplyT(func(v GetFunctionArgs) (GetFunctionResult, error) {
+		r, err := GetFunction(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetFunctionResultOutput)
+}
+
+// GetFunctionApplyInput is an input type that accepts GetFunctionApplyArgs and GetFunctionApplyOutput values.
+// You can construct a concrete instance of `GetFunctionApplyInput` via:
+//
+//          GetFunctionApplyArgs{...}
+type GetFunctionApplyInput interface {
+	pulumi.Input
+
+	ToGetFunctionApplyOutput() GetFunctionApplyOutput
+	ToGetFunctionApplyOutputWithContext(context.Context) GetFunctionApplyOutput
+}
+
+// A collection of arguments for invoking getFunction.
+type GetFunctionApplyArgs struct {
+	// Name of the CloudFront function.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The function’s stage, either `DEVELOPMENT` or `LIVE`.
+	Stage pulumi.StringInput `pulumi:"stage"`
+}
+
+func (GetFunctionApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionArgs)(nil)).Elem()
+}
+
+func (i GetFunctionApplyArgs) ToGetFunctionApplyOutput() GetFunctionApplyOutput {
+	return i.ToGetFunctionApplyOutputWithContext(context.Background())
+}
+
+func (i GetFunctionApplyArgs) ToGetFunctionApplyOutputWithContext(ctx context.Context) GetFunctionApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionApplyOutput)
+}
+
+// A collection of arguments for invoking getFunction.
+type GetFunctionApplyOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionArgs)(nil)).Elem()
+}
+
+func (o GetFunctionApplyOutput) ToGetFunctionApplyOutput() GetFunctionApplyOutput {
+	return o
+}
+
+func (o GetFunctionApplyOutput) ToGetFunctionApplyOutputWithContext(ctx context.Context) GetFunctionApplyOutput {
+	return o
+}
+
+// Name of the CloudFront function.
+func (o GetFunctionApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The function’s stage, either `DEVELOPMENT` or `LIVE`.
+func (o GetFunctionApplyOutput) Stage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionArgs) string { return v.Stage }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getFunction.
+type GetFunctionResultOutput struct{ *pulumi.OutputState }
+
+func (GetFunctionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFunctionResult)(nil)).Elem()
+}
+
+func (o GetFunctionResultOutput) ToGetFunctionResultOutput() GetFunctionResultOutput {
+	return o
+}
+
+func (o GetFunctionResultOutput) ToGetFunctionResultOutputWithContext(ctx context.Context) GetFunctionResultOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN) identifying your CloudFront Function.
+func (o GetFunctionResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// Source code of the function
+func (o GetFunctionResultOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionResult) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Comment.
+func (o GetFunctionResultOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionResult) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+// ETag hash of the function
+func (o GetFunctionResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetFunctionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// When this resource was last modified.
+func (o GetFunctionResultOutput) LastModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionResult) string { return v.LastModifiedTime }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Identifier of the function's runtime.
+func (o GetFunctionResultOutput) Runtime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionResult) string { return v.Runtime }).(pulumi.StringOutput)
+}
+
+func (o GetFunctionResultOutput) Stage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionResult) string { return v.Stage }).(pulumi.StringOutput)
+}
+
+// Status of the function. Can be `UNPUBLISHED`, `UNASSOCIATED` or `ASSOCIATED`.
+func (o GetFunctionResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFunctionResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetFunctionApplyOutput{})
+	pulumi.RegisterOutputType(GetFunctionResultOutput{})
 }

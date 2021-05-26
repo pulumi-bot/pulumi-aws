@@ -105,3 +105,9 @@ def get_ledger(name: Optional[str] = None,
         deletion_protection=__ret__.deletion_protection,
         id=__ret__.id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_ledger)
+def get_ledger_apply(name: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLedgerResult]:
+    ...

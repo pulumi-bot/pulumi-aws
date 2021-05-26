@@ -174,3 +174,10 @@ def get_function(name: Optional[str] = None,
         runtime=__ret__.runtime,
         stage=__ret__.stage,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_function)
+def get_function_apply(name: Optional[pulumi.Input[str]] = None,
+                       stage: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFunctionResult]:
+    ...

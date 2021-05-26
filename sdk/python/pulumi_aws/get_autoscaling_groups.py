@@ -102,3 +102,9 @@ def get_autoscaling_groups(filters: Optional[Sequence[pulumi.InputType['GetAutos
         filters=__ret__.filters,
         id=__ret__.id,
         names=__ret__.names)
+
+
+@_utilities.lift_output_func(get_autoscaling_groups)
+def get_autoscaling_groups_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetAutoscalingGroupsFilterArgs']]]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAutoscalingGroupsResult]:
+    ...

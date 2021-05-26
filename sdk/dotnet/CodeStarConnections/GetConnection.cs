@@ -39,6 +39,19 @@ namespace Pulumi.Aws.CodeStarConnections
         /// </summary>
         public static Task<GetConnectionResult> InvokeAsync(GetConnectionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionResult>("aws:codestarconnections/getConnection:getConnection", args ?? new GetConnectionArgs(), options.WithVersion());
+
+        public static Output<GetConnectionResult> Apply(GetConnectionApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Arn.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetConnectionArgs();
+                    a[0].Set(args, nameof(args.Arn));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -63,6 +76,31 @@ namespace Pulumi.Aws.CodeStarConnections
         }
 
         public GetConnectionArgs()
+        {
+        }
+    }
+
+    public sealed class GetConnectionApplyArgs
+    {
+        /// <summary>
+        /// The CodeStar Connection ARN.
+        /// </summary>
+        [Input("arn", required: true)]
+        public Input<string> Arn { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Map of key-value resource tags to associate with the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetConnectionApplyArgs()
         {
         }
     }

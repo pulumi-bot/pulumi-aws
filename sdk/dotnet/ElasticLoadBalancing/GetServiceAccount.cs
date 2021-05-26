@@ -83,6 +83,18 @@ namespace Pulumi.Aws.ElasticLoadBalancing
         /// </summary>
         public static Task<GetServiceAccountResult> InvokeAsync(GetServiceAccountArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceAccountResult>("aws:elasticloadbalancing/getServiceAccount:getServiceAccount", args ?? new GetServiceAccountArgs(), options.WithVersion());
+
+        public static Output<GetServiceAccountResult> Apply(GetServiceAccountApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetServiceAccountApplyArgs();
+            return Pulumi.Output.All(
+                args.Region.Box()
+            ).Apply(a => {
+                    var args = new GetServiceAccountArgs();
+                    a[0].Set(args, nameof(args.Region));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -96,6 +108,20 @@ namespace Pulumi.Aws.ElasticLoadBalancing
         public string? Region { get; set; }
 
         public GetServiceAccountArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceAccountApplyArgs
+    {
+        /// <summary>
+        /// Name of the region whose AWS ELB account ID is desired.
+        /// Defaults to the region from the AWS provider configuration.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetServiceAccountApplyArgs()
         {
         }
     }

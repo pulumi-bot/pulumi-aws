@@ -4,6 +4,9 @@
 package ec2transitgateway
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,129 @@ type LookupRouteTableResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// EC2 Transit Gateway identifier
 	TransitGatewayId string `pulumi:"transitGatewayId"`
+}
+
+func LookupRouteTableApply(ctx *pulumi.Context, args LookupRouteTableApplyInput, opts ...pulumi.InvokeOption) LookupRouteTableResultOutput {
+	return args.ToLookupRouteTableApplyOutput().ApplyT(func(v LookupRouteTableArgs) (LookupRouteTableResult, error) {
+		r, err := LookupRouteTable(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupRouteTableResultOutput)
+}
+
+// LookupRouteTableApplyInput is an input type that accepts LookupRouteTableApplyArgs and LookupRouteTableApplyOutput values.
+// You can construct a concrete instance of `LookupRouteTableApplyInput` via:
+//
+//          LookupRouteTableApplyArgs{...}
+type LookupRouteTableApplyInput interface {
+	pulumi.Input
+
+	ToLookupRouteTableApplyOutput() LookupRouteTableApplyOutput
+	ToLookupRouteTableApplyOutputWithContext(context.Context) LookupRouteTableApplyOutput
+}
+
+// A collection of arguments for invoking getRouteTable.
+type LookupRouteTableApplyArgs struct {
+	// One or more configuration blocks containing name-values filters. Detailed below.
+	Filters GetRouteTableFilterArrayInput `pulumi:"filters"`
+	// Identifier of the EC2 Transit Gateway Route Table.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Key-value tags for the EC2 Transit Gateway Route Table
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupRouteTableApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRouteTableArgs)(nil)).Elem()
+}
+
+func (i LookupRouteTableApplyArgs) ToLookupRouteTableApplyOutput() LookupRouteTableApplyOutput {
+	return i.ToLookupRouteTableApplyOutputWithContext(context.Background())
+}
+
+func (i LookupRouteTableApplyArgs) ToLookupRouteTableApplyOutputWithContext(ctx context.Context) LookupRouteTableApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupRouteTableApplyOutput)
+}
+
+// A collection of arguments for invoking getRouteTable.
+type LookupRouteTableApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupRouteTableApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRouteTableArgs)(nil)).Elem()
+}
+
+func (o LookupRouteTableApplyOutput) ToLookupRouteTableApplyOutput() LookupRouteTableApplyOutput {
+	return o
+}
+
+func (o LookupRouteTableApplyOutput) ToLookupRouteTableApplyOutputWithContext(ctx context.Context) LookupRouteTableApplyOutput {
+	return o
+}
+
+// One or more configuration blocks containing name-values filters. Detailed below.
+func (o LookupRouteTableApplyOutput) Filters() GetRouteTableFilterArrayOutput {
+	return o.ApplyT(func(v LookupRouteTableArgs) []GetRouteTableFilter { return v.Filters }).(GetRouteTableFilterArrayOutput)
+}
+
+// Identifier of the EC2 Transit Gateway Route Table.
+func (o LookupRouteTableApplyOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRouteTableArgs) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Key-value tags for the EC2 Transit Gateway Route Table
+func (o LookupRouteTableApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRouteTableArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getRouteTable.
+type LookupRouteTableResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRouteTableResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRouteTableResult)(nil)).Elem()
+}
+
+func (o LookupRouteTableResultOutput) ToLookupRouteTableResultOutput() LookupRouteTableResultOutput {
+	return o
+}
+
+func (o LookupRouteTableResultOutput) ToLookupRouteTableResultOutputWithContext(ctx context.Context) LookupRouteTableResultOutput {
+	return o
+}
+
+// EC2 Transit Gateway Route Table Amazon Resource Name (ARN).
+func (o LookupRouteTableResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouteTableResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// Boolean whether this is the default association route table for the EC2 Transit Gateway
+func (o LookupRouteTableResultOutput) DefaultAssociationRouteTable() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRouteTableResult) bool { return v.DefaultAssociationRouteTable }).(pulumi.BoolOutput)
+}
+
+// Boolean whether this is the default propagation route table for the EC2 Transit Gateway
+func (o LookupRouteTableResultOutput) DefaultPropagationRouteTable() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRouteTableResult) bool { return v.DefaultPropagationRouteTable }).(pulumi.BoolOutput)
+}
+
+func (o LookupRouteTableResultOutput) Filters() GetRouteTableFilterArrayOutput {
+	return o.ApplyT(func(v LookupRouteTableResult) []GetRouteTableFilter { return v.Filters }).(GetRouteTableFilterArrayOutput)
+}
+
+// EC2 Transit Gateway Route Table identifier
+func (o LookupRouteTableResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouteTableResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Key-value tags for the EC2 Transit Gateway Route Table
+func (o LookupRouteTableResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRouteTableResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// EC2 Transit Gateway identifier
+func (o LookupRouteTableResultOutput) TransitGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouteTableResult) string { return v.TransitGatewayId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRouteTableApplyOutput{})
+	pulumi.RegisterOutputType(LookupRouteTableResultOutput{})
 }

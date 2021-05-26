@@ -131,3 +131,11 @@ def get_authorization_token(domain: Optional[str] = None,
         duration_seconds=__ret__.duration_seconds,
         expiration=__ret__.expiration,
         id=__ret__.id)
+
+
+@_utilities.lift_output_func(get_authorization_token)
+def get_authorization_token_apply(domain: Optional[pulumi.Input[str]] = None,
+                                  domain_owner: Optional[pulumi.Input[str]] = None,
+                                  duration_seconds: Optional[pulumi.Input[int]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAuthorizationTokenResult]:
+    ...

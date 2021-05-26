@@ -41,6 +41,24 @@ namespace Pulumi.Aws.Ec2TransitGateway
         /// </summary>
         public static Task<GetDirectConnectGatewayAttachmentResult> InvokeAsync(GetDirectConnectGatewayAttachmentArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDirectConnectGatewayAttachmentResult>("aws:ec2transitgateway/getDirectConnectGatewayAttachment:getDirectConnectGatewayAttachment", args ?? new GetDirectConnectGatewayAttachmentArgs(), options.WithVersion());
+
+        public static Output<GetDirectConnectGatewayAttachmentResult> Apply(GetDirectConnectGatewayAttachmentApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetDirectConnectGatewayAttachmentApplyArgs();
+            return Pulumi.Output.All(
+                args.DxGatewayId.Box(),
+                args.Filters.Box(),
+                args.Tags.Box(),
+                args.TransitGatewayId.Box()
+            ).Apply(a => {
+                    var args = new GetDirectConnectGatewayAttachmentArgs();
+                    a[0].Set(args, nameof(args.DxGatewayId));
+                    a[1].Set(args, nameof(args.Filters));
+                    a[2].Set(args, nameof(args.Tags));
+                    a[3].Set(args, nameof(args.TransitGatewayId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -83,6 +101,49 @@ namespace Pulumi.Aws.Ec2TransitGateway
         public string? TransitGatewayId { get; set; }
 
         public GetDirectConnectGatewayAttachmentArgs()
+        {
+        }
+    }
+
+    public sealed class GetDirectConnectGatewayAttachmentApplyArgs
+    {
+        /// <summary>
+        /// Identifier of the Direct Connect Gateway.
+        /// </summary>
+        [Input("dxGatewayId")]
+        public Input<string>? DxGatewayId { get; set; }
+
+        [Input("filters")]
+        private InputList<Inputs.GetDirectConnectGatewayAttachmentFilterArgs>? _filters;
+
+        /// <summary>
+        /// Configuration block(s) for filtering. Detailed below.
+        /// </summary>
+        public InputList<Inputs.GetDirectConnectGatewayAttachmentFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetDirectConnectGatewayAttachmentFilterArgs>());
+            set => _filters = value;
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags, each pair of which must exactly match a pair on the desired Transit Gateway Direct Connect Gateway Attachment.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Identifier of the EC2 Transit Gateway.
+        /// </summary>
+        [Input("transitGatewayId")]
+        public Input<string>? TransitGatewayId { get; set; }
+
+        public GetDirectConnectGatewayAttachmentApplyArgs()
         {
         }
     }

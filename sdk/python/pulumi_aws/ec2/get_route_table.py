@@ -217,3 +217,14 @@ def get_route_table(filters: Optional[Sequence[pulumi.InputType['GetRouteTableFi
         subnet_id=__ret__.subnet_id,
         tags=__ret__.tags,
         vpc_id=__ret__.vpc_id)
+
+
+@_utilities.lift_output_func(get_route_table)
+def get_route_table_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetRouteTableFilterArgs']]]]] = None,
+                          gateway_id: Optional[pulumi.Input[str]] = None,
+                          route_table_id: Optional[pulumi.Input[str]] = None,
+                          subnet_id: Optional[pulumi.Input[str]] = None,
+                          tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                          vpc_id: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteTableResult]:
+    ...

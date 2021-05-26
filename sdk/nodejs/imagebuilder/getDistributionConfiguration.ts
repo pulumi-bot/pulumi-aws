@@ -40,11 +40,11 @@ export interface GetDistributionConfigurationArgs {
     /**
      * Amazon Resource Name (ARN) of the distribution configuration.
      */
-    readonly arn: string;
+    arn: string;
     /**
      * Key-value map of resource tags for the distribution configuration.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -80,4 +80,22 @@ export interface GetDistributionConfigurationResult {
      * Key-value map of resource tags for the distribution configuration.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getDistributionConfigurationApply(args: GetDistributionConfigurationApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDistributionConfigurationResult> {
+    return pulumi.output(args).apply(a => getDistributionConfiguration(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDistributionConfiguration.
+ */
+export interface GetDistributionConfigurationApplyArgs {
+    /**
+     * Amazon Resource Name (ARN) of the distribution configuration.
+     */
+    arn: pulumi.Input<string>;
+    /**
+     * Key-value map of resource tags for the distribution configuration.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

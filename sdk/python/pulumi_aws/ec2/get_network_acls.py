@@ -149,3 +149,11 @@ def get_network_acls(filters: Optional[Sequence[pulumi.InputType['GetNetworkAcls
         ids=__ret__.ids,
         tags=__ret__.tags,
         vpc_id=__ret__.vpc_id)
+
+
+@_utilities.lift_output_func(get_network_acls)
+def get_network_acls_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetNetworkAclsFilterArgs']]]]] = None,
+                           tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                           vpc_id: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkAclsResult]:
+    ...

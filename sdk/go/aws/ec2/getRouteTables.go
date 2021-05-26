@@ -4,6 +4,9 @@
 package ec2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,4 +40,119 @@ type GetRouteTablesResult struct {
 	Ids   []string          `pulumi:"ids"`
 	Tags  map[string]string `pulumi:"tags"`
 	VpcId *string           `pulumi:"vpcId"`
+}
+
+func GetRouteTablesApply(ctx *pulumi.Context, args GetRouteTablesApplyInput, opts ...pulumi.InvokeOption) GetRouteTablesResultOutput {
+	return args.ToGetRouteTablesApplyOutput().ApplyT(func(v GetRouteTablesArgs) (GetRouteTablesResult, error) {
+		r, err := GetRouteTables(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetRouteTablesResultOutput)
+}
+
+// GetRouteTablesApplyInput is an input type that accepts GetRouteTablesApplyArgs and GetRouteTablesApplyOutput values.
+// You can construct a concrete instance of `GetRouteTablesApplyInput` via:
+//
+//          GetRouteTablesApplyArgs{...}
+type GetRouteTablesApplyInput interface {
+	pulumi.Input
+
+	ToGetRouteTablesApplyOutput() GetRouteTablesApplyOutput
+	ToGetRouteTablesApplyOutputWithContext(context.Context) GetRouteTablesApplyOutput
+}
+
+// A collection of arguments for invoking getRouteTables.
+type GetRouteTablesApplyArgs struct {
+	// Custom filter block as described below.
+	Filters GetRouteTablesFilterArrayInput `pulumi:"filters"`
+	// A map of tags, each pair of which must exactly match
+	// a pair on the desired route tables.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The VPC ID that you want to filter from.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+}
+
+func (GetRouteTablesApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteTablesArgs)(nil)).Elem()
+}
+
+func (i GetRouteTablesApplyArgs) ToGetRouteTablesApplyOutput() GetRouteTablesApplyOutput {
+	return i.ToGetRouteTablesApplyOutputWithContext(context.Background())
+}
+
+func (i GetRouteTablesApplyArgs) ToGetRouteTablesApplyOutputWithContext(ctx context.Context) GetRouteTablesApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteTablesApplyOutput)
+}
+
+// A collection of arguments for invoking getRouteTables.
+type GetRouteTablesApplyOutput struct{ *pulumi.OutputState }
+
+func (GetRouteTablesApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteTablesArgs)(nil)).Elem()
+}
+
+func (o GetRouteTablesApplyOutput) ToGetRouteTablesApplyOutput() GetRouteTablesApplyOutput {
+	return o
+}
+
+func (o GetRouteTablesApplyOutput) ToGetRouteTablesApplyOutputWithContext(ctx context.Context) GetRouteTablesApplyOutput {
+	return o
+}
+
+// Custom filter block as described below.
+func (o GetRouteTablesApplyOutput) Filters() GetRouteTablesFilterArrayOutput {
+	return o.ApplyT(func(v GetRouteTablesArgs) []GetRouteTablesFilter { return v.Filters }).(GetRouteTablesFilterArrayOutput)
+}
+
+// A map of tags, each pair of which must exactly match
+// a pair on the desired route tables.
+func (o GetRouteTablesApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRouteTablesArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The VPC ID that you want to filter from.
+func (o GetRouteTablesApplyOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteTablesArgs) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getRouteTables.
+type GetRouteTablesResultOutput struct{ *pulumi.OutputState }
+
+func (GetRouteTablesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteTablesResult)(nil)).Elem()
+}
+
+func (o GetRouteTablesResultOutput) ToGetRouteTablesResultOutput() GetRouteTablesResultOutput {
+	return o
+}
+
+func (o GetRouteTablesResultOutput) ToGetRouteTablesResultOutputWithContext(ctx context.Context) GetRouteTablesResultOutput {
+	return o
+}
+
+func (o GetRouteTablesResultOutput) Filters() GetRouteTablesFilterArrayOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) []GetRouteTablesFilter { return v.Filters }).(GetRouteTablesFilterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRouteTablesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A set of all the route table ids found. This data source will fail if none are found.
+func (o GetRouteTablesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRouteTablesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o GetRouteTablesResultOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRouteTablesResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRouteTablesApplyOutput{})
+	pulumi.RegisterOutputType(GetRouteTablesResultOutput{})
 }

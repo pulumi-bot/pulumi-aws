@@ -181,3 +181,10 @@ def get_intent(name: Optional[str] = None,
         name=__ret__.name,
         parent_intent_signature=__ret__.parent_intent_signature,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_intent)
+def get_intent_apply(name: Optional[pulumi.Input[str]] = None,
+                     version: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIntentResult]:
+    ...

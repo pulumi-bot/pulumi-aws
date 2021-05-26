@@ -142,3 +142,12 @@ def get_local_gateway(filters: Optional[Sequence[pulumi.InputType['GetLocalGatew
         owner_id=__ret__.owner_id,
         state=__ret__.state,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_local_gateway)
+def get_local_gateway_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetLocalGatewayFilterArgs']]]]] = None,
+                            id: Optional[pulumi.Input[str]] = None,
+                            state: Optional[pulumi.Input[str]] = None,
+                            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLocalGatewayResult]:
+    ...

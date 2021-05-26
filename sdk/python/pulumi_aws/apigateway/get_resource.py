@@ -121,3 +121,10 @@ def get_resource(path: Optional[str] = None,
         path=__ret__.path,
         path_part=__ret__.path_part,
         rest_api_id=__ret__.rest_api_id)
+
+
+@_utilities.lift_output_func(get_resource)
+def get_resource_apply(path: Optional[pulumi.Input[str]] = None,
+                       rest_api_id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourceResult]:
+    ...

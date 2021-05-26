@@ -189,3 +189,10 @@ def get_distribution(id: Optional[str] = None,
         last_modified_time=__ret__.last_modified_time,
         status=__ret__.status,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_distribution)
+def get_distribution_apply(id: Optional[pulumi.Input[str]] = None,
+                           tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDistributionResult]:
+    ...

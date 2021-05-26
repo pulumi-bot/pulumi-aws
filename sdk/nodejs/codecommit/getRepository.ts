@@ -39,7 +39,7 @@ export interface GetRepositoryArgs {
     /**
      * The name for the repository. This needs to be less than 100 characters.
      */
-    readonly repositoryName: string;
+    repositoryName: string;
 }
 
 /**
@@ -67,4 +67,18 @@ export interface GetRepositoryResult {
      */
     readonly repositoryId: string;
     readonly repositoryName: string;
+}
+
+export function getRepositoryApply(args: GetRepositoryApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryResult> {
+    return pulumi.output(args).apply(a => getRepository(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRepository.
+ */
+export interface GetRepositoryApplyArgs {
+    /**
+     * The name for the repository. This needs to be less than 100 characters.
+     */
+    repositoryName: pulumi.Input<string>;
 }

@@ -72,6 +72,24 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetManagedPrefixListResult> InvokeAsync(GetManagedPrefixListArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetManagedPrefixListResult>("aws:ec2/getManagedPrefixList:getManagedPrefixList", args ?? new GetManagedPrefixListArgs(), options.WithVersion());
+
+        public static Output<GetManagedPrefixListResult> Apply(GetManagedPrefixListApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetManagedPrefixListApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.Box(),
+                args.Id.Box(),
+                args.Name.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetManagedPrefixListArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Id));
+                    a[2].Set(args, nameof(args.Name));
+                    a[3].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -114,6 +132,49 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetManagedPrefixListArgs()
+        {
+        }
+    }
+
+    public sealed class GetManagedPrefixListApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetManagedPrefixListFilterArgs>? _filters;
+
+        /// <summary>
+        /// Configuration block(s) for filtering. Detailed below.
+        /// </summary>
+        public InputList<Inputs.GetManagedPrefixListFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetManagedPrefixListFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// The ID of the prefix list to select.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// The name of the filter field. Valid values can be found in the EC2 [DescribeManagedPrefixLists](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeManagedPrefixLists.html) API Reference.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetManagedPrefixListApplyArgs()
         {
         }
     }

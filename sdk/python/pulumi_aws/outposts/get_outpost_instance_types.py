@@ -92,3 +92,9 @@ def get_outpost_instance_types(arn: Optional[str] = None,
         arn=__ret__.arn,
         id=__ret__.id,
         instance_types=__ret__.instance_types)
+
+
+@_utilities.lift_output_func(get_outpost_instance_types)
+def get_outpost_instance_types_apply(arn: Optional[pulumi.Input[str]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOutpostInstanceTypesResult]:
+    ...

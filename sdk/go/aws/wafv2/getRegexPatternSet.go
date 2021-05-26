@@ -4,6 +4,9 @@
 package wafv2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,116 @@ type LookupRegexPatternSetResult struct {
 	// One or more blocks of regular expression patterns that AWS WAF is searching for. See Regular Expression below for details.
 	RegularExpressions []GetRegexPatternSetRegularExpression `pulumi:"regularExpressions"`
 	Scope              string                                `pulumi:"scope"`
+}
+
+func LookupRegexPatternSetApply(ctx *pulumi.Context, args LookupRegexPatternSetApplyInput, opts ...pulumi.InvokeOption) LookupRegexPatternSetResultOutput {
+	return args.ToLookupRegexPatternSetApplyOutput().ApplyT(func(v LookupRegexPatternSetArgs) (LookupRegexPatternSetResult, error) {
+		r, err := LookupRegexPatternSet(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupRegexPatternSetResultOutput)
+}
+
+// LookupRegexPatternSetApplyInput is an input type that accepts LookupRegexPatternSetApplyArgs and LookupRegexPatternSetApplyOutput values.
+// You can construct a concrete instance of `LookupRegexPatternSetApplyInput` via:
+//
+//          LookupRegexPatternSetApplyArgs{...}
+type LookupRegexPatternSetApplyInput interface {
+	pulumi.Input
+
+	ToLookupRegexPatternSetApplyOutput() LookupRegexPatternSetApplyOutput
+	ToLookupRegexPatternSetApplyOutputWithContext(context.Context) LookupRegexPatternSetApplyOutput
+}
+
+// A collection of arguments for invoking getRegexPatternSet.
+type LookupRegexPatternSetApplyArgs struct {
+	// The name of the WAFv2 Regex Pattern Set.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
+	Scope pulumi.StringInput `pulumi:"scope"`
+}
+
+func (LookupRegexPatternSetApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRegexPatternSetArgs)(nil)).Elem()
+}
+
+func (i LookupRegexPatternSetApplyArgs) ToLookupRegexPatternSetApplyOutput() LookupRegexPatternSetApplyOutput {
+	return i.ToLookupRegexPatternSetApplyOutputWithContext(context.Background())
+}
+
+func (i LookupRegexPatternSetApplyArgs) ToLookupRegexPatternSetApplyOutputWithContext(ctx context.Context) LookupRegexPatternSetApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupRegexPatternSetApplyOutput)
+}
+
+// A collection of arguments for invoking getRegexPatternSet.
+type LookupRegexPatternSetApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupRegexPatternSetApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRegexPatternSetArgs)(nil)).Elem()
+}
+
+func (o LookupRegexPatternSetApplyOutput) ToLookupRegexPatternSetApplyOutput() LookupRegexPatternSetApplyOutput {
+	return o
+}
+
+func (o LookupRegexPatternSetApplyOutput) ToLookupRegexPatternSetApplyOutputWithContext(ctx context.Context) LookupRegexPatternSetApplyOutput {
+	return o
+}
+
+// The name of the WAFv2 Regex Pattern Set.
+func (o LookupRegexPatternSetApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegexPatternSetArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
+func (o LookupRegexPatternSetApplyOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegexPatternSetArgs) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getRegexPatternSet.
+type LookupRegexPatternSetResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRegexPatternSetResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRegexPatternSetResult)(nil)).Elem()
+}
+
+func (o LookupRegexPatternSetResultOutput) ToLookupRegexPatternSetResultOutput() LookupRegexPatternSetResultOutput {
+	return o
+}
+
+func (o LookupRegexPatternSetResultOutput) ToLookupRegexPatternSetResultOutputWithContext(ctx context.Context) LookupRegexPatternSetResultOutput {
+	return o
+}
+
+// The Amazon Resource Name (ARN) of the entity.
+func (o LookupRegexPatternSetResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegexPatternSetResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The description of the set that helps with identification.
+func (o LookupRegexPatternSetResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegexPatternSetResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupRegexPatternSetResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegexPatternSetResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupRegexPatternSetResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegexPatternSetResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// One or more blocks of regular expression patterns that AWS WAF is searching for. See Regular Expression below for details.
+func (o LookupRegexPatternSetResultOutput) RegularExpressions() GetRegexPatternSetRegularExpressionArrayOutput {
+	return o.ApplyT(func(v LookupRegexPatternSetResult) []GetRegexPatternSetRegularExpression { return v.RegularExpressions }).(GetRegexPatternSetRegularExpressionArrayOutput)
+}
+
+func (o LookupRegexPatternSetResultOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegexPatternSetResult) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRegexPatternSetApplyOutput{})
+	pulumi.RegisterOutputType(LookupRegexPatternSetResultOutput{})
 }

@@ -265,3 +265,11 @@ def get_table(name: Optional[str] = None,
         tags=__ret__.tags,
         ttl=__ret__.ttl,
         write_capacity=__ret__.write_capacity)
+
+
+@_utilities.lift_output_func(get_table)
+def get_table_apply(name: Optional[pulumi.Input[str]] = None,
+                    server_side_encryption: Optional[pulumi.Input[pulumi.InputType['GetTableServerSideEncryptionArgs']]] = None,
+                    tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTableResult]:
+    ...

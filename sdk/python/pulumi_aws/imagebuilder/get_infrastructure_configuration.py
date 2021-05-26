@@ -265,3 +265,11 @@ def get_infrastructure_configuration(arn: Optional[str] = None,
         subnet_id=__ret__.subnet_id,
         tags=__ret__.tags,
         terminate_instance_on_failure=__ret__.terminate_instance_on_failure)
+
+
+@_utilities.lift_output_func(get_infrastructure_configuration)
+def get_infrastructure_configuration_apply(arn: Optional[pulumi.Input[str]] = None,
+                                           resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                                           tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInfrastructureConfigurationResult]:
+    ...

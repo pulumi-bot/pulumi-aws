@@ -50,6 +50,22 @@ namespace Pulumi.Aws.ApplicationLoadBalancing
         /// </summary>
         public static Task<GetLoadBalancerResult> InvokeAsync(GetLoadBalancerArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerResult>("aws:applicationloadbalancing/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerArgs(), options.WithVersion());
+
+        public static Output<GetLoadBalancerResult> Apply(GetLoadBalancerApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetLoadBalancerApplyArgs();
+            return Pulumi.Output.All(
+                args.Arn.Box(),
+                args.Name.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetLoadBalancerArgs();
+                    a[0].Set(args, nameof(args.Arn));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -76,6 +92,33 @@ namespace Pulumi.Aws.ApplicationLoadBalancing
         }
 
         public GetLoadBalancerArgs()
+        {
+        }
+    }
+
+    public sealed class GetLoadBalancerApplyArgs
+    {
+        /// <summary>
+        /// The full ARN of the load balancer.
+        /// </summary>
+        [Input("arn")]
+        public Input<string>? Arn { get; set; }
+
+        /// <summary>
+        /// The unique name of the load balancer.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetLoadBalancerApplyArgs()
         {
         }
     }
