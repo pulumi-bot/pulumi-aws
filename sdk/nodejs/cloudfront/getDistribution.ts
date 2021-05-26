@@ -40,8 +40,8 @@ export interface GetDistributionArgs {
     /**
      * The identifier for the distribution. For example: `EDFDVBD632BHDS5`.
      */
-    readonly id: string;
-    readonly tags?: {[key: string]: string};
+    id: string;
+    tags?: {[key: string]: string};
 }
 
 /**
