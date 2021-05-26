@@ -4,6 +4,9 @@
 package rds
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,4 +80,95 @@ type GetEventCategoriesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id         string  `pulumi:"id"`
 	SourceType *string `pulumi:"sourceType"`
+}
+
+func GetEventCategoriesApply(ctx *pulumi.Context, args GetEventCategoriesApplyInput, opts ...pulumi.InvokeOption) GetEventCategoriesResultOutput {
+	return args.ToGetEventCategoriesApplyOutput().ApplyT(func(v GetEventCategoriesArgs) (GetEventCategoriesResult, error) {
+		r, err := GetEventCategories(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetEventCategoriesResultOutput)
+}
+
+// GetEventCategoriesApplyInput is an input type that accepts GetEventCategoriesApplyArgs and GetEventCategoriesApplyOutput values.
+// You can construct a concrete instance of `GetEventCategoriesApplyInput` via:
+//
+//          GetEventCategoriesApplyArgs{...}
+type GetEventCategoriesApplyInput interface {
+	pulumi.Input
+
+	ToGetEventCategoriesApplyOutput() GetEventCategoriesApplyOutput
+	ToGetEventCategoriesApplyOutputWithContext(context.Context) GetEventCategoriesApplyOutput
+}
+
+// A collection of arguments for invoking getEventCategories.
+type GetEventCategoriesApplyArgs struct {
+	// The type of source that will be generating the events. Valid options are db-instance, db-security-group, db-parameter-group, db-snapshot, db-cluster or db-cluster-snapshot.
+	SourceType pulumi.StringPtrInput `pulumi:"sourceType"`
+}
+
+func (GetEventCategoriesApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventCategoriesArgs)(nil)).Elem()
+}
+
+func (i GetEventCategoriesApplyArgs) ToGetEventCategoriesApplyOutput() GetEventCategoriesApplyOutput {
+	return i.ToGetEventCategoriesApplyOutputWithContext(context.Background())
+}
+
+func (i GetEventCategoriesApplyArgs) ToGetEventCategoriesApplyOutputWithContext(ctx context.Context) GetEventCategoriesApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventCategoriesApplyOutput)
+}
+
+// A collection of arguments for invoking getEventCategories.
+type GetEventCategoriesApplyOutput struct{ *pulumi.OutputState }
+
+func (GetEventCategoriesApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventCategoriesArgs)(nil)).Elem()
+}
+
+func (o GetEventCategoriesApplyOutput) ToGetEventCategoriesApplyOutput() GetEventCategoriesApplyOutput {
+	return o
+}
+
+func (o GetEventCategoriesApplyOutput) ToGetEventCategoriesApplyOutputWithContext(ctx context.Context) GetEventCategoriesApplyOutput {
+	return o
+}
+
+// The type of source that will be generating the events. Valid options are db-instance, db-security-group, db-parameter-group, db-snapshot, db-cluster or db-cluster-snapshot.
+func (o GetEventCategoriesApplyOutput) SourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEventCategoriesArgs) *string { return v.SourceType }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getEventCategories.
+type GetEventCategoriesResultOutput struct{ *pulumi.OutputState }
+
+func (GetEventCategoriesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventCategoriesResult)(nil)).Elem()
+}
+
+func (o GetEventCategoriesResultOutput) ToGetEventCategoriesResultOutput() GetEventCategoriesResultOutput {
+	return o
+}
+
+func (o GetEventCategoriesResultOutput) ToGetEventCategoriesResultOutputWithContext(ctx context.Context) GetEventCategoriesResultOutput {
+	return o
+}
+
+// A list of the event categories.
+func (o GetEventCategoriesResultOutput) EventCategories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEventCategoriesResult) []string { return v.EventCategories }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetEventCategoriesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventCategoriesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetEventCategoriesResultOutput) SourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEventCategoriesResult) *string { return v.SourceType }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetEventCategoriesApplyOutput{})
+	pulumi.RegisterOutputType(GetEventCategoriesResultOutput{})
 }

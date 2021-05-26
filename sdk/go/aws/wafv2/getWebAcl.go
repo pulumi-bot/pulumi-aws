@@ -4,6 +4,9 @@
 package wafv2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,4 +62,111 @@ type LookupWebAclResult struct {
 	Id    string `pulumi:"id"`
 	Name  string `pulumi:"name"`
 	Scope string `pulumi:"scope"`
+}
+
+func LookupWebAclApply(ctx *pulumi.Context, args LookupWebAclApplyInput, opts ...pulumi.InvokeOption) LookupWebAclResultOutput {
+	return args.ToLookupWebAclApplyOutput().ApplyT(func(v LookupWebAclArgs) (LookupWebAclResult, error) {
+		r, err := LookupWebAcl(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupWebAclResultOutput)
+}
+
+// LookupWebAclApplyInput is an input type that accepts LookupWebAclApplyArgs and LookupWebAclApplyOutput values.
+// You can construct a concrete instance of `LookupWebAclApplyInput` via:
+//
+//          LookupWebAclApplyArgs{...}
+type LookupWebAclApplyInput interface {
+	pulumi.Input
+
+	ToLookupWebAclApplyOutput() LookupWebAclApplyOutput
+	ToLookupWebAclApplyOutputWithContext(context.Context) LookupWebAclApplyOutput
+}
+
+// A collection of arguments for invoking getWebAcl.
+type LookupWebAclApplyArgs struct {
+	// The name of the WAFv2 Web ACL.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
+	Scope pulumi.StringInput `pulumi:"scope"`
+}
+
+func (LookupWebAclApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWebAclArgs)(nil)).Elem()
+}
+
+func (i LookupWebAclApplyArgs) ToLookupWebAclApplyOutput() LookupWebAclApplyOutput {
+	return i.ToLookupWebAclApplyOutputWithContext(context.Background())
+}
+
+func (i LookupWebAclApplyArgs) ToLookupWebAclApplyOutputWithContext(ctx context.Context) LookupWebAclApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupWebAclApplyOutput)
+}
+
+// A collection of arguments for invoking getWebAcl.
+type LookupWebAclApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupWebAclApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWebAclArgs)(nil)).Elem()
+}
+
+func (o LookupWebAclApplyOutput) ToLookupWebAclApplyOutput() LookupWebAclApplyOutput {
+	return o
+}
+
+func (o LookupWebAclApplyOutput) ToLookupWebAclApplyOutputWithContext(ctx context.Context) LookupWebAclApplyOutput {
+	return o
+}
+
+// The name of the WAFv2 Web ACL.
+func (o LookupWebAclApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAclArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
+func (o LookupWebAclApplyOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAclArgs) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getWebAcl.
+type LookupWebAclResultOutput struct{ *pulumi.OutputState }
+
+func (LookupWebAclResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWebAclResult)(nil)).Elem()
+}
+
+func (o LookupWebAclResultOutput) ToLookupWebAclResultOutput() LookupWebAclResultOutput {
+	return o
+}
+
+func (o LookupWebAclResultOutput) ToLookupWebAclResultOutputWithContext(ctx context.Context) LookupWebAclResultOutput {
+	return o
+}
+
+// The Amazon Resource Name (ARN) of the entity.
+func (o LookupWebAclResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAclResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The description of the WebACL that helps with identification.
+func (o LookupWebAclResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAclResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupWebAclResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAclResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupWebAclResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAclResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupWebAclResultOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAclResult) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupWebAclApplyOutput{})
+	pulumi.RegisterOutputType(LookupWebAclResultOutput{})
 }

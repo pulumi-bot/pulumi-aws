@@ -419,3 +419,11 @@ def get_function(function_name: Optional[str] = None,
         tracing_config=__ret__.tracing_config,
         version=__ret__.version,
         vpc_config=__ret__.vpc_config)
+
+
+@_utilities.lift_output_func(get_function)
+def get_function_apply(function_name: Optional[pulumi.Input[str]] = None,
+                       qualifier: Optional[pulumi.Input[str]] = None,
+                       tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFunctionResult]:
+    ...

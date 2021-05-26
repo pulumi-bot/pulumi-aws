@@ -4,6 +4,9 @@
 package efs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,4 +58,100 @@ type GetAccessPointsResult struct {
 	Id string `pulumi:"id"`
 	// Set of identifiers.
 	Ids []string `pulumi:"ids"`
+}
+
+func GetAccessPointsApply(ctx *pulumi.Context, args GetAccessPointsApplyInput, opts ...pulumi.InvokeOption) GetAccessPointsResultOutput {
+	return args.ToGetAccessPointsApplyOutput().ApplyT(func(v GetAccessPointsArgs) (GetAccessPointsResult, error) {
+		r, err := GetAccessPoints(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetAccessPointsResultOutput)
+}
+
+// GetAccessPointsApplyInput is an input type that accepts GetAccessPointsApplyArgs and GetAccessPointsApplyOutput values.
+// You can construct a concrete instance of `GetAccessPointsApplyInput` via:
+//
+//          GetAccessPointsApplyArgs{...}
+type GetAccessPointsApplyInput interface {
+	pulumi.Input
+
+	ToGetAccessPointsApplyOutput() GetAccessPointsApplyOutput
+	ToGetAccessPointsApplyOutputWithContext(context.Context) GetAccessPointsApplyOutput
+}
+
+// A collection of arguments for invoking getAccessPoints.
+type GetAccessPointsApplyArgs struct {
+	// EFS File System identifier.
+	FileSystemId pulumi.StringInput `pulumi:"fileSystemId"`
+}
+
+func (GetAccessPointsApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessPointsArgs)(nil)).Elem()
+}
+
+func (i GetAccessPointsApplyArgs) ToGetAccessPointsApplyOutput() GetAccessPointsApplyOutput {
+	return i.ToGetAccessPointsApplyOutputWithContext(context.Background())
+}
+
+func (i GetAccessPointsApplyArgs) ToGetAccessPointsApplyOutputWithContext(ctx context.Context) GetAccessPointsApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessPointsApplyOutput)
+}
+
+// A collection of arguments for invoking getAccessPoints.
+type GetAccessPointsApplyOutput struct{ *pulumi.OutputState }
+
+func (GetAccessPointsApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessPointsArgs)(nil)).Elem()
+}
+
+func (o GetAccessPointsApplyOutput) ToGetAccessPointsApplyOutput() GetAccessPointsApplyOutput {
+	return o
+}
+
+func (o GetAccessPointsApplyOutput) ToGetAccessPointsApplyOutputWithContext(ctx context.Context) GetAccessPointsApplyOutput {
+	return o
+}
+
+// EFS File System identifier.
+func (o GetAccessPointsApplyOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessPointsArgs) string { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getAccessPoints.
+type GetAccessPointsResultOutput struct{ *pulumi.OutputState }
+
+func (GetAccessPointsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessPointsResult)(nil)).Elem()
+}
+
+func (o GetAccessPointsResultOutput) ToGetAccessPointsResultOutput() GetAccessPointsResultOutput {
+	return o
+}
+
+func (o GetAccessPointsResultOutput) ToGetAccessPointsResultOutputWithContext(ctx context.Context) GetAccessPointsResultOutput {
+	return o
+}
+
+// Set of Amazon Resource Names (ARNs).
+func (o GetAccessPointsResultOutput) Arns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAccessPointsResult) []string { return v.Arns }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAccessPointsResultOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessPointsResult) string { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAccessPointsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessPointsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Set of identifiers.
+func (o GetAccessPointsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAccessPointsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAccessPointsApplyOutput{})
+	pulumi.RegisterOutputType(GetAccessPointsResultOutput{})
 }

@@ -40,6 +40,19 @@ namespace Pulumi.Aws.Batch
         /// </summary>
         public static Task<GetJobQueueResult> InvokeAsync(GetJobQueueArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetJobQueueResult>("aws:batch/getJobQueue:getJobQueue", args ?? new GetJobQueueArgs(), options.WithVersion());
+
+        public static Output<GetJobQueueResult> Apply(GetJobQueueApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetJobQueueArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -64,6 +77,31 @@ namespace Pulumi.Aws.Batch
         }
 
         public GetJobQueueArgs()
+        {
+        }
+    }
+
+    public sealed class GetJobQueueApplyArgs
+    {
+        /// <summary>
+        /// The name of the job queue.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Key-value map of resource tags
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetJobQueueApplyArgs()
         {
         }
     }

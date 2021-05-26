@@ -40,6 +40,19 @@ namespace Pulumi.Aws.Acmpca
         /// </summary>
         public static Task<GetCertificateResult> InvokeAsync(GetCertificateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("aws:acmpca/getCertificate:getCertificate", args ?? new GetCertificateArgs(), options.WithVersion());
+
+        public static Output<GetCertificateResult> Apply(GetCertificateApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Arn.Box(),
+                args.CertificateAuthorityArn.Box()
+            ).Apply(a => {
+                    var args = new GetCertificateArgs();
+                    a[0].Set(args, nameof(args.Arn));
+                    a[1].Set(args, nameof(args.CertificateAuthorityArn));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -58,6 +71,25 @@ namespace Pulumi.Aws.Acmpca
         public string CertificateAuthorityArn { get; set; } = null!;
 
         public GetCertificateArgs()
+        {
+        }
+    }
+
+    public sealed class GetCertificateApplyArgs
+    {
+        /// <summary>
+        /// Amazon Resource Name (ARN) of the certificate issued by the private certificate authority.
+        /// </summary>
+        [Input("arn", required: true)]
+        public Input<string> Arn { get; set; } = null!;
+
+        /// <summary>
+        /// Amazon Resource Name (ARN) of the certificate authority.
+        /// </summary>
+        [Input("certificateAuthorityArn", required: true)]
+        public Input<string> CertificateAuthorityArn { get; set; } = null!;
+
+        public GetCertificateApplyArgs()
         {
         }
     }

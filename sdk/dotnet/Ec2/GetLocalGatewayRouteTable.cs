@@ -46,6 +46,28 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetLocalGatewayRouteTableResult> InvokeAsync(GetLocalGatewayRouteTableArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLocalGatewayRouteTableResult>("aws:ec2/getLocalGatewayRouteTable:getLocalGatewayRouteTable", args ?? new GetLocalGatewayRouteTableArgs(), options.WithVersion());
+
+        public static Output<GetLocalGatewayRouteTableResult> Apply(GetLocalGatewayRouteTableApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetLocalGatewayRouteTableApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.LocalGatewayId.Box(),
+                args.LocalGatewayRouteTableId.Box(),
+                args.OutpostArn.Box(),
+                args.State.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetLocalGatewayRouteTableArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.LocalGatewayId));
+                    a[2].Set(args, nameof(args.LocalGatewayRouteTableId));
+                    a[3].Set(args, nameof(args.OutpostArn));
+                    a[4].Set(args, nameof(args.State));
+                    a[5].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -97,6 +119,58 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetLocalGatewayRouteTableArgs()
+        {
+        }
+    }
+
+    public sealed class GetLocalGatewayRouteTableApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetLocalGatewayRouteTableFilterArgs>? _filters;
+        public InputList<Inputs.GetLocalGatewayRouteTableFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetLocalGatewayRouteTableFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// The id of the specific local gateway route table to retrieve.
+        /// </summary>
+        [Input("localGatewayId")]
+        public Input<string>? LocalGatewayId { get; set; }
+
+        /// <summary>
+        /// Local Gateway Route Table Id assigned to desired local gateway route table
+        /// </summary>
+        [Input("localGatewayRouteTableId")]
+        public Input<string>? LocalGatewayRouteTableId { get; set; }
+
+        /// <summary>
+        /// The arn of the Outpost the local gateway route table is associated with.
+        /// </summary>
+        [Input("outpostArn")]
+        public Input<string>? OutpostArn { get; set; }
+
+        /// <summary>
+        /// The state of the local gateway route table.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags, each pair of which must exactly match
+        /// a pair on the desired local gateway route table.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetLocalGatewayRouteTableApplyArgs()
         {
         }
     }

@@ -39,6 +39,19 @@ namespace Pulumi.Aws.ImageBuilder
         /// </summary>
         public static Task<GetComponentResult> InvokeAsync(GetComponentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetComponentResult>("aws:imagebuilder/getComponent:getComponent", args ?? new GetComponentArgs(), options.WithVersion());
+
+        public static Output<GetComponentResult> Apply(GetComponentApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Arn.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetComponentArgs();
+                    a[0].Set(args, nameof(args.Arn));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -63,6 +76,31 @@ namespace Pulumi.Aws.ImageBuilder
         }
 
         public GetComponentArgs()
+        {
+        }
+    }
+
+    public sealed class GetComponentApplyArgs
+    {
+        /// <summary>
+        /// Amazon Resource Name (ARN) of the component.
+        /// </summary>
+        [Input("arn", required: true)]
+        public Input<string> Arn { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Key-value map of resource tags for the component.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetComponentApplyArgs()
         {
         }
     }

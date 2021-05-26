@@ -4,6 +4,9 @@
 package ec2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,4 +43,128 @@ type LookupInternetGatewayResult struct {
 	// The ID of the AWS account that owns the internet gateway.
 	OwnerId string            `pulumi:"ownerId"`
 	Tags    map[string]string `pulumi:"tags"`
+}
+
+func LookupInternetGatewayApply(ctx *pulumi.Context, args LookupInternetGatewayApplyInput, opts ...pulumi.InvokeOption) LookupInternetGatewayResultOutput {
+	return args.ToLookupInternetGatewayApplyOutput().ApplyT(func(v LookupInternetGatewayArgs) (LookupInternetGatewayResult, error) {
+		r, err := LookupInternetGateway(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupInternetGatewayResultOutput)
+}
+
+// LookupInternetGatewayApplyInput is an input type that accepts LookupInternetGatewayApplyArgs and LookupInternetGatewayApplyOutput values.
+// You can construct a concrete instance of `LookupInternetGatewayApplyInput` via:
+//
+//          LookupInternetGatewayApplyArgs{...}
+type LookupInternetGatewayApplyInput interface {
+	pulumi.Input
+
+	ToLookupInternetGatewayApplyOutput() LookupInternetGatewayApplyOutput
+	ToLookupInternetGatewayApplyOutputWithContext(context.Context) LookupInternetGatewayApplyOutput
+}
+
+// A collection of arguments for invoking getInternetGateway.
+type LookupInternetGatewayApplyArgs struct {
+	// Custom filter block as described below.
+	Filters GetInternetGatewayFilterArrayInput `pulumi:"filters"`
+	// The id of the specific Internet Gateway to retrieve.
+	InternetGatewayId pulumi.StringPtrInput `pulumi:"internetGatewayId"`
+	// A map of tags, each pair of which must exactly match
+	// a pair on the desired Internet Gateway.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupInternetGatewayApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInternetGatewayArgs)(nil)).Elem()
+}
+
+func (i LookupInternetGatewayApplyArgs) ToLookupInternetGatewayApplyOutput() LookupInternetGatewayApplyOutput {
+	return i.ToLookupInternetGatewayApplyOutputWithContext(context.Background())
+}
+
+func (i LookupInternetGatewayApplyArgs) ToLookupInternetGatewayApplyOutputWithContext(ctx context.Context) LookupInternetGatewayApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupInternetGatewayApplyOutput)
+}
+
+// A collection of arguments for invoking getInternetGateway.
+type LookupInternetGatewayApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupInternetGatewayApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInternetGatewayArgs)(nil)).Elem()
+}
+
+func (o LookupInternetGatewayApplyOutput) ToLookupInternetGatewayApplyOutput() LookupInternetGatewayApplyOutput {
+	return o
+}
+
+func (o LookupInternetGatewayApplyOutput) ToLookupInternetGatewayApplyOutputWithContext(ctx context.Context) LookupInternetGatewayApplyOutput {
+	return o
+}
+
+// Custom filter block as described below.
+func (o LookupInternetGatewayApplyOutput) Filters() GetInternetGatewayFilterArrayOutput {
+	return o.ApplyT(func(v LookupInternetGatewayArgs) []GetInternetGatewayFilter { return v.Filters }).(GetInternetGatewayFilterArrayOutput)
+}
+
+// The id of the specific Internet Gateway to retrieve.
+func (o LookupInternetGatewayApplyOutput) InternetGatewayId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupInternetGatewayArgs) *string { return v.InternetGatewayId }).(pulumi.StringPtrOutput)
+}
+
+// A map of tags, each pair of which must exactly match
+// a pair on the desired Internet Gateway.
+func (o LookupInternetGatewayApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInternetGatewayArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getInternetGateway.
+type LookupInternetGatewayResultOutput struct{ *pulumi.OutputState }
+
+func (LookupInternetGatewayResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInternetGatewayResult)(nil)).Elem()
+}
+
+func (o LookupInternetGatewayResultOutput) ToLookupInternetGatewayResultOutput() LookupInternetGatewayResultOutput {
+	return o
+}
+
+func (o LookupInternetGatewayResultOutput) ToLookupInternetGatewayResultOutputWithContext(ctx context.Context) LookupInternetGatewayResultOutput {
+	return o
+}
+
+// The ARN of the Internet Gateway.
+func (o LookupInternetGatewayResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInternetGatewayResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+func (o LookupInternetGatewayResultOutput) Attachments() GetInternetGatewayAttachmentArrayOutput {
+	return o.ApplyT(func(v LookupInternetGatewayResult) []GetInternetGatewayAttachment { return v.Attachments }).(GetInternetGatewayAttachmentArrayOutput)
+}
+
+func (o LookupInternetGatewayResultOutput) Filters() GetInternetGatewayFilterArrayOutput {
+	return o.ApplyT(func(v LookupInternetGatewayResult) []GetInternetGatewayFilter { return v.Filters }).(GetInternetGatewayFilterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupInternetGatewayResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInternetGatewayResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupInternetGatewayResultOutput) InternetGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInternetGatewayResult) string { return v.InternetGatewayId }).(pulumi.StringOutput)
+}
+
+// The ID of the AWS account that owns the internet gateway.
+func (o LookupInternetGatewayResultOutput) OwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInternetGatewayResult) string { return v.OwnerId }).(pulumi.StringOutput)
+}
+
+func (o LookupInternetGatewayResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInternetGatewayResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupInternetGatewayApplyOutput{})
+	pulumi.RegisterOutputType(LookupInternetGatewayResultOutput{})
 }

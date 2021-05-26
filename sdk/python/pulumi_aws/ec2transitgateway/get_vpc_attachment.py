@@ -203,3 +203,11 @@ def get_vpc_attachment(filters: Optional[Sequence[pulumi.InputType['GetVpcAttach
         transit_gateway_id=__ret__.transit_gateway_id,
         vpc_id=__ret__.vpc_id,
         vpc_owner_id=__ret__.vpc_owner_id)
+
+
+@_utilities.lift_output_func(get_vpc_attachment)
+def get_vpc_attachment_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetVpcAttachmentFilterArgs']]]]] = None,
+                             id: Optional[pulumi.Input[str]] = None,
+                             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcAttachmentResult]:
+    ...

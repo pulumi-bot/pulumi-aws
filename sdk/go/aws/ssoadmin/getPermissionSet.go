@@ -4,6 +4,9 @@
 package ssoadmin
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,4 +48,143 @@ type LookupPermissionSetResult struct {
 	SessionDuration string `pulumi:"sessionDuration"`
 	// Key-value map of resource tags.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupPermissionSetApply(ctx *pulumi.Context, args LookupPermissionSetApplyInput, opts ...pulumi.InvokeOption) LookupPermissionSetResultOutput {
+	return args.ToLookupPermissionSetApplyOutput().ApplyT(func(v LookupPermissionSetArgs) (LookupPermissionSetResult, error) {
+		r, err := LookupPermissionSet(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupPermissionSetResultOutput)
+}
+
+// LookupPermissionSetApplyInput is an input type that accepts LookupPermissionSetApplyArgs and LookupPermissionSetApplyOutput values.
+// You can construct a concrete instance of `LookupPermissionSetApplyInput` via:
+//
+//          LookupPermissionSetApplyArgs{...}
+type LookupPermissionSetApplyInput interface {
+	pulumi.Input
+
+	ToLookupPermissionSetApplyOutput() LookupPermissionSetApplyOutput
+	ToLookupPermissionSetApplyOutputWithContext(context.Context) LookupPermissionSetApplyOutput
+}
+
+// A collection of arguments for invoking getPermissionSet.
+type LookupPermissionSetApplyArgs struct {
+	// The Amazon Resource Name (ARN) of the permission set.
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// The Amazon Resource Name (ARN) of the SSO Instance associated with the permission set.
+	InstanceArn pulumi.StringInput `pulumi:"instanceArn"`
+	// The name of the SSO Permission Set.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Key-value map of resource tags.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupPermissionSetApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPermissionSetArgs)(nil)).Elem()
+}
+
+func (i LookupPermissionSetApplyArgs) ToLookupPermissionSetApplyOutput() LookupPermissionSetApplyOutput {
+	return i.ToLookupPermissionSetApplyOutputWithContext(context.Background())
+}
+
+func (i LookupPermissionSetApplyArgs) ToLookupPermissionSetApplyOutputWithContext(ctx context.Context) LookupPermissionSetApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupPermissionSetApplyOutput)
+}
+
+// A collection of arguments for invoking getPermissionSet.
+type LookupPermissionSetApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupPermissionSetApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPermissionSetArgs)(nil)).Elem()
+}
+
+func (o LookupPermissionSetApplyOutput) ToLookupPermissionSetApplyOutput() LookupPermissionSetApplyOutput {
+	return o
+}
+
+func (o LookupPermissionSetApplyOutput) ToLookupPermissionSetApplyOutputWithContext(ctx context.Context) LookupPermissionSetApplyOutput {
+	return o
+}
+
+// The Amazon Resource Name (ARN) of the permission set.
+func (o LookupPermissionSetApplyOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPermissionSetArgs) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// The Amazon Resource Name (ARN) of the SSO Instance associated with the permission set.
+func (o LookupPermissionSetApplyOutput) InstanceArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPermissionSetArgs) string { return v.InstanceArn }).(pulumi.StringOutput)
+}
+
+// The name of the SSO Permission Set.
+func (o LookupPermissionSetApplyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPermissionSetArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Key-value map of resource tags.
+func (o LookupPermissionSetApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupPermissionSetArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getPermissionSet.
+type LookupPermissionSetResultOutput struct{ *pulumi.OutputState }
+
+func (LookupPermissionSetResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPermissionSetResult)(nil)).Elem()
+}
+
+func (o LookupPermissionSetResultOutput) ToLookupPermissionSetResultOutput() LookupPermissionSetResultOutput {
+	return o
+}
+
+func (o LookupPermissionSetResultOutput) ToLookupPermissionSetResultOutputWithContext(ctx context.Context) LookupPermissionSetResultOutput {
+	return o
+}
+
+func (o LookupPermissionSetResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPermissionSetResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+func (o LookupPermissionSetResultOutput) CreatedDate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPermissionSetResult) string { return v.CreatedDate }).(pulumi.StringOutput)
+}
+
+// The description of the Permission Set.
+func (o LookupPermissionSetResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPermissionSetResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupPermissionSetResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPermissionSetResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupPermissionSetResultOutput) InstanceArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPermissionSetResult) string { return v.InstanceArn }).(pulumi.StringOutput)
+}
+
+func (o LookupPermissionSetResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPermissionSetResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The relay state URL used to redirect users within the application during the federation authentication process.
+func (o LookupPermissionSetResultOutput) RelayState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPermissionSetResult) string { return v.RelayState }).(pulumi.StringOutput)
+}
+
+// The length of time that the application user sessions are valid in the ISO-8601 standard.
+func (o LookupPermissionSetResultOutput) SessionDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPermissionSetResult) string { return v.SessionDuration }).(pulumi.StringOutput)
+}
+
+// Key-value map of resource tags.
+func (o LookupPermissionSetResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupPermissionSetResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupPermissionSetApplyOutput{})
+	pulumi.RegisterOutputType(LookupPermissionSetResultOutput{})
 }

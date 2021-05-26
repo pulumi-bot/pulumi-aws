@@ -4,6 +4,9 @@
 package iam
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,110 @@ type LookupGroupResult struct {
 	Path string `pulumi:"path"`
 	// List of objects containing group member information. See supported fields below.
 	Users []GetGroupUser `pulumi:"users"`
+}
+
+func LookupGroupApply(ctx *pulumi.Context, args LookupGroupApplyInput, opts ...pulumi.InvokeOption) LookupGroupResultOutput {
+	return args.ToLookupGroupApplyOutput().ApplyT(func(v LookupGroupArgs) (LookupGroupResult, error) {
+		r, err := LookupGroup(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupGroupResultOutput)
+}
+
+// LookupGroupApplyInput is an input type that accepts LookupGroupApplyArgs and LookupGroupApplyOutput values.
+// You can construct a concrete instance of `LookupGroupApplyInput` via:
+//
+//          LookupGroupApplyArgs{...}
+type LookupGroupApplyInput interface {
+	pulumi.Input
+
+	ToLookupGroupApplyOutput() LookupGroupApplyOutput
+	ToLookupGroupApplyOutputWithContext(context.Context) LookupGroupApplyOutput
+}
+
+// A collection of arguments for invoking getGroup.
+type LookupGroupApplyArgs struct {
+	// The friendly IAM group name to match.
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+}
+
+func (LookupGroupApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGroupArgs)(nil)).Elem()
+}
+
+func (i LookupGroupApplyArgs) ToLookupGroupApplyOutput() LookupGroupApplyOutput {
+	return i.ToLookupGroupApplyOutputWithContext(context.Background())
+}
+
+func (i LookupGroupApplyArgs) ToLookupGroupApplyOutputWithContext(ctx context.Context) LookupGroupApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupGroupApplyOutput)
+}
+
+// A collection of arguments for invoking getGroup.
+type LookupGroupApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupGroupApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGroupArgs)(nil)).Elem()
+}
+
+func (o LookupGroupApplyOutput) ToLookupGroupApplyOutput() LookupGroupApplyOutput {
+	return o
+}
+
+func (o LookupGroupApplyOutput) ToLookupGroupApplyOutputWithContext(ctx context.Context) LookupGroupApplyOutput {
+	return o
+}
+
+// The friendly IAM group name to match.
+func (o LookupGroupApplyOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupArgs) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getGroup.
+type LookupGroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGroupResult)(nil)).Elem()
+}
+
+func (o LookupGroupResultOutput) ToLookupGroupResultOutput() LookupGroupResultOutput {
+	return o
+}
+
+func (o LookupGroupResultOutput) ToLookupGroupResultOutputWithContext(ctx context.Context) LookupGroupResultOutput {
+	return o
+}
+
+// The Amazon Resource Name (ARN) specifying the iam user.
+func (o LookupGroupResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The stable and unique string identifying the group.
+func (o LookupGroupResultOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+func (o LookupGroupResultOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The path to the iam user.
+func (o LookupGroupResultOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// List of objects containing group member information. See supported fields below.
+func (o LookupGroupResultOutput) Users() GetGroupUserArrayOutput {
+	return o.ApplyT(func(v LookupGroupResult) []GetGroupUser { return v.Users }).(GetGroupUserArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupGroupApplyOutput{})
+	pulumi.RegisterOutputType(LookupGroupResultOutput{})
 }

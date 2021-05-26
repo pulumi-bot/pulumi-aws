@@ -51,6 +51,22 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetSpotPriceResult> InvokeAsync(GetSpotPriceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSpotPriceResult>("aws:ec2/getSpotPrice:getSpotPrice", args ?? new GetSpotPriceArgs(), options.WithVersion());
+
+        public static Output<GetSpotPriceResult> Apply(GetSpotPriceApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetSpotPriceApplyArgs();
+            return Pulumi.Output.All(
+                args.AvailabilityZone.Box(),
+                args.Filters.ToList().Box(),
+                args.InstanceType.Box()
+            ).Apply(a => {
+                    var args = new GetSpotPriceArgs();
+                    a[0].Set(args, nameof(args.AvailabilityZone));
+                    a[1].Set(args, nameof(args.Filters));
+                    a[2].Set(args, nameof(args.InstanceType));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -81,6 +97,37 @@ namespace Pulumi.Aws.Ec2
         public string? InstanceType { get; set; }
 
         public GetSpotPriceArgs()
+        {
+        }
+    }
+
+    public sealed class GetSpotPriceApplyArgs
+    {
+        /// <summary>
+        /// The availability zone in which to query Spot price information.
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
+
+        [Input("filters")]
+        private InputList<Inputs.GetSpotPriceFilterArgs>? _filters;
+
+        /// <summary>
+        /// One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSpotPriceHistory.html) for supported filters. Detailed below.
+        /// </summary>
+        public InputList<Inputs.GetSpotPriceFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetSpotPriceFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// The type of instance for which to query Spot Price information.
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        public GetSpotPriceApplyArgs()
         {
         }
     }

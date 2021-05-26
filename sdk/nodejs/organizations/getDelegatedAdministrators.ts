@@ -40,7 +40,7 @@ export interface GetDelegatedAdministratorsArgs {
     /**
      * Specifies a service principal name. If specified, then the operation lists the delegated administrators only for the specified service. If you don't specify a service principal, the operation lists all delegated administrators for all services in your organization.
      */
-    readonly servicePrincipal?: string;
+    servicePrincipal?: string;
 }
 
 /**
@@ -56,4 +56,18 @@ export interface GetDelegatedAdministratorsResult {
      */
     readonly id: string;
     readonly servicePrincipal?: string;
+}
+
+export function getDelegatedAdministratorsApply(args?: GetDelegatedAdministratorsApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDelegatedAdministratorsResult> {
+    return pulumi.output(args).apply(a => getDelegatedAdministrators(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDelegatedAdministrators.
+ */
+export interface GetDelegatedAdministratorsApplyArgs {
+    /**
+     * Specifies a service principal name. If specified, then the operation lists the delegated administrators only for the specified service. If you don't specify a service principal, the operation lists all delegated administrators for all services in your organization.
+     */
+    servicePrincipal?: pulumi.Input<string>;
 }

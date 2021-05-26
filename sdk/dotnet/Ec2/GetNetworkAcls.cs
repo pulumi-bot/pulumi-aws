@@ -97,6 +97,22 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetNetworkAclsResult> InvokeAsync(GetNetworkAclsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkAclsResult>("aws:ec2/getNetworkAcls:getNetworkAcls", args ?? new GetNetworkAclsArgs(), options.WithVersion());
+
+        public static Output<GetNetworkAclsResult> Apply(GetNetworkAclsApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetNetworkAclsApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.Tags.ToDict().Box(),
+                args.VpcId.Box()
+            ).Apply(a => {
+                    var args = new GetNetworkAclsArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Tags));
+                    a[2].Set(args, nameof(args.VpcId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -134,6 +150,44 @@ namespace Pulumi.Aws.Ec2
         public string? VpcId { get; set; }
 
         public GetNetworkAclsArgs()
+        {
+        }
+    }
+
+    public sealed class GetNetworkAclsApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetNetworkAclsFilterArgs>? _filters;
+
+        /// <summary>
+        /// Custom filter block as described below.
+        /// </summary>
+        public InputList<Inputs.GetNetworkAclsFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetNetworkAclsFilterArgs>());
+            set => _filters = value;
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags, each pair of which must exactly match
+        /// a pair on the desired network ACLs.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The VPC ID that you want to filter from.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        public GetNetworkAclsApplyArgs()
         {
         }
     }

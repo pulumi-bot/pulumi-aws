@@ -40,11 +40,11 @@ export interface GetVaultArgs {
     /**
      * The name of the backup vault.
      */
-    readonly name: string;
+    name: string;
     /**
      * Metadata that you can assign to help organize the resources that you create.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -72,4 +72,22 @@ export interface GetVaultResult {
      * Metadata that you can assign to help organize the resources that you create.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getVaultApply(args: GetVaultApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVaultResult> {
+    return pulumi.output(args).apply(a => getVault(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getVault.
+ */
+export interface GetVaultApplyArgs {
+    /**
+     * The name of the backup vault.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Metadata that you can assign to help organize the resources that you create.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

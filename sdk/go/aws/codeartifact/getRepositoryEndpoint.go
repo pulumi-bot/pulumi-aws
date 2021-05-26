@@ -4,6 +4,9 @@
 package codeartifact
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,4 +67,128 @@ type GetRepositoryEndpointResult struct {
 	Repository string `pulumi:"repository"`
 	// The URL of the returned endpoint.
 	RepositoryEndpoint string `pulumi:"repositoryEndpoint"`
+}
+
+func GetRepositoryEndpointApply(ctx *pulumi.Context, args GetRepositoryEndpointApplyInput, opts ...pulumi.InvokeOption) GetRepositoryEndpointResultOutput {
+	return args.ToGetRepositoryEndpointApplyOutput().ApplyT(func(v GetRepositoryEndpointArgs) (GetRepositoryEndpointResult, error) {
+		r, err := GetRepositoryEndpoint(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetRepositoryEndpointResultOutput)
+}
+
+// GetRepositoryEndpointApplyInput is an input type that accepts GetRepositoryEndpointApplyArgs and GetRepositoryEndpointApplyOutput values.
+// You can construct a concrete instance of `GetRepositoryEndpointApplyInput` via:
+//
+//          GetRepositoryEndpointApplyArgs{...}
+type GetRepositoryEndpointApplyInput interface {
+	pulumi.Input
+
+	ToGetRepositoryEndpointApplyOutput() GetRepositoryEndpointApplyOutput
+	ToGetRepositoryEndpointApplyOutputWithContext(context.Context) GetRepositoryEndpointApplyOutput
+}
+
+// A collection of arguments for invoking getRepositoryEndpoint.
+type GetRepositoryEndpointApplyArgs struct {
+	// The name of the domain that contains the repository.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The account number of the AWS account that owns the domain.
+	DomainOwner pulumi.StringPtrInput `pulumi:"domainOwner"`
+	// Which endpoint of a repository to return. A repository has one endpoint for each package format: `npm`, `pypi`, `maven`, and `nuget`.
+	Format pulumi.StringInput `pulumi:"format"`
+	// The name of the repository.
+	Repository pulumi.StringInput `pulumi:"repository"`
+}
+
+func (GetRepositoryEndpointApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryEndpointArgs)(nil)).Elem()
+}
+
+func (i GetRepositoryEndpointApplyArgs) ToGetRepositoryEndpointApplyOutput() GetRepositoryEndpointApplyOutput {
+	return i.ToGetRepositoryEndpointApplyOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryEndpointApplyArgs) ToGetRepositoryEndpointApplyOutputWithContext(ctx context.Context) GetRepositoryEndpointApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryEndpointApplyOutput)
+}
+
+// A collection of arguments for invoking getRepositoryEndpoint.
+type GetRepositoryEndpointApplyOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryEndpointApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryEndpointArgs)(nil)).Elem()
+}
+
+func (o GetRepositoryEndpointApplyOutput) ToGetRepositoryEndpointApplyOutput() GetRepositoryEndpointApplyOutput {
+	return o
+}
+
+func (o GetRepositoryEndpointApplyOutput) ToGetRepositoryEndpointApplyOutputWithContext(ctx context.Context) GetRepositoryEndpointApplyOutput {
+	return o
+}
+
+// The name of the domain that contains the repository.
+func (o GetRepositoryEndpointApplyOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryEndpointArgs) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The account number of the AWS account that owns the domain.
+func (o GetRepositoryEndpointApplyOutput) DomainOwner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRepositoryEndpointArgs) *string { return v.DomainOwner }).(pulumi.StringPtrOutput)
+}
+
+// Which endpoint of a repository to return. A repository has one endpoint for each package format: `npm`, `pypi`, `maven`, and `nuget`.
+func (o GetRepositoryEndpointApplyOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryEndpointArgs) string { return v.Format }).(pulumi.StringOutput)
+}
+
+// The name of the repository.
+func (o GetRepositoryEndpointApplyOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryEndpointArgs) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getRepositoryEndpoint.
+type GetRepositoryEndpointResultOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryEndpointResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryEndpointResult)(nil)).Elem()
+}
+
+func (o GetRepositoryEndpointResultOutput) ToGetRepositoryEndpointResultOutput() GetRepositoryEndpointResultOutput {
+	return o
+}
+
+func (o GetRepositoryEndpointResultOutput) ToGetRepositoryEndpointResultOutputWithContext(ctx context.Context) GetRepositoryEndpointResultOutput {
+	return o
+}
+
+func (o GetRepositoryEndpointResultOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryEndpointResult) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+func (o GetRepositoryEndpointResultOutput) DomainOwner() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryEndpointResult) string { return v.DomainOwner }).(pulumi.StringOutput)
+}
+
+func (o GetRepositoryEndpointResultOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryEndpointResult) string { return v.Format }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRepositoryEndpointResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryEndpointResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetRepositoryEndpointResultOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryEndpointResult) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+// The URL of the returned endpoint.
+func (o GetRepositoryEndpointResultOutput) RepositoryEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryEndpointResult) string { return v.RepositoryEndpoint }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRepositoryEndpointApplyOutput{})
+	pulumi.RegisterOutputType(GetRepositoryEndpointResultOutput{})
 }

@@ -108,6 +108,19 @@ namespace Pulumi.Aws.Pricing
         /// </summary>
         public static Task<GetProductResult> InvokeAsync(GetProductArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProductResult>("aws:pricing/getProduct:getProduct", args ?? new GetProductArgs(), options.WithVersion());
+
+        public static Output<GetProductResult> Apply(GetProductApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.ServiceCode.Box()
+            ).Apply(a => {
+                    var args = new GetProductArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.ServiceCode));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -132,6 +145,31 @@ namespace Pulumi.Aws.Pricing
         public string ServiceCode { get; set; } = null!;
 
         public GetProductArgs()
+        {
+        }
+    }
+
+    public sealed class GetProductApplyArgs
+    {
+        [Input("filters", required: true)]
+        private InputList<Inputs.GetProductFilterArgs>? _filters;
+
+        /// <summary>
+        /// A list of filters. Passed directly to the API (see GetProducts API reference). These filters must describe a single product, this resource will fail if more than one product is returned by the API.
+        /// </summary>
+        public InputList<Inputs.GetProductFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetProductFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// The code of the service. Available service codes can be fetched using the DescribeServices pricing API call.
+        /// </summary>
+        [Input("serviceCode", required: true)]
+        public Input<string> ServiceCode { get; set; } = null!;
+
+        public GetProductApplyArgs()
         {
         }
     }

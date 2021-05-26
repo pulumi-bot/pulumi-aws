@@ -45,6 +45,17 @@ namespace Pulumi.Aws.ElasticBeanstalk
         /// </summary>
         public static Task<GetApplicationResult> InvokeAsync(GetApplicationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationResult>("aws:elasticbeanstalk/getApplication:getApplication", args ?? new GetApplicationArgs(), options.WithVersion());
+
+        public static Output<GetApplicationResult> Apply(GetApplicationApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetApplicationArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -57,6 +68,19 @@ namespace Pulumi.Aws.ElasticBeanstalk
         public string Name { get; set; } = null!;
 
         public GetApplicationArgs()
+        {
+        }
+    }
+
+    public sealed class GetApplicationApplyArgs
+    {
+        /// <summary>
+        /// The name of the application
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetApplicationApplyArgs()
         {
         }
     }

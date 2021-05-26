@@ -4,6 +4,9 @@
 package servicediscovery
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,116 @@ type GetDnsNamespaceResult struct {
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 	Type string `pulumi:"type"`
+}
+
+func GetDnsNamespaceApply(ctx *pulumi.Context, args GetDnsNamespaceApplyInput, opts ...pulumi.InvokeOption) GetDnsNamespaceResultOutput {
+	return args.ToGetDnsNamespaceApplyOutput().ApplyT(func(v GetDnsNamespaceArgs) (GetDnsNamespaceResult, error) {
+		r, err := GetDnsNamespace(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetDnsNamespaceResultOutput)
+}
+
+// GetDnsNamespaceApplyInput is an input type that accepts GetDnsNamespaceApplyArgs and GetDnsNamespaceApplyOutput values.
+// You can construct a concrete instance of `GetDnsNamespaceApplyInput` via:
+//
+//          GetDnsNamespaceApplyArgs{...}
+type GetDnsNamespaceApplyInput interface {
+	pulumi.Input
+
+	ToGetDnsNamespaceApplyOutput() GetDnsNamespaceApplyOutput
+	ToGetDnsNamespaceApplyOutputWithContext(context.Context) GetDnsNamespaceApplyOutput
+}
+
+// A collection of arguments for invoking getDnsNamespace.
+type GetDnsNamespaceApplyArgs struct {
+	// The name of the namespace.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The type of the namespace. Allowed values are `DNS_PUBLIC` or `DNS_PRIVATE`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDnsNamespaceApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDnsNamespaceArgs)(nil)).Elem()
+}
+
+func (i GetDnsNamespaceApplyArgs) ToGetDnsNamespaceApplyOutput() GetDnsNamespaceApplyOutput {
+	return i.ToGetDnsNamespaceApplyOutputWithContext(context.Background())
+}
+
+func (i GetDnsNamespaceApplyArgs) ToGetDnsNamespaceApplyOutputWithContext(ctx context.Context) GetDnsNamespaceApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDnsNamespaceApplyOutput)
+}
+
+// A collection of arguments for invoking getDnsNamespace.
+type GetDnsNamespaceApplyOutput struct{ *pulumi.OutputState }
+
+func (GetDnsNamespaceApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDnsNamespaceArgs)(nil)).Elem()
+}
+
+func (o GetDnsNamespaceApplyOutput) ToGetDnsNamespaceApplyOutput() GetDnsNamespaceApplyOutput {
+	return o
+}
+
+func (o GetDnsNamespaceApplyOutput) ToGetDnsNamespaceApplyOutputWithContext(ctx context.Context) GetDnsNamespaceApplyOutput {
+	return o
+}
+
+// The name of the namespace.
+func (o GetDnsNamespaceApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsNamespaceArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The type of the namespace. Allowed values are `DNS_PUBLIC` or `DNS_PRIVATE`.
+func (o GetDnsNamespaceApplyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsNamespaceArgs) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getDnsNamespace.
+type GetDnsNamespaceResultOutput struct{ *pulumi.OutputState }
+
+func (GetDnsNamespaceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDnsNamespaceResult)(nil)).Elem()
+}
+
+func (o GetDnsNamespaceResultOutput) ToGetDnsNamespaceResultOutput() GetDnsNamespaceResultOutput {
+	return o
+}
+
+func (o GetDnsNamespaceResultOutput) ToGetDnsNamespaceResultOutputWithContext(ctx context.Context) GetDnsNamespaceResultOutput {
+	return o
+}
+
+// The Amazon Resource Name (ARN) of the namespace.
+func (o GetDnsNamespaceResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsNamespaceResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// A description of the namespace.
+func (o GetDnsNamespaceResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsNamespaceResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID for the hosted zone that Amazon Route 53 creates when you create a namespace.
+func (o GetDnsNamespaceResultOutput) HostedZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsNamespaceResult) string { return v.HostedZone }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDnsNamespaceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsNamespaceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDnsNamespaceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsNamespaceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetDnsNamespaceResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDnsNamespaceResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDnsNamespaceApplyOutput{})
+	pulumi.RegisterOutputType(GetDnsNamespaceResultOutput{})
 }

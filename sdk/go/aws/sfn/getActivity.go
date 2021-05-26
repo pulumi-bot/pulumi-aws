@@ -4,6 +4,9 @@
 package sfn
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -57,4 +60,106 @@ type LookupActivityResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
+}
+
+func LookupActivityApply(ctx *pulumi.Context, args LookupActivityApplyInput, opts ...pulumi.InvokeOption) LookupActivityResultOutput {
+	return args.ToLookupActivityApplyOutput().ApplyT(func(v LookupActivityArgs) (LookupActivityResult, error) {
+		r, err := LookupActivity(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupActivityResultOutput)
+}
+
+// LookupActivityApplyInput is an input type that accepts LookupActivityApplyArgs and LookupActivityApplyOutput values.
+// You can construct a concrete instance of `LookupActivityApplyInput` via:
+//
+//          LookupActivityApplyArgs{...}
+type LookupActivityApplyInput interface {
+	pulumi.Input
+
+	ToLookupActivityApplyOutput() LookupActivityApplyOutput
+	ToLookupActivityApplyOutputWithContext(context.Context) LookupActivityApplyOutput
+}
+
+// A collection of arguments for invoking getActivity.
+type LookupActivityApplyArgs struct {
+	// The Amazon Resource Name (ARN) that identifies the activity.
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// The name that identifies the activity.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LookupActivityApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupActivityArgs)(nil)).Elem()
+}
+
+func (i LookupActivityApplyArgs) ToLookupActivityApplyOutput() LookupActivityApplyOutput {
+	return i.ToLookupActivityApplyOutputWithContext(context.Background())
+}
+
+func (i LookupActivityApplyArgs) ToLookupActivityApplyOutputWithContext(ctx context.Context) LookupActivityApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupActivityApplyOutput)
+}
+
+// A collection of arguments for invoking getActivity.
+type LookupActivityApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupActivityApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupActivityArgs)(nil)).Elem()
+}
+
+func (o LookupActivityApplyOutput) ToLookupActivityApplyOutput() LookupActivityApplyOutput {
+	return o
+}
+
+func (o LookupActivityApplyOutput) ToLookupActivityApplyOutputWithContext(ctx context.Context) LookupActivityApplyOutput {
+	return o
+}
+
+// The Amazon Resource Name (ARN) that identifies the activity.
+func (o LookupActivityApplyOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupActivityArgs) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// The name that identifies the activity.
+func (o LookupActivityApplyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupActivityArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getActivity.
+type LookupActivityResultOutput struct{ *pulumi.OutputState }
+
+func (LookupActivityResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupActivityResult)(nil)).Elem()
+}
+
+func (o LookupActivityResultOutput) ToLookupActivityResultOutput() LookupActivityResultOutput {
+	return o
+}
+
+func (o LookupActivityResultOutput) ToLookupActivityResultOutputWithContext(ctx context.Context) LookupActivityResultOutput {
+	return o
+}
+
+func (o LookupActivityResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupActivityResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The date the activity was created.
+func (o LookupActivityResultOutput) CreationDate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupActivityResult) string { return v.CreationDate }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupActivityResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupActivityResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupActivityResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupActivityResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupActivityApplyOutput{})
+	pulumi.RegisterOutputType(LookupActivityResultOutput{})
 }

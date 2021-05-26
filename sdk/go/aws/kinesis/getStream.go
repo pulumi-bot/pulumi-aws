@@ -4,6 +4,9 @@
 package kinesis
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,4 +76,138 @@ type LookupStreamResult struct {
 	Status string `pulumi:"status"`
 	// A map of tags to assigned to the stream.
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupStreamApply(ctx *pulumi.Context, args LookupStreamApplyInput, opts ...pulumi.InvokeOption) LookupStreamResultOutput {
+	return args.ToLookupStreamApplyOutput().ApplyT(func(v LookupStreamArgs) (LookupStreamResult, error) {
+		r, err := LookupStream(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupStreamResultOutput)
+}
+
+// LookupStreamApplyInput is an input type that accepts LookupStreamApplyArgs and LookupStreamApplyOutput values.
+// You can construct a concrete instance of `LookupStreamApplyInput` via:
+//
+//          LookupStreamApplyArgs{...}
+type LookupStreamApplyInput interface {
+	pulumi.Input
+
+	ToLookupStreamApplyOutput() LookupStreamApplyOutput
+	ToLookupStreamApplyOutputWithContext(context.Context) LookupStreamApplyOutput
+}
+
+// A collection of arguments for invoking getStream.
+type LookupStreamApplyArgs struct {
+	// The name of the Kinesis Stream.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A map of tags to assigned to the stream.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupStreamApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupStreamArgs)(nil)).Elem()
+}
+
+func (i LookupStreamApplyArgs) ToLookupStreamApplyOutput() LookupStreamApplyOutput {
+	return i.ToLookupStreamApplyOutputWithContext(context.Background())
+}
+
+func (i LookupStreamApplyArgs) ToLookupStreamApplyOutputWithContext(ctx context.Context) LookupStreamApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupStreamApplyOutput)
+}
+
+// A collection of arguments for invoking getStream.
+type LookupStreamApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupStreamApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupStreamArgs)(nil)).Elem()
+}
+
+func (o LookupStreamApplyOutput) ToLookupStreamApplyOutput() LookupStreamApplyOutput {
+	return o
+}
+
+func (o LookupStreamApplyOutput) ToLookupStreamApplyOutputWithContext(ctx context.Context) LookupStreamApplyOutput {
+	return o
+}
+
+// The name of the Kinesis Stream.
+func (o LookupStreamApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A map of tags to assigned to the stream.
+func (o LookupStreamApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupStreamArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getStream.
+type LookupStreamResultOutput struct{ *pulumi.OutputState }
+
+func (LookupStreamResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupStreamResult)(nil)).Elem()
+}
+
+func (o LookupStreamResultOutput) ToLookupStreamResultOutput() LookupStreamResultOutput {
+	return o
+}
+
+func (o LookupStreamResultOutput) ToLookupStreamResultOutputWithContext(ctx context.Context) LookupStreamResultOutput {
+	return o
+}
+
+// The Amazon Resource Name (ARN) of the Kinesis Stream (same as id).
+func (o LookupStreamResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The list of shard ids in the CLOSED state. See [Shard State](https://docs.aws.amazon.com/streams/latest/dev/kinesis-using-sdk-java-after-resharding.html#kinesis-using-sdk-java-resharding-data-routing) for more.
+func (o LookupStreamResultOutput) ClosedShards() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupStreamResult) []string { return v.ClosedShards }).(pulumi.StringArrayOutput)
+}
+
+// The approximate UNIX timestamp that the stream was created.
+func (o LookupStreamResultOutput) CreationTimestamp() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupStreamResult) int { return v.CreationTimestamp }).(pulumi.IntOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupStreamResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the Kinesis Stream.
+func (o LookupStreamResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The list of shard ids in the OPEN state. See [Shard State](https://docs.aws.amazon.com/streams/latest/dev/kinesis-using-sdk-java-after-resharding.html#kinesis-using-sdk-java-resharding-data-routing) for more.
+func (o LookupStreamResultOutput) OpenShards() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupStreamResult) []string { return v.OpenShards }).(pulumi.StringArrayOutput)
+}
+
+// Length of time (in hours) data records are accessible after they are added to the stream.
+func (o LookupStreamResultOutput) RetentionPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupStreamResult) int { return v.RetentionPeriod }).(pulumi.IntOutput)
+}
+
+// A list of shard-level CloudWatch metrics which are enabled for the stream. See [Monitoring with CloudWatch](https://docs.aws.amazon.com/streams/latest/dev/monitoring-with-cloudwatch.html) for more.
+func (o LookupStreamResultOutput) ShardLevelMetrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupStreamResult) []string { return v.ShardLevelMetrics }).(pulumi.StringArrayOutput)
+}
+
+// The current status of the stream. The stream status is one of CREATING, DELETING, ACTIVE, or UPDATING.
+func (o LookupStreamResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStreamResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A map of tags to assigned to the stream.
+func (o LookupStreamResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupStreamResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupStreamApplyOutput{})
+	pulumi.RegisterOutputType(LookupStreamResultOutput{})
 }

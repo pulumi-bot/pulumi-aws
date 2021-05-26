@@ -4,6 +4,9 @@
 package identitystore
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,4 +39,117 @@ type GetGroupResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id              string `pulumi:"id"`
 	IdentityStoreId string `pulumi:"identityStoreId"`
+}
+
+func GetGroupApply(ctx *pulumi.Context, args GetGroupApplyInput, opts ...pulumi.InvokeOption) GetGroupResultOutput {
+	return args.ToGetGroupApplyOutput().ApplyT(func(v GetGroupArgs) (GetGroupResult, error) {
+		r, err := GetGroup(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetGroupResultOutput)
+}
+
+// GetGroupApplyInput is an input type that accepts GetGroupApplyArgs and GetGroupApplyOutput values.
+// You can construct a concrete instance of `GetGroupApplyInput` via:
+//
+//          GetGroupApplyArgs{...}
+type GetGroupApplyInput interface {
+	pulumi.Input
+
+	ToGetGroupApplyOutput() GetGroupApplyOutput
+	ToGetGroupApplyOutputWithContext(context.Context) GetGroupApplyOutput
+}
+
+// A collection of arguments for invoking getGroup.
+type GetGroupApplyArgs struct {
+	// Configuration block(s) for filtering. Currently, the AWS Identity Store API supports only 1 filter. Detailed below.
+	Filters GetGroupFilterArrayInput `pulumi:"filters"`
+	// The identifier for a group in the Identity Store.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// The Identity Store ID associated with the Single Sign-On Instance.
+	IdentityStoreId pulumi.StringInput `pulumi:"identityStoreId"`
+}
+
+func (GetGroupApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupArgs)(nil)).Elem()
+}
+
+func (i GetGroupApplyArgs) ToGetGroupApplyOutput() GetGroupApplyOutput {
+	return i.ToGetGroupApplyOutputWithContext(context.Background())
+}
+
+func (i GetGroupApplyArgs) ToGetGroupApplyOutputWithContext(ctx context.Context) GetGroupApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupApplyOutput)
+}
+
+// A collection of arguments for invoking getGroup.
+type GetGroupApplyOutput struct{ *pulumi.OutputState }
+
+func (GetGroupApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupArgs)(nil)).Elem()
+}
+
+func (o GetGroupApplyOutput) ToGetGroupApplyOutput() GetGroupApplyOutput {
+	return o
+}
+
+func (o GetGroupApplyOutput) ToGetGroupApplyOutputWithContext(ctx context.Context) GetGroupApplyOutput {
+	return o
+}
+
+// Configuration block(s) for filtering. Currently, the AWS Identity Store API supports only 1 filter. Detailed below.
+func (o GetGroupApplyOutput) Filters() GetGroupFilterArrayOutput {
+	return o.ApplyT(func(v GetGroupArgs) []GetGroupFilter { return v.Filters }).(GetGroupFilterArrayOutput)
+}
+
+// The identifier for a group in the Identity Store.
+func (o GetGroupApplyOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGroupArgs) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// The Identity Store ID associated with the Single Sign-On Instance.
+func (o GetGroupApplyOutput) IdentityStoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupArgs) string { return v.IdentityStoreId }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getGroup.
+type GetGroupResultOutput struct{ *pulumi.OutputState }
+
+func (GetGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupResult)(nil)).Elem()
+}
+
+func (o GetGroupResultOutput) ToGetGroupResultOutput() GetGroupResultOutput {
+	return o
+}
+
+func (o GetGroupResultOutput) ToGetGroupResultOutputWithContext(ctx context.Context) GetGroupResultOutput {
+	return o
+}
+
+// The group's display name value.
+func (o GetGroupResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+func (o GetGroupResultOutput) Filters() GetGroupFilterArrayOutput {
+	return o.ApplyT(func(v GetGroupResult) []GetGroupFilter { return v.Filters }).(GetGroupFilterArrayOutput)
+}
+
+func (o GetGroupResultOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupResult) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetGroupResultOutput) IdentityStoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupResult) string { return v.IdentityStoreId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetGroupApplyOutput{})
+	pulumi.RegisterOutputType(GetGroupResultOutput{})
 }

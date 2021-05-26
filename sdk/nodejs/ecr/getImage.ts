@@ -43,19 +43,19 @@ export interface GetImageArgs {
     /**
      * The sha256 digest of the image manifest. At least one of `imageDigest` or `imageTag` must be specified.
      */
-    readonly imageDigest?: string;
+    imageDigest?: string;
     /**
      * The tag associated with this image. At least one of `imageDigest` or `imageTag` must be specified.
      */
-    readonly imageTag?: string;
+    imageTag?: string;
     /**
      * The ID of the Registry where the repository resides.
      */
-    readonly registryId?: string;
+    registryId?: string;
     /**
      * The name of the ECR Repository.
      */
-    readonly repositoryName: string;
+    repositoryName: string;
 }
 
 /**
@@ -82,4 +82,30 @@ export interface GetImageResult {
     readonly imageTags: string[];
     readonly registryId: string;
     readonly repositoryName: string;
+}
+
+export function getImageApply(args: GetImageApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageResult> {
+    return pulumi.output(args).apply(a => getImage(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getImage.
+ */
+export interface GetImageApplyArgs {
+    /**
+     * The sha256 digest of the image manifest. At least one of `imageDigest` or `imageTag` must be specified.
+     */
+    imageDigest?: pulumi.Input<string>;
+    /**
+     * The tag associated with this image. At least one of `imageDigest` or `imageTag` must be specified.
+     */
+    imageTag?: pulumi.Input<string>;
+    /**
+     * The ID of the Registry where the repository resides.
+     */
+    registryId?: pulumi.Input<string>;
+    /**
+     * The name of the ECR Repository.
+     */
+    repositoryName: pulumi.Input<string>;
 }

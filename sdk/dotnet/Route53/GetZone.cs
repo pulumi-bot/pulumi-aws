@@ -56,6 +56,28 @@ namespace Pulumi.Aws.Route53
         /// </summary>
         public static Task<GetZoneResult> InvokeAsync(GetZoneArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetZoneResult>("aws:route53/getZone:getZone", args ?? new GetZoneArgs(), options.WithVersion());
+
+        public static Output<GetZoneResult> Apply(GetZoneApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetZoneApplyArgs();
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.PrivateZone.Box(),
+                args.ResourceRecordSetCount.Box(),
+                args.Tags.ToDict().Box(),
+                args.VpcId.Box(),
+                args.ZoneId.Box()
+            ).Apply(a => {
+                    var args = new GetZoneArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.PrivateZone));
+                    a[2].Set(args, nameof(args.ResourceRecordSetCount));
+                    a[3].Set(args, nameof(args.Tags));
+                    a[4].Set(args, nameof(args.VpcId));
+                    a[5].Set(args, nameof(args.ZoneId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -104,6 +126,55 @@ namespace Pulumi.Aws.Route53
         public string? ZoneId { get; set; }
 
         public GetZoneArgs()
+        {
+        }
+    }
+
+    public sealed class GetZoneApplyArgs
+    {
+        /// <summary>
+        /// The Hosted Zone name of the desired Hosted Zone.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Used with `name` field to get a private Hosted Zone.
+        /// </summary>
+        [Input("privateZone")]
+        public Input<bool>? PrivateZone { get; set; }
+
+        /// <summary>
+        /// The number of Record Set in the Hosted Zone.
+        /// </summary>
+        [Input("resourceRecordSetCount")]
+        public Input<int>? ResourceRecordSetCount { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Used with `name` field. A map of tags, each pair of which must exactly match a pair on the desired Hosted Zone.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Used with `name` field to get a private Hosted Zone associated with the vpc_id (in this case, private_zone is not mandatory).
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// The Hosted Zone id of the desired Hosted Zone.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
+        public GetZoneApplyArgs()
         {
         }
     }

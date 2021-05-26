@@ -46,6 +46,28 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetVpcEndpointResult> InvokeAsync(GetVpcEndpointArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointResult>("aws:ec2/getVpcEndpoint:getVpcEndpoint", args ?? new GetVpcEndpointArgs(), options.WithVersion());
+
+        public static Output<GetVpcEndpointResult> Apply(GetVpcEndpointApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetVpcEndpointApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.Id.Box(),
+                args.ServiceName.Box(),
+                args.State.Box(),
+                args.Tags.ToDict().Box(),
+                args.VpcId.Box()
+            ).Apply(a => {
+                    var args = new GetVpcEndpointArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Id));
+                    a[2].Set(args, nameof(args.ServiceName));
+                    a[3].Set(args, nameof(args.State));
+                    a[4].Set(args, nameof(args.Tags));
+                    a[5].Set(args, nameof(args.VpcId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -101,6 +123,62 @@ namespace Pulumi.Aws.Ec2
         public string? VpcId { get; set; }
 
         public GetVpcEndpointArgs()
+        {
+        }
+    }
+
+    public sealed class GetVpcEndpointApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetVpcEndpointFilterArgs>? _filters;
+
+        /// <summary>
+        /// Custom filter block as described below.
+        /// </summary>
+        public InputList<Inputs.GetVpcEndpointFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetVpcEndpointFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// The ID of the specific VPC Endpoint to retrieve.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// The service name of the specific VPC Endpoint to retrieve. For AWS services the service name is usually in the form `com.amazonaws.&lt;region&gt;.&lt;service&gt;` (the SageMaker Notebook service is an exception to this rule, the service name is in the form `aws.sagemaker.&lt;region&gt;.notebook`).
+        /// </summary>
+        [Input("serviceName")]
+        public Input<string>? ServiceName { get; set; }
+
+        /// <summary>
+        /// The state of the specific VPC Endpoint to retrieve.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags, each pair of which must exactly match
+        /// a pair on the specific VPC Endpoint to retrieve.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The ID of the VPC in which the specific VPC Endpoint is used.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        public GetVpcEndpointApplyArgs()
         {
         }
     }

@@ -4,6 +4,9 @@
 package redshift
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,128 @@ type GetOrderableClusterResult struct {
 	Id                 string   `pulumi:"id"`
 	NodeType           string   `pulumi:"nodeType"`
 	PreferredNodeTypes []string `pulumi:"preferredNodeTypes"`
+}
+
+func GetOrderableClusterApply(ctx *pulumi.Context, args GetOrderableClusterApplyInput, opts ...pulumi.InvokeOption) GetOrderableClusterResultOutput {
+	return args.ToGetOrderableClusterApplyOutput().ApplyT(func(v GetOrderableClusterArgs) (GetOrderableClusterResult, error) {
+		r, err := GetOrderableCluster(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetOrderableClusterResultOutput)
+}
+
+// GetOrderableClusterApplyInput is an input type that accepts GetOrderableClusterApplyArgs and GetOrderableClusterApplyOutput values.
+// You can construct a concrete instance of `GetOrderableClusterApplyInput` via:
+//
+//          GetOrderableClusterApplyArgs{...}
+type GetOrderableClusterApplyInput interface {
+	pulumi.Input
+
+	ToGetOrderableClusterApplyOutput() GetOrderableClusterApplyOutput
+	ToGetOrderableClusterApplyOutputWithContext(context.Context) GetOrderableClusterApplyOutput
+}
+
+// A collection of arguments for invoking getOrderableCluster.
+type GetOrderableClusterApplyArgs struct {
+	// Reshift Cluster type. e.g. `multi-node` or `single-node`
+	ClusterType pulumi.StringPtrInput `pulumi:"clusterType"`
+	// Redshift Cluster version. e.g. `1.0`
+	ClusterVersion pulumi.StringPtrInput `pulumi:"clusterVersion"`
+	// Redshift Cluster node type. e.g. `dc2.8xlarge`
+	NodeType pulumi.StringPtrInput `pulumi:"nodeType"`
+	// Ordered list of preferred Redshift Cluster node types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned.
+	PreferredNodeTypes pulumi.StringArrayInput `pulumi:"preferredNodeTypes"`
+}
+
+func (GetOrderableClusterApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrderableClusterArgs)(nil)).Elem()
+}
+
+func (i GetOrderableClusterApplyArgs) ToGetOrderableClusterApplyOutput() GetOrderableClusterApplyOutput {
+	return i.ToGetOrderableClusterApplyOutputWithContext(context.Background())
+}
+
+func (i GetOrderableClusterApplyArgs) ToGetOrderableClusterApplyOutputWithContext(ctx context.Context) GetOrderableClusterApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrderableClusterApplyOutput)
+}
+
+// A collection of arguments for invoking getOrderableCluster.
+type GetOrderableClusterApplyOutput struct{ *pulumi.OutputState }
+
+func (GetOrderableClusterApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrderableClusterArgs)(nil)).Elem()
+}
+
+func (o GetOrderableClusterApplyOutput) ToGetOrderableClusterApplyOutput() GetOrderableClusterApplyOutput {
+	return o
+}
+
+func (o GetOrderableClusterApplyOutput) ToGetOrderableClusterApplyOutputWithContext(ctx context.Context) GetOrderableClusterApplyOutput {
+	return o
+}
+
+// Reshift Cluster type. e.g. `multi-node` or `single-node`
+func (o GetOrderableClusterApplyOutput) ClusterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrderableClusterArgs) *string { return v.ClusterType }).(pulumi.StringPtrOutput)
+}
+
+// Redshift Cluster version. e.g. `1.0`
+func (o GetOrderableClusterApplyOutput) ClusterVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrderableClusterArgs) *string { return v.ClusterVersion }).(pulumi.StringPtrOutput)
+}
+
+// Redshift Cluster node type. e.g. `dc2.8xlarge`
+func (o GetOrderableClusterApplyOutput) NodeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrderableClusterArgs) *string { return v.NodeType }).(pulumi.StringPtrOutput)
+}
+
+// Ordered list of preferred Redshift Cluster node types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned.
+func (o GetOrderableClusterApplyOutput) PreferredNodeTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetOrderableClusterArgs) []string { return v.PreferredNodeTypes }).(pulumi.StringArrayOutput)
+}
+
+// A collection of values returned by getOrderableCluster.
+type GetOrderableClusterResultOutput struct{ *pulumi.OutputState }
+
+func (GetOrderableClusterResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrderableClusterResult)(nil)).Elem()
+}
+
+func (o GetOrderableClusterResultOutput) ToGetOrderableClusterResultOutput() GetOrderableClusterResultOutput {
+	return o
+}
+
+func (o GetOrderableClusterResultOutput) ToGetOrderableClusterResultOutputWithContext(ctx context.Context) GetOrderableClusterResultOutput {
+	return o
+}
+
+// List of Availability Zone names where the Redshit Cluster is available.
+func (o GetOrderableClusterResultOutput) AvailabilityZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetOrderableClusterResult) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
+}
+
+func (o GetOrderableClusterResultOutput) ClusterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrderableClusterResult) string { return v.ClusterType }).(pulumi.StringOutput)
+}
+
+func (o GetOrderableClusterResultOutput) ClusterVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrderableClusterResult) string { return v.ClusterVersion }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetOrderableClusterResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrderableClusterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetOrderableClusterResultOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrderableClusterResult) string { return v.NodeType }).(pulumi.StringOutput)
+}
+
+func (o GetOrderableClusterResultOutput) PreferredNodeTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetOrderableClusterResult) []string { return v.PreferredNodeTypes }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetOrderableClusterApplyOutput{})
+	pulumi.RegisterOutputType(GetOrderableClusterResultOutput{})
 }

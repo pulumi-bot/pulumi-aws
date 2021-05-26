@@ -44,3 +44,7 @@ export interface GetAccountAliasResult {
      */
     readonly id: string;
 }
+
+export function getAccountAliasApply(opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAliasResult> {
+    return pulumi.output(getAccountAlias(opts))
+}

@@ -4,6 +4,9 @@
 package secretsmanager
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -92,4 +95,132 @@ type LookupSecretVersionResult struct {
 	VersionId     string   `pulumi:"versionId"`
 	VersionStage  *string  `pulumi:"versionStage"`
 	VersionStages []string `pulumi:"versionStages"`
+}
+
+func LookupSecretVersionApply(ctx *pulumi.Context, args LookupSecretVersionApplyInput, opts ...pulumi.InvokeOption) LookupSecretVersionResultOutput {
+	return args.ToLookupSecretVersionApplyOutput().ApplyT(func(v LookupSecretVersionArgs) (LookupSecretVersionResult, error) {
+		r, err := LookupSecretVersion(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupSecretVersionResultOutput)
+}
+
+// LookupSecretVersionApplyInput is an input type that accepts LookupSecretVersionApplyArgs and LookupSecretVersionApplyOutput values.
+// You can construct a concrete instance of `LookupSecretVersionApplyInput` via:
+//
+//          LookupSecretVersionApplyArgs{...}
+type LookupSecretVersionApplyInput interface {
+	pulumi.Input
+
+	ToLookupSecretVersionApplyOutput() LookupSecretVersionApplyOutput
+	ToLookupSecretVersionApplyOutputWithContext(context.Context) LookupSecretVersionApplyOutput
+}
+
+// A collection of arguments for invoking getSecretVersion.
+type LookupSecretVersionApplyArgs struct {
+	// Specifies the secret containing the version that you want to retrieve. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
+	SecretId pulumi.StringInput `pulumi:"secretId"`
+	// Specifies the unique identifier of the version of the secret that you want to retrieve. Overrides `versionStage`.
+	VersionId pulumi.StringPtrInput `pulumi:"versionId"`
+	// Specifies the secret version that you want to retrieve by the staging label attached to the version. Defaults to `AWSCURRENT`.
+	VersionStage pulumi.StringPtrInput `pulumi:"versionStage"`
+}
+
+func (LookupSecretVersionApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSecretVersionArgs)(nil)).Elem()
+}
+
+func (i LookupSecretVersionApplyArgs) ToLookupSecretVersionApplyOutput() LookupSecretVersionApplyOutput {
+	return i.ToLookupSecretVersionApplyOutputWithContext(context.Background())
+}
+
+func (i LookupSecretVersionApplyArgs) ToLookupSecretVersionApplyOutputWithContext(ctx context.Context) LookupSecretVersionApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupSecretVersionApplyOutput)
+}
+
+// A collection of arguments for invoking getSecretVersion.
+type LookupSecretVersionApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupSecretVersionApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSecretVersionArgs)(nil)).Elem()
+}
+
+func (o LookupSecretVersionApplyOutput) ToLookupSecretVersionApplyOutput() LookupSecretVersionApplyOutput {
+	return o
+}
+
+func (o LookupSecretVersionApplyOutput) ToLookupSecretVersionApplyOutputWithContext(ctx context.Context) LookupSecretVersionApplyOutput {
+	return o
+}
+
+// Specifies the secret containing the version that you want to retrieve. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
+func (o LookupSecretVersionApplyOutput) SecretId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretVersionArgs) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
+// Specifies the unique identifier of the version of the secret that you want to retrieve. Overrides `versionStage`.
+func (o LookupSecretVersionApplyOutput) VersionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSecretVersionArgs) *string { return v.VersionId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the secret version that you want to retrieve by the staging label attached to the version. Defaults to `AWSCURRENT`.
+func (o LookupSecretVersionApplyOutput) VersionStage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSecretVersionArgs) *string { return v.VersionStage }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getSecretVersion.
+type LookupSecretVersionResultOutput struct{ *pulumi.OutputState }
+
+func (LookupSecretVersionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSecretVersionResult)(nil)).Elem()
+}
+
+func (o LookupSecretVersionResultOutput) ToLookupSecretVersionResultOutput() LookupSecretVersionResultOutput {
+	return o
+}
+
+func (o LookupSecretVersionResultOutput) ToLookupSecretVersionResultOutputWithContext(ctx context.Context) LookupSecretVersionResultOutput {
+	return o
+}
+
+// The ARN of the secret.
+func (o LookupSecretVersionResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretVersionResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupSecretVersionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretVersionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The decrypted part of the protected secret information that was originally provided as a binary. Base64 encoded.
+func (o LookupSecretVersionResultOutput) SecretBinary() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretVersionResult) string { return v.SecretBinary }).(pulumi.StringOutput)
+}
+
+func (o LookupSecretVersionResultOutput) SecretId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretVersionResult) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
+// The decrypted part of the protected secret information that was originally provided as a string.
+func (o LookupSecretVersionResultOutput) SecretString() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretVersionResult) string { return v.SecretString }).(pulumi.StringOutput)
+}
+
+// The unique identifier of this version of the secret.
+func (o LookupSecretVersionResultOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretVersionResult) string { return v.VersionId }).(pulumi.StringOutput)
+}
+
+func (o LookupSecretVersionResultOutput) VersionStage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSecretVersionResult) *string { return v.VersionStage }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupSecretVersionResultOutput) VersionStages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupSecretVersionResult) []string { return v.VersionStages }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupSecretVersionApplyOutput{})
+	pulumi.RegisterOutputType(LookupSecretVersionResultOutput{})
 }

@@ -4,6 +4,9 @@
 package s3
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -125,4 +128,125 @@ type LookupBucketResult struct {
 	WebsiteDomain string `pulumi:"websiteDomain"`
 	// The website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
 	WebsiteEndpoint string `pulumi:"websiteEndpoint"`
+}
+
+func LookupBucketApply(ctx *pulumi.Context, args LookupBucketApplyInput, opts ...pulumi.InvokeOption) LookupBucketResultOutput {
+	return args.ToLookupBucketApplyOutput().ApplyT(func(v LookupBucketArgs) (LookupBucketResult, error) {
+		r, err := LookupBucket(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupBucketResultOutput)
+}
+
+// LookupBucketApplyInput is an input type that accepts LookupBucketApplyArgs and LookupBucketApplyOutput values.
+// You can construct a concrete instance of `LookupBucketApplyInput` via:
+//
+//          LookupBucketApplyArgs{...}
+type LookupBucketApplyInput interface {
+	pulumi.Input
+
+	ToLookupBucketApplyOutput() LookupBucketApplyOutput
+	ToLookupBucketApplyOutputWithContext(context.Context) LookupBucketApplyOutput
+}
+
+// A collection of arguments for invoking getBucket.
+type LookupBucketApplyArgs struct {
+	// The name of the bucket
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+}
+
+func (LookupBucketApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBucketArgs)(nil)).Elem()
+}
+
+func (i LookupBucketApplyArgs) ToLookupBucketApplyOutput() LookupBucketApplyOutput {
+	return i.ToLookupBucketApplyOutputWithContext(context.Background())
+}
+
+func (i LookupBucketApplyArgs) ToLookupBucketApplyOutputWithContext(ctx context.Context) LookupBucketApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupBucketApplyOutput)
+}
+
+// A collection of arguments for invoking getBucket.
+type LookupBucketApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupBucketApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBucketArgs)(nil)).Elem()
+}
+
+func (o LookupBucketApplyOutput) ToLookupBucketApplyOutput() LookupBucketApplyOutput {
+	return o
+}
+
+func (o LookupBucketApplyOutput) ToLookupBucketApplyOutputWithContext(ctx context.Context) LookupBucketApplyOutput {
+	return o
+}
+
+// The name of the bucket
+func (o LookupBucketApplyOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketArgs) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getBucket.
+type LookupBucketResultOutput struct{ *pulumi.OutputState }
+
+func (LookupBucketResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupBucketResult)(nil)).Elem()
+}
+
+func (o LookupBucketResultOutput) ToLookupBucketResultOutput() LookupBucketResultOutput {
+	return o
+}
+
+func (o LookupBucketResultOutput) ToLookupBucketResultOutputWithContext(ctx context.Context) LookupBucketResultOutput {
+	return o
+}
+
+// The ARN of the bucket. Will be of format `arn:aws:s3:::bucketname`.
+func (o LookupBucketResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+func (o LookupBucketResultOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketResult) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// The bucket domain name. Will be of format `bucketname.s3.amazonaws.com`.
+func (o LookupBucketResultOutput) BucketDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketResult) string { return v.BucketDomainName }).(pulumi.StringOutput)
+}
+
+// The bucket region-specific domain name. The bucket domain name including the region name, please refer [here](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) for format. Note: The AWS CloudFront allows specifying S3 region-specific endpoint when creating S3 origin, it will prevent [redirect issues](https://forums.aws.amazon.com/thread.jspa?threadID=216814) from CloudFront to S3 Origin URL.
+func (o LookupBucketResultOutput) BucketRegionalDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketResult) string { return v.BucketRegionalDomainName }).(pulumi.StringOutput)
+}
+
+// The [Route 53 Hosted Zone ID](https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_website_region_endpoints) for this bucket's region.
+func (o LookupBucketResultOutput) HostedZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketResult) string { return v.HostedZoneId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupBucketResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The AWS region this bucket resides in.
+func (o LookupBucketResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The domain of the website endpoint, if the bucket is configured with a website. If not, this will be an empty string. This is used to create Route 53 alias records.
+func (o LookupBucketResultOutput) WebsiteDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketResult) string { return v.WebsiteDomain }).(pulumi.StringOutput)
+}
+
+// The website endpoint, if the bucket is configured with a website. If not, this will be an empty string.
+func (o LookupBucketResultOutput) WebsiteEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketResult) string { return v.WebsiteEndpoint }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupBucketApplyOutput{})
+	pulumi.RegisterOutputType(LookupBucketResultOutput{})
 }

@@ -17,6 +17,17 @@ namespace Pulumi.Aws.Ecs
         /// </summary>
         public static Task<GetTaskDefinitionResult> InvokeAsync(GetTaskDefinitionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTaskDefinitionResult>("aws:ecs/getTaskDefinition:getTaskDefinition", args ?? new GetTaskDefinitionArgs(), options.WithVersion());
+
+        public static Output<GetTaskDefinitionResult> Apply(GetTaskDefinitionApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.TaskDefinition.Box()
+            ).Apply(a => {
+                    var args = new GetTaskDefinitionArgs();
+                    a[0].Set(args, nameof(args.TaskDefinition));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -29,6 +40,19 @@ namespace Pulumi.Aws.Ecs
         public string TaskDefinition { get; set; } = null!;
 
         public GetTaskDefinitionArgs()
+        {
+        }
+    }
+
+    public sealed class GetTaskDefinitionApplyArgs
+    {
+        /// <summary>
+        /// The family for the latest ACTIVE revision, family and revision (family:revision) for a specific revision in the family, the ARN of the task definition to access to.
+        /// </summary>
+        [Input("taskDefinition", required: true)]
+        public Input<string> TaskDefinition { get; set; } = null!;
+
+        public GetTaskDefinitionApplyArgs()
         {
         }
     }

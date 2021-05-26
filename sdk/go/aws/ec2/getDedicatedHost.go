@@ -4,6 +4,9 @@
 package ec2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,4 +74,141 @@ type LookupDedicatedHostResult struct {
 	Tags    map[string]string `pulumi:"tags"`
 	// The total number of vCPUs on the Dedicated Host.
 	TotalVcpus int `pulumi:"totalVcpus"`
+}
+
+func LookupDedicatedHostApply(ctx *pulumi.Context, args LookupDedicatedHostApplyInput, opts ...pulumi.InvokeOption) LookupDedicatedHostResultOutput {
+	return args.ToLookupDedicatedHostApplyOutput().ApplyT(func(v LookupDedicatedHostArgs) (LookupDedicatedHostResult, error) {
+		r, err := LookupDedicatedHost(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupDedicatedHostResultOutput)
+}
+
+// LookupDedicatedHostApplyInput is an input type that accepts LookupDedicatedHostApplyArgs and LookupDedicatedHostApplyOutput values.
+// You can construct a concrete instance of `LookupDedicatedHostApplyInput` via:
+//
+//          LookupDedicatedHostApplyArgs{...}
+type LookupDedicatedHostApplyInput interface {
+	pulumi.Input
+
+	ToLookupDedicatedHostApplyOutput() LookupDedicatedHostApplyOutput
+	ToLookupDedicatedHostApplyOutputWithContext(context.Context) LookupDedicatedHostApplyOutput
+}
+
+// A collection of arguments for invoking getDedicatedHost.
+type LookupDedicatedHostApplyArgs struct {
+	// The host ID.
+	HostId pulumi.StringInput    `pulumi:"hostId"`
+	Tags   pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupDedicatedHostApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDedicatedHostArgs)(nil)).Elem()
+}
+
+func (i LookupDedicatedHostApplyArgs) ToLookupDedicatedHostApplyOutput() LookupDedicatedHostApplyOutput {
+	return i.ToLookupDedicatedHostApplyOutputWithContext(context.Background())
+}
+
+func (i LookupDedicatedHostApplyArgs) ToLookupDedicatedHostApplyOutputWithContext(ctx context.Context) LookupDedicatedHostApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupDedicatedHostApplyOutput)
+}
+
+// A collection of arguments for invoking getDedicatedHost.
+type LookupDedicatedHostApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupDedicatedHostApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDedicatedHostArgs)(nil)).Elem()
+}
+
+func (o LookupDedicatedHostApplyOutput) ToLookupDedicatedHostApplyOutput() LookupDedicatedHostApplyOutput {
+	return o
+}
+
+func (o LookupDedicatedHostApplyOutput) ToLookupDedicatedHostApplyOutputWithContext(ctx context.Context) LookupDedicatedHostApplyOutput {
+	return o
+}
+
+// The host ID.
+func (o LookupDedicatedHostApplyOutput) HostId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDedicatedHostArgs) string { return v.HostId }).(pulumi.StringOutput)
+}
+
+func (o LookupDedicatedHostApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupDedicatedHostArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getDedicatedHost.
+type LookupDedicatedHostResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDedicatedHostResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDedicatedHostResult)(nil)).Elem()
+}
+
+func (o LookupDedicatedHostResultOutput) ToLookupDedicatedHostResultOutput() LookupDedicatedHostResultOutput {
+	return o
+}
+
+func (o LookupDedicatedHostResultOutput) ToLookupDedicatedHostResultOutputWithContext(ctx context.Context) LookupDedicatedHostResultOutput {
+	return o
+}
+
+func (o LookupDedicatedHostResultOutput) AutoPlacement() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDedicatedHostResult) string { return v.AutoPlacement }).(pulumi.StringOutput)
+}
+
+func (o LookupDedicatedHostResultOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDedicatedHostResult) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// The number of cores on the Dedicated Host.
+func (o LookupDedicatedHostResultOutput) Cores() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDedicatedHostResult) int { return v.Cores }).(pulumi.IntOutput)
+}
+
+// The host ID.
+func (o LookupDedicatedHostResultOutput) HostId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDedicatedHostResult) string { return v.HostId }).(pulumi.StringOutput)
+}
+
+func (o LookupDedicatedHostResultOutput) HostRecovery() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDedicatedHostResult) string { return v.HostRecovery }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDedicatedHostResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDedicatedHostResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The instance family supported by the Dedicated Host. For example, m5.
+// * `instanceType` -The instance type supported by the Dedicated Host. For example, m5.large. If the host supports multiple instance types, no instanceType is returned.
+func (o LookupDedicatedHostResultOutput) InstanceFamily() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDedicatedHostResult) string { return v.InstanceFamily }).(pulumi.StringOutput)
+}
+
+func (o LookupDedicatedHostResultOutput) InstanceState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDedicatedHostResult) string { return v.InstanceState }).(pulumi.StringOutput)
+}
+
+func (o LookupDedicatedHostResultOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDedicatedHostResult) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The instance family supported by the Dedicated Host. For example, m5.
+func (o LookupDedicatedHostResultOutput) Sockets() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDedicatedHostResult) int { return v.Sockets }).(pulumi.IntOutput)
+}
+
+func (o LookupDedicatedHostResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupDedicatedHostResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The total number of vCPUs on the Dedicated Host.
+func (o LookupDedicatedHostResultOutput) TotalVcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDedicatedHostResult) int { return v.TotalVcpus }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDedicatedHostApplyOutput{})
+	pulumi.RegisterOutputType(LookupDedicatedHostResultOutput{})
 }

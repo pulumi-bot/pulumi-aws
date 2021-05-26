@@ -41,6 +41,17 @@ namespace Pulumi.Aws.Sfn
         /// </summary>
         public static Task<GetStateMachineResult> InvokeAsync(GetStateMachineArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetStateMachineResult>("aws:sfn/getStateMachine:getStateMachine", args ?? new GetStateMachineArgs(), options.WithVersion());
+
+        public static Output<GetStateMachineResult> Apply(GetStateMachineApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetStateMachineArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -53,6 +64,19 @@ namespace Pulumi.Aws.Sfn
         public string Name { get; set; } = null!;
 
         public GetStateMachineArgs()
+        {
+        }
+    }
+
+    public sealed class GetStateMachineApplyArgs
+    {
+        /// <summary>
+        /// The friendly name of the state machine to match.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetStateMachineApplyArgs()
         {
         }
     }

@@ -4,6 +4,9 @@
 package qldb
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,4 +58,100 @@ type LookupLedgerResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
+}
+
+func LookupLedgerApply(ctx *pulumi.Context, args LookupLedgerApplyInput, opts ...pulumi.InvokeOption) LookupLedgerResultOutput {
+	return args.ToLookupLedgerApplyOutput().ApplyT(func(v LookupLedgerArgs) (LookupLedgerResult, error) {
+		r, err := LookupLedger(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupLedgerResultOutput)
+}
+
+// LookupLedgerApplyInput is an input type that accepts LookupLedgerApplyArgs and LookupLedgerApplyOutput values.
+// You can construct a concrete instance of `LookupLedgerApplyInput` via:
+//
+//          LookupLedgerApplyArgs{...}
+type LookupLedgerApplyInput interface {
+	pulumi.Input
+
+	ToLookupLedgerApplyOutput() LookupLedgerApplyOutput
+	ToLookupLedgerApplyOutputWithContext(context.Context) LookupLedgerApplyOutput
+}
+
+// A collection of arguments for invoking getLedger.
+type LookupLedgerApplyArgs struct {
+	// The friendly name of the ledger to match.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupLedgerApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupLedgerArgs)(nil)).Elem()
+}
+
+func (i LookupLedgerApplyArgs) ToLookupLedgerApplyOutput() LookupLedgerApplyOutput {
+	return i.ToLookupLedgerApplyOutputWithContext(context.Background())
+}
+
+func (i LookupLedgerApplyArgs) ToLookupLedgerApplyOutputWithContext(ctx context.Context) LookupLedgerApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupLedgerApplyOutput)
+}
+
+// A collection of arguments for invoking getLedger.
+type LookupLedgerApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupLedgerApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupLedgerArgs)(nil)).Elem()
+}
+
+func (o LookupLedgerApplyOutput) ToLookupLedgerApplyOutput() LookupLedgerApplyOutput {
+	return o
+}
+
+func (o LookupLedgerApplyOutput) ToLookupLedgerApplyOutputWithContext(ctx context.Context) LookupLedgerApplyOutput {
+	return o
+}
+
+// The friendly name of the ledger to match.
+func (o LookupLedgerApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLedgerArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getLedger.
+type LookupLedgerResultOutput struct{ *pulumi.OutputState }
+
+func (LookupLedgerResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupLedgerResult)(nil)).Elem()
+}
+
+func (o LookupLedgerResultOutput) ToLookupLedgerResultOutput() LookupLedgerResultOutput {
+	return o
+}
+
+func (o LookupLedgerResultOutput) ToLookupLedgerResultOutputWithContext(ctx context.Context) LookupLedgerResultOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN) of the ledger.
+func (o LookupLedgerResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLedgerResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// Deletion protection on the QLDB Ledger instance. Set to `true` by default.
+func (o LookupLedgerResultOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupLedgerResult) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupLedgerResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLedgerResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupLedgerResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLedgerResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupLedgerApplyOutput{})
+	pulumi.RegisterOutputType(LookupLedgerResultOutput{})
 }

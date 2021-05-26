@@ -40,6 +40,19 @@ namespace Pulumi.Aws.Lex
         /// </summary>
         public static Task<GetIntentResult> InvokeAsync(GetIntentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIntentResult>("aws:lex/getIntent:getIntent", args ?? new GetIntentArgs(), options.WithVersion());
+
+        public static Output<GetIntentResult> Apply(GetIntentApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.Version.Box()
+            ).Apply(a => {
+                    var args = new GetIntentArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.Version));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -58,6 +71,25 @@ namespace Pulumi.Aws.Lex
         public string? Version { get; set; }
 
         public GetIntentArgs()
+        {
+        }
+    }
+
+    public sealed class GetIntentApplyArgs
+    {
+        /// <summary>
+        /// The name of the intent. The name is case sensitive.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The version of the intent.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        public GetIntentApplyArgs()
         {
         }
     }

@@ -4,6 +4,9 @@
 package cloudfront
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,4 +77,141 @@ type LookupDistributionResult struct {
 	// CloudFront system.
 	Status string            `pulumi:"status"`
 	Tags   map[string]string `pulumi:"tags"`
+}
+
+func LookupDistributionApply(ctx *pulumi.Context, args LookupDistributionApplyInput, opts ...pulumi.InvokeOption) LookupDistributionResultOutput {
+	return args.ToLookupDistributionApplyOutput().ApplyT(func(v LookupDistributionArgs) (LookupDistributionResult, error) {
+		r, err := LookupDistribution(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupDistributionResultOutput)
+}
+
+// LookupDistributionApplyInput is an input type that accepts LookupDistributionApplyArgs and LookupDistributionApplyOutput values.
+// You can construct a concrete instance of `LookupDistributionApplyInput` via:
+//
+//          LookupDistributionApplyArgs{...}
+type LookupDistributionApplyInput interface {
+	pulumi.Input
+
+	ToLookupDistributionApplyOutput() LookupDistributionApplyOutput
+	ToLookupDistributionApplyOutputWithContext(context.Context) LookupDistributionApplyOutput
+}
+
+// A collection of arguments for invoking getDistribution.
+type LookupDistributionApplyArgs struct {
+	// The identifier for the distribution. For example: `EDFDVBD632BHDS5`.
+	Id   pulumi.StringInput    `pulumi:"id"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupDistributionApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDistributionArgs)(nil)).Elem()
+}
+
+func (i LookupDistributionApplyArgs) ToLookupDistributionApplyOutput() LookupDistributionApplyOutput {
+	return i.ToLookupDistributionApplyOutputWithContext(context.Background())
+}
+
+func (i LookupDistributionApplyArgs) ToLookupDistributionApplyOutputWithContext(ctx context.Context) LookupDistributionApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupDistributionApplyOutput)
+}
+
+// A collection of arguments for invoking getDistribution.
+type LookupDistributionApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupDistributionApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDistributionArgs)(nil)).Elem()
+}
+
+func (o LookupDistributionApplyOutput) ToLookupDistributionApplyOutput() LookupDistributionApplyOutput {
+	return o
+}
+
+func (o LookupDistributionApplyOutput) ToLookupDistributionApplyOutputWithContext(ctx context.Context) LookupDistributionApplyOutput {
+	return o
+}
+
+// The identifier for the distribution. For example: `EDFDVBD632BHDS5`.
+func (o LookupDistributionApplyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDistributionArgs) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupDistributionApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupDistributionArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getDistribution.
+type LookupDistributionResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDistributionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDistributionResult)(nil)).Elem()
+}
+
+func (o LookupDistributionResultOutput) ToLookupDistributionResultOutput() LookupDistributionResultOutput {
+	return o
+}
+
+func (o LookupDistributionResultOutput) ToLookupDistributionResultOutputWithContext(ctx context.Context) LookupDistributionResultOutput {
+	return o
+}
+
+// The ARN (Amazon Resource Name) for the distribution. For example: arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5, where 123456789012 is your AWS account ID.
+func (o LookupDistributionResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDistributionResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The domain name corresponding to the distribution. For
+// example: `d604721fxaaqy9.cloudfront.net`.
+func (o LookupDistributionResultOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDistributionResult) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+func (o LookupDistributionResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDistributionResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The current version of the distribution's information. For example:
+// `E2QWRUHAPOMQZL`.
+func (o LookupDistributionResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDistributionResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The CloudFront Route 53 zone ID that can be used to
+// route an [Alias Resource Record Set][7] to. This attribute is simply an
+// alias for the zone ID `Z2FDTNDATAQYW2`.
+func (o LookupDistributionResultOutput) HostedZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDistributionResult) string { return v.HostedZoneId }).(pulumi.StringOutput)
+}
+
+// The identifier for the distribution. For example: `EDFDVBD632BHDS5`.
+func (o LookupDistributionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDistributionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The number of invalidation batches
+// currently in progress.
+func (o LookupDistributionResultOutput) InProgressValidationBatches() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDistributionResult) int { return v.InProgressValidationBatches }).(pulumi.IntOutput)
+}
+
+// The date and time the distribution was last modified.
+func (o LookupDistributionResultOutput) LastModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDistributionResult) string { return v.LastModifiedTime }).(pulumi.StringOutput)
+}
+
+// The current status of the distribution. `Deployed` if the
+// distribution's information is fully propagated throughout the Amazon
+// CloudFront system.
+func (o LookupDistributionResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDistributionResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o LookupDistributionResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupDistributionResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDistributionApplyOutput{})
+	pulumi.RegisterOutputType(LookupDistributionResultOutput{})
 }

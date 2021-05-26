@@ -4,6 +4,9 @@
 package eks
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,4 +73,138 @@ type LookupAddonResult struct {
 	// then add-on uses the IAM role assigned to the EKS Cluster node.
 	ServiceAccountRoleArn string            `pulumi:"serviceAccountRoleArn"`
 	Tags                  map[string]string `pulumi:"tags"`
+}
+
+func LookupAddonApply(ctx *pulumi.Context, args LookupAddonApplyInput, opts ...pulumi.InvokeOption) LookupAddonResultOutput {
+	return args.ToLookupAddonApplyOutput().ApplyT(func(v LookupAddonArgs) (LookupAddonResult, error) {
+		r, err := LookupAddon(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupAddonResultOutput)
+}
+
+// LookupAddonApplyInput is an input type that accepts LookupAddonApplyArgs and LookupAddonApplyOutput values.
+// You can construct a concrete instance of `LookupAddonApplyInput` via:
+//
+//          LookupAddonApplyArgs{...}
+type LookupAddonApplyInput interface {
+	pulumi.Input
+
+	ToLookupAddonApplyOutput() LookupAddonApplyOutput
+	ToLookupAddonApplyOutputWithContext(context.Context) LookupAddonApplyOutput
+}
+
+// A collection of arguments for invoking getAddon.
+type LookupAddonApplyArgs struct {
+	// Name of the EKS add-on. The name must match one of
+	// the names returned by [list-addon](https://docs.aws.amazon.com/cli/latest/reference/eks/list-addons.html).
+	AddonName pulumi.StringInput `pulumi:"addonName"`
+	// Name of the EKS Cluster. Must be between 1-100 characters in length. Must begin with an alphanumeric character, and must only contain alphanumeric characters, dashes and underscores (`^[0-9A-Za-z][A-Za-z0-9\-_]+$`).
+	ClusterName pulumi.StringInput    `pulumi:"clusterName"`
+	Tags        pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupAddonApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAddonArgs)(nil)).Elem()
+}
+
+func (i LookupAddonApplyArgs) ToLookupAddonApplyOutput() LookupAddonApplyOutput {
+	return i.ToLookupAddonApplyOutputWithContext(context.Background())
+}
+
+func (i LookupAddonApplyArgs) ToLookupAddonApplyOutputWithContext(ctx context.Context) LookupAddonApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupAddonApplyOutput)
+}
+
+// A collection of arguments for invoking getAddon.
+type LookupAddonApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupAddonApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAddonArgs)(nil)).Elem()
+}
+
+func (o LookupAddonApplyOutput) ToLookupAddonApplyOutput() LookupAddonApplyOutput {
+	return o
+}
+
+func (o LookupAddonApplyOutput) ToLookupAddonApplyOutputWithContext(ctx context.Context) LookupAddonApplyOutput {
+	return o
+}
+
+// Name of the EKS add-on. The name must match one of
+// the names returned by [list-addon](https://docs.aws.amazon.com/cli/latest/reference/eks/list-addons.html).
+func (o LookupAddonApplyOutput) AddonName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddonArgs) string { return v.AddonName }).(pulumi.StringOutput)
+}
+
+// Name of the EKS Cluster. Must be between 1-100 characters in length. Must begin with an alphanumeric character, and must only contain alphanumeric characters, dashes and underscores (`^[0-9A-Za-z][A-Za-z0-9\-_]+$`).
+func (o LookupAddonApplyOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddonArgs) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+func (o LookupAddonApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAddonArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getAddon.
+type LookupAddonResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAddonResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAddonResult)(nil)).Elem()
+}
+
+func (o LookupAddonResultOutput) ToLookupAddonResultOutput() LookupAddonResultOutput {
+	return o
+}
+
+func (o LookupAddonResultOutput) ToLookupAddonResultOutputWithContext(ctx context.Context) LookupAddonResultOutput {
+	return o
+}
+
+func (o LookupAddonResultOutput) AddonName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddonResult) string { return v.AddonName }).(pulumi.StringOutput)
+}
+
+// The version of EKS add-on.
+func (o LookupAddonResultOutput) AddonVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddonResult) string { return v.AddonVersion }).(pulumi.StringOutput)
+}
+
+// Amazon Resource Name (ARN) of the EKS add-on.
+func (o LookupAddonResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddonResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+func (o LookupAddonResultOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddonResult) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the EKS add-on was created.
+func (o LookupAddonResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddonResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAddonResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddonResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the EKS add-on was updated.
+func (o LookupAddonResultOutput) ModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddonResult) string { return v.ModifiedAt }).(pulumi.StringOutput)
+}
+
+// ARN of IAM role used for EKS add-on. If value is empty -
+// then add-on uses the IAM role assigned to the EKS Cluster node.
+func (o LookupAddonResultOutput) ServiceAccountRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddonResult) string { return v.ServiceAccountRoleArn }).(pulumi.StringOutput)
+}
+
+func (o LookupAddonResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAddonResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAddonApplyOutput{})
+	pulumi.RegisterOutputType(LookupAddonResultOutput{})
 }

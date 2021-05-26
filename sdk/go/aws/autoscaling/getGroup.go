@@ -4,6 +4,9 @@
 package autoscaling
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -85,4 +88,178 @@ type LookupGroupResult struct {
 	TerminationPolicies []string `pulumi:"terminationPolicies"`
 	// VPC ID for the group.
 	VpcZoneIdentifier string `pulumi:"vpcZoneIdentifier"`
+}
+
+func LookupGroupApply(ctx *pulumi.Context, args LookupGroupApplyInput, opts ...pulumi.InvokeOption) LookupGroupResultOutput {
+	return args.ToLookupGroupApplyOutput().ApplyT(func(v LookupGroupArgs) (LookupGroupResult, error) {
+		r, err := LookupGroup(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupGroupResultOutput)
+}
+
+// LookupGroupApplyInput is an input type that accepts LookupGroupApplyArgs and LookupGroupApplyOutput values.
+// You can construct a concrete instance of `LookupGroupApplyInput` via:
+//
+//          LookupGroupApplyArgs{...}
+type LookupGroupApplyInput interface {
+	pulumi.Input
+
+	ToLookupGroupApplyOutput() LookupGroupApplyOutput
+	ToLookupGroupApplyOutputWithContext(context.Context) LookupGroupApplyOutput
+}
+
+// A collection of arguments for invoking getGroup.
+type LookupGroupApplyArgs struct {
+	// Specify the exact name of the desired autoscaling group.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupGroupApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGroupArgs)(nil)).Elem()
+}
+
+func (i LookupGroupApplyArgs) ToLookupGroupApplyOutput() LookupGroupApplyOutput {
+	return i.ToLookupGroupApplyOutputWithContext(context.Background())
+}
+
+func (i LookupGroupApplyArgs) ToLookupGroupApplyOutputWithContext(ctx context.Context) LookupGroupApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupGroupApplyOutput)
+}
+
+// A collection of arguments for invoking getGroup.
+type LookupGroupApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupGroupApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGroupArgs)(nil)).Elem()
+}
+
+func (o LookupGroupApplyOutput) ToLookupGroupApplyOutput() LookupGroupApplyOutput {
+	return o
+}
+
+func (o LookupGroupApplyOutput) ToLookupGroupApplyOutputWithContext(ctx context.Context) LookupGroupApplyOutput {
+	return o
+}
+
+// Specify the exact name of the desired autoscaling group.
+func (o LookupGroupApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getGroup.
+type LookupGroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGroupResult)(nil)).Elem()
+}
+
+func (o LookupGroupResultOutput) ToLookupGroupResultOutput() LookupGroupResultOutput {
+	return o
+}
+
+func (o LookupGroupResultOutput) ToLookupGroupResultOutputWithContext(ctx context.Context) LookupGroupResultOutput {
+	return o
+}
+
+// The Amazon Resource Name (ARN) of the Auto Scaling group.
+func (o LookupGroupResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// One or more Availability Zones for the group.
+func (o LookupGroupResultOutput) AvailabilityZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupGroupResult) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupGroupResultOutput) DefaultCooldown() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupGroupResult) int { return v.DefaultCooldown }).(pulumi.IntOutput)
+}
+
+// The desired size of the group.
+func (o LookupGroupResultOutput) DesiredCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupGroupResult) int { return v.DesiredCapacity }).(pulumi.IntOutput)
+}
+
+// The amount of time, in seconds, that Amazon EC2 Auto Scaling waits before checking the health status of an EC2 instance that has come into service.
+func (o LookupGroupResultOutput) HealthCheckGracePeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupGroupResult) int { return v.HealthCheckGracePeriod }).(pulumi.IntOutput)
+}
+
+// The service to use for the health checks. The valid values are EC2 and ELB.
+func (o LookupGroupResultOutput) HealthCheckType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.HealthCheckType }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the associated launch configuration.
+func (o LookupGroupResultOutput) LaunchConfiguration() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.LaunchConfiguration }).(pulumi.StringOutput)
+}
+
+func (o LookupGroupResultOutput) LaunchTemplates() GetGroupLaunchTemplateArrayOutput {
+	return o.ApplyT(func(v LookupGroupResult) []GetGroupLaunchTemplate { return v.LaunchTemplates }).(GetGroupLaunchTemplateArrayOutput)
+}
+
+// One or more load balancers associated with the group.
+func (o LookupGroupResultOutput) LoadBalancers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupGroupResult) []string { return v.LoadBalancers }).(pulumi.StringArrayOutput)
+}
+
+// The maximum size of the group.
+func (o LookupGroupResultOutput) MaxSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupGroupResult) int { return v.MaxSize }).(pulumi.IntOutput)
+}
+
+// The minimum size of the group.
+func (o LookupGroupResultOutput) MinSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupGroupResult) int { return v.MinSize }).(pulumi.IntOutput)
+}
+
+// Name of the Auto Scaling Group.
+func (o LookupGroupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupGroupResultOutput) NewInstancesProtectedFromScaleIn() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.NewInstancesProtectedFromScaleIn }).(pulumi.BoolOutput)
+}
+
+// The name of the placement group into which to launch your instances, if any. For more information, see Placement Groups (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the Amazon Elastic Compute Cloud User Guide.
+func (o LookupGroupResultOutput) PlacementGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.PlacementGroup }).(pulumi.StringOutput)
+}
+
+// The Amazon Resource Name (ARN) of the service-linked role that the Auto Scaling group uses to call other AWS services on your behalf.
+func (o LookupGroupResultOutput) ServiceLinkedRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.ServiceLinkedRoleArn }).(pulumi.StringOutput)
+}
+
+// The current state of the group when DeleteAutoScalingGroup is in progress.
+func (o LookupGroupResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The Amazon Resource Names (ARN) of the target groups for your load balancer.
+func (o LookupGroupResultOutput) TargetGroupArns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupGroupResult) []string { return v.TargetGroupArns }).(pulumi.StringArrayOutput)
+}
+
+// The termination policies for the group.
+func (o LookupGroupResultOutput) TerminationPolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupGroupResult) []string { return v.TerminationPolicies }).(pulumi.StringArrayOutput)
+}
+
+// VPC ID for the group.
+func (o LookupGroupResultOutput) VpcZoneIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.VpcZoneIdentifier }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupGroupApplyOutput{})
+	pulumi.RegisterOutputType(LookupGroupResultOutput{})
 }

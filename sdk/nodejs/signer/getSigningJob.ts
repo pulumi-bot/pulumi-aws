@@ -39,7 +39,7 @@ export interface GetSigningJobArgs {
     /**
      * The ID of the signing job on output.
      */
-    readonly jobId: string;
+    jobId: string;
 }
 
 /**
@@ -111,4 +111,18 @@ export interface GetSigningJobResult {
      * String value that contains the status reason.
      */
     readonly statusReason: string;
+}
+
+export function getSigningJobApply(args: GetSigningJobApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSigningJobResult> {
+    return pulumi.output(args).apply(a => getSigningJob(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSigningJob.
+ */
+export interface GetSigningJobApplyArgs {
+    /**
+     * The ID of the signing job on output.
+     */
+    jobId: pulumi.Input<string>;
 }

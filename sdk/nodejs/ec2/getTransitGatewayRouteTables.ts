@@ -42,12 +42,12 @@ export interface GetTransitGatewayRouteTablesArgs {
     /**
      * Custom filter block as described below.
      */
-    readonly filters?: inputs.ec2.GetTransitGatewayRouteTablesFilter[];
+    filters?: inputs.ec2.GetTransitGatewayRouteTablesFilter[];
     /**
      * A mapping of tags, each pair of which must exactly match
      * a pair on the desired transit gateway route table.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -64,4 +64,23 @@ export interface GetTransitGatewayRouteTablesResult {
      */
     readonly ids: string[];
     readonly tags: {[key: string]: string};
+}
+
+export function getTransitGatewayRouteTablesApply(args?: GetTransitGatewayRouteTablesApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitGatewayRouteTablesResult> {
+    return pulumi.output(args).apply(a => getTransitGatewayRouteTables(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTransitGatewayRouteTables.
+ */
+export interface GetTransitGatewayRouteTablesApplyArgs {
+    /**
+     * Custom filter block as described below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.ec2.GetTransitGatewayRouteTablesFilter>[]>;
+    /**
+     * A mapping of tags, each pair of which must exactly match
+     * a pair on the desired transit gateway route table.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

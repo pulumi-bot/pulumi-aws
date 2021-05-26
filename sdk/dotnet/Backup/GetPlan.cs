@@ -39,6 +39,19 @@ namespace Pulumi.Aws.Backup
         /// </summary>
         public static Task<GetPlanResult> InvokeAsync(GetPlanArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPlanResult>("aws:backup/getPlan:getPlan", args ?? new GetPlanArgs(), options.WithVersion());
+
+        public static Output<GetPlanResult> Apply(GetPlanApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.PlanId.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetPlanArgs();
+                    a[0].Set(args, nameof(args.PlanId));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -63,6 +76,31 @@ namespace Pulumi.Aws.Backup
         }
 
         public GetPlanArgs()
+        {
+        }
+    }
+
+    public sealed class GetPlanApplyArgs
+    {
+        /// <summary>
+        /// The backup plan ID.
+        /// </summary>
+        [Input("planId", required: true)]
+        public Input<string> PlanId { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Metadata that you can assign to help organize the plans you create.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetPlanApplyArgs()
         {
         }
     }

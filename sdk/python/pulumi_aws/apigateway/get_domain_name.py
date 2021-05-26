@@ -252,3 +252,10 @@ def get_domain_name(domain_name: Optional[str] = None,
         regional_zone_id=__ret__.regional_zone_id,
         security_policy=__ret__.security_policy,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_domain_name)
+def get_domain_name_apply(domain_name: Optional[pulumi.Input[str]] = None,
+                          tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainNameResult]:
+    ...

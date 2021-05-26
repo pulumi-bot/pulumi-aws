@@ -40,6 +40,19 @@ namespace Pulumi.Aws.Backup
         /// </summary>
         public static Task<GetSelectionResult> InvokeAsync(GetSelectionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSelectionResult>("aws:backup/getSelection:getSelection", args ?? new GetSelectionArgs(), options.WithVersion());
+
+        public static Output<GetSelectionResult> Apply(GetSelectionApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.PlanId.Box(),
+                args.SelectionId.Box()
+            ).Apply(a => {
+                    var args = new GetSelectionArgs();
+                    a[0].Set(args, nameof(args.PlanId));
+                    a[1].Set(args, nameof(args.SelectionId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -58,6 +71,25 @@ namespace Pulumi.Aws.Backup
         public string SelectionId { get; set; } = null!;
 
         public GetSelectionArgs()
+        {
+        }
+    }
+
+    public sealed class GetSelectionApplyArgs
+    {
+        /// <summary>
+        /// The backup plan ID associated with the selection of resources.
+        /// </summary>
+        [Input("planId", required: true)]
+        public Input<string> PlanId { get; set; } = null!;
+
+        /// <summary>
+        /// The backup selection ID.
+        /// </summary>
+        [Input("selectionId", required: true)]
+        public Input<string> SelectionId { get; set; } = null!;
+
+        public GetSelectionApplyArgs()
         {
         }
     }

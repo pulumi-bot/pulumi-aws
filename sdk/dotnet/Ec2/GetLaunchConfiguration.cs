@@ -39,6 +39,17 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetLaunchConfigurationResult> InvokeAsync(GetLaunchConfigurationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLaunchConfigurationResult>("aws:ec2/getLaunchConfiguration:getLaunchConfiguration", args ?? new GetLaunchConfigurationArgs(), options.WithVersion());
+
+        public static Output<GetLaunchConfigurationResult> Apply(GetLaunchConfigurationApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetLaunchConfigurationArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +62,19 @@ namespace Pulumi.Aws.Ec2
         public string Name { get; set; } = null!;
 
         public GetLaunchConfigurationArgs()
+        {
+        }
+    }
+
+    public sealed class GetLaunchConfigurationApplyArgs
+    {
+        /// <summary>
+        /// The name of the launch configuration.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetLaunchConfigurationApplyArgs()
         {
         }
     }

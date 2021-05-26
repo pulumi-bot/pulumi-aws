@@ -42,15 +42,15 @@ export interface GetNetworkInterfaceArgs {
     /**
      * One or more name/value pairs to filter off of. There are several valid keys, for a full reference, check out [describe-network-interfaces](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-network-interfaces.html) in the AWS CLI reference.
      */
-    readonly filters?: inputs.ec2.GetNetworkInterfaceFilter[];
+    filters?: inputs.ec2.GetNetworkInterfaceFilter[];
     /**
      * The identifier for the network interface.
      */
-    readonly id?: string;
+    id?: string;
     /**
      * Any tags assigned to the network interface.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -124,4 +124,26 @@ export interface GetNetworkInterfaceResult {
      * The ID of the VPC.
      */
     readonly vpcId: string;
+}
+
+export function getNetworkInterfaceApply(args?: GetNetworkInterfaceApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkInterfaceResult> {
+    return pulumi.output(args).apply(a => getNetworkInterface(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getNetworkInterface.
+ */
+export interface GetNetworkInterfaceApplyArgs {
+    /**
+     * One or more name/value pairs to filter off of. There are several valid keys, for a full reference, check out [describe-network-interfaces](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-network-interfaces.html) in the AWS CLI reference.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.ec2.GetNetworkInterfaceFilter>[]>;
+    /**
+     * The identifier for the network interface.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Any tags assigned to the network interface.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

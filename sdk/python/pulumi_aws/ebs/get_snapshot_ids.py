@@ -114,3 +114,11 @@ def get_snapshot_ids(filters: Optional[Sequence[pulumi.InputType['GetSnapshotIds
         ids=__ret__.ids,
         owners=__ret__.owners,
         restorable_by_user_ids=__ret__.restorable_by_user_ids)
+
+
+@_utilities.lift_output_func(get_snapshot_ids)
+def get_snapshot_ids_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetSnapshotIdsFilterArgs']]]]] = None,
+                           owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                           restorable_by_user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotIdsResult]:
+    ...

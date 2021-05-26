@@ -119,3 +119,11 @@ def get_local_disk(disk_node: Optional[str] = None,
         disk_path=__ret__.disk_path,
         gateway_arn=__ret__.gateway_arn,
         id=__ret__.id)
+
+
+@_utilities.lift_output_func(get_local_disk)
+def get_local_disk_apply(disk_node: Optional[pulumi.Input[str]] = None,
+                         disk_path: Optional[pulumi.Input[str]] = None,
+                         gateway_arn: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLocalDiskResult]:
+    ...

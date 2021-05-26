@@ -198,3 +198,10 @@ def get_container_definition(container_name: Optional[str] = None,
         memory=__ret__.memory,
         memory_reservation=__ret__.memory_reservation,
         task_definition=__ret__.task_definition)
+
+
+@_utilities.lift_output_func(get_container_definition)
+def get_container_definition_apply(container_name: Optional[pulumi.Input[str]] = None,
+                                   task_definition: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContainerDefinitionResult]:
+    ...

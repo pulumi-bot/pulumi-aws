@@ -39,6 +39,39 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetInstanceTypeResult> InvokeAsync(GetInstanceTypeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypeResult>("aws:ec2/getInstanceType:getInstanceType", args ?? new GetInstanceTypeArgs(), options.WithVersion());
+
+        public static Output<GetInstanceTypeResult> Apply(GetInstanceTypeApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.DefaultCores.Box(),
+                args.DefaultThreadsPerCore.Box(),
+                args.Fpgas.ToList().Box(),
+                args.Gpuses.ToList().Box(),
+                args.Hypervisor.Box(),
+                args.InferenceAccelerators.ToList().Box(),
+                args.InstanceDisks.ToList().Box(),
+                args.InstanceType.Box(),
+                args.MaximumIpv6AddressesPerInterface.Box(),
+                args.TotalFpgaMemory.Box(),
+                args.TotalGpuMemory.Box(),
+                args.TotalInstanceStorage.Box()
+            ).Apply(a => {
+                    var args = new GetInstanceTypeArgs();
+                    a[0].Set(args, nameof(args.DefaultCores));
+                    a[1].Set(args, nameof(args.DefaultThreadsPerCore));
+                    a[2].Set(args, nameof(args.Fpgas));
+                    a[3].Set(args, nameof(args.Gpuses));
+                    a[4].Set(args, nameof(args.Hypervisor));
+                    a[5].Set(args, nameof(args.InferenceAccelerators));
+                    a[6].Set(args, nameof(args.InstanceDisks));
+                    a[7].Set(args, nameof(args.InstanceType));
+                    a[8].Set(args, nameof(args.MaximumIpv6AddressesPerInterface));
+                    a[9].Set(args, nameof(args.TotalFpgaMemory));
+                    a[10].Set(args, nameof(args.TotalGpuMemory));
+                    a[11].Set(args, nameof(args.TotalInstanceStorage));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -152,6 +185,120 @@ namespace Pulumi.Aws.Ec2
         public int? TotalInstanceStorage { get; set; }
 
         public GetInstanceTypeArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceTypeApplyArgs
+    {
+        /// <summary>
+        /// The default number of cores for the instance type.
+        /// </summary>
+        [Input("defaultCores")]
+        public Input<int>? DefaultCores { get; set; }
+
+        /// <summary>
+        /// The  default  number of threads per core for the instance type.
+        /// </summary>
+        [Input("defaultThreadsPerCore")]
+        public Input<int>? DefaultThreadsPerCore { get; set; }
+
+        [Input("fpgas")]
+        private InputList<Inputs.GetInstanceTypeFpgaArgs>? _fpgas;
+
+        /// <summary>
+        /// Describes the FPGA accelerator settings for the instance type.
+        /// * `fpgas.#.count` - The count of FPGA accelerators for the instance type.
+        /// * `fpgas.#.manufacturer` - The manufacturer of the FPGA accelerator.
+        /// * `fpgas.#.memory_size` - The size (in MiB) for the memory available to the FPGA accelerator.
+        /// * `fpgas.#.name` - The name of the FPGA accelerator.
+        /// </summary>
+        public InputList<Inputs.GetInstanceTypeFpgaArgs> Fpgas
+        {
+            get => _fpgas ?? (_fpgas = new InputList<Inputs.GetInstanceTypeFpgaArgs>());
+            set => _fpgas = value;
+        }
+
+        [Input("gpuses")]
+        private InputList<Inputs.GetInstanceTypeGpusArgs>? _gpuses;
+
+        /// <summary>
+        /// Describes the GPU accelerators for the instance type.
+        /// * `gpus.#.count` - The number of GPUs for the instance type.
+        /// * `gpus.#.manufacturer` - The manufacturer of the GPU accelerator.
+        /// * `gpus.#.memory_size` - The size (in MiB) for the memory available to the GPU accelerator.
+        /// * `gpus.#.name` - The name of the GPU accelerator.
+        /// </summary>
+        public InputList<Inputs.GetInstanceTypeGpusArgs> Gpuses
+        {
+            get => _gpuses ?? (_gpuses = new InputList<Inputs.GetInstanceTypeGpusArgs>());
+            set => _gpuses = value;
+        }
+
+        /// <summary>
+        /// Indicates the hypervisor used for the instance type.
+        /// * `inference_accelerators` Describes the Inference accelerators for the instance type.
+        /// * `inference_accelerators.#.count` - The number of Inference accelerators for the instance type.
+        /// * `inference_accelerators.#.manufacturer` - The manufacturer of the Inference accelerator.
+        /// * `inference_accelerators.#.name` - The name of the Inference accelerator.
+        /// </summary>
+        [Input("hypervisor")]
+        public Input<string>? Hypervisor { get; set; }
+
+        [Input("inferenceAccelerators")]
+        private InputList<Inputs.GetInstanceTypeInferenceAcceleratorArgs>? _inferenceAccelerators;
+        public InputList<Inputs.GetInstanceTypeInferenceAcceleratorArgs> InferenceAccelerators
+        {
+            get => _inferenceAccelerators ?? (_inferenceAccelerators = new InputList<Inputs.GetInstanceTypeInferenceAcceleratorArgs>());
+            set => _inferenceAccelerators = value;
+        }
+
+        [Input("instanceDisks")]
+        private InputList<Inputs.GetInstanceTypeInstanceDiskArgs>? _instanceDisks;
+
+        /// <summary>
+        /// Describes the disks for the instance type.
+        /// * `instance_disks.#.count` - The number of disks with this configuration.
+        /// * `instance_disks.#.size` - The size of the disk in GB.
+        /// * `instance_disks.#.type` - The type of disk.
+        /// </summary>
+        public InputList<Inputs.GetInstanceTypeInstanceDiskArgs> InstanceDisks
+        {
+            get => _instanceDisks ?? (_instanceDisks = new InputList<Inputs.GetInstanceTypeInstanceDiskArgs>());
+            set => _instanceDisks = value;
+        }
+
+        /// <summary>
+        /// Instance
+        /// </summary>
+        [Input("instanceType", required: true)]
+        public Input<string> InstanceType { get; set; } = null!;
+
+        /// <summary>
+        /// The maximum number of IPv6 addresses per network interface.
+        /// </summary>
+        [Input("maximumIpv6AddressesPerInterface")]
+        public Input<int>? MaximumIpv6AddressesPerInterface { get; set; }
+
+        /// <summary>
+        /// The total memory of all FPGA accelerators for the instance type (in MiB).
+        /// </summary>
+        [Input("totalFpgaMemory")]
+        public Input<int>? TotalFpgaMemory { get; set; }
+
+        /// <summary>
+        /// The total size of the memory for the GPU accelerators for the instance type (in MiB).
+        /// </summary>
+        [Input("totalGpuMemory")]
+        public Input<int>? TotalGpuMemory { get; set; }
+
+        /// <summary>
+        /// The total size of the instance disks, in GB.
+        /// </summary>
+        [Input("totalInstanceStorage")]
+        public Input<int>? TotalInstanceStorage { get; set; }
+
+        public GetInstanceTypeApplyArgs()
         {
         }
     }

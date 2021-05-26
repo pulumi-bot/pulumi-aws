@@ -44,12 +44,12 @@ export interface GetFileSystemArgs {
     /**
      * Restricts the list to the file system with this creation token.
      */
-    readonly creationToken?: string;
+    creationToken?: string;
     /**
      * The ID that identifies the file system (e.g. fs-ccfc0d65).
      */
-    readonly fileSystemId?: string;
-    readonly tags?: {[key: string]: string};
+    fileSystemId?: string;
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -108,4 +108,23 @@ export interface GetFileSystemResult {
      * Throughput mode for the file system.
      */
     readonly throughputMode: string;
+}
+
+export function getFileSystemApply(args?: GetFileSystemApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFileSystemResult> {
+    return pulumi.output(args).apply(a => getFileSystem(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFileSystem.
+ */
+export interface GetFileSystemApplyArgs {
+    /**
+     * Restricts the list to the file system with this creation token.
+     */
+    creationToken?: pulumi.Input<string>;
+    /**
+     * The ID that identifies the file system (e.g. fs-ccfc0d65).
+     */
+    fileSystemId?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -42,3 +42,7 @@ export interface GetEncryptionByDefaultResult {
      */
     readonly id: string;
 }
+
+export function getEncryptionByDefaultApply(opts?: pulumi.InvokeOptions): pulumi.Output<GetEncryptionByDefaultResult> {
+    return pulumi.output(getEncryptionByDefault(opts))
+}

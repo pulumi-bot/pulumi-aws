@@ -40,11 +40,11 @@ export interface GetClusterArgs {
     /**
      * Name of the cluster.
      */
-    readonly clusterName: string;
+    clusterName: string;
     /**
      * Map of key-value pairs assigned to the cluster.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -88,4 +88,22 @@ export interface GetClusterResult {
      * A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster. The returned values are sorted alphbetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
      */
     readonly zookeeperConnectString: string;
+}
+
+export function getClusterApply(args: GetClusterApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
+    return pulumi.output(args).apply(a => getCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCluster.
+ */
+export interface GetClusterApplyArgs {
+    /**
+     * Name of the cluster.
+     */
+    clusterName: pulumi.Input<string>;
+    /**
+     * Map of key-value pairs assigned to the cluster.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

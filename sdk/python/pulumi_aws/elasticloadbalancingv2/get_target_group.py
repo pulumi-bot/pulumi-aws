@@ -262,3 +262,11 @@ def get_target_group(arn: Optional[str] = None,
         tags=__ret__.tags,
         target_type=__ret__.target_type,
         vpc_id=__ret__.vpc_id)
+
+
+@_utilities.lift_output_func(get_target_group)
+def get_target_group_apply(arn: Optional[pulumi.Input[str]] = None,
+                           name: Optional[pulumi.Input[str]] = None,
+                           tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTargetGroupResult]:
+    ...

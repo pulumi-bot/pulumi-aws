@@ -132,3 +132,10 @@ def get_selection(plan_id: Optional[str] = None,
         plan_id=__ret__.plan_id,
         resources=__ret__.resources,
         selection_id=__ret__.selection_id)
+
+
+@_utilities.lift_output_func(get_selection)
+def get_selection_apply(plan_id: Optional[pulumi.Input[str]] = None,
+                        selection_id: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSelectionResult]:
+    ...

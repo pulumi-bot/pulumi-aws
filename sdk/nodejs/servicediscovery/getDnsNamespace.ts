@@ -41,11 +41,11 @@ export interface GetDnsNamespaceArgs {
     /**
      * The name of the namespace.
      */
-    readonly name: string;
+    name: string;
     /**
      * The type of the namespace. Allowed values are `DNS_PUBLIC` or `DNS_PRIVATE`.
      */
-    readonly type: string;
+    type: string;
 }
 
 /**
@@ -70,4 +70,22 @@ export interface GetDnsNamespaceResult {
     readonly id: string;
     readonly name: string;
     readonly type: string;
+}
+
+export function getDnsNamespaceApply(args: GetDnsNamespaceApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDnsNamespaceResult> {
+    return pulumi.output(args).apply(a => getDnsNamespace(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDnsNamespace.
+ */
+export interface GetDnsNamespaceApplyArgs {
+    /**
+     * The name of the namespace.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The type of the namespace. Allowed values are `DNS_PUBLIC` or `DNS_PRIVATE`.
+     */
+    type: pulumi.Input<string>;
 }

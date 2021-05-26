@@ -16,6 +16,23 @@ namespace Pulumi.Aws.SsoAdmin
         /// </summary>
         public static Task<GetPermissionSetResult> InvokeAsync(GetPermissionSetArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPermissionSetResult>("aws:ssoadmin/getPermissionSet:getPermissionSet", args ?? new GetPermissionSetArgs(), options.WithVersion());
+
+        public static Output<GetPermissionSetResult> Apply(GetPermissionSetApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Arn.Box(),
+                args.InstanceArn.Box(),
+                args.Name.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetPermissionSetArgs();
+                    a[0].Set(args, nameof(args.Arn));
+                    a[1].Set(args, nameof(args.InstanceArn));
+                    a[2].Set(args, nameof(args.Name));
+                    a[3].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -52,6 +69,43 @@ namespace Pulumi.Aws.SsoAdmin
         }
 
         public GetPermissionSetArgs()
+        {
+        }
+    }
+
+    public sealed class GetPermissionSetApplyArgs
+    {
+        /// <summary>
+        /// The Amazon Resource Name (ARN) of the permission set.
+        /// </summary>
+        [Input("arn")]
+        public Input<string>? Arn { get; set; }
+
+        /// <summary>
+        /// The Amazon Resource Name (ARN) of the SSO Instance associated with the permission set.
+        /// </summary>
+        [Input("instanceArn", required: true)]
+        public Input<string> InstanceArn { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the SSO Permission Set.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Key-value map of resource tags.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetPermissionSetApplyArgs()
         {
         }
     }

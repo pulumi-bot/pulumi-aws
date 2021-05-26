@@ -55,6 +55,22 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetInstanceTypeOfferingResult> InvokeAsync(GetInstanceTypeOfferingArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypeOfferingResult>("aws:ec2/getInstanceTypeOffering:getInstanceTypeOffering", args ?? new GetInstanceTypeOfferingArgs(), options.WithVersion());
+
+        public static Output<GetInstanceTypeOfferingResult> Apply(GetInstanceTypeOfferingApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetInstanceTypeOfferingApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.LocationType.Box(),
+                args.PreferredInstanceTypes.ToList().Box()
+            ).Apply(a => {
+                    var args = new GetInstanceTypeOfferingArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.LocationType));
+                    a[2].Set(args, nameof(args.PreferredInstanceTypes));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -91,6 +107,43 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetInstanceTypeOfferingArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceTypeOfferingApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetInstanceTypeOfferingFilterArgs>? _filters;
+
+        /// <summary>
+        /// One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceTypeOfferings.html) for supported filters. Detailed below.
+        /// </summary>
+        public InputList<Inputs.GetInstanceTypeOfferingFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetInstanceTypeOfferingFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// Location type. Defaults to `region`. Valid values: `availability-zone`, `availability-zone-id`, and `region`.
+        /// </summary>
+        [Input("locationType")]
+        public Input<string>? LocationType { get; set; }
+
+        [Input("preferredInstanceTypes")]
+        private InputList<string>? _preferredInstanceTypes;
+
+        /// <summary>
+        /// Ordered list of preferred EC2 Instance Types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned.
+        /// </summary>
+        public InputList<string> PreferredInstanceTypes
+        {
+            get => _preferredInstanceTypes ?? (_preferredInstanceTypes = new InputList<string>());
+            set => _preferredInstanceTypes = value;
+        }
+
+        public GetInstanceTypeOfferingApplyArgs()
         {
         }
     }

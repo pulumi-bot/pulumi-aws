@@ -95,6 +95,22 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetPrefixListResult> InvokeAsync(GetPrefixListArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPrefixListResult>("aws:ec2/getPrefixList:getPrefixList", args ?? new GetPrefixListArgs(), options.WithVersion());
+
+        public static Output<GetPrefixListResult> Apply(GetPrefixListApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetPrefixListApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.Name.Box(),
+                args.PrefixListId.Box()
+            ).Apply(a => {
+                    var args = new GetPrefixListArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.PrefixListId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -125,6 +141,37 @@ namespace Pulumi.Aws.Ec2
         public string? PrefixListId { get; set; }
 
         public GetPrefixListArgs()
+        {
+        }
+    }
+
+    public sealed class GetPrefixListApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetPrefixListFilterArgs>? _filters;
+
+        /// <summary>
+        /// Configuration block(s) for filtering. Detailed below.
+        /// </summary>
+        public InputList<Inputs.GetPrefixListFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetPrefixListFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// The name of the filter field. Valid values can be found in the [EC2 DescribePrefixLists API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribePrefixLists.html).
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the prefix list to select.
+        /// </summary>
+        [Input("prefixListId")]
+        public Input<string>? PrefixListId { get; set; }
+
+        public GetPrefixListApplyArgs()
         {
         }
     }

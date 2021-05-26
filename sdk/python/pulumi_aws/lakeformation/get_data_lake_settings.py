@@ -132,3 +132,9 @@ def get_data_lake_settings(catalog_id: Optional[str] = None,
         create_table_default_permissions=__ret__.create_table_default_permissions,
         id=__ret__.id,
         trusted_resource_owners=__ret__.trusted_resource_owners)
+
+
+@_utilities.lift_output_func(get_data_lake_settings)
+def get_data_lake_settings_apply(catalog_id: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDataLakeSettingsResult]:
+    ...

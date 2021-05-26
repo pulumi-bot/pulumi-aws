@@ -144,3 +144,12 @@ def get_outposts(availability_zone: Optional[str] = None,
         ids=__ret__.ids,
         owner_id=__ret__.owner_id,
         site_id=__ret__.site_id)
+
+
+@_utilities.lift_output_func(get_outposts)
+def get_outposts_apply(availability_zone: Optional[pulumi.Input[str]] = None,
+                       availability_zone_id: Optional[pulumi.Input[str]] = None,
+                       owner_id: Optional[pulumi.Input[str]] = None,
+                       site_id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOutpostsResult]:
+    ...

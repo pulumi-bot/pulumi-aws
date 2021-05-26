@@ -4,6 +4,9 @@
 package waf
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,4 +54,90 @@ type LookupRuleResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
+}
+
+func LookupRuleApply(ctx *pulumi.Context, args LookupRuleApplyInput, opts ...pulumi.InvokeOption) LookupRuleResultOutput {
+	return args.ToLookupRuleApplyOutput().ApplyT(func(v LookupRuleArgs) (LookupRuleResult, error) {
+		r, err := LookupRule(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupRuleResultOutput)
+}
+
+// LookupRuleApplyInput is an input type that accepts LookupRuleApplyArgs and LookupRuleApplyOutput values.
+// You can construct a concrete instance of `LookupRuleApplyInput` via:
+//
+//          LookupRuleApplyArgs{...}
+type LookupRuleApplyInput interface {
+	pulumi.Input
+
+	ToLookupRuleApplyOutput() LookupRuleApplyOutput
+	ToLookupRuleApplyOutputWithContext(context.Context) LookupRuleApplyOutput
+}
+
+// A collection of arguments for invoking getRule.
+type LookupRuleApplyArgs struct {
+	// The name of the WAF rule.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupRuleApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRuleArgs)(nil)).Elem()
+}
+
+func (i LookupRuleApplyArgs) ToLookupRuleApplyOutput() LookupRuleApplyOutput {
+	return i.ToLookupRuleApplyOutputWithContext(context.Background())
+}
+
+func (i LookupRuleApplyArgs) ToLookupRuleApplyOutputWithContext(ctx context.Context) LookupRuleApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupRuleApplyOutput)
+}
+
+// A collection of arguments for invoking getRule.
+type LookupRuleApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupRuleApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRuleArgs)(nil)).Elem()
+}
+
+func (o LookupRuleApplyOutput) ToLookupRuleApplyOutput() LookupRuleApplyOutput {
+	return o
+}
+
+func (o LookupRuleApplyOutput) ToLookupRuleApplyOutputWithContext(ctx context.Context) LookupRuleApplyOutput {
+	return o
+}
+
+// The name of the WAF rule.
+func (o LookupRuleApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRuleArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getRule.
+type LookupRuleResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRuleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRuleResult)(nil)).Elem()
+}
+
+func (o LookupRuleResultOutput) ToLookupRuleResultOutput() LookupRuleResultOutput {
+	return o
+}
+
+func (o LookupRuleResultOutput) ToLookupRuleResultOutputWithContext(ctx context.Context) LookupRuleResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupRuleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRuleResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupRuleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRuleResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRuleApplyOutput{})
+	pulumi.RegisterOutputType(LookupRuleResultOutput{})
 }

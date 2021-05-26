@@ -40,6 +40,19 @@ namespace Pulumi.Aws.Lambda
         /// </summary>
         public static Task<GetAliasResult> InvokeAsync(GetAliasArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAliasResult>("aws:lambda/getAlias:getAlias", args ?? new GetAliasArgs(), options.WithVersion());
+
+        public static Output<GetAliasResult> Apply(GetAliasApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.FunctionName.Box(),
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetAliasArgs();
+                    a[0].Set(args, nameof(args.FunctionName));
+                    a[1].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -58,6 +71,25 @@ namespace Pulumi.Aws.Lambda
         public string Name { get; set; } = null!;
 
         public GetAliasArgs()
+        {
+        }
+    }
+
+    public sealed class GetAliasApplyArgs
+    {
+        /// <summary>
+        /// Name of the aliased Lambda function.
+        /// </summary>
+        [Input("functionName", required: true)]
+        public Input<string> FunctionName { get; set; } = null!;
+
+        /// <summary>
+        /// Name of the Lambda alias.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetAliasApplyArgs()
         {
         }
     }

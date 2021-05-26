@@ -4,6 +4,9 @@
 package ecs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -72,4 +75,141 @@ type GetContainerDefinitionResult struct {
 	// The soft limit (in MiB) of memory to reserve for the container. When system memory is under contention, Docker attempts to keep the container memory to this soft limit
 	MemoryReservation int    `pulumi:"memoryReservation"`
 	TaskDefinition    string `pulumi:"taskDefinition"`
+}
+
+func GetContainerDefinitionApply(ctx *pulumi.Context, args GetContainerDefinitionApplyInput, opts ...pulumi.InvokeOption) GetContainerDefinitionResultOutput {
+	return args.ToGetContainerDefinitionApplyOutput().ApplyT(func(v GetContainerDefinitionArgs) (GetContainerDefinitionResult, error) {
+		r, err := GetContainerDefinition(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetContainerDefinitionResultOutput)
+}
+
+// GetContainerDefinitionApplyInput is an input type that accepts GetContainerDefinitionApplyArgs and GetContainerDefinitionApplyOutput values.
+// You can construct a concrete instance of `GetContainerDefinitionApplyInput` via:
+//
+//          GetContainerDefinitionApplyArgs{...}
+type GetContainerDefinitionApplyInput interface {
+	pulumi.Input
+
+	ToGetContainerDefinitionApplyOutput() GetContainerDefinitionApplyOutput
+	ToGetContainerDefinitionApplyOutputWithContext(context.Context) GetContainerDefinitionApplyOutput
+}
+
+// A collection of arguments for invoking getContainerDefinition.
+type GetContainerDefinitionApplyArgs struct {
+	// The name of the container definition
+	ContainerName pulumi.StringInput `pulumi:"containerName"`
+	// The ARN of the task definition which contains the container
+	TaskDefinition pulumi.StringInput `pulumi:"taskDefinition"`
+}
+
+func (GetContainerDefinitionApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetContainerDefinitionArgs)(nil)).Elem()
+}
+
+func (i GetContainerDefinitionApplyArgs) ToGetContainerDefinitionApplyOutput() GetContainerDefinitionApplyOutput {
+	return i.ToGetContainerDefinitionApplyOutputWithContext(context.Background())
+}
+
+func (i GetContainerDefinitionApplyArgs) ToGetContainerDefinitionApplyOutputWithContext(ctx context.Context) GetContainerDefinitionApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetContainerDefinitionApplyOutput)
+}
+
+// A collection of arguments for invoking getContainerDefinition.
+type GetContainerDefinitionApplyOutput struct{ *pulumi.OutputState }
+
+func (GetContainerDefinitionApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetContainerDefinitionArgs)(nil)).Elem()
+}
+
+func (o GetContainerDefinitionApplyOutput) ToGetContainerDefinitionApplyOutput() GetContainerDefinitionApplyOutput {
+	return o
+}
+
+func (o GetContainerDefinitionApplyOutput) ToGetContainerDefinitionApplyOutputWithContext(ctx context.Context) GetContainerDefinitionApplyOutput {
+	return o
+}
+
+// The name of the container definition
+func (o GetContainerDefinitionApplyOutput) ContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContainerDefinitionArgs) string { return v.ContainerName }).(pulumi.StringOutput)
+}
+
+// The ARN of the task definition which contains the container
+func (o GetContainerDefinitionApplyOutput) TaskDefinition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContainerDefinitionArgs) string { return v.TaskDefinition }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getContainerDefinition.
+type GetContainerDefinitionResultOutput struct{ *pulumi.OutputState }
+
+func (GetContainerDefinitionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetContainerDefinitionResult)(nil)).Elem()
+}
+
+func (o GetContainerDefinitionResultOutput) ToGetContainerDefinitionResultOutput() GetContainerDefinitionResultOutput {
+	return o
+}
+
+func (o GetContainerDefinitionResultOutput) ToGetContainerDefinitionResultOutputWithContext(ctx context.Context) GetContainerDefinitionResultOutput {
+	return o
+}
+
+func (o GetContainerDefinitionResultOutput) ContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContainerDefinitionResult) string { return v.ContainerName }).(pulumi.StringOutput)
+}
+
+// The CPU limit for this container definition
+func (o GetContainerDefinitionResultOutput) Cpu() pulumi.IntOutput {
+	return o.ApplyT(func(v GetContainerDefinitionResult) int { return v.Cpu }).(pulumi.IntOutput)
+}
+
+// Indicator if networking is disabled
+func (o GetContainerDefinitionResultOutput) DisableNetworking() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetContainerDefinitionResult) bool { return v.DisableNetworking }).(pulumi.BoolOutput)
+}
+
+// Set docker labels
+func (o GetContainerDefinitionResultOutput) DockerLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetContainerDefinitionResult) map[string]string { return v.DockerLabels }).(pulumi.StringMapOutput)
+}
+
+// The environment in use
+func (o GetContainerDefinitionResultOutput) Environment() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetContainerDefinitionResult) map[string]string { return v.Environment }).(pulumi.StringMapOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetContainerDefinitionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContainerDefinitionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The docker image in use, including the digest
+func (o GetContainerDefinitionResultOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContainerDefinitionResult) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// The digest of the docker image in use
+func (o GetContainerDefinitionResultOutput) ImageDigest() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContainerDefinitionResult) string { return v.ImageDigest }).(pulumi.StringOutput)
+}
+
+// The memory limit for this container definition
+func (o GetContainerDefinitionResultOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v GetContainerDefinitionResult) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+// The soft limit (in MiB) of memory to reserve for the container. When system memory is under contention, Docker attempts to keep the container memory to this soft limit
+func (o GetContainerDefinitionResultOutput) MemoryReservation() pulumi.IntOutput {
+	return o.ApplyT(func(v GetContainerDefinitionResult) int { return v.MemoryReservation }).(pulumi.IntOutput)
+}
+
+func (o GetContainerDefinitionResultOutput) TaskDefinition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContainerDefinitionResult) string { return v.TaskDefinition }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetContainerDefinitionApplyOutput{})
+	pulumi.RegisterOutputType(GetContainerDefinitionResultOutput{})
 }

@@ -120,3 +120,9 @@ def get_alias(name: Optional[str] = None,
         name=__ret__.name,
         target_key_arn=__ret__.target_key_arn,
         target_key_id=__ret__.target_key_id)
+
+
+@_utilities.lift_output_func(get_alias)
+def get_alias_apply(name: Optional[pulumi.Input[str]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAliasResult]:
+    ...

@@ -4,6 +4,9 @@
 package efs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -84,4 +87,162 @@ type LookupMountTargetResult struct {
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// ID of the mount target's subnet.
 	SubnetId string `pulumi:"subnetId"`
+}
+
+func LookupMountTargetApply(ctx *pulumi.Context, args LookupMountTargetApplyInput, opts ...pulumi.InvokeOption) LookupMountTargetResultOutput {
+	return args.ToLookupMountTargetApplyOutput().ApplyT(func(v LookupMountTargetArgs) (LookupMountTargetResult, error) {
+		r, err := LookupMountTarget(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupMountTargetResultOutput)
+}
+
+// LookupMountTargetApplyInput is an input type that accepts LookupMountTargetApplyArgs and LookupMountTargetApplyOutput values.
+// You can construct a concrete instance of `LookupMountTargetApplyInput` via:
+//
+//          LookupMountTargetApplyArgs{...}
+type LookupMountTargetApplyInput interface {
+	pulumi.Input
+
+	ToLookupMountTargetApplyOutput() LookupMountTargetApplyOutput
+	ToLookupMountTargetApplyOutputWithContext(context.Context) LookupMountTargetApplyOutput
+}
+
+// A collection of arguments for invoking getMountTarget.
+type LookupMountTargetApplyArgs struct {
+	// ID or ARN of the access point whose mount target that you want to find. It must be included if a `fileSystemId` and `mountTargetId` are not included.
+	AccessPointId pulumi.StringPtrInput `pulumi:"accessPointId"`
+	// ID or ARN of the file system whose mount target that you want to find. It must be included if an `accessPointId` and `mountTargetId` are not included.
+	FileSystemId pulumi.StringPtrInput `pulumi:"fileSystemId"`
+	// ID or ARN of the mount target that you want to find. It must be included in your request if an `accessPointId` and `fileSystemId` are not included.
+	MountTargetId pulumi.StringPtrInput `pulumi:"mountTargetId"`
+}
+
+func (LookupMountTargetApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMountTargetArgs)(nil)).Elem()
+}
+
+func (i LookupMountTargetApplyArgs) ToLookupMountTargetApplyOutput() LookupMountTargetApplyOutput {
+	return i.ToLookupMountTargetApplyOutputWithContext(context.Background())
+}
+
+func (i LookupMountTargetApplyArgs) ToLookupMountTargetApplyOutputWithContext(ctx context.Context) LookupMountTargetApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupMountTargetApplyOutput)
+}
+
+// A collection of arguments for invoking getMountTarget.
+type LookupMountTargetApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupMountTargetApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMountTargetArgs)(nil)).Elem()
+}
+
+func (o LookupMountTargetApplyOutput) ToLookupMountTargetApplyOutput() LookupMountTargetApplyOutput {
+	return o
+}
+
+func (o LookupMountTargetApplyOutput) ToLookupMountTargetApplyOutputWithContext(ctx context.Context) LookupMountTargetApplyOutput {
+	return o
+}
+
+// ID or ARN of the access point whose mount target that you want to find. It must be included if a `fileSystemId` and `mountTargetId` are not included.
+func (o LookupMountTargetApplyOutput) AccessPointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMountTargetArgs) *string { return v.AccessPointId }).(pulumi.StringPtrOutput)
+}
+
+// ID or ARN of the file system whose mount target that you want to find. It must be included if an `accessPointId` and `mountTargetId` are not included.
+func (o LookupMountTargetApplyOutput) FileSystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMountTargetArgs) *string { return v.FileSystemId }).(pulumi.StringPtrOutput)
+}
+
+// ID or ARN of the mount target that you want to find. It must be included in your request if an `accessPointId` and `fileSystemId` are not included.
+func (o LookupMountTargetApplyOutput) MountTargetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMountTargetArgs) *string { return v.MountTargetId }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getMountTarget.
+type LookupMountTargetResultOutput struct{ *pulumi.OutputState }
+
+func (LookupMountTargetResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupMountTargetResult)(nil)).Elem()
+}
+
+func (o LookupMountTargetResultOutput) ToLookupMountTargetResultOutput() LookupMountTargetResultOutput {
+	return o
+}
+
+func (o LookupMountTargetResultOutput) ToLookupMountTargetResultOutputWithContext(ctx context.Context) LookupMountTargetResultOutput {
+	return o
+}
+
+func (o LookupMountTargetResultOutput) AccessPointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMountTargetResult) *string { return v.AccessPointId }).(pulumi.StringPtrOutput)
+}
+
+// The unique and consistent identifier of the Availability Zone (AZ) that the mount target resides in.
+func (o LookupMountTargetResultOutput) AvailabilityZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMountTargetResult) string { return v.AvailabilityZoneId }).(pulumi.StringOutput)
+}
+
+// The name of the Availability Zone (AZ) that the mount target resides in.
+func (o LookupMountTargetResultOutput) AvailabilityZoneName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMountTargetResult) string { return v.AvailabilityZoneName }).(pulumi.StringOutput)
+}
+
+// The DNS name for the EFS file system.
+func (o LookupMountTargetResultOutput) DnsName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMountTargetResult) string { return v.DnsName }).(pulumi.StringOutput)
+}
+
+// Amazon Resource Name of the file system for which the mount target is intended.
+func (o LookupMountTargetResultOutput) FileSystemArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMountTargetResult) string { return v.FileSystemArn }).(pulumi.StringOutput)
+}
+
+func (o LookupMountTargetResultOutput) FileSystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMountTargetResult) string { return v.FileSystemId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupMountTargetResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMountTargetResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Address at which the file system may be mounted via the mount target.
+func (o LookupMountTargetResultOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMountTargetResult) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The DNS name for the given subnet/AZ per [documented convention](http://docs.aws.amazon.com/efs/latest/ug/mounting-fs-mount-cmd-dns-name.html).
+func (o LookupMountTargetResultOutput) MountTargetDnsName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMountTargetResult) string { return v.MountTargetDnsName }).(pulumi.StringOutput)
+}
+
+func (o LookupMountTargetResultOutput) MountTargetId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMountTargetResult) string { return v.MountTargetId }).(pulumi.StringOutput)
+}
+
+// The ID of the network interface that Amazon EFS created when it created the mount target.
+func (o LookupMountTargetResultOutput) NetworkInterfaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMountTargetResult) string { return v.NetworkInterfaceId }).(pulumi.StringOutput)
+}
+
+// AWS account ID that owns the resource.
+func (o LookupMountTargetResultOutput) OwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMountTargetResult) string { return v.OwnerId }).(pulumi.StringOutput)
+}
+
+// List of VPC security group IDs attached to the mount target.
+func (o LookupMountTargetResultOutput) SecurityGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupMountTargetResult) []string { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+}
+
+// ID of the mount target's subnet.
+func (o LookupMountTargetResultOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMountTargetResult) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupMountTargetApplyOutput{})
+	pulumi.RegisterOutputType(LookupMountTargetResultOutput{})
 }

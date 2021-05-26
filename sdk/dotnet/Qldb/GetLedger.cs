@@ -39,6 +39,17 @@ namespace Pulumi.Aws.Qldb
         /// </summary>
         public static Task<GetLedgerResult> InvokeAsync(GetLedgerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLedgerResult>("aws:qldb/getLedger:getLedger", args ?? new GetLedgerArgs(), options.WithVersion());
+
+        public static Output<GetLedgerResult> Apply(GetLedgerApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetLedgerArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +62,19 @@ namespace Pulumi.Aws.Qldb
         public string Name { get; set; } = null!;
 
         public GetLedgerArgs()
+        {
+        }
+    }
+
+    public sealed class GetLedgerApplyArgs
+    {
+        /// <summary>
+        /// The friendly name of the ledger to match.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetLedgerApplyArgs()
         {
         }
     }

@@ -47,6 +47,20 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetLocalGatewaysResult> InvokeAsync(GetLocalGatewaysArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLocalGatewaysResult>("aws:ec2/getLocalGateways:getLocalGateways", args ?? new GetLocalGatewaysArgs(), options.WithVersion());
+
+        public static Output<GetLocalGatewaysResult> Apply(GetLocalGatewaysApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetLocalGatewaysApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetLocalGatewaysArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -78,6 +92,38 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetLocalGatewaysArgs()
+        {
+        }
+    }
+
+    public sealed class GetLocalGatewaysApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetLocalGatewaysFilterArgs>? _filters;
+
+        /// <summary>
+        /// Custom filter block as described below.
+        /// </summary>
+        public InputList<Inputs.GetLocalGatewaysFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetLocalGatewaysFilterArgs>());
+            set => _filters = value;
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags, each pair of which must exactly match
+        /// a pair on the desired local_gateways.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetLocalGatewaysApplyArgs()
         {
         }
     }

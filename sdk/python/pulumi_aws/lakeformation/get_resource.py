@@ -105,3 +105,9 @@ def get_resource(arn: Optional[str] = None,
         id=__ret__.id,
         last_modified=__ret__.last_modified,
         role_arn=__ret__.role_arn)
+
+
+@_utilities.lift_output_func(get_resource)
+def get_resource_apply(arn: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourceResult]:
+    ...

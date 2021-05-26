@@ -112,3 +112,11 @@ def get_invocation(function_name: Optional[str] = None,
         input=__ret__.input,
         qualifier=__ret__.qualifier,
         result=__ret__.result)
+
+
+@_utilities.lift_output_func(get_invocation)
+def get_invocation_apply(function_name: Optional[pulumi.Input[str]] = None,
+                         input: Optional[pulumi.Input[str]] = None,
+                         qualifier: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInvocationResult]:
+    ...

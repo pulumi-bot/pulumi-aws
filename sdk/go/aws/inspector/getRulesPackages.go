@@ -4,6 +4,9 @@
 package inspector
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,4 +78,41 @@ type GetRulesPackagesResult struct {
 	Arns []string `pulumi:"arns"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+}
+
+func GetRulesPackagesApply(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetRulesPackagesResultOutput {
+	return pulumi.Any(opts).ApplyT(func(v interface{}) (GetRulesPackagesResult, error) {
+		r, err := GetRulesPackages(ctx, opts...)
+		return *r, err
+
+	}).(GetRulesPackagesResultOutput)
+}
+
+// A collection of values returned by getRulesPackages.
+type GetRulesPackagesResultOutput struct{ *pulumi.OutputState }
+
+func (GetRulesPackagesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesPackagesResult)(nil)).Elem()
+}
+
+func (o GetRulesPackagesResultOutput) ToGetRulesPackagesResultOutput() GetRulesPackagesResultOutput {
+	return o
+}
+
+func (o GetRulesPackagesResultOutput) ToGetRulesPackagesResultOutputWithContext(ctx context.Context) GetRulesPackagesResultOutput {
+	return o
+}
+
+// A list of the AWS Inspector Rules Packages arns available in the AWS region.
+func (o GetRulesPackagesResultOutput) Arns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesPackagesResult) []string { return v.Arns }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRulesPackagesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesPackagesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRulesPackagesResultOutput{})
 }

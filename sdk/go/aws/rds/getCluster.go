@@ -4,6 +4,9 @@
 package rds
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,4 +82,203 @@ type LookupClusterResult struct {
 	StorageEncrypted            bool              `pulumi:"storageEncrypted"`
 	Tags                        map[string]string `pulumi:"tags"`
 	VpcSecurityGroupIds         []string          `pulumi:"vpcSecurityGroupIds"`
+}
+
+func LookupClusterApply(ctx *pulumi.Context, args LookupClusterApplyInput, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
+	return args.ToLookupClusterApplyOutput().ApplyT(func(v LookupClusterArgs) (LookupClusterResult, error) {
+		r, err := LookupCluster(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupClusterResultOutput)
+}
+
+// LookupClusterApplyInput is an input type that accepts LookupClusterApplyArgs and LookupClusterApplyOutput values.
+// You can construct a concrete instance of `LookupClusterApplyInput` via:
+//
+//          LookupClusterApplyArgs{...}
+type LookupClusterApplyInput interface {
+	pulumi.Input
+
+	ToLookupClusterApplyOutput() LookupClusterApplyOutput
+	ToLookupClusterApplyOutputWithContext(context.Context) LookupClusterApplyOutput
+}
+
+// A collection of arguments for invoking getCluster.
+type LookupClusterApplyArgs struct {
+	// The cluster identifier of the RDS cluster.
+	ClusterIdentifier pulumi.StringInput    `pulumi:"clusterIdentifier"`
+	Tags              pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupClusterApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterArgs)(nil)).Elem()
+}
+
+func (i LookupClusterApplyArgs) ToLookupClusterApplyOutput() LookupClusterApplyOutput {
+	return i.ToLookupClusterApplyOutputWithContext(context.Background())
+}
+
+func (i LookupClusterApplyArgs) ToLookupClusterApplyOutputWithContext(ctx context.Context) LookupClusterApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupClusterApplyOutput)
+}
+
+// A collection of arguments for invoking getCluster.
+type LookupClusterApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupClusterApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterArgs)(nil)).Elem()
+}
+
+func (o LookupClusterApplyOutput) ToLookupClusterApplyOutput() LookupClusterApplyOutput {
+	return o
+}
+
+func (o LookupClusterApplyOutput) ToLookupClusterApplyOutputWithContext(ctx context.Context) LookupClusterApplyOutput {
+	return o
+}
+
+// The cluster identifier of the RDS cluster.
+func (o LookupClusterApplyOutput) ClusterIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterArgs) string { return v.ClusterIdentifier }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getCluster.
+type LookupClusterResultOutput struct{ *pulumi.OutputState }
+
+func (LookupClusterResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterResult)(nil)).Elem()
+}
+
+func (o LookupClusterResultOutput) ToLookupClusterResultOutput() LookupClusterResultOutput {
+	return o
+}
+
+func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx context.Context) LookupClusterResultOutput {
+	return o
+}
+
+func (o LookupClusterResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) AvailabilityZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupClusterResultOutput) BacktrackWindow() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupClusterResult) int { return v.BacktrackWindow }).(pulumi.IntOutput)
+}
+
+func (o LookupClusterResultOutput) BackupRetentionPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupClusterResult) int { return v.BackupRetentionPeriod }).(pulumi.IntOutput)
+}
+
+func (o LookupClusterResultOutput) ClusterIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.ClusterIdentifier }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) ClusterMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []string { return v.ClusterMembers }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupClusterResultOutput) ClusterResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.ClusterResourceId }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) DatabaseName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.DatabaseName }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) DbClusterParameterGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.DbClusterParameterGroupName }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) DbSubnetGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.DbSubnetGroupName }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) EnabledCloudwatchLogsExports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []string { return v.EnabledCloudwatchLogsExports }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupClusterResultOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.Engine }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) FinalSnapshotIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.FinalSnapshotIdentifier }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) HostedZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.HostedZoneId }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) IamDatabaseAuthenticationEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.IamDatabaseAuthenticationEnabled }).(pulumi.BoolOutput)
+}
+
+func (o LookupClusterResultOutput) IamRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []string { return v.IamRoles }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) KmsKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.KmsKeyId }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) MasterUsername() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.MasterUsername }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupClusterResult) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o LookupClusterResultOutput) PreferredBackupWindow() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.PreferredBackupWindow }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) PreferredMaintenanceWindow() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.PreferredMaintenanceWindow }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) ReaderEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.ReaderEndpoint }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) ReplicationSourceIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.ReplicationSourceIdentifier }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) StorageEncrypted() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.StorageEncrypted }).(pulumi.BoolOutput)
+}
+
+func (o LookupClusterResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o LookupClusterResultOutput) VpcSecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []string { return v.VpcSecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupClusterApplyOutput{})
+	pulumi.RegisterOutputType(LookupClusterResultOutput{})
 }

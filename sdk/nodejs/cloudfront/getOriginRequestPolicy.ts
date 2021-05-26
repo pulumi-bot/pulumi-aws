@@ -41,11 +41,11 @@ export interface GetOriginRequestPolicyArgs {
     /**
      * The identifier for the origin request policy.
      */
-    readonly id?: string;
+    id?: string;
     /**
      * Unique name to identify the origin request policy.
      */
-    readonly name?: string;
+    name?: string;
 }
 
 /**
@@ -74,4 +74,22 @@ export interface GetOriginRequestPolicyResult {
      * Object that determines whether any URL query strings in viewer requests (and if so, which query strings) are included in the origin request key and automatically included in requests that CloudFront sends to the origin. See Query Strings Config for more information.
      */
     readonly queryStringsConfigs: outputs.cloudfront.GetOriginRequestPolicyQueryStringsConfig[];
+}
+
+export function getOriginRequestPolicyApply(args?: GetOriginRequestPolicyApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOriginRequestPolicyResult> {
+    return pulumi.output(args).apply(a => getOriginRequestPolicy(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getOriginRequestPolicy.
+ */
+export interface GetOriginRequestPolicyApplyArgs {
+    /**
+     * The identifier for the origin request policy.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Unique name to identify the origin request policy.
+     */
+    name?: pulumi.Input<string>;
 }

@@ -61,6 +61,24 @@ namespace Pulumi.Aws.Route53
         /// </summary>
         public static Task<GetResolverRulesResult> InvokeAsync(GetResolverRulesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetResolverRulesResult>("aws:route53/getResolverRules:getResolverRules", args ?? new GetResolverRulesArgs(), options.WithVersion());
+
+        public static Output<GetResolverRulesResult> Apply(GetResolverRulesApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetResolverRulesApplyArgs();
+            return Pulumi.Output.All(
+                args.OwnerId.Box(),
+                args.ResolverEndpointId.Box(),
+                args.RuleType.Box(),
+                args.ShareStatus.Box()
+            ).Apply(a => {
+                    var args = new GetResolverRulesArgs();
+                    a[0].Set(args, nameof(args.OwnerId));
+                    a[1].Set(args, nameof(args.ResolverEndpointId));
+                    a[2].Set(args, nameof(args.RuleType));
+                    a[3].Set(args, nameof(args.ShareStatus));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -91,6 +109,37 @@ namespace Pulumi.Aws.Route53
         public string? ShareStatus { get; set; }
 
         public GetResolverRulesArgs()
+        {
+        }
+    }
+
+    public sealed class GetResolverRulesApplyArgs
+    {
+        /// <summary>
+        /// When the desired resolver rules are shared with another AWS account, the account ID of the account that the rules are shared with.
+        /// </summary>
+        [Input("ownerId")]
+        public Input<string>? OwnerId { get; set; }
+
+        /// <summary>
+        /// The ID of the outbound resolver endpoint for the desired resolver rules.
+        /// </summary>
+        [Input("resolverEndpointId")]
+        public Input<string>? ResolverEndpointId { get; set; }
+
+        /// <summary>
+        /// The rule type of the desired resolver rules. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`.
+        /// </summary>
+        [Input("ruleType")]
+        public Input<string>? RuleType { get; set; }
+
+        /// <summary>
+        /// Whether the desired resolver rules are shared and, if so, whether the current account is sharing the rules with another account, or another account is sharing the rules with the current account. Valid values are `NOT_SHARED`, `SHARED_BY_ME` or `SHARED_WITH_ME`
+        /// </summary>
+        [Input("shareStatus")]
+        public Input<string>? ShareStatus { get; set; }
+
+        public GetResolverRulesApplyArgs()
         {
         }
     }

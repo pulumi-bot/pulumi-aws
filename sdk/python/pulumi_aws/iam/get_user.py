@@ -152,3 +152,10 @@ def get_user(tags: Optional[Mapping[str, str]] = None,
         tags=__ret__.tags,
         user_id=__ret__.user_id,
         user_name=__ret__.user_name)
+
+
+@_utilities.lift_output_func(get_user)
+def get_user_apply(tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                   user_name: Optional[pulumi.Input[str]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
+    ...

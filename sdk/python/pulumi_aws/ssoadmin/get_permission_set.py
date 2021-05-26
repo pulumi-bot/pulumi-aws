@@ -161,3 +161,12 @@ def get_permission_set(arn: Optional[str] = None,
         relay_state=__ret__.relay_state,
         session_duration=__ret__.session_duration,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_permission_set)
+def get_permission_set_apply(arn: Optional[pulumi.Input[str]] = None,
+                             instance_arn: Optional[pulumi.Input[str]] = None,
+                             name: Optional[pulumi.Input[str]] = None,
+                             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPermissionSetResult]:
+    ...

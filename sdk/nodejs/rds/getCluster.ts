@@ -40,8 +40,8 @@ export interface GetClusterArgs {
     /**
      * The cluster identifier of the RDS cluster.
      */
-    readonly clusterIdentifier: string;
-    readonly tags?: {[key: string]: string};
+    clusterIdentifier: string;
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -80,4 +80,19 @@ export interface GetClusterResult {
     readonly storageEncrypted: boolean;
     readonly tags: {[key: string]: string};
     readonly vpcSecurityGroupIds: string[];
+}
+
+export function getClusterApply(args: GetClusterApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
+    return pulumi.output(args).apply(a => getCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCluster.
+ */
+export interface GetClusterApplyArgs {
+    /**
+     * The cluster identifier of the RDS cluster.
+     */
+    clusterIdentifier: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

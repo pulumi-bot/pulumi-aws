@@ -157,3 +157,13 @@ def get_ami_ids(executable_users: Optional[Sequence[str]] = None,
         name_regex=__ret__.name_regex,
         owners=__ret__.owners,
         sort_ascending=__ret__.sort_ascending)
+
+
+@_utilities.lift_output_func(get_ami_ids)
+def get_ami_ids_apply(executable_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                      filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetAmiIdsFilterArgs']]]]] = None,
+                      name_regex: Optional[pulumi.Input[str]] = None,
+                      owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                      sort_ascending: Optional[pulumi.Input[bool]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAmiIdsResult]:
+    ...

@@ -107,3 +107,8 @@ def get_caller_identity(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
         arn=__ret__.arn,
         id=__ret__.id,
         user_id=__ret__.user_id)
+
+
+@_utilities.lift_output_func(get_caller_identity)
+def get_caller_identity_apply(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCallerIdentityResult]:
+    ...

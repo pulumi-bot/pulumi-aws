@@ -40,7 +40,7 @@ export interface GetServerArgs {
     /**
      * ID for an SFTP server.
      */
-    readonly serverId: string;
+    serverId: string;
 }
 
 /**
@@ -92,4 +92,18 @@ export interface GetServerResult {
      * URL of the service endpoint used to authenticate users with an `identityProviderType` of `API_GATEWAY`.
      */
     readonly url: string;
+}
+
+export function getServerApply(args: GetServerApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerResult> {
+    return pulumi.output(args).apply(a => getServer(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServer.
+ */
+export interface GetServerApplyArgs {
+    /**
+     * ID for an SFTP server.
+     */
+    serverId: pulumi.Input<string>;
 }

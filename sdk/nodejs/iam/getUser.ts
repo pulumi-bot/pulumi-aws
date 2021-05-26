@@ -42,11 +42,11 @@ export interface GetUserArgs {
     /**
      * Map of key-value pairs associated with the user.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
     /**
      * The friendly IAM user name to match.
      */
-    readonly userName: string;
+    userName: string;
 }
 
 /**
@@ -81,4 +81,22 @@ export interface GetUserResult {
      * The name associated to this User
      */
     readonly userName: string;
+}
+
+export function getUserApply(args: GetUserApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
+    return pulumi.output(args).apply(a => getUser(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getUser.
+ */
+export interface GetUserApplyArgs {
+    /**
+     * Map of key-value pairs associated with the user.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The friendly IAM user name to match.
+     */
+    userName: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package s3
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,4 +49,41 @@ type GetCanonicalUserIdResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+}
+
+func GetCanonicalUserIdApply(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetCanonicalUserIdResultOutput {
+	return pulumi.Any(opts).ApplyT(func(v interface{}) (GetCanonicalUserIdResult, error) {
+		r, err := GetCanonicalUserId(ctx, opts...)
+		return *r, err
+
+	}).(GetCanonicalUserIdResultOutput)
+}
+
+// A collection of values returned by getCanonicalUserId.
+type GetCanonicalUserIdResultOutput struct{ *pulumi.OutputState }
+
+func (GetCanonicalUserIdResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCanonicalUserIdResult)(nil)).Elem()
+}
+
+func (o GetCanonicalUserIdResultOutput) ToGetCanonicalUserIdResultOutput() GetCanonicalUserIdResultOutput {
+	return o
+}
+
+func (o GetCanonicalUserIdResultOutput) ToGetCanonicalUserIdResultOutputWithContext(ctx context.Context) GetCanonicalUserIdResultOutput {
+	return o
+}
+
+// The human-friendly name linked to the canonical user ID. The bucket owner's display name. **NOTE:** [This value](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTServiceGET.html) is only included in the response in the US East (N. Virginia), US West (N. California), US West (Oregon), Asia Pacific (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), EU (Ireland), and South America (São Paulo) regions.
+func (o GetCanonicalUserIdResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCanonicalUserIdResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetCanonicalUserIdResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCanonicalUserIdResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetCanonicalUserIdResultOutput{})
 }

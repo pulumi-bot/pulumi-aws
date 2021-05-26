@@ -4,6 +4,9 @@
 package cloudformation
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -86,4 +89,147 @@ type LookupStackResult struct {
 	TemplateBody string `pulumi:"templateBody"`
 	// The amount of time that can pass before the stack status becomes `CREATE_FAILED`
 	TimeoutInMinutes int `pulumi:"timeoutInMinutes"`
+}
+
+func LookupStackApply(ctx *pulumi.Context, args LookupStackApplyInput, opts ...pulumi.InvokeOption) LookupStackResultOutput {
+	return args.ToLookupStackApplyOutput().ApplyT(func(v LookupStackArgs) (LookupStackResult, error) {
+		r, err := LookupStack(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupStackResultOutput)
+}
+
+// LookupStackApplyInput is an input type that accepts LookupStackApplyArgs and LookupStackApplyOutput values.
+// You can construct a concrete instance of `LookupStackApplyInput` via:
+//
+//          LookupStackApplyArgs{...}
+type LookupStackApplyInput interface {
+	pulumi.Input
+
+	ToLookupStackApplyOutput() LookupStackApplyOutput
+	ToLookupStackApplyOutputWithContext(context.Context) LookupStackApplyOutput
+}
+
+// A collection of arguments for invoking getStack.
+type LookupStackApplyArgs struct {
+	// The name of the stack
+	Name pulumi.StringInput `pulumi:"name"`
+	// A map of tags associated with this stack.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupStackApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupStackArgs)(nil)).Elem()
+}
+
+func (i LookupStackApplyArgs) ToLookupStackApplyOutput() LookupStackApplyOutput {
+	return i.ToLookupStackApplyOutputWithContext(context.Background())
+}
+
+func (i LookupStackApplyArgs) ToLookupStackApplyOutputWithContext(ctx context.Context) LookupStackApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupStackApplyOutput)
+}
+
+// A collection of arguments for invoking getStack.
+type LookupStackApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupStackApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupStackArgs)(nil)).Elem()
+}
+
+func (o LookupStackApplyOutput) ToLookupStackApplyOutput() LookupStackApplyOutput {
+	return o
+}
+
+func (o LookupStackApplyOutput) ToLookupStackApplyOutputWithContext(ctx context.Context) LookupStackApplyOutput {
+	return o
+}
+
+// The name of the stack
+func (o LookupStackApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStackArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A map of tags associated with this stack.
+func (o LookupStackApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupStackArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getStack.
+type LookupStackResultOutput struct{ *pulumi.OutputState }
+
+func (LookupStackResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupStackResult)(nil)).Elem()
+}
+
+func (o LookupStackResultOutput) ToLookupStackResultOutput() LookupStackResultOutput {
+	return o
+}
+
+func (o LookupStackResultOutput) ToLookupStackResultOutputWithContext(ctx context.Context) LookupStackResultOutput {
+	return o
+}
+
+// A list of capabilities
+func (o LookupStackResultOutput) Capabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupStackResult) []string { return v.Capabilities }).(pulumi.StringArrayOutput)
+}
+
+// Description of the stack
+func (o LookupStackResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStackResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether the rollback of the stack is disabled when stack creation fails
+func (o LookupStackResultOutput) DisableRollback() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupStackResult) bool { return v.DisableRollback }).(pulumi.BoolOutput)
+}
+
+// The ARN of the IAM role used to create the stack.
+func (o LookupStackResultOutput) IamRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStackResult) string { return v.IamRoleArn }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupStackResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStackResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupStackResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStackResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of SNS topic ARNs to publish stack related events
+func (o LookupStackResultOutput) NotificationArns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupStackResult) []string { return v.NotificationArns }).(pulumi.StringArrayOutput)
+}
+
+// A map of outputs from the stack.
+func (o LookupStackResultOutput) Outputs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupStackResult) map[string]string { return v.Outputs }).(pulumi.StringMapOutput)
+}
+
+// A map of parameters that specify input parameters for the stack.
+func (o LookupStackResultOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupStackResult) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// A map of tags associated with this stack.
+func (o LookupStackResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupStackResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Structure containing the template body.
+func (o LookupStackResultOutput) TemplateBody() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStackResult) string { return v.TemplateBody }).(pulumi.StringOutput)
+}
+
+// The amount of time that can pass before the stack status becomes `CREATE_FAILED`
+func (o LookupStackResultOutput) TimeoutInMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupStackResult) int { return v.TimeoutInMinutes }).(pulumi.IntOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupStackApplyOutput{})
+	pulumi.RegisterOutputType(LookupStackResultOutput{})
 }

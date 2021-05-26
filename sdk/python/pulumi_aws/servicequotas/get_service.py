@@ -92,3 +92,9 @@ def get_service(service_name: Optional[str] = None,
         id=__ret__.id,
         service_code=__ret__.service_code,
         service_name=__ret__.service_name)
+
+
+@_utilities.lift_output_func(get_service)
+def get_service_apply(service_name: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
+    ...

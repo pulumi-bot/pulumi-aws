@@ -4,6 +4,9 @@
 package lakeformation
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,4 +83,166 @@ type LookupPermissionsResult struct {
 	Principal                   string                         `pulumi:"principal"`
 	Table                       GetPermissionsTable            `pulumi:"table"`
 	TableWithColumns            GetPermissionsTableWithColumns `pulumi:"tableWithColumns"`
+}
+
+func LookupPermissionsApply(ctx *pulumi.Context, args LookupPermissionsApplyInput, opts ...pulumi.InvokeOption) LookupPermissionsResultOutput {
+	return args.ToLookupPermissionsApplyOutput().ApplyT(func(v LookupPermissionsArgs) (LookupPermissionsResult, error) {
+		r, err := LookupPermissions(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupPermissionsResultOutput)
+}
+
+// LookupPermissionsApplyInput is an input type that accepts LookupPermissionsApplyArgs and LookupPermissionsApplyOutput values.
+// You can construct a concrete instance of `LookupPermissionsApplyInput` via:
+//
+//          LookupPermissionsApplyArgs{...}
+type LookupPermissionsApplyInput interface {
+	pulumi.Input
+
+	ToLookupPermissionsApplyOutput() LookupPermissionsApplyOutput
+	ToLookupPermissionsApplyOutputWithContext(context.Context) LookupPermissionsApplyOutput
+}
+
+// A collection of arguments for invoking getPermissions.
+type LookupPermissionsApplyArgs struct {
+	// Identifier for the Data Catalog. By default, it is the account ID of the caller.
+	CatalogId pulumi.StringPtrInput `pulumi:"catalogId"`
+	// Whether the permissions are to be granted for the Data Catalog. Defaults to `false`.
+	CatalogResource pulumi.BoolPtrInput `pulumi:"catalogResource"`
+	// Configuration block for a data location resource. Detailed below.
+	DataLocation GetPermissionsDataLocationPtrInput `pulumi:"dataLocation"`
+	// Configuration block for a database resource. Detailed below.
+	Database GetPermissionsDatabasePtrInput `pulumi:"database"`
+	// Principal to be granted the permissions on the resource. Supported principals are IAM users or IAM roles.
+	Principal pulumi.StringInput `pulumi:"principal"`
+	// Configuration block for a table resource. Detailed below.
+	Table GetPermissionsTablePtrInput `pulumi:"table"`
+	// Configuration block for a table with columns resource. Detailed below.
+	TableWithColumns GetPermissionsTableWithColumnsPtrInput `pulumi:"tableWithColumns"`
+}
+
+func (LookupPermissionsApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPermissionsArgs)(nil)).Elem()
+}
+
+func (i LookupPermissionsApplyArgs) ToLookupPermissionsApplyOutput() LookupPermissionsApplyOutput {
+	return i.ToLookupPermissionsApplyOutputWithContext(context.Background())
+}
+
+func (i LookupPermissionsApplyArgs) ToLookupPermissionsApplyOutputWithContext(ctx context.Context) LookupPermissionsApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupPermissionsApplyOutput)
+}
+
+// A collection of arguments for invoking getPermissions.
+type LookupPermissionsApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupPermissionsApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPermissionsArgs)(nil)).Elem()
+}
+
+func (o LookupPermissionsApplyOutput) ToLookupPermissionsApplyOutput() LookupPermissionsApplyOutput {
+	return o
+}
+
+func (o LookupPermissionsApplyOutput) ToLookupPermissionsApplyOutputWithContext(ctx context.Context) LookupPermissionsApplyOutput {
+	return o
+}
+
+// Identifier for the Data Catalog. By default, it is the account ID of the caller.
+func (o LookupPermissionsApplyOutput) CatalogId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPermissionsArgs) *string { return v.CatalogId }).(pulumi.StringPtrOutput)
+}
+
+// Whether the permissions are to be granted for the Data Catalog. Defaults to `false`.
+func (o LookupPermissionsApplyOutput) CatalogResource() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupPermissionsArgs) *bool { return v.CatalogResource }).(pulumi.BoolPtrOutput)
+}
+
+// Configuration block for a data location resource. Detailed below.
+func (o LookupPermissionsApplyOutput) DataLocation() GetPermissionsDataLocationPtrOutput {
+	return o.ApplyT(func(v LookupPermissionsArgs) *GetPermissionsDataLocation { return v.DataLocation }).(GetPermissionsDataLocationPtrOutput)
+}
+
+// Configuration block for a database resource. Detailed below.
+func (o LookupPermissionsApplyOutput) Database() GetPermissionsDatabasePtrOutput {
+	return o.ApplyT(func(v LookupPermissionsArgs) *GetPermissionsDatabase { return v.Database }).(GetPermissionsDatabasePtrOutput)
+}
+
+// Principal to be granted the permissions on the resource. Supported principals are IAM users or IAM roles.
+func (o LookupPermissionsApplyOutput) Principal() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPermissionsArgs) string { return v.Principal }).(pulumi.StringOutput)
+}
+
+// Configuration block for a table resource. Detailed below.
+func (o LookupPermissionsApplyOutput) Table() GetPermissionsTablePtrOutput {
+	return o.ApplyT(func(v LookupPermissionsArgs) *GetPermissionsTable { return v.Table }).(GetPermissionsTablePtrOutput)
+}
+
+// Configuration block for a table with columns resource. Detailed below.
+func (o LookupPermissionsApplyOutput) TableWithColumns() GetPermissionsTableWithColumnsPtrOutput {
+	return o.ApplyT(func(v LookupPermissionsArgs) *GetPermissionsTableWithColumns { return v.TableWithColumns }).(GetPermissionsTableWithColumnsPtrOutput)
+}
+
+// A collection of values returned by getPermissions.
+type LookupPermissionsResultOutput struct{ *pulumi.OutputState }
+
+func (LookupPermissionsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPermissionsResult)(nil)).Elem()
+}
+
+func (o LookupPermissionsResultOutput) ToLookupPermissionsResultOutput() LookupPermissionsResultOutput {
+	return o
+}
+
+func (o LookupPermissionsResultOutput) ToLookupPermissionsResultOutputWithContext(ctx context.Context) LookupPermissionsResultOutput {
+	return o
+}
+
+func (o LookupPermissionsResultOutput) CatalogId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPermissionsResult) *string { return v.CatalogId }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupPermissionsResultOutput) CatalogResource() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupPermissionsResult) *bool { return v.CatalogResource }).(pulumi.BoolPtrOutput)
+}
+
+func (o LookupPermissionsResultOutput) DataLocation() GetPermissionsDataLocationOutput {
+	return o.ApplyT(func(v LookupPermissionsResult) GetPermissionsDataLocation { return v.DataLocation }).(GetPermissionsDataLocationOutput)
+}
+
+func (o LookupPermissionsResultOutput) Database() GetPermissionsDatabaseOutput {
+	return o.ApplyT(func(v LookupPermissionsResult) GetPermissionsDatabase { return v.Database }).(GetPermissionsDatabaseOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupPermissionsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPermissionsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// List of permissions granted to the principal. For details on permissions, see [Lake Formation Permissions Reference](https://docs.aws.amazon.com/lake-formation/latest/dg/lf-permissions-reference.html).
+func (o LookupPermissionsResultOutput) Permissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupPermissionsResult) []string { return v.Permissions }).(pulumi.StringArrayOutput)
+}
+
+// Subset of `permissions` which the principal can pass.
+func (o LookupPermissionsResultOutput) PermissionsWithGrantOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupPermissionsResult) []string { return v.PermissionsWithGrantOptions }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupPermissionsResultOutput) Principal() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPermissionsResult) string { return v.Principal }).(pulumi.StringOutput)
+}
+
+func (o LookupPermissionsResultOutput) Table() GetPermissionsTableOutput {
+	return o.ApplyT(func(v LookupPermissionsResult) GetPermissionsTable { return v.Table }).(GetPermissionsTableOutput)
+}
+
+func (o LookupPermissionsResultOutput) TableWithColumns() GetPermissionsTableWithColumnsOutput {
+	return o.ApplyT(func(v LookupPermissionsResult) GetPermissionsTableWithColumns { return v.TableWithColumns }).(GetPermissionsTableWithColumnsOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupPermissionsApplyOutput{})
+	pulumi.RegisterOutputType(LookupPermissionsResultOutput{})
 }

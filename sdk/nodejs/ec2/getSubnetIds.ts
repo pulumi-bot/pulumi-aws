@@ -73,16 +73,16 @@ export interface GetSubnetIdsArgs {
     /**
      * Custom filter block as described below.
      */
-    readonly filters?: inputs.ec2.GetSubnetIdsFilter[];
+    filters?: inputs.ec2.GetSubnetIdsFilter[];
     /**
      * A map of tags, each pair of which must exactly match
      * a pair on the desired subnets.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
     /**
      * The VPC ID that you want to filter from.
      */
-    readonly vpcId: string;
+    vpcId: string;
 }
 
 /**
@@ -100,4 +100,27 @@ export interface GetSubnetIdsResult {
     readonly ids: string[];
     readonly tags: {[key: string]: string};
     readonly vpcId: string;
+}
+
+export function getSubnetIdsApply(args: GetSubnetIdsApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetIdsResult> {
+    return pulumi.output(args).apply(a => getSubnetIds(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSubnetIds.
+ */
+export interface GetSubnetIdsApplyArgs {
+    /**
+     * Custom filter block as described below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.ec2.GetSubnetIdsFilter>[]>;
+    /**
+     * A map of tags, each pair of which must exactly match
+     * a pair on the desired subnets.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The VPC ID that you want to filter from.
+     */
+    vpcId: pulumi.Input<string>;
 }

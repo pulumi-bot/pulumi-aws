@@ -49,6 +49,17 @@ namespace Pulumi.Aws.Cognito
         /// </summary>
         public static Task<GetUserPoolsResult> InvokeAsync(GetUserPoolsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUserPoolsResult>("aws:cognito/getUserPools:getUserPools", args ?? new GetUserPoolsArgs(), options.WithVersion());
+
+        public static Output<GetUserPoolsResult> Apply(GetUserPoolsApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetUserPoolsArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +72,19 @@ namespace Pulumi.Aws.Cognito
         public string Name { get; set; } = null!;
 
         public GetUserPoolsArgs()
+        {
+        }
+    }
+
+    public sealed class GetUserPoolsApplyArgs
+    {
+        /// <summary>
+        /// Name of the cognito user pools. Name is not a unique attribute for cognito user pool, so multiple pools might be returned with given name.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetUserPoolsApplyArgs()
         {
         }
     }

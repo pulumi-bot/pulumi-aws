@@ -40,11 +40,11 @@ export interface GetClusterArgs {
     /**
      * Group identifier.
      */
-    readonly clusterId: string;
+    clusterId: string;
     /**
      * The tags assigned to the resource
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -139,4 +139,22 @@ export interface GetClusterResult {
      * The tags assigned to the resource
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getClusterApply(args: GetClusterApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
+    return pulumi.output(args).apply(a => getCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCluster.
+ */
+export interface GetClusterApplyArgs {
+    /**
+     * Group identifier.
+     */
+    clusterId: pulumi.Input<string>;
+    /**
+     * The tags assigned to the resource
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

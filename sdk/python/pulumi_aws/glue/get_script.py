@@ -126,3 +126,11 @@ def get_script(dag_edges: Optional[Sequence[pulumi.InputType['GetScriptDagEdgeAr
         language=__ret__.language,
         python_script=__ret__.python_script,
         scala_code=__ret__.scala_code)
+
+
+@_utilities.lift_output_func(get_script)
+def get_script_apply(dag_edges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetScriptDagEdgeArgs']]]]] = None,
+                     dag_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetScriptDagNodeArgs']]]]] = None,
+                     language: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetScriptResult]:
+    ...

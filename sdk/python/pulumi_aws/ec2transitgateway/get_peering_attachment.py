@@ -159,3 +159,11 @@ def get_peering_attachment(filters: Optional[Sequence[pulumi.InputType['GetPeeri
         peer_transit_gateway_id=__ret__.peer_transit_gateway_id,
         tags=__ret__.tags,
         transit_gateway_id=__ret__.transit_gateway_id)
+
+
+@_utilities.lift_output_func(get_peering_attachment)
+def get_peering_attachment_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetPeeringAttachmentFilterArgs']]]]] = None,
+                                 id: Optional[pulumi.Input[str]] = None,
+                                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPeeringAttachmentResult]:
+    ...

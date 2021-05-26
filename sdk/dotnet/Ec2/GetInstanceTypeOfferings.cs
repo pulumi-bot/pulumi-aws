@@ -16,6 +16,20 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetInstanceTypeOfferingsResult> InvokeAsync(GetInstanceTypeOfferingsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypeOfferingsResult>("aws:ec2/getInstanceTypeOfferings:getInstanceTypeOfferings", args ?? new GetInstanceTypeOfferingsArgs(), options.WithVersion());
+
+        public static Output<GetInstanceTypeOfferingsResult> Apply(GetInstanceTypeOfferingsApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetInstanceTypeOfferingsApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.LocationType.Box()
+            ).Apply(a => {
+                    var args = new GetInstanceTypeOfferingsArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.LocationType));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -40,6 +54,31 @@ namespace Pulumi.Aws.Ec2
         public string? LocationType { get; set; }
 
         public GetInstanceTypeOfferingsArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceTypeOfferingsApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetInstanceTypeOfferingsFilterArgs>? _filters;
+
+        /// <summary>
+        /// One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceTypeOfferings.html) for supported filters. Detailed below.
+        /// </summary>
+        public InputList<Inputs.GetInstanceTypeOfferingsFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetInstanceTypeOfferingsFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// Location type. Defaults to `region`. Valid values: `availability-zone`, `availability-zone-id`, and `region`.
+        /// </summary>
+        [Input("locationType")]
+        public Input<string>? LocationType { get; set; }
+
+        public GetInstanceTypeOfferingsApplyArgs()
         {
         }
     }

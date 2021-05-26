@@ -4,6 +4,9 @@
 package ecs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,4 +69,126 @@ type LookupServiceResult struct {
 	ServiceName        string `pulumi:"serviceName"`
 	// The family for the latest ACTIVE revision
 	TaskDefinition string `pulumi:"taskDefinition"`
+}
+
+func LookupServiceApply(ctx *pulumi.Context, args LookupServiceApplyInput, opts ...pulumi.InvokeOption) LookupServiceResultOutput {
+	return args.ToLookupServiceApplyOutput().ApplyT(func(v LookupServiceArgs) (LookupServiceResult, error) {
+		r, err := LookupService(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupServiceResultOutput)
+}
+
+// LookupServiceApplyInput is an input type that accepts LookupServiceApplyArgs and LookupServiceApplyOutput values.
+// You can construct a concrete instance of `LookupServiceApplyInput` via:
+//
+//          LookupServiceApplyArgs{...}
+type LookupServiceApplyInput interface {
+	pulumi.Input
+
+	ToLookupServiceApplyOutput() LookupServiceApplyOutput
+	ToLookupServiceApplyOutputWithContext(context.Context) LookupServiceApplyOutput
+}
+
+// A collection of arguments for invoking getService.
+type LookupServiceApplyArgs struct {
+	// The arn of the ECS Cluster
+	ClusterArn pulumi.StringInput `pulumi:"clusterArn"`
+	// The name of the ECS Service
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+}
+
+func (LookupServiceApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceArgs)(nil)).Elem()
+}
+
+func (i LookupServiceApplyArgs) ToLookupServiceApplyOutput() LookupServiceApplyOutput {
+	return i.ToLookupServiceApplyOutputWithContext(context.Background())
+}
+
+func (i LookupServiceApplyArgs) ToLookupServiceApplyOutputWithContext(ctx context.Context) LookupServiceApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupServiceApplyOutput)
+}
+
+// A collection of arguments for invoking getService.
+type LookupServiceApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupServiceApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceArgs)(nil)).Elem()
+}
+
+func (o LookupServiceApplyOutput) ToLookupServiceApplyOutput() LookupServiceApplyOutput {
+	return o
+}
+
+func (o LookupServiceApplyOutput) ToLookupServiceApplyOutputWithContext(ctx context.Context) LookupServiceApplyOutput {
+	return o
+}
+
+// The arn of the ECS Cluster
+func (o LookupServiceApplyOutput) ClusterArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceArgs) string { return v.ClusterArn }).(pulumi.StringOutput)
+}
+
+// The name of the ECS Service
+func (o LookupServiceApplyOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceArgs) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getService.
+type LookupServiceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupServiceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServiceResult)(nil)).Elem()
+}
+
+func (o LookupServiceResultOutput) ToLookupServiceResultOutput() LookupServiceResultOutput {
+	return o
+}
+
+func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx context.Context) LookupServiceResultOutput {
+	return o
+}
+
+// The ARN of the ECS Service
+func (o LookupServiceResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceResultOutput) ClusterArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.ClusterArn }).(pulumi.StringOutput)
+}
+
+// The number of tasks for the ECS Service
+func (o LookupServiceResultOutput) DesiredCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupServiceResult) int { return v.DesiredCount }).(pulumi.IntOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupServiceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The launch type for the ECS Service
+func (o LookupServiceResultOutput) LaunchType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.LaunchType }).(pulumi.StringOutput)
+}
+
+// The scheduling strategy for the ECS Service
+func (o LookupServiceResultOutput) SchedulingStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.SchedulingStrategy }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// The family for the latest ACTIVE revision
+func (o LookupServiceResultOutput) TaskDefinition() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.TaskDefinition }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupServiceApplyOutput{})
+	pulumi.RegisterOutputType(LookupServiceResultOutput{})
 }

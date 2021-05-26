@@ -111,3 +111,8 @@ def get_billing_service_account(opts: Optional[pulumi.InvokeOptions] = None) -> 
     return AwaitableGetBillingServiceAccountResult(
         arn=__ret__.arn,
         id=__ret__.id)
+
+
+@_utilities.lift_output_func(get_billing_service_account)
+def get_billing_service_account_apply(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBillingServiceAccountResult]:
+    ...

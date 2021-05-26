@@ -57,11 +57,11 @@ export interface GetResolverEndpointArgs {
      * several valid keys, for a full reference, check out
      * [Route53resolver Filter value in the AWS API reference][1].
      */
-    readonly filters?: inputs.route53.GetResolverEndpointFilter[];
+    filters?: inputs.route53.GetResolverEndpointFilter[];
     /**
      * The ID of the Route53 Resolver Endpoint.
      */
-    readonly resolverEndpointId?: string;
+    resolverEndpointId?: string;
 }
 
 /**
@@ -80,4 +80,24 @@ export interface GetResolverEndpointResult {
     readonly resolverEndpointId?: string;
     readonly status: string;
     readonly vpcId: string;
+}
+
+export function getResolverEndpointApply(args?: GetResolverEndpointApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResolverEndpointResult> {
+    return pulumi.output(args).apply(a => getResolverEndpoint(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getResolverEndpoint.
+ */
+export interface GetResolverEndpointApplyArgs {
+    /**
+     * One or more name/value pairs to use as filters. There are
+     * several valid keys, for a full reference, check out
+     * [Route53resolver Filter value in the AWS API reference][1].
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.route53.GetResolverEndpointFilter>[]>;
+    /**
+     * The ID of the Route53 Resolver Endpoint.
+     */
+    resolverEndpointId?: pulumi.Input<string>;
 }

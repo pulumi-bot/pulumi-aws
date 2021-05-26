@@ -4,6 +4,9 @@
 package lambda
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,4 +42,119 @@ type GetInvocationResult struct {
 	Qualifier *string `pulumi:"qualifier"`
 	// String result of the lambda function invocation.
 	Result string `pulumi:"result"`
+}
+
+func GetInvocationApply(ctx *pulumi.Context, args GetInvocationApplyInput, opts ...pulumi.InvokeOption) GetInvocationResultOutput {
+	return args.ToGetInvocationApplyOutput().ApplyT(func(v GetInvocationArgs) (GetInvocationResult, error) {
+		r, err := GetInvocation(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetInvocationResultOutput)
+}
+
+// GetInvocationApplyInput is an input type that accepts GetInvocationApplyArgs and GetInvocationApplyOutput values.
+// You can construct a concrete instance of `GetInvocationApplyInput` via:
+//
+//          GetInvocationApplyArgs{...}
+type GetInvocationApplyInput interface {
+	pulumi.Input
+
+	ToGetInvocationApplyOutput() GetInvocationApplyOutput
+	ToGetInvocationApplyOutputWithContext(context.Context) GetInvocationApplyOutput
+}
+
+// A collection of arguments for invoking getInvocation.
+type GetInvocationApplyArgs struct {
+	// The name of the lambda function.
+	FunctionName pulumi.StringInput `pulumi:"functionName"`
+	// A string in JSON format that is passed as payload to the lambda function.
+	Input pulumi.StringInput `pulumi:"input"`
+	// The qualifier (a.k.a version) of the lambda function. Defaults
+	// to `$LATEST`.
+	Qualifier pulumi.StringPtrInput `pulumi:"qualifier"`
+}
+
+func (GetInvocationApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInvocationArgs)(nil)).Elem()
+}
+
+func (i GetInvocationApplyArgs) ToGetInvocationApplyOutput() GetInvocationApplyOutput {
+	return i.ToGetInvocationApplyOutputWithContext(context.Background())
+}
+
+func (i GetInvocationApplyArgs) ToGetInvocationApplyOutputWithContext(ctx context.Context) GetInvocationApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInvocationApplyOutput)
+}
+
+// A collection of arguments for invoking getInvocation.
+type GetInvocationApplyOutput struct{ *pulumi.OutputState }
+
+func (GetInvocationApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInvocationArgs)(nil)).Elem()
+}
+
+func (o GetInvocationApplyOutput) ToGetInvocationApplyOutput() GetInvocationApplyOutput {
+	return o
+}
+
+func (o GetInvocationApplyOutput) ToGetInvocationApplyOutputWithContext(ctx context.Context) GetInvocationApplyOutput {
+	return o
+}
+
+// The name of the lambda function.
+func (o GetInvocationApplyOutput) FunctionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInvocationArgs) string { return v.FunctionName }).(pulumi.StringOutput)
+}
+
+// A string in JSON format that is passed as payload to the lambda function.
+func (o GetInvocationApplyOutput) Input() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInvocationArgs) string { return v.Input }).(pulumi.StringOutput)
+}
+
+// The qualifier (a.k.a version) of the lambda function. Defaults
+// to `$LATEST`.
+func (o GetInvocationApplyOutput) Qualifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInvocationArgs) *string { return v.Qualifier }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getInvocation.
+type GetInvocationResultOutput struct{ *pulumi.OutputState }
+
+func (GetInvocationResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInvocationResult)(nil)).Elem()
+}
+
+func (o GetInvocationResultOutput) ToGetInvocationResultOutput() GetInvocationResultOutput {
+	return o
+}
+
+func (o GetInvocationResultOutput) ToGetInvocationResultOutputWithContext(ctx context.Context) GetInvocationResultOutput {
+	return o
+}
+
+func (o GetInvocationResultOutput) FunctionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInvocationResult) string { return v.FunctionName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetInvocationResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInvocationResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetInvocationResultOutput) Input() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInvocationResult) string { return v.Input }).(pulumi.StringOutput)
+}
+
+func (o GetInvocationResultOutput) Qualifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInvocationResult) *string { return v.Qualifier }).(pulumi.StringPtrOutput)
+}
+
+// String result of the lambda function invocation.
+func (o GetInvocationResultOutput) Result() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInvocationResult) string { return v.Result }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetInvocationApplyOutput{})
+	pulumi.RegisterOutputType(GetInvocationResultOutput{})
 }

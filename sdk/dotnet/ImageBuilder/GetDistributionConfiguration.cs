@@ -39,6 +39,19 @@ namespace Pulumi.Aws.ImageBuilder
         /// </summary>
         public static Task<GetDistributionConfigurationResult> InvokeAsync(GetDistributionConfigurationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDistributionConfigurationResult>("aws:imagebuilder/getDistributionConfiguration:getDistributionConfiguration", args ?? new GetDistributionConfigurationArgs(), options.WithVersion());
+
+        public static Output<GetDistributionConfigurationResult> Apply(GetDistributionConfigurationApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Arn.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetDistributionConfigurationArgs();
+                    a[0].Set(args, nameof(args.Arn));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -63,6 +76,31 @@ namespace Pulumi.Aws.ImageBuilder
         }
 
         public GetDistributionConfigurationArgs()
+        {
+        }
+    }
+
+    public sealed class GetDistributionConfigurationApplyArgs
+    {
+        /// <summary>
+        /// Amazon Resource Name (ARN) of the distribution configuration.
+        /// </summary>
+        [Input("arn", required: true)]
+        public Input<string> Arn { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Key-value map of resource tags for the distribution configuration.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetDistributionConfigurationApplyArgs()
         {
         }
     }

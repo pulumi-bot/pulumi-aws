@@ -79,3 +79,9 @@ def get_rate_based_rule(name: Optional[str] = None,
     return AwaitableGetRateBasedRuleResult(
         id=__ret__.id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_rate_based_rule)
+def get_rate_based_rule_apply(name: Optional[pulumi.Input[str]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRateBasedRuleResult]:
+    ...

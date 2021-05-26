@@ -41,6 +41,19 @@ namespace Pulumi.Aws.Ecs
         /// </summary>
         public static Task<GetContainerDefinitionResult> InvokeAsync(GetContainerDefinitionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetContainerDefinitionResult>("aws:ecs/getContainerDefinition:getContainerDefinition", args ?? new GetContainerDefinitionArgs(), options.WithVersion());
+
+        public static Output<GetContainerDefinitionResult> Apply(GetContainerDefinitionApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ContainerName.Box(),
+                args.TaskDefinition.Box()
+            ).Apply(a => {
+                    var args = new GetContainerDefinitionArgs();
+                    a[0].Set(args, nameof(args.ContainerName));
+                    a[1].Set(args, nameof(args.TaskDefinition));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -59,6 +72,25 @@ namespace Pulumi.Aws.Ecs
         public string TaskDefinition { get; set; } = null!;
 
         public GetContainerDefinitionArgs()
+        {
+        }
+    }
+
+    public sealed class GetContainerDefinitionApplyArgs
+    {
+        /// <summary>
+        /// The name of the container definition
+        /// </summary>
+        [Input("containerName", required: true)]
+        public Input<string> ContainerName { get; set; } = null!;
+
+        /// <summary>
+        /// The ARN of the task definition which contains the container
+        /// </summary>
+        [Input("taskDefinition", required: true)]
+        public Input<string> TaskDefinition { get; set; } = null!;
+
+        public GetContainerDefinitionApplyArgs()
         {
         }
     }

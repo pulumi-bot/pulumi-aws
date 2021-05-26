@@ -41,6 +41,17 @@ namespace Pulumi.Aws.Iam
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("aws:iam/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithVersion());
+
+        public static Output<GetGroupResult> Apply(GetGroupApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.GroupName.Box()
+            ).Apply(a => {
+                    var args = new GetGroupArgs();
+                    a[0].Set(args, nameof(args.GroupName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -53,6 +64,19 @@ namespace Pulumi.Aws.Iam
         public string GroupName { get; set; } = null!;
 
         public GetGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetGroupApplyArgs
+    {
+        /// <summary>
+        /// The friendly IAM group name to match.
+        /// </summary>
+        [Input("groupName", required: true)]
+        public Input<string> GroupName { get; set; } = null!;
+
+        public GetGroupApplyArgs()
         {
         }
     }

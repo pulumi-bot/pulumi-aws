@@ -56,19 +56,19 @@ export interface GetLaunchTemplateArgs {
     /**
      * Configuration block(s) for filtering. Detailed below.
      */
-    readonly filters?: inputs.ec2.GetLaunchTemplateFilter[];
+    filters?: inputs.ec2.GetLaunchTemplateFilter[];
     /**
      * The ID of the specific launch template to retrieve.
      */
-    readonly id?: string;
+    id?: string;
     /**
      * The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
      */
-    readonly name?: string;
+    name?: string;
     /**
      * A map of tags, each pair of which must exactly match a pair on the desired Launch Template.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -201,4 +201,30 @@ export interface GetLaunchTemplateResult {
      * A list of security group IDs to associate with.
      */
     readonly vpcSecurityGroupIds: string[];
+}
+
+export function getLaunchTemplateApply(args?: GetLaunchTemplateApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLaunchTemplateResult> {
+    return pulumi.output(args).apply(a => getLaunchTemplate(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getLaunchTemplate.
+ */
+export interface GetLaunchTemplateApplyArgs {
+    /**
+     * Configuration block(s) for filtering. Detailed below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.ec2.GetLaunchTemplateFilter>[]>;
+    /**
+     * The ID of the specific launch template to retrieve.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * A map of tags, each pair of which must exactly match a pair on the desired Launch Template.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

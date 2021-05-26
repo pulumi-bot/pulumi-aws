@@ -200,3 +200,10 @@ def get_signing_profile(name: Optional[str] = None,
         tags=__ret__.tags,
         version=__ret__.version,
         version_arn=__ret__.version_arn)
+
+
+@_utilities.lift_output_func(get_signing_profile)
+def get_signing_profile_apply(name: Optional[pulumi.Input[str]] = None,
+                              tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSigningProfileResult]:
+    ...

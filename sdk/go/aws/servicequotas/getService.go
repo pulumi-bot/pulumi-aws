@@ -4,6 +4,9 @@
 package servicequotas
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,4 +56,95 @@ type GetServiceResult struct {
 	// Code of the service.
 	ServiceCode string `pulumi:"serviceCode"`
 	ServiceName string `pulumi:"serviceName"`
+}
+
+func GetServiceApply(ctx *pulumi.Context, args GetServiceApplyInput, opts ...pulumi.InvokeOption) GetServiceResultOutput {
+	return args.ToGetServiceApplyOutput().ApplyT(func(v GetServiceArgs) (GetServiceResult, error) {
+		r, err := GetService(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetServiceResultOutput)
+}
+
+// GetServiceApplyInput is an input type that accepts GetServiceApplyArgs and GetServiceApplyOutput values.
+// You can construct a concrete instance of `GetServiceApplyInput` via:
+//
+//          GetServiceApplyArgs{...}
+type GetServiceApplyInput interface {
+	pulumi.Input
+
+	ToGetServiceApplyOutput() GetServiceApplyOutput
+	ToGetServiceApplyOutputWithContext(context.Context) GetServiceApplyOutput
+}
+
+// A collection of arguments for invoking getService.
+type GetServiceApplyArgs struct {
+	// Service name to lookup within Service Quotas. Available values can be found with the [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+}
+
+func (GetServiceApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceArgs)(nil)).Elem()
+}
+
+func (i GetServiceApplyArgs) ToGetServiceApplyOutput() GetServiceApplyOutput {
+	return i.ToGetServiceApplyOutputWithContext(context.Background())
+}
+
+func (i GetServiceApplyArgs) ToGetServiceApplyOutputWithContext(ctx context.Context) GetServiceApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceApplyOutput)
+}
+
+// A collection of arguments for invoking getService.
+type GetServiceApplyOutput struct{ *pulumi.OutputState }
+
+func (GetServiceApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceArgs)(nil)).Elem()
+}
+
+func (o GetServiceApplyOutput) ToGetServiceApplyOutput() GetServiceApplyOutput {
+	return o
+}
+
+func (o GetServiceApplyOutput) ToGetServiceApplyOutputWithContext(ctx context.Context) GetServiceApplyOutput {
+	return o
+}
+
+// Service name to lookup within Service Quotas. Available values can be found with the [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
+func (o GetServiceApplyOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceArgs) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getService.
+type GetServiceResultOutput struct{ *pulumi.OutputState }
+
+func (GetServiceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceResult)(nil)).Elem()
+}
+
+func (o GetServiceResultOutput) ToGetServiceResultOutput() GetServiceResultOutput {
+	return o
+}
+
+func (o GetServiceResultOutput) ToGetServiceResultOutputWithContext(ctx context.Context) GetServiceResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetServiceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Code of the service.
+func (o GetServiceResultOutput) ServiceCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceResult) string { return v.ServiceCode }).(pulumi.StringOutput)
+}
+
+func (o GetServiceResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetServiceApplyOutput{})
+	pulumi.RegisterOutputType(GetServiceResultOutput{})
 }

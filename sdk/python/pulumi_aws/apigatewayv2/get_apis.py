@@ -119,3 +119,11 @@ def get_apis(name: Optional[str] = None,
         name=__ret__.name,
         protocol_type=__ret__.protocol_type,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_apis)
+def get_apis_apply(name: Optional[pulumi.Input[str]] = None,
+                   protocol_type: Optional[pulumi.Input[str]] = None,
+                   tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApisResult]:
+    ...

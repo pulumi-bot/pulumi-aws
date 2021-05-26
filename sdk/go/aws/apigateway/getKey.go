@@ -4,6 +4,9 @@
 package apigateway
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,128 @@ type GetKeyResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Set to the value of the API Key.
 	Value string `pulumi:"value"`
+}
+
+func GetKeyApply(ctx *pulumi.Context, args GetKeyApplyInput, opts ...pulumi.InvokeOption) GetKeyResultOutput {
+	return args.ToGetKeyApplyOutput().ApplyT(func(v GetKeyArgs) (GetKeyResult, error) {
+		r, err := GetKey(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetKeyResultOutput)
+}
+
+// GetKeyApplyInput is an input type that accepts GetKeyApplyArgs and GetKeyApplyOutput values.
+// You can construct a concrete instance of `GetKeyApplyInput` via:
+//
+//          GetKeyApplyArgs{...}
+type GetKeyApplyInput interface {
+	pulumi.Input
+
+	ToGetKeyApplyOutput() GetKeyApplyOutput
+	ToGetKeyApplyOutputWithContext(context.Context) GetKeyApplyOutput
+}
+
+// A collection of arguments for invoking getKey.
+type GetKeyApplyArgs struct {
+	// The ID of the API Key to look up.
+	Id pulumi.StringInput `pulumi:"id"`
+	// A map of tags for the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetKeyApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeyArgs)(nil)).Elem()
+}
+
+func (i GetKeyApplyArgs) ToGetKeyApplyOutput() GetKeyApplyOutput {
+	return i.ToGetKeyApplyOutputWithContext(context.Background())
+}
+
+func (i GetKeyApplyArgs) ToGetKeyApplyOutputWithContext(ctx context.Context) GetKeyApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeyApplyOutput)
+}
+
+// A collection of arguments for invoking getKey.
+type GetKeyApplyOutput struct{ *pulumi.OutputState }
+
+func (GetKeyApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeyArgs)(nil)).Elem()
+}
+
+func (o GetKeyApplyOutput) ToGetKeyApplyOutput() GetKeyApplyOutput {
+	return o
+}
+
+func (o GetKeyApplyOutput) ToGetKeyApplyOutputWithContext(ctx context.Context) GetKeyApplyOutput {
+	return o
+}
+
+// The ID of the API Key to look up.
+func (o GetKeyApplyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyArgs) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A map of tags for the resource.
+func (o GetKeyApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetKeyArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getKey.
+type GetKeyResultOutput struct{ *pulumi.OutputState }
+
+func (GetKeyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeyResult)(nil)).Elem()
+}
+
+func (o GetKeyResultOutput) ToGetKeyResultOutput() GetKeyResultOutput {
+	return o
+}
+
+func (o GetKeyResultOutput) ToGetKeyResultOutputWithContext(ctx context.Context) GetKeyResultOutput {
+	return o
+}
+
+// The date and time when the API Key was created.
+func (o GetKeyResultOutput) CreatedDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyResult) string { return v.CreatedDate }).(pulumi.StringOutput)
+}
+
+// The description of the API Key.
+func (o GetKeyResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Specifies whether the API Key is enabled.
+func (o GetKeyResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKeyResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Set to the ID of the API Key.
+func (o GetKeyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The date and time when the API Key was last updated.
+func (o GetKeyResultOutput) LastUpdatedDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyResult) string { return v.LastUpdatedDate }).(pulumi.StringOutput)
+}
+
+// Set to the name of the API Key.
+func (o GetKeyResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A map of tags for the resource.
+func (o GetKeyResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetKeyResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Set to the value of the API Key.
+func (o GetKeyResultOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyResult) string { return v.Value }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetKeyApplyOutput{})
+	pulumi.RegisterOutputType(GetKeyResultOutput{})
 }

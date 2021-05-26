@@ -17,6 +17,18 @@ namespace Pulumi.Aws.AutoScaling
         /// </summary>
         public static Task<GetAmiIdsResult> InvokeAsync(GetAmiIdsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAmiIdsResult>("aws:autoscaling/getAmiIds:getAmiIds", args ?? new GetAmiIdsArgs(), options.WithVersion());
+
+        public static Output<GetAmiIdsResult> Apply(GetAmiIdsApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetAmiIdsApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box()
+            ).Apply(a => {
+                    var args = new GetAmiIdsArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -35,6 +47,25 @@ namespace Pulumi.Aws.AutoScaling
         }
 
         public GetAmiIdsArgs()
+        {
+        }
+    }
+
+    public sealed class GetAmiIdsApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetAmiIdsFilterArgs>? _filters;
+
+        /// <summary>
+        /// A filter used to scope the list e.g. by tags. See [related docs](http://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_Filter.html).
+        /// </summary>
+        public InputList<Inputs.GetAmiIdsFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetAmiIdsFilterArgs>());
+            set => _filters = value;
+        }
+
+        public GetAmiIdsApplyArgs()
         {
         }
     }

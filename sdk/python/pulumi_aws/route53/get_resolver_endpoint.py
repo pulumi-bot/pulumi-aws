@@ -168,3 +168,10 @@ def get_resolver_endpoint(filters: Optional[Sequence[pulumi.InputType['GetResolv
         resolver_endpoint_id=__ret__.resolver_endpoint_id,
         status=__ret__.status,
         vpc_id=__ret__.vpc_id)
+
+
+@_utilities.lift_output_func(get_resolver_endpoint)
+def get_resolver_endpoint_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetResolverEndpointFilterArgs']]]]] = None,
+                                resolver_endpoint_id: Optional[pulumi.Input[str]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResolverEndpointResult]:
+    ...
