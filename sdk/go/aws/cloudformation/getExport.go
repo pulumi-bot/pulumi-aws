@@ -4,6 +4,9 @@
 package cloudformation
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,100 @@ type GetExportResult struct {
 	Name string `pulumi:"name"`
 	// The value from Cloudformation export identified by the export name found from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
 	Value string `pulumi:"value"`
+}
+
+func GetExportApply(ctx *pulumi.Context, args GetExportApplyInput, opts ...pulumi.InvokeOption) GetExportResultOutput {
+	return args.ToGetExportApplyOutput().ApplyT(func(v GetExportArgs) (GetExportResult, error) {
+		r, err := GetExport(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetExportResultOutput)
+}
+
+// GetExportApplyInput is an input type that accepts GetExportApplyArgs and GetExportApplyOutput values.
+// You can construct a concrete instance of `GetExportApplyInput` via:
+//
+//          GetExportApplyArgs{...}
+type GetExportApplyInput interface {
+	pulumi.Input
+
+	ToGetExportApplyOutput() GetExportApplyOutput
+	ToGetExportApplyOutputWithContext(context.Context) GetExportApplyOutput
+}
+
+// A collection of arguments for invoking getExport.
+type GetExportApplyArgs struct {
+	// The name of the export as it appears in the console or from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetExportApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExportArgs)(nil)).Elem()
+}
+
+func (i GetExportApplyArgs) ToGetExportApplyOutput() GetExportApplyOutput {
+	return i.ToGetExportApplyOutputWithContext(context.Background())
+}
+
+func (i GetExportApplyArgs) ToGetExportApplyOutputWithContext(ctx context.Context) GetExportApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExportApplyOutput)
+}
+
+// A collection of arguments for invoking getExport.
+type GetExportApplyOutput struct{ *pulumi.OutputState }
+
+func (GetExportApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExportArgs)(nil)).Elem()
+}
+
+func (o GetExportApplyOutput) ToGetExportApplyOutput() GetExportApplyOutput {
+	return o
+}
+
+func (o GetExportApplyOutput) ToGetExportApplyOutputWithContext(ctx context.Context) GetExportApplyOutput {
+	return o
+}
+
+// The name of the export as it appears in the console or from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
+func (o GetExportApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExportArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getExport.
+type GetExportResultOutput struct{ *pulumi.OutputState }
+
+func (GetExportResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExportResult)(nil)).Elem()
+}
+
+func (o GetExportResultOutput) ToGetExportResultOutput() GetExportResultOutput {
+	return o
+}
+
+func (o GetExportResultOutput) ToGetExportResultOutputWithContext(ctx context.Context) GetExportResultOutput {
+	return o
+}
+
+// The exportingStackId (AWS ARNs) equivalent `ExportingStackId` from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
+func (o GetExportResultOutput) ExportingStackId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExportResult) string { return v.ExportingStackId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetExportResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExportResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetExportResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExportResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value from Cloudformation export identified by the export name found from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
+func (o GetExportResultOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExportResult) string { return v.Value }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetExportApplyOutput{})
+	pulumi.RegisterOutputType(GetExportResultOutput{})
 }

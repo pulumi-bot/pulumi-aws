@@ -4,6 +4,9 @@
 package apigatewayv2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,119 @@ type GetApisResult struct {
 	Name         *string           `pulumi:"name"`
 	ProtocolType *string           `pulumi:"protocolType"`
 	Tags         map[string]string `pulumi:"tags"`
+}
+
+func GetApisApply(ctx *pulumi.Context, args GetApisApplyInput, opts ...pulumi.InvokeOption) GetApisResultOutput {
+	return args.ToGetApisApplyOutput().ApplyT(func(v GetApisArgs) (GetApisResult, error) {
+		r, err := GetApis(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetApisResultOutput)
+}
+
+// GetApisApplyInput is an input type that accepts GetApisApplyArgs and GetApisApplyOutput values.
+// You can construct a concrete instance of `GetApisApplyInput` via:
+//
+//          GetApisApplyArgs{...}
+type GetApisApplyInput interface {
+	pulumi.Input
+
+	ToGetApisApplyOutput() GetApisApplyOutput
+	ToGetApisApplyOutputWithContext(context.Context) GetApisApplyOutput
+}
+
+// A collection of arguments for invoking getApis.
+type GetApisApplyArgs struct {
+	// The API name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The API protocol.
+	ProtocolType pulumi.StringPtrInput `pulumi:"protocolType"`
+	// A map of tags, each pair of which must exactly match
+	// a pair on the desired APIs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetApisApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApisArgs)(nil)).Elem()
+}
+
+func (i GetApisApplyArgs) ToGetApisApplyOutput() GetApisApplyOutput {
+	return i.ToGetApisApplyOutputWithContext(context.Background())
+}
+
+func (i GetApisApplyArgs) ToGetApisApplyOutputWithContext(ctx context.Context) GetApisApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApisApplyOutput)
+}
+
+// A collection of arguments for invoking getApis.
+type GetApisApplyOutput struct{ *pulumi.OutputState }
+
+func (GetApisApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApisArgs)(nil)).Elem()
+}
+
+func (o GetApisApplyOutput) ToGetApisApplyOutput() GetApisApplyOutput {
+	return o
+}
+
+func (o GetApisApplyOutput) ToGetApisApplyOutputWithContext(ctx context.Context) GetApisApplyOutput {
+	return o
+}
+
+// The API name.
+func (o GetApisApplyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApisArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The API protocol.
+func (o GetApisApplyOutput) ProtocolType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApisArgs) *string { return v.ProtocolType }).(pulumi.StringPtrOutput)
+}
+
+// A map of tags, each pair of which must exactly match
+// a pair on the desired APIs.
+func (o GetApisApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetApisArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getApis.
+type GetApisResultOutput struct{ *pulumi.OutputState }
+
+func (GetApisResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApisResult)(nil)).Elem()
+}
+
+func (o GetApisResultOutput) ToGetApisResultOutput() GetApisResultOutput {
+	return o
+}
+
+func (o GetApisResultOutput) ToGetApisResultOutputWithContext(ctx context.Context) GetApisResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetApisResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApisResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Set of API identifiers.
+func (o GetApisResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApisResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetApisResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApisResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetApisResultOutput) ProtocolType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApisResult) *string { return v.ProtocolType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetApisResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetApisResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetApisApplyOutput{})
+	pulumi.RegisterOutputType(GetApisResultOutput{})
 }

@@ -205,3 +205,12 @@ def get_managed_prefix_list(filters: Optional[Sequence[pulumi.InputType['GetMana
         owner_id=__ret__.owner_id,
         tags=__ret__.tags,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_managed_prefix_list)
+def get_managed_prefix_list_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetManagedPrefixListFilterArgs']]]]] = None,
+                                  id: Optional[pulumi.Input[str]] = None,
+                                  name: Optional[pulumi.Input[str]] = None,
+                                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetManagedPrefixListResult]:
+    ...

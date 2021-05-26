@@ -108,3 +108,8 @@ def get_partition(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPa
         id=__ret__.id,
         partition=__ret__.partition,
         reverse_dns_prefix=__ret__.reverse_dns_prefix)
+
+
+@_utilities.lift_output_func(get_partition)
+def get_partition_apply(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPartitionResult]:
+    ...

@@ -88,3 +88,8 @@ def get_rules_packages(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitable
     return AwaitableGetRulesPackagesResult(
         arns=__ret__.arns,
         id=__ret__.id)
+
+
+@_utilities.lift_output_func(get_rules_packages)
+def get_rules_packages_apply(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRulesPackagesResult]:
+    ...

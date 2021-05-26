@@ -51,6 +51,28 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetRouteTableResult> InvokeAsync(GetRouteTableArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRouteTableResult>("aws:ec2/getRouteTable:getRouteTable", args ?? new GetRouteTableArgs(), options.WithVersion());
+
+        public static Output<GetRouteTableResult> Apply(GetRouteTableApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetRouteTableApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.Box(),
+                args.GatewayId.Box(),
+                args.RouteTableId.Box(),
+                args.SubnetId.Box(),
+                args.Tags.Box(),
+                args.VpcId.Box()
+            ).Apply(a => {
+                    var args = new GetRouteTableArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.GatewayId));
+                    a[2].Set(args, nameof(args.RouteTableId));
+                    a[3].Set(args, nameof(args.SubnetId));
+                    a[4].Set(args, nameof(args.Tags));
+                    a[5].Set(args, nameof(args.VpcId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -105,6 +127,61 @@ namespace Pulumi.Aws.Ec2
         public string? VpcId { get; set; }
 
         public GetRouteTableArgs()
+        {
+        }
+    }
+
+    public sealed class GetRouteTableApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetRouteTableFilterArgs>? _filters;
+
+        /// <summary>
+        /// Configuration block. Detailed below.
+        /// </summary>
+        public InputList<Inputs.GetRouteTableFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetRouteTableFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// ID of an Internet Gateway or Virtual Private Gateway which is connected to the Route Table (not exported if not passed as a parameter).
+        /// </summary>
+        [Input("gatewayId")]
+        public Input<string>? GatewayId { get; set; }
+
+        /// <summary>
+        /// ID of the specific Route Table to retrieve.
+        /// </summary>
+        [Input("routeTableId")]
+        public Input<string>? RouteTableId { get; set; }
+
+        /// <summary>
+        /// ID of a Subnet which is connected to the Route Table (not exported if not passed as a parameter).
+        /// </summary>
+        [Input("subnetId")]
+        public Input<string>? SubnetId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Map of tags, each pair of which must exactly match a pair on the desired Route Table.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// ID of the VPC that the desired Route Table belongs to.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        public GetRouteTableApplyArgs()
         {
         }
     }

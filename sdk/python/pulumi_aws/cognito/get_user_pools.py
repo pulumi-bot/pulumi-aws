@@ -107,3 +107,9 @@ def get_user_pools(name: Optional[str] = None,
         id=__ret__.id,
         ids=__ret__.ids,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_user_pools)
+def get_user_pools_apply(name: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserPoolsResult]:
+    ...

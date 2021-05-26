@@ -39,6 +39,19 @@ namespace Pulumi.Aws.ImageBuilder
         /// </summary>
         public static Task<GetImagePipelineResult> InvokeAsync(GetImagePipelineArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImagePipelineResult>("aws:imagebuilder/getImagePipeline:getImagePipeline", args ?? new GetImagePipelineArgs(), options.WithVersion());
+
+        public static Output<GetImagePipelineResult> Apply(GetImagePipelineApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Arn.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetImagePipelineArgs();
+                    a[0].Set(args, nameof(args.Arn));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -63,6 +76,31 @@ namespace Pulumi.Aws.ImageBuilder
         }
 
         public GetImagePipelineArgs()
+        {
+        }
+    }
+
+    public sealed class GetImagePipelineApplyArgs
+    {
+        /// <summary>
+        /// Amazon Resource Name (ARN) of the image pipeline.
+        /// </summary>
+        [Input("arn", required: true)]
+        public Input<string> Arn { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Key-value map of resource tags for the image pipeline.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetImagePipelineApplyArgs()
         {
         }
     }

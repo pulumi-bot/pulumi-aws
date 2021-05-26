@@ -4,6 +4,9 @@
 package wafregional
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,4 +54,90 @@ type GetRateBasedModResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
+}
+
+func GetRateBasedModApply(ctx *pulumi.Context, args GetRateBasedModApplyInput, opts ...pulumi.InvokeOption) GetRateBasedModResultOutput {
+	return args.ToGetRateBasedModApplyOutput().ApplyT(func(v GetRateBasedModArgs) (GetRateBasedModResult, error) {
+		r, err := GetRateBasedMod(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetRateBasedModResultOutput)
+}
+
+// GetRateBasedModApplyInput is an input type that accepts GetRateBasedModApplyArgs and GetRateBasedModApplyOutput values.
+// You can construct a concrete instance of `GetRateBasedModApplyInput` via:
+//
+//          GetRateBasedModApplyArgs{...}
+type GetRateBasedModApplyInput interface {
+	pulumi.Input
+
+	ToGetRateBasedModApplyOutput() GetRateBasedModApplyOutput
+	ToGetRateBasedModApplyOutputWithContext(context.Context) GetRateBasedModApplyOutput
+}
+
+// A collection of arguments for invoking getRateBasedMod.
+type GetRateBasedModApplyArgs struct {
+	// The name of the WAF Regional rate based rule.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetRateBasedModApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRateBasedModArgs)(nil)).Elem()
+}
+
+func (i GetRateBasedModApplyArgs) ToGetRateBasedModApplyOutput() GetRateBasedModApplyOutput {
+	return i.ToGetRateBasedModApplyOutputWithContext(context.Background())
+}
+
+func (i GetRateBasedModApplyArgs) ToGetRateBasedModApplyOutputWithContext(ctx context.Context) GetRateBasedModApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRateBasedModApplyOutput)
+}
+
+// A collection of arguments for invoking getRateBasedMod.
+type GetRateBasedModApplyOutput struct{ *pulumi.OutputState }
+
+func (GetRateBasedModApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRateBasedModArgs)(nil)).Elem()
+}
+
+func (o GetRateBasedModApplyOutput) ToGetRateBasedModApplyOutput() GetRateBasedModApplyOutput {
+	return o
+}
+
+func (o GetRateBasedModApplyOutput) ToGetRateBasedModApplyOutputWithContext(ctx context.Context) GetRateBasedModApplyOutput {
+	return o
+}
+
+// The name of the WAF Regional rate based rule.
+func (o GetRateBasedModApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRateBasedModArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getRateBasedMod.
+type GetRateBasedModResultOutput struct{ *pulumi.OutputState }
+
+func (GetRateBasedModResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRateBasedModResult)(nil)).Elem()
+}
+
+func (o GetRateBasedModResultOutput) ToGetRateBasedModResultOutput() GetRateBasedModResultOutput {
+	return o
+}
+
+func (o GetRateBasedModResultOutput) ToGetRateBasedModResultOutputWithContext(ctx context.Context) GetRateBasedModResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRateBasedModResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRateBasedModResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetRateBasedModResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRateBasedModResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRateBasedModApplyOutput{})
+	pulumi.RegisterOutputType(GetRateBasedModResultOutput{})
 }

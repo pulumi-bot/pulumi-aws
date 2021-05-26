@@ -41,6 +41,21 @@ namespace Pulumi.Aws.Lambda
         /// </summary>
         public static Task<GetFunctionResult> InvokeAsync(GetFunctionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionResult>("aws:lambda/getFunction:getFunction", args ?? new GetFunctionArgs(), options.WithVersion());
+
+        public static Output<GetFunctionResult> Apply(GetFunctionApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.FunctionName.Box(),
+                args.Qualifier.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetFunctionArgs();
+                    a[0].Set(args, nameof(args.FunctionName));
+                    a[1].Set(args, nameof(args.Qualifier));
+                    a[2].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -67,6 +82,33 @@ namespace Pulumi.Aws.Lambda
         }
 
         public GetFunctionArgs()
+        {
+        }
+    }
+
+    public sealed class GetFunctionApplyArgs
+    {
+        /// <summary>
+        /// Name of the lambda function.
+        /// </summary>
+        [Input("functionName", required: true)]
+        public Input<string> FunctionName { get; set; } = null!;
+
+        /// <summary>
+        /// Alias name or version number of the lambda function. e.g. `$LATEST`, `my-alias`, or `1`
+        /// </summary>
+        [Input("qualifier")]
+        public Input<string>? Qualifier { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetFunctionApplyArgs()
         {
         }
     }

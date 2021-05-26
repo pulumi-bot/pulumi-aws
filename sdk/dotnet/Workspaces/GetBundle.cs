@@ -61,6 +61,22 @@ namespace Pulumi.Aws.Workspaces
         /// </summary>
         public static Task<GetBundleResult> InvokeAsync(GetBundleArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBundleResult>("aws:workspaces/getBundle:getBundle", args ?? new GetBundleArgs(), options.WithVersion());
+
+        public static Output<GetBundleResult> Apply(GetBundleApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetBundleApplyArgs();
+            return Pulumi.Output.All(
+                args.BundleId.Box(),
+                args.Name.Box(),
+                args.Owner.Box()
+            ).Apply(a => {
+                    var args = new GetBundleArgs();
+                    a[0].Set(args, nameof(args.BundleId));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.Owner));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -85,6 +101,31 @@ namespace Pulumi.Aws.Workspaces
         public string? Owner { get; set; }
 
         public GetBundleArgs()
+        {
+        }
+    }
+
+    public sealed class GetBundleApplyArgs
+    {
+        /// <summary>
+        /// The ID of the bundle.
+        /// </summary>
+        [Input("bundleId")]
+        public Input<string>? BundleId { get; set; }
+
+        /// <summary>
+        /// The name of the bundle. You cannot combine this parameter with `bundle_id`.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The owner of the bundles. You have to leave it blank for own bundles. You cannot combine this parameter with `bundle_id`.
+        /// </summary>
+        [Input("owner")]
+        public Input<string>? Owner { get; set; }
+
+        public GetBundleApplyArgs()
         {
         }
     }

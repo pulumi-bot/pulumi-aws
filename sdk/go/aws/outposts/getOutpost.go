@@ -4,6 +4,9 @@
 package outposts
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,4 +70,138 @@ type GetOutpostResult struct {
 	OwnerId     string `pulumi:"ownerId"`
 	// Site identifier.
 	SiteId string `pulumi:"siteId"`
+}
+
+func GetOutpostApply(ctx *pulumi.Context, args GetOutpostApplyInput, opts ...pulumi.InvokeOption) GetOutpostResultOutput {
+	return args.ToGetOutpostApplyOutput().ApplyT(func(v GetOutpostArgs) (GetOutpostResult, error) {
+		r, err := GetOutpost(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetOutpostResultOutput)
+}
+
+// GetOutpostApplyInput is an input type that accepts GetOutpostApplyArgs and GetOutpostApplyOutput values.
+// You can construct a concrete instance of `GetOutpostApplyInput` via:
+//
+//          GetOutpostApplyArgs{...}
+type GetOutpostApplyInput interface {
+	pulumi.Input
+
+	ToGetOutpostApplyOutput() GetOutpostApplyOutput
+	ToGetOutpostApplyOutputWithContext(context.Context) GetOutpostApplyOutput
+}
+
+// A collection of arguments for invoking getOutpost.
+type GetOutpostApplyArgs struct {
+	// Amazon Resource Name (ARN).
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// Identifier of the Outpost.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Name of the Outpost.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// AWS Account identifier of the Outpost owner.
+	OwnerId pulumi.StringPtrInput `pulumi:"ownerId"`
+}
+
+func (GetOutpostApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOutpostArgs)(nil)).Elem()
+}
+
+func (i GetOutpostApplyArgs) ToGetOutpostApplyOutput() GetOutpostApplyOutput {
+	return i.ToGetOutpostApplyOutputWithContext(context.Background())
+}
+
+func (i GetOutpostApplyArgs) ToGetOutpostApplyOutputWithContext(ctx context.Context) GetOutpostApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOutpostApplyOutput)
+}
+
+// A collection of arguments for invoking getOutpost.
+type GetOutpostApplyOutput struct{ *pulumi.OutputState }
+
+func (GetOutpostApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOutpostArgs)(nil)).Elem()
+}
+
+func (o GetOutpostApplyOutput) ToGetOutpostApplyOutput() GetOutpostApplyOutput {
+	return o
+}
+
+func (o GetOutpostApplyOutput) ToGetOutpostApplyOutputWithContext(ctx context.Context) GetOutpostApplyOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN).
+func (o GetOutpostApplyOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOutpostArgs) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// Identifier of the Outpost.
+func (o GetOutpostApplyOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOutpostArgs) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Outpost.
+func (o GetOutpostApplyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOutpostArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// AWS Account identifier of the Outpost owner.
+func (o GetOutpostApplyOutput) OwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOutpostArgs) *string { return v.OwnerId }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getOutpost.
+type GetOutpostResultOutput struct{ *pulumi.OutputState }
+
+func (GetOutpostResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOutpostResult)(nil)).Elem()
+}
+
+func (o GetOutpostResultOutput) ToGetOutpostResultOutput() GetOutpostResultOutput {
+	return o
+}
+
+func (o GetOutpostResultOutput) ToGetOutpostResultOutputWithContext(ctx context.Context) GetOutpostResultOutput {
+	return o
+}
+
+func (o GetOutpostResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOutpostResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// Availability Zone name.
+func (o GetOutpostResultOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOutpostResult) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Availability Zone identifier.
+func (o GetOutpostResultOutput) AvailabilityZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOutpostResult) string { return v.AvailabilityZoneId }).(pulumi.StringOutput)
+}
+
+// Description.
+func (o GetOutpostResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOutpostResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetOutpostResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOutpostResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetOutpostResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOutpostResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetOutpostResultOutput) OwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOutpostResult) string { return v.OwnerId }).(pulumi.StringOutput)
+}
+
+// Site identifier.
+func (o GetOutpostResultOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOutpostResult) string { return v.SiteId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetOutpostApplyOutput{})
+	pulumi.RegisterOutputType(GetOutpostResultOutput{})
 }

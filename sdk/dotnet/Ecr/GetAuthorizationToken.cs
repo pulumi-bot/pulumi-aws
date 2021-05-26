@@ -36,6 +36,18 @@ namespace Pulumi.Aws.Ecr
         /// </summary>
         public static Task<GetAuthorizationTokenResult> InvokeAsync(GetAuthorizationTokenArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAuthorizationTokenResult>("aws:ecr/getAuthorizationToken:getAuthorizationToken", args ?? new GetAuthorizationTokenArgs(), options.WithVersion());
+
+        public static Output<GetAuthorizationTokenResult> Apply(GetAuthorizationTokenApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetAuthorizationTokenApplyArgs();
+            return Pulumi.Output.All(
+                args.RegistryId.Box()
+            ).Apply(a => {
+                    var args = new GetAuthorizationTokenArgs();
+                    a[0].Set(args, nameof(args.RegistryId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -48,6 +60,19 @@ namespace Pulumi.Aws.Ecr
         public string? RegistryId { get; set; }
 
         public GetAuthorizationTokenArgs()
+        {
+        }
+    }
+
+    public sealed class GetAuthorizationTokenApplyArgs
+    {
+        /// <summary>
+        /// AWS account ID of the ECR Repository. If not specified the default account is assumed.
+        /// </summary>
+        [Input("registryId")]
+        public Input<string>? RegistryId { get; set; }
+
+        public GetAuthorizationTokenApplyArgs()
         {
         }
     }

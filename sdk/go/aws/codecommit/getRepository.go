@@ -4,6 +4,9 @@
 package codecommit
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,4 +62,110 @@ type LookupRepositoryResult struct {
 	// The ID of the repository
 	RepositoryId   string `pulumi:"repositoryId"`
 	RepositoryName string `pulumi:"repositoryName"`
+}
+
+func LookupRepositoryApply(ctx *pulumi.Context, args LookupRepositoryApplyInput, opts ...pulumi.InvokeOption) LookupRepositoryResultOutput {
+	return args.ToLookupRepositoryApplyOutput().ApplyT(func(v LookupRepositoryArgs) (LookupRepositoryResult, error) {
+		r, err := LookupRepository(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupRepositoryResultOutput)
+}
+
+// LookupRepositoryApplyInput is an input type that accepts LookupRepositoryApplyArgs and LookupRepositoryApplyOutput values.
+// You can construct a concrete instance of `LookupRepositoryApplyInput` via:
+//
+//          LookupRepositoryApplyArgs{...}
+type LookupRepositoryApplyInput interface {
+	pulumi.Input
+
+	ToLookupRepositoryApplyOutput() LookupRepositoryApplyOutput
+	ToLookupRepositoryApplyOutputWithContext(context.Context) LookupRepositoryApplyOutput
+}
+
+// A collection of arguments for invoking getRepository.
+type LookupRepositoryApplyArgs struct {
+	// The name for the repository. This needs to be less than 100 characters.
+	RepositoryName pulumi.StringInput `pulumi:"repositoryName"`
+}
+
+func (LookupRepositoryApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRepositoryArgs)(nil)).Elem()
+}
+
+func (i LookupRepositoryApplyArgs) ToLookupRepositoryApplyOutput() LookupRepositoryApplyOutput {
+	return i.ToLookupRepositoryApplyOutputWithContext(context.Background())
+}
+
+func (i LookupRepositoryApplyArgs) ToLookupRepositoryApplyOutputWithContext(ctx context.Context) LookupRepositoryApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupRepositoryApplyOutput)
+}
+
+// A collection of arguments for invoking getRepository.
+type LookupRepositoryApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupRepositoryApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRepositoryArgs)(nil)).Elem()
+}
+
+func (o LookupRepositoryApplyOutput) ToLookupRepositoryApplyOutput() LookupRepositoryApplyOutput {
+	return o
+}
+
+func (o LookupRepositoryApplyOutput) ToLookupRepositoryApplyOutputWithContext(ctx context.Context) LookupRepositoryApplyOutput {
+	return o
+}
+
+// The name for the repository. This needs to be less than 100 characters.
+func (o LookupRepositoryApplyOutput) RepositoryName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRepositoryArgs) string { return v.RepositoryName }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getRepository.
+type LookupRepositoryResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRepositoryResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRepositoryResult)(nil)).Elem()
+}
+
+func (o LookupRepositoryResultOutput) ToLookupRepositoryResultOutput() LookupRepositoryResultOutput {
+	return o
+}
+
+func (o LookupRepositoryResultOutput) ToLookupRepositoryResultOutputWithContext(ctx context.Context) LookupRepositoryResultOutput {
+	return o
+}
+
+// The ARN of the repository
+func (o LookupRepositoryResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The URL to use for cloning the repository over HTTPS.
+func (o LookupRepositoryResultOutput) CloneUrlHttp() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) string { return v.CloneUrlHttp }).(pulumi.StringOutput)
+}
+
+// The URL to use for cloning the repository over SSH.
+func (o LookupRepositoryResultOutput) CloneUrlSsh() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) string { return v.CloneUrlSsh }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupRepositoryResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the repository
+func (o LookupRepositoryResultOutput) RepositoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) string { return v.RepositoryId }).(pulumi.StringOutput)
+}
+
+func (o LookupRepositoryResultOutput) RepositoryName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) string { return v.RepositoryName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRepositoryApplyOutput{})
+	pulumi.RegisterOutputType(LookupRepositoryResultOutput{})
 }

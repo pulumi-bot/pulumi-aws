@@ -4,6 +4,9 @@
 package iam
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,4 +49,41 @@ type LookupAccountAliasResult struct {
 	AccountAlias string `pulumi:"accountAlias"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+}
+
+func LookupAccountAliasApply(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupAccountAliasResultOutput {
+	return pulumi.Any(opts).ApplyT(func(v interface{}) (LookupAccountAliasResult, error) {
+		r, err := LookupAccountAlias(ctx, opts...)
+		return *r, err
+
+	}).(LookupAccountAliasResultOutput)
+}
+
+// A collection of values returned by getAccountAlias.
+type LookupAccountAliasResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAccountAliasResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccountAliasResult)(nil)).Elem()
+}
+
+func (o LookupAccountAliasResultOutput) ToLookupAccountAliasResultOutput() LookupAccountAliasResultOutput {
+	return o
+}
+
+func (o LookupAccountAliasResultOutput) ToLookupAccountAliasResultOutputWithContext(ctx context.Context) LookupAccountAliasResultOutput {
+	return o
+}
+
+// The alias associated with the AWS account.
+func (o LookupAccountAliasResultOutput) AccountAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountAliasResult) string { return v.AccountAlias }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAccountAliasResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountAliasResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAccountAliasResultOutput{})
 }

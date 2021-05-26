@@ -47,6 +47,24 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetCoipPoolResult> InvokeAsync(GetCoipPoolArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCoipPoolResult>("aws:ec2/getCoipPool:getCoipPool", args ?? new GetCoipPoolArgs(), options.WithVersion());
+
+        public static Output<GetCoipPoolResult> Apply(GetCoipPoolApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetCoipPoolApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.Box(),
+                args.LocalGatewayRouteTableId.Box(),
+                args.PoolId.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetCoipPoolArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.LocalGatewayRouteTableId));
+                    a[2].Set(args, nameof(args.PoolId));
+                    a[3].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -86,6 +104,46 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetCoipPoolArgs()
+        {
+        }
+    }
+
+    public sealed class GetCoipPoolApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetCoipPoolFilterArgs>? _filters;
+        public InputList<Inputs.GetCoipPoolFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetCoipPoolFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// Local Gateway Route Table Id assigned to desired COIP Pool
+        /// </summary>
+        [Input("localGatewayRouteTableId")]
+        public Input<string>? LocalGatewayRouteTableId { get; set; }
+
+        /// <summary>
+        /// The id of the specific COIP Pool to retrieve.
+        /// </summary>
+        [Input("poolId")]
+        public Input<string>? PoolId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags, each pair of which must exactly match
+        /// a pair on the desired COIP Pool.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetCoipPoolApplyArgs()
         {
         }
     }

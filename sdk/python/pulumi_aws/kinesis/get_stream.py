@@ -192,3 +192,10 @@ def get_stream(name: Optional[str] = None,
         shard_level_metrics=__ret__.shard_level_metrics,
         status=__ret__.status,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_stream)
+def get_stream_apply(name: Optional[pulumi.Input[str]] = None,
+                     tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStreamResult]:
+    ...

@@ -4,6 +4,9 @@
 package ecr
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,4 +32,100 @@ type GetCredentialsResult struct {
 	Id            string `pulumi:"id"`
 	ProxyEndpoint string `pulumi:"proxyEndpoint"`
 	RegistryId    string `pulumi:"registryId"`
+}
+
+func GetCredentialsApply(ctx *pulumi.Context, args GetCredentialsApplyInput, opts ...pulumi.InvokeOption) GetCredentialsResultOutput {
+	return args.ToGetCredentialsApplyOutput().ApplyT(func(v GetCredentialsArgs) (GetCredentialsResult, error) {
+		r, err := GetCredentials(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetCredentialsResultOutput)
+}
+
+// GetCredentialsApplyInput is an input type that accepts GetCredentialsApplyArgs and GetCredentialsApplyOutput values.
+// You can construct a concrete instance of `GetCredentialsApplyInput` via:
+//
+//          GetCredentialsApplyArgs{...}
+type GetCredentialsApplyInput interface {
+	pulumi.Input
+
+	ToGetCredentialsApplyOutput() GetCredentialsApplyOutput
+	ToGetCredentialsApplyOutputWithContext(context.Context) GetCredentialsApplyOutput
+}
+
+// A collection of arguments for invoking getCredentials.
+type GetCredentialsApplyArgs struct {
+	RegistryId pulumi.StringInput `pulumi:"registryId"`
+}
+
+func (GetCredentialsApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCredentialsArgs)(nil)).Elem()
+}
+
+func (i GetCredentialsApplyArgs) ToGetCredentialsApplyOutput() GetCredentialsApplyOutput {
+	return i.ToGetCredentialsApplyOutputWithContext(context.Background())
+}
+
+func (i GetCredentialsApplyArgs) ToGetCredentialsApplyOutputWithContext(ctx context.Context) GetCredentialsApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCredentialsApplyOutput)
+}
+
+// A collection of arguments for invoking getCredentials.
+type GetCredentialsApplyOutput struct{ *pulumi.OutputState }
+
+func (GetCredentialsApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCredentialsArgs)(nil)).Elem()
+}
+
+func (o GetCredentialsApplyOutput) ToGetCredentialsApplyOutput() GetCredentialsApplyOutput {
+	return o
+}
+
+func (o GetCredentialsApplyOutput) ToGetCredentialsApplyOutputWithContext(ctx context.Context) GetCredentialsApplyOutput {
+	return o
+}
+
+func (o GetCredentialsApplyOutput) RegistryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCredentialsArgs) string { return v.RegistryId }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getCredentials.
+type GetCredentialsResultOutput struct{ *pulumi.OutputState }
+
+func (GetCredentialsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCredentialsResult)(nil)).Elem()
+}
+
+func (o GetCredentialsResultOutput) ToGetCredentialsResultOutput() GetCredentialsResultOutput {
+	return o
+}
+
+func (o GetCredentialsResultOutput) ToGetCredentialsResultOutputWithContext(ctx context.Context) GetCredentialsResultOutput {
+	return o
+}
+
+func (o GetCredentialsResultOutput) AuthorizationToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCredentialsResult) string { return v.AuthorizationToken }).(pulumi.StringOutput)
+}
+
+func (o GetCredentialsResultOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCredentialsResult) string { return v.ExpiresAt }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetCredentialsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCredentialsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetCredentialsResultOutput) ProxyEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCredentialsResult) string { return v.ProxyEndpoint }).(pulumi.StringOutput)
+}
+
+func (o GetCredentialsResultOutput) RegistryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCredentialsResult) string { return v.RegistryId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetCredentialsApplyOutput{})
+	pulumi.RegisterOutputType(GetCredentialsResultOutput{})
 }

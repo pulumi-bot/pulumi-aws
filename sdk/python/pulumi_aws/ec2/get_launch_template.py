@@ -483,3 +483,12 @@ def get_launch_template(filters: Optional[Sequence[pulumi.InputType['GetLaunchTe
         tags=__ret__.tags,
         user_data=__ret__.user_data,
         vpc_security_group_ids=__ret__.vpc_security_group_ids)
+
+
+@_utilities.lift_output_func(get_launch_template)
+def get_launch_template_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetLaunchTemplateFilterArgs']]]]] = None,
+                              id: Optional[pulumi.Input[str]] = None,
+                              name: Optional[pulumi.Input[str]] = None,
+                              tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLaunchTemplateResult]:
+    ...

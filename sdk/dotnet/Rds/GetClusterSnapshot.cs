@@ -57,6 +57,30 @@ namespace Pulumi.Aws.Rds
         /// </summary>
         public static Task<GetClusterSnapshotResult> InvokeAsync(GetClusterSnapshotArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterSnapshotResult>("aws:rds/getClusterSnapshot:getClusterSnapshot", args ?? new GetClusterSnapshotArgs(), options.WithVersion());
+
+        public static Output<GetClusterSnapshotResult> Apply(GetClusterSnapshotApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetClusterSnapshotApplyArgs();
+            return Pulumi.Output.All(
+                args.DbClusterIdentifier.Box(),
+                args.DbClusterSnapshotIdentifier.Box(),
+                args.IncludePublic.Box(),
+                args.IncludeShared.Box(),
+                args.MostRecent.Box(),
+                args.SnapshotType.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetClusterSnapshotArgs();
+                    a[0].Set(args, nameof(args.DbClusterIdentifier));
+                    a[1].Set(args, nameof(args.DbClusterSnapshotIdentifier));
+                    a[2].Set(args, nameof(args.IncludePublic));
+                    a[3].Set(args, nameof(args.IncludeShared));
+                    a[4].Set(args, nameof(args.MostRecent));
+                    a[5].Set(args, nameof(args.SnapshotType));
+                    a[6].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -116,6 +140,66 @@ namespace Pulumi.Aws.Rds
         }
 
         public GetClusterSnapshotArgs()
+        {
+        }
+    }
+
+    public sealed class GetClusterSnapshotApplyArgs
+    {
+        /// <summary>
+        /// Returns the list of snapshots created by the specific db_cluster
+        /// </summary>
+        [Input("dbClusterIdentifier")]
+        public Input<string>? DbClusterIdentifier { get; set; }
+
+        /// <summary>
+        /// Returns information on a specific snapshot_id.
+        /// </summary>
+        [Input("dbClusterSnapshotIdentifier")]
+        public Input<string>? DbClusterSnapshotIdentifier { get; set; }
+
+        /// <summary>
+        /// Set this value to true to include manual DB Cluster Snapshots that are public and can be
+        /// copied or restored by any AWS account, otherwise set this value to false. The default is `false`.
+        /// </summary>
+        [Input("includePublic")]
+        public Input<bool>? IncludePublic { get; set; }
+
+        /// <summary>
+        /// Set this value to true to include shared manual DB Cluster Snapshots from other
+        /// AWS accounts that this AWS account has been given permission to copy or restore, otherwise set this value to false.
+        /// The default is `false`.
+        /// </summary>
+        [Input("includeShared")]
+        public Input<bool>? IncludeShared { get; set; }
+
+        /// <summary>
+        /// If more than one result is returned, use the most recent Snapshot.
+        /// </summary>
+        [Input("mostRecent")]
+        public Input<bool>? MostRecent { get; set; }
+
+        /// <summary>
+        /// The type of snapshots to be returned. If you don't specify a SnapshotType
+        /// value, then both automated and manual DB cluster snapshots are returned. Shared and public DB Cluster Snapshots are not
+        /// included in the returned results by default. Possible values are, `automated`, `manual`, `shared`, `public` and `awsbackup`.
+        /// </summary>
+        [Input("snapshotType")]
+        public Input<string>? SnapshotType { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags for the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetClusterSnapshotApplyArgs()
         {
         }
     }

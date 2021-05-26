@@ -53,6 +53,26 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetSecurityGroupResult> InvokeAsync(GetSecurityGroupArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecurityGroupResult>("aws:ec2/getSecurityGroup:getSecurityGroup", args ?? new GetSecurityGroupArgs(), options.WithVersion());
+
+        public static Output<GetSecurityGroupResult> Apply(GetSecurityGroupApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetSecurityGroupApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.Box(),
+                args.Id.Box(),
+                args.Name.Box(),
+                args.Tags.Box(),
+                args.VpcId.Box()
+            ).Apply(a => {
+                    var args = new GetSecurityGroupArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Id));
+                    a[2].Set(args, nameof(args.Name));
+                    a[3].Set(args, nameof(args.Tags));
+                    a[4].Set(args, nameof(args.VpcId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -103,6 +123,57 @@ namespace Pulumi.Aws.Ec2
         public string? VpcId { get; set; }
 
         public GetSecurityGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetSecurityGroupApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetSecurityGroupFilterArgs>? _filters;
+
+        /// <summary>
+        /// Custom filter block as described below.
+        /// </summary>
+        public InputList<Inputs.GetSecurityGroupFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetSecurityGroupFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// The id of the specific security group to retrieve.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// The name of the field to filter by, as defined by
+        /// [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroups.html).
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags, each pair of which must exactly match
+        /// a pair on the desired security group.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The id of the VPC that the desired security group belongs to.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        public GetSecurityGroupApplyArgs()
         {
         }
     }

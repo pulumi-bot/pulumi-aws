@@ -4,6 +4,9 @@
 package s3
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,4 +57,171 @@ type GetBucketObjectsResult struct {
 	Owners     []string `pulumi:"owners"`
 	Prefix     *string  `pulumi:"prefix"`
 	StartAfter *string  `pulumi:"startAfter"`
+}
+
+func GetBucketObjectsApply(ctx *pulumi.Context, args GetBucketObjectsApplyInput, opts ...pulumi.InvokeOption) GetBucketObjectsResultOutput {
+	return args.ToGetBucketObjectsApplyOutput().ApplyT(func(v GetBucketObjectsArgs) (GetBucketObjectsResult, error) {
+		r, err := GetBucketObjects(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetBucketObjectsResultOutput)
+}
+
+// GetBucketObjectsApplyInput is an input type that accepts GetBucketObjectsApplyArgs and GetBucketObjectsApplyOutput values.
+// You can construct a concrete instance of `GetBucketObjectsApplyInput` via:
+//
+//          GetBucketObjectsApplyArgs{...}
+type GetBucketObjectsApplyInput interface {
+	pulumi.Input
+
+	ToGetBucketObjectsApplyOutput() GetBucketObjectsApplyOutput
+	ToGetBucketObjectsApplyOutputWithContext(context.Context) GetBucketObjectsApplyOutput
+}
+
+// A collection of arguments for invoking getBucketObjects.
+type GetBucketObjectsApplyArgs struct {
+	// Lists object keys in this S3 bucket. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// A character used to group keys (Default: none)
+	Delimiter pulumi.StringPtrInput `pulumi:"delimiter"`
+	// Encodes keys using this method (Default: none; besides none, only "url" can be used)
+	EncodingType pulumi.StringPtrInput `pulumi:"encodingType"`
+	// Boolean specifying whether to populate the owner list (Default: false)
+	FetchOwner pulumi.BoolPtrInput `pulumi:"fetchOwner"`
+	// Maximum object keys to return (Default: 1000)
+	MaxKeys pulumi.IntPtrInput `pulumi:"maxKeys"`
+	// Limits results to object keys with this prefix (Default: none)
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// Returns key names lexicographically after a specific object key in your bucket (Default: none; S3 lists object keys in UTF-8 character encoding in lexicographical order)
+	StartAfter pulumi.StringPtrInput `pulumi:"startAfter"`
+}
+
+func (GetBucketObjectsApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketObjectsArgs)(nil)).Elem()
+}
+
+func (i GetBucketObjectsApplyArgs) ToGetBucketObjectsApplyOutput() GetBucketObjectsApplyOutput {
+	return i.ToGetBucketObjectsApplyOutputWithContext(context.Background())
+}
+
+func (i GetBucketObjectsApplyArgs) ToGetBucketObjectsApplyOutputWithContext(ctx context.Context) GetBucketObjectsApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketObjectsApplyOutput)
+}
+
+// A collection of arguments for invoking getBucketObjects.
+type GetBucketObjectsApplyOutput struct{ *pulumi.OutputState }
+
+func (GetBucketObjectsApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketObjectsArgs)(nil)).Elem()
+}
+
+func (o GetBucketObjectsApplyOutput) ToGetBucketObjectsApplyOutput() GetBucketObjectsApplyOutput {
+	return o
+}
+
+func (o GetBucketObjectsApplyOutput) ToGetBucketObjectsApplyOutputWithContext(ctx context.Context) GetBucketObjectsApplyOutput {
+	return o
+}
+
+// Lists object keys in this S3 bucket. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified
+func (o GetBucketObjectsApplyOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectsArgs) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// A character used to group keys (Default: none)
+func (o GetBucketObjectsApplyOutput) Delimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBucketObjectsArgs) *string { return v.Delimiter }).(pulumi.StringPtrOutput)
+}
+
+// Encodes keys using this method (Default: none; besides none, only "url" can be used)
+func (o GetBucketObjectsApplyOutput) EncodingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBucketObjectsArgs) *string { return v.EncodingType }).(pulumi.StringPtrOutput)
+}
+
+// Boolean specifying whether to populate the owner list (Default: false)
+func (o GetBucketObjectsApplyOutput) FetchOwner() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetBucketObjectsArgs) *bool { return v.FetchOwner }).(pulumi.BoolPtrOutput)
+}
+
+// Maximum object keys to return (Default: 1000)
+func (o GetBucketObjectsApplyOutput) MaxKeys() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetBucketObjectsArgs) *int { return v.MaxKeys }).(pulumi.IntPtrOutput)
+}
+
+// Limits results to object keys with this prefix (Default: none)
+func (o GetBucketObjectsApplyOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBucketObjectsArgs) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// Returns key names lexicographically after a specific object key in your bucket (Default: none; S3 lists object keys in UTF-8 character encoding in lexicographical order)
+func (o GetBucketObjectsApplyOutput) StartAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBucketObjectsArgs) *string { return v.StartAfter }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getBucketObjects.
+type GetBucketObjectsResultOutput struct{ *pulumi.OutputState }
+
+func (GetBucketObjectsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketObjectsResult)(nil)).Elem()
+}
+
+func (o GetBucketObjectsResultOutput) ToGetBucketObjectsResultOutput() GetBucketObjectsResultOutput {
+	return o
+}
+
+func (o GetBucketObjectsResultOutput) ToGetBucketObjectsResultOutputWithContext(ctx context.Context) GetBucketObjectsResultOutput {
+	return o
+}
+
+func (o GetBucketObjectsResultOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectsResult) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// List of any keys between `prefix` and the next occurrence of `delimiter` (i.e., similar to subdirectories of the `prefix` "directory"); the list is only returned when you specify `delimiter`
+func (o GetBucketObjectsResultOutput) CommonPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBucketObjectsResult) []string { return v.CommonPrefixes }).(pulumi.StringArrayOutput)
+}
+
+func (o GetBucketObjectsResultOutput) Delimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBucketObjectsResult) *string { return v.Delimiter }).(pulumi.StringPtrOutput)
+}
+
+func (o GetBucketObjectsResultOutput) EncodingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBucketObjectsResult) *string { return v.EncodingType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetBucketObjectsResultOutput) FetchOwner() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetBucketObjectsResult) *bool { return v.FetchOwner }).(pulumi.BoolPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetBucketObjectsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// List of strings representing object keys
+func (o GetBucketObjectsResultOutput) Keys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBucketObjectsResult) []string { return v.Keys }).(pulumi.StringArrayOutput)
+}
+
+func (o GetBucketObjectsResultOutput) MaxKeys() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetBucketObjectsResult) *int { return v.MaxKeys }).(pulumi.IntPtrOutput)
+}
+
+// List of strings representing object owner IDs (see `fetchOwner` above)
+func (o GetBucketObjectsResultOutput) Owners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBucketObjectsResult) []string { return v.Owners }).(pulumi.StringArrayOutput)
+}
+
+func (o GetBucketObjectsResultOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBucketObjectsResult) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+func (o GetBucketObjectsResultOutput) StartAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetBucketObjectsResult) *string { return v.StartAfter }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetBucketObjectsApplyOutput{})
+	pulumi.RegisterOutputType(GetBucketObjectsResultOutput{})
 }

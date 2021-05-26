@@ -427,3 +427,13 @@ def get_bucket_object(bucket: Optional[str] = None,
         tags=__ret__.tags,
         version_id=__ret__.version_id,
         website_redirect_location=__ret__.website_redirect_location)
+
+
+@_utilities.lift_output_func(get_bucket_object)
+def get_bucket_object_apply(bucket: Optional[pulumi.Input[str]] = None,
+                            key: Optional[pulumi.Input[str]] = None,
+                            range: Optional[pulumi.Input[str]] = None,
+                            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                            version_id: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketObjectResult]:
+    ...

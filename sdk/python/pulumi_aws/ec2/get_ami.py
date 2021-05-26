@@ -515,3 +515,14 @@ def get_ami(executable_users: Optional[Sequence[str]] = None,
         tags=__ret__.tags,
         usage_operation=__ret__.usage_operation,
         virtualization_type=__ret__.virtualization_type)
+
+
+@_utilities.lift_output_func(get_ami)
+def get_ami_apply(executable_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                  filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetAmiFilterArgs']]]]] = None,
+                  most_recent: Optional[pulumi.Input[bool]] = None,
+                  name_regex: Optional[pulumi.Input[str]] = None,
+                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAmiResult]:
+    ...

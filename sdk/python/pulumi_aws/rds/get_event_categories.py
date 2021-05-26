@@ -103,3 +103,9 @@ def get_event_categories(source_type: Optional[str] = None,
         event_categories=__ret__.event_categories,
         id=__ret__.id,
         source_type=__ret__.source_type)
+
+
+@_utilities.lift_output_func(get_event_categories)
+def get_event_categories_apply(source_type: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEventCategoriesResult]:
+    ...

@@ -4,6 +4,9 @@
 package elasticache
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,4 +82,160 @@ type LookupReplicationGroupResult struct {
 	SnapshotRetentionLimit int `pulumi:"snapshotRetentionLimit"`
 	// The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group (shard).
 	SnapshotWindow string `pulumi:"snapshotWindow"`
+}
+
+func LookupReplicationGroupApply(ctx *pulumi.Context, args LookupReplicationGroupApplyInput, opts ...pulumi.InvokeOption) LookupReplicationGroupResultOutput {
+	return args.ToLookupReplicationGroupApplyOutput().ApplyT(func(v LookupReplicationGroupArgs) (LookupReplicationGroupResult, error) {
+		r, err := LookupReplicationGroup(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupReplicationGroupResultOutput)
+}
+
+// LookupReplicationGroupApplyInput is an input type that accepts LookupReplicationGroupApplyArgs and LookupReplicationGroupApplyOutput values.
+// You can construct a concrete instance of `LookupReplicationGroupApplyInput` via:
+//
+//          LookupReplicationGroupApplyArgs{...}
+type LookupReplicationGroupApplyInput interface {
+	pulumi.Input
+
+	ToLookupReplicationGroupApplyOutput() LookupReplicationGroupApplyOutput
+	ToLookupReplicationGroupApplyOutputWithContext(context.Context) LookupReplicationGroupApplyOutput
+}
+
+// A collection of arguments for invoking getReplicationGroup.
+type LookupReplicationGroupApplyArgs struct {
+	// The identifier for the replication group.
+	ReplicationGroupId pulumi.StringInput `pulumi:"replicationGroupId"`
+}
+
+func (LookupReplicationGroupApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupReplicationGroupArgs)(nil)).Elem()
+}
+
+func (i LookupReplicationGroupApplyArgs) ToLookupReplicationGroupApplyOutput() LookupReplicationGroupApplyOutput {
+	return i.ToLookupReplicationGroupApplyOutputWithContext(context.Background())
+}
+
+func (i LookupReplicationGroupApplyArgs) ToLookupReplicationGroupApplyOutputWithContext(ctx context.Context) LookupReplicationGroupApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupReplicationGroupApplyOutput)
+}
+
+// A collection of arguments for invoking getReplicationGroup.
+type LookupReplicationGroupApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupReplicationGroupApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupReplicationGroupArgs)(nil)).Elem()
+}
+
+func (o LookupReplicationGroupApplyOutput) ToLookupReplicationGroupApplyOutput() LookupReplicationGroupApplyOutput {
+	return o
+}
+
+func (o LookupReplicationGroupApplyOutput) ToLookupReplicationGroupApplyOutputWithContext(ctx context.Context) LookupReplicationGroupApplyOutput {
+	return o
+}
+
+// The identifier for the replication group.
+func (o LookupReplicationGroupApplyOutput) ReplicationGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReplicationGroupArgs) string { return v.ReplicationGroupId }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getReplicationGroup.
+type LookupReplicationGroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupReplicationGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupReplicationGroupResult)(nil)).Elem()
+}
+
+func (o LookupReplicationGroupResultOutput) ToLookupReplicationGroupResultOutput() LookupReplicationGroupResultOutput {
+	return o
+}
+
+func (o LookupReplicationGroupResultOutput) ToLookupReplicationGroupResultOutputWithContext(ctx context.Context) LookupReplicationGroupResultOutput {
+	return o
+}
+
+// The Amazon Resource Name (ARN) of the created ElastiCache Replication Group.
+func (o LookupReplicationGroupResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReplicationGroupResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// Specifies whether an AuthToken (password) is enabled.
+func (o LookupReplicationGroupResultOutput) AuthTokenEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupReplicationGroupResult) bool { return v.AuthTokenEnabled }).(pulumi.BoolOutput)
+}
+
+// A flag whether a read-only replica will be automatically promoted to read/write primary if the existing primary fails.
+func (o LookupReplicationGroupResultOutput) AutomaticFailoverEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupReplicationGroupResult) bool { return v.AutomaticFailoverEnabled }).(pulumi.BoolOutput)
+}
+
+// The configuration endpoint address to allow host discovery.
+func (o LookupReplicationGroupResultOutput) ConfigurationEndpointAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReplicationGroupResult) string { return v.ConfigurationEndpointAddress }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupReplicationGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReplicationGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The identifiers of all the nodes that are part of this replication group.
+func (o LookupReplicationGroupResultOutput) MemberClusters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupReplicationGroupResult) []string { return v.MemberClusters }).(pulumi.StringArrayOutput)
+}
+
+// Specifies whether Multi-AZ Support is enabled for the replication group.
+func (o LookupReplicationGroupResultOutput) MultiAzEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupReplicationGroupResult) bool { return v.MultiAzEnabled }).(pulumi.BoolOutput)
+}
+
+// The cluster node type.
+func (o LookupReplicationGroupResultOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReplicationGroupResult) string { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// The number of cache clusters that the replication group has.
+func (o LookupReplicationGroupResultOutput) NumberCacheClusters() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupReplicationGroupResult) int { return v.NumberCacheClusters }).(pulumi.IntOutput)
+}
+
+// The port number on which the configuration endpoint will accept connections.
+func (o LookupReplicationGroupResultOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupReplicationGroupResult) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The endpoint of the primary node in this node group (shard).
+func (o LookupReplicationGroupResultOutput) PrimaryEndpointAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReplicationGroupResult) string { return v.PrimaryEndpointAddress }).(pulumi.StringOutput)
+}
+
+// The endpoint of the reader node in this node group (shard).
+func (o LookupReplicationGroupResultOutput) ReaderEndpointAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReplicationGroupResult) string { return v.ReaderEndpointAddress }).(pulumi.StringOutput)
+}
+
+// The description of the replication group.
+func (o LookupReplicationGroupResultOutput) ReplicationGroupDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReplicationGroupResult) string { return v.ReplicationGroupDescription }).(pulumi.StringOutput)
+}
+
+func (o LookupReplicationGroupResultOutput) ReplicationGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReplicationGroupResult) string { return v.ReplicationGroupId }).(pulumi.StringOutput)
+}
+
+// The number of days for which ElastiCache retains automatic cache cluster snapshots before deleting them.
+func (o LookupReplicationGroupResultOutput) SnapshotRetentionLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupReplicationGroupResult) int { return v.SnapshotRetentionLimit }).(pulumi.IntOutput)
+}
+
+// The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group (shard).
+func (o LookupReplicationGroupResultOutput) SnapshotWindow() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReplicationGroupResult) string { return v.SnapshotWindow }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupReplicationGroupApplyOutput{})
+	pulumi.RegisterOutputType(LookupReplicationGroupResultOutput{})
 }

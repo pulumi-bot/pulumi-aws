@@ -49,13 +49,13 @@ export interface GetBrokerArgs {
     /**
      * The unique id of the mq broker.
      */
-    readonly brokerId?: string;
+    brokerId?: string;
     /**
      * The unique name of the mq broker.
      */
-    readonly brokerName?: string;
-    readonly logs?: inputs.mq.GetBrokerLogs;
-    readonly tags?: {[key: string]: string};
+    brokerName?: string;
+    logs?: inputs.mq.GetBrokerLogs;
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -87,4 +87,24 @@ export interface GetBrokerResult {
     readonly subnetIds: string[];
     readonly tags: {[key: string]: string};
     readonly users: outputs.mq.GetBrokerUser[];
+}
+
+export function getBrokerApply(args?: GetBrokerApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBrokerResult> {
+    return pulumi.output(args).apply(a => getBroker(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBroker.
+ */
+export interface GetBrokerApplyArgs {
+    /**
+     * The unique id of the mq broker.
+     */
+    brokerId?: pulumi.Input<string>;
+    /**
+     * The unique name of the mq broker.
+     */
+    brokerName?: pulumi.Input<string>;
+    logs?: pulumi.Input<inputs.mq.GetBrokerLogs>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

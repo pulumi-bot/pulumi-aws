@@ -202,3 +202,10 @@ def get_dedicated_host(host_id: Optional[str] = None,
         sockets=__ret__.sockets,
         tags=__ret__.tags,
         total_vcpus=__ret__.total_vcpus)
+
+
+@_utilities.lift_output_func(get_dedicated_host)
+def get_dedicated_host_apply(host_id: Optional[pulumi.Input[str]] = None,
+                             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDedicatedHostResult]:
+    ...

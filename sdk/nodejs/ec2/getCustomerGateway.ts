@@ -55,15 +55,15 @@ export interface GetCustomerGatewayArgs {
     /**
      * One or more [name-value pairs][dcg-filters] to filter by.
      */
-    readonly filters?: inputs.ec2.GetCustomerGatewayFilter[];
+    filters?: inputs.ec2.GetCustomerGatewayFilter[];
     /**
      * The ID of the gateway.
      */
-    readonly id?: string;
+    id?: string;
     /**
      * Map of key-value pairs assigned to the gateway.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -96,4 +96,26 @@ export interface GetCustomerGatewayResult {
      * (Optional) The type of customer gateway. The only type AWS supports at this time is "ipsec.1".
      */
     readonly type: string;
+}
+
+export function getCustomerGatewayApply(args?: GetCustomerGatewayApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomerGatewayResult> {
+    return pulumi.output(args).apply(a => getCustomerGateway(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCustomerGateway.
+ */
+export interface GetCustomerGatewayApplyArgs {
+    /**
+     * One or more [name-value pairs][dcg-filters] to filter by.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.ec2.GetCustomerGatewayFilter>[]>;
+    /**
+     * The ID of the gateway.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Map of key-value pairs assigned to the gateway.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

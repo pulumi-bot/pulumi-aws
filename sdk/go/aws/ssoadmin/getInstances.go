@@ -4,6 +4,9 @@
 package ssoadmin
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,4 +28,46 @@ type GetInstancesResult struct {
 	Id string `pulumi:"id"`
 	// Set of identifiers of the identity stores connected to the SSO Instances.
 	IdentityStoreIds []string `pulumi:"identityStoreIds"`
+}
+
+func GetInstancesApply(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
+	return pulumi.Any(opts).ApplyT(func(v interface{}) (GetInstancesResult, error) {
+		r, err := GetInstances(ctx, opts...)
+		return *r, err
+
+	}).(GetInstancesResultOutput)
+}
+
+// A collection of values returned by getInstances.
+type GetInstancesResultOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesResult)(nil)).Elem()
+}
+
+func (o GetInstancesResultOutput) ToGetInstancesResultOutput() GetInstancesResultOutput {
+	return o
+}
+
+func (o GetInstancesResultOutput) ToGetInstancesResultOutputWithContext(ctx context.Context) GetInstancesResultOutput {
+	return o
+}
+
+// Set of Amazon Resource Names (ARNs) of the SSO Instances.
+func (o GetInstancesResultOutput) Arns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesResult) []string { return v.Arns }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetInstancesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Set of identifiers of the identity stores connected to the SSO Instances.
+func (o GetInstancesResultOutput) IdentityStoreIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesResult) []string { return v.IdentityStoreIds }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetInstancesResultOutput{})
 }

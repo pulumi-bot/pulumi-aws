@@ -4,6 +4,9 @@
 package lambda
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,4 +68,117 @@ type LookupCodeSigningConfigResult struct {
 	LastModified string `pulumi:"lastModified"`
 	// List of code signing policies that control the validation failure action for signature mismatch or expiry.
 	Policies []GetCodeSigningConfigPolicy `pulumi:"policies"`
+}
+
+func LookupCodeSigningConfigApply(ctx *pulumi.Context, args LookupCodeSigningConfigApplyInput, opts ...pulumi.InvokeOption) LookupCodeSigningConfigResultOutput {
+	return args.ToLookupCodeSigningConfigApplyOutput().ApplyT(func(v LookupCodeSigningConfigArgs) (LookupCodeSigningConfigResult, error) {
+		r, err := LookupCodeSigningConfig(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupCodeSigningConfigResultOutput)
+}
+
+// LookupCodeSigningConfigApplyInput is an input type that accepts LookupCodeSigningConfigApplyArgs and LookupCodeSigningConfigApplyOutput values.
+// You can construct a concrete instance of `LookupCodeSigningConfigApplyInput` via:
+//
+//          LookupCodeSigningConfigApplyArgs{...}
+type LookupCodeSigningConfigApplyInput interface {
+	pulumi.Input
+
+	ToLookupCodeSigningConfigApplyOutput() LookupCodeSigningConfigApplyOutput
+	ToLookupCodeSigningConfigApplyOutputWithContext(context.Context) LookupCodeSigningConfigApplyOutput
+}
+
+// A collection of arguments for invoking getCodeSigningConfig.
+type LookupCodeSigningConfigApplyArgs struct {
+	// The Amazon Resource Name (ARN) of the code signing configuration.
+	Arn pulumi.StringInput `pulumi:"arn"`
+}
+
+func (LookupCodeSigningConfigApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCodeSigningConfigArgs)(nil)).Elem()
+}
+
+func (i LookupCodeSigningConfigApplyArgs) ToLookupCodeSigningConfigApplyOutput() LookupCodeSigningConfigApplyOutput {
+	return i.ToLookupCodeSigningConfigApplyOutputWithContext(context.Background())
+}
+
+func (i LookupCodeSigningConfigApplyArgs) ToLookupCodeSigningConfigApplyOutputWithContext(ctx context.Context) LookupCodeSigningConfigApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupCodeSigningConfigApplyOutput)
+}
+
+// A collection of arguments for invoking getCodeSigningConfig.
+type LookupCodeSigningConfigApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupCodeSigningConfigApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCodeSigningConfigArgs)(nil)).Elem()
+}
+
+func (o LookupCodeSigningConfigApplyOutput) ToLookupCodeSigningConfigApplyOutput() LookupCodeSigningConfigApplyOutput {
+	return o
+}
+
+func (o LookupCodeSigningConfigApplyOutput) ToLookupCodeSigningConfigApplyOutputWithContext(ctx context.Context) LookupCodeSigningConfigApplyOutput {
+	return o
+}
+
+// The Amazon Resource Name (ARN) of the code signing configuration.
+func (o LookupCodeSigningConfigApplyOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCodeSigningConfigArgs) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getCodeSigningConfig.
+type LookupCodeSigningConfigResultOutput struct{ *pulumi.OutputState }
+
+func (LookupCodeSigningConfigResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCodeSigningConfigResult)(nil)).Elem()
+}
+
+func (o LookupCodeSigningConfigResultOutput) ToLookupCodeSigningConfigResultOutput() LookupCodeSigningConfigResultOutput {
+	return o
+}
+
+func (o LookupCodeSigningConfigResultOutput) ToLookupCodeSigningConfigResultOutputWithContext(ctx context.Context) LookupCodeSigningConfigResultOutput {
+	return o
+}
+
+// List of allowed publishers as signing profiles for this code signing configuration.
+func (o LookupCodeSigningConfigResultOutput) AllowedPublishers() GetCodeSigningConfigAllowedPublisherArrayOutput {
+	return o.ApplyT(func(v LookupCodeSigningConfigResult) []GetCodeSigningConfigAllowedPublisher {
+		return v.AllowedPublishers
+	}).(GetCodeSigningConfigAllowedPublisherArrayOutput)
+}
+
+func (o LookupCodeSigningConfigResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCodeSigningConfigResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// Unique identifier for the code signing configuration.
+func (o LookupCodeSigningConfigResultOutput) ConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCodeSigningConfigResult) string { return v.ConfigId }).(pulumi.StringOutput)
+}
+
+// Code signing configuration description.
+func (o LookupCodeSigningConfigResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCodeSigningConfigResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupCodeSigningConfigResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCodeSigningConfigResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The date and time that the code signing configuration was last modified.
+func (o LookupCodeSigningConfigResultOutput) LastModified() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCodeSigningConfigResult) string { return v.LastModified }).(pulumi.StringOutput)
+}
+
+// List of code signing policies that control the validation failure action for signature mismatch or expiry.
+func (o LookupCodeSigningConfigResultOutput) Policies() GetCodeSigningConfigPolicyArrayOutput {
+	return o.ApplyT(func(v LookupCodeSigningConfigResult) []GetCodeSigningConfigPolicy { return v.Policies }).(GetCodeSigningConfigPolicyArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupCodeSigningConfigApplyOutput{})
+	pulumi.RegisterOutputType(LookupCodeSigningConfigResultOutput{})
 }

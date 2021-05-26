@@ -16,6 +16,28 @@ namespace Pulumi.Aws.Ebs
         /// </summary>
         public static Task<GetSnapshotResult> InvokeAsync(GetSnapshotArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotResult>("aws:ebs/getSnapshot:getSnapshot", args ?? new GetSnapshotArgs(), options.WithVersion());
+
+        public static Output<GetSnapshotResult> Apply(GetSnapshotApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetSnapshotApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.Box(),
+                args.MostRecent.Box(),
+                args.Owners.Box(),
+                args.RestorableByUserIds.Box(),
+                args.SnapshotIds.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetSnapshotArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.MostRecent));
+                    a[2].Set(args, nameof(args.Owners));
+                    a[3].Set(args, nameof(args.RestorableByUserIds));
+                    a[4].Set(args, nameof(args.SnapshotIds));
+                    a[5].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -90,6 +112,81 @@ namespace Pulumi.Aws.Ebs
         }
 
         public GetSnapshotArgs()
+        {
+        }
+    }
+
+    public sealed class GetSnapshotApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetSnapshotFilterArgs>? _filters;
+
+        /// <summary>
+        /// One or more name/value pairs to filter off of. There are
+        /// several valid keys, for a full reference, check out
+        /// [describe-snapshots in the AWS CLI reference][1].
+        /// </summary>
+        public InputList<Inputs.GetSnapshotFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetSnapshotFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// If more than one result is returned, use the most recent snapshot.
+        /// </summary>
+        [Input("mostRecent")]
+        public Input<bool>? MostRecent { get; set; }
+
+        [Input("owners")]
+        private InputList<string>? _owners;
+
+        /// <summary>
+        /// Returns the snapshots owned by the specified owner id. Multiple owners can be specified.
+        /// </summary>
+        public InputList<string> Owners
+        {
+            get => _owners ?? (_owners = new InputList<string>());
+            set => _owners = value;
+        }
+
+        [Input("restorableByUserIds")]
+        private InputList<string>? _restorableByUserIds;
+
+        /// <summary>
+        /// One or more AWS accounts IDs that can create volumes from the snapshot.
+        /// </summary>
+        public InputList<string> RestorableByUserIds
+        {
+            get => _restorableByUserIds ?? (_restorableByUserIds = new InputList<string>());
+            set => _restorableByUserIds = value;
+        }
+
+        [Input("snapshotIds")]
+        private InputList<string>? _snapshotIds;
+
+        /// <summary>
+        /// Returns information on a specific snapshot_id.
+        /// </summary>
+        public InputList<string> SnapshotIds
+        {
+            get => _snapshotIds ?? (_snapshotIds = new InputList<string>());
+            set => _snapshotIds = value;
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags for the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetSnapshotApplyArgs()
         {
         }
     }

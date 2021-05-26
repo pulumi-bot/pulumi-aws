@@ -39,6 +39,17 @@ namespace Pulumi.Aws.DirectConnect
         /// </summary>
         public static Task<GetGatewayResult> InvokeAsync(GetGatewayArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGatewayResult>("aws:directconnect/getGateway:getGateway", args ?? new GetGatewayArgs(), options.WithVersion());
+
+        public static Output<GetGatewayResult> Apply(GetGatewayApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetGatewayArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +62,19 @@ namespace Pulumi.Aws.DirectConnect
         public string Name { get; set; } = null!;
 
         public GetGatewayArgs()
+        {
+        }
+    }
+
+    public sealed class GetGatewayApplyArgs
+    {
+        /// <summary>
+        /// The name of the gateway to retrieve.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetGatewayApplyArgs()
         {
         }
     }

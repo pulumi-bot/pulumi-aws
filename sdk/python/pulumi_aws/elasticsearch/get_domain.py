@@ -341,3 +341,10 @@ def get_domain(domain_name: Optional[str] = None,
         snapshot_options=__ret__.snapshot_options,
         tags=__ret__.tags,
         vpc_options=__ret__.vpc_options)
+
+
+@_utilities.lift_output_func(get_domain)
+def get_domain_apply(domain_name: Optional[pulumi.Input[str]] = None,
+                     tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainResult]:
+    ...

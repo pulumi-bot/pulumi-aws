@@ -144,3 +144,9 @@ def get_authorization_token(registry_id: Optional[str] = None,
         proxy_endpoint=__ret__.proxy_endpoint,
         registry_id=__ret__.registry_id,
         user_name=__ret__.user_name)
+
+
+@_utilities.lift_output_func(get_authorization_token)
+def get_authorization_token_apply(registry_id: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAuthorizationTokenResult]:
+    ...

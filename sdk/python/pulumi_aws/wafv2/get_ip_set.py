@@ -145,3 +145,10 @@ def get_ip_set(name: Optional[str] = None,
         ip_address_version=__ret__.ip_address_version,
         name=__ret__.name,
         scope=__ret__.scope)
+
+
+@_utilities.lift_output_func(get_ip_set)
+def get_ip_set_apply(name: Optional[pulumi.Input[str]] = None,
+                     scope: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpSetResult]:
+    ...

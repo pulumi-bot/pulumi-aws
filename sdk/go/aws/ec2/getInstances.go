@@ -4,6 +4,9 @@
 package ec2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,4 +52,133 @@ type GetInstancesResult struct {
 	PrivateIps []string `pulumi:"privateIps"`
 	// Public IP addresses of instances found through the filter
 	PublicIps []string `pulumi:"publicIps"`
+}
+
+func GetInstancesApply(ctx *pulumi.Context, args GetInstancesApplyInput, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
+	return args.ToGetInstancesApplyOutput().ApplyT(func(v GetInstancesArgs) (GetInstancesResult, error) {
+		r, err := GetInstances(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetInstancesResultOutput)
+}
+
+// GetInstancesApplyInput is an input type that accepts GetInstancesApplyArgs and GetInstancesApplyOutput values.
+// You can construct a concrete instance of `GetInstancesApplyInput` via:
+//
+//          GetInstancesApplyArgs{...}
+type GetInstancesApplyInput interface {
+	pulumi.Input
+
+	ToGetInstancesApplyOutput() GetInstancesApplyOutput
+	ToGetInstancesApplyOutputWithContext(context.Context) GetInstancesApplyOutput
+}
+
+// A collection of arguments for invoking getInstances.
+type GetInstancesApplyArgs struct {
+	// One or more name/value pairs to use as filters. There are
+	// several valid keys, for a full reference, check out
+	// [describe-instances in the AWS CLI reference][1].
+	Filters GetInstancesFilterArrayInput `pulumi:"filters"`
+	// A list of instance states that should be applicable to the desired instances. The permitted values are: `pending, running, shutting-down, stopped, stopping, terminated`. The default value is `running`.
+	InstanceStateNames pulumi.StringArrayInput `pulumi:"instanceStateNames"`
+	// A map of tags, each pair of which must
+	// exactly match a pair on desired instances.
+	InstanceTags pulumi.StringMapInput `pulumi:"instanceTags"`
+}
+
+func (GetInstancesApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesArgs)(nil)).Elem()
+}
+
+func (i GetInstancesApplyArgs) ToGetInstancesApplyOutput() GetInstancesApplyOutput {
+	return i.ToGetInstancesApplyOutputWithContext(context.Background())
+}
+
+func (i GetInstancesApplyArgs) ToGetInstancesApplyOutputWithContext(ctx context.Context) GetInstancesApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesApplyOutput)
+}
+
+// A collection of arguments for invoking getInstances.
+type GetInstancesApplyOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesArgs)(nil)).Elem()
+}
+
+func (o GetInstancesApplyOutput) ToGetInstancesApplyOutput() GetInstancesApplyOutput {
+	return o
+}
+
+func (o GetInstancesApplyOutput) ToGetInstancesApplyOutputWithContext(ctx context.Context) GetInstancesApplyOutput {
+	return o
+}
+
+// One or more name/value pairs to use as filters. There are
+// several valid keys, for a full reference, check out
+// [describe-instances in the AWS CLI reference][1].
+func (o GetInstancesApplyOutput) Filters() GetInstancesFilterArrayOutput {
+	return o.ApplyT(func(v GetInstancesArgs) []GetInstancesFilter { return v.Filters }).(GetInstancesFilterArrayOutput)
+}
+
+// A list of instance states that should be applicable to the desired instances. The permitted values are: `pending, running, shutting-down, stopped, stopping, terminated`. The default value is `running`.
+func (o GetInstancesApplyOutput) InstanceStateNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesArgs) []string { return v.InstanceStateNames }).(pulumi.StringArrayOutput)
+}
+
+// A map of tags, each pair of which must
+// exactly match a pair on desired instances.
+func (o GetInstancesApplyOutput) InstanceTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesArgs) map[string]string { return v.InstanceTags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getInstances.
+type GetInstancesResultOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesResult)(nil)).Elem()
+}
+
+func (o GetInstancesResultOutput) ToGetInstancesResultOutput() GetInstancesResultOutput {
+	return o
+}
+
+func (o GetInstancesResultOutput) ToGetInstancesResultOutputWithContext(ctx context.Context) GetInstancesResultOutput {
+	return o
+}
+
+func (o GetInstancesResultOutput) Filters() GetInstancesFilterArrayOutput {
+	return o.ApplyT(func(v GetInstancesResult) []GetInstancesFilter { return v.Filters }).(GetInstancesFilterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetInstancesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// IDs of instances found through the filter
+func (o GetInstancesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstancesResultOutput) InstanceStateNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesResult) []string { return v.InstanceStateNames }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstancesResultOutput) InstanceTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstancesResult) map[string]string { return v.InstanceTags }).(pulumi.StringMapOutput)
+}
+
+// Private IP addresses of instances found through the filter
+func (o GetInstancesResultOutput) PrivateIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesResult) []string { return v.PrivateIps }).(pulumi.StringArrayOutput)
+}
+
+// Public IP addresses of instances found through the filter
+func (o GetInstancesResultOutput) PublicIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesResult) []string { return v.PublicIps }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetInstancesApplyOutput{})
+	pulumi.RegisterOutputType(GetInstancesResultOutput{})
 }

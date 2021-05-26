@@ -16,6 +16,18 @@ namespace Pulumi.Aws.Iot
         /// </summary>
         public static Task<GetEndpointResult> InvokeAsync(GetEndpointArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointResult>("aws:iot/getEndpoint:getEndpoint", args ?? new GetEndpointArgs(), options.WithVersion());
+
+        public static Output<GetEndpointResult> Apply(GetEndpointApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetEndpointApplyArgs();
+            return Pulumi.Output.All(
+                args.EndpointType.Box()
+            ).Apply(a => {
+                    var args = new GetEndpointArgs();
+                    a[0].Set(args, nameof(args.EndpointType));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -28,6 +40,19 @@ namespace Pulumi.Aws.Iot
         public string? EndpointType { get; set; }
 
         public GetEndpointArgs()
+        {
+        }
+    }
+
+    public sealed class GetEndpointApplyArgs
+    {
+        /// <summary>
+        /// Endpoint type. Valid values: `iot:CredentialProvider`, `iot:Data`, `iot:Data-ATS`, `iot:Job`.
+        /// </summary>
+        [Input("endpointType")]
+        public Input<string>? EndpointType { get; set; }
+
+        public GetEndpointApplyArgs()
         {
         }
     }

@@ -52,6 +52,21 @@ namespace Pulumi.Aws.Kms
         /// </summary>
         public static Task<GetCipherTextResult> InvokeAsync(GetCipherTextArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCipherTextResult>("aws:kms/getCipherText:getCipherText", args ?? new GetCipherTextArgs(), options.WithVersion());
+
+        public static Output<GetCipherTextResult> Apply(GetCipherTextApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Context.Box(),
+                args.KeyId.Box(),
+                args.Plaintext.Box()
+            ).Apply(a => {
+                    var args = new GetCipherTextArgs();
+                    a[0].Set(args, nameof(args.Context));
+                    a[1].Set(args, nameof(args.KeyId));
+                    a[2].Set(args, nameof(args.Plaintext));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -82,6 +97,37 @@ namespace Pulumi.Aws.Kms
         public string Plaintext { get; set; } = null!;
 
         public GetCipherTextArgs()
+        {
+        }
+    }
+
+    public sealed class GetCipherTextApplyArgs
+    {
+        [Input("context")]
+        private InputMap<string>? _context;
+
+        /// <summary>
+        /// An optional mapping that makes up the encryption context.
+        /// </summary>
+        public InputMap<string> Context
+        {
+            get => _context ?? (_context = new InputMap<string>());
+            set => _context = value;
+        }
+
+        /// <summary>
+        /// Globally unique key ID for the customer master key.
+        /// </summary>
+        [Input("keyId", required: true)]
+        public Input<string> KeyId { get; set; } = null!;
+
+        /// <summary>
+        /// Data to be encrypted. Note that this may show up in logs, and it will be stored in the state file.
+        /// </summary>
+        [Input("plaintext", required: true)]
+        public Input<string> Plaintext { get; set; } = null!;
+
+        public GetCipherTextApplyArgs()
         {
         }
     }

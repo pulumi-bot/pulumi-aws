@@ -44,3 +44,7 @@ export interface GetCanonicalUserIdResult {
      */
     readonly id: string;
 }
+
+export function getCanonicalUserIdApply(opts?: pulumi.InvokeOptions): pulumi.Output<GetCanonicalUserIdResult> {
+    return pulumi.output(getCanonicalUserId(opts))
+}

@@ -41,7 +41,7 @@ export interface GetTopicArgs {
     /**
      * The friendly name of the topic to match.
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -57,4 +57,18 @@ export interface GetTopicResult {
      */
     readonly id: string;
     readonly name: string;
+}
+
+export function getTopicApply(args: GetTopicApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicResult> {
+    return pulumi.output(args).apply(a => getTopic(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTopic.
+ */
+export interface GetTopicApplyArgs {
+    /**
+     * The friendly name of the topic to match.
+     */
+    name: pulumi.Input<string>;
 }

@@ -70,6 +70,22 @@ namespace Pulumi.Aws.Ec2TransitGateway
         /// </summary>
         public static Task<GetPeeringAttachmentResult> InvokeAsync(GetPeeringAttachmentArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPeeringAttachmentResult>("aws:ec2transitgateway/getPeeringAttachment:getPeeringAttachment", args ?? new GetPeeringAttachmentArgs(), options.WithVersion());
+
+        public static Output<GetPeeringAttachmentResult> Apply(GetPeeringAttachmentApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetPeeringAttachmentApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.Box(),
+                args.Id.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetPeeringAttachmentArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Id));
+                    a[2].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -107,6 +123,44 @@ namespace Pulumi.Aws.Ec2TransitGateway
         }
 
         public GetPeeringAttachmentArgs()
+        {
+        }
+    }
+
+    public sealed class GetPeeringAttachmentApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetPeeringAttachmentFilterArgs>? _filters;
+
+        /// <summary>
+        /// One or more configuration blocks containing name-values filters. Detailed below.
+        /// </summary>
+        public InputList<Inputs.GetPeeringAttachmentFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetPeeringAttachmentFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// Identifier of the EC2 Transit Gateway Peering Attachment.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags, each pair of which must exactly match
+        /// a pair on the specific EC2 Transit Gateway Peering Attachment to retrieve.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetPeeringAttachmentApplyArgs()
         {
         }
     }

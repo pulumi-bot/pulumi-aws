@@ -90,3 +90,9 @@ def get_delegation_set(id: Optional[str] = None,
         caller_reference=__ret__.caller_reference,
         id=__ret__.id,
         name_servers=__ret__.name_servers)
+
+
+@_utilities.lift_output_func(get_delegation_set)
+def get_delegation_set_apply(id: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDelegationSetResult]:
+    ...

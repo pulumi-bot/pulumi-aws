@@ -184,3 +184,10 @@ def get_slot_type(name: Optional[str] = None,
         name=__ret__.name,
         value_selection_strategy=__ret__.value_selection_strategy,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_slot_type)
+def get_slot_type_apply(name: Optional[pulumi.Input[str]] = None,
+                        version: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSlotTypeResult]:
+    ...

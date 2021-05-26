@@ -4,6 +4,9 @@
 package identitystore
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,4 +39,117 @@ type GetUserResult struct {
 	UserId          string `pulumi:"userId"`
 	// The user's user name value.
 	UserName string `pulumi:"userName"`
+}
+
+func GetUserApply(ctx *pulumi.Context, args GetUserApplyInput, opts ...pulumi.InvokeOption) GetUserResultOutput {
+	return args.ToGetUserApplyOutput().ApplyT(func(v GetUserArgs) (GetUserResult, error) {
+		r, err := GetUser(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetUserResultOutput)
+}
+
+// GetUserApplyInput is an input type that accepts GetUserApplyArgs and GetUserApplyOutput values.
+// You can construct a concrete instance of `GetUserApplyInput` via:
+//
+//          GetUserApplyArgs{...}
+type GetUserApplyInput interface {
+	pulumi.Input
+
+	ToGetUserApplyOutput() GetUserApplyOutput
+	ToGetUserApplyOutputWithContext(context.Context) GetUserApplyOutput
+}
+
+// A collection of arguments for invoking getUser.
+type GetUserApplyArgs struct {
+	// Configuration block(s) for filtering. Currently, the AWS Identity Store API supports only 1 filter. Detailed below.
+	Filters GetUserFilterArrayInput `pulumi:"filters"`
+	// The Identity Store ID associated with the Single Sign-On Instance.
+	IdentityStoreId pulumi.StringInput `pulumi:"identityStoreId"`
+	// The identifier for a user in the Identity Store.
+	UserId pulumi.StringPtrInput `pulumi:"userId"`
+}
+
+func (GetUserApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserArgs)(nil)).Elem()
+}
+
+func (i GetUserApplyArgs) ToGetUserApplyOutput() GetUserApplyOutput {
+	return i.ToGetUserApplyOutputWithContext(context.Background())
+}
+
+func (i GetUserApplyArgs) ToGetUserApplyOutputWithContext(ctx context.Context) GetUserApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserApplyOutput)
+}
+
+// A collection of arguments for invoking getUser.
+type GetUserApplyOutput struct{ *pulumi.OutputState }
+
+func (GetUserApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserArgs)(nil)).Elem()
+}
+
+func (o GetUserApplyOutput) ToGetUserApplyOutput() GetUserApplyOutput {
+	return o
+}
+
+func (o GetUserApplyOutput) ToGetUserApplyOutputWithContext(ctx context.Context) GetUserApplyOutput {
+	return o
+}
+
+// Configuration block(s) for filtering. Currently, the AWS Identity Store API supports only 1 filter. Detailed below.
+func (o GetUserApplyOutput) Filters() GetUserFilterArrayOutput {
+	return o.ApplyT(func(v GetUserArgs) []GetUserFilter { return v.Filters }).(GetUserFilterArrayOutput)
+}
+
+// The Identity Store ID associated with the Single Sign-On Instance.
+func (o GetUserApplyOutput) IdentityStoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserArgs) string { return v.IdentityStoreId }).(pulumi.StringOutput)
+}
+
+// The identifier for a user in the Identity Store.
+func (o GetUserApplyOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetUserArgs) *string { return v.UserId }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getUser.
+type GetUserResultOutput struct{ *pulumi.OutputState }
+
+func (GetUserResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserResult)(nil)).Elem()
+}
+
+func (o GetUserResultOutput) ToGetUserResultOutput() GetUserResultOutput {
+	return o
+}
+
+func (o GetUserResultOutput) ToGetUserResultOutputWithContext(ctx context.Context) GetUserResultOutput {
+	return o
+}
+
+func (o GetUserResultOutput) Filters() GetUserFilterArrayOutput {
+	return o.ApplyT(func(v GetUserResult) []GetUserFilter { return v.Filters }).(GetUserFilterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetUserResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetUserResultOutput) IdentityStoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserResult) string { return v.IdentityStoreId }).(pulumi.StringOutput)
+}
+
+func (o GetUserResultOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserResult) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+// The user's user name value.
+func (o GetUserResultOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserResult) string { return v.UserName }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetUserApplyOutput{})
+	pulumi.RegisterOutputType(GetUserResultOutput{})
 }

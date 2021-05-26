@@ -41,6 +41,20 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetTransitGatewayRouteTablesResult> InvokeAsync(GetTransitGatewayRouteTablesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTransitGatewayRouteTablesResult>("aws:ec2/getTransitGatewayRouteTables:getTransitGatewayRouteTables", args ?? new GetTransitGatewayRouteTablesArgs(), options.WithVersion());
+
+        public static Output<GetTransitGatewayRouteTablesResult> Apply(GetTransitGatewayRouteTablesApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetTransitGatewayRouteTablesApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetTransitGatewayRouteTablesArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -72,6 +86,38 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetTransitGatewayRouteTablesArgs()
+        {
+        }
+    }
+
+    public sealed class GetTransitGatewayRouteTablesApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetTransitGatewayRouteTablesFilterArgs>? _filters;
+
+        /// <summary>
+        /// Custom filter block as described below.
+        /// </summary>
+        public InputList<Inputs.GetTransitGatewayRouteTablesFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetTransitGatewayRouteTablesFilterArgs>());
+            set => _filters = value;
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags, each pair of which must exactly match
+        /// a pair on the desired transit gateway route table.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetTransitGatewayRouteTablesApplyArgs()
         {
         }
     }

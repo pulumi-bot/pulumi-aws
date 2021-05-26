@@ -4,6 +4,9 @@
 package elasticloadbalancing
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,4 +72,92 @@ type GetHostedZoneIdResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id     string  `pulumi:"id"`
 	Region *string `pulumi:"region"`
+}
+
+func GetHostedZoneIdApply(ctx *pulumi.Context, args GetHostedZoneIdApplyInput, opts ...pulumi.InvokeOption) GetHostedZoneIdResultOutput {
+	return args.ToGetHostedZoneIdApplyOutput().ApplyT(func(v GetHostedZoneIdArgs) (GetHostedZoneIdResult, error) {
+		r, err := GetHostedZoneId(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetHostedZoneIdResultOutput)
+}
+
+// GetHostedZoneIdApplyInput is an input type that accepts GetHostedZoneIdApplyArgs and GetHostedZoneIdApplyOutput values.
+// You can construct a concrete instance of `GetHostedZoneIdApplyInput` via:
+//
+//          GetHostedZoneIdApplyArgs{...}
+type GetHostedZoneIdApplyInput interface {
+	pulumi.Input
+
+	ToGetHostedZoneIdApplyOutput() GetHostedZoneIdApplyOutput
+	ToGetHostedZoneIdApplyOutputWithContext(context.Context) GetHostedZoneIdApplyOutput
+}
+
+// A collection of arguments for invoking getHostedZoneId.
+type GetHostedZoneIdApplyArgs struct {
+	// Name of the region whose AWS ELB HostedZoneId is desired.
+	// Defaults to the region from the AWS provider configuration.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (GetHostedZoneIdApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostedZoneIdArgs)(nil)).Elem()
+}
+
+func (i GetHostedZoneIdApplyArgs) ToGetHostedZoneIdApplyOutput() GetHostedZoneIdApplyOutput {
+	return i.ToGetHostedZoneIdApplyOutputWithContext(context.Background())
+}
+
+func (i GetHostedZoneIdApplyArgs) ToGetHostedZoneIdApplyOutputWithContext(ctx context.Context) GetHostedZoneIdApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostedZoneIdApplyOutput)
+}
+
+// A collection of arguments for invoking getHostedZoneId.
+type GetHostedZoneIdApplyOutput struct{ *pulumi.OutputState }
+
+func (GetHostedZoneIdApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostedZoneIdArgs)(nil)).Elem()
+}
+
+func (o GetHostedZoneIdApplyOutput) ToGetHostedZoneIdApplyOutput() GetHostedZoneIdApplyOutput {
+	return o
+}
+
+func (o GetHostedZoneIdApplyOutput) ToGetHostedZoneIdApplyOutputWithContext(ctx context.Context) GetHostedZoneIdApplyOutput {
+	return o
+}
+
+// Name of the region whose AWS ELB HostedZoneId is desired.
+// Defaults to the region from the AWS provider configuration.
+func (o GetHostedZoneIdApplyOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHostedZoneIdArgs) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getHostedZoneId.
+type GetHostedZoneIdResultOutput struct{ *pulumi.OutputState }
+
+func (GetHostedZoneIdResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostedZoneIdResult)(nil)).Elem()
+}
+
+func (o GetHostedZoneIdResultOutput) ToGetHostedZoneIdResultOutput() GetHostedZoneIdResultOutput {
+	return o
+}
+
+func (o GetHostedZoneIdResultOutput) ToGetHostedZoneIdResultOutputWithContext(ctx context.Context) GetHostedZoneIdResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetHostedZoneIdResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostedZoneIdResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetHostedZoneIdResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHostedZoneIdResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetHostedZoneIdApplyOutput{})
+	pulumi.RegisterOutputType(GetHostedZoneIdResultOutput{})
 }

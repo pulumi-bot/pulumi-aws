@@ -4,6 +4,9 @@
 package glue
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,4 +68,128 @@ type LookupConnectionResult struct {
 	Name string `pulumi:"name"`
 	// A map of physical connection requirements, such as VPC and SecurityGroup.
 	PhysicalConnectionRequirements []GetConnectionPhysicalConnectionRequirement `pulumi:"physicalConnectionRequirements"`
+}
+
+func LookupConnectionApply(ctx *pulumi.Context, args LookupConnectionApplyInput, opts ...pulumi.InvokeOption) LookupConnectionResultOutput {
+	return args.ToLookupConnectionApplyOutput().ApplyT(func(v LookupConnectionArgs) (LookupConnectionResult, error) {
+		r, err := LookupConnection(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupConnectionResultOutput)
+}
+
+// LookupConnectionApplyInput is an input type that accepts LookupConnectionApplyArgs and LookupConnectionApplyOutput values.
+// You can construct a concrete instance of `LookupConnectionApplyInput` via:
+//
+//          LookupConnectionApplyArgs{...}
+type LookupConnectionApplyInput interface {
+	pulumi.Input
+
+	ToLookupConnectionApplyOutput() LookupConnectionApplyOutput
+	ToLookupConnectionApplyOutputWithContext(context.Context) LookupConnectionApplyOutput
+}
+
+// A collection of arguments for invoking getConnection.
+type LookupConnectionApplyArgs struct {
+	// A concatenation of the catalog ID and connection name. For example, if your account ID is
+	// `123456789123` and the connection name is `conn` then the ID is `123456789123:conn`.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (LookupConnectionApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupConnectionArgs)(nil)).Elem()
+}
+
+func (i LookupConnectionApplyArgs) ToLookupConnectionApplyOutput() LookupConnectionApplyOutput {
+	return i.ToLookupConnectionApplyOutputWithContext(context.Background())
+}
+
+func (i LookupConnectionApplyArgs) ToLookupConnectionApplyOutputWithContext(ctx context.Context) LookupConnectionApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupConnectionApplyOutput)
+}
+
+// A collection of arguments for invoking getConnection.
+type LookupConnectionApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupConnectionApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupConnectionArgs)(nil)).Elem()
+}
+
+func (o LookupConnectionApplyOutput) ToLookupConnectionApplyOutput() LookupConnectionApplyOutput {
+	return o
+}
+
+func (o LookupConnectionApplyOutput) ToLookupConnectionApplyOutputWithContext(ctx context.Context) LookupConnectionApplyOutput {
+	return o
+}
+
+// A concatenation of the catalog ID and connection name. For example, if your account ID is
+// `123456789123` and the connection name is `conn` then the ID is `123456789123:conn`.
+func (o LookupConnectionApplyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionArgs) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getConnection.
+type LookupConnectionResultOutput struct{ *pulumi.OutputState }
+
+func (LookupConnectionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupConnectionResult)(nil)).Elem()
+}
+
+func (o LookupConnectionResultOutput) ToLookupConnectionResultOutput() LookupConnectionResultOutput {
+	return o
+}
+
+func (o LookupConnectionResultOutput) ToLookupConnectionResultOutputWithContext(ctx context.Context) LookupConnectionResultOutput {
+	return o
+}
+
+// The ARN of the Glue Connection.
+func (o LookupConnectionResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The catalog ID of the Glue Connection.
+func (o LookupConnectionResultOutput) CatalogId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.CatalogId }).(pulumi.StringOutput)
+}
+
+func (o LookupConnectionResultOutput) ConnectionProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupConnectionResult) map[string]string { return v.ConnectionProperties }).(pulumi.StringMapOutput)
+}
+
+// The type of Glue Connection.
+func (o LookupConnectionResultOutput) ConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.ConnectionType }).(pulumi.StringOutput)
+}
+
+// Description of the connection.
+func (o LookupConnectionResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupConnectionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of criteria that can be used in selecting this connection.
+func (o LookupConnectionResultOutput) MatchCriterias() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupConnectionResult) []string { return v.MatchCriterias }).(pulumi.StringArrayOutput)
+}
+
+// The name of the Glue Connection.
+func (o LookupConnectionResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A map of physical connection requirements, such as VPC and SecurityGroup.
+func (o LookupConnectionResultOutput) PhysicalConnectionRequirements() GetConnectionPhysicalConnectionRequirementArrayOutput {
+	return o.ApplyT(func(v LookupConnectionResult) []GetConnectionPhysicalConnectionRequirement {
+		return v.PhysicalConnectionRequirements
+	}).(GetConnectionPhysicalConnectionRequirementArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupConnectionApplyOutput{})
+	pulumi.RegisterOutputType(LookupConnectionResultOutput{})
 }

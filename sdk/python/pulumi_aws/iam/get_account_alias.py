@@ -79,3 +79,8 @@ def get_account_alias(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
     return AwaitableGetAccountAliasResult(
         account_alias=__ret__.account_alias,
         id=__ret__.id)
+
+
+@_utilities.lift_output_func(get_account_alias)
+def get_account_alias_apply(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountAliasResult]:
+    ...

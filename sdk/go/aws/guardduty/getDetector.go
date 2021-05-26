@@ -4,6 +4,9 @@
 package guardduty
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,4 +56,100 @@ type LookupDetectorResult struct {
 	ServiceRoleArn string `pulumi:"serviceRoleArn"`
 	// The current status of the detector.
 	Status string `pulumi:"status"`
+}
+
+func LookupDetectorApply(ctx *pulumi.Context, args LookupDetectorApplyInput, opts ...pulumi.InvokeOption) LookupDetectorResultOutput {
+	return args.ToLookupDetectorApplyOutput().ApplyT(func(v LookupDetectorArgs) (LookupDetectorResult, error) {
+		r, err := LookupDetector(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupDetectorResultOutput)
+}
+
+// LookupDetectorApplyInput is an input type that accepts LookupDetectorApplyArgs and LookupDetectorApplyOutput values.
+// You can construct a concrete instance of `LookupDetectorApplyInput` via:
+//
+//          LookupDetectorApplyArgs{...}
+type LookupDetectorApplyInput interface {
+	pulumi.Input
+
+	ToLookupDetectorApplyOutput() LookupDetectorApplyOutput
+	ToLookupDetectorApplyOutputWithContext(context.Context) LookupDetectorApplyOutput
+}
+
+// A collection of arguments for invoking getDetector.
+type LookupDetectorApplyArgs struct {
+	// The ID of the detector.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (LookupDetectorApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDetectorArgs)(nil)).Elem()
+}
+
+func (i LookupDetectorApplyArgs) ToLookupDetectorApplyOutput() LookupDetectorApplyOutput {
+	return i.ToLookupDetectorApplyOutputWithContext(context.Background())
+}
+
+func (i LookupDetectorApplyArgs) ToLookupDetectorApplyOutputWithContext(ctx context.Context) LookupDetectorApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupDetectorApplyOutput)
+}
+
+// A collection of arguments for invoking getDetector.
+type LookupDetectorApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupDetectorApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDetectorArgs)(nil)).Elem()
+}
+
+func (o LookupDetectorApplyOutput) ToLookupDetectorApplyOutput() LookupDetectorApplyOutput {
+	return o
+}
+
+func (o LookupDetectorApplyOutput) ToLookupDetectorApplyOutputWithContext(ctx context.Context) LookupDetectorApplyOutput {
+	return o
+}
+
+// The ID of the detector.
+func (o LookupDetectorApplyOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDetectorArgs) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getDetector.
+type LookupDetectorResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDetectorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDetectorResult)(nil)).Elem()
+}
+
+func (o LookupDetectorResultOutput) ToLookupDetectorResultOutput() LookupDetectorResultOutput {
+	return o
+}
+
+func (o LookupDetectorResultOutput) ToLookupDetectorResultOutputWithContext(ctx context.Context) LookupDetectorResultOutput {
+	return o
+}
+
+// The frequency of notifications sent about subsequent finding occurrences.
+func (o LookupDetectorResultOutput) FindingPublishingFrequency() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDetectorResult) string { return v.FindingPublishingFrequency }).(pulumi.StringOutput)
+}
+
+func (o LookupDetectorResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDetectorResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The service-linked role that grants GuardDuty access to the resources in the AWS account.
+func (o LookupDetectorResultOutput) ServiceRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDetectorResult) string { return v.ServiceRoleArn }).(pulumi.StringOutput)
+}
+
+// The current status of the detector.
+func (o LookupDetectorResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDetectorResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDetectorApplyOutput{})
+	pulumi.RegisterOutputType(LookupDetectorResultOutput{})
 }

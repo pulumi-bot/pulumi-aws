@@ -41,11 +41,11 @@ export interface GetBotArgs {
     /**
      * The name of the bot. The name is case sensitive.
      */
-    readonly name: string;
+    name: string;
     /**
      * The version or alias of the bot.
      */
-    readonly version?: string;
+    version?: string;
 }
 
 /**
@@ -120,4 +120,22 @@ export interface GetBotResult {
      * The Amazon Polly voice ID that the Amazon Lex Bot uses for voice interactions with the user.
      */
     readonly voiceId: string;
+}
+
+export function getBotApply(args: GetBotApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBotResult> {
+    return pulumi.output(args).apply(a => getBot(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBot.
+ */
+export interface GetBotApplyArgs {
+    /**
+     * The name of the bot. The name is case sensitive.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The version or alias of the bot.
+     */
+    version?: pulumi.Input<string>;
 }

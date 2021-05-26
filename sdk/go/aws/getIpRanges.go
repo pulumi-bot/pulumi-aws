@@ -4,6 +4,9 @@
 package aws
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,4 +52,145 @@ type GetIpRangesResult struct {
 	// (e.g. `1470267965`).
 	SyncToken int     `pulumi:"syncToken"`
 	Url       *string `pulumi:"url"`
+}
+
+func GetIpRangesApply(ctx *pulumi.Context, args GetIpRangesApplyInput, opts ...pulumi.InvokeOption) GetIpRangesResultOutput {
+	return args.ToGetIpRangesApplyOutput().ApplyT(func(v GetIpRangesArgs) (GetIpRangesResult, error) {
+		r, err := GetIpRanges(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetIpRangesResultOutput)
+}
+
+// GetIpRangesApplyInput is an input type that accepts GetIpRangesApplyArgs and GetIpRangesApplyOutput values.
+// You can construct a concrete instance of `GetIpRangesApplyInput` via:
+//
+//          GetIpRangesApplyArgs{...}
+type GetIpRangesApplyInput interface {
+	pulumi.Input
+
+	ToGetIpRangesApplyOutput() GetIpRangesApplyOutput
+	ToGetIpRangesApplyOutputWithContext(context.Context) GetIpRangesApplyOutput
+}
+
+// A collection of arguments for invoking getIpRanges.
+type GetIpRangesApplyArgs struct {
+	// Filter IP ranges by regions (or include all regions, if
+	// omitted). Valid items are `global` (for `cloudfront`) as well as all AWS regions
+	// (e.g. `eu-central-1`)
+	Regions pulumi.StringArrayInput `pulumi:"regions"`
+	// Filter IP ranges by services. Valid items are `amazon`
+	// (for amazon.com), `amazonConnect`, `apiGateway`, `cloud9`, `cloudfront`,
+	// `codebuild`, `dynamodb`, `ec2`, `ec2InstanceConnect`, `globalaccelerator`,
+	// `route53`, `route53Healthchecks`, `s3` and `workspacesGateways`. See the
+	// [`service` attribute][2] documentation for other possible values.
+	Services pulumi.StringArrayInput `pulumi:"services"`
+	// Custom URL for source JSON file. Syntax must match [AWS IP Address Ranges documentation](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html). Defaults to `https://ip-ranges.amazonaws.com/ip-ranges.json`.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (GetIpRangesApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpRangesArgs)(nil)).Elem()
+}
+
+func (i GetIpRangesApplyArgs) ToGetIpRangesApplyOutput() GetIpRangesApplyOutput {
+	return i.ToGetIpRangesApplyOutputWithContext(context.Background())
+}
+
+func (i GetIpRangesApplyArgs) ToGetIpRangesApplyOutputWithContext(ctx context.Context) GetIpRangesApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpRangesApplyOutput)
+}
+
+// A collection of arguments for invoking getIpRanges.
+type GetIpRangesApplyOutput struct{ *pulumi.OutputState }
+
+func (GetIpRangesApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpRangesArgs)(nil)).Elem()
+}
+
+func (o GetIpRangesApplyOutput) ToGetIpRangesApplyOutput() GetIpRangesApplyOutput {
+	return o
+}
+
+func (o GetIpRangesApplyOutput) ToGetIpRangesApplyOutputWithContext(ctx context.Context) GetIpRangesApplyOutput {
+	return o
+}
+
+// Filter IP ranges by regions (or include all regions, if
+// omitted). Valid items are `global` (for `cloudfront`) as well as all AWS regions
+// (e.g. `eu-central-1`)
+func (o GetIpRangesApplyOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIpRangesArgs) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+// Filter IP ranges by services. Valid items are `amazon`
+// (for amazon.com), `amazonConnect`, `apiGateway`, `cloud9`, `cloudfront`,
+// `codebuild`, `dynamodb`, `ec2`, `ec2InstanceConnect`, `globalaccelerator`,
+// `route53`, `route53Healthchecks`, `s3` and `workspacesGateways`. See the
+// [`service` attribute][2] documentation for other possible values.
+func (o GetIpRangesApplyOutput) Services() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIpRangesArgs) []string { return v.Services }).(pulumi.StringArrayOutput)
+}
+
+// Custom URL for source JSON file. Syntax must match [AWS IP Address Ranges documentation](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html). Defaults to `https://ip-ranges.amazonaws.com/ip-ranges.json`.
+func (o GetIpRangesApplyOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIpRangesArgs) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getIpRanges.
+type GetIpRangesResultOutput struct{ *pulumi.OutputState }
+
+func (GetIpRangesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpRangesResult)(nil)).Elem()
+}
+
+func (o GetIpRangesResultOutput) ToGetIpRangesResultOutput() GetIpRangesResultOutput {
+	return o
+}
+
+func (o GetIpRangesResultOutput) ToGetIpRangesResultOutputWithContext(ctx context.Context) GetIpRangesResultOutput {
+	return o
+}
+
+// The lexically ordered list of CIDR blocks.
+func (o GetIpRangesResultOutput) CidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIpRangesResult) []string { return v.CidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+// The publication time of the IP ranges (e.g. `2016-08-03-23-46-05`).
+func (o GetIpRangesResultOutput) CreateDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpRangesResult) string { return v.CreateDate }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetIpRangesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpRangesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The lexically ordered list of IPv6 CIDR blocks.
+func (o GetIpRangesResultOutput) Ipv6CidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIpRangesResult) []string { return v.Ipv6CidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+func (o GetIpRangesResultOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIpRangesResult) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+func (o GetIpRangesResultOutput) Services() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIpRangesResult) []string { return v.Services }).(pulumi.StringArrayOutput)
+}
+
+// The publication time of the IP ranges, in Unix epoch time format
+// (e.g. `1470267965`).
+func (o GetIpRangesResultOutput) SyncToken() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIpRangesResult) int { return v.SyncToken }).(pulumi.IntOutput)
+}
+
+func (o GetIpRangesResultOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIpRangesResult) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetIpRangesApplyOutput{})
+	pulumi.RegisterOutputType(GetIpRangesResultOutput{})
 }

@@ -43,6 +43,17 @@ namespace Pulumi.Aws.Route53
         /// </summary>
         public static Task<GetDelegationSetResult> InvokeAsync(GetDelegationSetArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDelegationSetResult>("aws:route53/getDelegationSet:getDelegationSet", args ?? new GetDelegationSetArgs(), options.WithVersion());
+
+        public static Output<GetDelegationSetResult> Apply(GetDelegationSetApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Id.Box()
+            ).Apply(a => {
+                    var args = new GetDelegationSetArgs();
+                    a[0].Set(args, nameof(args.Id));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -55,6 +66,19 @@ namespace Pulumi.Aws.Route53
         public string Id { get; set; } = null!;
 
         public GetDelegationSetArgs()
+        {
+        }
+    }
+
+    public sealed class GetDelegationSetApplyArgs
+    {
+        /// <summary>
+        /// The Hosted Zone id of the desired delegation set.
+        /// </summary>
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
+
+        public GetDelegationSetApplyArgs()
         {
         }
     }

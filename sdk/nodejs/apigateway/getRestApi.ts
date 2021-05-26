@@ -43,11 +43,11 @@ export interface GetRestApiArgs {
     /**
      * The name of the REST API to look up. If no REST API is found with this name, an error will be returned. If multiple REST APIs are found with this name, an error will be returned.
      */
-    readonly name: string;
+    name: string;
     /**
      * Key-value map of resource tags.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -99,4 +99,22 @@ export interface GetRestApiResult {
      * Key-value map of resource tags.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getRestApiApply(args: GetRestApiApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRestApiResult> {
+    return pulumi.output(args).apply(a => getRestApi(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRestApi.
+ */
+export interface GetRestApiApplyArgs {
+    /**
+     * The name of the REST API to look up. If no REST API is found with this name, an error will be returned. If multiple REST APIs are found with this name, an error will be returned.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Key-value map of resource tags.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

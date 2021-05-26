@@ -43,19 +43,19 @@ export interface GetOutpostArgs {
     /**
      * Amazon Resource Name (ARN).
      */
-    readonly arn?: string;
+    arn?: string;
     /**
      * Identifier of the Outpost.
      */
-    readonly id?: string;
+    id?: string;
     /**
      * Name of the Outpost.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * AWS Account identifier of the Outpost owner.
      */
-    readonly ownerId?: string;
+    ownerId?: string;
 }
 
 /**
@@ -82,4 +82,30 @@ export interface GetOutpostResult {
      * Site identifier.
      */
     readonly siteId: string;
+}
+
+export function getOutpostApply(args?: GetOutpostApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOutpostResult> {
+    return pulumi.output(args).apply(a => getOutpost(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getOutpost.
+ */
+export interface GetOutpostApplyArgs {
+    /**
+     * Amazon Resource Name (ARN).
+     */
+    arn?: pulumi.Input<string>;
+    /**
+     * Identifier of the Outpost.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Name of the Outpost.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * AWS Account identifier of the Outpost owner.
+     */
+    ownerId?: pulumi.Input<string>;
 }

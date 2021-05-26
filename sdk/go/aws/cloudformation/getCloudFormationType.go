@@ -4,6 +4,9 @@
 package cloudformation
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -86,4 +89,182 @@ type LookupCloudFormationTypeResult struct {
 	VersionId *string `pulumi:"versionId"`
 	// Scope of the CloudFormation Type.
 	Visibility string `pulumi:"visibility"`
+}
+
+func LookupCloudFormationTypeApply(ctx *pulumi.Context, args LookupCloudFormationTypeApplyInput, opts ...pulumi.InvokeOption) LookupCloudFormationTypeResultOutput {
+	return args.ToLookupCloudFormationTypeApplyOutput().ApplyT(func(v LookupCloudFormationTypeArgs) (LookupCloudFormationTypeResult, error) {
+		r, err := LookupCloudFormationType(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupCloudFormationTypeResultOutput)
+}
+
+// LookupCloudFormationTypeApplyInput is an input type that accepts LookupCloudFormationTypeApplyArgs and LookupCloudFormationTypeApplyOutput values.
+// You can construct a concrete instance of `LookupCloudFormationTypeApplyInput` via:
+//
+//          LookupCloudFormationTypeApplyArgs{...}
+type LookupCloudFormationTypeApplyInput interface {
+	pulumi.Input
+
+	ToLookupCloudFormationTypeApplyOutput() LookupCloudFormationTypeApplyOutput
+	ToLookupCloudFormationTypeApplyOutputWithContext(context.Context) LookupCloudFormationTypeApplyOutput
+}
+
+// A collection of arguments for invoking getCloudFormationType.
+type LookupCloudFormationTypeApplyArgs struct {
+	// Amazon Resource Name (ARN) of the CloudFormation Type. For example, `arn:aws:cloudformation:us-west-2::type/resource/AWS-EC2-VPC`.
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// CloudFormation Registry Type. For example, `RESOURCE`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// CloudFormation Type name. For example, `AWS::EC2::VPC`.
+	TypeName pulumi.StringPtrInput `pulumi:"typeName"`
+	// Identifier of the CloudFormation Type version.
+	VersionId pulumi.StringPtrInput `pulumi:"versionId"`
+}
+
+func (LookupCloudFormationTypeApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCloudFormationTypeArgs)(nil)).Elem()
+}
+
+func (i LookupCloudFormationTypeApplyArgs) ToLookupCloudFormationTypeApplyOutput() LookupCloudFormationTypeApplyOutput {
+	return i.ToLookupCloudFormationTypeApplyOutputWithContext(context.Background())
+}
+
+func (i LookupCloudFormationTypeApplyArgs) ToLookupCloudFormationTypeApplyOutputWithContext(ctx context.Context) LookupCloudFormationTypeApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupCloudFormationTypeApplyOutput)
+}
+
+// A collection of arguments for invoking getCloudFormationType.
+type LookupCloudFormationTypeApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupCloudFormationTypeApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCloudFormationTypeArgs)(nil)).Elem()
+}
+
+func (o LookupCloudFormationTypeApplyOutput) ToLookupCloudFormationTypeApplyOutput() LookupCloudFormationTypeApplyOutput {
+	return o
+}
+
+func (o LookupCloudFormationTypeApplyOutput) ToLookupCloudFormationTypeApplyOutputWithContext(ctx context.Context) LookupCloudFormationTypeApplyOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN) of the CloudFormation Type. For example, `arn:aws:cloudformation:us-west-2::type/resource/AWS-EC2-VPC`.
+func (o LookupCloudFormationTypeApplyOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudFormationTypeArgs) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// CloudFormation Registry Type. For example, `RESOURCE`.
+func (o LookupCloudFormationTypeApplyOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudFormationTypeArgs) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// CloudFormation Type name. For example, `AWS::EC2::VPC`.
+func (o LookupCloudFormationTypeApplyOutput) TypeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudFormationTypeArgs) *string { return v.TypeName }).(pulumi.StringPtrOutput)
+}
+
+// Identifier of the CloudFormation Type version.
+func (o LookupCloudFormationTypeApplyOutput) VersionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudFormationTypeArgs) *string { return v.VersionId }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getCloudFormationType.
+type LookupCloudFormationTypeResultOutput struct{ *pulumi.OutputState }
+
+func (LookupCloudFormationTypeResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCloudFormationTypeResult)(nil)).Elem()
+}
+
+func (o LookupCloudFormationTypeResultOutput) ToLookupCloudFormationTypeResultOutput() LookupCloudFormationTypeResultOutput {
+	return o
+}
+
+func (o LookupCloudFormationTypeResultOutput) ToLookupCloudFormationTypeResultOutputWithContext(ctx context.Context) LookupCloudFormationTypeResultOutput {
+	return o
+}
+
+func (o LookupCloudFormationTypeResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudFormationTypeResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// Identifier of the CloudFormation Type default version.
+func (o LookupCloudFormationTypeResultOutput) DefaultVersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudFormationTypeResult) string { return v.DefaultVersionId }).(pulumi.StringOutput)
+}
+
+// Deprecation status of the CloudFormation Type.
+func (o LookupCloudFormationTypeResultOutput) DeprecatedStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudFormationTypeResult) string { return v.DeprecatedStatus }).(pulumi.StringOutput)
+}
+
+// Description of the CloudFormation Type.
+func (o LookupCloudFormationTypeResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudFormationTypeResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// URL of the documentation for the CloudFormation Type.
+func (o LookupCloudFormationTypeResultOutput) DocumentationUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudFormationTypeResult) string { return v.DocumentationUrl }).(pulumi.StringOutput)
+}
+
+// Amazon Resource Name (ARN) of the IAM Role used to register the CloudFormation Type.
+func (o LookupCloudFormationTypeResultOutput) ExecutionRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudFormationTypeResult) string { return v.ExecutionRoleArn }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupCloudFormationTypeResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudFormationTypeResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether the CloudFormation Type version is the default version.
+func (o LookupCloudFormationTypeResultOutput) IsDefaultVersion() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupCloudFormationTypeResult) bool { return v.IsDefaultVersion }).(pulumi.BoolOutput)
+}
+
+// List of objects containing logging configuration.
+func (o LookupCloudFormationTypeResultOutput) LoggingConfigs() GetCloudFormationTypeLoggingConfigArrayOutput {
+	return o.ApplyT(func(v LookupCloudFormationTypeResult) []GetCloudFormationTypeLoggingConfig { return v.LoggingConfigs }).(GetCloudFormationTypeLoggingConfigArrayOutput)
+}
+
+// Provisioning behavior of the CloudFormation Type.
+func (o LookupCloudFormationTypeResultOutput) ProvisioningType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudFormationTypeResult) string { return v.ProvisioningType }).(pulumi.StringOutput)
+}
+
+// JSON document of the CloudFormation Type schema.
+func (o LookupCloudFormationTypeResultOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudFormationTypeResult) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+// URL of the source code for the CloudFormation Type.
+func (o LookupCloudFormationTypeResultOutput) SourceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudFormationTypeResult) string { return v.SourceUrl }).(pulumi.StringOutput)
+}
+
+func (o LookupCloudFormationTypeResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudFormationTypeResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o LookupCloudFormationTypeResultOutput) TypeArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudFormationTypeResult) string { return v.TypeArn }).(pulumi.StringOutput)
+}
+
+func (o LookupCloudFormationTypeResultOutput) TypeName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudFormationTypeResult) string { return v.TypeName }).(pulumi.StringOutput)
+}
+
+func (o LookupCloudFormationTypeResultOutput) VersionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudFormationTypeResult) *string { return v.VersionId }).(pulumi.StringPtrOutput)
+}
+
+// Scope of the CloudFormation Type.
+func (o LookupCloudFormationTypeResultOutput) Visibility() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudFormationTypeResult) string { return v.Visibility }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupCloudFormationTypeApplyOutput{})
+	pulumi.RegisterOutputType(LookupCloudFormationTypeResultOutput{})
 }

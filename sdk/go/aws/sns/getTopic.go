@@ -4,6 +4,9 @@
 package sns
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,4 +58,95 @@ type LookupTopicResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
+}
+
+func LookupTopicApply(ctx *pulumi.Context, args LookupTopicApplyInput, opts ...pulumi.InvokeOption) LookupTopicResultOutput {
+	return args.ToLookupTopicApplyOutput().ApplyT(func(v LookupTopicArgs) (LookupTopicResult, error) {
+		r, err := LookupTopic(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupTopicResultOutput)
+}
+
+// LookupTopicApplyInput is an input type that accepts LookupTopicApplyArgs and LookupTopicApplyOutput values.
+// You can construct a concrete instance of `LookupTopicApplyInput` via:
+//
+//          LookupTopicApplyArgs{...}
+type LookupTopicApplyInput interface {
+	pulumi.Input
+
+	ToLookupTopicApplyOutput() LookupTopicApplyOutput
+	ToLookupTopicApplyOutputWithContext(context.Context) LookupTopicApplyOutput
+}
+
+// A collection of arguments for invoking getTopic.
+type LookupTopicApplyArgs struct {
+	// The friendly name of the topic to match.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupTopicApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTopicArgs)(nil)).Elem()
+}
+
+func (i LookupTopicApplyArgs) ToLookupTopicApplyOutput() LookupTopicApplyOutput {
+	return i.ToLookupTopicApplyOutputWithContext(context.Background())
+}
+
+func (i LookupTopicApplyArgs) ToLookupTopicApplyOutputWithContext(ctx context.Context) LookupTopicApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupTopicApplyOutput)
+}
+
+// A collection of arguments for invoking getTopic.
+type LookupTopicApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupTopicApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTopicArgs)(nil)).Elem()
+}
+
+func (o LookupTopicApplyOutput) ToLookupTopicApplyOutput() LookupTopicApplyOutput {
+	return o
+}
+
+func (o LookupTopicApplyOutput) ToLookupTopicApplyOutputWithContext(ctx context.Context) LookupTopicApplyOutput {
+	return o
+}
+
+// The friendly name of the topic to match.
+func (o LookupTopicApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getTopic.
+type LookupTopicResultOutput struct{ *pulumi.OutputState }
+
+func (LookupTopicResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupTopicResult)(nil)).Elem()
+}
+
+func (o LookupTopicResultOutput) ToLookupTopicResultOutput() LookupTopicResultOutput {
+	return o
+}
+
+func (o LookupTopicResultOutput) ToLookupTopicResultOutputWithContext(ctx context.Context) LookupTopicResultOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN) of the found topic, suitable for referencing in other resources that support SNS topics.
+func (o LookupTopicResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupTopicResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupTopicResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupTopicApplyOutput{})
+	pulumi.RegisterOutputType(LookupTopicResultOutput{})
 }

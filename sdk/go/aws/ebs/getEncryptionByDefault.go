@@ -4,6 +4,9 @@
 package ebs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,4 +47,41 @@ type LookupEncryptionByDefaultResult struct {
 	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+}
+
+func LookupEncryptionByDefaultApply(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupEncryptionByDefaultResultOutput {
+	return pulumi.Any(opts).ApplyT(func(v interface{}) (LookupEncryptionByDefaultResult, error) {
+		r, err := LookupEncryptionByDefault(ctx, opts...)
+		return *r, err
+
+	}).(LookupEncryptionByDefaultResultOutput)
+}
+
+// A collection of values returned by getEncryptionByDefault.
+type LookupEncryptionByDefaultResultOutput struct{ *pulumi.OutputState }
+
+func (LookupEncryptionByDefaultResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupEncryptionByDefaultResult)(nil)).Elem()
+}
+
+func (o LookupEncryptionByDefaultResultOutput) ToLookupEncryptionByDefaultResultOutput() LookupEncryptionByDefaultResultOutput {
+	return o
+}
+
+func (o LookupEncryptionByDefaultResultOutput) ToLookupEncryptionByDefaultResultOutputWithContext(ctx context.Context) LookupEncryptionByDefaultResultOutput {
+	return o
+}
+
+// Whether or not default EBS encryption is enabled. Returns as `true` or `false`.
+func (o LookupEncryptionByDefaultResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupEncryptionByDefaultResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupEncryptionByDefaultResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEncryptionByDefaultResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupEncryptionByDefaultResultOutput{})
 }

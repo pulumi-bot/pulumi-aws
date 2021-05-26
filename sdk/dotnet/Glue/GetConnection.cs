@@ -39,6 +39,17 @@ namespace Pulumi.Aws.Glue
         /// </summary>
         public static Task<GetConnectionResult> InvokeAsync(GetConnectionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionResult>("aws:glue/getConnection:getConnection", args ?? new GetConnectionArgs(), options.WithVersion());
+
+        public static Output<GetConnectionResult> Apply(GetConnectionApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Id.Box()
+            ).Apply(a => {
+                    var args = new GetConnectionArgs();
+                    a[0].Set(args, nameof(args.Id));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -52,6 +63,20 @@ namespace Pulumi.Aws.Glue
         public string Id { get; set; } = null!;
 
         public GetConnectionArgs()
+        {
+        }
+    }
+
+    public sealed class GetConnectionApplyArgs
+    {
+        /// <summary>
+        /// A concatenation of the catalog ID and connection name. For example, if your account ID is
+        /// `123456789123` and the connection name is `conn` then the ID is `123456789123:conn`.
+        /// </summary>
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
+
+        public GetConnectionApplyArgs()
         {
         }
     }

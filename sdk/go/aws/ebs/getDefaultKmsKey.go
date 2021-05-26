@@ -4,6 +4,9 @@
 package ebs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,4 +55,41 @@ type LookupDefaultKmsKeyResult struct {
 	Id string `pulumi:"id"`
 	// Amazon Resource Name (ARN) of the default KMS key uses to encrypt an EBS volume in this region when no key is specified in an API call that creates the volume and encryption by default is enabled.
 	KeyArn string `pulumi:"keyArn"`
+}
+
+func LookupDefaultKmsKeyApply(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupDefaultKmsKeyResultOutput {
+	return pulumi.Any(opts).ApplyT(func(v interface{}) (LookupDefaultKmsKeyResult, error) {
+		r, err := LookupDefaultKmsKey(ctx, opts...)
+		return *r, err
+
+	}).(LookupDefaultKmsKeyResultOutput)
+}
+
+// A collection of values returned by getDefaultKmsKey.
+type LookupDefaultKmsKeyResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDefaultKmsKeyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDefaultKmsKeyResult)(nil)).Elem()
+}
+
+func (o LookupDefaultKmsKeyResultOutput) ToLookupDefaultKmsKeyResultOutput() LookupDefaultKmsKeyResultOutput {
+	return o
+}
+
+func (o LookupDefaultKmsKeyResultOutput) ToLookupDefaultKmsKeyResultOutputWithContext(ctx context.Context) LookupDefaultKmsKeyResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDefaultKmsKeyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDefaultKmsKeyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Amazon Resource Name (ARN) of the default KMS key uses to encrypt an EBS volume in this region when no key is specified in an API call that creates the volume and encryption by default is enabled.
+func (o LookupDefaultKmsKeyResultOutput) KeyArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDefaultKmsKeyResult) string { return v.KeyArn }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDefaultKmsKeyResultOutput{})
 }

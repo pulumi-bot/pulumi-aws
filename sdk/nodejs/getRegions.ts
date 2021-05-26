@@ -67,11 +67,11 @@ export interface GetRegionsArgs {
     /**
      * If true the source will query all regions regardless of availability.
      */
-    readonly allRegions?: boolean;
+    allRegions?: boolean;
     /**
      * Configuration block(s) to use as filters. Detailed below.
      */
-    readonly filters?: inputs.GetRegionsFilter[];
+    filters?: inputs.GetRegionsFilter[];
 }
 
 /**
@@ -88,4 +88,22 @@ export interface GetRegionsResult {
      * Names of regions that meets the criteria.
      */
     readonly names: string[];
+}
+
+export function getRegionsApply(args?: GetRegionsApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
+    return pulumi.output(args).apply(a => getRegions(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRegions.
+ */
+export interface GetRegionsApplyArgs {
+    /**
+     * If true the source will query all regions regardless of availability.
+     */
+    allRegions?: pulumi.Input<boolean>;
+    /**
+     * Configuration block(s) to use as filters. Detailed below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.GetRegionsFilter>[]>;
 }

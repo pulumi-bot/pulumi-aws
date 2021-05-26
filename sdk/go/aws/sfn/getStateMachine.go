@@ -4,6 +4,9 @@
 package sfn
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,4 +66,115 @@ type LookupStateMachineResult struct {
 	RoleArn string `pulumi:"roleArn"`
 	// Set to the current status of the state machine.
 	Status string `pulumi:"status"`
+}
+
+func LookupStateMachineApply(ctx *pulumi.Context, args LookupStateMachineApplyInput, opts ...pulumi.InvokeOption) LookupStateMachineResultOutput {
+	return args.ToLookupStateMachineApplyOutput().ApplyT(func(v LookupStateMachineArgs) (LookupStateMachineResult, error) {
+		r, err := LookupStateMachine(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupStateMachineResultOutput)
+}
+
+// LookupStateMachineApplyInput is an input type that accepts LookupStateMachineApplyArgs and LookupStateMachineApplyOutput values.
+// You can construct a concrete instance of `LookupStateMachineApplyInput` via:
+//
+//          LookupStateMachineApplyArgs{...}
+type LookupStateMachineApplyInput interface {
+	pulumi.Input
+
+	ToLookupStateMachineApplyOutput() LookupStateMachineApplyOutput
+	ToLookupStateMachineApplyOutputWithContext(context.Context) LookupStateMachineApplyOutput
+}
+
+// A collection of arguments for invoking getStateMachine.
+type LookupStateMachineApplyArgs struct {
+	// The friendly name of the state machine to match.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupStateMachineApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupStateMachineArgs)(nil)).Elem()
+}
+
+func (i LookupStateMachineApplyArgs) ToLookupStateMachineApplyOutput() LookupStateMachineApplyOutput {
+	return i.ToLookupStateMachineApplyOutputWithContext(context.Background())
+}
+
+func (i LookupStateMachineApplyArgs) ToLookupStateMachineApplyOutputWithContext(ctx context.Context) LookupStateMachineApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupStateMachineApplyOutput)
+}
+
+// A collection of arguments for invoking getStateMachine.
+type LookupStateMachineApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupStateMachineApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupStateMachineArgs)(nil)).Elem()
+}
+
+func (o LookupStateMachineApplyOutput) ToLookupStateMachineApplyOutput() LookupStateMachineApplyOutput {
+	return o
+}
+
+func (o LookupStateMachineApplyOutput) ToLookupStateMachineApplyOutputWithContext(ctx context.Context) LookupStateMachineApplyOutput {
+	return o
+}
+
+// The friendly name of the state machine to match.
+func (o LookupStateMachineApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStateMachineArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getStateMachine.
+type LookupStateMachineResultOutput struct{ *pulumi.OutputState }
+
+func (LookupStateMachineResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupStateMachineResult)(nil)).Elem()
+}
+
+func (o LookupStateMachineResultOutput) ToLookupStateMachineResultOutput() LookupStateMachineResultOutput {
+	return o
+}
+
+func (o LookupStateMachineResultOutput) ToLookupStateMachineResultOutputWithContext(ctx context.Context) LookupStateMachineResultOutput {
+	return o
+}
+
+// Set to the arn of the state function.
+func (o LookupStateMachineResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStateMachineResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The date the state machine was created.
+func (o LookupStateMachineResultOutput) CreationDate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStateMachineResult) string { return v.CreationDate }).(pulumi.StringOutput)
+}
+
+// Set to the state machine definition.
+func (o LookupStateMachineResultOutput) Definition() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStateMachineResult) string { return v.Definition }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupStateMachineResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStateMachineResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupStateMachineResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStateMachineResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Set to the roleArn used by the state function.
+func (o LookupStateMachineResultOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStateMachineResult) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+// Set to the current status of the state machine.
+func (o LookupStateMachineResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStateMachineResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupStateMachineApplyOutput{})
+	pulumi.RegisterOutputType(LookupStateMachineResultOutput{})
 }

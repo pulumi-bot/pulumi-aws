@@ -278,3 +278,10 @@ def get_image_pipeline(arn: Optional[str] = None,
         schedules=__ret__.schedules,
         status=__ret__.status,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_image_pipeline)
+def get_image_pipeline_apply(arn: Optional[pulumi.Input[str]] = None,
+                             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImagePipelineResult]:
+    ...

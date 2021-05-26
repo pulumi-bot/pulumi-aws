@@ -46,6 +46,19 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetDedicatedHostResult> InvokeAsync(GetDedicatedHostArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedHostResult>("aws:ec2/getDedicatedHost:getDedicatedHost", args ?? new GetDedicatedHostArgs(), options.WithVersion());
+
+        public static Output<GetDedicatedHostResult> Apply(GetDedicatedHostApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.HostId.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetDedicatedHostArgs();
+                    a[0].Set(args, nameof(args.HostId));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -66,6 +79,27 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetDedicatedHostArgs()
+        {
+        }
+    }
+
+    public sealed class GetDedicatedHostApplyArgs
+    {
+        /// <summary>
+        /// The host ID.
+        /// </summary>
+        [Input("hostId", required: true)]
+        public Input<string> HostId { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetDedicatedHostApplyArgs()
         {
         }
     }

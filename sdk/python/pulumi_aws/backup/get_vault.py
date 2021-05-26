@@ -134,3 +134,10 @@ def get_vault(name: Optional[str] = None,
         name=__ret__.name,
         recovery_points=__ret__.recovery_points,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_vault)
+def get_vault_apply(name: Optional[pulumi.Input[str]] = None,
+                    tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVaultResult]:
+    ...

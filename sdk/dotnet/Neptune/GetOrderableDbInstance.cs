@@ -45,6 +45,28 @@ namespace Pulumi.Aws.Neptune
         /// </summary>
         public static Task<GetOrderableDbInstanceResult> InvokeAsync(GetOrderableDbInstanceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOrderableDbInstanceResult>("aws:neptune/getOrderableDbInstance:getOrderableDbInstance", args ?? new GetOrderableDbInstanceArgs(), options.WithVersion());
+
+        public static Output<GetOrderableDbInstanceResult> Apply(GetOrderableDbInstanceApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetOrderableDbInstanceApplyArgs();
+            return Pulumi.Output.All(
+                args.Engine.Box(),
+                args.EngineVersion.Box(),
+                args.InstanceClass.Box(),
+                args.LicenseModel.Box(),
+                args.PreferredInstanceClasses.Box(),
+                args.Vpc.Box()
+            ).Apply(a => {
+                    var args = new GetOrderableDbInstanceArgs();
+                    a[0].Set(args, nameof(args.Engine));
+                    a[1].Set(args, nameof(args.EngineVersion));
+                    a[2].Set(args, nameof(args.InstanceClass));
+                    a[3].Set(args, nameof(args.LicenseModel));
+                    a[4].Set(args, nameof(args.PreferredInstanceClasses));
+                    a[5].Set(args, nameof(args.Vpc));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -93,6 +115,55 @@ namespace Pulumi.Aws.Neptune
         public bool? Vpc { get; set; }
 
         public GetOrderableDbInstanceArgs()
+        {
+        }
+    }
+
+    public sealed class GetOrderableDbInstanceApplyArgs
+    {
+        /// <summary>
+        /// DB engine. (Default: `neptune`)
+        /// </summary>
+        [Input("engine")]
+        public Input<string>? Engine { get; set; }
+
+        /// <summary>
+        /// Version of the DB engine. For example, `1.0.1.0`, `1.0.1.2`, `1.0.2.2`, and `1.0.3.0`.
+        /// </summary>
+        [Input("engineVersion")]
+        public Input<string>? EngineVersion { get; set; }
+
+        /// <summary>
+        /// DB instance class. Examples of classes are `db.r5.large`, `db.r5.xlarge`, `db.r4.large`, `db.r5.4xlarge`, `db.r5.12xlarge`, `db.r4.xlarge`, and `db.t3.medium`.
+        /// </summary>
+        [Input("instanceClass")]
+        public Input<string>? InstanceClass { get; set; }
+
+        /// <summary>
+        /// License model. (Default: `amazon-license`)
+        /// </summary>
+        [Input("licenseModel")]
+        public Input<string>? LicenseModel { get; set; }
+
+        [Input("preferredInstanceClasses")]
+        private InputList<string>? _preferredInstanceClasses;
+
+        /// <summary>
+        /// Ordered list of preferred Neptune DB instance classes. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned.
+        /// </summary>
+        public InputList<string> PreferredInstanceClasses
+        {
+            get => _preferredInstanceClasses ?? (_preferredInstanceClasses = new InputList<string>());
+            set => _preferredInstanceClasses = value;
+        }
+
+        /// <summary>
+        /// Enable to show only VPC offerings.
+        /// </summary>
+        [Input("vpc")]
+        public Input<bool>? Vpc { get; set; }
+
+        public GetOrderableDbInstanceApplyArgs()
         {
         }
     }

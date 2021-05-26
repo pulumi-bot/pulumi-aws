@@ -4,6 +4,9 @@
 package aws
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,4 +55,51 @@ type GetCallerIdentityResult struct {
 	Id string `pulumi:"id"`
 	// The unique identifier of the calling entity.
 	UserId string `pulumi:"userId"`
+}
+
+func GetCallerIdentityApply(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetCallerIdentityResultOutput {
+	return pulumi.Any(opts).ApplyT(func(v interface{}) (GetCallerIdentityResult, error) {
+		r, err := GetCallerIdentity(ctx, opts...)
+		return *r, err
+
+	}).(GetCallerIdentityResultOutput)
+}
+
+// A collection of values returned by getCallerIdentity.
+type GetCallerIdentityResultOutput struct{ *pulumi.OutputState }
+
+func (GetCallerIdentityResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCallerIdentityResult)(nil)).Elem()
+}
+
+func (o GetCallerIdentityResultOutput) ToGetCallerIdentityResultOutput() GetCallerIdentityResultOutput {
+	return o
+}
+
+func (o GetCallerIdentityResultOutput) ToGetCallerIdentityResultOutputWithContext(ctx context.Context) GetCallerIdentityResultOutput {
+	return o
+}
+
+// The AWS Account ID number of the account that owns or contains the calling entity.
+func (o GetCallerIdentityResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCallerIdentityResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The AWS ARN associated with the calling entity.
+func (o GetCallerIdentityResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCallerIdentityResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetCallerIdentityResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCallerIdentityResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the calling entity.
+func (o GetCallerIdentityResultOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCallerIdentityResult) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetCallerIdentityResultOutput{})
 }

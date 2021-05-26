@@ -39,6 +39,17 @@ namespace Pulumi.Aws.CodeCommit
         /// </summary>
         public static Task<GetRepositoryResult> InvokeAsync(GetRepositoryArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryResult>("aws:codecommit/getRepository:getRepository", args ?? new GetRepositoryArgs(), options.WithVersion());
+
+        public static Output<GetRepositoryResult> Apply(GetRepositoryApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.RepositoryName.Box()
+            ).Apply(a => {
+                    var args = new GetRepositoryArgs();
+                    a[0].Set(args, nameof(args.RepositoryName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +62,19 @@ namespace Pulumi.Aws.CodeCommit
         public string RepositoryName { get; set; } = null!;
 
         public GetRepositoryArgs()
+        {
+        }
+    }
+
+    public sealed class GetRepositoryApplyArgs
+    {
+        /// <summary>
+        /// The name for the repository. This needs to be less than 100 characters.
+        /// </summary>
+        [Input("repositoryName", required: true)]
+        public Input<string> RepositoryName { get; set; } = null!;
+
+        public GetRepositoryApplyArgs()
         {
         }
     }

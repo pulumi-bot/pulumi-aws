@@ -66,6 +66,19 @@ namespace Pulumi.Aws.RedShift
         /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("aws:redshift/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithVersion());
+
+        public static Output<GetClusterResult> Apply(GetClusterApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ClusterIdentifier.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetClusterArgs();
+                    a[0].Set(args, nameof(args.ClusterIdentifier));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -90,6 +103,31 @@ namespace Pulumi.Aws.RedShift
         }
 
         public GetClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetClusterApplyArgs
+    {
+        /// <summary>
+        /// The cluster identifier
+        /// </summary>
+        [Input("clusterIdentifier", required: true)]
+        public Input<string> ClusterIdentifier { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tags associated to the cluster
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetClusterApplyArgs()
         {
         }
     }

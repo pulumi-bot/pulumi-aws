@@ -127,3 +127,9 @@ def get_service_account(region: Optional[str] = None,
         arn=__ret__.arn,
         id=__ret__.id,
         region=__ret__.region)
+
+
+@_utilities.lift_output_func(get_service_account)
+def get_service_account_apply(region: Optional[pulumi.Input[str]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceAccountResult]:
+    ...

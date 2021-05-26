@@ -47,6 +47,19 @@ namespace Pulumi.Aws.Elb
         /// </summary>
         public static Task<GetLoadBalancerResult> InvokeAsync(GetLoadBalancerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerResult>("aws:elb/getLoadBalancer:getLoadBalancer", args ?? new GetLoadBalancerArgs(), options.WithVersion());
+
+        public static Output<GetLoadBalancerResult> Apply(GetLoadBalancerApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetLoadBalancerArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -67,6 +80,27 @@ namespace Pulumi.Aws.Elb
         }
 
         public GetLoadBalancerArgs()
+        {
+        }
+    }
+
+    public sealed class GetLoadBalancerApplyArgs
+    {
+        /// <summary>
+        /// The unique name of the load balancer.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetLoadBalancerApplyArgs()
         {
         }
     }

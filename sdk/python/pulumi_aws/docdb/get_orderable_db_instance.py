@@ -164,3 +164,14 @@ def get_orderable_db_instance(engine: Optional[str] = None,
         license_model=__ret__.license_model,
         preferred_instance_classes=__ret__.preferred_instance_classes,
         vpc=__ret__.vpc)
+
+
+@_utilities.lift_output_func(get_orderable_db_instance)
+def get_orderable_db_instance_apply(engine: Optional[pulumi.Input[str]] = None,
+                                    engine_version: Optional[pulumi.Input[str]] = None,
+                                    instance_class: Optional[pulumi.Input[str]] = None,
+                                    license_model: Optional[pulumi.Input[str]] = None,
+                                    preferred_instance_classes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                                    vpc: Optional[pulumi.Input[bool]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrderableDbInstanceResult]:
+    ...

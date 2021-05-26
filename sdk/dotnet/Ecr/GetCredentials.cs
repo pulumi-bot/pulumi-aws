@@ -13,6 +13,17 @@ namespace Pulumi.Aws.Ecr
     {
         public static Task<GetCredentialsResult> InvokeAsync(GetCredentialsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCredentialsResult>("aws:ecr/getCredentials:getCredentials", args ?? new GetCredentialsArgs(), options.WithVersion());
+
+        public static Output<GetCredentialsResult> Apply(GetCredentialsApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.RegistryId.Box()
+            ).Apply(a => {
+                    var args = new GetCredentialsArgs();
+                    a[0].Set(args, nameof(args.RegistryId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -22,6 +33,16 @@ namespace Pulumi.Aws.Ecr
         public string RegistryId { get; set; } = null!;
 
         public GetCredentialsArgs()
+        {
+        }
+    }
+
+    public sealed class GetCredentialsApplyArgs
+    {
+        [Input("registryId", required: true)]
+        public Input<string> RegistryId { get; set; } = null!;
+
+        public GetCredentialsApplyArgs()
         {
         }
     }

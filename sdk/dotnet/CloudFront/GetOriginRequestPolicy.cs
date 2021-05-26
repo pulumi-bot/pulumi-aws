@@ -39,6 +39,20 @@ namespace Pulumi.Aws.CloudFront
         /// </summary>
         public static Task<GetOriginRequestPolicyResult> InvokeAsync(GetOriginRequestPolicyArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOriginRequestPolicyResult>("aws:cloudfront/getOriginRequestPolicy:getOriginRequestPolicy", args ?? new GetOriginRequestPolicyArgs(), options.WithVersion());
+
+        public static Output<GetOriginRequestPolicyResult> Apply(GetOriginRequestPolicyApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetOriginRequestPolicyApplyArgs();
+            return Pulumi.Output.All(
+                args.Id.Box(),
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetOriginRequestPolicyArgs();
+                    a[0].Set(args, nameof(args.Id));
+                    a[1].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -57,6 +71,25 @@ namespace Pulumi.Aws.CloudFront
         public string? Name { get; set; }
 
         public GetOriginRequestPolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetOriginRequestPolicyApplyArgs
+    {
+        /// <summary>
+        /// The identifier for the origin request policy.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// Unique name to identify the origin request policy.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetOriginRequestPolicyApplyArgs()
         {
         }
     }

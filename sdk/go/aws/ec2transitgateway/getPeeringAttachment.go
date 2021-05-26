@@ -4,6 +4,9 @@
 package ec2transitgateway
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -95,4 +98,129 @@ type LookupPeeringAttachmentResult struct {
 	Tags                 map[string]string `pulumi:"tags"`
 	// Identifier of the local EC2 Transit Gateway
 	TransitGatewayId string `pulumi:"transitGatewayId"`
+}
+
+func LookupPeeringAttachmentApply(ctx *pulumi.Context, args LookupPeeringAttachmentApplyInput, opts ...pulumi.InvokeOption) LookupPeeringAttachmentResultOutput {
+	return args.ToLookupPeeringAttachmentApplyOutput().ApplyT(func(v LookupPeeringAttachmentArgs) (LookupPeeringAttachmentResult, error) {
+		r, err := LookupPeeringAttachment(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupPeeringAttachmentResultOutput)
+}
+
+// LookupPeeringAttachmentApplyInput is an input type that accepts LookupPeeringAttachmentApplyArgs and LookupPeeringAttachmentApplyOutput values.
+// You can construct a concrete instance of `LookupPeeringAttachmentApplyInput` via:
+//
+//          LookupPeeringAttachmentApplyArgs{...}
+type LookupPeeringAttachmentApplyInput interface {
+	pulumi.Input
+
+	ToLookupPeeringAttachmentApplyOutput() LookupPeeringAttachmentApplyOutput
+	ToLookupPeeringAttachmentApplyOutputWithContext(context.Context) LookupPeeringAttachmentApplyOutput
+}
+
+// A collection of arguments for invoking getPeeringAttachment.
+type LookupPeeringAttachmentApplyArgs struct {
+	// One or more configuration blocks containing name-values filters. Detailed below.
+	Filters GetPeeringAttachmentFilterArrayInput `pulumi:"filters"`
+	// Identifier of the EC2 Transit Gateway Peering Attachment.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// A mapping of tags, each pair of which must exactly match
+	// a pair on the specific EC2 Transit Gateway Peering Attachment to retrieve.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupPeeringAttachmentApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPeeringAttachmentArgs)(nil)).Elem()
+}
+
+func (i LookupPeeringAttachmentApplyArgs) ToLookupPeeringAttachmentApplyOutput() LookupPeeringAttachmentApplyOutput {
+	return i.ToLookupPeeringAttachmentApplyOutputWithContext(context.Background())
+}
+
+func (i LookupPeeringAttachmentApplyArgs) ToLookupPeeringAttachmentApplyOutputWithContext(ctx context.Context) LookupPeeringAttachmentApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupPeeringAttachmentApplyOutput)
+}
+
+// A collection of arguments for invoking getPeeringAttachment.
+type LookupPeeringAttachmentApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupPeeringAttachmentApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPeeringAttachmentArgs)(nil)).Elem()
+}
+
+func (o LookupPeeringAttachmentApplyOutput) ToLookupPeeringAttachmentApplyOutput() LookupPeeringAttachmentApplyOutput {
+	return o
+}
+
+func (o LookupPeeringAttachmentApplyOutput) ToLookupPeeringAttachmentApplyOutputWithContext(ctx context.Context) LookupPeeringAttachmentApplyOutput {
+	return o
+}
+
+// One or more configuration blocks containing name-values filters. Detailed below.
+func (o LookupPeeringAttachmentApplyOutput) Filters() GetPeeringAttachmentFilterArrayOutput {
+	return o.ApplyT(func(v LookupPeeringAttachmentArgs) []GetPeeringAttachmentFilter { return v.Filters }).(GetPeeringAttachmentFilterArrayOutput)
+}
+
+// Identifier of the EC2 Transit Gateway Peering Attachment.
+func (o LookupPeeringAttachmentApplyOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPeeringAttachmentArgs) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags, each pair of which must exactly match
+// a pair on the specific EC2 Transit Gateway Peering Attachment to retrieve.
+func (o LookupPeeringAttachmentApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupPeeringAttachmentArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getPeeringAttachment.
+type LookupPeeringAttachmentResultOutput struct{ *pulumi.OutputState }
+
+func (LookupPeeringAttachmentResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPeeringAttachmentResult)(nil)).Elem()
+}
+
+func (o LookupPeeringAttachmentResultOutput) ToLookupPeeringAttachmentResultOutput() LookupPeeringAttachmentResultOutput {
+	return o
+}
+
+func (o LookupPeeringAttachmentResultOutput) ToLookupPeeringAttachmentResultOutputWithContext(ctx context.Context) LookupPeeringAttachmentResultOutput {
+	return o
+}
+
+func (o LookupPeeringAttachmentResultOutput) Filters() GetPeeringAttachmentFilterArrayOutput {
+	return o.ApplyT(func(v LookupPeeringAttachmentResult) []GetPeeringAttachmentFilter { return v.Filters }).(GetPeeringAttachmentFilterArrayOutput)
+}
+
+func (o LookupPeeringAttachmentResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPeeringAttachmentResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Identifier of the peer AWS account
+func (o LookupPeeringAttachmentResultOutput) PeerAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPeeringAttachmentResult) string { return v.PeerAccountId }).(pulumi.StringOutput)
+}
+
+// Identifier of the peer AWS region
+func (o LookupPeeringAttachmentResultOutput) PeerRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPeeringAttachmentResult) string { return v.PeerRegion }).(pulumi.StringOutput)
+}
+
+// Identifier of the peer EC2 Transit Gateway
+func (o LookupPeeringAttachmentResultOutput) PeerTransitGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPeeringAttachmentResult) string { return v.PeerTransitGatewayId }).(pulumi.StringOutput)
+}
+
+func (o LookupPeeringAttachmentResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupPeeringAttachmentResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Identifier of the local EC2 Transit Gateway
+func (o LookupPeeringAttachmentResultOutput) TransitGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPeeringAttachmentResult) string { return v.TransitGatewayId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupPeeringAttachmentApplyOutput{})
+	pulumi.RegisterOutputType(LookupPeeringAttachmentResultOutput{})
 }

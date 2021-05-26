@@ -4,6 +4,9 @@
 package cognito
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,4 +79,99 @@ type GetUserPoolsResult struct {
 	// The list of cognito user pool ids.
 	Ids  []string `pulumi:"ids"`
 	Name string   `pulumi:"name"`
+}
+
+func GetUserPoolsApply(ctx *pulumi.Context, args GetUserPoolsApplyInput, opts ...pulumi.InvokeOption) GetUserPoolsResultOutput {
+	return args.ToGetUserPoolsApplyOutput().ApplyT(func(v GetUserPoolsArgs) (GetUserPoolsResult, error) {
+		r, err := GetUserPools(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetUserPoolsResultOutput)
+}
+
+// GetUserPoolsApplyInput is an input type that accepts GetUserPoolsApplyArgs and GetUserPoolsApplyOutput values.
+// You can construct a concrete instance of `GetUserPoolsApplyInput` via:
+//
+//          GetUserPoolsApplyArgs{...}
+type GetUserPoolsApplyInput interface {
+	pulumi.Input
+
+	ToGetUserPoolsApplyOutput() GetUserPoolsApplyOutput
+	ToGetUserPoolsApplyOutputWithContext(context.Context) GetUserPoolsApplyOutput
+}
+
+// A collection of arguments for invoking getUserPools.
+type GetUserPoolsApplyArgs struct {
+	// Name of the cognito user pools. Name is not a unique attribute for cognito user pool, so multiple pools might be returned with given name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetUserPoolsApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserPoolsArgs)(nil)).Elem()
+}
+
+func (i GetUserPoolsApplyArgs) ToGetUserPoolsApplyOutput() GetUserPoolsApplyOutput {
+	return i.ToGetUserPoolsApplyOutputWithContext(context.Background())
+}
+
+func (i GetUserPoolsApplyArgs) ToGetUserPoolsApplyOutputWithContext(ctx context.Context) GetUserPoolsApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserPoolsApplyOutput)
+}
+
+// A collection of arguments for invoking getUserPools.
+type GetUserPoolsApplyOutput struct{ *pulumi.OutputState }
+
+func (GetUserPoolsApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserPoolsArgs)(nil)).Elem()
+}
+
+func (o GetUserPoolsApplyOutput) ToGetUserPoolsApplyOutput() GetUserPoolsApplyOutput {
+	return o
+}
+
+func (o GetUserPoolsApplyOutput) ToGetUserPoolsApplyOutputWithContext(ctx context.Context) GetUserPoolsApplyOutput {
+	return o
+}
+
+// Name of the cognito user pools. Name is not a unique attribute for cognito user pool, so multiple pools might be returned with given name.
+func (o GetUserPoolsApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserPoolsArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getUserPools.
+type GetUserPoolsResultOutput struct{ *pulumi.OutputState }
+
+func (GetUserPoolsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserPoolsResult)(nil)).Elem()
+}
+
+func (o GetUserPoolsResultOutput) ToGetUserPoolsResultOutput() GetUserPoolsResultOutput {
+	return o
+}
+
+func (o GetUserPoolsResultOutput) ToGetUserPoolsResultOutputWithContext(ctx context.Context) GetUserPoolsResultOutput {
+	return o
+}
+
+func (o GetUserPoolsResultOutput) Arns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUserPoolsResult) []string { return v.Arns }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetUserPoolsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserPoolsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The list of cognito user pool ids.
+func (o GetUserPoolsResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUserPoolsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetUserPoolsResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserPoolsResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetUserPoolsApplyOutput{})
+	pulumi.RegisterOutputType(GetUserPoolsResultOutput{})
 }

@@ -146,3 +146,9 @@ def get_state_machine(name: Optional[str] = None,
         name=__ret__.name,
         role_arn=__ret__.role_arn,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_state_machine)
+def get_state_machine_apply(name: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStateMachineResult]:
+    ...

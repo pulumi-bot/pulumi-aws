@@ -151,3 +151,10 @@ def get_application(application_id: Optional[str] = None,
         semantic_version=__ret__.semantic_version,
         source_code_url=__ret__.source_code_url,
         template_url=__ret__.template_url)
+
+
+@_utilities.lift_output_func(get_application)
+def get_application_apply(application_id: Optional[pulumi.Input[str]] = None,
+                          semantic_version: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationResult]:
+    ...

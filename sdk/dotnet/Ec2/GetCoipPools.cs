@@ -16,6 +16,20 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetCoipPoolsResult> InvokeAsync(GetCoipPoolsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCoipPoolsResult>("aws:ec2/getCoipPools:getCoipPools", args ?? new GetCoipPoolsArgs(), options.WithVersion());
+
+        public static Output<GetCoipPoolsResult> Apply(GetCoipPoolsApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetCoipPoolsApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.Box(),
+                args.Tags.Box()
+            ).Apply(a => {
+                    var args = new GetCoipPoolsArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -47,6 +61,38 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetCoipPoolsArgs()
+        {
+        }
+    }
+
+    public sealed class GetCoipPoolsApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetCoipPoolsFilterArgs>? _filters;
+
+        /// <summary>
+        /// Custom filter block as described below.
+        /// </summary>
+        public InputList<Inputs.GetCoipPoolsFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetCoipPoolsFilterArgs>());
+            set => _filters = value;
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags, each pair of which must exactly match
+        /// a pair on the desired aws_ec2_coip_pools.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetCoipPoolsApplyArgs()
         {
         }
     }

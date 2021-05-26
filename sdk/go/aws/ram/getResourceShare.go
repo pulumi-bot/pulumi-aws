@@ -4,6 +4,9 @@
 package ram
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -99,4 +102,139 @@ type LookupResourceShareResult struct {
 	Status string `pulumi:"status"`
 	// The Tags attached to the RAM share
 	Tags map[string]string `pulumi:"tags"`
+}
+
+func LookupResourceShareApply(ctx *pulumi.Context, args LookupResourceShareApplyInput, opts ...pulumi.InvokeOption) LookupResourceShareResultOutput {
+	return args.ToLookupResourceShareApplyOutput().ApplyT(func(v LookupResourceShareArgs) (LookupResourceShareResult, error) {
+		r, err := LookupResourceShare(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupResourceShareResultOutput)
+}
+
+// LookupResourceShareApplyInput is an input type that accepts LookupResourceShareApplyArgs and LookupResourceShareApplyOutput values.
+// You can construct a concrete instance of `LookupResourceShareApplyInput` via:
+//
+//          LookupResourceShareApplyArgs{...}
+type LookupResourceShareApplyInput interface {
+	pulumi.Input
+
+	ToLookupResourceShareApplyOutput() LookupResourceShareApplyOutput
+	ToLookupResourceShareApplyOutputWithContext(context.Context) LookupResourceShareApplyOutput
+}
+
+// A collection of arguments for invoking getResourceShare.
+type LookupResourceShareApplyArgs struct {
+	// A filter used to scope the list e.g. by tags. See [related docs] (https://docs.aws.amazon.com/ram/latest/APIReference/API_TagFilter.html).
+	Filters GetResourceShareFilterArrayInput `pulumi:"filters"`
+	// The name of the tag key to filter on.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The owner of the resource share. Valid values are SELF or OTHER-ACCOUNTS
+	ResourceOwner pulumi.StringInput `pulumi:"resourceOwner"`
+	// The Tags attached to the RAM share
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupResourceShareApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupResourceShareArgs)(nil)).Elem()
+}
+
+func (i LookupResourceShareApplyArgs) ToLookupResourceShareApplyOutput() LookupResourceShareApplyOutput {
+	return i.ToLookupResourceShareApplyOutputWithContext(context.Background())
+}
+
+func (i LookupResourceShareApplyArgs) ToLookupResourceShareApplyOutputWithContext(ctx context.Context) LookupResourceShareApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupResourceShareApplyOutput)
+}
+
+// A collection of arguments for invoking getResourceShare.
+type LookupResourceShareApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupResourceShareApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupResourceShareArgs)(nil)).Elem()
+}
+
+func (o LookupResourceShareApplyOutput) ToLookupResourceShareApplyOutput() LookupResourceShareApplyOutput {
+	return o
+}
+
+func (o LookupResourceShareApplyOutput) ToLookupResourceShareApplyOutputWithContext(ctx context.Context) LookupResourceShareApplyOutput {
+	return o
+}
+
+// A filter used to scope the list e.g. by tags. See [related docs] (https://docs.aws.amazon.com/ram/latest/APIReference/API_TagFilter.html).
+func (o LookupResourceShareApplyOutput) Filters() GetResourceShareFilterArrayOutput {
+	return o.ApplyT(func(v LookupResourceShareArgs) []GetResourceShareFilter { return v.Filters }).(GetResourceShareFilterArrayOutput)
+}
+
+// The name of the tag key to filter on.
+func (o LookupResourceShareApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceShareArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The owner of the resource share. Valid values are SELF or OTHER-ACCOUNTS
+func (o LookupResourceShareApplyOutput) ResourceOwner() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceShareArgs) string { return v.ResourceOwner }).(pulumi.StringOutput)
+}
+
+// The Tags attached to the RAM share
+func (o LookupResourceShareApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupResourceShareArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getResourceShare.
+type LookupResourceShareResultOutput struct{ *pulumi.OutputState }
+
+func (LookupResourceShareResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupResourceShareResult)(nil)).Elem()
+}
+
+func (o LookupResourceShareResultOutput) ToLookupResourceShareResultOutput() LookupResourceShareResultOutput {
+	return o
+}
+
+func (o LookupResourceShareResultOutput) ToLookupResourceShareResultOutputWithContext(ctx context.Context) LookupResourceShareResultOutput {
+	return o
+}
+
+// The Amazon Resource Name (ARN) of the resource share.
+func (o LookupResourceShareResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceShareResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+func (o LookupResourceShareResultOutput) Filters() GetResourceShareFilterArrayOutput {
+	return o.ApplyT(func(v LookupResourceShareResult) []GetResourceShareFilter { return v.Filters }).(GetResourceShareFilterArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupResourceShareResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceShareResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupResourceShareResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceShareResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the AWS account that owns the resource share.
+func (o LookupResourceShareResultOutput) OwningAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceShareResult) string { return v.OwningAccountId }).(pulumi.StringOutput)
+}
+
+func (o LookupResourceShareResultOutput) ResourceOwner() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceShareResult) string { return v.ResourceOwner }).(pulumi.StringOutput)
+}
+
+// The Status of the RAM share.
+func (o LookupResourceShareResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceShareResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The Tags attached to the RAM share
+func (o LookupResourceShareResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupResourceShareResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupResourceShareApplyOutput{})
+	pulumi.RegisterOutputType(LookupResourceShareResultOutput{})
 }

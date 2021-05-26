@@ -177,3 +177,10 @@ def get_public_key(grant_tokens: Optional[Sequence[str]] = None,
         key_usage=__ret__.key_usage,
         public_key=__ret__.public_key,
         signing_algorithms=__ret__.signing_algorithms)
+
+
+@_utilities.lift_output_func(get_public_key)
+def get_public_key_apply(grant_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                         key_id: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPublicKeyResult]:
+    ...

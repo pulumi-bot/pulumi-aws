@@ -44,15 +44,15 @@ export interface GetStreamConsumerArgs {
     /**
      * Amazon Resource Name (ARN) of the stream consumer.
      */
-    readonly arn?: string;
+    arn?: string;
     /**
      * Name of the stream consumer.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * Amazon Resource Name (ARN) of the data stream the consumer is registered with.
      */
-    readonly streamArn: string;
+    streamArn: string;
 }
 
 /**
@@ -74,4 +74,26 @@ export interface GetStreamConsumerResult {
      */
     readonly status: string;
     readonly streamArn: string;
+}
+
+export function getStreamConsumerApply(args: GetStreamConsumerApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStreamConsumerResult> {
+    return pulumi.output(args).apply(a => getStreamConsumer(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getStreamConsumer.
+ */
+export interface GetStreamConsumerApplyArgs {
+    /**
+     * Amazon Resource Name (ARN) of the stream consumer.
+     */
+    arn?: pulumi.Input<string>;
+    /**
+     * Name of the stream consumer.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Amazon Resource Name (ARN) of the data stream the consumer is registered with.
+     */
+    streamArn: pulumi.Input<string>;
 }

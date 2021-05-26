@@ -4,6 +4,9 @@
 package aws
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,4 +67,108 @@ type GetRegionResult struct {
 	Id string `pulumi:"id"`
 	// The name of the selected region.
 	Name string `pulumi:"name"`
+}
+
+func GetRegionApply(ctx *pulumi.Context, args GetRegionApplyInput, opts ...pulumi.InvokeOption) GetRegionResultOutput {
+	return args.ToGetRegionApplyOutput().ApplyT(func(v GetRegionArgs) (GetRegionResult, error) {
+		r, err := GetRegion(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetRegionResultOutput)
+}
+
+// GetRegionApplyInput is an input type that accepts GetRegionApplyArgs and GetRegionApplyOutput values.
+// You can construct a concrete instance of `GetRegionApplyInput` via:
+//
+//          GetRegionApplyArgs{...}
+type GetRegionApplyInput interface {
+	pulumi.Input
+
+	ToGetRegionApplyOutput() GetRegionApplyOutput
+	ToGetRegionApplyOutputWithContext(context.Context) GetRegionApplyOutput
+}
+
+// A collection of arguments for invoking getRegion.
+type GetRegionApplyArgs struct {
+	// The EC2 endpoint of the region to select.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// The full name of the region to select.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (GetRegionApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionArgs)(nil)).Elem()
+}
+
+func (i GetRegionApplyArgs) ToGetRegionApplyOutput() GetRegionApplyOutput {
+	return i.ToGetRegionApplyOutputWithContext(context.Background())
+}
+
+func (i GetRegionApplyArgs) ToGetRegionApplyOutputWithContext(ctx context.Context) GetRegionApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionApplyOutput)
+}
+
+// A collection of arguments for invoking getRegion.
+type GetRegionApplyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionArgs)(nil)).Elem()
+}
+
+func (o GetRegionApplyOutput) ToGetRegionApplyOutput() GetRegionApplyOutput {
+	return o
+}
+
+func (o GetRegionApplyOutput) ToGetRegionApplyOutputWithContext(ctx context.Context) GetRegionApplyOutput {
+	return o
+}
+
+// The EC2 endpoint of the region to select.
+func (o GetRegionApplyOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegionArgs) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The full name of the region to select.
+func (o GetRegionApplyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegionArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getRegion.
+type GetRegionResultOutput struct{ *pulumi.OutputState }
+
+func (GetRegionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionResult)(nil)).Elem()
+}
+
+func (o GetRegionResultOutput) ToGetRegionResultOutput() GetRegionResultOutput {
+	return o
+}
+
+func (o GetRegionResultOutput) ToGetRegionResultOutputWithContext(ctx context.Context) GetRegionResultOutput {
+	return o
+}
+
+// The region's description in this format: "Location (Region name)".
+func (o GetRegionResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The EC2 endpoint for the selected region.
+func (o GetRegionResultOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionResult) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRegionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the selected region.
+func (o GetRegionResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRegionApplyOutput{})
+	pulumi.RegisterOutputType(GetRegionResultOutput{})
 }

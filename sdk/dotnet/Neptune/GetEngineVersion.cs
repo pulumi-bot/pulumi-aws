@@ -44,6 +44,24 @@ namespace Pulumi.Aws.Neptune
         /// </summary>
         public static Task<GetEngineVersionResult> InvokeAsync(GetEngineVersionArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEngineVersionResult>("aws:neptune/getEngineVersion:getEngineVersion", args ?? new GetEngineVersionArgs(), options.WithVersion());
+
+        public static Output<GetEngineVersionResult> Apply(GetEngineVersionApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetEngineVersionApplyArgs();
+            return Pulumi.Output.All(
+                args.Engine.Box(),
+                args.ParameterGroupFamily.Box(),
+                args.PreferredVersions.Box(),
+                args.Version.Box()
+            ).Apply(a => {
+                    var args = new GetEngineVersionArgs();
+                    a[0].Set(args, nameof(args.Engine));
+                    a[1].Set(args, nameof(args.ParameterGroupFamily));
+                    a[2].Set(args, nameof(args.PreferredVersions));
+                    a[3].Set(args, nameof(args.Version));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -80,6 +98,43 @@ namespace Pulumi.Aws.Neptune
         public string? Version { get; set; }
 
         public GetEngineVersionArgs()
+        {
+        }
+    }
+
+    public sealed class GetEngineVersionApplyArgs
+    {
+        /// <summary>
+        /// DB engine. (Default: `neptune`)
+        /// </summary>
+        [Input("engine")]
+        public Input<string>? Engine { get; set; }
+
+        /// <summary>
+        /// The name of a specific DB parameter group family. An example parameter group family is `neptune1`.
+        /// </summary>
+        [Input("parameterGroupFamily")]
+        public Input<string>? ParameterGroupFamily { get; set; }
+
+        [Input("preferredVersions")]
+        private InputList<string>? _preferredVersions;
+
+        /// <summary>
+        /// Ordered list of preferred engine versions. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. If both the `version` and `preferred_versions` arguments are not configured, the data source will return the default version for the engine.
+        /// </summary>
+        public InputList<string> PreferredVersions
+        {
+            get => _preferredVersions ?? (_preferredVersions = new InputList<string>());
+            set => _preferredVersions = value;
+        }
+
+        /// <summary>
+        /// Version of the DB engine. For example, `1.0.1.0`, `1.0.2.2`, and `1.0.3.0`. If both the `version` and `preferred_versions` arguments are not configured, the data source will return the default version for the engine.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        public GetEngineVersionApplyArgs()
         {
         }
     }

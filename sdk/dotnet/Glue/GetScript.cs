@@ -20,6 +20,21 @@ namespace Pulumi.Aws.Glue
         /// </summary>
         public static Task<GetScriptResult> InvokeAsync(GetScriptArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetScriptResult>("aws:glue/getScript:getScript", args ?? new GetScriptArgs(), options.WithVersion());
+
+        public static Output<GetScriptResult> Apply(GetScriptApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.DagEdges.Box(),
+                args.DagNodes.Box(),
+                args.Language.Box()
+            ).Apply(a => {
+                    var args = new GetScriptArgs();
+                    a[0].Set(args, nameof(args.DagEdges));
+                    a[1].Set(args, nameof(args.DagNodes));
+                    a[2].Set(args, nameof(args.Language));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -56,6 +71,43 @@ namespace Pulumi.Aws.Glue
         public string? Language { get; set; }
 
         public GetScriptArgs()
+        {
+        }
+    }
+
+    public sealed class GetScriptApplyArgs
+    {
+        [Input("dagEdges", required: true)]
+        private InputList<Inputs.GetScriptDagEdgeArgs>? _dagEdges;
+
+        /// <summary>
+        /// A list of the edges in the DAG. Defined below.
+        /// </summary>
+        public InputList<Inputs.GetScriptDagEdgeArgs> DagEdges
+        {
+            get => _dagEdges ?? (_dagEdges = new InputList<Inputs.GetScriptDagEdgeArgs>());
+            set => _dagEdges = value;
+        }
+
+        [Input("dagNodes", required: true)]
+        private InputList<Inputs.GetScriptDagNodeArgs>? _dagNodes;
+
+        /// <summary>
+        /// A list of the nodes in the DAG. Defined below.
+        /// </summary>
+        public InputList<Inputs.GetScriptDagNodeArgs> DagNodes
+        {
+            get => _dagNodes ?? (_dagNodes = new InputList<Inputs.GetScriptDagNodeArgs>());
+            set => _dagNodes = value;
+        }
+
+        /// <summary>
+        /// The programming language of the resulting code from the DAG. Defaults to `PYTHON`. Valid values are `PYTHON` and `SCALA`.
+        /// </summary>
+        [Input("language")]
+        public Input<string>? Language { get; set; }
+
+        public GetScriptApplyArgs()
         {
         }
     }

@@ -4,6 +4,9 @@
 package apigatewayv2
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -81,4 +84,161 @@ type LookupApiResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// A version identifier for the API.
 	Version string `pulumi:"version"`
+}
+
+func LookupApiApply(ctx *pulumi.Context, args LookupApiApplyInput, opts ...pulumi.InvokeOption) LookupApiResultOutput {
+	return args.ToLookupApiApplyOutput().ApplyT(func(v LookupApiArgs) (LookupApiResult, error) {
+		r, err := LookupApi(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupApiResultOutput)
+}
+
+// LookupApiApplyInput is an input type that accepts LookupApiApplyArgs and LookupApiApplyOutput values.
+// You can construct a concrete instance of `LookupApiApplyInput` via:
+//
+//          LookupApiApplyArgs{...}
+type LookupApiApplyInput interface {
+	pulumi.Input
+
+	ToLookupApiApplyOutput() LookupApiApplyOutput
+	ToLookupApiApplyOutputWithContext(context.Context) LookupApiApplyOutput
+}
+
+// A collection of arguments for invoking getApi.
+type LookupApiApplyArgs struct {
+	// The API identifier.
+	ApiId pulumi.StringInput `pulumi:"apiId"`
+	// A map of resource tags.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupApiApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupApiArgs)(nil)).Elem()
+}
+
+func (i LookupApiApplyArgs) ToLookupApiApplyOutput() LookupApiApplyOutput {
+	return i.ToLookupApiApplyOutputWithContext(context.Background())
+}
+
+func (i LookupApiApplyArgs) ToLookupApiApplyOutputWithContext(ctx context.Context) LookupApiApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupApiApplyOutput)
+}
+
+// A collection of arguments for invoking getApi.
+type LookupApiApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupApiApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupApiArgs)(nil)).Elem()
+}
+
+func (o LookupApiApplyOutput) ToLookupApiApplyOutput() LookupApiApplyOutput {
+	return o
+}
+
+func (o LookupApiApplyOutput) ToLookupApiApplyOutputWithContext(ctx context.Context) LookupApiApplyOutput {
+	return o
+}
+
+// The API identifier.
+func (o LookupApiApplyOutput) ApiId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiArgs) string { return v.ApiId }).(pulumi.StringOutput)
+}
+
+// A map of resource tags.
+func (o LookupApiApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupApiArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getApi.
+type LookupApiResultOutput struct{ *pulumi.OutputState }
+
+func (LookupApiResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupApiResult)(nil)).Elem()
+}
+
+func (o LookupApiResultOutput) ToLookupApiResultOutput() LookupApiResultOutput {
+	return o
+}
+
+func (o LookupApiResultOutput) ToLookupApiResultOutputWithContext(ctx context.Context) LookupApiResultOutput {
+	return o
+}
+
+// The URI of the API, of the form `https://{api-id}.execute-api.{region}.amazonaws.com` for HTTP APIs and `wss://{api-id}.execute-api.{region}.amazonaws.com` for WebSocket APIs.
+func (o LookupApiResultOutput) ApiEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiResult) string { return v.ApiEndpoint }).(pulumi.StringOutput)
+}
+
+func (o LookupApiResultOutput) ApiId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiResult) string { return v.ApiId }).(pulumi.StringOutput)
+}
+
+// An [API key selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions).
+// Applicable for WebSocket APIs.
+func (o LookupApiResultOutput) ApiKeySelectionExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiResult) string { return v.ApiKeySelectionExpression }).(pulumi.StringOutput)
+}
+
+// The ARN of the API.
+func (o LookupApiResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The cross-origin resource sharing (CORS) [configuration](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html).
+// Applicable for HTTP APIs.
+func (o LookupApiResultOutput) CorsConfigurations() GetApiCorsConfigurationArrayOutput {
+	return o.ApplyT(func(v LookupApiResult) []GetApiCorsConfiguration { return v.CorsConfigurations }).(GetApiCorsConfigurationArrayOutput)
+}
+
+// The description of the API.
+func (o LookupApiResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether clients can invoke the API by using the default `execute-api` endpoint.
+func (o LookupApiResultOutput) DisableExecuteApiEndpoint() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupApiResult) bool { return v.DisableExecuteApiEndpoint }).(pulumi.BoolOutput)
+}
+
+// The ARN prefix to be used in an `lambda.Permission`'s `sourceArn` attribute
+// or in an `iam.Policy` to authorize access to the [`@connections` API](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-how-to-call-websocket-api-connections.html).
+// See the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-control-access-iam.html) for details.
+func (o LookupApiResultOutput) ExecutionArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiResult) string { return v.ExecutionArn }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupApiResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the API.
+func (o LookupApiResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The API protocol.
+func (o LookupApiResultOutput) ProtocolType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiResult) string { return v.ProtocolType }).(pulumi.StringOutput)
+}
+
+// The [route selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-selection-expressions) for the API.
+func (o LookupApiResultOutput) RouteSelectionExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiResult) string { return v.RouteSelectionExpression }).(pulumi.StringOutput)
+}
+
+// A map of resource tags.
+func (o LookupApiResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupApiResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A version identifier for the API.
+func (o LookupApiResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupApiApplyOutput{})
+	pulumi.RegisterOutputType(LookupApiResultOutput{})
 }

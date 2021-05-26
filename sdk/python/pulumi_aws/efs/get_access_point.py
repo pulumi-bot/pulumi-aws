@@ -168,3 +168,10 @@ def get_access_point(access_point_id: Optional[str] = None,
         posix_users=__ret__.posix_users,
         root_directories=__ret__.root_directories,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_access_point)
+def get_access_point_apply(access_point_id: Optional[pulumi.Input[str]] = None,
+                           tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessPointResult]:
+    ...

@@ -30,12 +30,12 @@ export interface GetCoipPoolsArgs {
     /**
      * Custom filter block as described below.
      */
-    readonly filters?: inputs.ec2.GetCoipPoolsFilter[];
+    filters?: inputs.ec2.GetCoipPoolsFilter[];
     /**
      * A mapping of tags, each pair of which must exactly match
      * a pair on the desired aws_ec2_coip_pools.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -52,4 +52,23 @@ export interface GetCoipPoolsResult {
      */
     readonly poolIds: string[];
     readonly tags: {[key: string]: string};
+}
+
+export function getCoipPoolsApply(args?: GetCoipPoolsApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCoipPoolsResult> {
+    return pulumi.output(args).apply(a => getCoipPools(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCoipPools.
+ */
+export interface GetCoipPoolsApplyArgs {
+    /**
+     * Custom filter block as described below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.ec2.GetCoipPoolsFilter>[]>;
+    /**
+     * A mapping of tags, each pair of which must exactly match
+     * a pair on the desired aws_ec2_coip_pools.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -40,11 +40,11 @@ export interface GetLogGroupArgs {
     /**
      * The name of the Cloudwatch log group
      */
-    readonly name: string;
+    name: string;
     /**
      * A map of tags to assign to the resource.
      */
-    readonly tags?: {[key: string]: string};
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -76,4 +76,22 @@ export interface GetLogGroupResult {
      * A map of tags to assign to the resource.
      */
     readonly tags: {[key: string]: string};
+}
+
+export function getLogGroupApply(args: GetLogGroupApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogGroupResult> {
+    return pulumi.output(args).apply(a => getLogGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getLogGroup.
+ */
+export interface GetLogGroupApplyArgs {
+    /**
+     * The name of the Cloudwatch log group
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A map of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

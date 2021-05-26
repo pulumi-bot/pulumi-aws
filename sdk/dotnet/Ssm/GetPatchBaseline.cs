@@ -65,6 +65,23 @@ namespace Pulumi.Aws.Ssm
         /// </summary>
         public static Task<GetPatchBaselineResult> InvokeAsync(GetPatchBaselineArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPatchBaselineResult>("aws:ssm/getPatchBaseline:getPatchBaseline", args ?? new GetPatchBaselineArgs(), options.WithVersion());
+
+        public static Output<GetPatchBaselineResult> Apply(GetPatchBaselineApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.DefaultBaseline.Box(),
+                args.NamePrefix.Box(),
+                args.OperatingSystem.Box(),
+                args.Owner.Box()
+            ).Apply(a => {
+                    var args = new GetPatchBaselineArgs();
+                    a[0].Set(args, nameof(args.DefaultBaseline));
+                    a[1].Set(args, nameof(args.NamePrefix));
+                    a[2].Set(args, nameof(args.OperatingSystem));
+                    a[3].Set(args, nameof(args.Owner));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -95,6 +112,37 @@ namespace Pulumi.Aws.Ssm
         public string Owner { get; set; } = null!;
 
         public GetPatchBaselineArgs()
+        {
+        }
+    }
+
+    public sealed class GetPatchBaselineApplyArgs
+    {
+        /// <summary>
+        /// Filters the results against the baselines default_baseline field.
+        /// </summary>
+        [Input("defaultBaseline")]
+        public Input<bool>? DefaultBaseline { get; set; }
+
+        /// <summary>
+        /// Filter results by the baseline name prefix.
+        /// </summary>
+        [Input("namePrefix")]
+        public Input<string>? NamePrefix { get; set; }
+
+        /// <summary>
+        /// The specified OS for the baseline.
+        /// </summary>
+        [Input("operatingSystem")]
+        public Input<string>? OperatingSystem { get; set; }
+
+        /// <summary>
+        /// The owner of the baseline. Valid values: `All`, `AWS`, `Self` (the current account).
+        /// </summary>
+        [Input("owner", required: true)]
+        public Input<string> Owner { get; set; } = null!;
+
+        public GetPatchBaselineApplyArgs()
         {
         }
     }

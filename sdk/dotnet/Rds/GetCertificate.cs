@@ -39,6 +39,20 @@ namespace Pulumi.Aws.Rds
         /// </summary>
         public static Task<GetCertificateResult> InvokeAsync(GetCertificateArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("aws:rds/getCertificate:getCertificate", args ?? new GetCertificateArgs(), options.WithVersion());
+
+        public static Output<GetCertificateResult> Apply(GetCertificateApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetCertificateApplyArgs();
+            return Pulumi.Output.All(
+                args.Id.Box(),
+                args.LatestValidTill.Box()
+            ).Apply(a => {
+                    var args = new GetCertificateArgs();
+                    a[0].Set(args, nameof(args.Id));
+                    a[1].Set(args, nameof(args.LatestValidTill));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -57,6 +71,25 @@ namespace Pulumi.Aws.Rds
         public bool? LatestValidTill { get; set; }
 
         public GetCertificateArgs()
+        {
+        }
+    }
+
+    public sealed class GetCertificateApplyArgs
+    {
+        /// <summary>
+        /// Certificate identifier. For example, `rds-ca-2019`.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// When enabled, returns the certificate with the latest `ValidTill`.
+        /// </summary>
+        [Input("latestValidTill")]
+        public Input<bool>? LatestValidTill { get; set; }
+
+        public GetCertificateApplyArgs()
         {
         }
     }

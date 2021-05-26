@@ -4,6 +4,9 @@
 package sqs
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,112 @@ type LookupQueueResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The URL of the queue.
 	Url string `pulumi:"url"`
+}
+
+func LookupQueueApply(ctx *pulumi.Context, args LookupQueueApplyInput, opts ...pulumi.InvokeOption) LookupQueueResultOutput {
+	return args.ToLookupQueueApplyOutput().ApplyT(func(v LookupQueueArgs) (LookupQueueResult, error) {
+		r, err := LookupQueue(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupQueueResultOutput)
+}
+
+// LookupQueueApplyInput is an input type that accepts LookupQueueApplyArgs and LookupQueueApplyOutput values.
+// You can construct a concrete instance of `LookupQueueApplyInput` via:
+//
+//          LookupQueueApplyArgs{...}
+type LookupQueueApplyInput interface {
+	pulumi.Input
+
+	ToLookupQueueApplyOutput() LookupQueueApplyOutput
+	ToLookupQueueApplyOutputWithContext(context.Context) LookupQueueApplyOutput
+}
+
+// A collection of arguments for invoking getQueue.
+type LookupQueueApplyArgs struct {
+	// The name of the queue to match.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A map of tags for the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupQueueApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupQueueArgs)(nil)).Elem()
+}
+
+func (i LookupQueueApplyArgs) ToLookupQueueApplyOutput() LookupQueueApplyOutput {
+	return i.ToLookupQueueApplyOutputWithContext(context.Background())
+}
+
+func (i LookupQueueApplyArgs) ToLookupQueueApplyOutputWithContext(ctx context.Context) LookupQueueApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupQueueApplyOutput)
+}
+
+// A collection of arguments for invoking getQueue.
+type LookupQueueApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupQueueApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupQueueArgs)(nil)).Elem()
+}
+
+func (o LookupQueueApplyOutput) ToLookupQueueApplyOutput() LookupQueueApplyOutput {
+	return o
+}
+
+func (o LookupQueueApplyOutput) ToLookupQueueApplyOutputWithContext(ctx context.Context) LookupQueueApplyOutput {
+	return o
+}
+
+// The name of the queue to match.
+func (o LookupQueueApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A map of tags for the resource.
+func (o LookupQueueApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupQueueArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getQueue.
+type LookupQueueResultOutput struct{ *pulumi.OutputState }
+
+func (LookupQueueResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupQueueResult)(nil)).Elem()
+}
+
+func (o LookupQueueResultOutput) ToLookupQueueResultOutput() LookupQueueResultOutput {
+	return o
+}
+
+func (o LookupQueueResultOutput) ToLookupQueueResultOutputWithContext(ctx context.Context) LookupQueueResultOutput {
+	return o
+}
+
+// The Amazon Resource Name (ARN) of the queue.
+func (o LookupQueueResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupQueueResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupQueueResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A map of tags for the resource.
+func (o LookupQueueResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupQueueResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The URL of the queue.
+func (o LookupQueueResultOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueueResult) string { return v.Url }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupQueueApplyOutput{})
+	pulumi.RegisterOutputType(LookupQueueResultOutput{})
 }

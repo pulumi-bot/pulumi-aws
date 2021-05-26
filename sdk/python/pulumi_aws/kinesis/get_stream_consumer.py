@@ -134,3 +134,11 @@ def get_stream_consumer(arn: Optional[str] = None,
         name=__ret__.name,
         status=__ret__.status,
         stream_arn=__ret__.stream_arn)
+
+
+@_utilities.lift_output_func(get_stream_consumer)
+def get_stream_consumer_apply(arn: Optional[pulumi.Input[str]] = None,
+                              name: Optional[pulumi.Input[str]] = None,
+                              stream_arn: Optional[pulumi.Input[str]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStreamConsumerResult]:
+    ...

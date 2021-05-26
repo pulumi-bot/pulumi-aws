@@ -44,19 +44,19 @@ export interface GetCloudFormationTypeArgs {
     /**
      * Amazon Resource Name (ARN) of the CloudFormation Type. For example, `arn:aws:cloudformation:us-west-2::type/resource/AWS-EC2-VPC`.
      */
-    readonly arn?: string;
+    arn?: string;
     /**
      * CloudFormation Registry Type. For example, `RESOURCE`.
      */
-    readonly type?: string;
+    type?: string;
     /**
      * CloudFormation Type name. For example, `AWS::EC2::VPC`.
      */
-    readonly typeName?: string;
+    typeName?: string;
     /**
      * Identifier of the CloudFormation Type version.
      */
-    readonly versionId?: string;
+    versionId?: string;
 }
 
 /**
@@ -116,4 +116,30 @@ export interface GetCloudFormationTypeResult {
      * Scope of the CloudFormation Type.
      */
     readonly visibility: string;
+}
+
+export function getCloudFormationTypeApply(args?: GetCloudFormationTypeApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudFormationTypeResult> {
+    return pulumi.output(args).apply(a => getCloudFormationType(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCloudFormationType.
+ */
+export interface GetCloudFormationTypeApplyArgs {
+    /**
+     * Amazon Resource Name (ARN) of the CloudFormation Type. For example, `arn:aws:cloudformation:us-west-2::type/resource/AWS-EC2-VPC`.
+     */
+    arn?: pulumi.Input<string>;
+    /**
+     * CloudFormation Registry Type. For example, `RESOURCE`.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * CloudFormation Type name. For example, `AWS::EC2::VPC`.
+     */
+    typeName?: pulumi.Input<string>;
+    /**
+     * Identifier of the CloudFormation Type version.
+     */
+    versionId?: pulumi.Input<string>;
 }

@@ -4,6 +4,9 @@
 package storagegateway
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,4 +64,117 @@ type GetLocalDiskResult struct {
 	GatewayArn string `pulumi:"gatewayArn"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+}
+
+func GetLocalDiskApply(ctx *pulumi.Context, args GetLocalDiskApplyInput, opts ...pulumi.InvokeOption) GetLocalDiskResultOutput {
+	return args.ToGetLocalDiskApplyOutput().ApplyT(func(v GetLocalDiskArgs) (GetLocalDiskResult, error) {
+		r, err := GetLocalDisk(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetLocalDiskResultOutput)
+}
+
+// GetLocalDiskApplyInput is an input type that accepts GetLocalDiskApplyArgs and GetLocalDiskApplyOutput values.
+// You can construct a concrete instance of `GetLocalDiskApplyInput` via:
+//
+//          GetLocalDiskApplyArgs{...}
+type GetLocalDiskApplyInput interface {
+	pulumi.Input
+
+	ToGetLocalDiskApplyOutput() GetLocalDiskApplyOutput
+	ToGetLocalDiskApplyOutputWithContext(context.Context) GetLocalDiskApplyOutput
+}
+
+// A collection of arguments for invoking getLocalDisk.
+type GetLocalDiskApplyArgs struct {
+	// The device node of the local disk to retrieve. For example, `/dev/sdb`.
+	DiskNode pulumi.StringPtrInput `pulumi:"diskNode"`
+	// The device path of the local disk to retrieve. For example, `/dev/xvdb` or `/dev/nvme1n1`.
+	DiskPath pulumi.StringPtrInput `pulumi:"diskPath"`
+	// The Amazon Resource Name (ARN) of the gateway.
+	GatewayArn pulumi.StringInput `pulumi:"gatewayArn"`
+}
+
+func (GetLocalDiskApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocalDiskArgs)(nil)).Elem()
+}
+
+func (i GetLocalDiskApplyArgs) ToGetLocalDiskApplyOutput() GetLocalDiskApplyOutput {
+	return i.ToGetLocalDiskApplyOutputWithContext(context.Background())
+}
+
+func (i GetLocalDiskApplyArgs) ToGetLocalDiskApplyOutputWithContext(ctx context.Context) GetLocalDiskApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLocalDiskApplyOutput)
+}
+
+// A collection of arguments for invoking getLocalDisk.
+type GetLocalDiskApplyOutput struct{ *pulumi.OutputState }
+
+func (GetLocalDiskApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocalDiskArgs)(nil)).Elem()
+}
+
+func (o GetLocalDiskApplyOutput) ToGetLocalDiskApplyOutput() GetLocalDiskApplyOutput {
+	return o
+}
+
+func (o GetLocalDiskApplyOutput) ToGetLocalDiskApplyOutputWithContext(ctx context.Context) GetLocalDiskApplyOutput {
+	return o
+}
+
+// The device node of the local disk to retrieve. For example, `/dev/sdb`.
+func (o GetLocalDiskApplyOutput) DiskNode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLocalDiskArgs) *string { return v.DiskNode }).(pulumi.StringPtrOutput)
+}
+
+// The device path of the local disk to retrieve. For example, `/dev/xvdb` or `/dev/nvme1n1`.
+func (o GetLocalDiskApplyOutput) DiskPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLocalDiskArgs) *string { return v.DiskPath }).(pulumi.StringPtrOutput)
+}
+
+// The Amazon Resource Name (ARN) of the gateway.
+func (o GetLocalDiskApplyOutput) GatewayArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocalDiskArgs) string { return v.GatewayArn }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getLocalDisk.
+type GetLocalDiskResultOutput struct{ *pulumi.OutputState }
+
+func (GetLocalDiskResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocalDiskResult)(nil)).Elem()
+}
+
+func (o GetLocalDiskResultOutput) ToGetLocalDiskResultOutput() GetLocalDiskResultOutput {
+	return o
+}
+
+func (o GetLocalDiskResultOutput) ToGetLocalDiskResultOutputWithContext(ctx context.Context) GetLocalDiskResultOutput {
+	return o
+}
+
+// The disk identifier. e.g. `pci-0000:03:00.0-scsi-0:0:0:0`
+func (o GetLocalDiskResultOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocalDiskResult) string { return v.DiskId }).(pulumi.StringOutput)
+}
+
+func (o GetLocalDiskResultOutput) DiskNode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocalDiskResult) string { return v.DiskNode }).(pulumi.StringOutput)
+}
+
+func (o GetLocalDiskResultOutput) DiskPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocalDiskResult) string { return v.DiskPath }).(pulumi.StringOutput)
+}
+
+func (o GetLocalDiskResultOutput) GatewayArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocalDiskResult) string { return v.GatewayArn }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetLocalDiskResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocalDiskResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetLocalDiskApplyOutput{})
+	pulumi.RegisterOutputType(GetLocalDiskResultOutput{})
 }

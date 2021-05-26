@@ -4,6 +4,9 @@
 package directconnect
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,4 +58,100 @@ type LookupGatewayResult struct {
 	Name string `pulumi:"name"`
 	// AWS Account ID of the gateway.
 	OwnerAccountId string `pulumi:"ownerAccountId"`
+}
+
+func LookupGatewayApply(ctx *pulumi.Context, args LookupGatewayApplyInput, opts ...pulumi.InvokeOption) LookupGatewayResultOutput {
+	return args.ToLookupGatewayApplyOutput().ApplyT(func(v LookupGatewayArgs) (LookupGatewayResult, error) {
+		r, err := LookupGateway(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupGatewayResultOutput)
+}
+
+// LookupGatewayApplyInput is an input type that accepts LookupGatewayApplyArgs and LookupGatewayApplyOutput values.
+// You can construct a concrete instance of `LookupGatewayApplyInput` via:
+//
+//          LookupGatewayApplyArgs{...}
+type LookupGatewayApplyInput interface {
+	pulumi.Input
+
+	ToLookupGatewayApplyOutput() LookupGatewayApplyOutput
+	ToLookupGatewayApplyOutputWithContext(context.Context) LookupGatewayApplyOutput
+}
+
+// A collection of arguments for invoking getGateway.
+type LookupGatewayApplyArgs struct {
+	// The name of the gateway to retrieve.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupGatewayApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGatewayArgs)(nil)).Elem()
+}
+
+func (i LookupGatewayApplyArgs) ToLookupGatewayApplyOutput() LookupGatewayApplyOutput {
+	return i.ToLookupGatewayApplyOutputWithContext(context.Background())
+}
+
+func (i LookupGatewayApplyArgs) ToLookupGatewayApplyOutputWithContext(ctx context.Context) LookupGatewayApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupGatewayApplyOutput)
+}
+
+// A collection of arguments for invoking getGateway.
+type LookupGatewayApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupGatewayApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGatewayArgs)(nil)).Elem()
+}
+
+func (o LookupGatewayApplyOutput) ToLookupGatewayApplyOutput() LookupGatewayApplyOutput {
+	return o
+}
+
+func (o LookupGatewayApplyOutput) ToLookupGatewayApplyOutputWithContext(ctx context.Context) LookupGatewayApplyOutput {
+	return o
+}
+
+// The name of the gateway to retrieve.
+func (o LookupGatewayApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGatewayArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getGateway.
+type LookupGatewayResultOutput struct{ *pulumi.OutputState }
+
+func (LookupGatewayResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGatewayResult)(nil)).Elem()
+}
+
+func (o LookupGatewayResultOutput) ToLookupGatewayResultOutput() LookupGatewayResultOutput {
+	return o
+}
+
+func (o LookupGatewayResultOutput) ToLookupGatewayResultOutputWithContext(ctx context.Context) LookupGatewayResultOutput {
+	return o
+}
+
+// The ASN on the Amazon side of the connection.
+func (o LookupGatewayResultOutput) AmazonSideAsn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGatewayResult) string { return v.AmazonSideAsn }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupGatewayResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGatewayResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupGatewayResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGatewayResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// AWS Account ID of the gateway.
+func (o LookupGatewayResultOutput) OwnerAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGatewayResult) string { return v.OwnerAccountId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupGatewayApplyOutput{})
+	pulumi.RegisterOutputType(LookupGatewayResultOutput{})
 }

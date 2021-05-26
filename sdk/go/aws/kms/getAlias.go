@@ -4,6 +4,9 @@
 package kms
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,4 +62,105 @@ type LookupAliasResult struct {
 	TargetKeyArn string `pulumi:"targetKeyArn"`
 	// Key identifier pointed to by the alias.
 	TargetKeyId string `pulumi:"targetKeyId"`
+}
+
+func LookupAliasApply(ctx *pulumi.Context, args LookupAliasApplyInput, opts ...pulumi.InvokeOption) LookupAliasResultOutput {
+	return args.ToLookupAliasApplyOutput().ApplyT(func(v LookupAliasArgs) (LookupAliasResult, error) {
+		r, err := LookupAlias(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupAliasResultOutput)
+}
+
+// LookupAliasApplyInput is an input type that accepts LookupAliasApplyArgs and LookupAliasApplyOutput values.
+// You can construct a concrete instance of `LookupAliasApplyInput` via:
+//
+//          LookupAliasApplyArgs{...}
+type LookupAliasApplyInput interface {
+	pulumi.Input
+
+	ToLookupAliasApplyOutput() LookupAliasApplyOutput
+	ToLookupAliasApplyOutputWithContext(context.Context) LookupAliasApplyOutput
+}
+
+// A collection of arguments for invoking getAlias.
+type LookupAliasApplyArgs struct {
+	// The display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/)
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupAliasApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAliasArgs)(nil)).Elem()
+}
+
+func (i LookupAliasApplyArgs) ToLookupAliasApplyOutput() LookupAliasApplyOutput {
+	return i.ToLookupAliasApplyOutputWithContext(context.Background())
+}
+
+func (i LookupAliasApplyArgs) ToLookupAliasApplyOutputWithContext(ctx context.Context) LookupAliasApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupAliasApplyOutput)
+}
+
+// A collection of arguments for invoking getAlias.
+type LookupAliasApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupAliasApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAliasArgs)(nil)).Elem()
+}
+
+func (o LookupAliasApplyOutput) ToLookupAliasApplyOutput() LookupAliasApplyOutput {
+	return o
+}
+
+func (o LookupAliasApplyOutput) ToLookupAliasApplyOutputWithContext(ctx context.Context) LookupAliasApplyOutput {
+	return o
+}
+
+// The display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/)
+func (o LookupAliasApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAliasArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getAlias.
+type LookupAliasResultOutput struct{ *pulumi.OutputState }
+
+func (LookupAliasResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAliasResult)(nil)).Elem()
+}
+
+func (o LookupAliasResultOutput) ToLookupAliasResultOutput() LookupAliasResultOutput {
+	return o
+}
+
+func (o LookupAliasResultOutput) ToLookupAliasResultOutputWithContext(ctx context.Context) LookupAliasResultOutput {
+	return o
+}
+
+// The Amazon Resource Name(ARN) of the key alias.
+func (o LookupAliasResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAliasResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupAliasResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAliasResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupAliasResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAliasResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// ARN pointed to by the alias.
+func (o LookupAliasResultOutput) TargetKeyArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAliasResult) string { return v.TargetKeyArn }).(pulumi.StringOutput)
+}
+
+// Key identifier pointed to by the alias.
+func (o LookupAliasResultOutput) TargetKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAliasResult) string { return v.TargetKeyId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupAliasApplyOutput{})
+	pulumi.RegisterOutputType(LookupAliasResultOutput{})
 }

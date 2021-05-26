@@ -243,3 +243,10 @@ def get_cluster(name: Optional[str] = None,
         tags=__ret__.tags,
         version=__ret__.version,
         vpc_config=__ret__.vpc_config)
+
+
+@_utilities.lift_output_func(get_cluster)
+def get_cluster_apply(name: Optional[pulumi.Input[str]] = None,
+                      tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
+    ...

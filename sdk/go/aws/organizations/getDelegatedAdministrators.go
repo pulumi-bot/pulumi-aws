@@ -4,6 +4,9 @@
 package organizations
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,4 +57,97 @@ type GetDelegatedAdministratorsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id               string  `pulumi:"id"`
 	ServicePrincipal *string `pulumi:"servicePrincipal"`
+}
+
+func GetDelegatedAdministratorsApply(ctx *pulumi.Context, args GetDelegatedAdministratorsApplyInput, opts ...pulumi.InvokeOption) GetDelegatedAdministratorsResultOutput {
+	return args.ToGetDelegatedAdministratorsApplyOutput().ApplyT(func(v GetDelegatedAdministratorsArgs) (GetDelegatedAdministratorsResult, error) {
+		r, err := GetDelegatedAdministrators(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetDelegatedAdministratorsResultOutput)
+}
+
+// GetDelegatedAdministratorsApplyInput is an input type that accepts GetDelegatedAdministratorsApplyArgs and GetDelegatedAdministratorsApplyOutput values.
+// You can construct a concrete instance of `GetDelegatedAdministratorsApplyInput` via:
+//
+//          GetDelegatedAdministratorsApplyArgs{...}
+type GetDelegatedAdministratorsApplyInput interface {
+	pulumi.Input
+
+	ToGetDelegatedAdministratorsApplyOutput() GetDelegatedAdministratorsApplyOutput
+	ToGetDelegatedAdministratorsApplyOutputWithContext(context.Context) GetDelegatedAdministratorsApplyOutput
+}
+
+// A collection of arguments for invoking getDelegatedAdministrators.
+type GetDelegatedAdministratorsApplyArgs struct {
+	// Specifies a service principal name. If specified, then the operation lists the delegated administrators only for the specified service. If you don't specify a service principal, the operation lists all delegated administrators for all services in your organization.
+	ServicePrincipal pulumi.StringPtrInput `pulumi:"servicePrincipal"`
+}
+
+func (GetDelegatedAdministratorsApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDelegatedAdministratorsArgs)(nil)).Elem()
+}
+
+func (i GetDelegatedAdministratorsApplyArgs) ToGetDelegatedAdministratorsApplyOutput() GetDelegatedAdministratorsApplyOutput {
+	return i.ToGetDelegatedAdministratorsApplyOutputWithContext(context.Background())
+}
+
+func (i GetDelegatedAdministratorsApplyArgs) ToGetDelegatedAdministratorsApplyOutputWithContext(ctx context.Context) GetDelegatedAdministratorsApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDelegatedAdministratorsApplyOutput)
+}
+
+// A collection of arguments for invoking getDelegatedAdministrators.
+type GetDelegatedAdministratorsApplyOutput struct{ *pulumi.OutputState }
+
+func (GetDelegatedAdministratorsApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDelegatedAdministratorsArgs)(nil)).Elem()
+}
+
+func (o GetDelegatedAdministratorsApplyOutput) ToGetDelegatedAdministratorsApplyOutput() GetDelegatedAdministratorsApplyOutput {
+	return o
+}
+
+func (o GetDelegatedAdministratorsApplyOutput) ToGetDelegatedAdministratorsApplyOutputWithContext(ctx context.Context) GetDelegatedAdministratorsApplyOutput {
+	return o
+}
+
+// Specifies a service principal name. If specified, then the operation lists the delegated administrators only for the specified service. If you don't specify a service principal, the operation lists all delegated administrators for all services in your organization.
+func (o GetDelegatedAdministratorsApplyOutput) ServicePrincipal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDelegatedAdministratorsArgs) *string { return v.ServicePrincipal }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getDelegatedAdministrators.
+type GetDelegatedAdministratorsResultOutput struct{ *pulumi.OutputState }
+
+func (GetDelegatedAdministratorsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDelegatedAdministratorsResult)(nil)).Elem()
+}
+
+func (o GetDelegatedAdministratorsResultOutput) ToGetDelegatedAdministratorsResultOutput() GetDelegatedAdministratorsResultOutput {
+	return o
+}
+
+func (o GetDelegatedAdministratorsResultOutput) ToGetDelegatedAdministratorsResultOutputWithContext(ctx context.Context) GetDelegatedAdministratorsResultOutput {
+	return o
+}
+
+// The list of delegated administrators in your organization, which have the following attributes:
+func (o GetDelegatedAdministratorsResultOutput) DelegatedAdministrators() GetDelegatedAdministratorsDelegatedAdministratorArrayOutput {
+	return o.ApplyT(func(v GetDelegatedAdministratorsResult) []GetDelegatedAdministratorsDelegatedAdministrator {
+		return v.DelegatedAdministrators
+	}).(GetDelegatedAdministratorsDelegatedAdministratorArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDelegatedAdministratorsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDelegatedAdministratorsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDelegatedAdministratorsResultOutput) ServicePrincipal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDelegatedAdministratorsResult) *string { return v.ServicePrincipal }).(pulumi.StringPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDelegatedAdministratorsApplyOutput{})
+	pulumi.RegisterOutputType(GetDelegatedAdministratorsResultOutput{})
 }

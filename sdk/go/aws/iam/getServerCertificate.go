@@ -4,6 +4,9 @@
 package iam
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -84,4 +87,147 @@ type LookupServerCertificateResult struct {
 	Path       string  `pulumi:"path"`
 	PathPrefix *string `pulumi:"pathPrefix"`
 	UploadDate string  `pulumi:"uploadDate"`
+}
+
+func LookupServerCertificateApply(ctx *pulumi.Context, args LookupServerCertificateApplyInput, opts ...pulumi.InvokeOption) LookupServerCertificateResultOutput {
+	return args.ToLookupServerCertificateApplyOutput().ApplyT(func(v LookupServerCertificateArgs) (LookupServerCertificateResult, error) {
+		r, err := LookupServerCertificate(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupServerCertificateResultOutput)
+}
+
+// LookupServerCertificateApplyInput is an input type that accepts LookupServerCertificateApplyArgs and LookupServerCertificateApplyOutput values.
+// You can construct a concrete instance of `LookupServerCertificateApplyInput` via:
+//
+//          LookupServerCertificateApplyArgs{...}
+type LookupServerCertificateApplyInput interface {
+	pulumi.Input
+
+	ToLookupServerCertificateApplyOutput() LookupServerCertificateApplyOutput
+	ToLookupServerCertificateApplyOutputWithContext(context.Context) LookupServerCertificateApplyOutput
+}
+
+// A collection of arguments for invoking getServerCertificate.
+type LookupServerCertificateApplyArgs struct {
+	// sort results by expiration date. returns the certificate with expiration date in furthest in the future.
+	Latest pulumi.BoolPtrInput `pulumi:"latest"`
+	// exact name of the cert to lookup
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// prefix of cert to filter by
+	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
+	// prefix of path to filter by
+	PathPrefix pulumi.StringPtrInput `pulumi:"pathPrefix"`
+}
+
+func (LookupServerCertificateApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServerCertificateArgs)(nil)).Elem()
+}
+
+func (i LookupServerCertificateApplyArgs) ToLookupServerCertificateApplyOutput() LookupServerCertificateApplyOutput {
+	return i.ToLookupServerCertificateApplyOutputWithContext(context.Background())
+}
+
+func (i LookupServerCertificateApplyArgs) ToLookupServerCertificateApplyOutputWithContext(ctx context.Context) LookupServerCertificateApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupServerCertificateApplyOutput)
+}
+
+// A collection of arguments for invoking getServerCertificate.
+type LookupServerCertificateApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupServerCertificateApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServerCertificateArgs)(nil)).Elem()
+}
+
+func (o LookupServerCertificateApplyOutput) ToLookupServerCertificateApplyOutput() LookupServerCertificateApplyOutput {
+	return o
+}
+
+func (o LookupServerCertificateApplyOutput) ToLookupServerCertificateApplyOutputWithContext(ctx context.Context) LookupServerCertificateApplyOutput {
+	return o
+}
+
+// sort results by expiration date. returns the certificate with expiration date in furthest in the future.
+func (o LookupServerCertificateApplyOutput) Latest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupServerCertificateArgs) *bool { return v.Latest }).(pulumi.BoolPtrOutput)
+}
+
+// exact name of the cert to lookup
+func (o LookupServerCertificateApplyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServerCertificateArgs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// prefix of cert to filter by
+func (o LookupServerCertificateApplyOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServerCertificateArgs) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// prefix of path to filter by
+func (o LookupServerCertificateApplyOutput) PathPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServerCertificateArgs) *string { return v.PathPrefix }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getServerCertificate.
+type LookupServerCertificateResultOutput struct{ *pulumi.OutputState }
+
+func (LookupServerCertificateResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServerCertificateResult)(nil)).Elem()
+}
+
+func (o LookupServerCertificateResultOutput) ToLookupServerCertificateResultOutput() LookupServerCertificateResultOutput {
+	return o
+}
+
+func (o LookupServerCertificateResultOutput) ToLookupServerCertificateResultOutputWithContext(ctx context.Context) LookupServerCertificateResultOutput {
+	return o
+}
+
+func (o LookupServerCertificateResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerCertificateResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+func (o LookupServerCertificateResultOutput) CertificateBody() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerCertificateResult) string { return v.CertificateBody }).(pulumi.StringOutput)
+}
+
+func (o LookupServerCertificateResultOutput) CertificateChain() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerCertificateResult) string { return v.CertificateChain }).(pulumi.StringOutput)
+}
+
+func (o LookupServerCertificateResultOutput) ExpirationDate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerCertificateResult) string { return v.ExpirationDate }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupServerCertificateResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerCertificateResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupServerCertificateResultOutput) Latest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupServerCertificateResult) *bool { return v.Latest }).(pulumi.BoolPtrOutput)
+}
+
+func (o LookupServerCertificateResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerCertificateResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupServerCertificateResultOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServerCertificateResult) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupServerCertificateResultOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerCertificateResult) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o LookupServerCertificateResultOutput) PathPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServerCertificateResult) *string { return v.PathPrefix }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupServerCertificateResultOutput) UploadDate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerCertificateResult) string { return v.UploadDate }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupServerCertificateApplyOutput{})
+	pulumi.RegisterOutputType(LookupServerCertificateResultOutput{})
 }

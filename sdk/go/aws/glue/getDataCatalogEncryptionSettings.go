@@ -4,6 +4,9 @@
 package glue
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,4 +33,97 @@ type LookupDataCatalogEncryptionSettingsResult struct {
 	DataCatalogEncryptionSettings []GetDataCatalogEncryptionSettingsDataCatalogEncryptionSetting `pulumi:"dataCatalogEncryptionSettings"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+}
+
+func LookupDataCatalogEncryptionSettingsApply(ctx *pulumi.Context, args LookupDataCatalogEncryptionSettingsApplyInput, opts ...pulumi.InvokeOption) LookupDataCatalogEncryptionSettingsResultOutput {
+	return args.ToLookupDataCatalogEncryptionSettingsApplyOutput().ApplyT(func(v LookupDataCatalogEncryptionSettingsArgs) (LookupDataCatalogEncryptionSettingsResult, error) {
+		r, err := LookupDataCatalogEncryptionSettings(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupDataCatalogEncryptionSettingsResultOutput)
+}
+
+// LookupDataCatalogEncryptionSettingsApplyInput is an input type that accepts LookupDataCatalogEncryptionSettingsApplyArgs and LookupDataCatalogEncryptionSettingsApplyOutput values.
+// You can construct a concrete instance of `LookupDataCatalogEncryptionSettingsApplyInput` via:
+//
+//          LookupDataCatalogEncryptionSettingsApplyArgs{...}
+type LookupDataCatalogEncryptionSettingsApplyInput interface {
+	pulumi.Input
+
+	ToLookupDataCatalogEncryptionSettingsApplyOutput() LookupDataCatalogEncryptionSettingsApplyOutput
+	ToLookupDataCatalogEncryptionSettingsApplyOutputWithContext(context.Context) LookupDataCatalogEncryptionSettingsApplyOutput
+}
+
+// A collection of arguments for invoking getDataCatalogEncryptionSettings.
+type LookupDataCatalogEncryptionSettingsApplyArgs struct {
+	// The ID of the Data Catalog. This is typically the AWS account ID.
+	CatalogId pulumi.StringInput `pulumi:"catalogId"`
+}
+
+func (LookupDataCatalogEncryptionSettingsApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDataCatalogEncryptionSettingsArgs)(nil)).Elem()
+}
+
+func (i LookupDataCatalogEncryptionSettingsApplyArgs) ToLookupDataCatalogEncryptionSettingsApplyOutput() LookupDataCatalogEncryptionSettingsApplyOutput {
+	return i.ToLookupDataCatalogEncryptionSettingsApplyOutputWithContext(context.Background())
+}
+
+func (i LookupDataCatalogEncryptionSettingsApplyArgs) ToLookupDataCatalogEncryptionSettingsApplyOutputWithContext(ctx context.Context) LookupDataCatalogEncryptionSettingsApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupDataCatalogEncryptionSettingsApplyOutput)
+}
+
+// A collection of arguments for invoking getDataCatalogEncryptionSettings.
+type LookupDataCatalogEncryptionSettingsApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupDataCatalogEncryptionSettingsApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDataCatalogEncryptionSettingsArgs)(nil)).Elem()
+}
+
+func (o LookupDataCatalogEncryptionSettingsApplyOutput) ToLookupDataCatalogEncryptionSettingsApplyOutput() LookupDataCatalogEncryptionSettingsApplyOutput {
+	return o
+}
+
+func (o LookupDataCatalogEncryptionSettingsApplyOutput) ToLookupDataCatalogEncryptionSettingsApplyOutputWithContext(ctx context.Context) LookupDataCatalogEncryptionSettingsApplyOutput {
+	return o
+}
+
+// The ID of the Data Catalog. This is typically the AWS account ID.
+func (o LookupDataCatalogEncryptionSettingsApplyOutput) CatalogId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDataCatalogEncryptionSettingsArgs) string { return v.CatalogId }).(pulumi.StringOutput)
+}
+
+// A collection of values returned by getDataCatalogEncryptionSettings.
+type LookupDataCatalogEncryptionSettingsResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDataCatalogEncryptionSettingsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDataCatalogEncryptionSettingsResult)(nil)).Elem()
+}
+
+func (o LookupDataCatalogEncryptionSettingsResultOutput) ToLookupDataCatalogEncryptionSettingsResultOutput() LookupDataCatalogEncryptionSettingsResultOutput {
+	return o
+}
+
+func (o LookupDataCatalogEncryptionSettingsResultOutput) ToLookupDataCatalogEncryptionSettingsResultOutputWithContext(ctx context.Context) LookupDataCatalogEncryptionSettingsResultOutput {
+	return o
+}
+
+func (o LookupDataCatalogEncryptionSettingsResultOutput) CatalogId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDataCatalogEncryptionSettingsResult) string { return v.CatalogId }).(pulumi.StringOutput)
+}
+
+// The security configuration to set. see Data Catalog Encryption Settings.
+func (o LookupDataCatalogEncryptionSettingsResultOutput) DataCatalogEncryptionSettings() GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingArrayOutput {
+	return o.ApplyT(func(v LookupDataCatalogEncryptionSettingsResult) []GetDataCatalogEncryptionSettingsDataCatalogEncryptionSetting {
+		return v.DataCatalogEncryptionSettings
+	}).(GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDataCatalogEncryptionSettingsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDataCatalogEncryptionSettingsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDataCatalogEncryptionSettingsApplyOutput{})
+	pulumi.RegisterOutputType(LookupDataCatalogEncryptionSettingsResultOutput{})
 }

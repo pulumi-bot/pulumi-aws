@@ -135,3 +135,12 @@ def get_orderable_cluster(cluster_type: Optional[str] = None,
         id=__ret__.id,
         node_type=__ret__.node_type,
         preferred_node_types=__ret__.preferred_node_types)
+
+
+@_utilities.lift_output_func(get_orderable_cluster)
+def get_orderable_cluster_apply(cluster_type: Optional[pulumi.Input[str]] = None,
+                                cluster_version: Optional[pulumi.Input[str]] = None,
+                                node_type: Optional[pulumi.Input[str]] = None,
+                                preferred_node_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrderableClusterResult]:
+    ...

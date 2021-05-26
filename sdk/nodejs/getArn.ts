@@ -39,7 +39,7 @@ export interface GetArnArgs {
     /**
      * The ARN to parse.
      */
-    readonly arn: string;
+    arn: string;
 }
 
 /**
@@ -73,4 +73,18 @@ export interface GetArnResult {
      * The [service namespace](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces) that identifies the AWS product.
      */
     readonly service: string;
+}
+
+export function getArnApply(args: GetArnApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetArnResult> {
+    return pulumi.output(args).apply(a => getArn(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getArn.
+ */
+export interface GetArnApplyArgs {
+    /**
+     * The ARN to parse.
+     */
+    arn: pulumi.Input<string>;
 }

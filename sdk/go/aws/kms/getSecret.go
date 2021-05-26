@@ -4,6 +4,9 @@
 package kms
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,4 +29,88 @@ type GetSecretResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id      string            `pulumi:"id"`
 	Secrets []GetSecretSecret `pulumi:"secrets"`
+}
+
+func GetSecretApply(ctx *pulumi.Context, args GetSecretApplyInput, opts ...pulumi.InvokeOption) GetSecretResultOutput {
+	return args.ToGetSecretApplyOutput().ApplyT(func(v GetSecretArgs) (GetSecretResult, error) {
+		r, err := GetSecret(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetSecretResultOutput)
+}
+
+// GetSecretApplyInput is an input type that accepts GetSecretApplyArgs and GetSecretApplyOutput values.
+// You can construct a concrete instance of `GetSecretApplyInput` via:
+//
+//          GetSecretApplyArgs{...}
+type GetSecretApplyInput interface {
+	pulumi.Input
+
+	ToGetSecretApplyOutput() GetSecretApplyOutput
+	ToGetSecretApplyOutputWithContext(context.Context) GetSecretApplyOutput
+}
+
+// A collection of arguments for invoking getSecret.
+type GetSecretApplyArgs struct {
+	Secrets GetSecretSecretArrayInput `pulumi:"secrets"`
+}
+
+func (GetSecretApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretArgs)(nil)).Elem()
+}
+
+func (i GetSecretApplyArgs) ToGetSecretApplyOutput() GetSecretApplyOutput {
+	return i.ToGetSecretApplyOutputWithContext(context.Background())
+}
+
+func (i GetSecretApplyArgs) ToGetSecretApplyOutputWithContext(ctx context.Context) GetSecretApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretApplyOutput)
+}
+
+// A collection of arguments for invoking getSecret.
+type GetSecretApplyOutput struct{ *pulumi.OutputState }
+
+func (GetSecretApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretArgs)(nil)).Elem()
+}
+
+func (o GetSecretApplyOutput) ToGetSecretApplyOutput() GetSecretApplyOutput {
+	return o
+}
+
+func (o GetSecretApplyOutput) ToGetSecretApplyOutputWithContext(ctx context.Context) GetSecretApplyOutput {
+	return o
+}
+
+func (o GetSecretApplyOutput) Secrets() GetSecretSecretArrayOutput {
+	return o.ApplyT(func(v GetSecretArgs) []GetSecretSecret { return v.Secrets }).(GetSecretSecretArrayOutput)
+}
+
+// A collection of values returned by getSecret.
+type GetSecretResultOutput struct{ *pulumi.OutputState }
+
+func (GetSecretResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretResult)(nil)).Elem()
+}
+
+func (o GetSecretResultOutput) ToGetSecretResultOutput() GetSecretResultOutput {
+	return o
+}
+
+func (o GetSecretResultOutput) ToGetSecretResultOutputWithContext(ctx context.Context) GetSecretResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetSecretResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetSecretResultOutput) Secrets() GetSecretSecretArrayOutput {
+	return o.ApplyT(func(v GetSecretResult) []GetSecretSecret { return v.Secrets }).(GetSecretSecretArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetSecretApplyOutput{})
+	pulumi.RegisterOutputType(GetSecretResultOutput{})
 }

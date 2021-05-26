@@ -41,6 +41,19 @@ namespace Pulumi.Aws.Ssm
         /// </summary>
         public static Task<GetParameterResult> InvokeAsync(GetParameterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetParameterResult>("aws:ssm/getParameter:getParameter", args ?? new GetParameterArgs(), options.WithVersion());
+
+        public static Output<GetParameterResult> Apply(GetParameterApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.WithDecryption.Box()
+            ).Apply(a => {
+                    var args = new GetParameterArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.WithDecryption));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -59,6 +72,25 @@ namespace Pulumi.Aws.Ssm
         public bool? WithDecryption { get; set; }
 
         public GetParameterArgs()
+        {
+        }
+    }
+
+    public sealed class GetParameterApplyArgs
+    {
+        /// <summary>
+        /// The name of the parameter.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Whether to return decrypted `SecureString` value. Defaults to `true`.
+        /// </summary>
+        [Input("withDecryption")]
+        public Input<bool>? WithDecryption { get; set; }
+
+        public GetParameterApplyArgs()
         {
         }
     }

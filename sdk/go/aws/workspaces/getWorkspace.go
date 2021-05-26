@@ -4,6 +4,9 @@
 package workspaces
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -98,4 +101,158 @@ type LookupWorkspaceResult struct {
 	VolumeEncryptionKey         string                          `pulumi:"volumeEncryptionKey"`
 	WorkspaceId                 string                          `pulumi:"workspaceId"`
 	WorkspaceProperties         []GetWorkspaceWorkspaceProperty `pulumi:"workspaceProperties"`
+}
+
+func LookupWorkspaceApply(ctx *pulumi.Context, args LookupWorkspaceApplyInput, opts ...pulumi.InvokeOption) LookupWorkspaceResultOutput {
+	return args.ToLookupWorkspaceApplyOutput().ApplyT(func(v LookupWorkspaceArgs) (LookupWorkspaceResult, error) {
+		r, err := LookupWorkspace(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupWorkspaceResultOutput)
+}
+
+// LookupWorkspaceApplyInput is an input type that accepts LookupWorkspaceApplyArgs and LookupWorkspaceApplyOutput values.
+// You can construct a concrete instance of `LookupWorkspaceApplyInput` via:
+//
+//          LookupWorkspaceApplyArgs{...}
+type LookupWorkspaceApplyInput interface {
+	pulumi.Input
+
+	ToLookupWorkspaceApplyOutput() LookupWorkspaceApplyOutput
+	ToLookupWorkspaceApplyOutputWithContext(context.Context) LookupWorkspaceApplyOutput
+}
+
+// A collection of arguments for invoking getWorkspace.
+type LookupWorkspaceApplyArgs struct {
+	// The ID of the directory for the WorkSpace. You have to specify `userName` along with `directoryId`. You cannot combine this parameter with `workspaceId`.
+	DirectoryId pulumi.StringPtrInput `pulumi:"directoryId"`
+	// The tags for the WorkSpace.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The user name of the user for the WorkSpace. This user name must exist in the directory for the WorkSpace. You cannot combine this parameter with `workspaceId`.
+	UserName pulumi.StringPtrInput `pulumi:"userName"`
+	// The ID of the WorkSpace. You cannot combine this parameter with `directoryId`.
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (LookupWorkspaceApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWorkspaceArgs)(nil)).Elem()
+}
+
+func (i LookupWorkspaceApplyArgs) ToLookupWorkspaceApplyOutput() LookupWorkspaceApplyOutput {
+	return i.ToLookupWorkspaceApplyOutputWithContext(context.Background())
+}
+
+func (i LookupWorkspaceApplyArgs) ToLookupWorkspaceApplyOutputWithContext(ctx context.Context) LookupWorkspaceApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupWorkspaceApplyOutput)
+}
+
+// A collection of arguments for invoking getWorkspace.
+type LookupWorkspaceApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupWorkspaceApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWorkspaceArgs)(nil)).Elem()
+}
+
+func (o LookupWorkspaceApplyOutput) ToLookupWorkspaceApplyOutput() LookupWorkspaceApplyOutput {
+	return o
+}
+
+func (o LookupWorkspaceApplyOutput) ToLookupWorkspaceApplyOutputWithContext(ctx context.Context) LookupWorkspaceApplyOutput {
+	return o
+}
+
+// The ID of the directory for the WorkSpace. You have to specify `userName` along with `directoryId`. You cannot combine this parameter with `workspaceId`.
+func (o LookupWorkspaceApplyOutput) DirectoryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceArgs) *string { return v.DirectoryId }).(pulumi.StringPtrOutput)
+}
+
+// The tags for the WorkSpace.
+func (o LookupWorkspaceApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupWorkspaceArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The user name of the user for the WorkSpace. This user name must exist in the directory for the WorkSpace. You cannot combine this parameter with `workspaceId`.
+func (o LookupWorkspaceApplyOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceArgs) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the WorkSpace. You cannot combine this parameter with `directoryId`.
+func (o LookupWorkspaceApplyOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceArgs) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getWorkspace.
+type LookupWorkspaceResultOutput struct{ *pulumi.OutputState }
+
+func (LookupWorkspaceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupWorkspaceResult)(nil)).Elem()
+}
+
+func (o LookupWorkspaceResultOutput) ToLookupWorkspaceResultOutput() LookupWorkspaceResultOutput {
+	return o
+}
+
+func (o LookupWorkspaceResultOutput) ToLookupWorkspaceResultOutputWithContext(ctx context.Context) LookupWorkspaceResultOutput {
+	return o
+}
+
+func (o LookupWorkspaceResultOutput) BundleId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.BundleId }).(pulumi.StringOutput)
+}
+
+// The name of the WorkSpace, as seen by the operating system.
+func (o LookupWorkspaceResultOutput) ComputerName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.ComputerName }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkspaceResultOutput) DirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.DirectoryId }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupWorkspaceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The IP address of the WorkSpace.
+func (o LookupWorkspaceResultOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkspaceResultOutput) RootVolumeEncryptionEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) bool { return v.RootVolumeEncryptionEnabled }).(pulumi.BoolOutput)
+}
+
+// The operational state of the WorkSpace.
+func (o LookupWorkspaceResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkspaceResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o LookupWorkspaceResultOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.UserName }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkspaceResultOutput) UserVolumeEncryptionEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) bool { return v.UserVolumeEncryptionEnabled }).(pulumi.BoolOutput)
+}
+
+func (o LookupWorkspaceResultOutput) VolumeEncryptionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.VolumeEncryptionKey }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkspaceResultOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkspaceResultOutput) WorkspaceProperties() GetWorkspaceWorkspacePropertyArrayOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) []GetWorkspaceWorkspaceProperty { return v.WorkspaceProperties }).(GetWorkspaceWorkspacePropertyArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupWorkspaceApplyOutput{})
+	pulumi.RegisterOutputType(LookupWorkspaceResultOutput{})
 }

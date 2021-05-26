@@ -4,6 +4,9 @@
 package imagebuilder
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,4 +83,162 @@ type LookupImageResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Version of the image.
 	Version string `pulumi:"version"`
+}
+
+func LookupImageApply(ctx *pulumi.Context, args LookupImageApplyInput, opts ...pulumi.InvokeOption) LookupImageResultOutput {
+	return args.ToLookupImageApplyOutput().ApplyT(func(v LookupImageArgs) (LookupImageResult, error) {
+		r, err := LookupImage(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupImageResultOutput)
+}
+
+// LookupImageApplyInput is an input type that accepts LookupImageApplyArgs and LookupImageApplyOutput values.
+// You can construct a concrete instance of `LookupImageApplyInput` via:
+//
+//          LookupImageApplyArgs{...}
+type LookupImageApplyInput interface {
+	pulumi.Input
+
+	ToLookupImageApplyOutput() LookupImageApplyOutput
+	ToLookupImageApplyOutputWithContext(context.Context) LookupImageApplyOutput
+}
+
+// A collection of arguments for invoking getImage.
+type LookupImageApplyArgs struct {
+	// Amazon Resource Name (ARN) of the image. The suffix can either be specified with wildcards (`x.x.x`) to fetch the latest build version or a full build version (e.g. `2020.11.26/1`) to fetch an exact version.
+	Arn pulumi.StringInput `pulumi:"arn"`
+	// Key-value map of resource tags for the image.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupImageApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupImageArgs)(nil)).Elem()
+}
+
+func (i LookupImageApplyArgs) ToLookupImageApplyOutput() LookupImageApplyOutput {
+	return i.ToLookupImageApplyOutputWithContext(context.Background())
+}
+
+func (i LookupImageApplyArgs) ToLookupImageApplyOutputWithContext(ctx context.Context) LookupImageApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupImageApplyOutput)
+}
+
+// A collection of arguments for invoking getImage.
+type LookupImageApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupImageApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupImageArgs)(nil)).Elem()
+}
+
+func (o LookupImageApplyOutput) ToLookupImageApplyOutput() LookupImageApplyOutput {
+	return o
+}
+
+func (o LookupImageApplyOutput) ToLookupImageApplyOutputWithContext(ctx context.Context) LookupImageApplyOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN) of the image. The suffix can either be specified with wildcards (`x.x.x`) to fetch the latest build version or a full build version (e.g. `2020.11.26/1`) to fetch an exact version.
+func (o LookupImageApplyOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageArgs) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// Key-value map of resource tags for the image.
+func (o LookupImageApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupImageArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getImage.
+type LookupImageResultOutput struct{ *pulumi.OutputState }
+
+func (LookupImageResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupImageResult)(nil)).Elem()
+}
+
+func (o LookupImageResultOutput) ToLookupImageResultOutput() LookupImageResultOutput {
+	return o
+}
+
+func (o LookupImageResultOutput) ToLookupImageResultOutputWithContext(ctx context.Context) LookupImageResultOutput {
+	return o
+}
+
+func (o LookupImageResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// Build version Amazon Resource Name (ARN) of the image. This will always have the `#.#.#/#` suffix.
+func (o LookupImageResultOutput) BuildVersionArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.BuildVersionArn }).(pulumi.StringOutput)
+}
+
+// Date the image was created.
+func (o LookupImageResultOutput) DateCreated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.DateCreated }).(pulumi.StringOutput)
+}
+
+// Amazon Resource Name (ARN) of the Image Builder Distribution Configuration.
+func (o LookupImageResultOutput) DistributionConfigurationArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.DistributionConfigurationArn }).(pulumi.StringOutput)
+}
+
+// Whether additional information about the image being created is collected.
+func (o LookupImageResultOutput) EnhancedImageMetadataEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupImageResult) bool { return v.EnhancedImageMetadataEnabled }).(pulumi.BoolOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupImageResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Amazon Resource Name (ARN) of the Image Builder Infrastructure Recipe.
+func (o LookupImageResultOutput) ImageRecipeArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.ImageRecipeArn }).(pulumi.StringOutput)
+}
+
+// List of an object with image tests configuration.
+func (o LookupImageResultOutput) ImageTestsConfigurations() GetImageImageTestsConfigurationArrayOutput {
+	return o.ApplyT(func(v LookupImageResult) []GetImageImageTestsConfiguration { return v.ImageTestsConfigurations }).(GetImageImageTestsConfigurationArrayOutput)
+}
+
+// Amazon Resource Name (ARN) of the Image Builder Infrastructure Configuration.
+func (o LookupImageResultOutput) InfrastructureConfigurationArn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.InfrastructureConfigurationArn }).(pulumi.StringOutput)
+}
+
+// Name of the AMI.
+func (o LookupImageResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Operating System version of the image.
+func (o LookupImageResultOutput) OsVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.OsVersion }).(pulumi.StringOutput)
+}
+
+// List of objects with resources created by the image.
+func (o LookupImageResultOutput) OutputResources() GetImageOutputResourceArrayOutput {
+	return o.ApplyT(func(v LookupImageResult) []GetImageOutputResource { return v.OutputResources }).(GetImageOutputResourceArrayOutput)
+}
+
+// Platform of the image.
+func (o LookupImageResultOutput) Platform() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Platform }).(pulumi.StringOutput)
+}
+
+// Key-value map of resource tags for the image.
+func (o LookupImageResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupImageResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Version of the image.
+func (o LookupImageResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupImageApplyOutput{})
+	pulumi.RegisterOutputType(LookupImageResultOutput{})
 }

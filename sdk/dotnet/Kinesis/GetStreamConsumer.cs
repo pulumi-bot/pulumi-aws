@@ -42,6 +42,21 @@ namespace Pulumi.Aws.Kinesis
         /// </summary>
         public static Task<GetStreamConsumerResult> InvokeAsync(GetStreamConsumerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetStreamConsumerResult>("aws:kinesis/getStreamConsumer:getStreamConsumer", args ?? new GetStreamConsumerArgs(), options.WithVersion());
+
+        public static Output<GetStreamConsumerResult> Apply(GetStreamConsumerApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Arn.Box(),
+                args.Name.Box(),
+                args.StreamArn.Box()
+            ).Apply(a => {
+                    var args = new GetStreamConsumerArgs();
+                    a[0].Set(args, nameof(args.Arn));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.StreamArn));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -66,6 +81,31 @@ namespace Pulumi.Aws.Kinesis
         public string StreamArn { get; set; } = null!;
 
         public GetStreamConsumerArgs()
+        {
+        }
+    }
+
+    public sealed class GetStreamConsumerApplyArgs
+    {
+        /// <summary>
+        /// Amazon Resource Name (ARN) of the stream consumer.
+        /// </summary>
+        [Input("arn")]
+        public Input<string>? Arn { get; set; }
+
+        /// <summary>
+        /// Name of the stream consumer.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Amazon Resource Name (ARN) of the data stream the consumer is registered with.
+        /// </summary>
+        [Input("streamArn", required: true)]
+        public Input<string> StreamArn { get; set; } = null!;
+
+        public GetStreamConsumerApplyArgs()
         {
         }
     }

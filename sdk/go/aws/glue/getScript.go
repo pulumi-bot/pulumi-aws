@@ -4,6 +4,9 @@
 package glue
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,4 +43,122 @@ type GetScriptResult struct {
 	PythonScript string `pulumi:"pythonScript"`
 	// The Scala code generated from the DAG when the `language` argument is set to `SCALA`.
 	ScalaCode string `pulumi:"scalaCode"`
+}
+
+func GetScriptApply(ctx *pulumi.Context, args GetScriptApplyInput, opts ...pulumi.InvokeOption) GetScriptResultOutput {
+	return args.ToGetScriptApplyOutput().ApplyT(func(v GetScriptArgs) (GetScriptResult, error) {
+		r, err := GetScript(ctx, &v, opts...)
+		return *r, err
+
+	}).(GetScriptResultOutput)
+}
+
+// GetScriptApplyInput is an input type that accepts GetScriptApplyArgs and GetScriptApplyOutput values.
+// You can construct a concrete instance of `GetScriptApplyInput` via:
+//
+//          GetScriptApplyArgs{...}
+type GetScriptApplyInput interface {
+	pulumi.Input
+
+	ToGetScriptApplyOutput() GetScriptApplyOutput
+	ToGetScriptApplyOutputWithContext(context.Context) GetScriptApplyOutput
+}
+
+// A collection of arguments for invoking getScript.
+type GetScriptApplyArgs struct {
+	// A list of the edges in the DAG. Defined below.
+	DagEdges GetScriptDagEdgeArrayInput `pulumi:"dagEdges"`
+	// A list of the nodes in the DAG. Defined below.
+	DagNodes GetScriptDagNodeArrayInput `pulumi:"dagNodes"`
+	// The programming language of the resulting code from the DAG. Defaults to `PYTHON`. Valid values are `PYTHON` and `SCALA`.
+	Language pulumi.StringPtrInput `pulumi:"language"`
+}
+
+func (GetScriptApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScriptArgs)(nil)).Elem()
+}
+
+func (i GetScriptApplyArgs) ToGetScriptApplyOutput() GetScriptApplyOutput {
+	return i.ToGetScriptApplyOutputWithContext(context.Background())
+}
+
+func (i GetScriptApplyArgs) ToGetScriptApplyOutputWithContext(ctx context.Context) GetScriptApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScriptApplyOutput)
+}
+
+// A collection of arguments for invoking getScript.
+type GetScriptApplyOutput struct{ *pulumi.OutputState }
+
+func (GetScriptApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScriptArgs)(nil)).Elem()
+}
+
+func (o GetScriptApplyOutput) ToGetScriptApplyOutput() GetScriptApplyOutput {
+	return o
+}
+
+func (o GetScriptApplyOutput) ToGetScriptApplyOutputWithContext(ctx context.Context) GetScriptApplyOutput {
+	return o
+}
+
+// A list of the edges in the DAG. Defined below.
+func (o GetScriptApplyOutput) DagEdges() GetScriptDagEdgeArrayOutput {
+	return o.ApplyT(func(v GetScriptArgs) []GetScriptDagEdge { return v.DagEdges }).(GetScriptDagEdgeArrayOutput)
+}
+
+// A list of the nodes in the DAG. Defined below.
+func (o GetScriptApplyOutput) DagNodes() GetScriptDagNodeArrayOutput {
+	return o.ApplyT(func(v GetScriptArgs) []GetScriptDagNode { return v.DagNodes }).(GetScriptDagNodeArrayOutput)
+}
+
+// The programming language of the resulting code from the DAG. Defaults to `PYTHON`. Valid values are `PYTHON` and `SCALA`.
+func (o GetScriptApplyOutput) Language() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetScriptArgs) *string { return v.Language }).(pulumi.StringPtrOutput)
+}
+
+// A collection of values returned by getScript.
+type GetScriptResultOutput struct{ *pulumi.OutputState }
+
+func (GetScriptResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScriptResult)(nil)).Elem()
+}
+
+func (o GetScriptResultOutput) ToGetScriptResultOutput() GetScriptResultOutput {
+	return o
+}
+
+func (o GetScriptResultOutput) ToGetScriptResultOutputWithContext(ctx context.Context) GetScriptResultOutput {
+	return o
+}
+
+func (o GetScriptResultOutput) DagEdges() GetScriptDagEdgeArrayOutput {
+	return o.ApplyT(func(v GetScriptResult) []GetScriptDagEdge { return v.DagEdges }).(GetScriptDagEdgeArrayOutput)
+}
+
+func (o GetScriptResultOutput) DagNodes() GetScriptDagNodeArrayOutput {
+	return o.ApplyT(func(v GetScriptResult) []GetScriptDagNode { return v.DagNodes }).(GetScriptDagNodeArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetScriptResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScriptResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetScriptResultOutput) Language() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetScriptResult) *string { return v.Language }).(pulumi.StringPtrOutput)
+}
+
+// The Python script generated from the DAG when the `language` argument is set to `PYTHON`.
+func (o GetScriptResultOutput) PythonScript() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScriptResult) string { return v.PythonScript }).(pulumi.StringOutput)
+}
+
+// The Scala code generated from the DAG when the `language` argument is set to `SCALA`.
+func (o GetScriptResultOutput) ScalaCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetScriptResult) string { return v.ScalaCode }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetScriptApplyOutput{})
+	pulumi.RegisterOutputType(GetScriptResultOutput{})
 }

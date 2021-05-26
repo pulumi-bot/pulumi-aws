@@ -190,3 +190,14 @@ def get_resolver_rule(domain_name: Optional[str] = None,
         rule_type=__ret__.rule_type,
         share_status=__ret__.share_status,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_resolver_rule)
+def get_resolver_rule_apply(domain_name: Optional[pulumi.Input[str]] = None,
+                            name: Optional[pulumi.Input[str]] = None,
+                            resolver_endpoint_id: Optional[pulumi.Input[str]] = None,
+                            resolver_rule_id: Optional[pulumi.Input[str]] = None,
+                            rule_type: Optional[pulumi.Input[str]] = None,
+                            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResolverRuleResult]:
+    ...

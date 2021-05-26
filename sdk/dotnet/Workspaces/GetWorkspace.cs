@@ -61,6 +61,24 @@ namespace Pulumi.Aws.Workspaces
         /// </summary>
         public static Task<GetWorkspaceResult> InvokeAsync(GetWorkspaceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWorkspaceResult>("aws:workspaces/getWorkspace:getWorkspace", args ?? new GetWorkspaceArgs(), options.WithVersion());
+
+        public static Output<GetWorkspaceResult> Apply(GetWorkspaceApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetWorkspaceApplyArgs();
+            return Pulumi.Output.All(
+                args.DirectoryId.Box(),
+                args.Tags.Box(),
+                args.UserName.Box(),
+                args.WorkspaceId.Box()
+            ).Apply(a => {
+                    var args = new GetWorkspaceArgs();
+                    a[0].Set(args, nameof(args.DirectoryId));
+                    a[1].Set(args, nameof(args.Tags));
+                    a[2].Set(args, nameof(args.UserName));
+                    a[3].Set(args, nameof(args.WorkspaceId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -97,6 +115,43 @@ namespace Pulumi.Aws.Workspaces
         public string? WorkspaceId { get; set; }
 
         public GetWorkspaceArgs()
+        {
+        }
+    }
+
+    public sealed class GetWorkspaceApplyArgs
+    {
+        /// <summary>
+        /// The ID of the directory for the WorkSpace. You have to specify `user_name` along with `directory_id`. You cannot combine this parameter with `workspace_id`.
+        /// </summary>
+        [Input("directoryId")]
+        public Input<string>? DirectoryId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tags for the WorkSpace.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The user name of the user for the WorkSpace. This user name must exist in the directory for the WorkSpace. You cannot combine this parameter with `workspace_id`.
+        /// </summary>
+        [Input("userName")]
+        public Input<string>? UserName { get; set; }
+
+        /// <summary>
+        /// The ID of the WorkSpace. You cannot combine this parameter with `directory_id`.
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
+        public GetWorkspaceApplyArgs()
         {
         }
     }

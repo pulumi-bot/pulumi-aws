@@ -4,6 +4,9 @@
 package iam
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,4 +76,142 @@ type LookupRoleResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The stable and unique string identifying the role.
 	UniqueId string `pulumi:"uniqueId"`
+}
+
+func LookupRoleApply(ctx *pulumi.Context, args LookupRoleApplyInput, opts ...pulumi.InvokeOption) LookupRoleResultOutput {
+	return args.ToLookupRoleApplyOutput().ApplyT(func(v LookupRoleArgs) (LookupRoleResult, error) {
+		r, err := LookupRole(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupRoleResultOutput)
+}
+
+// LookupRoleApplyInput is an input type that accepts LookupRoleApplyArgs and LookupRoleApplyOutput values.
+// You can construct a concrete instance of `LookupRoleApplyInput` via:
+//
+//          LookupRoleApplyArgs{...}
+type LookupRoleApplyInput interface {
+	pulumi.Input
+
+	ToLookupRoleApplyOutput() LookupRoleApplyOutput
+	ToLookupRoleApplyOutputWithContext(context.Context) LookupRoleApplyOutput
+}
+
+// A collection of arguments for invoking getRole.
+type LookupRoleApplyArgs struct {
+	// The friendly IAM role name to match.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The tags attached to the role.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupRoleApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRoleArgs)(nil)).Elem()
+}
+
+func (i LookupRoleApplyArgs) ToLookupRoleApplyOutput() LookupRoleApplyOutput {
+	return i.ToLookupRoleApplyOutputWithContext(context.Background())
+}
+
+func (i LookupRoleApplyArgs) ToLookupRoleApplyOutputWithContext(ctx context.Context) LookupRoleApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupRoleApplyOutput)
+}
+
+// A collection of arguments for invoking getRole.
+type LookupRoleApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupRoleApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRoleArgs)(nil)).Elem()
+}
+
+func (o LookupRoleApplyOutput) ToLookupRoleApplyOutput() LookupRoleApplyOutput {
+	return o
+}
+
+func (o LookupRoleApplyOutput) ToLookupRoleApplyOutputWithContext(ctx context.Context) LookupRoleApplyOutput {
+	return o
+}
+
+// The friendly IAM role name to match.
+func (o LookupRoleApplyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleArgs) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The tags attached to the role.
+func (o LookupRoleApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRoleArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getRole.
+type LookupRoleResultOutput struct{ *pulumi.OutputState }
+
+func (LookupRoleResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRoleResult)(nil)).Elem()
+}
+
+func (o LookupRoleResultOutput) ToLookupRoleResultOutput() LookupRoleResultOutput {
+	return o
+}
+
+func (o LookupRoleResultOutput) ToLookupRoleResultOutputWithContext(ctx context.Context) LookupRoleResultOutput {
+	return o
+}
+
+// The Amazon Resource Name (ARN) specifying the role.
+func (o LookupRoleResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The policy document associated with the role.
+func (o LookupRoleResultOutput) AssumeRolePolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.AssumeRolePolicy }).(pulumi.StringOutput)
+}
+
+// Creation date of the role in RFC 3339 format.
+func (o LookupRoleResultOutput) CreateDate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.CreateDate }).(pulumi.StringOutput)
+}
+
+// Description for the role.
+func (o LookupRoleResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupRoleResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Maximum session duration.
+func (o LookupRoleResultOutput) MaxSessionDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupRoleResult) int { return v.MaxSessionDuration }).(pulumi.IntOutput)
+}
+
+func (o LookupRoleResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The path to the role.
+func (o LookupRoleResultOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The ARN of the policy that is used to set the permissions boundary for the role.
+func (o LookupRoleResultOutput) PermissionsBoundary() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.PermissionsBoundary }).(pulumi.StringOutput)
+}
+
+// The tags attached to the role.
+func (o LookupRoleResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRoleResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The stable and unique string identifying the role.
+func (o LookupRoleResultOutput) UniqueId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.UniqueId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupRoleApplyOutput{})
+	pulumi.RegisterOutputType(LookupRoleResultOutput{})
 }

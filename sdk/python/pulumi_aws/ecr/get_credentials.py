@@ -97,3 +97,9 @@ def get_credentials(registry_id: Optional[str] = None,
         id=__ret__.id,
         proxy_endpoint=__ret__.proxy_endpoint,
         registry_id=__ret__.registry_id)
+
+
+@_utilities.lift_output_func(get_credentials)
+def get_credentials_apply(registry_id: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCredentialsResult]:
+    ...

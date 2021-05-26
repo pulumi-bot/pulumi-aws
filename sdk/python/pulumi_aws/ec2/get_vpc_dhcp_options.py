@@ -205,3 +205,11 @@ def get_vpc_dhcp_options(dhcp_options_id: Optional[str] = None,
         ntp_servers=__ret__.ntp_servers,
         owner_id=__ret__.owner_id,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_vpc_dhcp_options)
+def get_vpc_dhcp_options_apply(dhcp_options_id: Optional[pulumi.Input[str]] = None,
+                               filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetVpcDhcpOptionsFilterArgs']]]]] = None,
+                               tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcDhcpOptionsResult]:
+    ...

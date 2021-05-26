@@ -4,6 +4,9 @@
 package imagebuilder
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,4 +82,162 @@ type LookupComponentResult struct {
 	Type string `pulumi:"type"`
 	// Version of the component.
 	Version string `pulumi:"version"`
+}
+
+func LookupComponentApply(ctx *pulumi.Context, args LookupComponentApplyInput, opts ...pulumi.InvokeOption) LookupComponentResultOutput {
+	return args.ToLookupComponentApplyOutput().ApplyT(func(v LookupComponentArgs) (LookupComponentResult, error) {
+		r, err := LookupComponent(ctx, &v, opts...)
+		return *r, err
+
+	}).(LookupComponentResultOutput)
+}
+
+// LookupComponentApplyInput is an input type that accepts LookupComponentApplyArgs and LookupComponentApplyOutput values.
+// You can construct a concrete instance of `LookupComponentApplyInput` via:
+//
+//          LookupComponentApplyArgs{...}
+type LookupComponentApplyInput interface {
+	pulumi.Input
+
+	ToLookupComponentApplyOutput() LookupComponentApplyOutput
+	ToLookupComponentApplyOutputWithContext(context.Context) LookupComponentApplyOutput
+}
+
+// A collection of arguments for invoking getComponent.
+type LookupComponentApplyArgs struct {
+	// Amazon Resource Name (ARN) of the component.
+	Arn pulumi.StringInput `pulumi:"arn"`
+	// Key-value map of resource tags for the component.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupComponentApplyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupComponentArgs)(nil)).Elem()
+}
+
+func (i LookupComponentApplyArgs) ToLookupComponentApplyOutput() LookupComponentApplyOutput {
+	return i.ToLookupComponentApplyOutputWithContext(context.Background())
+}
+
+func (i LookupComponentApplyArgs) ToLookupComponentApplyOutputWithContext(ctx context.Context) LookupComponentApplyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LookupComponentApplyOutput)
+}
+
+// A collection of arguments for invoking getComponent.
+type LookupComponentApplyOutput struct{ *pulumi.OutputState }
+
+func (LookupComponentApplyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupComponentArgs)(nil)).Elem()
+}
+
+func (o LookupComponentApplyOutput) ToLookupComponentApplyOutput() LookupComponentApplyOutput {
+	return o
+}
+
+func (o LookupComponentApplyOutput) ToLookupComponentApplyOutputWithContext(ctx context.Context) LookupComponentApplyOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN) of the component.
+func (o LookupComponentApplyOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComponentArgs) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// Key-value map of resource tags for the component.
+func (o LookupComponentApplyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupComponentArgs) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A collection of values returned by getComponent.
+type LookupComponentResultOutput struct{ *pulumi.OutputState }
+
+func (LookupComponentResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupComponentResult)(nil)).Elem()
+}
+
+func (o LookupComponentResultOutput) ToLookupComponentResultOutput() LookupComponentResultOutput {
+	return o
+}
+
+func (o LookupComponentResultOutput) ToLookupComponentResultOutputWithContext(ctx context.Context) LookupComponentResultOutput {
+	return o
+}
+
+func (o LookupComponentResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComponentResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// Change description of the component.
+func (o LookupComponentResultOutput) ChangeDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComponentResult) string { return v.ChangeDescription }).(pulumi.StringOutput)
+}
+
+// Data of the component.
+func (o LookupComponentResultOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComponentResult) string { return v.Data }).(pulumi.StringOutput)
+}
+
+// Date the component was created.
+func (o LookupComponentResultOutput) DateCreated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComponentResult) string { return v.DateCreated }).(pulumi.StringOutput)
+}
+
+// Description of the component.
+func (o LookupComponentResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComponentResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Encryption status of the component.
+func (o LookupComponentResultOutput) Encrypted() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupComponentResult) bool { return v.Encrypted }).(pulumi.BoolOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupComponentResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComponentResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Amazon Resource Name (ARN) of the Key Management Service (KMS) Key used to encrypt the component.
+func (o LookupComponentResultOutput) KmsKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComponentResult) string { return v.KmsKeyId }).(pulumi.StringOutput)
+}
+
+// Name of the component.
+func (o LookupComponentResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComponentResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Owner of the component.
+func (o LookupComponentResultOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComponentResult) string { return v.Owner }).(pulumi.StringOutput)
+}
+
+// Platform of the component.
+func (o LookupComponentResultOutput) Platform() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComponentResult) string { return v.Platform }).(pulumi.StringOutput)
+}
+
+// Operating Systems (OSes) supported by the component.
+func (o LookupComponentResultOutput) SupportedOsVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupComponentResult) []string { return v.SupportedOsVersions }).(pulumi.StringArrayOutput)
+}
+
+// Key-value map of resource tags for the component.
+func (o LookupComponentResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupComponentResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Type of the component.
+func (o LookupComponentResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComponentResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the component.
+func (o LookupComponentResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupComponentResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupComponentApplyOutput{})
+	pulumi.RegisterOutputType(LookupComponentResultOutput{})
 }

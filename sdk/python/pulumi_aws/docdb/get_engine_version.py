@@ -183,3 +183,12 @@ def get_engine_version(engine: Optional[str] = None,
         valid_upgrade_targets=__ret__.valid_upgrade_targets,
         version=__ret__.version,
         version_description=__ret__.version_description)
+
+
+@_utilities.lift_output_func(get_engine_version)
+def get_engine_version_apply(engine: Optional[pulumi.Input[str]] = None,
+                             parameter_group_family: Optional[pulumi.Input[str]] = None,
+                             preferred_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                             version: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEngineVersionResult]:
+    ...

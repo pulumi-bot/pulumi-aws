@@ -195,3 +195,9 @@ def get_bucket(bucket: Optional[str] = None,
         region=__ret__.region,
         website_domain=__ret__.website_domain,
         website_endpoint=__ret__.website_endpoint)
+
+
+@_utilities.lift_output_func(get_bucket)
+def get_bucket_apply(bucket: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketResult]:
+    ...
