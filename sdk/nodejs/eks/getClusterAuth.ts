@@ -50,3 +50,17 @@ export interface GetClusterAuthResult {
      */
     readonly token: string;
 }
+
+export function getClusterAuthApply(args: GetClusterAuthApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterAuthResult> {
+    return pulumi.output(args).apply(a => getClusterAuth(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getClusterAuth.
+ */
+export interface GetClusterAuthApplyArgs {
+    /**
+     * The name of the cluster
+     */
+    name: pulumi.Input<string>;
+}

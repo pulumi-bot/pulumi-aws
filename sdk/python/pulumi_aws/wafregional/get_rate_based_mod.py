@@ -79,3 +79,9 @@ def get_rate_based_mod(name: Optional[str] = None,
     return AwaitableGetRateBasedModResult(
         id=__ret__.id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_rate_based_mod)
+def get_rate_based_mod_apply(name: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRateBasedModResult]:
+    ...

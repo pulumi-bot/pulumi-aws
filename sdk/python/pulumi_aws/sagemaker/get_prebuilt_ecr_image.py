@@ -149,3 +149,12 @@ def get_prebuilt_ecr_image(dns_suffix: Optional[str] = None,
         registry_id=__ret__.registry_id,
         registry_path=__ret__.registry_path,
         repository_name=__ret__.repository_name)
+
+
+@_utilities.lift_output_func(get_prebuilt_ecr_image)
+def get_prebuilt_ecr_image_apply(dns_suffix: Optional[pulumi.Input[str]] = None,
+                                 image_tag: Optional[pulumi.Input[str]] = None,
+                                 region: Optional[pulumi.Input[str]] = None,
+                                 repository_name: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrebuiltEcrImageResult]:
+    ...

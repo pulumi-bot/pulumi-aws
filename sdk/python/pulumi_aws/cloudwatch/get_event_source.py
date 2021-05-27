@@ -133,3 +133,9 @@ def get_event_source(name_prefix: Optional[str] = None,
         name=__ret__.name,
         name_prefix=__ret__.name_prefix,
         state=__ret__.state)
+
+
+@_utilities.lift_output_func(get_event_source)
+def get_event_source_apply(name_prefix: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEventSourceResult]:
+    ...

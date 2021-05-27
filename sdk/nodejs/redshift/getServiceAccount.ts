@@ -84,3 +84,18 @@ export interface GetServiceAccountResult {
     readonly id: string;
     readonly region?: string;
 }
+
+export function getServiceAccountApply(args?: GetServiceAccountApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceAccountResult> {
+    return pulumi.output(args).apply(a => getServiceAccount(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServiceAccount.
+ */
+export interface GetServiceAccountApplyArgs {
+    /**
+     * Name of the region whose AWS Redshift account ID is desired.
+     * Defaults to the region from the AWS provider configuration.
+     */
+    region?: pulumi.Input<string>;
+}

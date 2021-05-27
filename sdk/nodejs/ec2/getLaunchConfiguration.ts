@@ -127,3 +127,17 @@ export interface GetLaunchConfigurationResult {
      */
     readonly vpcClassicLinkSecurityGroups: string[];
 }
+
+export function getLaunchConfigurationApply(args: GetLaunchConfigurationApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLaunchConfigurationResult> {
+    return pulumi.output(args).apply(a => getLaunchConfiguration(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getLaunchConfiguration.
+ */
+export interface GetLaunchConfigurationApplyArgs {
+    /**
+     * The name of the launch configuration.
+     */
+    name: pulumi.Input<string>;
+}

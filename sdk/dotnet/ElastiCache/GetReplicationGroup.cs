@@ -39,6 +39,17 @@ namespace Pulumi.Aws.ElastiCache
         /// </summary>
         public static Task<GetReplicationGroupResult> InvokeAsync(GetReplicationGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetReplicationGroupResult>("aws:elasticache/getReplicationGroup:getReplicationGroup", args ?? new GetReplicationGroupArgs(), options.WithVersion());
+
+        public static Output<GetReplicationGroupResult> Apply(GetReplicationGroupApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ReplicationGroupId.Box()
+            ).Apply(a => {
+                    var args = new GetReplicationGroupArgs();
+                    a[0].Set(args, nameof(args.ReplicationGroupId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +62,19 @@ namespace Pulumi.Aws.ElastiCache
         public string ReplicationGroupId { get; set; } = null!;
 
         public GetReplicationGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetReplicationGroupApplyArgs
+    {
+        /// <summary>
+        /// The identifier for the replication group.
+        /// </summary>
+        [Input("replicationGroupId", required: true)]
+        public Input<string> ReplicationGroupId { get; set; } = null!;
+
+        public GetReplicationGroupApplyArgs()
         {
         }
     }

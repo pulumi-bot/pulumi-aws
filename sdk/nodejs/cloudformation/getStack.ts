@@ -106,3 +106,21 @@ export interface GetStackResult {
      */
     readonly timeoutInMinutes: number;
 }
+
+export function getStackApply(args: GetStackApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStackResult> {
+    return pulumi.output(args).apply(a => getStack(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getStack.
+ */
+export interface GetStackApplyArgs {
+    /**
+     * The name of the stack
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A map of tags associated with this stack.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}

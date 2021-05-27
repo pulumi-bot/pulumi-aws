@@ -255,3 +255,11 @@ def get_transit_gateway(filters: Optional[Sequence[pulumi.InputType['GetTransitG
         propagation_default_route_table_id=__ret__.propagation_default_route_table_id,
         tags=__ret__.tags,
         vpn_ecmp_support=__ret__.vpn_ecmp_support)
+
+
+@_utilities.lift_output_func(get_transit_gateway)
+def get_transit_gateway_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetTransitGatewayFilterArgs']]]]] = None,
+                              id: Optional[pulumi.Input[str]] = None,
+                              tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitGatewayResult]:
+    ...

@@ -49,6 +49,22 @@ namespace Pulumi.Aws.Alb
         /// </summary>
         public static Task<GetTargetGroupResult> InvokeAsync(GetTargetGroupArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTargetGroupResult>("aws:alb/getTargetGroup:getTargetGroup", args ?? new GetTargetGroupArgs(), options.WithVersion());
+
+        public static Output<GetTargetGroupResult> Apply(GetTargetGroupApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetTargetGroupApplyArgs();
+            return Pulumi.Output.All(
+                args.Arn.Box(),
+                args.Name.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetTargetGroupArgs();
+                    a[0].Set(args, nameof(args.Arn));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -75,6 +91,33 @@ namespace Pulumi.Aws.Alb
         }
 
         public GetTargetGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetTargetGroupApplyArgs
+    {
+        /// <summary>
+        /// The full ARN of the target group.
+        /// </summary>
+        [Input("arn")]
+        public Input<string>? Arn { get; set; }
+
+        /// <summary>
+        /// The unique name of the target group.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetTargetGroupApplyArgs()
         {
         }
     }

@@ -275,3 +275,9 @@ def get_signing_job(job_id: Optional[str] = None,
         sources=__ret__.sources,
         status=__ret__.status,
         status_reason=__ret__.status_reason)
+
+
+@_utilities.lift_output_func(get_signing_job)
+def get_signing_job_apply(job_id: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSigningJobResult]:
+    ...

@@ -40,6 +40,19 @@ namespace Pulumi.Aws.ElasticBeanstalk
         /// </summary>
         public static Task<GetSolutionStackResult> InvokeAsync(GetSolutionStackArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSolutionStackResult>("aws:elasticbeanstalk/getSolutionStack:getSolutionStack", args ?? new GetSolutionStackArgs(), options.WithVersion());
+
+        public static Output<GetSolutionStackResult> Apply(GetSolutionStackApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.MostRecent.Box(),
+                args.NameRegex.Box()
+            ).Apply(a => {
+                    var args = new GetSolutionStackArgs();
+                    a[0].Set(args, nameof(args.MostRecent));
+                    a[1].Set(args, nameof(args.NameRegex));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +74,28 @@ namespace Pulumi.Aws.ElasticBeanstalk
         public string NameRegex { get; set; } = null!;
 
         public GetSolutionStackArgs()
+        {
+        }
+    }
+
+    public sealed class GetSolutionStackApplyArgs
+    {
+        /// <summary>
+        /// If more than one result is returned, use the most
+        /// recent solution stack.
+        /// </summary>
+        [Input("mostRecent")]
+        public Input<bool>? MostRecent { get; set; }
+
+        /// <summary>
+        /// A regex string to apply to the solution stack list returned
+        /// by AWS. See [Elastic Beanstalk Supported Platforms][beanstalk-platforms] from
+        /// AWS documentation for reference solution stack names.
+        /// </summary>
+        [Input("nameRegex", required: true)]
+        public Input<string> NameRegex { get; set; } = null!;
+
+        public GetSolutionStackApplyArgs()
         {
         }
     }

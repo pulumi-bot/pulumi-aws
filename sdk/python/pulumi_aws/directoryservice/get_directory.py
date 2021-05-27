@@ -259,3 +259,10 @@ def get_directory(directory_id: Optional[str] = None,
         tags=__ret__.tags,
         type=__ret__.type,
         vpc_settings=__ret__.vpc_settings)
+
+
+@_utilities.lift_output_func(get_directory)
+def get_directory_apply(directory_id: Optional[pulumi.Input[str]] = None,
+                        tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDirectoryResult]:
+    ...

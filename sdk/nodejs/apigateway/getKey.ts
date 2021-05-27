@@ -85,3 +85,21 @@ export interface GetKeyResult {
      */
     readonly value: string;
 }
+
+export function getKeyApply(args: GetKeyApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyResult> {
+    return pulumi.output(args).apply(a => getKey(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getKey.
+ */
+export interface GetKeyApplyArgs {
+    /**
+     * The ID of the API Key to look up.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * A map of tags for the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}

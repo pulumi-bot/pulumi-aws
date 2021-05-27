@@ -192,3 +192,15 @@ def get_permissions(catalog_id: Optional[str] = None,
         principal=__ret__.principal,
         table=__ret__.table,
         table_with_columns=__ret__.table_with_columns)
+
+
+@_utilities.lift_output_func(get_permissions)
+def get_permissions_apply(catalog_id: Optional[pulumi.Input[str]] = None,
+                          catalog_resource: Optional[pulumi.Input[bool]] = None,
+                          data_location: Optional[pulumi.Input[pulumi.InputType['GetPermissionsDataLocationArgs']]] = None,
+                          database: Optional[pulumi.Input[pulumi.InputType['GetPermissionsDatabaseArgs']]] = None,
+                          principal: Optional[pulumi.Input[str]] = None,
+                          table: Optional[pulumi.Input[pulumi.InputType['GetPermissionsTableArgs']]] = None,
+                          table_with_columns: Optional[pulumi.Input[pulumi.InputType['GetPermissionsTableWithColumnsArgs']]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPermissionsResult]:
+    ...

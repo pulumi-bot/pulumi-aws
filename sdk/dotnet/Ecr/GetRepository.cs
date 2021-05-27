@@ -39,6 +39,21 @@ namespace Pulumi.Aws.Ecr
         /// </summary>
         public static Task<GetRepositoryResult> InvokeAsync(GetRepositoryArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryResult>("aws:ecr/getRepository:getRepository", args ?? new GetRepositoryArgs(), options.WithVersion());
+
+        public static Output<GetRepositoryResult> Apply(GetRepositoryApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.RegistryId.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetRepositoryArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.RegistryId));
+                    a[2].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -69,6 +84,37 @@ namespace Pulumi.Aws.Ecr
         }
 
         public GetRepositoryArgs()
+        {
+        }
+    }
+
+    public sealed class GetRepositoryApplyArgs
+    {
+        /// <summary>
+        /// The name of the ECR Repository.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The registry ID where the repository was created.
+        /// </summary>
+        [Input("registryId")]
+        public Input<string>? RegistryId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetRepositoryApplyArgs()
         {
         }
     }

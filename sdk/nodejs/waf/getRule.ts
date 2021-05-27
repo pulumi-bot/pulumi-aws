@@ -52,3 +52,17 @@ export interface GetRuleResult {
     readonly id: string;
     readonly name: string;
 }
+
+export function getRuleApply(args: GetRuleApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRuleResult> {
+    return pulumi.output(args).apply(a => getRule(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRule.
+ */
+export interface GetRuleApplyArgs {
+    /**
+     * The name of the WAF rule.
+     */
+    name: pulumi.Input<string>;
+}

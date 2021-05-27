@@ -80,3 +80,21 @@ export interface GetClusterResult {
      */
     readonly vpcId: string;
 }
+
+export function getClusterApply(args: GetClusterApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
+    return pulumi.output(args).apply(a => getCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCluster.
+ */
+export interface GetClusterApplyArgs {
+    /**
+     * The id of Cloud HSM v2 cluster.
+     */
+    clusterId: pulumi.Input<string>;
+    /**
+     * The state of the cluster to be found.
+     */
+    clusterState?: pulumi.Input<string>;
+}

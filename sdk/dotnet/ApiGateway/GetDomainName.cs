@@ -39,6 +39,19 @@ namespace Pulumi.Aws.ApiGateway
         /// </summary>
         public static Task<GetDomainNameResult> InvokeAsync(GetDomainNameArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainNameResult>("aws:apigateway/getDomainName:getDomainName", args ?? new GetDomainNameArgs(), options.WithVersion());
+
+        public static Output<GetDomainNameResult> Apply(GetDomainNameApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.DomainName.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetDomainNameArgs();
+                    a[0].Set(args, nameof(args.DomainName));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -63,6 +76,31 @@ namespace Pulumi.Aws.ApiGateway
         }
 
         public GetDomainNameArgs()
+        {
+        }
+    }
+
+    public sealed class GetDomainNameApplyArgs
+    {
+        /// <summary>
+        /// The fully-qualified domain name to look up. If no domain name is found, an error will be returned.
+        /// </summary>
+        [Input("domainName", required: true)]
+        public Input<string> DomainName { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Key-value map of tags for the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetDomainNameApplyArgs()
         {
         }
     }

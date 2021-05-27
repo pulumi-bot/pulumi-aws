@@ -52,3 +52,17 @@ export interface GetIpsetResult {
     readonly id: string;
     readonly name: string;
 }
+
+export function getIpsetApply(args: GetIpsetApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpsetResult> {
+    return pulumi.output(args).apply(a => getIpset(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getIpset.
+ */
+export interface GetIpsetApplyArgs {
+    /**
+     * The name of the WAF Regional IP set.
+     */
+    name: pulumi.Input<string>;
+}

@@ -39,6 +39,17 @@ namespace Pulumi.Aws.Waf
         /// </summary>
         public static Task<GetWebAclResult> InvokeAsync(GetWebAclArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWebAclResult>("aws:waf/getWebAcl:getWebAcl", args ?? new GetWebAclArgs(), options.WithVersion());
+
+        public static Output<GetWebAclResult> Apply(GetWebAclApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetWebAclArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +62,19 @@ namespace Pulumi.Aws.Waf
         public string Name { get; set; } = null!;
 
         public GetWebAclArgs()
+        {
+        }
+    }
+
+    public sealed class GetWebAclApplyArgs
+    {
+        /// <summary>
+        /// The name of the WAF Web ACL.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetWebAclApplyArgs()
         {
         }
     }

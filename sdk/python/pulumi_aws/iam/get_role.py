@@ -201,3 +201,10 @@ def get_role(name: Optional[str] = None,
         permissions_boundary=__ret__.permissions_boundary,
         tags=__ret__.tags,
         unique_id=__ret__.unique_id)
+
+
+@_utilities.lift_output_func(get_role)
+def get_role_apply(name: Optional[pulumi.Input[str]] = None,
+                   tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleResult]:
+    ...

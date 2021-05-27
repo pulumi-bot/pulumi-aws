@@ -138,3 +138,12 @@ def get_vpn_attachment(filters: Optional[Sequence[pulumi.InputType['GetVpnAttach
         tags=__ret__.tags,
         transit_gateway_id=__ret__.transit_gateway_id,
         vpn_connection_id=__ret__.vpn_connection_id)
+
+
+@_utilities.lift_output_func(get_vpn_attachment)
+def get_vpn_attachment_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetVpnAttachmentFilterArgs']]]]] = None,
+                             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                             transit_gateway_id: Optional[pulumi.Input[str]] = None,
+                             vpn_connection_id: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpnAttachmentResult]:
+    ...

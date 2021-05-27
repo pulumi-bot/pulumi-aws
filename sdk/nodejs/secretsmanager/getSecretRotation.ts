@@ -65,3 +65,17 @@ export interface GetSecretRotationResult {
     readonly rotationRules: outputs.secretsmanager.GetSecretRotationRotationRule[];
     readonly secretId: string;
 }
+
+export function getSecretRotationApply(args: GetSecretRotationApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretRotationResult> {
+    return pulumi.output(args).apply(a => getSecretRotation(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSecretRotation.
+ */
+export interface GetSecretRotationApplyArgs {
+    /**
+     * Specifies the secret containing the version that you want to retrieve. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
+     */
+    secretId: pulumi.Input<string>;
+}

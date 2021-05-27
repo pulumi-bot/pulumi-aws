@@ -93,3 +93,21 @@ export interface GetIntentResult {
      */
     readonly version?: string;
 }
+
+export function getIntentApply(args: GetIntentApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntentResult> {
+    return pulumi.output(args).apply(a => getIntent(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getIntent.
+ */
+export interface GetIntentApplyArgs {
+    /**
+     * The name of the intent. The name is case sensitive.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The version of the intent.
+     */
+    version?: pulumi.Input<string>;
+}

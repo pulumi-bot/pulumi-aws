@@ -80,3 +80,21 @@ export interface GetServiceResult {
      */
     readonly taskDefinition: string;
 }
+
+export function getServiceApply(args: GetServiceApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
+    return pulumi.output(args).apply(a => getService(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getService.
+ */
+export interface GetServiceApplyArgs {
+    /**
+     * The arn of the ECS Cluster
+     */
+    clusterArn: pulumi.Input<string>;
+    /**
+     * The name of the ECS Service
+     */
+    serviceName: pulumi.Input<string>;
+}

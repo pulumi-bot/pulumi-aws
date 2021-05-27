@@ -202,3 +202,15 @@ def get_bucket_objects(bucket: Optional[str] = None,
         owners=__ret__.owners,
         prefix=__ret__.prefix,
         start_after=__ret__.start_after)
+
+
+@_utilities.lift_output_func(get_bucket_objects)
+def get_bucket_objects_apply(bucket: Optional[pulumi.Input[str]] = None,
+                             delimiter: Optional[pulumi.Input[str]] = None,
+                             encoding_type: Optional[pulumi.Input[str]] = None,
+                             fetch_owner: Optional[pulumi.Input[bool]] = None,
+                             max_keys: Optional[pulumi.Input[int]] = None,
+                             prefix: Optional[pulumi.Input[str]] = None,
+                             start_after: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketObjectsResult]:
+    ...

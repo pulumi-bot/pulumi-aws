@@ -210,3 +210,9 @@ def get_server(server_id: Optional[str] = None,
         security_policy_name=__ret__.security_policy_name,
         server_id=__ret__.server_id,
         url=__ret__.url)
+
+
+@_utilities.lift_output_func(get_server)
+def get_server_apply(server_id: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerResult]:
+    ...

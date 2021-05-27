@@ -86,3 +86,22 @@ export interface GetTargetGroupResult {
     readonly targetType: string;
     readonly vpcId: string;
 }
+
+export function getTargetGroupApply(args?: GetTargetGroupApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetGroupResult> {
+    return pulumi.output(args).apply(a => getTargetGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTargetGroup.
+ */
+export interface GetTargetGroupApplyArgs {
+    /**
+     * The full ARN of the target group.
+     */
+    arn?: pulumi.Input<string>;
+    /**
+     * The unique name of the target group.
+     */
+    name?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}

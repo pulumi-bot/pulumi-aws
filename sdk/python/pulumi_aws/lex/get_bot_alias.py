@@ -177,3 +177,10 @@ def get_bot_alias(bot_name: Optional[str] = None,
         id=__ret__.id,
         last_updated_date=__ret__.last_updated_date,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_bot_alias)
+def get_bot_alias_apply(bot_name: Optional[pulumi.Input[str]] = None,
+                        name: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBotAliasResult]:
+    ...

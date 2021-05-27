@@ -42,6 +42,19 @@ namespace Pulumi.Aws.ApiGateway
         /// </summary>
         public static Task<GetRestApiResult> InvokeAsync(GetRestApiArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRestApiResult>("aws:apigateway/getRestApi:getRestApi", args ?? new GetRestApiArgs(), options.WithVersion());
+
+        public static Output<GetRestApiResult> Apply(GetRestApiApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetRestApiArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -66,6 +79,31 @@ namespace Pulumi.Aws.ApiGateway
         }
 
         public GetRestApiArgs()
+        {
+        }
+    }
+
+    public sealed class GetRestApiApplyArgs
+    {
+        /// <summary>
+        /// The name of the REST API to look up. If no REST API is found with this name, an error will be returned. If multiple REST APIs are found with this name, an error will be returned.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Key-value map of resource tags.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetRestApiApplyArgs()
         {
         }
     }

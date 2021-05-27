@@ -16,6 +16,21 @@ namespace Pulumi.Aws.IdentityStore
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("aws:identitystore/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithVersion());
+
+        public static Output<GetGroupResult> Apply(GetGroupApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.GroupId.Box(),
+                args.IdentityStoreId.Box()
+            ).Apply(a => {
+                    var args = new GetGroupArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.GroupId));
+                    a[2].Set(args, nameof(args.IdentityStoreId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -46,6 +61,37 @@ namespace Pulumi.Aws.IdentityStore
         public string IdentityStoreId { get; set; } = null!;
 
         public GetGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetGroupApplyArgs
+    {
+        [Input("filters", required: true)]
+        private InputList<Inputs.GetGroupFilterArgs>? _filters;
+
+        /// <summary>
+        /// Configuration block(s) for filtering. Currently, the AWS Identity Store API supports only 1 filter. Detailed below.
+        /// </summary>
+        public InputList<Inputs.GetGroupFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetGroupFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// The identifier for a group in the Identity Store.
+        /// </summary>
+        [Input("groupId")]
+        public Input<string>? GroupId { get; set; }
+
+        /// <summary>
+        /// The Identity Store ID associated with the Single Sign-On Instance.
+        /// </summary>
+        [Input("identityStoreId", required: true)]
+        public Input<string> IdentityStoreId { get; set; } = null!;
+
+        public GetGroupApplyArgs()
         {
         }
     }

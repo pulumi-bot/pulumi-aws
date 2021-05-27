@@ -36,6 +36,18 @@ namespace Pulumi.Aws.GuardDuty
         /// </summary>
         public static Task<GetDetectorResult> InvokeAsync(GetDetectorArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDetectorResult>("aws:guardduty/getDetector:getDetector", args ?? new GetDetectorArgs(), options.WithVersion());
+
+        public static Output<GetDetectorResult> Apply(GetDetectorApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetDetectorApplyArgs();
+            return Pulumi.Output.All(
+                args.Id.Box()
+            ).Apply(a => {
+                    var args = new GetDetectorArgs();
+                    a[0].Set(args, nameof(args.Id));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -48,6 +60,19 @@ namespace Pulumi.Aws.GuardDuty
         public string? Id { get; set; }
 
         public GetDetectorArgs()
+        {
+        }
+    }
+
+    public sealed class GetDetectorApplyArgs
+    {
+        /// <summary>
+        /// The ID of the detector.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        public GetDetectorApplyArgs()
         {
         }
     }

@@ -111,3 +111,11 @@ def get_user(filters: Optional[Sequence[pulumi.InputType['GetUserFilterArgs']]] 
         identity_store_id=__ret__.identity_store_id,
         user_id=__ret__.user_id,
         user_name=__ret__.user_name)
+
+
+@_utilities.lift_output_func(get_user)
+def get_user_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetUserFilterArgs']]]]] = None,
+                   identity_store_id: Optional[pulumi.Input[str]] = None,
+                   user_id: Optional[pulumi.Input[str]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
+    ...

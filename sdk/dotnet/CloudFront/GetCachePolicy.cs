@@ -39,6 +39,20 @@ namespace Pulumi.Aws.CloudFront
         /// </summary>
         public static Task<GetCachePolicyResult> InvokeAsync(GetCachePolicyArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCachePolicyResult>("aws:cloudfront/getCachePolicy:getCachePolicy", args ?? new GetCachePolicyArgs(), options.WithVersion());
+
+        public static Output<GetCachePolicyResult> Apply(GetCachePolicyApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetCachePolicyApplyArgs();
+            return Pulumi.Output.All(
+                args.Id.Box(),
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetCachePolicyArgs();
+                    a[0].Set(args, nameof(args.Id));
+                    a[1].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -57,6 +71,25 @@ namespace Pulumi.Aws.CloudFront
         public string? Name { get; set; }
 
         public GetCachePolicyArgs()
+        {
+        }
+    }
+
+    public sealed class GetCachePolicyApplyArgs
+    {
+        /// <summary>
+        /// The identifier for the cache policy.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// A unique name to identify the cache policy.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetCachePolicyApplyArgs()
         {
         }
     }

@@ -60,6 +60,20 @@ namespace Pulumi.Aws.SecretsManager
         /// </summary>
         public static Task<GetSecretResult> InvokeAsync(GetSecretArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecretResult>("aws:secretsmanager/getSecret:getSecret", args ?? new GetSecretArgs(), options.WithVersion());
+
+        public static Output<GetSecretResult> Apply(GetSecretApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetSecretApplyArgs();
+            return Pulumi.Output.All(
+                args.Arn.Box(),
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetSecretArgs();
+                    a[0].Set(args, nameof(args.Arn));
+                    a[1].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -78,6 +92,25 @@ namespace Pulumi.Aws.SecretsManager
         public string? Name { get; set; }
 
         public GetSecretArgs()
+        {
+        }
+    }
+
+    public sealed class GetSecretApplyArgs
+    {
+        /// <summary>
+        /// The Amazon Resource Name (ARN) of the secret to retrieve.
+        /// </summary>
+        [Input("arn")]
+        public Input<string>? Arn { get; set; }
+
+        /// <summary>
+        /// The name of the secret to retrieve.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetSecretApplyArgs()
         {
         }
     }

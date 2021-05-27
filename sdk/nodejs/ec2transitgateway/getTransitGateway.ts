@@ -125,3 +125,25 @@ export interface GetTransitGatewayResult {
      */
     readonly vpnEcmpSupport: string;
 }
+
+export function getTransitGatewayApply(args?: GetTransitGatewayApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitGatewayResult> {
+    return pulumi.output(args).apply(a => getTransitGateway(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTransitGateway.
+ */
+export interface GetTransitGatewayApplyArgs {
+    /**
+     * One or more configuration blocks containing name-values filters. Detailed below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.ec2transitgateway.GetTransitGatewayFilter>[]>;
+    /**
+     * Identifier of the EC2 Transit Gateway.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Key-value tags for the EC2 Transit Gateway
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}

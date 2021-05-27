@@ -39,6 +39,17 @@ namespace Pulumi.Aws.AutoScaling
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("aws:autoscaling/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithVersion());
+
+        public static Output<GetGroupResult> Apply(GetGroupApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetGroupArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +62,19 @@ namespace Pulumi.Aws.AutoScaling
         public string Name { get; set; } = null!;
 
         public GetGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetGroupApplyArgs
+    {
+        /// <summary>
+        /// Specify the exact name of the desired autoscaling group.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetGroupApplyArgs()
         {
         }
     }

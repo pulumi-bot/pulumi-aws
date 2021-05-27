@@ -146,3 +146,9 @@ def get_arn(arn: Optional[str] = None,
         region=__ret__.region,
         resource=__ret__.resource,
         service=__ret__.service)
+
+
+@_utilities.lift_output_func(get_arn)
+def get_arn_apply(arn: Optional[pulumi.Input[str]] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetArnResult]:
+    ...

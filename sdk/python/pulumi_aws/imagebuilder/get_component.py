@@ -251,3 +251,10 @@ def get_component(arn: Optional[str] = None,
         tags=__ret__.tags,
         type=__ret__.type,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_component)
+def get_component_apply(arn: Optional[pulumi.Input[str]] = None,
+                        tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetComponentResult]:
+    ...

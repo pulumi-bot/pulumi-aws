@@ -42,6 +42,19 @@ namespace Pulumi.Aws.ApiGateway
         /// </summary>
         public static Task<GetVpcLinkResult> InvokeAsync(GetVpcLinkArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcLinkResult>("aws:apigateway/getVpcLink:getVpcLink", args ?? new GetVpcLinkArgs(), options.WithVersion());
+
+        public static Output<GetVpcLinkResult> Apply(GetVpcLinkApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetVpcLinkArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -67,6 +80,32 @@ namespace Pulumi.Aws.ApiGateway
         }
 
         public GetVpcLinkArgs()
+        {
+        }
+    }
+
+    public sealed class GetVpcLinkApplyArgs
+    {
+        /// <summary>
+        /// The name of the API Gateway VPC Link to look up. If no API Gateway VPC Link is found with this name, an error will be returned.
+        /// If multiple API Gateway VPC Links are found with this name, an error will be returned.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Key-value map of resource tags
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetVpcLinkApplyArgs()
         {
         }
     }

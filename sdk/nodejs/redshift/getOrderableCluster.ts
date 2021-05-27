@@ -79,3 +79,29 @@ export interface GetOrderableClusterResult {
     readonly nodeType: string;
     readonly preferredNodeTypes?: string[];
 }
+
+export function getOrderableClusterApply(args?: GetOrderableClusterApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrderableClusterResult> {
+    return pulumi.output(args).apply(a => getOrderableCluster(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getOrderableCluster.
+ */
+export interface GetOrderableClusterApplyArgs {
+    /**
+     * Reshift Cluster type. e.g. `multi-node` or `single-node`
+     */
+    clusterType?: pulumi.Input<string>;
+    /**
+     * Redshift Cluster version. e.g. `1.0`
+     */
+    clusterVersion?: pulumi.Input<string>;
+    /**
+     * Redshift Cluster node type. e.g. `dc2.8xlarge`
+     */
+    nodeType?: pulumi.Input<string>;
+    /**
+     * Ordered list of preferred Redshift Cluster node types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned.
+     */
+    preferredNodeTypes?: pulumi.Input<pulumi.Input<string>[]>;
+}

@@ -147,3 +147,11 @@ def get_subnet_ids(filters: Optional[Sequence[pulumi.InputType['GetSubnetIdsFilt
         ids=__ret__.ids,
         tags=__ret__.tags,
         vpc_id=__ret__.vpc_id)
+
+
+@_utilities.lift_output_func(get_subnet_ids)
+def get_subnet_ids_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetSubnetIdsFilterArgs']]]]] = None,
+                         tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                         vpc_id: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubnetIdsResult]:
+    ...

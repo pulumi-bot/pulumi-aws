@@ -133,3 +133,12 @@ def get_repository_endpoint(domain: Optional[str] = None,
         id=__ret__.id,
         repository=__ret__.repository,
         repository_endpoint=__ret__.repository_endpoint)
+
+
+@_utilities.lift_output_func(get_repository_endpoint)
+def get_repository_endpoint_apply(domain: Optional[pulumi.Input[str]] = None,
+                                  domain_owner: Optional[pulumi.Input[str]] = None,
+                                  format: Optional[pulumi.Input[str]] = None,
+                                  repository: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRepositoryEndpointResult]:
+    ...

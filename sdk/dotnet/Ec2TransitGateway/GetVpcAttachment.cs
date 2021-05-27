@@ -70,6 +70,22 @@ namespace Pulumi.Aws.Ec2TransitGateway
         /// </summary>
         public static Task<GetVpcAttachmentResult> InvokeAsync(GetVpcAttachmentArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcAttachmentResult>("aws:ec2transitgateway/getVpcAttachment:getVpcAttachment", args ?? new GetVpcAttachmentArgs(), options.WithVersion());
+
+        public static Output<GetVpcAttachmentResult> Apply(GetVpcAttachmentApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetVpcAttachmentApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.Id.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetVpcAttachmentArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Id));
+                    a[2].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -106,6 +122,43 @@ namespace Pulumi.Aws.Ec2TransitGateway
         }
 
         public GetVpcAttachmentArgs()
+        {
+        }
+    }
+
+    public sealed class GetVpcAttachmentApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetVpcAttachmentFilterArgs>? _filters;
+
+        /// <summary>
+        /// One or more configuration blocks containing name-values filters. Detailed below.
+        /// </summary>
+        public InputList<Inputs.GetVpcAttachmentFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetVpcAttachmentFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// Identifier of the EC2 Transit Gateway VPC Attachment.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Key-value tags for the EC2 Transit Gateway VPC Attachment
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetVpcAttachmentApplyArgs()
         {
         }
     }

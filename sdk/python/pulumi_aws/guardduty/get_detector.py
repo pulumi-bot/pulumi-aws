@@ -105,3 +105,9 @@ def get_detector(id: Optional[str] = None,
         id=__ret__.id,
         service_role_arn=__ret__.service_role_arn,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_detector)
+def get_detector_apply(id: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDetectorResult]:
+    ...

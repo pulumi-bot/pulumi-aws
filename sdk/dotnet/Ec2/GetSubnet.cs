@@ -94,6 +94,36 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetSubnetResult> InvokeAsync(GetSubnetArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetResult>("aws:ec2/getSubnet:getSubnet", args ?? new GetSubnetArgs(), options.WithVersion());
+
+        public static Output<GetSubnetResult> Apply(GetSubnetApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetSubnetApplyArgs();
+            return Pulumi.Output.All(
+                args.AvailabilityZone.Box(),
+                args.AvailabilityZoneId.Box(),
+                args.CidrBlock.Box(),
+                args.DefaultForAz.Box(),
+                args.Filters.ToList().Box(),
+                args.Id.Box(),
+                args.Ipv6CidrBlock.Box(),
+                args.State.Box(),
+                args.Tags.ToDict().Box(),
+                args.VpcId.Box()
+            ).Apply(a => {
+                    var args = new GetSubnetArgs();
+                    a[0].Set(args, nameof(args.AvailabilityZone));
+                    a[1].Set(args, nameof(args.AvailabilityZoneId));
+                    a[2].Set(args, nameof(args.CidrBlock));
+                    a[3].Set(args, nameof(args.DefaultForAz));
+                    a[4].Set(args, nameof(args.Filters));
+                    a[5].Set(args, nameof(args.Id));
+                    a[6].Set(args, nameof(args.Ipv6CidrBlock));
+                    a[7].Set(args, nameof(args.State));
+                    a[8].Set(args, nameof(args.Tags));
+                    a[9].Set(args, nameof(args.VpcId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -172,6 +202,85 @@ namespace Pulumi.Aws.Ec2
         public string? VpcId { get; set; }
 
         public GetSubnetArgs()
+        {
+        }
+    }
+
+    public sealed class GetSubnetApplyArgs
+    {
+        /// <summary>
+        /// Availability zone where the subnet must reside.
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
+
+        /// <summary>
+        /// ID of the Availability Zone for the subnet.
+        /// </summary>
+        [Input("availabilityZoneId")]
+        public Input<string>? AvailabilityZoneId { get; set; }
+
+        /// <summary>
+        /// CIDR block of the desired subnet.
+        /// </summary>
+        [Input("cidrBlock")]
+        public Input<string>? CidrBlock { get; set; }
+
+        /// <summary>
+        /// Whether the desired subnet must be the default subnet for its associated availability zone.
+        /// </summary>
+        [Input("defaultForAz")]
+        public Input<bool>? DefaultForAz { get; set; }
+
+        [Input("filters")]
+        private InputList<Inputs.GetSubnetFilterArgs>? _filters;
+
+        /// <summary>
+        /// Configuration block. Detailed below.
+        /// </summary>
+        public InputList<Inputs.GetSubnetFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetSubnetFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// ID of the specific subnet to retrieve.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// IPv6 CIDR block of the desired subnet.
+        /// </summary>
+        [Input("ipv6CidrBlock")]
+        public Input<string>? Ipv6CidrBlock { get; set; }
+
+        /// <summary>
+        /// State that the desired subnet must have.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Map of tags, each pair of which must exactly match a pair on the desired subnet.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// ID of the VPC that the desired subnet belongs to.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        public GetSubnetApplyArgs()
         {
         }
     }

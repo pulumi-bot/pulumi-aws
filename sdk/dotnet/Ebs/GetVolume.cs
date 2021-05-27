@@ -17,6 +17,22 @@ namespace Pulumi.Aws.Ebs
         /// </summary>
         public static Task<GetVolumeResult> InvokeAsync(GetVolumeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeResult>("aws:ebs/getVolume:getVolume", args ?? new GetVolumeArgs(), options.WithVersion());
+
+        public static Output<GetVolumeResult> Apply(GetVolumeApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetVolumeApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.MostRecent.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetVolumeArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.MostRecent));
+                    a[2].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -56,6 +72,46 @@ namespace Pulumi.Aws.Ebs
         }
 
         public GetVolumeArgs()
+        {
+        }
+    }
+
+    public sealed class GetVolumeApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetVolumeFilterArgs>? _filters;
+
+        /// <summary>
+        /// One or more name/value pairs to filter off of. There are
+        /// several valid keys, for a full reference, check out
+        /// [describe-volumes in the AWS CLI reference][1].
+        /// </summary>
+        public InputList<Inputs.GetVolumeFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetVolumeFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// If more than one result is returned, use the most
+        /// recent Volume.
+        /// </summary>
+        [Input("mostRecent")]
+        public Input<bool>? MostRecent { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags for the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetVolumeApplyArgs()
         {
         }
     }

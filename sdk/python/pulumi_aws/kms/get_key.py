@@ -232,3 +232,10 @@ def get_key(grant_tokens: Optional[Sequence[str]] = None,
         key_usage=__ret__.key_usage,
         origin=__ret__.origin,
         valid_to=__ret__.valid_to)
+
+
+@_utilities.lift_output_func(get_key)
+def get_key_apply(grant_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                  key_id: Optional[pulumi.Input[str]] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeyResult]:
+    ...

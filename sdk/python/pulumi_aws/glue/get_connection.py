@@ -169,3 +169,9 @@ def get_connection(id: Optional[str] = None,
         match_criterias=__ret__.match_criterias,
         name=__ret__.name,
         physical_connection_requirements=__ret__.physical_connection_requirements)
+
+
+@_utilities.lift_output_func(get_connection)
+def get_connection_apply(id: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionResult]:
+    ...

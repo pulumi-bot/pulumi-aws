@@ -99,3 +99,9 @@ def get_ami_ids(filters: Optional[Sequence[pulumi.InputType['GetAmiIdsFilterArgs
         filters=__ret__.filters,
         id=__ret__.id,
         names=__ret__.names)
+
+
+@_utilities.lift_output_func(get_ami_ids)
+def get_ami_ids_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetAmiIdsFilterArgs']]]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAmiIdsResult]:
+    ...

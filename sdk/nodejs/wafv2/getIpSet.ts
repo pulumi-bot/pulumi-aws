@@ -75,3 +75,21 @@ export interface GetIpSetResult {
     readonly name: string;
     readonly scope: string;
 }
+
+export function getIpSetApply(args: GetIpSetApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpSetResult> {
+    return pulumi.output(args).apply(a => getIpSet(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getIpSet.
+ */
+export interface GetIpSetApplyArgs {
+    /**
+     * The name of the WAFv2 IP Set.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
+     */
+    scope: pulumi.Input<string>;
+}

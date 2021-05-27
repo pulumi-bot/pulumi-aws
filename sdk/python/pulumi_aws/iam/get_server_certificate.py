@@ -186,3 +186,12 @@ def get_server_certificate(latest: Optional[bool] = None,
         path=__ret__.path,
         path_prefix=__ret__.path_prefix,
         upload_date=__ret__.upload_date)
+
+
+@_utilities.lift_output_func(get_server_certificate)
+def get_server_certificate_apply(latest: Optional[pulumi.Input[bool]] = None,
+                                 name: Optional[pulumi.Input[str]] = None,
+                                 name_prefix: Optional[pulumi.Input[str]] = None,
+                                 path_prefix: Optional[pulumi.Input[str]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerCertificateResult]:
+    ...

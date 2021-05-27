@@ -69,3 +69,17 @@ export interface GetDataLakeSettingsResult {
      */
     readonly trustedResourceOwners: string[];
 }
+
+export function getDataLakeSettingsApply(args?: GetDataLakeSettingsApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataLakeSettingsResult> {
+    return pulumi.output(args).apply(a => getDataLakeSettings(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDataLakeSettings.
+ */
+export interface GetDataLakeSettingsApplyArgs {
+    /**
+     * Identifier for the Data Catalog. By default, the account ID.
+     */
+    catalogId?: pulumi.Input<string>;
+}

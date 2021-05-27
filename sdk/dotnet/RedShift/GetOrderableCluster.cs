@@ -44,6 +44,24 @@ namespace Pulumi.Aws.RedShift
         /// </summary>
         public static Task<GetOrderableClusterResult> InvokeAsync(GetOrderableClusterArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOrderableClusterResult>("aws:redshift/getOrderableCluster:getOrderableCluster", args ?? new GetOrderableClusterArgs(), options.WithVersion());
+
+        public static Output<GetOrderableClusterResult> Apply(GetOrderableClusterApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetOrderableClusterApplyArgs();
+            return Pulumi.Output.All(
+                args.ClusterType.Box(),
+                args.ClusterVersion.Box(),
+                args.NodeType.Box(),
+                args.PreferredNodeTypes.ToList().Box()
+            ).Apply(a => {
+                    var args = new GetOrderableClusterArgs();
+                    a[0].Set(args, nameof(args.ClusterType));
+                    a[1].Set(args, nameof(args.ClusterVersion));
+                    a[2].Set(args, nameof(args.NodeType));
+                    a[3].Set(args, nameof(args.PreferredNodeTypes));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -80,6 +98,43 @@ namespace Pulumi.Aws.RedShift
         }
 
         public GetOrderableClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetOrderableClusterApplyArgs
+    {
+        /// <summary>
+        /// Reshift Cluster type. e.g. `multi-node` or `single-node`
+        /// </summary>
+        [Input("clusterType")]
+        public Input<string>? ClusterType { get; set; }
+
+        /// <summary>
+        /// Redshift Cluster version. e.g. `1.0`
+        /// </summary>
+        [Input("clusterVersion")]
+        public Input<string>? ClusterVersion { get; set; }
+
+        /// <summary>
+        /// Redshift Cluster node type. e.g. `dc2.8xlarge`
+        /// </summary>
+        [Input("nodeType")]
+        public Input<string>? NodeType { get; set; }
+
+        [Input("preferredNodeTypes")]
+        private InputList<string>? _preferredNodeTypes;
+
+        /// <summary>
+        /// Ordered list of preferred Redshift Cluster node types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned.
+        /// </summary>
+        public InputList<string> PreferredNodeTypes
+        {
+            get => _preferredNodeTypes ?? (_preferredNodeTypes = new InputList<string>());
+            set => _preferredNodeTypes = value;
+        }
+
+        public GetOrderableClusterApplyArgs()
         {
         }
     }

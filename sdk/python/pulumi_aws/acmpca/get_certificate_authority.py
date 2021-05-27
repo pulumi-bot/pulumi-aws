@@ -227,3 +227,11 @@ def get_certificate_authority(arn: Optional[str] = None,
         status=__ret__.status,
         tags=__ret__.tags,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_certificate_authority)
+def get_certificate_authority_apply(arn: Optional[pulumi.Input[str]] = None,
+                                    revocation_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetCertificateAuthorityRevocationConfigurationArgs']]]]] = None,
+                                    tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateAuthorityResult]:
+    ...

@@ -120,6 +120,26 @@ namespace Pulumi.Aws
         /// </summary>
         public static Task<GetAvailabilityZonesResult> InvokeAsync(GetAvailabilityZonesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAvailabilityZonesResult>("aws:index/getAvailabilityZones:getAvailabilityZones", args ?? new GetAvailabilityZonesArgs(), options.WithVersion());
+
+        public static Output<GetAvailabilityZonesResult> Apply(GetAvailabilityZonesApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetAvailabilityZonesApplyArgs();
+            return Pulumi.Output.All(
+                args.AllAvailabilityZones.Box(),
+                args.ExcludeNames.ToList().Box(),
+                args.ExcludeZoneIds.ToList().Box(),
+                args.Filters.ToList().Box(),
+                args.State.Box()
+            ).Apply(a => {
+                    var args = new GetAvailabilityZonesArgs();
+                    a[0].Set(args, nameof(args.AllAvailabilityZones));
+                    a[1].Set(args, nameof(args.ExcludeNames));
+                    a[2].Set(args, nameof(args.ExcludeZoneIds));
+                    a[3].Set(args, nameof(args.Filters));
+                    a[4].Set(args, nameof(args.State));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -177,6 +197,64 @@ namespace Pulumi.Aws
         public string? State { get; set; }
 
         public GetAvailabilityZonesArgs()
+        {
+        }
+    }
+
+    public sealed class GetAvailabilityZonesApplyArgs
+    {
+        /// <summary>
+        /// Set to `true` to include all Availability Zones and Local Zones regardless of your opt in status.
+        /// </summary>
+        [Input("allAvailabilityZones")]
+        public Input<bool>? AllAvailabilityZones { get; set; }
+
+        [Input("excludeNames")]
+        private InputList<string>? _excludeNames;
+
+        /// <summary>
+        /// List of Availability Zone names to exclude.
+        /// </summary>
+        public InputList<string> ExcludeNames
+        {
+            get => _excludeNames ?? (_excludeNames = new InputList<string>());
+            set => _excludeNames = value;
+        }
+
+        [Input("excludeZoneIds")]
+        private InputList<string>? _excludeZoneIds;
+
+        /// <summary>
+        /// List of Availability Zone IDs to exclude.
+        /// </summary>
+        public InputList<string> ExcludeZoneIds
+        {
+            get => _excludeZoneIds ?? (_excludeZoneIds = new InputList<string>());
+            set => _excludeZoneIds = value;
+        }
+
+        [Input("filters")]
+        private InputList<Inputs.GetAvailabilityZonesFilterArgs>? _filters;
+
+        /// <summary>
+        /// Configuration block(s) for filtering. Detailed below.
+        /// </summary>
+        public InputList<Inputs.GetAvailabilityZonesFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetAvailabilityZonesFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// Allows to filter list of Availability Zones based on their
+        /// current state. Can be either `"available"`, `"information"`, `"impaired"` or
+        /// `"unavailable"`. By default the list includes a complete set of Availability Zones
+        /// to which the underlying AWS account has access, regardless of their state.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        public GetAvailabilityZonesApplyArgs()
         {
         }
     }

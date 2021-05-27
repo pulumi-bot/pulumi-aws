@@ -39,6 +39,19 @@ namespace Pulumi.Aws.ElastiCache
         /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("aws:elasticache/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithVersion());
+
+        public static Output<GetClusterResult> Apply(GetClusterApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ClusterId.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetClusterArgs();
+                    a[0].Set(args, nameof(args.ClusterId));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -63,6 +76,31 @@ namespace Pulumi.Aws.ElastiCache
         }
 
         public GetClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetClusterApplyArgs
+    {
+        /// <summary>
+        /// Group identifier.
+        /// </summary>
+        [Input("clusterId", required: true)]
+        public Input<string> ClusterId { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tags assigned to the resource
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetClusterApplyArgs()
         {
         }
     }

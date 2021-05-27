@@ -281,3 +281,13 @@ def get_vpc_endpoint_service(filters: Optional[Sequence[pulumi.InputType['GetVpc
         service_type=__ret__.service_type,
         tags=__ret__.tags,
         vpc_endpoint_policy_supported=__ret__.vpc_endpoint_policy_supported)
+
+
+@_utilities.lift_output_func(get_vpc_endpoint_service)
+def get_vpc_endpoint_service_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetVpcEndpointServiceFilterArgs']]]]] = None,
+                                   service: Optional[pulumi.Input[str]] = None,
+                                   service_name: Optional[pulumi.Input[str]] = None,
+                                   service_type: Optional[pulumi.Input[str]] = None,
+                                   tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcEndpointServiceResult]:
+    ...

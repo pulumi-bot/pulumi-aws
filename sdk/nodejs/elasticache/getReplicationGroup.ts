@@ -108,3 +108,17 @@ export interface GetReplicationGroupResult {
      */
     readonly snapshotWindow: string;
 }
+
+export function getReplicationGroupApply(args: GetReplicationGroupApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReplicationGroupResult> {
+    return pulumi.output(args).apply(a => getReplicationGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getReplicationGroup.
+ */
+export interface GetReplicationGroupApplyArgs {
+    /**
+     * The identifier for the replication group.
+     */
+    replicationGroupId: pulumi.Input<string>;
+}

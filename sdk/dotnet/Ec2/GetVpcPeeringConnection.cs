@@ -53,6 +53,40 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetVpcPeeringConnectionResult> InvokeAsync(GetVpcPeeringConnectionArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcPeeringConnectionResult>("aws:ec2/getVpcPeeringConnection:getVpcPeeringConnection", args ?? new GetVpcPeeringConnectionArgs(), options.WithVersion());
+
+        public static Output<GetVpcPeeringConnectionResult> Apply(GetVpcPeeringConnectionApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetVpcPeeringConnectionApplyArgs();
+            return Pulumi.Output.All(
+                args.CidrBlock.Box(),
+                args.Filters.ToList().Box(),
+                args.Id.Box(),
+                args.OwnerId.Box(),
+                args.PeerCidrBlock.Box(),
+                args.PeerOwnerId.Box(),
+                args.PeerRegion.Box(),
+                args.PeerVpcId.Box(),
+                args.Region.Box(),
+                args.Status.Box(),
+                args.Tags.ToDict().Box(),
+                args.VpcId.Box()
+            ).Apply(a => {
+                    var args = new GetVpcPeeringConnectionArgs();
+                    a[0].Set(args, nameof(args.CidrBlock));
+                    a[1].Set(args, nameof(args.Filters));
+                    a[2].Set(args, nameof(args.Id));
+                    a[3].Set(args, nameof(args.OwnerId));
+                    a[4].Set(args, nameof(args.PeerCidrBlock));
+                    a[5].Set(args, nameof(args.PeerOwnerId));
+                    a[6].Set(args, nameof(args.PeerRegion));
+                    a[7].Set(args, nameof(args.PeerVpcId));
+                    a[8].Set(args, nameof(args.Region));
+                    a[9].Set(args, nameof(args.Status));
+                    a[10].Set(args, nameof(args.Tags));
+                    a[11].Set(args, nameof(args.VpcId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -144,6 +178,98 @@ namespace Pulumi.Aws.Ec2
         public string? VpcId { get; set; }
 
         public GetVpcPeeringConnectionArgs()
+        {
+        }
+    }
+
+    public sealed class GetVpcPeeringConnectionApplyArgs
+    {
+        /// <summary>
+        /// The primary CIDR block of the requester VPC of the specific VPC Peering Connection to retrieve.
+        /// </summary>
+        [Input("cidrBlock")]
+        public Input<string>? CidrBlock { get; set; }
+
+        [Input("filters")]
+        private InputList<Inputs.GetVpcPeeringConnectionFilterArgs>? _filters;
+
+        /// <summary>
+        /// Custom filter block as described below.
+        /// </summary>
+        public InputList<Inputs.GetVpcPeeringConnectionFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetVpcPeeringConnectionFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// The ID of the specific VPC Peering Connection to retrieve.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// The AWS account ID of the owner of the requester VPC of the specific VPC Peering Connection to retrieve.
+        /// </summary>
+        [Input("ownerId")]
+        public Input<string>? OwnerId { get; set; }
+
+        /// <summary>
+        /// The primary CIDR block of the accepter VPC of the specific VPC Peering Connection to retrieve.
+        /// </summary>
+        [Input("peerCidrBlock")]
+        public Input<string>? PeerCidrBlock { get; set; }
+
+        /// <summary>
+        /// The AWS account ID of the owner of the accepter VPC of the specific VPC Peering Connection to retrieve.
+        /// </summary>
+        [Input("peerOwnerId")]
+        public Input<string>? PeerOwnerId { get; set; }
+
+        /// <summary>
+        /// The region of the accepter VPC of the specific VPC Peering Connection to retrieve.
+        /// </summary>
+        [Input("peerRegion")]
+        public Input<string>? PeerRegion { get; set; }
+
+        /// <summary>
+        /// The ID of the accepter VPC of the specific VPC Peering Connection to retrieve.
+        /// </summary>
+        [Input("peerVpcId")]
+        public Input<string>? PeerVpcId { get; set; }
+
+        /// <summary>
+        /// The region of the requester VPC of the specific VPC Peering Connection to retrieve.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The status of the specific VPC Peering Connection to retrieve.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags, each pair of which must exactly match
+        /// a pair on the desired VPC Peering Connection.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The ID of the requester VPC of the specific VPC Peering Connection to retrieve.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        public GetVpcPeeringConnectionApplyArgs()
         {
         }
     }

@@ -129,3 +129,11 @@ def get_cipher_text(context: Optional[Mapping[str, str]] = None,
         id=__ret__.id,
         key_id=__ret__.key_id,
         plaintext=__ret__.plaintext)
+
+
+@_utilities.lift_output_func(get_cipher_text)
+def get_cipher_text_apply(context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                          key_id: Optional[pulumi.Input[str]] = None,
+                          plaintext: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCipherTextResult]:
+    ...

@@ -79,3 +79,8 @@ def get_canonical_user_id(opts: Optional[pulumi.InvokeOptions] = None) -> Awaita
     return AwaitableGetCanonicalUserIdResult(
         display_name=__ret__.display_name,
         id=__ret__.id)
+
+
+@_utilities.lift_output_func(get_canonical_user_id)
+def get_canonical_user_id_apply(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCanonicalUserIdResult]:
+    ...

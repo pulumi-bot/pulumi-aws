@@ -39,6 +39,19 @@ namespace Pulumi.Aws.Efs
         /// </summary>
         public static Task<GetAccessPointResult> InvokeAsync(GetAccessPointArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccessPointResult>("aws:efs/getAccessPoint:getAccessPoint", args ?? new GetAccessPointArgs(), options.WithVersion());
+
+        public static Output<GetAccessPointResult> Apply(GetAccessPointApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.AccessPointId.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetAccessPointArgs();
+                    a[0].Set(args, nameof(args.AccessPointId));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -63,6 +76,31 @@ namespace Pulumi.Aws.Efs
         }
 
         public GetAccessPointArgs()
+        {
+        }
+    }
+
+    public sealed class GetAccessPointApplyArgs
+    {
+        /// <summary>
+        /// The ID that identifies the file system.
+        /// </summary>
+        [Input("accessPointId", required: true)]
+        public Input<string> AccessPointId { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Key-value mapping of resource tags.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetAccessPointApplyArgs()
         {
         }
     }

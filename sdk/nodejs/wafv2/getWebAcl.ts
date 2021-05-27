@@ -67,3 +67,21 @@ export interface GetWebAclResult {
     readonly name: string;
     readonly scope: string;
 }
+
+export function getWebAclApply(args: GetWebAclApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAclResult> {
+    return pulumi.output(args).apply(a => getWebAcl(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getWebAcl.
+ */
+export interface GetWebAclApplyArgs {
+    /**
+     * The name of the WAFv2 Web ACL.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
+     */
+    scope: pulumi.Input<string>;
+}

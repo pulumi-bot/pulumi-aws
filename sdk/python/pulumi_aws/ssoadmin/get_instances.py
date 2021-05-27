@@ -81,3 +81,8 @@ def get_instances(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIn
         arns=__ret__.arns,
         id=__ret__.id,
         identity_store_ids=__ret__.identity_store_ids)
+
+
+@_utilities.lift_output_func(get_instances)
+def get_instances_apply(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+    ...

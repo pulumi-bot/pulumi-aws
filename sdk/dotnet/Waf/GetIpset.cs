@@ -39,6 +39,17 @@ namespace Pulumi.Aws.Waf
         /// </summary>
         public static Task<GetIpsetResult> InvokeAsync(GetIpsetArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIpsetResult>("aws:waf/getIpset:getIpset", args ?? new GetIpsetArgs(), options.WithVersion());
+
+        public static Output<GetIpsetResult> Apply(GetIpsetApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetIpsetArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +62,19 @@ namespace Pulumi.Aws.Waf
         public string Name { get; set; } = null!;
 
         public GetIpsetArgs()
+        {
+        }
+    }
+
+    public sealed class GetIpsetApplyArgs
+    {
+        /// <summary>
+        /// The name of the WAF IP set.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetIpsetApplyArgs()
         {
         }
     }

@@ -213,3 +213,9 @@ def get_report_definition(report_name: Optional[str] = None,
         s3_prefix=__ret__.s3_prefix,
         s3_region=__ret__.s3_region,
         time_unit=__ret__.time_unit)
+
+
+@_utilities.lift_output_func(get_report_definition)
+def get_report_definition_apply(report_name: Optional[pulumi.Input[str]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReportDefinitionResult]:
+    ...

@@ -88,3 +88,9 @@ def get_endpoint(endpoint_type: Optional[str] = None,
         endpoint_address=__ret__.endpoint_address,
         endpoint_type=__ret__.endpoint_type,
         id=__ret__.id)
+
+
+@_utilities.lift_output_func(get_endpoint)
+def get_endpoint_apply(endpoint_type: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEndpointResult]:
+    ...

@@ -120,3 +120,12 @@ def get_local_gateway_virtual_interface_group(filters: Optional[Sequence[pulumi.
         local_gateway_id=__ret__.local_gateway_id,
         local_gateway_virtual_interface_ids=__ret__.local_gateway_virtual_interface_ids,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_local_gateway_virtual_interface_group)
+def get_local_gateway_virtual_interface_group_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetLocalGatewayVirtualInterfaceGroupFilterArgs']]]]] = None,
+                                                    id: Optional[pulumi.Input[str]] = None,
+                                                    local_gateway_id: Optional[pulumi.Input[str]] = None,
+                                                    tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLocalGatewayVirtualInterfaceGroupResult]:
+    ...

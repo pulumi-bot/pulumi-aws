@@ -52,3 +52,17 @@ export interface GetRateBasedModResult {
     readonly id: string;
     readonly name: string;
 }
+
+export function getRateBasedModApply(args: GetRateBasedModApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRateBasedModResult> {
+    return pulumi.output(args).apply(a => getRateBasedMod(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getRateBasedMod.
+ */
+export interface GetRateBasedModApplyArgs {
+    /**
+     * The name of the WAF Regional rate based rule.
+     */
+    name: pulumi.Input<string>;
+}

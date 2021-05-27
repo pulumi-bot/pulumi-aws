@@ -41,6 +41,22 @@ namespace Pulumi.Aws.Efs
         /// </summary>
         public static Task<GetFileSystemResult> InvokeAsync(GetFileSystemArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFileSystemResult>("aws:efs/getFileSystem:getFileSystem", args ?? new GetFileSystemArgs(), options.WithVersion());
+
+        public static Output<GetFileSystemResult> Apply(GetFileSystemApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetFileSystemApplyArgs();
+            return Pulumi.Output.All(
+                args.CreationToken.Box(),
+                args.FileSystemId.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetFileSystemArgs();
+                    a[0].Set(args, nameof(args.CreationToken));
+                    a[1].Set(args, nameof(args.FileSystemId));
+                    a[2].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -67,6 +83,33 @@ namespace Pulumi.Aws.Efs
         }
 
         public GetFileSystemArgs()
+        {
+        }
+    }
+
+    public sealed class GetFileSystemApplyArgs
+    {
+        /// <summary>
+        /// Restricts the list to the file system with this creation token.
+        /// </summary>
+        [Input("creationToken")]
+        public Input<string>? CreationToken { get; set; }
+
+        /// <summary>
+        /// The ID that identifies the file system (e.g. fs-ccfc0d65).
+        /// </summary>
+        [Input("fileSystemId")]
+        public Input<string>? FileSystemId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetFileSystemApplyArgs()
         {
         }
     }

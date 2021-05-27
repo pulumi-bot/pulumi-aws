@@ -40,6 +40,17 @@ namespace Pulumi.Aws.Organizations
         /// </summary>
         public static Task<GetOrganizationalUnitsResult> InvokeAsync(GetOrganizationalUnitsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationalUnitsResult>("aws:organizations/getOrganizationalUnits:getOrganizationalUnits", args ?? new GetOrganizationalUnitsArgs(), options.WithVersion());
+
+        public static Output<GetOrganizationalUnitsResult> Apply(GetOrganizationalUnitsApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ParentId.Box()
+            ).Apply(a => {
+                    var args = new GetOrganizationalUnitsArgs();
+                    a[0].Set(args, nameof(args.ParentId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -52,6 +63,19 @@ namespace Pulumi.Aws.Organizations
         public string ParentId { get; set; } = null!;
 
         public GetOrganizationalUnitsArgs()
+        {
+        }
+    }
+
+    public sealed class GetOrganizationalUnitsApplyArgs
+    {
+        /// <summary>
+        /// The parent ID of the organizational unit.
+        /// </summary>
+        [Input("parentId", required: true)]
+        public Input<string> ParentId { get; set; } = null!;
+
+        public GetOrganizationalUnitsApplyArgs()
         {
         }
     }

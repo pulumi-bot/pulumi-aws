@@ -134,3 +134,9 @@ def get_group(group_name: Optional[str] = None,
         id=__ret__.id,
         path=__ret__.path,
         users=__ret__.users)
+
+
+@_utilities.lift_output_func(get_group)
+def get_group_apply(group_name: Optional[pulumi.Input[str]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupResult]:
+    ...

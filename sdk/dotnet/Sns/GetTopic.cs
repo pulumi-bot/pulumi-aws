@@ -41,6 +41,17 @@ namespace Pulumi.Aws.Sns
         /// </summary>
         public static Task<GetTopicResult> InvokeAsync(GetTopicArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTopicResult>("aws:sns/getTopic:getTopic", args ?? new GetTopicArgs(), options.WithVersion());
+
+        public static Output<GetTopicResult> Apply(GetTopicApplyArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetTopicArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -53,6 +64,19 @@ namespace Pulumi.Aws.Sns
         public string Name { get; set; } = null!;
 
         public GetTopicArgs()
+        {
+        }
+    }
+
+    public sealed class GetTopicApplyArgs
+    {
+        /// <summary>
+        /// The friendly name of the topic to match.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetTopicApplyArgs()
         {
         }
     }

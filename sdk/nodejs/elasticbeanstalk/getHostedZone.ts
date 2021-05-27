@@ -54,3 +54,17 @@ export interface GetHostedZoneResult {
      */
     readonly region?: string;
 }
+
+export function getHostedZoneApply(args?: GetHostedZoneApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostedZoneResult> {
+    return pulumi.output(args).apply(a => getHostedZone(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getHostedZone.
+ */
+export interface GetHostedZoneApplyArgs {
+    /**
+     * The region you'd like the zone for. By default, fetches the current region.
+     */
+    region?: pulumi.Input<string>;
+}

@@ -47,3 +47,7 @@ export interface GetDefaultKmsKeyResult {
      */
     readonly keyArn: string;
 }
+
+export function getDefaultKmsKeyApply(opts?: pulumi.InvokeOptions): pulumi.Output<GetDefaultKmsKeyResult> {
+    return pulumi.output(getDefaultKmsKey(opts))
+}

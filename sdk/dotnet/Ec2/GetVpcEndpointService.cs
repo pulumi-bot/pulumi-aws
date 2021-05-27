@@ -103,6 +103,26 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetVpcEndpointServiceResult> InvokeAsync(GetVpcEndpointServiceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointServiceResult>("aws:ec2/getVpcEndpointService:getVpcEndpointService", args ?? new GetVpcEndpointServiceArgs(), options.WithVersion());
+
+        public static Output<GetVpcEndpointServiceResult> Apply(GetVpcEndpointServiceApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetVpcEndpointServiceApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.Service.Box(),
+                args.ServiceName.Box(),
+                args.ServiceType.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetVpcEndpointServiceArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Service));
+                    a[2].Set(args, nameof(args.ServiceName));
+                    a[3].Set(args, nameof(args.ServiceType));
+                    a[4].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -151,6 +171,55 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetVpcEndpointServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetVpcEndpointServiceApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetVpcEndpointServiceFilterArgs>? _filters;
+
+        /// <summary>
+        /// Configuration block(s) for filtering. Detailed below.
+        /// </summary>
+        public InputList<Inputs.GetVpcEndpointServiceFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetVpcEndpointServiceFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// The common name of an AWS service (e.g. `s3`).
+        /// </summary>
+        [Input("service")]
+        public Input<string>? Service { get; set; }
+
+        /// <summary>
+        /// The service name that is specified when creating a VPC endpoint. For AWS services the service name is usually in the form `com.amazonaws.&lt;region&gt;.&lt;service&gt;` (the SageMaker Notebook service is an exception to this rule, the service name is in the form `aws.sagemaker.&lt;region&gt;.notebook`).
+        /// </summary>
+        [Input("serviceName")]
+        public Input<string>? ServiceName { get; set; }
+
+        /// <summary>
+        /// The service type, `Gateway` or `Interface`.
+        /// </summary>
+        [Input("serviceType")]
+        public Input<string>? ServiceType { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags, each pair of which must exactly match a pair on the desired VPC Endpoint Service.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetVpcEndpointServiceApplyArgs()
         {
         }
     }

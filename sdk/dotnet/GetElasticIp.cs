@@ -114,6 +114,24 @@ namespace Pulumi.Aws
         /// </summary>
         public static Task<GetElasticIpResult> InvokeAsync(GetElasticIpArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetElasticIpResult>("aws:index/getElasticIp:getElasticIp", args ?? new GetElasticIpArgs(), options.WithVersion());
+
+        public static Output<GetElasticIpResult> Apply(GetElasticIpApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetElasticIpApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.Id.Box(),
+                args.PublicIp.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetElasticIpArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Id));
+                    a[2].Set(args, nameof(args.PublicIp));
+                    a[3].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -156,6 +174,49 @@ namespace Pulumi.Aws
         }
 
         public GetElasticIpArgs()
+        {
+        }
+    }
+
+    public sealed class GetElasticIpApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetElasticIpFilterArgs>? _filters;
+
+        /// <summary>
+        /// One or more name/value pairs to use as filters. There are several valid keys, for a full reference, check out the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAddresses.html).
+        /// </summary>
+        public InputList<Inputs.GetElasticIpFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetElasticIpFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// The allocation id of the specific VPC EIP to retrieve. If a classic EIP is required, do NOT set `id`, only set `public_ip`
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// The public IP of the specific EIP to retrieve.
+        /// </summary>
+        [Input("publicIp")]
+        public Input<string>? PublicIp { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags, each pair of which must exactly match a pair on the desired Elastic IP
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetElasticIpApplyArgs()
         {
         }
     }

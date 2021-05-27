@@ -88,3 +88,9 @@ def get_cluster_auth(name: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         token=__ret__.token)
+
+
+@_utilities.lift_output_func(get_cluster_auth)
+def get_cluster_auth_apply(name: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterAuthResult]:
+    ...

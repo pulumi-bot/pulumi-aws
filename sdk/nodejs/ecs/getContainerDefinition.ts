@@ -92,3 +92,21 @@ export interface GetContainerDefinitionResult {
     readonly memoryReservation: number;
     readonly taskDefinition: string;
 }
+
+export function getContainerDefinitionApply(args: GetContainerDefinitionApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerDefinitionResult> {
+    return pulumi.output(args).apply(a => getContainerDefinition(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getContainerDefinition.
+ */
+export interface GetContainerDefinitionApplyArgs {
+    /**
+     * The name of the container definition
+     */
+    containerName: pulumi.Input<string>;
+    /**
+     * The ARN of the task definition which contains the container
+     */
+    taskDefinition: pulumi.Input<string>;
+}

@@ -80,3 +80,18 @@ export interface GetLoadBalancerResult {
     readonly tags: {[key: string]: string};
     readonly zoneId: string;
 }
+
+export function getLoadBalancerApply(args: GetLoadBalancerApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancerResult> {
+    return pulumi.output(args).apply(a => getLoadBalancer(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getLoadBalancer.
+ */
+export interface GetLoadBalancerApplyArgs {
+    /**
+     * The unique name of the load balancer.
+     */
+    name: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}

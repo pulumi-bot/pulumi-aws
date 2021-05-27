@@ -84,6 +84,22 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("aws:ec2/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
+
+        public static Output<GetInstancesResult> Apply(GetInstancesApplyArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetInstancesApplyArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.InstanceStateNames.ToList().Box(),
+                args.InstanceTags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetInstancesArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.InstanceStateNames));
+                    a[2].Set(args, nameof(args.InstanceTags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -129,6 +145,52 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetInstancesArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstancesApplyArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetInstancesFilterArgs>? _filters;
+
+        /// <summary>
+        /// One or more name/value pairs to use as filters. There are
+        /// several valid keys, for a full reference, check out
+        /// [describe-instances in the AWS CLI reference][1].
+        /// </summary>
+        public InputList<Inputs.GetInstancesFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetInstancesFilterArgs>());
+            set => _filters = value;
+        }
+
+        [Input("instanceStateNames")]
+        private InputList<string>? _instanceStateNames;
+
+        /// <summary>
+        /// A list of instance states that should be applicable to the desired instances. The permitted values are: `pending, running, shutting-down, stopped, stopping, terminated`. The default value is `running`.
+        /// </summary>
+        public InputList<string> InstanceStateNames
+        {
+            get => _instanceStateNames ?? (_instanceStateNames = new InputList<string>());
+            set => _instanceStateNames = value;
+        }
+
+        [Input("instanceTags")]
+        private InputMap<string>? _instanceTags;
+
+        /// <summary>
+        /// A map of tags, each pair of which must
+        /// exactly match a pair on desired instances.
+        /// </summary>
+        public InputMap<string> InstanceTags
+        {
+            get => _instanceTags ?? (_instanceTags = new InputMap<string>());
+            set => _instanceTags = value;
+        }
+
+        public GetInstancesApplyArgs()
         {
         }
     }

@@ -101,3 +101,10 @@ def get_vpcs(filters: Optional[Sequence[pulumi.InputType['GetVpcsFilterArgs']]] 
         id=__ret__.id,
         ids=__ret__.ids,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_vpcs)
+def get_vpcs_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetVpcsFilterArgs']]]]] = None,
+                   tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcsResult]:
+    ...

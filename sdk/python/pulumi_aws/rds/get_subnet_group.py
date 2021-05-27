@@ -144,3 +144,9 @@ def get_subnet_group(name: Optional[str] = None,
         status=__ret__.status,
         subnet_ids=__ret__.subnet_ids,
         vpc_id=__ret__.vpc_id)
+
+
+@_utilities.lift_output_func(get_subnet_group)
+def get_subnet_group_apply(name: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubnetGroupResult]:
+    ...
