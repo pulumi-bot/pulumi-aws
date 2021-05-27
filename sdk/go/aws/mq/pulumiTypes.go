@@ -1628,6 +1628,47 @@ func (i GetBrokerLogsArgs) ToGetBrokerLogsOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GetBrokerLogsOutput)
 }
 
+func (i GetBrokerLogsArgs) ToGetBrokerLogsPtrOutput() GetBrokerLogsPtrOutput {
+	return i.ToGetBrokerLogsPtrOutputWithContext(context.Background())
+}
+
+func (i GetBrokerLogsArgs) ToGetBrokerLogsPtrOutputWithContext(ctx context.Context) GetBrokerLogsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrokerLogsOutput).ToGetBrokerLogsPtrOutputWithContext(ctx)
+}
+
+// GetBrokerLogsPtrInput is an input type that accepts GetBrokerLogsArgs, GetBrokerLogsPtr and GetBrokerLogsPtrOutput values.
+// You can construct a concrete instance of `GetBrokerLogsPtrInput` via:
+//
+//          GetBrokerLogsArgs{...}
+//
+//  or:
+//
+//          nil
+type GetBrokerLogsPtrInput interface {
+	pulumi.Input
+
+	ToGetBrokerLogsPtrOutput() GetBrokerLogsPtrOutput
+	ToGetBrokerLogsPtrOutputWithContext(context.Context) GetBrokerLogsPtrOutput
+}
+
+type getBrokerLogsPtrType GetBrokerLogsArgs
+
+func GetBrokerLogsPtr(v *GetBrokerLogsArgs) GetBrokerLogsPtrInput {
+	return (*getBrokerLogsPtrType)(v)
+}
+
+func (*getBrokerLogsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetBrokerLogs)(nil)).Elem()
+}
+
+func (i *getBrokerLogsPtrType) ToGetBrokerLogsPtrOutput() GetBrokerLogsPtrOutput {
+	return i.ToGetBrokerLogsPtrOutputWithContext(context.Background())
+}
+
+func (i *getBrokerLogsPtrType) ToGetBrokerLogsPtrOutputWithContext(ctx context.Context) GetBrokerLogsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrokerLogsPtrOutput)
+}
+
 type GetBrokerLogsOutput struct{ *pulumi.OutputState }
 
 func (GetBrokerLogsOutput) ElementType() reflect.Type {
@@ -1642,12 +1683,57 @@ func (o GetBrokerLogsOutput) ToGetBrokerLogsOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o GetBrokerLogsOutput) ToGetBrokerLogsPtrOutput() GetBrokerLogsPtrOutput {
+	return o.ToGetBrokerLogsPtrOutputWithContext(context.Background())
+}
+
+func (o GetBrokerLogsOutput) ToGetBrokerLogsPtrOutputWithContext(ctx context.Context) GetBrokerLogsPtrOutput {
+	return o.ApplyT(func(v GetBrokerLogs) *GetBrokerLogs {
+		return &v
+	}).(GetBrokerLogsPtrOutput)
+}
 func (o GetBrokerLogsOutput) Audit() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetBrokerLogs) bool { return v.Audit }).(pulumi.BoolOutput)
 }
 
 func (o GetBrokerLogsOutput) General() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetBrokerLogs) bool { return v.General }).(pulumi.BoolOutput)
+}
+
+type GetBrokerLogsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetBrokerLogsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetBrokerLogs)(nil)).Elem()
+}
+
+func (o GetBrokerLogsPtrOutput) ToGetBrokerLogsPtrOutput() GetBrokerLogsPtrOutput {
+	return o
+}
+
+func (o GetBrokerLogsPtrOutput) ToGetBrokerLogsPtrOutputWithContext(ctx context.Context) GetBrokerLogsPtrOutput {
+	return o
+}
+
+func (o GetBrokerLogsPtrOutput) Elem() GetBrokerLogsOutput {
+	return o.ApplyT(func(v *GetBrokerLogs) GetBrokerLogs { return *v }).(GetBrokerLogsOutput)
+}
+
+func (o GetBrokerLogsPtrOutput) Audit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetBrokerLogs) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Audit
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetBrokerLogsPtrOutput) General() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetBrokerLogs) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.General
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetBrokerMaintenanceWindowStartTime struct {
@@ -1840,6 +1926,7 @@ func init() {
 	pulumi.RegisterOutputType(GetBrokerLdapServerMetadataOutput{})
 	pulumi.RegisterOutputType(GetBrokerLdapServerMetadataArrayOutput{})
 	pulumi.RegisterOutputType(GetBrokerLogsOutput{})
+	pulumi.RegisterOutputType(GetBrokerLogsPtrOutput{})
 	pulumi.RegisterOutputType(GetBrokerMaintenanceWindowStartTimeOutput{})
 	pulumi.RegisterOutputType(GetBrokerUserOutput{})
 	pulumi.RegisterOutputType(GetBrokerUserArrayOutput{})

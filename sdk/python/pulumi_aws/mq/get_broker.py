@@ -296,3 +296,12 @@ def get_broker(broker_id: Optional[str] = None,
         subnet_ids=__ret__.subnet_ids,
         tags=__ret__.tags,
         users=__ret__.users)
+
+
+@_utilities.lift_output_func(get_broker)
+def get_broker_apply(broker_id: Optional[pulumi.Input[str]] = None,
+                     broker_name: Optional[pulumi.Input[str]] = None,
+                     logs: Optional[pulumi.Input[pulumi.InputType['GetBrokerLogsArgs']]] = None,
+                     tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBrokerResult]:
+    ...

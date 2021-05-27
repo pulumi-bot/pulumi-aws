@@ -36,6 +36,18 @@ namespace Pulumi.Aws.ElasticBeanstalk
         /// </summary>
         public static Task<GetHostedZoneResult> InvokeAsync(GetHostedZoneArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHostedZoneResult>("aws:elasticbeanstalk/getHostedZone:getHostedZone", args ?? new GetHostedZoneArgs(), options.WithVersion());
+
+        public static Output<GetHostedZoneResult> Invoke(GetHostedZoneOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetHostedZoneOutputArgs();
+            return Pulumi.Output.All(
+                args.Region.Box()
+            ).Apply(a => {
+                    var args = new GetHostedZoneArgs();
+                    a[0].Set(args, nameof(args.Region));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -48,6 +60,19 @@ namespace Pulumi.Aws.ElasticBeanstalk
         public string? Region { get; set; }
 
         public GetHostedZoneArgs()
+        {
+        }
+    }
+
+    public sealed class GetHostedZoneOutputArgs
+    {
+        /// <summary>
+        /// The region you'd like the zone for. By default, fetches the current region.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetHostedZoneOutputArgs()
         {
         }
     }

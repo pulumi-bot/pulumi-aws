@@ -183,3 +183,12 @@ def get_policy(arn: Optional[str] = None,
         policy=__ret__.policy,
         policy_id=__ret__.policy_id,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_policy)
+def get_policy_apply(arn: Optional[pulumi.Input[str]] = None,
+                     name: Optional[pulumi.Input[str]] = None,
+                     path_prefix: Optional[pulumi.Input[str]] = None,
+                     tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyResult]:
+    ...

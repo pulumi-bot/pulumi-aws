@@ -39,6 +39,24 @@ namespace Pulumi.Aws.DocDB
         /// </summary>
         public static Task<GetEngineVersionResult> InvokeAsync(GetEngineVersionArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEngineVersionResult>("aws:docdb/getEngineVersion:getEngineVersion", args ?? new GetEngineVersionArgs(), options.WithVersion());
+
+        public static Output<GetEngineVersionResult> Invoke(GetEngineVersionOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetEngineVersionOutputArgs();
+            return Pulumi.Output.All(
+                args.Engine.Box(),
+                args.ParameterGroupFamily.Box(),
+                args.PreferredVersions.ToList().Box(),
+                args.Version.Box()
+            ).Apply(a => {
+                    var args = new GetEngineVersionArgs();
+                    a[0].Set(args, nameof(args.Engine));
+                    a[1].Set(args, nameof(args.ParameterGroupFamily));
+                    a[2].Set(args, nameof(args.PreferredVersions));
+                    a[3].Set(args, nameof(args.Version));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -75,6 +93,43 @@ namespace Pulumi.Aws.DocDB
         public string? Version { get; set; }
 
         public GetEngineVersionArgs()
+        {
+        }
+    }
+
+    public sealed class GetEngineVersionOutputArgs
+    {
+        /// <summary>
+        /// DB engine. (Default: `docdb`)
+        /// </summary>
+        [Input("engine")]
+        public Input<string>? Engine { get; set; }
+
+        /// <summary>
+        /// The name of a specific DB parameter group family. An example parameter group family is `docdb3.6`.
+        /// </summary>
+        [Input("parameterGroupFamily")]
+        public Input<string>? ParameterGroupFamily { get; set; }
+
+        [Input("preferredVersions")]
+        private InputList<string>? _preferredVersions;
+
+        /// <summary>
+        /// Ordered list of preferred engine versions. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. If both the `version` and `preferred_versions` arguments are not configured, the data source will return the default version for the engine.
+        /// </summary>
+        public InputList<string> PreferredVersions
+        {
+            get => _preferredVersions ?? (_preferredVersions = new InputList<string>());
+            set => _preferredVersions = value;
+        }
+
+        /// <summary>
+        /// Version of the DB engine. For example, `3.6.0`. If `version` and `preferred_versions` are not set, the data source will provide information for the AWS-defined default version. If both the `version` and `preferred_versions` arguments are not configured, the data source will return the default version for the engine.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        public GetEngineVersionOutputArgs()
         {
         }
     }

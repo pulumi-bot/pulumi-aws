@@ -86,3 +86,18 @@ export interface GetDedicatedHostResult {
      */
     readonly totalVcpus: number;
 }
+
+export function getDedicatedHostOutput(args: GetDedicatedHostOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedHostResult> {
+    return pulumi.output(args).apply(a => getDedicatedHost(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDedicatedHost.
+ */
+export interface GetDedicatedHostOutputArgs {
+    /**
+     * The host ID.
+     */
+    hostId: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}

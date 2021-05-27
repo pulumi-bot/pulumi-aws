@@ -40,6 +40,19 @@ namespace Pulumi.Aws.ApiGateway
         /// </summary>
         public static Task<GetKeyResult> InvokeAsync(GetKeyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyResult>("aws:apigateway/getKey:getKey", args ?? new GetKeyArgs(), options.WithVersion());
+
+        public static Output<GetKeyResult> Invoke(GetKeyOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Id.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetKeyArgs();
+                    a[0].Set(args, nameof(args.Id));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -64,6 +77,31 @@ namespace Pulumi.Aws.ApiGateway
         }
 
         public GetKeyArgs()
+        {
+        }
+    }
+
+    public sealed class GetKeyOutputArgs
+    {
+        /// <summary>
+        /// The ID of the API Key to look up.
+        /// </summary>
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags for the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetKeyOutputArgs()
         {
         }
     }

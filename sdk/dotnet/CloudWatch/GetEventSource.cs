@@ -41,6 +41,18 @@ namespace Pulumi.Aws.CloudWatch
         /// </summary>
         public static Task<GetEventSourceResult> InvokeAsync(GetEventSourceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEventSourceResult>("aws:cloudwatch/getEventSource:getEventSource", args ?? new GetEventSourceArgs(), options.WithVersion());
+
+        public static Output<GetEventSourceResult> Invoke(GetEventSourceOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetEventSourceOutputArgs();
+            return Pulumi.Output.All(
+                args.NamePrefix.Box()
+            ).Apply(a => {
+                    var args = new GetEventSourceArgs();
+                    a[0].Set(args, nameof(args.NamePrefix));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -53,6 +65,19 @@ namespace Pulumi.Aws.CloudWatch
         public string? NamePrefix { get; set; }
 
         public GetEventSourceArgs()
+        {
+        }
+    }
+
+    public sealed class GetEventSourceOutputArgs
+    {
+        /// <summary>
+        /// Specifying this limits the results to only those partner event sources with names that start with the specified prefix
+        /// </summary>
+        [Input("namePrefix")]
+        public Input<string>? NamePrefix { get; set; }
+
+        public GetEventSourceOutputArgs()
         {
         }
     }

@@ -143,3 +143,12 @@ def get_resolver_rules(owner_id: Optional[str] = None,
         resolver_rule_ids=__ret__.resolver_rule_ids,
         rule_type=__ret__.rule_type,
         share_status=__ret__.share_status)
+
+
+@_utilities.lift_output_func(get_resolver_rules)
+def get_resolver_rules_apply(owner_id: Optional[pulumi.Input[str]] = None,
+                             resolver_endpoint_id: Optional[pulumi.Input[str]] = None,
+                             rule_type: Optional[pulumi.Input[str]] = None,
+                             share_status: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResolverRulesResult]:
+    ...

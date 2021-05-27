@@ -53,6 +53,18 @@ namespace Pulumi.Aws.ElasticLoadBalancing
         /// </summary>
         public static Task<GetHostedZoneIdResult> InvokeAsync(GetHostedZoneIdArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetHostedZoneIdResult>("aws:elasticloadbalancing/getHostedZoneId:getHostedZoneId", args ?? new GetHostedZoneIdArgs(), options.WithVersion());
+
+        public static Output<GetHostedZoneIdResult> Invoke(GetHostedZoneIdOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetHostedZoneIdOutputArgs();
+            return Pulumi.Output.All(
+                args.Region.Box()
+            ).Apply(a => {
+                    var args = new GetHostedZoneIdArgs();
+                    a[0].Set(args, nameof(args.Region));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -66,6 +78,20 @@ namespace Pulumi.Aws.ElasticLoadBalancing
         public string? Region { get; set; }
 
         public GetHostedZoneIdArgs()
+        {
+        }
+    }
+
+    public sealed class GetHostedZoneIdOutputArgs
+    {
+        /// <summary>
+        /// Name of the region whose AWS ELB HostedZoneId is desired.
+        /// Defaults to the region from the AWS provider configuration.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetHostedZoneIdOutputArgs()
         {
         }
     }

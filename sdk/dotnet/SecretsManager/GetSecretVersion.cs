@@ -63,6 +63,21 @@ namespace Pulumi.Aws.SecretsManager
         /// </summary>
         public static Task<GetSecretVersionResult> InvokeAsync(GetSecretVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecretVersionResult>("aws:secretsmanager/getSecretVersion:getSecretVersion", args ?? new GetSecretVersionArgs(), options.WithVersion());
+
+        public static Output<GetSecretVersionResult> Invoke(GetSecretVersionOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.SecretId.Box(),
+                args.VersionId.Box(),
+                args.VersionStage.Box()
+            ).Apply(a => {
+                    var args = new GetSecretVersionArgs();
+                    a[0].Set(args, nameof(args.SecretId));
+                    a[1].Set(args, nameof(args.VersionId));
+                    a[2].Set(args, nameof(args.VersionStage));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -87,6 +102,31 @@ namespace Pulumi.Aws.SecretsManager
         public string? VersionStage { get; set; }
 
         public GetSecretVersionArgs()
+        {
+        }
+    }
+
+    public sealed class GetSecretVersionOutputArgs
+    {
+        /// <summary>
+        /// Specifies the secret containing the version that you want to retrieve. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
+        /// </summary>
+        [Input("secretId", required: true)]
+        public Input<string> SecretId { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies the unique identifier of the version of the secret that you want to retrieve. Overrides `version_stage`.
+        /// </summary>
+        [Input("versionId")]
+        public Input<string>? VersionId { get; set; }
+
+        /// <summary>
+        /// Specifies the secret version that you want to retrieve by the staging label attached to the version. Defaults to `AWSCURRENT`.
+        /// </summary>
+        [Input("versionStage")]
+        public Input<string>? VersionStage { get; set; }
+
+        public GetSecretVersionOutputArgs()
         {
         }
     }

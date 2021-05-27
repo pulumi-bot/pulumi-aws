@@ -308,3 +308,14 @@ def get_vpc_endpoint(filters: Optional[Sequence[pulumi.InputType['GetVpcEndpoint
         tags=__ret__.tags,
         vpc_endpoint_type=__ret__.vpc_endpoint_type,
         vpc_id=__ret__.vpc_id)
+
+
+@_utilities.lift_output_func(get_vpc_endpoint)
+def get_vpc_endpoint_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetVpcEndpointFilterArgs']]]]] = None,
+                           id: Optional[pulumi.Input[str]] = None,
+                           service_name: Optional[pulumi.Input[str]] = None,
+                           state: Optional[pulumi.Input[str]] = None,
+                           tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                           vpc_id: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcEndpointResult]:
+    ...

@@ -119,3 +119,10 @@ def get_certificate(arn: Optional[str] = None,
         certificate_authority_arn=__ret__.certificate_authority_arn,
         certificate_chain=__ret__.certificate_chain,
         id=__ret__.id)
+
+
+@_utilities.lift_output_func(get_certificate)
+def get_certificate_apply(arn: Optional[pulumi.Input[str]] = None,
+                          certificate_authority_arn: Optional[pulumi.Input[str]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateResult]:
+    ...

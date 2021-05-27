@@ -39,6 +39,20 @@ namespace Pulumi.Aws.Sfn
         /// </summary>
         public static Task<GetActivityResult> InvokeAsync(GetActivityArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetActivityResult>("aws:sfn/getActivity:getActivity", args ?? new GetActivityArgs(), options.WithVersion());
+
+        public static Output<GetActivityResult> Invoke(GetActivityOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetActivityOutputArgs();
+            return Pulumi.Output.All(
+                args.Arn.Box(),
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetActivityArgs();
+                    a[0].Set(args, nameof(args.Arn));
+                    a[1].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -57,6 +71,25 @@ namespace Pulumi.Aws.Sfn
         public string? Name { get; set; }
 
         public GetActivityArgs()
+        {
+        }
+    }
+
+    public sealed class GetActivityOutputArgs
+    {
+        /// <summary>
+        /// The Amazon Resource Name (ARN) that identifies the activity.
+        /// </summary>
+        [Input("arn")]
+        public Input<string>? Arn { get; set; }
+
+        /// <summary>
+        /// The name that identifies the activity.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetActivityOutputArgs()
         {
         }
     }

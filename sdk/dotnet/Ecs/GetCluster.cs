@@ -40,6 +40,17 @@ namespace Pulumi.Aws.Ecs
         /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("aws:ecs/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithVersion());
+
+        public static Output<GetClusterResult> Invoke(GetClusterOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ClusterName.Box()
+            ).Apply(a => {
+                    var args = new GetClusterArgs();
+                    a[0].Set(args, nameof(args.ClusterName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -52,6 +63,19 @@ namespace Pulumi.Aws.Ecs
         public string ClusterName { get; set; } = null!;
 
         public GetClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetClusterOutputArgs
+    {
+        /// <summary>
+        /// The name of the ECS Cluster
+        /// </summary>
+        [Input("clusterName", required: true)]
+        public Input<string> ClusterName { get; set; } = null!;
+
+        public GetClusterOutputArgs()
         {
         }
     }

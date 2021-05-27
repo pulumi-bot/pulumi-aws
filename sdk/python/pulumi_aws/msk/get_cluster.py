@@ -186,3 +186,10 @@ def get_cluster(cluster_name: Optional[str] = None,
         number_of_broker_nodes=__ret__.number_of_broker_nodes,
         tags=__ret__.tags,
         zookeeper_connect_string=__ret__.zookeeper_connect_string)
+
+
+@_utilities.lift_output_func(get_cluster)
+def get_cluster_apply(cluster_name: Optional[pulumi.Input[str]] = None,
+                      tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
+    ...

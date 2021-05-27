@@ -39,6 +39,17 @@ namespace Pulumi.Aws.LakeFormation
         /// </summary>
         public static Task<GetResourceResult> InvokeAsync(GetResourceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetResourceResult>("aws:lakeformation/getResource:getResource", args ?? new GetResourceArgs(), options.WithVersion());
+
+        public static Output<GetResourceResult> Invoke(GetResourceOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Arn.Box()
+            ).Apply(a => {
+                    var args = new GetResourceArgs();
+                    a[0].Set(args, nameof(args.Arn));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +62,19 @@ namespace Pulumi.Aws.LakeFormation
         public string Arn { get; set; } = null!;
 
         public GetResourceArgs()
+        {
+        }
+    }
+
+    public sealed class GetResourceOutputArgs
+    {
+        /// <summary>
+        /// Amazon Resource Name (ARN) of the resource, an S3 path.
+        /// </summary>
+        [Input("arn", required: true)]
+        public Input<string> Arn { get; set; } = null!;
+
+        public GetResourceOutputArgs()
         {
         }
     }

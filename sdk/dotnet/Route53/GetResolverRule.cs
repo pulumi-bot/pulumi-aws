@@ -42,6 +42,28 @@ namespace Pulumi.Aws.Route53
         /// </summary>
         public static Task<GetResolverRuleResult> InvokeAsync(GetResolverRuleArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetResolverRuleResult>("aws:route53/getResolverRule:getResolverRule", args ?? new GetResolverRuleArgs(), options.WithVersion());
+
+        public static Output<GetResolverRuleResult> Invoke(GetResolverRuleOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetResolverRuleOutputArgs();
+            return Pulumi.Output.All(
+                args.DomainName.Box(),
+                args.Name.Box(),
+                args.ResolverEndpointId.Box(),
+                args.ResolverRuleId.Box(),
+                args.RuleType.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetResolverRuleArgs();
+                    a[0].Set(args, nameof(args.DomainName));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.ResolverEndpointId));
+                    a[3].Set(args, nameof(args.ResolverRuleId));
+                    a[4].Set(args, nameof(args.RuleType));
+                    a[5].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -90,6 +112,55 @@ namespace Pulumi.Aws.Route53
         }
 
         public GetResolverRuleArgs()
+        {
+        }
+    }
+
+    public sealed class GetResolverRuleOutputArgs
+    {
+        /// <summary>
+        /// The domain name the desired resolver rule forwards DNS queries for. Conflicts with `resolver_rule_id`.
+        /// </summary>
+        [Input("domainName")]
+        public Input<string>? DomainName { get; set; }
+
+        /// <summary>
+        /// The friendly name of the desired resolver rule. Conflicts with `resolver_rule_id`.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the outbound resolver endpoint of the desired resolver rule. Conflicts with `resolver_rule_id`.
+        /// </summary>
+        [Input("resolverEndpointId")]
+        public Input<string>? ResolverEndpointId { get; set; }
+
+        /// <summary>
+        /// The ID of the desired resolver rule. Conflicts with `domain_name`, `name`, `resolver_endpoint_id` and `rule_type`.
+        /// </summary>
+        [Input("resolverRuleId")]
+        public Input<string>? ResolverRuleId { get; set; }
+
+        /// <summary>
+        /// The rule type of the desired resolver rule. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`. Conflicts with `resolver_rule_id`.
+        /// </summary>
+        [Input("ruleType")]
+        public Input<string>? RuleType { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the resolver rule.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetResolverRuleOutputArgs()
         {
         }
     }

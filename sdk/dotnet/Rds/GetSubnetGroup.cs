@@ -39,6 +39,17 @@ namespace Pulumi.Aws.Rds
         /// </summary>
         public static Task<GetSubnetGroupResult> InvokeAsync(GetSubnetGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetGroupResult>("aws:rds/getSubnetGroup:getSubnetGroup", args ?? new GetSubnetGroupArgs(), options.WithVersion());
+
+        public static Output<GetSubnetGroupResult> Invoke(GetSubnetGroupOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetSubnetGroupArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +62,19 @@ namespace Pulumi.Aws.Rds
         public string Name { get; set; } = null!;
 
         public GetSubnetGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetSubnetGroupOutputArgs
+    {
+        /// <summary>
+        /// The name of the RDS database subnet group.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetSubnetGroupOutputArgs()
         {
         }
     }

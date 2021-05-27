@@ -158,3 +158,12 @@ def get_image(image_digest: Optional[str] = None,
         image_tags=__ret__.image_tags,
         registry_id=__ret__.registry_id,
         repository_name=__ret__.repository_name)
+
+
+@_utilities.lift_output_func(get_image)
+def get_image_apply(image_digest: Optional[pulumi.Input[str]] = None,
+                    image_tag: Optional[pulumi.Input[str]] = None,
+                    registry_id: Optional[pulumi.Input[str]] = None,
+                    repository_name: Optional[pulumi.Input[str]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageResult]:
+    ...

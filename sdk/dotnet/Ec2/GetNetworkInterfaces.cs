@@ -97,6 +97,20 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetNetworkInterfacesResult> InvokeAsync(GetNetworkInterfacesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkInterfacesResult>("aws:ec2/getNetworkInterfaces:getNetworkInterfaces", args ?? new GetNetworkInterfacesArgs(), options.WithVersion());
+
+        public static Output<GetNetworkInterfacesResult> Invoke(GetNetworkInterfacesOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetNetworkInterfacesOutputArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetNetworkInterfacesArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -128,6 +142,38 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetNetworkInterfacesArgs()
+        {
+        }
+    }
+
+    public sealed class GetNetworkInterfacesOutputArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetNetworkInterfacesFilterArgs>? _filters;
+
+        /// <summary>
+        /// Custom filter block as described below.
+        /// </summary>
+        public InputList<Inputs.GetNetworkInterfacesFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetNetworkInterfacesFilterArgs>());
+            set => _filters = value;
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags, each pair of which must exactly match
+        /// a pair on the desired network interfaces.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetNetworkInterfacesOutputArgs()
         {
         }
     }

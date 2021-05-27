@@ -39,6 +39,19 @@ namespace Pulumi.Aws.Msk
         /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("aws:msk/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithVersion());
+
+        public static Output<GetClusterResult> Invoke(GetClusterOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ClusterName.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetClusterArgs();
+                    a[0].Set(args, nameof(args.ClusterName));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -63,6 +76,31 @@ namespace Pulumi.Aws.Msk
         }
 
         public GetClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetClusterOutputArgs
+    {
+        /// <summary>
+        /// Name of the cluster.
+        /// </summary>
+        [Input("clusterName", required: true)]
+        public Input<string> ClusterName { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Map of key-value pairs assigned to the cluster.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetClusterOutputArgs()
         {
         }
     }

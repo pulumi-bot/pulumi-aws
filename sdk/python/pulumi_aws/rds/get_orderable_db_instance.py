@@ -458,3 +458,25 @@ def get_orderable_db_instance(availability_zone_group: Optional[str] = None,
         supports_storage_autoscaling=__ret__.supports_storage_autoscaling,
         supports_storage_encryption=__ret__.supports_storage_encryption,
         vpc=__ret__.vpc)
+
+
+@_utilities.lift_output_func(get_orderable_db_instance)
+def get_orderable_db_instance_apply(availability_zone_group: Optional[pulumi.Input[str]] = None,
+                                    engine: Optional[pulumi.Input[str]] = None,
+                                    engine_version: Optional[pulumi.Input[str]] = None,
+                                    instance_class: Optional[pulumi.Input[str]] = None,
+                                    license_model: Optional[pulumi.Input[str]] = None,
+                                    preferred_engine_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                                    preferred_instance_classes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                                    storage_type: Optional[pulumi.Input[str]] = None,
+                                    supports_enhanced_monitoring: Optional[pulumi.Input[bool]] = None,
+                                    supports_global_databases: Optional[pulumi.Input[bool]] = None,
+                                    supports_iam_database_authentication: Optional[pulumi.Input[bool]] = None,
+                                    supports_iops: Optional[pulumi.Input[bool]] = None,
+                                    supports_kerberos_authentication: Optional[pulumi.Input[bool]] = None,
+                                    supports_performance_insights: Optional[pulumi.Input[bool]] = None,
+                                    supports_storage_autoscaling: Optional[pulumi.Input[bool]] = None,
+                                    supports_storage_encryption: Optional[pulumi.Input[bool]] = None,
+                                    vpc: Optional[pulumi.Input[bool]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrderableDbInstanceResult]:
+    ...

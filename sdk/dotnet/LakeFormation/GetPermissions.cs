@@ -47,6 +47,29 @@ namespace Pulumi.Aws.LakeFormation
         /// </summary>
         public static Task<GetPermissionsResult> InvokeAsync(GetPermissionsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPermissionsResult>("aws:lakeformation/getPermissions:getPermissions", args ?? new GetPermissionsArgs(), options.WithVersion());
+
+        public static Output<GetPermissionsResult> Invoke(GetPermissionsOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.CatalogId.Box(),
+                args.CatalogResource.Box(),
+                args.DataLocation.Box(),
+                args.Database.Box(),
+                args.Principal.Box(),
+                args.Table.Box(),
+                args.TableWithColumns.Box()
+            ).Apply(a => {
+                    var args = new GetPermissionsArgs();
+                    a[0].Set(args, nameof(args.CatalogId));
+                    a[1].Set(args, nameof(args.CatalogResource));
+                    a[2].Set(args, nameof(args.DataLocation));
+                    a[3].Set(args, nameof(args.Database));
+                    a[4].Set(args, nameof(args.Principal));
+                    a[5].Set(args, nameof(args.Table));
+                    a[6].Set(args, nameof(args.TableWithColumns));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -95,6 +118,55 @@ namespace Pulumi.Aws.LakeFormation
         public Inputs.GetPermissionsTableWithColumnsArgs? TableWithColumns { get; set; }
 
         public GetPermissionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetPermissionsOutputArgs
+    {
+        /// <summary>
+        /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
+        /// </summary>
+        [Input("catalogId")]
+        public Input<string>? CatalogId { get; set; }
+
+        /// <summary>
+        /// Whether the permissions are to be granted for the Data Catalog. Defaults to `false`.
+        /// </summary>
+        [Input("catalogResource")]
+        public Input<bool>? CatalogResource { get; set; }
+
+        /// <summary>
+        /// Configuration block for a data location resource. Detailed below.
+        /// </summary>
+        [Input("dataLocation")]
+        public Input<Inputs.GetPermissionsDataLocationArgs>? DataLocation { get; set; }
+
+        /// <summary>
+        /// Configuration block for a database resource. Detailed below.
+        /// </summary>
+        [Input("database")]
+        public Input<Inputs.GetPermissionsDatabaseArgs>? Database { get; set; }
+
+        /// <summary>
+        /// Principal to be granted the permissions on the resource. Supported principals are IAM users or IAM roles.
+        /// </summary>
+        [Input("principal", required: true)]
+        public Input<string> Principal { get; set; } = null!;
+
+        /// <summary>
+        /// Configuration block for a table resource. Detailed below.
+        /// </summary>
+        [Input("table")]
+        public Input<Inputs.GetPermissionsTableArgs>? Table { get; set; }
+
+        /// <summary>
+        /// Configuration block for a table with columns resource. Detailed below.
+        /// </summary>
+        [Input("tableWithColumns")]
+        public Input<Inputs.GetPermissionsTableWithColumnsArgs>? TableWithColumns { get; set; }
+
+        public GetPermissionsOutputArgs()
         {
         }
     }

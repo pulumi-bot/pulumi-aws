@@ -105,3 +105,10 @@ def get_site(id: Optional[str] = None,
         description=__ret__.description,
         id=__ret__.id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_site)
+def get_site_apply(id: Optional[pulumi.Input[str]] = None,
+                   name: Optional[pulumi.Input[str]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSiteResult]:
+    ...

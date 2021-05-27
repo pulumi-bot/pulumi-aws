@@ -17,6 +17,22 @@ namespace Pulumi.Aws.Ebs
         /// </summary>
         public static Task<GetSnapshotIdsResult> InvokeAsync(GetSnapshotIdsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotIdsResult>("aws:ebs/getSnapshotIds:getSnapshotIds", args ?? new GetSnapshotIdsArgs(), options.WithVersion());
+
+        public static Output<GetSnapshotIdsResult> Invoke(GetSnapshotIdsOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetSnapshotIdsOutputArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.Owners.ToList().Box(),
+                args.RestorableByUserIds.ToList().Box()
+            ).Apply(a => {
+                    var args = new GetSnapshotIdsArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Owners));
+                    a[2].Set(args, nameof(args.RestorableByUserIds));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -61,6 +77,51 @@ namespace Pulumi.Aws.Ebs
         }
 
         public GetSnapshotIdsArgs()
+        {
+        }
+    }
+
+    public sealed class GetSnapshotIdsOutputArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetSnapshotIdsFilterArgs>? _filters;
+
+        /// <summary>
+        /// One or more name/value pairs to filter off of. There are
+        /// several valid keys, for a full reference, check out
+        /// [describe-volumes in the AWS CLI reference][1].
+        /// </summary>
+        public InputList<Inputs.GetSnapshotIdsFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetSnapshotIdsFilterArgs>());
+            set => _filters = value;
+        }
+
+        [Input("owners")]
+        private InputList<string>? _owners;
+
+        /// <summary>
+        /// Returns the snapshots owned by the specified owner id. Multiple owners can be specified.
+        /// </summary>
+        public InputList<string> Owners
+        {
+            get => _owners ?? (_owners = new InputList<string>());
+            set => _owners = value;
+        }
+
+        [Input("restorableByUserIds")]
+        private InputList<string>? _restorableByUserIds;
+
+        /// <summary>
+        /// One or more AWS accounts IDs that can create volumes from the snapshot.
+        /// </summary>
+        public InputList<string> RestorableByUserIds
+        {
+            get => _restorableByUserIds ?? (_restorableByUserIds = new InputList<string>());
+            set => _restorableByUserIds = value;
+        }
+
+        public GetSnapshotIdsOutputArgs()
         {
         }
     }

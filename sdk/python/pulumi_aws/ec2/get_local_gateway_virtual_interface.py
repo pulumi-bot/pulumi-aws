@@ -182,3 +182,11 @@ def get_local_gateway_virtual_interface(filters: Optional[Sequence[pulumi.InputT
         peer_bgp_asn=__ret__.peer_bgp_asn,
         tags=__ret__.tags,
         vlan=__ret__.vlan)
+
+
+@_utilities.lift_output_func(get_local_gateway_virtual_interface)
+def get_local_gateway_virtual_interface_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetLocalGatewayVirtualInterfaceFilterArgs']]]]] = None,
+                                              id: Optional[pulumi.Input[str]] = None,
+                                              tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLocalGatewayVirtualInterfaceResult]:
+    ...

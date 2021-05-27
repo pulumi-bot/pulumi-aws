@@ -41,6 +41,19 @@ namespace Pulumi.Aws.Iam
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("aws:iam/getUser:getUser", args ?? new GetUserArgs(), options.WithVersion());
+
+        public static Output<GetUserResult> Invoke(GetUserOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Tags.ToDict().Box(),
+                args.UserName.Box()
+            ).Apply(a => {
+                    var args = new GetUserArgs();
+                    a[0].Set(args, nameof(args.Tags));
+                    a[1].Set(args, nameof(args.UserName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -65,6 +78,31 @@ namespace Pulumi.Aws.Iam
         public string UserName { get; set; } = null!;
 
         public GetUserArgs()
+        {
+        }
+    }
+
+    public sealed class GetUserOutputArgs
+    {
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Map of key-value pairs associated with the user.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The friendly IAM user name to match.
+        /// </summary>
+        [Input("userName", required: true)]
+        public Input<string> UserName { get; set; } = null!;
+
+        public GetUserOutputArgs()
         {
         }
     }

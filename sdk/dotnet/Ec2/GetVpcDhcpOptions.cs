@@ -40,6 +40,22 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetVpcDhcpOptionsResult> InvokeAsync(GetVpcDhcpOptionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcDhcpOptionsResult>("aws:ec2/getVpcDhcpOptions:getVpcDhcpOptions", args ?? new GetVpcDhcpOptionsArgs(), options.WithVersion());
+
+        public static Output<GetVpcDhcpOptionsResult> Invoke(GetVpcDhcpOptionsOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetVpcDhcpOptionsOutputArgs();
+            return Pulumi.Output.All(
+                args.DhcpOptionsId.Box(),
+                args.Filters.ToList().Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetVpcDhcpOptionsArgs();
+                    a[0].Set(args, nameof(args.DhcpOptionsId));
+                    a[1].Set(args, nameof(args.Filters));
+                    a[2].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -76,6 +92,43 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetVpcDhcpOptionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetVpcDhcpOptionsOutputArgs
+    {
+        /// <summary>
+        /// The EC2 DHCP Options ID.
+        /// </summary>
+        [Input("dhcpOptionsId")]
+        public Input<string>? DhcpOptionsId { get; set; }
+
+        [Input("filters")]
+        private InputList<Inputs.GetVpcDhcpOptionsFilterArgs>? _filters;
+
+        /// <summary>
+        /// List of custom filters as described below.
+        /// </summary>
+        public InputList<Inputs.GetVpcDhcpOptionsFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetVpcDhcpOptionsFilterArgs>());
+            set => _filters = value;
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetVpcDhcpOptionsOutputArgs()
         {
         }
     }

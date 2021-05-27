@@ -158,3 +158,10 @@ def get_cache_policy(id: Optional[str] = None,
         min_ttl=__ret__.min_ttl,
         name=__ret__.name,
         parameters_in_cache_key_and_forwarded_to_origins=__ret__.parameters_in_cache_key_and_forwarded_to_origins)
+
+
+@_utilities.lift_output_func(get_cache_policy)
+def get_cache_policy_apply(id: Optional[pulumi.Input[str]] = None,
+                           name: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCachePolicyResult]:
+    ...

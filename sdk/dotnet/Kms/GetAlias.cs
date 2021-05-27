@@ -41,6 +41,17 @@ namespace Pulumi.Aws.Kms
         /// </summary>
         public static Task<GetAliasResult> InvokeAsync(GetAliasArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAliasResult>("aws:kms/getAlias:getAlias", args ?? new GetAliasArgs(), options.WithVersion());
+
+        public static Output<GetAliasResult> Invoke(GetAliasOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetAliasArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -53,6 +64,19 @@ namespace Pulumi.Aws.Kms
         public string Name { get; set; } = null!;
 
         public GetAliasArgs()
+        {
+        }
+    }
+
+    public sealed class GetAliasOutputArgs
+    {
+        /// <summary>
+        /// The display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/)
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetAliasOutputArgs()
         {
         }
     }

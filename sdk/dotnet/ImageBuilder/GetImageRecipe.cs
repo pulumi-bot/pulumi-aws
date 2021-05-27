@@ -39,6 +39,19 @@ namespace Pulumi.Aws.ImageBuilder
         /// </summary>
         public static Task<GetImageRecipeResult> InvokeAsync(GetImageRecipeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImageRecipeResult>("aws:imagebuilder/getImageRecipe:getImageRecipe", args ?? new GetImageRecipeArgs(), options.WithVersion());
+
+        public static Output<GetImageRecipeResult> Invoke(GetImageRecipeOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Arn.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetImageRecipeArgs();
+                    a[0].Set(args, nameof(args.Arn));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -63,6 +76,31 @@ namespace Pulumi.Aws.ImageBuilder
         }
 
         public GetImageRecipeArgs()
+        {
+        }
+    }
+
+    public sealed class GetImageRecipeOutputArgs
+    {
+        /// <summary>
+        /// Amazon Resource Name (ARN) of the image recipe.
+        /// </summary>
+        [Input("arn", required: true)]
+        public Input<string> Arn { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Key-value map of resource tags for the image recipe.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetImageRecipeOutputArgs()
         {
         }
     }

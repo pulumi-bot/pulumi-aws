@@ -77,3 +77,8 @@ def get_encryption_by_default(opts: Optional[pulumi.InvokeOptions] = None) -> Aw
     return AwaitableGetEncryptionByDefaultResult(
         enabled=__ret__.enabled,
         id=__ret__.id)
+
+
+@_utilities.lift_output_func(get_encryption_by_default)
+def get_encryption_by_default_apply(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEncryptionByDefaultResult]:
+    ...

@@ -134,3 +134,10 @@ def get_plan(plan_id: Optional[str] = None,
         plan_id=__ret__.plan_id,
         tags=__ret__.tags,
         version=__ret__.version)
+
+
+@_utilities.lift_output_func(get_plan)
+def get_plan_apply(plan_id: Optional[pulumi.Input[str]] = None,
+                   tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPlanResult]:
+    ...

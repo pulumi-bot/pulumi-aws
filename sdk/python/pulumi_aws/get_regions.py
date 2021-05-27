@@ -131,3 +131,10 @@ def get_regions(all_regions: Optional[bool] = None,
         filters=__ret__.filters,
         id=__ret__.id,
         names=__ret__.names)
+
+
+@_utilities.lift_output_func(get_regions)
+def get_regions_apply(all_regions: Optional[pulumi.Input[bool]] = None,
+                      filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetRegionsFilterArgs']]]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionsResult]:
+    ...

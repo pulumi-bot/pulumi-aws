@@ -41,6 +41,21 @@ namespace Pulumi.Aws.Lambda
         /// </summary>
         public static Task<GetLayerVersionResult> InvokeAsync(GetLayerVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLayerVersionResult>("aws:lambda/getLayerVersion:getLayerVersion", args ?? new GetLayerVersionArgs(), options.WithVersion());
+
+        public static Output<GetLayerVersionResult> Invoke(GetLayerVersionOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.CompatibleRuntime.Box(),
+                args.LayerName.Box(),
+                args.Version.Box()
+            ).Apply(a => {
+                    var args = new GetLayerVersionArgs();
+                    a[0].Set(args, nameof(args.CompatibleRuntime));
+                    a[1].Set(args, nameof(args.LayerName));
+                    a[2].Set(args, nameof(args.Version));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -65,6 +80,31 @@ namespace Pulumi.Aws.Lambda
         public int? Version { get; set; }
 
         public GetLayerVersionArgs()
+        {
+        }
+    }
+
+    public sealed class GetLayerVersionOutputArgs
+    {
+        /// <summary>
+        /// Specific runtime the layer version must support. Conflicts with `version`. If specified, the latest available layer version supporting the provided runtime will be used.
+        /// </summary>
+        [Input("compatibleRuntime")]
+        public Input<string>? CompatibleRuntime { get; set; }
+
+        /// <summary>
+        /// Name of the lambda layer.
+        /// </summary>
+        [Input("layerName", required: true)]
+        public Input<string> LayerName { get; set; } = null!;
+
+        /// <summary>
+        /// Specific layer version. Conflicts with `compatible_runtime`. If omitted, the latest available layer version will be used.
+        /// </summary>
+        [Input("version")]
+        public Input<int>? Version { get; set; }
+
+        public GetLayerVersionOutputArgs()
         {
         }
     }

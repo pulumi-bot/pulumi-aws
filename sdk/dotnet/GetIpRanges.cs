@@ -66,6 +66,21 @@ namespace Pulumi.Aws
         /// </summary>
         public static Task<GetIpRangesResult> InvokeAsync(GetIpRangesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIpRangesResult>("aws:index/getIpRanges:getIpRanges", args ?? new GetIpRangesArgs(), options.WithVersion());
+
+        public static Output<GetIpRangesResult> Invoke(GetIpRangesOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Regions.ToList().Box(),
+                args.Services.ToList().Box(),
+                args.Url.Box()
+            ).Apply(a => {
+                    var args = new GetIpRangesArgs();
+                    a[0].Set(args, nameof(args.Regions));
+                    a[1].Set(args, nameof(args.Services));
+                    a[2].Set(args, nameof(args.Url));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -108,6 +123,49 @@ namespace Pulumi.Aws
         public string? Url { get; set; }
 
         public GetIpRangesArgs()
+        {
+        }
+    }
+
+    public sealed class GetIpRangesOutputArgs
+    {
+        [Input("regions")]
+        private InputList<string>? _regions;
+
+        /// <summary>
+        /// Filter IP ranges by regions (or include all regions, if
+        /// omitted). Valid items are `global` (for `cloudfront`) as well as all AWS regions
+        /// (e.g. `eu-central-1`)
+        /// </summary>
+        public InputList<string> Regions
+        {
+            get => _regions ?? (_regions = new InputList<string>());
+            set => _regions = value;
+        }
+
+        [Input("services", required: true)]
+        private InputList<string>? _services;
+
+        /// <summary>
+        /// Filter IP ranges by services. Valid items are `amazon`
+        /// (for amazon.com), `amazon_connect`, `api_gateway`, `cloud9`, `cloudfront`,
+        /// `codebuild`, `dynamodb`, `ec2`, `ec2_instance_connect`, `globalaccelerator`,
+        /// `route53`, `route53_healthchecks`, `s3` and `workspaces_gateways`. See the
+        /// [`service` attribute][2] documentation for other possible values.
+        /// </summary>
+        public InputList<string> Services
+        {
+            get => _services ?? (_services = new InputList<string>());
+            set => _services = value;
+        }
+
+        /// <summary>
+        /// Custom URL for source JSON file. Syntax must match [AWS IP Address Ranges documentation](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html). Defaults to `https://ip-ranges.amazonaws.com/ip-ranges.json`.
+        /// </summary>
+        [Input("url")]
+        public Input<string>? Url { get; set; }
+
+        public GetIpRangesOutputArgs()
         {
         }
     }

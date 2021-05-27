@@ -712,3 +712,20 @@ def get_instance_type(default_cores: Optional[int] = None,
         total_instance_storage=__ret__.total_instance_storage,
         valid_cores=__ret__.valid_cores,
         valid_threads_per_cores=__ret__.valid_threads_per_cores)
+
+
+@_utilities.lift_output_func(get_instance_type)
+def get_instance_type_apply(default_cores: Optional[pulumi.Input[int]] = None,
+                            default_threads_per_core: Optional[pulumi.Input[int]] = None,
+                            fpgas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetInstanceTypeFpgaArgs']]]]] = None,
+                            gpuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetInstanceTypeGpusArgs']]]]] = None,
+                            hypervisor: Optional[pulumi.Input[str]] = None,
+                            inference_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetInstanceTypeInferenceAcceleratorArgs']]]]] = None,
+                            instance_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetInstanceTypeInstanceDiskArgs']]]]] = None,
+                            instance_type: Optional[pulumi.Input[str]] = None,
+                            maximum_ipv6_addresses_per_interface: Optional[pulumi.Input[int]] = None,
+                            total_fpga_memory: Optional[pulumi.Input[int]] = None,
+                            total_gpu_memory: Optional[pulumi.Input[int]] = None,
+                            total_instance_storage: Optional[pulumi.Input[int]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTypeResult]:
+    ...

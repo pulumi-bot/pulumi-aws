@@ -159,3 +159,10 @@ def get_service(cluster_arn: Optional[str] = None,
         scheduling_strategy=__ret__.scheduling_strategy,
         service_name=__ret__.service_name,
         task_definition=__ret__.task_definition)
+
+
+@_utilities.lift_output_func(get_service)
+def get_service_apply(cluster_arn: Optional[pulumi.Input[str]] = None,
+                      service_name: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
+    ...

@@ -105,3 +105,9 @@ def get_gateway(name: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         owner_account_id=__ret__.owner_account_id)
+
+
+@_utilities.lift_output_func(get_gateway)
+def get_gateway_apply(name: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewayResult]:
+    ...

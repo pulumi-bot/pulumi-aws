@@ -141,3 +141,12 @@ def get_coip_pool(filters: Optional[Sequence[pulumi.InputType['GetCoipPoolFilter
         pool_cidrs=__ret__.pool_cidrs,
         pool_id=__ret__.pool_id,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_coip_pool)
+def get_coip_pool_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetCoipPoolFilterArgs']]]]] = None,
+                        local_gateway_route_table_id: Optional[pulumi.Input[str]] = None,
+                        pool_id: Optional[pulumi.Input[str]] = None,
+                        tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCoipPoolResult]:
+    ...

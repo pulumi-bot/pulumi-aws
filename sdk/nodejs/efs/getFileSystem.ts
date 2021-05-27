@@ -109,3 +109,22 @@ export interface GetFileSystemResult {
      */
     readonly throughputMode: string;
 }
+
+export function getFileSystemOutput(args?: GetFileSystemOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFileSystemResult> {
+    return pulumi.output(args).apply(a => getFileSystem(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getFileSystem.
+ */
+export interface GetFileSystemOutputArgs {
+    /**
+     * Restricts the list to the file system with this creation token.
+     */
+    creationToken?: pulumi.Input<string>;
+    /**
+     * The ID that identifies the file system (e.g. fs-ccfc0d65).
+     */
+    fileSystemId?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}

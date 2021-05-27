@@ -153,3 +153,14 @@ def get_local_gateway_route_table(filters: Optional[Sequence[pulumi.InputType['G
         outpost_arn=__ret__.outpost_arn,
         state=__ret__.state,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_local_gateway_route_table)
+def get_local_gateway_route_table_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetLocalGatewayRouteTableFilterArgs']]]]] = None,
+                                        local_gateway_id: Optional[pulumi.Input[str]] = None,
+                                        local_gateway_route_table_id: Optional[pulumi.Input[str]] = None,
+                                        outpost_arn: Optional[pulumi.Input[str]] = None,
+                                        state: Optional[pulumi.Input[str]] = None,
+                                        tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLocalGatewayRouteTableResult]:
+    ...

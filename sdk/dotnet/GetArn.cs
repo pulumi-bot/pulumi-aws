@@ -39,6 +39,17 @@ namespace Pulumi.Aws
         /// </summary>
         public static Task<GetArnResult> InvokeAsync(GetArnArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetArnResult>("aws:index/getArn:getArn", args ?? new GetArnArgs(), options.WithVersion());
+
+        public static Output<GetArnResult> Invoke(GetArnOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Arn.Box()
+            ).Apply(a => {
+                    var args = new GetArnArgs();
+                    a[0].Set(args, nameof(args.Arn));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +62,19 @@ namespace Pulumi.Aws
         public string Arn { get; set; } = null!;
 
         public GetArnArgs()
+        {
+        }
+    }
+
+    public sealed class GetArnOutputArgs
+    {
+        /// <summary>
+        /// The ARN to parse.
+        /// </summary>
+        [Input("arn", required: true)]
+        public Input<string> Arn { get; set; } = null!;
+
+        public GetArnOutputArgs()
         {
         }
     }

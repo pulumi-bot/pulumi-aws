@@ -281,3 +281,10 @@ def get_bot(name: Optional[str] = None,
         status=__ret__.status,
         version=__ret__.version,
         voice_id=__ret__.voice_id)
+
+
+@_utilities.lift_output_func(get_bot)
+def get_bot_apply(name: Optional[pulumi.Input[str]] = None,
+                  version: Optional[pulumi.Input[str]] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBotResult]:
+    ...

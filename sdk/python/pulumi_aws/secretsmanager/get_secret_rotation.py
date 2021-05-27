@@ -120,3 +120,9 @@ def get_secret_rotation(secret_id: Optional[str] = None,
         rotation_lambda_arn=__ret__.rotation_lambda_arn,
         rotation_rules=__ret__.rotation_rules,
         secret_id=__ret__.secret_id)
+
+
+@_utilities.lift_output_func(get_secret_rotation)
+def get_secret_rotation_apply(secret_id: Optional[pulumi.Input[str]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretRotationResult]:
+    ...

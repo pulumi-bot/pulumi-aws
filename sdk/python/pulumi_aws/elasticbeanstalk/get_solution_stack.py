@@ -109,3 +109,10 @@ def get_solution_stack(most_recent: Optional[bool] = None,
         most_recent=__ret__.most_recent,
         name=__ret__.name,
         name_regex=__ret__.name_regex)
+
+
+@_utilities.lift_output_func(get_solution_stack)
+def get_solution_stack_apply(most_recent: Optional[pulumi.Input[bool]] = None,
+                             name_regex: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSolutionStackResult]:
+    ...

@@ -119,3 +119,10 @@ def get_web_acl(name: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         scope=__ret__.scope)
+
+
+@_utilities.lift_output_func(get_web_acl)
+def get_web_acl_apply(name: Optional[pulumi.Input[str]] = None,
+                      scope: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebAclResult]:
+    ...

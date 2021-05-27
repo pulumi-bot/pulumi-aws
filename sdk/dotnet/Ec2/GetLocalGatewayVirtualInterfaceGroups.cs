@@ -36,6 +36,20 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetLocalGatewayVirtualInterfaceGroupsResult> InvokeAsync(GetLocalGatewayVirtualInterfaceGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLocalGatewayVirtualInterfaceGroupsResult>("aws:ec2/getLocalGatewayVirtualInterfaceGroups:getLocalGatewayVirtualInterfaceGroups", args ?? new GetLocalGatewayVirtualInterfaceGroupsArgs(), options.WithVersion());
+
+        public static Output<GetLocalGatewayVirtualInterfaceGroupsResult> Invoke(GetLocalGatewayVirtualInterfaceGroupsOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetLocalGatewayVirtualInterfaceGroupsOutputArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetLocalGatewayVirtualInterfaceGroupsArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -66,6 +80,37 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetLocalGatewayVirtualInterfaceGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetLocalGatewayVirtualInterfaceGroupsOutputArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetLocalGatewayVirtualInterfaceGroupsFilterArgs>? _filters;
+
+        /// <summary>
+        /// One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayVirtualInterfaceGroups.html) for supported filters. Detailed below.
+        /// </summary>
+        public InputList<Inputs.GetLocalGatewayVirtualInterfaceGroupsFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetLocalGatewayVirtualInterfaceGroupsFilterArgs>());
+            set => _filters = value;
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Key-value map of resource tags, each pair of which must exactly match a pair on the desired local gateway route table.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetLocalGatewayVirtualInterfaceGroupsOutputArgs()
         {
         }
     }

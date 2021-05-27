@@ -40,6 +40,19 @@ namespace Pulumi.Aws.Batch
         /// </summary>
         public static Task<GetComputeEnvironmentResult> InvokeAsync(GetComputeEnvironmentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetComputeEnvironmentResult>("aws:batch/getComputeEnvironment:getComputeEnvironment", args ?? new GetComputeEnvironmentArgs(), options.WithVersion());
+
+        public static Output<GetComputeEnvironmentResult> Invoke(GetComputeEnvironmentOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ComputeEnvironmentName.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetComputeEnvironmentArgs();
+                    a[0].Set(args, nameof(args.ComputeEnvironmentName));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -64,6 +77,31 @@ namespace Pulumi.Aws.Batch
         }
 
         public GetComputeEnvironmentArgs()
+        {
+        }
+    }
+
+    public sealed class GetComputeEnvironmentOutputArgs
+    {
+        /// <summary>
+        /// The name of the Batch Compute Environment
+        /// </summary>
+        [Input("computeEnvironmentName", required: true)]
+        public Input<string> ComputeEnvironmentName { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Key-value map of resource tags
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetComputeEnvironmentOutputArgs()
         {
         }
     }

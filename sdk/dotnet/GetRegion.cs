@@ -44,6 +44,20 @@ namespace Pulumi.Aws
         /// </summary>
         public static Task<GetRegionResult> InvokeAsync(GetRegionArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionResult>("aws:index/getRegion:getRegion", args ?? new GetRegionArgs(), options.WithVersion());
+
+        public static Output<GetRegionResult> Invoke(GetRegionOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetRegionOutputArgs();
+            return Pulumi.Output.All(
+                args.Endpoint.Box(),
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetRegionArgs();
+                    a[0].Set(args, nameof(args.Endpoint));
+                    a[1].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -62,6 +76,25 @@ namespace Pulumi.Aws
         public string? Name { get; set; }
 
         public GetRegionArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionOutputArgs
+    {
+        /// <summary>
+        /// The EC2 endpoint of the region to select.
+        /// </summary>
+        [Input("endpoint")]
+        public Input<string>? Endpoint { get; set; }
+
+        /// <summary>
+        /// The full name of the region to select.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetRegionOutputArgs()
         {
         }
     }

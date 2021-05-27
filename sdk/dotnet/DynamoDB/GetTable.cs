@@ -39,6 +39,21 @@ namespace Pulumi.Aws.DynamoDB
         /// </summary>
         public static Task<GetTableResult> InvokeAsync(GetTableArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTableResult>("aws:dynamodb/getTable:getTable", args ?? new GetTableArgs(), options.WithVersion());
+
+        public static Output<GetTableResult> Invoke(GetTableOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ServerSideEncryption.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetTableArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ServerSideEncryption));
+                    a[2].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -62,6 +77,30 @@ namespace Pulumi.Aws.DynamoDB
         }
 
         public GetTableArgs()
+        {
+        }
+    }
+
+    public sealed class GetTableOutputArgs
+    {
+        /// <summary>
+        /// The name of the DynamoDB table.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("serverSideEncryption")]
+        public Input<Inputs.GetTableServerSideEncryptionArgs>? ServerSideEncryption { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetTableOutputArgs()
         {
         }
     }

@@ -54,6 +54,24 @@ namespace Pulumi.Aws.Iam
         /// </summary>
         public static Task<GetServerCertificateResult> InvokeAsync(GetServerCertificateArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServerCertificateResult>("aws:iam/getServerCertificate:getServerCertificate", args ?? new GetServerCertificateArgs(), options.WithVersion());
+
+        public static Output<GetServerCertificateResult> Invoke(GetServerCertificateOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetServerCertificateOutputArgs();
+            return Pulumi.Output.All(
+                args.Latest.Box(),
+                args.Name.Box(),
+                args.NamePrefix.Box(),
+                args.PathPrefix.Box()
+            ).Apply(a => {
+                    var args = new GetServerCertificateArgs();
+                    a[0].Set(args, nameof(args.Latest));
+                    a[1].Set(args, nameof(args.Name));
+                    a[2].Set(args, nameof(args.NamePrefix));
+                    a[3].Set(args, nameof(args.PathPrefix));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -84,6 +102,37 @@ namespace Pulumi.Aws.Iam
         public string? PathPrefix { get; set; }
 
         public GetServerCertificateArgs()
+        {
+        }
+    }
+
+    public sealed class GetServerCertificateOutputArgs
+    {
+        /// <summary>
+        /// sort results by expiration date. returns the certificate with expiration date in furthest in the future.
+        /// </summary>
+        [Input("latest")]
+        public Input<bool>? Latest { get; set; }
+
+        /// <summary>
+        /// exact name of the cert to lookup
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// prefix of cert to filter by
+        /// </summary>
+        [Input("namePrefix")]
+        public Input<string>? NamePrefix { get; set; }
+
+        /// <summary>
+        /// prefix of path to filter by
+        /// </summary>
+        [Input("pathPrefix")]
+        public Input<string>? PathPrefix { get; set; }
+
+        public GetServerCertificateOutputArgs()
         {
         }
     }

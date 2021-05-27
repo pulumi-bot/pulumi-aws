@@ -17,6 +17,28 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("aws:ec2/getInstance:getInstance", args ?? new GetInstanceArgs(), options.WithVersion());
+
+        public static Output<GetInstanceResult> Invoke(GetInstanceOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetInstanceOutputArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.GetPasswordData.Box(),
+                args.GetUserData.Box(),
+                args.InstanceId.Box(),
+                args.InstanceTags.ToDict().Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetInstanceArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.GetPasswordData));
+                    a[2].Set(args, nameof(args.GetUserData));
+                    a[3].Set(args, nameof(args.InstanceId));
+                    a[4].Set(args, nameof(args.InstanceTags));
+                    a[5].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -80,6 +102,70 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetInstanceArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceOutputArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetInstanceFilterArgs>? _filters;
+
+        /// <summary>
+        /// One or more name/value pairs to use as filters. There are
+        /// several valid keys, for a full reference, check out
+        /// [describe-instances in the AWS CLI reference][1].
+        /// </summary>
+        public InputList<Inputs.GetInstanceFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetInstanceFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// If true, wait for password data to become available and retrieve it. Useful for getting the administrator password for instances running Microsoft Windows. The password data is exported to the `password_data` attribute. See [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html) for more information.
+        /// </summary>
+        [Input("getPasswordData")]
+        public Input<bool>? GetPasswordData { get; set; }
+
+        /// <summary>
+        /// Retrieve Base64 encoded User Data contents into the `user_data_base64` attribute. A SHA-1 hash of the User Data contents will always be present in the `user_data` attribute. Defaults to `false`.
+        /// </summary>
+        [Input("getUserData")]
+        public Input<bool>? GetUserData { get; set; }
+
+        /// <summary>
+        /// Specify the exact Instance ID with which to populate the data source.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
+
+        [Input("instanceTags")]
+        private InputMap<string>? _instanceTags;
+
+        /// <summary>
+        /// A map of tags, each pair of which must
+        /// exactly match a pair on the desired Instance.
+        /// </summary>
+        public InputMap<string> InstanceTags
+        {
+            get => _instanceTags ?? (_instanceTags = new InputMap<string>());
+            set => _instanceTags = value;
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the Instance.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetInstanceOutputArgs()
         {
         }
     }

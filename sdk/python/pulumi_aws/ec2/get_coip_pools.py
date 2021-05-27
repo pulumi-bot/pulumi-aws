@@ -99,3 +99,10 @@ def get_coip_pools(filters: Optional[Sequence[pulumi.InputType['GetCoipPoolsFilt
         id=__ret__.id,
         pool_ids=__ret__.pool_ids,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_coip_pools)
+def get_coip_pools_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetCoipPoolsFilterArgs']]]]] = None,
+                         tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCoipPoolsResult]:
+    ...

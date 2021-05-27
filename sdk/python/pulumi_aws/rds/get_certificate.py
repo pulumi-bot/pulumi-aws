@@ -170,3 +170,10 @@ def get_certificate(id: Optional[str] = None,
         thumbprint=__ret__.thumbprint,
         valid_from=__ret__.valid_from,
         valid_till=__ret__.valid_till)
+
+
+@_utilities.lift_output_func(get_certificate)
+def get_certificate_apply(id: Optional[pulumi.Input[str]] = None,
+                          latest_valid_till: Optional[pulumi.Input[bool]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateResult]:
+    ...

@@ -239,3 +239,11 @@ def get_mount_target(access_point_id: Optional[str] = None,
         owner_id=__ret__.owner_id,
         security_groups=__ret__.security_groups,
         subnet_id=__ret__.subnet_id)
+
+
+@_utilities.lift_output_func(get_mount_target)
+def get_mount_target_apply(access_point_id: Optional[pulumi.Input[str]] = None,
+                           file_system_id: Optional[pulumi.Input[str]] = None,
+                           mount_target_id: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMountTargetResult]:
+    ...

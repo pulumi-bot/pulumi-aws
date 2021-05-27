@@ -43,6 +43,17 @@ namespace Pulumi.Aws.Cur
         /// </summary>
         public static Task<GetReportDefinitionResult> InvokeAsync(GetReportDefinitionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetReportDefinitionResult>("aws:cur/getReportDefinition:getReportDefinition", args ?? new GetReportDefinitionArgs(), options.WithVersion());
+
+        public static Output<GetReportDefinitionResult> Invoke(GetReportDefinitionOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ReportName.Box()
+            ).Apply(a => {
+                    var args = new GetReportDefinitionArgs();
+                    a[0].Set(args, nameof(args.ReportName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -55,6 +66,19 @@ namespace Pulumi.Aws.Cur
         public string ReportName { get; set; } = null!;
 
         public GetReportDefinitionArgs()
+        {
+        }
+    }
+
+    public sealed class GetReportDefinitionOutputArgs
+    {
+        /// <summary>
+        /// The name of the report definition to match.
+        /// </summary>
+        [Input("reportName", required: true)]
+        public Input<string> ReportName { get; set; } = null!;
+
+        public GetReportDefinitionOutputArgs()
         {
         }
     }

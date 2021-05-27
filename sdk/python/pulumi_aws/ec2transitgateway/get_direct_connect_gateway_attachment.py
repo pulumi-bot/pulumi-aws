@@ -125,3 +125,12 @@ def get_direct_connect_gateway_attachment(dx_gateway_id: Optional[str] = None,
         id=__ret__.id,
         tags=__ret__.tags,
         transit_gateway_id=__ret__.transit_gateway_id)
+
+
+@_utilities.lift_output_func(get_direct_connect_gateway_attachment)
+def get_direct_connect_gateway_attachment_apply(dx_gateway_id: Optional[pulumi.Input[str]] = None,
+                                                filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetDirectConnectGatewayAttachmentFilterArgs']]]]] = None,
+                                                tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                                                transit_gateway_id: Optional[pulumi.Input[str]] = None,
+                                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDirectConnectGatewayAttachmentResult]:
+    ...

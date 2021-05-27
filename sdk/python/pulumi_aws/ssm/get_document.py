@@ -158,3 +158,11 @@ def get_document(document_format: Optional[str] = None,
         document_version=__ret__.document_version,
         id=__ret__.id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_document)
+def get_document_apply(document_format: Optional[pulumi.Input[str]] = None,
+                       document_version: Optional[pulumi.Input[str]] = None,
+                       name: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDocumentResult]:
+    ...

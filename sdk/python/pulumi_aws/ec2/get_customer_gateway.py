@@ -173,3 +173,11 @@ def get_customer_gateway(filters: Optional[Sequence[pulumi.InputType['GetCustome
         ip_address=__ret__.ip_address,
         tags=__ret__.tags,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_customer_gateway)
+def get_customer_gateway_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetCustomerGatewayFilterArgs']]]]] = None,
+                               id: Optional[pulumi.Input[str]] = None,
+                               tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCustomerGatewayResult]:
+    ...

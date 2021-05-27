@@ -164,3 +164,10 @@ def get_key(id: Optional[str] = None,
         name=__ret__.name,
         tags=__ret__.tags,
         value=__ret__.value)
+
+
+@_utilities.lift_output_func(get_key)
+def get_key_apply(id: Optional[pulumi.Input[str]] = None,
+                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeyResult]:
+    ...

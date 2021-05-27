@@ -16,6 +16,21 @@ namespace Pulumi.Aws.Outposts
         /// </summary>
         public static Task<GetOutpostInstanceTypeResult> InvokeAsync(GetOutpostInstanceTypeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOutpostInstanceTypeResult>("aws:outposts/getOutpostInstanceType:getOutpostInstanceType", args ?? new GetOutpostInstanceTypeArgs(), options.WithVersion());
+
+        public static Output<GetOutpostInstanceTypeResult> Invoke(GetOutpostInstanceTypeOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Arn.Box(),
+                args.InstanceType.Box(),
+                args.PreferredInstanceTypes.ToList().Box()
+            ).Apply(a => {
+                    var args = new GetOutpostInstanceTypeArgs();
+                    a[0].Set(args, nameof(args.Arn));
+                    a[1].Set(args, nameof(args.InstanceType));
+                    a[2].Set(args, nameof(args.PreferredInstanceTypes));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -46,6 +61,37 @@ namespace Pulumi.Aws.Outposts
         }
 
         public GetOutpostInstanceTypeArgs()
+        {
+        }
+    }
+
+    public sealed class GetOutpostInstanceTypeOutputArgs
+    {
+        /// <summary>
+        /// Outpost Amazon Resource Name (ARN).
+        /// </summary>
+        [Input("arn", required: true)]
+        public Input<string> Arn { get; set; } = null!;
+
+        /// <summary>
+        /// Desired instance type. Conflicts with `preferred_instance_types`.
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        [Input("preferredInstanceTypes")]
+        private InputList<string>? _preferredInstanceTypes;
+
+        /// <summary>
+        /// Ordered list of preferred instance types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. Conflicts with `instance_type`.
+        /// </summary>
+        public InputList<string> PreferredInstanceTypes
+        {
+            get => _preferredInstanceTypes ?? (_preferredInstanceTypes = new InputList<string>());
+            set => _preferredInstanceTypes = value;
+        }
+
+        public GetOutpostInstanceTypeOutputArgs()
         {
         }
     }

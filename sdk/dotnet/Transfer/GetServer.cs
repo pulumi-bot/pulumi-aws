@@ -40,6 +40,17 @@ namespace Pulumi.Aws.Transfer
         /// </summary>
         public static Task<GetServerResult> InvokeAsync(GetServerArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServerResult>("aws:transfer/getServer:getServer", args ?? new GetServerArgs(), options.WithVersion());
+
+        public static Output<GetServerResult> Invoke(GetServerOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ServerId.Box()
+            ).Apply(a => {
+                    var args = new GetServerArgs();
+                    a[0].Set(args, nameof(args.ServerId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -52,6 +63,19 @@ namespace Pulumi.Aws.Transfer
         public string ServerId { get; set; } = null!;
 
         public GetServerArgs()
+        {
+        }
+    }
+
+    public sealed class GetServerOutputArgs
+    {
+        /// <summary>
+        /// ID for an SFTP server.
+        /// </summary>
+        [Input("serverId", required: true)]
+        public Input<string> ServerId { get; set; } = null!;
+
+        public GetServerOutputArgs()
         {
         }
     }

@@ -39,6 +39,17 @@ namespace Pulumi.Aws.Efs
         /// </summary>
         public static Task<GetAccessPointsResult> InvokeAsync(GetAccessPointsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccessPointsResult>("aws:efs/getAccessPoints:getAccessPoints", args ?? new GetAccessPointsArgs(), options.WithVersion());
+
+        public static Output<GetAccessPointsResult> Invoke(GetAccessPointsOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.FileSystemId.Box()
+            ).Apply(a => {
+                    var args = new GetAccessPointsArgs();
+                    a[0].Set(args, nameof(args.FileSystemId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +62,19 @@ namespace Pulumi.Aws.Efs
         public string FileSystemId { get; set; } = null!;
 
         public GetAccessPointsArgs()
+        {
+        }
+    }
+
+    public sealed class GetAccessPointsOutputArgs
+    {
+        /// <summary>
+        /// EFS File System identifier.
+        /// </summary>
+        [Input("fileSystemId", required: true)]
+        public Input<string> FileSystemId { get; set; } = null!;
+
+        public GetAccessPointsOutputArgs()
         {
         }
     }

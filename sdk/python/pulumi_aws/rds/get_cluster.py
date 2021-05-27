@@ -351,3 +351,10 @@ def get_cluster(cluster_identifier: Optional[str] = None,
         storage_encrypted=__ret__.storage_encrypted,
         tags=__ret__.tags,
         vpc_security_group_ids=__ret__.vpc_security_group_ids)
+
+
+@_utilities.lift_output_func(get_cluster)
+def get_cluster_apply(cluster_identifier: Optional[pulumi.Input[str]] = None,
+                      tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
+    ...

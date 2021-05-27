@@ -40,6 +40,19 @@ namespace Pulumi.Aws.Lex
         /// </summary>
         public static Task<GetBotAliasResult> InvokeAsync(GetBotAliasArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBotAliasResult>("aws:lex/getBotAlias:getBotAlias", args ?? new GetBotAliasArgs(), options.WithVersion());
+
+        public static Output<GetBotAliasResult> Invoke(GetBotAliasOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.BotName.Box(),
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetBotAliasArgs();
+                    a[0].Set(args, nameof(args.BotName));
+                    a[1].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -58,6 +71,25 @@ namespace Pulumi.Aws.Lex
         public string Name { get; set; } = null!;
 
         public GetBotAliasArgs()
+        {
+        }
+    }
+
+    public sealed class GetBotAliasOutputArgs
+    {
+        /// <summary>
+        /// The name of the bot.
+        /// </summary>
+        [Input("botName", required: true)]
+        public Input<string> BotName { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the bot alias. The name is case sensitive.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetBotAliasOutputArgs()
         {
         }
     }

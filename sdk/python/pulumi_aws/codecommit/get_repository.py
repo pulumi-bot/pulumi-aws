@@ -131,3 +131,9 @@ def get_repository(repository_name: Optional[str] = None,
         id=__ret__.id,
         repository_id=__ret__.repository_id,
         repository_name=__ret__.repository_name)
+
+
+@_utilities.lift_output_func(get_repository)
+def get_repository_apply(repository_name: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRepositoryResult]:
+    ...

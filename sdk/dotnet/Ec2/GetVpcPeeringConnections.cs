@@ -17,6 +17,20 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetVpcPeeringConnectionsResult> InvokeAsync(GetVpcPeeringConnectionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcPeeringConnectionsResult>("aws:ec2/getVpcPeeringConnections:getVpcPeeringConnections", args ?? new GetVpcPeeringConnectionsArgs(), options.WithVersion());
+
+        public static Output<GetVpcPeeringConnectionsResult> Invoke(GetVpcPeeringConnectionsOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetVpcPeeringConnectionsOutputArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetVpcPeeringConnectionsArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -48,6 +62,38 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetVpcPeeringConnectionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetVpcPeeringConnectionsOutputArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetVpcPeeringConnectionsFilterArgs>? _filters;
+
+        /// <summary>
+        /// Custom filter block as described below.
+        /// </summary>
+        public InputList<Inputs.GetVpcPeeringConnectionsFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetVpcPeeringConnectionsFilterArgs>());
+            set => _filters = value;
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags, each pair of which must exactly match
+        /// a pair on the desired VPC Peering Connection.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetVpcPeeringConnectionsOutputArgs()
         {
         }
     }

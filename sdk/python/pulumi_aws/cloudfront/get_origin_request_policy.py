@@ -145,3 +145,10 @@ def get_origin_request_policy(id: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         query_strings_configs=__ret__.query_strings_configs)
+
+
+@_utilities.lift_output_func(get_origin_request_policy)
+def get_origin_request_policy_apply(id: Optional[pulumi.Input[str]] = None,
+                                    name: Optional[pulumi.Input[str]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOriginRequestPolicyResult]:
+    ...

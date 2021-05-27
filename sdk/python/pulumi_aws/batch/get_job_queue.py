@@ -180,3 +180,10 @@ def get_job_queue(name: Optional[str] = None,
         status=__ret__.status,
         status_reason=__ret__.status_reason,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_job_queue)
+def get_job_queue_apply(name: Optional[pulumi.Input[str]] = None,
+                        tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobQueueResult]:
+    ...

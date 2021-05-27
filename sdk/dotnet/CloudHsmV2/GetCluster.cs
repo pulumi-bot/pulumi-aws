@@ -39,6 +39,19 @@ namespace Pulumi.Aws.CloudHsmV2
         /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("aws:cloudhsmv2/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithVersion());
+
+        public static Output<GetClusterResult> Invoke(GetClusterOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ClusterId.Box(),
+                args.ClusterState.Box()
+            ).Apply(a => {
+                    var args = new GetClusterArgs();
+                    a[0].Set(args, nameof(args.ClusterId));
+                    a[1].Set(args, nameof(args.ClusterState));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -57,6 +70,25 @@ namespace Pulumi.Aws.CloudHsmV2
         public string? ClusterState { get; set; }
 
         public GetClusterArgs()
+        {
+        }
+    }
+
+    public sealed class GetClusterOutputArgs
+    {
+        /// <summary>
+        /// The id of Cloud HSM v2 cluster.
+        /// </summary>
+        [Input("clusterId", required: true)]
+        public Input<string> ClusterId { get; set; } = null!;
+
+        /// <summary>
+        /// The state of the cluster to be found.
+        /// </summary>
+        [Input("clusterState")]
+        public Input<string>? ClusterState { get; set; }
+
+        public GetClusterOutputArgs()
         {
         }
     }

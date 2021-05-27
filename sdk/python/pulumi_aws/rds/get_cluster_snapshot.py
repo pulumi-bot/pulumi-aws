@@ -348,3 +348,15 @@ def get_cluster_snapshot(db_cluster_identifier: Optional[str] = None,
         storage_encrypted=__ret__.storage_encrypted,
         tags=__ret__.tags,
         vpc_id=__ret__.vpc_id)
+
+
+@_utilities.lift_output_func(get_cluster_snapshot)
+def get_cluster_snapshot_apply(db_cluster_identifier: Optional[pulumi.Input[str]] = None,
+                               db_cluster_snapshot_identifier: Optional[pulumi.Input[str]] = None,
+                               include_public: Optional[pulumi.Input[bool]] = None,
+                               include_shared: Optional[pulumi.Input[bool]] = None,
+                               most_recent: Optional[pulumi.Input[bool]] = None,
+                               snapshot_type: Optional[pulumi.Input[str]] = None,
+                               tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterSnapshotResult]:
+    ...

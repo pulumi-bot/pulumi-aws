@@ -40,6 +40,23 @@ namespace Pulumi.Aws.Ecr
         /// </summary>
         public static Task<GetImageResult> InvokeAsync(GetImageArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("aws:ecr/getImage:getImage", args ?? new GetImageArgs(), options.WithVersion());
+
+        public static Output<GetImageResult> Invoke(GetImageOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ImageDigest.Box(),
+                args.ImageTag.Box(),
+                args.RegistryId.Box(),
+                args.RepositoryName.Box()
+            ).Apply(a => {
+                    var args = new GetImageArgs();
+                    a[0].Set(args, nameof(args.ImageDigest));
+                    a[1].Set(args, nameof(args.ImageTag));
+                    a[2].Set(args, nameof(args.RegistryId));
+                    a[3].Set(args, nameof(args.RepositoryName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -70,6 +87,37 @@ namespace Pulumi.Aws.Ecr
         public string RepositoryName { get; set; } = null!;
 
         public GetImageArgs()
+        {
+        }
+    }
+
+    public sealed class GetImageOutputArgs
+    {
+        /// <summary>
+        /// The sha256 digest of the image manifest. At least one of `image_digest` or `image_tag` must be specified.
+        /// </summary>
+        [Input("imageDigest")]
+        public Input<string>? ImageDigest { get; set; }
+
+        /// <summary>
+        /// The tag associated with this image. At least one of `image_digest` or `image_tag` must be specified.
+        /// </summary>
+        [Input("imageTag")]
+        public Input<string>? ImageTag { get; set; }
+
+        /// <summary>
+        /// The ID of the Registry where the repository resides.
+        /// </summary>
+        [Input("registryId")]
+        public Input<string>? RegistryId { get; set; }
+
+        /// <summary>
+        /// The name of the ECR Repository.
+        /// </summary>
+        [Input("repositoryName", required: true)]
+        public Input<string> RepositoryName { get; set; } = null!;
+
+        public GetImageOutputArgs()
         {
         }
     }

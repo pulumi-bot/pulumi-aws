@@ -65,6 +65,21 @@ namespace Pulumi.Aws.Ssm
         /// </summary>
         public static Task<GetDocumentResult> InvokeAsync(GetDocumentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDocumentResult>("aws:ssm/getDocument:getDocument", args ?? new GetDocumentArgs(), options.WithVersion());
+
+        public static Output<GetDocumentResult> Invoke(GetDocumentOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.DocumentFormat.Box(),
+                args.DocumentVersion.Box(),
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetDocumentArgs();
+                    a[0].Set(args, nameof(args.DocumentFormat));
+                    a[1].Set(args, nameof(args.DocumentVersion));
+                    a[2].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -89,6 +104,31 @@ namespace Pulumi.Aws.Ssm
         public string Name { get; set; } = null!;
 
         public GetDocumentArgs()
+        {
+        }
+    }
+
+    public sealed class GetDocumentOutputArgs
+    {
+        /// <summary>
+        /// Returns the document in the specified format. The document format can be either JSON or YAML. JSON is the default format.
+        /// </summary>
+        [Input("documentFormat")]
+        public Input<string>? DocumentFormat { get; set; }
+
+        /// <summary>
+        /// The document version for which you want information.
+        /// </summary>
+        [Input("documentVersion")]
+        public Input<string>? DocumentVersion { get; set; }
+
+        /// <summary>
+        /// The name of the Systems Manager document.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetDocumentOutputArgs()
         {
         }
     }

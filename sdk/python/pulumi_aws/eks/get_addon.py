@@ -173,3 +173,11 @@ def get_addon(addon_name: Optional[str] = None,
         modified_at=__ret__.modified_at,
         service_account_role_arn=__ret__.service_account_role_arn,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_addon)
+def get_addon_apply(addon_name: Optional[pulumi.Input[str]] = None,
+                    cluster_name: Optional[pulumi.Input[str]] = None,
+                    tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAddonResult]:
+    ...
