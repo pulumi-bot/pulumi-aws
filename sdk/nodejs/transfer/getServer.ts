@@ -93,3 +93,17 @@ export interface GetServerResult {
      */
     readonly url: string;
 }
+
+export function getServerApply(args: GetServerApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerResult> {
+    return pulumi.output(args).apply(a => getServer(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServer.
+ */
+export interface GetServerApplyArgs {
+    /**
+     * ID for an SFTP server.
+     */
+    serverId: pulumi.Input<string>;
+}

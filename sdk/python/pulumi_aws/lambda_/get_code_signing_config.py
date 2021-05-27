@@ -147,3 +147,9 @@ def get_code_signing_config(arn: Optional[str] = None,
         id=__ret__.id,
         last_modified=__ret__.last_modified,
         policies=__ret__.policies)
+
+
+@_utilities.lift_output_func(get_code_signing_config)
+def get_code_signing_config_apply(arn: Optional[pulumi.Input[str]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCodeSigningConfigResult]:
+    ...

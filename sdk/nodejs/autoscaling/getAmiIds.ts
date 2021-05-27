@@ -51,3 +51,17 @@ export interface GetAmiIdsResult {
      */
     readonly names: string[];
 }
+
+export function getAmiIdsApply(args?: GetAmiIdsApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAmiIdsResult> {
+    return pulumi.output(args).apply(a => getAmiIds(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAmiIds.
+ */
+export interface GetAmiIdsApplyArgs {
+    /**
+     * A filter used to scope the list e.g. by tags. See [related docs](http://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_Filter.html).
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.autoscaling.GetAmiIdsFilter>[]>;
+}

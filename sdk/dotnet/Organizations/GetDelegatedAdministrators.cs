@@ -39,6 +39,18 @@ namespace Pulumi.Aws.Organizations
         /// </summary>
         public static Task<GetDelegatedAdministratorsResult> InvokeAsync(GetDelegatedAdministratorsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDelegatedAdministratorsResult>("aws:organizations/getDelegatedAdministrators:getDelegatedAdministrators", args ?? new GetDelegatedAdministratorsArgs(), options.WithVersion());
+
+        public static Output<GetDelegatedAdministratorsResult> Invoke(GetDelegatedAdministratorsOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetDelegatedAdministratorsOutputArgs();
+            return Pulumi.Output.All(
+                args.ServicePrincipal.Box()
+            ).Apply(a => {
+                    var args = new GetDelegatedAdministratorsArgs();
+                    a[0].Set(args, nameof(args.ServicePrincipal));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +63,19 @@ namespace Pulumi.Aws.Organizations
         public string? ServicePrincipal { get; set; }
 
         public GetDelegatedAdministratorsArgs()
+        {
+        }
+    }
+
+    public sealed class GetDelegatedAdministratorsOutputArgs
+    {
+        /// <summary>
+        /// Specifies a service principal name. If specified, then the operation lists the delegated administrators only for the specified service. If you don't specify a service principal, the operation lists all delegated administrators for all services in your organization.
+        /// </summary>
+        [Input("servicePrincipal")]
+        public Input<string>? ServicePrincipal { get; set; }
+
+        public GetDelegatedAdministratorsOutputArgs()
         {
         }
     }

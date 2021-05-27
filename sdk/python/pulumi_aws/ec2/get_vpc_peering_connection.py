@@ -278,3 +278,20 @@ def get_vpc_peering_connection(cidr_block: Optional[str] = None,
         status=__ret__.status,
         tags=__ret__.tags,
         vpc_id=__ret__.vpc_id)
+
+
+@_utilities.lift_output_func(get_vpc_peering_connection)
+def get_vpc_peering_connection_apply(cidr_block: Optional[pulumi.Input[str]] = None,
+                                     filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetVpcPeeringConnectionFilterArgs']]]]] = None,
+                                     id: Optional[pulumi.Input[str]] = None,
+                                     owner_id: Optional[pulumi.Input[str]] = None,
+                                     peer_cidr_block: Optional[pulumi.Input[str]] = None,
+                                     peer_owner_id: Optional[pulumi.Input[str]] = None,
+                                     peer_region: Optional[pulumi.Input[str]] = None,
+                                     peer_vpc_id: Optional[pulumi.Input[str]] = None,
+                                     region: Optional[pulumi.Input[str]] = None,
+                                     status: Optional[pulumi.Input[str]] = None,
+                                     tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                                     vpc_id: Optional[pulumi.Input[str]] = None,
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcPeeringConnectionResult]:
+    ...

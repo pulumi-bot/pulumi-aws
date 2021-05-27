@@ -72,3 +72,17 @@ export interface GetConfigurationResult {
      */
     readonly serverProperties: string;
 }
+
+export function getConfigurationApply(args: GetConfigurationApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigurationResult> {
+    return pulumi.output(args).apply(a => getConfiguration(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getConfiguration.
+ */
+export interface GetConfigurationApplyArgs {
+    /**
+     * Name of the configuration.
+     */
+    name: pulumi.Input<string>;
+}

@@ -77,3 +77,21 @@ export interface GetConnectionResult {
      */
     readonly tags: {[key: string]: string};
 }
+
+export function getConnectionApply(args: GetConnectionApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionResult> {
+    return pulumi.output(args).apply(a => getConnection(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getConnection.
+ */
+export interface GetConnectionApplyArgs {
+    /**
+     * The CodeStar Connection ARN.
+     */
+    arn: pulumi.Input<string>;
+    /**
+     * Map of key-value resource tags to associate with the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}

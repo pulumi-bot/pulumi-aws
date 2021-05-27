@@ -17,6 +17,20 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetSecurityGroupsResult> InvokeAsync(GetSecurityGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecurityGroupsResult>("aws:ec2/getSecurityGroups:getSecurityGroups", args ?? new GetSecurityGroupsArgs(), options.WithVersion());
+
+        public static Output<GetSecurityGroupsResult> Invoke(GetSecurityGroupsOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetSecurityGroupsOutputArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetSecurityGroupsArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -47,6 +61,37 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetSecurityGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetSecurityGroupsOutputArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetSecurityGroupsFilterArgs>? _filters;
+
+        /// <summary>
+        /// One or more name/value pairs to use as filters. There are several valid keys, for a full reference, check out [describe-security-groups in the AWS CLI reference][1].
+        /// </summary>
+        public InputList<Inputs.GetSecurityGroupsFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetSecurityGroupsFilterArgs>());
+            set => _filters = value;
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags, each pair of which must exactly match for desired security groups.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetSecurityGroupsOutputArgs()
         {
         }
     }

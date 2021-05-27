@@ -40,6 +40,19 @@ namespace Pulumi.Aws.Lex
         /// </summary>
         public static Task<GetSlotTypeResult> InvokeAsync(GetSlotTypeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSlotTypeResult>("aws:lex/getSlotType:getSlotType", args ?? new GetSlotTypeArgs(), options.WithVersion());
+
+        public static Output<GetSlotTypeResult> Invoke(GetSlotTypeOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.Version.Box()
+            ).Apply(a => {
+                    var args = new GetSlotTypeArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.Version));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -58,6 +71,25 @@ namespace Pulumi.Aws.Lex
         public string? Version { get; set; }
 
         public GetSlotTypeArgs()
+        {
+        }
+    }
+
+    public sealed class GetSlotTypeOutputArgs
+    {
+        /// <summary>
+        /// The name of the slot type. The name is case sensitive.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The version of the slot type.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        public GetSlotTypeOutputArgs()
         {
         }
     }

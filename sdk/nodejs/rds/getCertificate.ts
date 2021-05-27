@@ -83,3 +83,21 @@ export interface GetCertificateResult {
      */
     readonly validTill: string;
 }
+
+export function getCertificateApply(args?: GetCertificateApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateResult> {
+    return pulumi.output(args).apply(a => getCertificate(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCertificate.
+ */
+export interface GetCertificateApplyArgs {
+    /**
+     * Certificate identifier. For example, `rds-ca-2019`.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * When enabled, returns the certificate with the latest `ValidTill`.
+     */
+    latestValidTill?: pulumi.Input<boolean>;
+}

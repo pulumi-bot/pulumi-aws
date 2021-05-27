@@ -18,6 +18,20 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetVpcsResult> InvokeAsync(GetVpcsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVpcsResult>("aws:ec2/getVpcs:getVpcs", args ?? new GetVpcsArgs(), options.WithVersion());
+
+        public static Output<GetVpcsResult> Invoke(GetVpcsOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetVpcsOutputArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetVpcsArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -49,6 +63,38 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetVpcsArgs()
+        {
+        }
+    }
+
+    public sealed class GetVpcsOutputArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetVpcsFilterArgs>? _filters;
+
+        /// <summary>
+        /// Custom filter block as described below.
+        /// </summary>
+        public InputList<Inputs.GetVpcsFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetVpcsFilterArgs>());
+            set => _filters = value;
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags, each pair of which must exactly match
+        /// a pair on the desired vpcs.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetVpcsOutputArgs()
         {
         }
     }

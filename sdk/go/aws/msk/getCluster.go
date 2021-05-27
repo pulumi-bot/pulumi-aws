@@ -4,6 +4,9 @@
 package msk
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -69,4 +72,93 @@ type LookupClusterResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster. The returned values are sorted alphbetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
 	ZookeeperConnectString string `pulumi:"zookeeperConnectString"`
+}
+
+func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupClusterResult, error) {
+			args := v.(LookupClusterArgs)
+			r, err := LookupCluster(ctx, &args, opts...)
+			return *r, err
+		}).(LookupClusterResultOutput)
+}
+
+// A collection of arguments for invoking getCluster.
+type LookupClusterOutputArgs struct {
+	// Name of the cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// Map of key-value pairs assigned to the cluster.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (LookupClusterOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getCluster.
+type LookupClusterResultOutput struct{ *pulumi.OutputState }
+
+func (LookupClusterResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterResult)(nil)).Elem()
+}
+
+func (o LookupClusterResultOutput) ToLookupClusterResultOutput() LookupClusterResultOutput {
+	return o
+}
+
+func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx context.Context) LookupClusterResultOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN) of the MSK cluster.
+func (o LookupClusterResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// A comma separated list of one or more hostname:port pairs of Kafka brokers suitable to boostrap connectivity to the Kafka cluster. Only contains value if `clientBroker` encryption in transit is set to `PLAINTEXT` or `TLS_PLAINTEXT`. The returned values are sorted alphbetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
+func (o LookupClusterResultOutput) BootstrapBrokers() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.BootstrapBrokers }).(pulumi.StringOutput)
+}
+
+// A comma separated list of one or more DNS names (or IPs) and TLS port pairs kafka brokers suitable to boostrap connectivity using SASL/SCRAM to the kafka cluster. Only contains value if `clientBroker` encryption in transit is set to `TLS_PLAINTEXT` or `TLS` and `clientAuthentication` is set to `sasl`. The returned values are sorted alphbetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
+func (o LookupClusterResultOutput) BootstrapBrokersSaslScram() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.BootstrapBrokersSaslScram }).(pulumi.StringOutput)
+}
+
+// A comma separated list of one or more DNS names (or IPs) and TLS port pairs kafka brokers suitable to boostrap connectivity to the kafka cluster. Only contains value if `clientBroker` encryption in transit is set to `TLS_PLAINTEXT` or `TLS`. The returned values are sorted alphbetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
+func (o LookupClusterResultOutput) BootstrapBrokersTls() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.BootstrapBrokersTls }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Apache Kafka version.
+func (o LookupClusterResultOutput) KafkaVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.KafkaVersion }).(pulumi.StringOutput)
+}
+
+// Number of broker nodes in the cluster.
+func (o LookupClusterResultOutput) NumberOfBrokerNodes() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupClusterResult) int { return v.NumberOfBrokerNodes }).(pulumi.IntOutput)
+}
+
+// Map of key-value pairs assigned to the cluster.
+func (o LookupClusterResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster. The returned values are sorted alphbetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
+func (o LookupClusterResultOutput) ZookeeperConnectString() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.ZookeeperConnectString }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupClusterResultOutput{})
 }

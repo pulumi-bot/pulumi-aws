@@ -18,6 +18,18 @@ namespace Pulumi.Aws
         /// </summary>
         public static Task<GetAutoscalingGroupsResult> InvokeAsync(GetAutoscalingGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAutoscalingGroupsResult>("aws:index/getAutoscalingGroups:getAutoscalingGroups", args ?? new GetAutoscalingGroupsArgs(), options.WithVersion());
+
+        public static Output<GetAutoscalingGroupsResult> Invoke(GetAutoscalingGroupsOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetAutoscalingGroupsOutputArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box()
+            ).Apply(a => {
+                    var args = new GetAutoscalingGroupsArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -36,6 +48,25 @@ namespace Pulumi.Aws
         }
 
         public GetAutoscalingGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetAutoscalingGroupsOutputArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetAutoscalingGroupsFilterArgs>? _filters;
+
+        /// <summary>
+        /// A filter used to scope the list e.g. by tags. See [related docs](http://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_Filter.html).
+        /// </summary>
+        public InputList<Inputs.GetAutoscalingGroupsFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetAutoscalingGroupsFilterArgs>());
+            set => _filters = value;
+        }
+
+        public GetAutoscalingGroupsOutputArgs()
         {
         }
     }

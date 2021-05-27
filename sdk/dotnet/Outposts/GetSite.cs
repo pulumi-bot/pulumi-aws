@@ -39,6 +39,20 @@ namespace Pulumi.Aws.Outposts
         /// </summary>
         public static Task<GetSiteResult> InvokeAsync(GetSiteArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSiteResult>("aws:outposts/getSite:getSite", args ?? new GetSiteArgs(), options.WithVersion());
+
+        public static Output<GetSiteResult> Invoke(GetSiteOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetSiteOutputArgs();
+            return Pulumi.Output.All(
+                args.Id.Box(),
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetSiteArgs();
+                    a[0].Set(args, nameof(args.Id));
+                    a[1].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -57,6 +71,25 @@ namespace Pulumi.Aws.Outposts
         public string? Name { get; set; }
 
         public GetSiteArgs()
+        {
+        }
+    }
+
+    public sealed class GetSiteOutputArgs
+    {
+        /// <summary>
+        /// Identifier of the Site.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// Name of the Site.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public GetSiteOutputArgs()
         {
         }
     }

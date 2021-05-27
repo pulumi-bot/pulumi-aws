@@ -50,6 +50,19 @@ namespace Pulumi.Aws.CloudFormation
         /// </summary>
         public static Task<GetStackResult> InvokeAsync(GetStackArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetStackResult>("aws:cloudformation/getStack:getStack", args ?? new GetStackArgs(), options.WithVersion());
+
+        public static Output<GetStackResult> Invoke(GetStackOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetStackArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -74,6 +87,31 @@ namespace Pulumi.Aws.CloudFormation
         }
 
         public GetStackArgs()
+        {
+        }
+    }
+
+    public sealed class GetStackOutputArgs
+    {
+        /// <summary>
+        /// The name of the stack
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags associated with this stack.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetStackOutputArgs()
         {
         }
     }

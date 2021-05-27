@@ -41,6 +41,17 @@ namespace Pulumi.Aws.Lambda
         /// </summary>
         public static Task<GetCodeSigningConfigResult> InvokeAsync(GetCodeSigningConfigArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCodeSigningConfigResult>("aws:lambda/getCodeSigningConfig:getCodeSigningConfig", args ?? new GetCodeSigningConfigArgs(), options.WithVersion());
+
+        public static Output<GetCodeSigningConfigResult> Invoke(GetCodeSigningConfigOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Arn.Box()
+            ).Apply(a => {
+                    var args = new GetCodeSigningConfigArgs();
+                    a[0].Set(args, nameof(args.Arn));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -53,6 +64,19 @@ namespace Pulumi.Aws.Lambda
         public string Arn { get; set; } = null!;
 
         public GetCodeSigningConfigArgs()
+        {
+        }
+    }
+
+    public sealed class GetCodeSigningConfigOutputArgs
+    {
+        /// <summary>
+        /// The Amazon Resource Name (ARN) of the code signing configuration.
+        /// </summary>
+        [Input("arn", required: true)]
+        public Input<string> Arn { get; set; } = null!;
+
+        public GetCodeSigningConfigOutputArgs()
         {
         }
     }

@@ -111,3 +111,11 @@ def get_group(filters: Optional[Sequence[pulumi.InputType['GetGroupFilterArgs']]
         group_id=__ret__.group_id,
         id=__ret__.id,
         identity_store_id=__ret__.identity_store_id)
+
+
+@_utilities.lift_output_func(get_group)
+def get_group_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetGroupFilterArgs']]]]] = None,
+                    group_id: Optional[pulumi.Input[str]] = None,
+                    identity_store_id: Optional[pulumi.Input[str]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupResult]:
+    ...

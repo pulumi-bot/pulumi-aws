@@ -244,3 +244,21 @@ def get_route(carrier_gateway_id: Optional[str] = None,
         route_table_id=__ret__.route_table_id,
         transit_gateway_id=__ret__.transit_gateway_id,
         vpc_peering_connection_id=__ret__.vpc_peering_connection_id)
+
+
+@_utilities.lift_output_func(get_route)
+def get_route_apply(carrier_gateway_id: Optional[pulumi.Input[str]] = None,
+                    destination_cidr_block: Optional[pulumi.Input[str]] = None,
+                    destination_ipv6_cidr_block: Optional[pulumi.Input[str]] = None,
+                    destination_prefix_list_id: Optional[pulumi.Input[str]] = None,
+                    egress_only_gateway_id: Optional[pulumi.Input[str]] = None,
+                    gateway_id: Optional[pulumi.Input[str]] = None,
+                    instance_id: Optional[pulumi.Input[str]] = None,
+                    local_gateway_id: Optional[pulumi.Input[str]] = None,
+                    nat_gateway_id: Optional[pulumi.Input[str]] = None,
+                    network_interface_id: Optional[pulumi.Input[str]] = None,
+                    route_table_id: Optional[pulumi.Input[str]] = None,
+                    transit_gateway_id: Optional[pulumi.Input[str]] = None,
+                    vpc_peering_connection_id: Optional[pulumi.Input[str]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteResult]:
+    ...

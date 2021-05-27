@@ -42,6 +42,19 @@ namespace Pulumi.Aws.Kinesis
         /// </summary>
         public static Task<GetStreamResult> InvokeAsync(GetStreamArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetStreamResult>("aws:kinesis/getStream:getStream", args ?? new GetStreamArgs(), options.WithVersion());
+
+        public static Output<GetStreamResult> Invoke(GetStreamOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetStreamArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -66,6 +79,31 @@ namespace Pulumi.Aws.Kinesis
         }
 
         public GetStreamArgs()
+        {
+        }
+    }
+
+    public sealed class GetStreamOutputArgs
+    {
+        /// <summary>
+        /// The name of the Kinesis Stream.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags to assigned to the stream.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetStreamOutputArgs()
         {
         }
     }

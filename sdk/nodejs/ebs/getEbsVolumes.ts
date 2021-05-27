@@ -78,3 +78,22 @@ export interface GetEbsVolumesResult {
     readonly ids: string[];
     readonly tags?: {[key: string]: string};
 }
+
+export function getEbsVolumesApply(args?: GetEbsVolumesApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEbsVolumesResult> {
+    return pulumi.output(args).apply(a => getEbsVolumes(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEbsVolumes.
+ */
+export interface GetEbsVolumesApplyArgs {
+    /**
+     * Custom filter block as described below.
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.ebs.GetEbsVolumesFilter>[]>;
+    /**
+     * A map of tags, each pair of which must exactly match
+     * a pair on the desired volumes.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}

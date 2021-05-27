@@ -39,6 +39,19 @@ namespace Pulumi.Aws.ApiGatewayV2
         /// </summary>
         public static Task<GetApiResult> InvokeAsync(GetApiArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApiResult>("aws:apigatewayv2/getApi:getApi", args ?? new GetApiArgs(), options.WithVersion());
+
+        public static Output<GetApiResult> Invoke(GetApiOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ApiId.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetApiArgs();
+                    a[0].Set(args, nameof(args.ApiId));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -63,6 +76,31 @@ namespace Pulumi.Aws.ApiGatewayV2
         }
 
         public GetApiArgs()
+        {
+        }
+    }
+
+    public sealed class GetApiOutputArgs
+    {
+        /// <summary>
+        /// The API identifier.
+        /// </summary>
+        [Input("apiId", required: true)]
+        public Input<string> ApiId { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of resource tags.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetApiOutputArgs()
         {
         }
     }

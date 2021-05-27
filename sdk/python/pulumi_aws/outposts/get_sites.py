@@ -77,3 +77,8 @@ def get_sites(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSitesR
     return AwaitableGetSitesResult(
         id=__ret__.id,
         ids=__ret__.ids)
+
+
+@_utilities.lift_output_func(get_sites)
+def get_sites_apply(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSitesResult]:
+    ...

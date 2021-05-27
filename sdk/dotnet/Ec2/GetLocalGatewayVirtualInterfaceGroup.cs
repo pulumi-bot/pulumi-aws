@@ -39,6 +39,24 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetLocalGatewayVirtualInterfaceGroupResult> InvokeAsync(GetLocalGatewayVirtualInterfaceGroupArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLocalGatewayVirtualInterfaceGroupResult>("aws:ec2/getLocalGatewayVirtualInterfaceGroup:getLocalGatewayVirtualInterfaceGroup", args ?? new GetLocalGatewayVirtualInterfaceGroupArgs(), options.WithVersion());
+
+        public static Output<GetLocalGatewayVirtualInterfaceGroupResult> Invoke(GetLocalGatewayVirtualInterfaceGroupOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetLocalGatewayVirtualInterfaceGroupOutputArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.Id.Box(),
+                args.LocalGatewayId.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetLocalGatewayVirtualInterfaceGroupArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Id));
+                    a[2].Set(args, nameof(args.LocalGatewayId));
+                    a[3].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -81,6 +99,49 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetLocalGatewayVirtualInterfaceGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetLocalGatewayVirtualInterfaceGroupOutputArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetLocalGatewayVirtualInterfaceGroupFilterArgs>? _filters;
+
+        /// <summary>
+        /// One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayVirtualInterfaceGroups.html) for supported filters. Detailed below.
+        /// </summary>
+        public InputList<Inputs.GetLocalGatewayVirtualInterfaceGroupFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetLocalGatewayVirtualInterfaceGroupFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// Identifier of EC2 Local Gateway Virtual Interface Group.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// Identifier of EC2 Local Gateway.
+        /// </summary>
+        [Input("localGatewayId")]
+        public Input<string>? LocalGatewayId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Key-value map of resource tags, each pair of which must exactly match a pair on the desired local gateway route table.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetLocalGatewayVirtualInterfaceGroupOutputArgs()
         {
         }
     }

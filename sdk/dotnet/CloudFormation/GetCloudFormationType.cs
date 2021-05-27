@@ -40,6 +40,24 @@ namespace Pulumi.Aws.CloudFormation
         /// </summary>
         public static Task<GetCloudFormationTypeResult> InvokeAsync(GetCloudFormationTypeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCloudFormationTypeResult>("aws:cloudformation/getCloudFormationType:getCloudFormationType", args ?? new GetCloudFormationTypeArgs(), options.WithVersion());
+
+        public static Output<GetCloudFormationTypeResult> Invoke(GetCloudFormationTypeOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetCloudFormationTypeOutputArgs();
+            return Pulumi.Output.All(
+                args.Arn.Box(),
+                args.Type.Box(),
+                args.TypeName.Box(),
+                args.VersionId.Box()
+            ).Apply(a => {
+                    var args = new GetCloudFormationTypeArgs();
+                    a[0].Set(args, nameof(args.Arn));
+                    a[1].Set(args, nameof(args.Type));
+                    a[2].Set(args, nameof(args.TypeName));
+                    a[3].Set(args, nameof(args.VersionId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -70,6 +88,37 @@ namespace Pulumi.Aws.CloudFormation
         public string? VersionId { get; set; }
 
         public GetCloudFormationTypeArgs()
+        {
+        }
+    }
+
+    public sealed class GetCloudFormationTypeOutputArgs
+    {
+        /// <summary>
+        /// Amazon Resource Name (ARN) of the CloudFormation Type. For example, `arn:aws:cloudformation:us-west-2::type/resource/AWS-EC2-VPC`.
+        /// </summary>
+        [Input("arn")]
+        public Input<string>? Arn { get; set; }
+
+        /// <summary>
+        /// CloudFormation Registry Type. For example, `RESOURCE`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// CloudFormation Type name. For example, `AWS::EC2::VPC`.
+        /// </summary>
+        [Input("typeName")]
+        public Input<string>? TypeName { get; set; }
+
+        /// <summary>
+        /// Identifier of the CloudFormation Type version.
+        /// </summary>
+        [Input("versionId")]
+        public Input<string>? VersionId { get; set; }
+
+        public GetCloudFormationTypeOutputArgs()
         {
         }
     }

@@ -51,6 +51,22 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetInternetGatewayResult> InvokeAsync(GetInternetGatewayArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInternetGatewayResult>("aws:ec2/getInternetGateway:getInternetGateway", args ?? new GetInternetGatewayArgs(), options.WithVersion());
+
+        public static Output<GetInternetGatewayResult> Invoke(GetInternetGatewayOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetInternetGatewayOutputArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.InternetGatewayId.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetInternetGatewayArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.InternetGatewayId));
+                    a[2].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -88,6 +104,44 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetInternetGatewayArgs()
+        {
+        }
+    }
+
+    public sealed class GetInternetGatewayOutputArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetInternetGatewayFilterArgs>? _filters;
+
+        /// <summary>
+        /// Custom filter block as described below.
+        /// </summary>
+        public InputList<Inputs.GetInternetGatewayFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetInternetGatewayFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// The id of the specific Internet Gateway to retrieve.
+        /// </summary>
+        [Input("internetGatewayId")]
+        public Input<string>? InternetGatewayId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags, each pair of which must exactly match
+        /// a pair on the desired Internet Gateway.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetInternetGatewayOutputArgs()
         {
         }
     }

@@ -169,3 +169,13 @@ def get_resources(exclude_compliant_resources: Optional[bool] = None,
         resource_tag_mapping_lists=__ret__.resource_tag_mapping_lists,
         resource_type_filters=__ret__.resource_type_filters,
         tag_filters=__ret__.tag_filters)
+
+
+@_utilities.lift_output_func(get_resources)
+def get_resources_apply(exclude_compliant_resources: Optional[pulumi.Input[bool]] = None,
+                        include_compliance_details: Optional[pulumi.Input[bool]] = None,
+                        resource_arn_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                        resource_type_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                        tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetResourcesTagFilterArgs']]]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourcesResult]:
+    ...

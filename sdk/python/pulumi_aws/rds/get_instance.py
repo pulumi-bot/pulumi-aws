@@ -572,3 +572,10 @@ def get_instance(db_instance_identifier: Optional[str] = None,
         tags=__ret__.tags,
         timezone=__ret__.timezone,
         vpc_security_groups=__ret__.vpc_security_groups)
+
+
+@_utilities.lift_output_func(get_instance)
+def get_instance_apply(db_instance_identifier: Optional[pulumi.Input[str]] = None,
+                       tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceResult]:
+    ...

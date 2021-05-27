@@ -39,6 +39,19 @@ namespace Pulumi.Aws.Signer
         /// </summary>
         public static Task<GetSigningProfileResult> InvokeAsync(GetSigningProfileArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSigningProfileResult>("aws:signer/getSigningProfile:getSigningProfile", args ?? new GetSigningProfileArgs(), options.WithVersion());
+
+        public static Output<GetSigningProfileResult> Invoke(GetSigningProfileOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetSigningProfileArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -63,6 +76,31 @@ namespace Pulumi.Aws.Signer
         }
 
         public GetSigningProfileArgs()
+        {
+        }
+    }
+
+    public sealed class GetSigningProfileOutputArgs
+    {
+        /// <summary>
+        /// The name of the target signing profile.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A list of tags associated with the signing profile.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetSigningProfileOutputArgs()
         {
         }
     }

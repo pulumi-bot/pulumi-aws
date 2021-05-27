@@ -39,6 +39,24 @@ namespace Pulumi.Aws.Outposts
         /// </summary>
         public static Task<GetOutpostResult> InvokeAsync(GetOutpostArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOutpostResult>("aws:outposts/getOutpost:getOutpost", args ?? new GetOutpostArgs(), options.WithVersion());
+
+        public static Output<GetOutpostResult> Invoke(GetOutpostOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetOutpostOutputArgs();
+            return Pulumi.Output.All(
+                args.Arn.Box(),
+                args.Id.Box(),
+                args.Name.Box(),
+                args.OwnerId.Box()
+            ).Apply(a => {
+                    var args = new GetOutpostArgs();
+                    a[0].Set(args, nameof(args.Arn));
+                    a[1].Set(args, nameof(args.Id));
+                    a[2].Set(args, nameof(args.Name));
+                    a[3].Set(args, nameof(args.OwnerId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -69,6 +87,37 @@ namespace Pulumi.Aws.Outposts
         public string? OwnerId { get; set; }
 
         public GetOutpostArgs()
+        {
+        }
+    }
+
+    public sealed class GetOutpostOutputArgs
+    {
+        /// <summary>
+        /// Amazon Resource Name (ARN).
+        /// </summary>
+        [Input("arn")]
+        public Input<string>? Arn { get; set; }
+
+        /// <summary>
+        /// Identifier of the Outpost.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// Name of the Outpost.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// AWS Account identifier of the Outpost owner.
+        /// </summary>
+        [Input("ownerId")]
+        public Input<string>? OwnerId { get; set; }
+
+        public GetOutpostOutputArgs()
         {
         }
     }

@@ -39,6 +39,21 @@ namespace Pulumi.Aws.CodeArtifact
         /// </summary>
         public static Task<GetAuthorizationTokenResult> InvokeAsync(GetAuthorizationTokenArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAuthorizationTokenResult>("aws:codeartifact/getAuthorizationToken:getAuthorizationToken", args ?? new GetAuthorizationTokenArgs(), options.WithVersion());
+
+        public static Output<GetAuthorizationTokenResult> Invoke(GetAuthorizationTokenOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Domain.Box(),
+                args.DomainOwner.Box(),
+                args.DurationSeconds.Box()
+            ).Apply(a => {
+                    var args = new GetAuthorizationTokenArgs();
+                    a[0].Set(args, nameof(args.Domain));
+                    a[1].Set(args, nameof(args.DomainOwner));
+                    a[2].Set(args, nameof(args.DurationSeconds));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -63,6 +78,31 @@ namespace Pulumi.Aws.CodeArtifact
         public int? DurationSeconds { get; set; }
 
         public GetAuthorizationTokenArgs()
+        {
+        }
+    }
+
+    public sealed class GetAuthorizationTokenOutputArgs
+    {
+        /// <summary>
+        /// The name of the domain that is in scope for the generated authorization token.
+        /// </summary>
+        [Input("domain", required: true)]
+        public Input<string> Domain { get; set; } = null!;
+
+        /// <summary>
+        /// The account number of the AWS account that owns the domain.
+        /// </summary>
+        [Input("domainOwner")]
+        public Input<string>? DomainOwner { get; set; }
+
+        /// <summary>
+        /// The time, in seconds, that the generated authorization token is valid. Valid values are `0` and between `900` and `43200`.
+        /// </summary>
+        [Input("durationSeconds")]
+        public Input<int>? DurationSeconds { get; set; }
+
+        public GetAuthorizationTokenOutputArgs()
         {
         }
     }

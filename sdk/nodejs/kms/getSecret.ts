@@ -35,3 +35,14 @@ export interface GetSecretResult {
     readonly id: string;
     readonly secrets: outputs.kms.GetSecretSecret[];
 }
+
+export function getSecretApply(args: GetSecretApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretResult> {
+    return pulumi.output(args).apply(a => getSecret(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSecret.
+ */
+export interface GetSecretApplyArgs {
+    secrets: pulumi.Input<pulumi.Input<inputs.kms.GetSecretSecret>[]>;
+}

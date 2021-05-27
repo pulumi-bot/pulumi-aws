@@ -54,6 +54,41 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetRouteResult> InvokeAsync(GetRouteArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRouteResult>("aws:ec2/getRoute:getRoute", args ?? new GetRouteArgs(), options.WithVersion());
+
+        public static Output<GetRouteResult> Invoke(GetRouteOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.CarrierGatewayId.Box(),
+                args.DestinationCidrBlock.Box(),
+                args.DestinationIpv6CidrBlock.Box(),
+                args.DestinationPrefixListId.Box(),
+                args.EgressOnlyGatewayId.Box(),
+                args.GatewayId.Box(),
+                args.InstanceId.Box(),
+                args.LocalGatewayId.Box(),
+                args.NatGatewayId.Box(),
+                args.NetworkInterfaceId.Box(),
+                args.RouteTableId.Box(),
+                args.TransitGatewayId.Box(),
+                args.VpcPeeringConnectionId.Box()
+            ).Apply(a => {
+                    var args = new GetRouteArgs();
+                    a[0].Set(args, nameof(args.CarrierGatewayId));
+                    a[1].Set(args, nameof(args.DestinationCidrBlock));
+                    a[2].Set(args, nameof(args.DestinationIpv6CidrBlock));
+                    a[3].Set(args, nameof(args.DestinationPrefixListId));
+                    a[4].Set(args, nameof(args.EgressOnlyGatewayId));
+                    a[5].Set(args, nameof(args.GatewayId));
+                    a[6].Set(args, nameof(args.InstanceId));
+                    a[7].Set(args, nameof(args.LocalGatewayId));
+                    a[8].Set(args, nameof(args.NatGatewayId));
+                    a[9].Set(args, nameof(args.NetworkInterfaceId));
+                    a[10].Set(args, nameof(args.RouteTableId));
+                    a[11].Set(args, nameof(args.TransitGatewayId));
+                    a[12].Set(args, nameof(args.VpcPeeringConnectionId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -138,6 +173,91 @@ namespace Pulumi.Aws.Ec2
         public string? VpcPeeringConnectionId { get; set; }
 
         public GetRouteArgs()
+        {
+        }
+    }
+
+    public sealed class GetRouteOutputArgs
+    {
+        /// <summary>
+        /// EC2 Carrier Gateway ID of the Route belonging to the Route Table.
+        /// </summary>
+        [Input("carrierGatewayId")]
+        public Input<string>? CarrierGatewayId { get; set; }
+
+        /// <summary>
+        /// CIDR block of the Route belonging to the Route Table.
+        /// </summary>
+        [Input("destinationCidrBlock")]
+        public Input<string>? DestinationCidrBlock { get; set; }
+
+        /// <summary>
+        /// IPv6 CIDR block of the Route belonging to the Route Table.
+        /// </summary>
+        [Input("destinationIpv6CidrBlock")]
+        public Input<string>? DestinationIpv6CidrBlock { get; set; }
+
+        /// <summary>
+        /// The ID of a managed prefix list destination of the Route belonging to the Route Table.
+        /// </summary>
+        [Input("destinationPrefixListId")]
+        public Input<string>? DestinationPrefixListId { get; set; }
+
+        /// <summary>
+        /// Egress Only Gateway ID of the Route belonging to the Route Table.
+        /// </summary>
+        [Input("egressOnlyGatewayId")]
+        public Input<string>? EgressOnlyGatewayId { get; set; }
+
+        /// <summary>
+        /// Gateway ID of the Route belonging to the Route Table.
+        /// </summary>
+        [Input("gatewayId")]
+        public Input<string>? GatewayId { get; set; }
+
+        /// <summary>
+        /// Instance ID of the Route belonging to the Route Table.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// Local Gateway ID of the Route belonging to the Route Table.
+        /// </summary>
+        [Input("localGatewayId")]
+        public Input<string>? LocalGatewayId { get; set; }
+
+        /// <summary>
+        /// NAT Gateway ID of the Route belonging to the Route Table.
+        /// </summary>
+        [Input("natGatewayId")]
+        public Input<string>? NatGatewayId { get; set; }
+
+        /// <summary>
+        /// Network Interface ID of the Route belonging to the Route Table.
+        /// </summary>
+        [Input("networkInterfaceId")]
+        public Input<string>? NetworkInterfaceId { get; set; }
+
+        /// <summary>
+        /// The ID of the specific Route Table containing the Route entry.
+        /// </summary>
+        [Input("routeTableId", required: true)]
+        public Input<string> RouteTableId { get; set; } = null!;
+
+        /// <summary>
+        /// EC2 Transit Gateway ID of the Route belonging to the Route Table.
+        /// </summary>
+        [Input("transitGatewayId")]
+        public Input<string>? TransitGatewayId { get; set; }
+
+        /// <summary>
+        /// VPC Peering Connection ID of the Route belonging to the Route Table.
+        /// </summary>
+        [Input("vpcPeeringConnectionId")]
+        public Input<string>? VpcPeeringConnectionId { get; set; }
+
+        public GetRouteOutputArgs()
         {
         }
     }

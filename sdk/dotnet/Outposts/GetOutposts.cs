@@ -39,6 +39,24 @@ namespace Pulumi.Aws.Outposts
         /// </summary>
         public static Task<GetOutpostsResult> InvokeAsync(GetOutpostsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOutpostsResult>("aws:outposts/getOutposts:getOutposts", args ?? new GetOutpostsArgs(), options.WithVersion());
+
+        public static Output<GetOutpostsResult> Invoke(GetOutpostsOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetOutpostsOutputArgs();
+            return Pulumi.Output.All(
+                args.AvailabilityZone.Box(),
+                args.AvailabilityZoneId.Box(),
+                args.OwnerId.Box(),
+                args.SiteId.Box()
+            ).Apply(a => {
+                    var args = new GetOutpostsArgs();
+                    a[0].Set(args, nameof(args.AvailabilityZone));
+                    a[1].Set(args, nameof(args.AvailabilityZoneId));
+                    a[2].Set(args, nameof(args.OwnerId));
+                    a[3].Set(args, nameof(args.SiteId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -69,6 +87,37 @@ namespace Pulumi.Aws.Outposts
         public string? SiteId { get; set; }
 
         public GetOutpostsArgs()
+        {
+        }
+    }
+
+    public sealed class GetOutpostsOutputArgs
+    {
+        /// <summary>
+        /// Availability Zone name.
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
+
+        /// <summary>
+        /// Availability Zone identifier.
+        /// </summary>
+        [Input("availabilityZoneId")]
+        public Input<string>? AvailabilityZoneId { get; set; }
+
+        /// <summary>
+        /// AWS Account identifier of the Outpost owner.
+        /// </summary>
+        [Input("ownerId")]
+        public Input<string>? OwnerId { get; set; }
+
+        /// <summary>
+        /// Site identifier.
+        /// </summary>
+        [Input("siteId")]
+        public Input<string>? SiteId { get; set; }
+
+        public GetOutpostsOutputArgs()
         {
         }
     }

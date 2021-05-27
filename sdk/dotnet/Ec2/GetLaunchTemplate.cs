@@ -69,6 +69,24 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetLaunchTemplateResult> InvokeAsync(GetLaunchTemplateArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLaunchTemplateResult>("aws:ec2/getLaunchTemplate:getLaunchTemplate", args ?? new GetLaunchTemplateArgs(), options.WithVersion());
+
+        public static Output<GetLaunchTemplateResult> Invoke(GetLaunchTemplateOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetLaunchTemplateOutputArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.Id.Box(),
+                args.Name.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetLaunchTemplateArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Id));
+                    a[2].Set(args, nameof(args.Name));
+                    a[3].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -111,6 +129,49 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetLaunchTemplateArgs()
+        {
+        }
+    }
+
+    public sealed class GetLaunchTemplateOutputArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetLaunchTemplateFilterArgs>? _filters;
+
+        /// <summary>
+        /// Configuration block(s) for filtering. Detailed below.
+        /// </summary>
+        public InputList<Inputs.GetLaunchTemplateFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetLaunchTemplateFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// The ID of the specific launch template to retrieve.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// The name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags, each pair of which must exactly match a pair on the desired Launch Template.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetLaunchTemplateOutputArgs()
         {
         }
     }

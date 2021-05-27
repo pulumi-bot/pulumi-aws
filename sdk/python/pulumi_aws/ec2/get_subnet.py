@@ -329,3 +329,18 @@ def get_subnet(availability_zone: Optional[str] = None,
         state=__ret__.state,
         tags=__ret__.tags,
         vpc_id=__ret__.vpc_id)
+
+
+@_utilities.lift_output_func(get_subnet)
+def get_subnet_apply(availability_zone: Optional[pulumi.Input[str]] = None,
+                     availability_zone_id: Optional[pulumi.Input[str]] = None,
+                     cidr_block: Optional[pulumi.Input[str]] = None,
+                     default_for_az: Optional[pulumi.Input[bool]] = None,
+                     filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetSubnetFilterArgs']]]]] = None,
+                     id: Optional[pulumi.Input[str]] = None,
+                     ipv6_cidr_block: Optional[pulumi.Input[str]] = None,
+                     state: Optional[pulumi.Input[str]] = None,
+                     tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                     vpc_id: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubnetResult]:
+    ...

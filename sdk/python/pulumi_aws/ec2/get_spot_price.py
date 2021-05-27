@@ -138,3 +138,11 @@ def get_spot_price(availability_zone: Optional[str] = None,
         instance_type=__ret__.instance_type,
         spot_price=__ret__.spot_price,
         spot_price_timestamp=__ret__.spot_price_timestamp)
+
+
+@_utilities.lift_output_func(get_spot_price)
+def get_spot_price_apply(availability_zone: Optional[pulumi.Input[str]] = None,
+                         filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetSpotPriceFilterArgs']]]]] = None,
+                         instance_type: Optional[pulumi.Input[str]] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSpotPriceResult]:
+    ...

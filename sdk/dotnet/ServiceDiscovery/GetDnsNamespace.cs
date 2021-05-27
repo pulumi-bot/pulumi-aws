@@ -40,6 +40,19 @@ namespace Pulumi.Aws.ServiceDiscovery
         /// </summary>
         public static Task<GetDnsNamespaceResult> InvokeAsync(GetDnsNamespaceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDnsNamespaceResult>("aws:servicediscovery/getDnsNamespace:getDnsNamespace", args ?? new GetDnsNamespaceArgs(), options.WithVersion());
+
+        public static Output<GetDnsNamespaceResult> Invoke(GetDnsNamespaceOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.Type.Box()
+            ).Apply(a => {
+                    var args = new GetDnsNamespaceArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.Type));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -58,6 +71,25 @@ namespace Pulumi.Aws.ServiceDiscovery
         public string Type { get; set; } = null!;
 
         public GetDnsNamespaceArgs()
+        {
+        }
+    }
+
+    public sealed class GetDnsNamespaceOutputArgs
+    {
+        /// <summary>
+        /// The name of the namespace.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The type of the namespace. Allowed values are `DNS_PUBLIC` or `DNS_PRIVATE`.
+        /// </summary>
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
+
+        public GetDnsNamespaceOutputArgs()
         {
         }
     }

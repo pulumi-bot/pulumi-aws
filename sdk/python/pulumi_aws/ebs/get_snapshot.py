@@ -285,3 +285,14 @@ def get_snapshot(filters: Optional[Sequence[pulumi.InputType['GetSnapshotFilterA
         tags=__ret__.tags,
         volume_id=__ret__.volume_id,
         volume_size=__ret__.volume_size)
+
+
+@_utilities.lift_output_func(get_snapshot)
+def get_snapshot_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetSnapshotFilterArgs']]]]] = None,
+                       most_recent: Optional[pulumi.Input[bool]] = None,
+                       owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                       restorable_by_user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                       snapshot_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                       tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotResult]:
+    ...

@@ -180,3 +180,11 @@ def get_ip_ranges(regions: Optional[Sequence[str]] = None,
         services=__ret__.services,
         sync_token=__ret__.sync_token,
         url=__ret__.url)
+
+
+@_utilities.lift_output_func(get_ip_ranges)
+def get_ip_ranges_apply(regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                        services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                        url: Optional[pulumi.Input[str]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpRangesResult]:
+    ...

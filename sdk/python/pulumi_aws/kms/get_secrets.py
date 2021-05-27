@@ -85,3 +85,9 @@ def get_secrets(secrets: Optional[Sequence[pulumi.InputType['GetSecretsSecretArg
         id=__ret__.id,
         plaintext=__ret__.plaintext,
         secrets=__ret__.secrets)
+
+
+@_utilities.lift_output_func(get_secrets)
+def get_secrets_apply(secrets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetSecretsSecretArgs']]]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretsResult]:
+    ...

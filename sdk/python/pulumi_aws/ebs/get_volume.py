@@ -261,3 +261,11 @@ def get_volume(filters: Optional[Sequence[pulumi.InputType['GetVolumeFilterArgs'
         throughput=__ret__.throughput,
         volume_id=__ret__.volume_id,
         volume_type=__ret__.volume_type)
+
+
+@_utilities.lift_output_func(get_volume)
+def get_volume_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetVolumeFilterArgs']]]]] = None,
+                     most_recent: Optional[pulumi.Input[bool]] = None,
+                     tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumeResult]:
+    ...

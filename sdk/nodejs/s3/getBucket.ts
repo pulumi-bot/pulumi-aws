@@ -110,3 +110,17 @@ export interface GetBucketResult {
      */
     readonly websiteEndpoint: string;
 }
+
+export function getBucketApply(args: GetBucketApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketResult> {
+    return pulumi.output(args).apply(a => getBucket(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBucket.
+ */
+export interface GetBucketApplyArgs {
+    /**
+     * The name of the bucket
+     */
+    bucket: pulumi.Input<string>;
+}

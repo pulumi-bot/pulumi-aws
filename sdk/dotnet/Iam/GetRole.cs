@@ -41,6 +41,19 @@ namespace Pulumi.Aws.Iam
         /// </summary>
         public static Task<GetRoleResult> InvokeAsync(GetRoleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("aws:iam/getRole:getRole", args ?? new GetRoleArgs(), options.WithVersion());
+
+        public static Output<GetRoleResult> Invoke(GetRoleOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetRoleArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -65,6 +78,31 @@ namespace Pulumi.Aws.Iam
         }
 
         public GetRoleArgs()
+        {
+        }
+    }
+
+    public sealed class GetRoleOutputArgs
+    {
+        /// <summary>
+        /// The friendly IAM role name to match.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tags attached to the role.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetRoleOutputArgs()
         {
         }
     }

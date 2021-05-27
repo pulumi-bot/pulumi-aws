@@ -226,3 +226,8 @@ def get_organization(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
         master_account_id=__ret__.master_account_id,
         non_master_accounts=__ret__.non_master_accounts,
         roots=__ret__.roots)
+
+
+@_utilities.lift_output_func(get_organization)
+def get_organization_apply(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationResult]:
+    ...

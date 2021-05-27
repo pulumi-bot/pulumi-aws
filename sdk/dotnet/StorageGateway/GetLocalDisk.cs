@@ -40,6 +40,21 @@ namespace Pulumi.Aws.StorageGateway
         /// </summary>
         public static Task<GetLocalDiskResult> InvokeAsync(GetLocalDiskArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLocalDiskResult>("aws:storagegateway/getLocalDisk:getLocalDisk", args ?? new GetLocalDiskArgs(), options.WithVersion());
+
+        public static Output<GetLocalDiskResult> Invoke(GetLocalDiskOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.DiskNode.Box(),
+                args.DiskPath.Box(),
+                args.GatewayArn.Box()
+            ).Apply(a => {
+                    var args = new GetLocalDiskArgs();
+                    a[0].Set(args, nameof(args.DiskNode));
+                    a[1].Set(args, nameof(args.DiskPath));
+                    a[2].Set(args, nameof(args.GatewayArn));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -64,6 +79,31 @@ namespace Pulumi.Aws.StorageGateway
         public string GatewayArn { get; set; } = null!;
 
         public GetLocalDiskArgs()
+        {
+        }
+    }
+
+    public sealed class GetLocalDiskOutputArgs
+    {
+        /// <summary>
+        /// The device node of the local disk to retrieve. For example, `/dev/sdb`.
+        /// </summary>
+        [Input("diskNode")]
+        public Input<string>? DiskNode { get; set; }
+
+        /// <summary>
+        /// The device path of the local disk to retrieve. For example, `/dev/xvdb` or `/dev/nvme1n1`.
+        /// </summary>
+        [Input("diskPath")]
+        public Input<string>? DiskPath { get; set; }
+
+        /// <summary>
+        /// The Amazon Resource Name (ARN) of the gateway.
+        /// </summary>
+        [Input("gatewayArn", required: true)]
+        public Input<string> GatewayArn { get; set; } = null!;
+
+        public GetLocalDiskOutputArgs()
         {
         }
     }

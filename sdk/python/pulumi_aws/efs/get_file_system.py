@@ -253,3 +253,11 @@ def get_file_system(creation_token: Optional[str] = None,
         size_in_bytes=__ret__.size_in_bytes,
         tags=__ret__.tags,
         throughput_mode=__ret__.throughput_mode)
+
+
+@_utilities.lift_output_func(get_file_system)
+def get_file_system_apply(creation_token: Optional[pulumi.Input[str]] = None,
+                          file_system_id: Optional[pulumi.Input[str]] = None,
+                          tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFileSystemResult]:
+    ...

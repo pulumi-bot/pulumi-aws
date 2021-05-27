@@ -16,6 +16,19 @@ namespace Pulumi.Aws.CloudTrail
         /// </summary>
         public static Task<GetFunctionResult> InvokeAsync(GetFunctionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionResult>("aws:cloudtrail/getFunction:getFunction", args ?? new GetFunctionArgs(), options.WithVersion());
+
+        public static Output<GetFunctionResult> Invoke(GetFunctionOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.Stage.Box()
+            ).Apply(a => {
+                    var args = new GetFunctionArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.Stage));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -34,6 +47,25 @@ namespace Pulumi.Aws.CloudTrail
         public string Stage { get; set; } = null!;
 
         public GetFunctionArgs()
+        {
+        }
+    }
+
+    public sealed class GetFunctionOutputArgs
+    {
+        /// <summary>
+        /// Name of the CloudFront function.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The function’s stage, either `DEVELOPMENT` or `LIVE`.
+        /// </summary>
+        [Input("stage", required: true)]
+        public Input<string> Stage { get; set; } = null!;
+
+        public GetFunctionOutputArgs()
         {
         }
     }

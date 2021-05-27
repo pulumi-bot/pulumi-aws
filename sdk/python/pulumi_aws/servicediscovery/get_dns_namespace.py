@@ -132,3 +132,10 @@ def get_dns_namespace(name: Optional[str] = None,
         id=__ret__.id,
         name=__ret__.name,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_dns_namespace)
+def get_dns_namespace_apply(name: Optional[pulumi.Input[str]] = None,
+                            type: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDnsNamespaceResult]:
+    ...

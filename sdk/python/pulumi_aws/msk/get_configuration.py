@@ -144,3 +144,9 @@ def get_configuration(name: Optional[str] = None,
         latest_revision=__ret__.latest_revision,
         name=__ret__.name,
         server_properties=__ret__.server_properties)
+
+
+@_utilities.lift_output_func(get_configuration)
+def get_configuration_apply(name: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConfigurationResult]:
+    ...

@@ -160,3 +160,12 @@ def get_patch_baseline(default_baseline: Optional[bool] = None,
         name_prefix=__ret__.name_prefix,
         operating_system=__ret__.operating_system,
         owner=__ret__.owner)
+
+
+@_utilities.lift_output_func(get_patch_baseline)
+def get_patch_baseline_apply(default_baseline: Optional[pulumi.Input[bool]] = None,
+                             name_prefix: Optional[pulumi.Input[str]] = None,
+                             operating_system: Optional[pulumi.Input[str]] = None,
+                             owner: Optional[pulumi.Input[str]] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPatchBaselineResult]:
+    ...

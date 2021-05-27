@@ -71,3 +71,17 @@ export interface GetAuthorizationTokenResult {
      */
     readonly userName: string;
 }
+
+export function getAuthorizationTokenApply(args?: GetAuthorizationTokenApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthorizationTokenResult> {
+    return pulumi.output(args).apply(a => getAuthorizationToken(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getAuthorizationToken.
+ */
+export interface GetAuthorizationTokenApplyArgs {
+    /**
+     * AWS account ID of the ECR Repository. If not specified the default account is assumed.
+     */
+    registryId?: pulumi.Input<string>;
+}

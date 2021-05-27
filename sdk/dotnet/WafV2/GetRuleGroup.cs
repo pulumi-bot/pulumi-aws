@@ -40,6 +40,19 @@ namespace Pulumi.Aws.WafV2
         /// </summary>
         public static Task<GetRuleGroupResult> InvokeAsync(GetRuleGroupArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRuleGroupResult>("aws:wafv2/getRuleGroup:getRuleGroup", args ?? new GetRuleGroupArgs(), options.WithVersion());
+
+        public static Output<GetRuleGroupResult> Invoke(GetRuleGroupOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.Scope.Box()
+            ).Apply(a => {
+                    var args = new GetRuleGroupArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.Scope));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -58,6 +71,25 @@ namespace Pulumi.Aws.WafV2
         public string Scope { get; set; } = null!;
 
         public GetRuleGroupArgs()
+        {
+        }
+    }
+
+    public sealed class GetRuleGroupOutputArgs
+    {
+        /// <summary>
+        /// The name of the WAFv2 Rule Group.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
+        /// </summary>
+        [Input("scope", required: true)]
+        public Input<string> Scope { get; set; } = null!;
+
+        public GetRuleGroupOutputArgs()
         {
         }
     }

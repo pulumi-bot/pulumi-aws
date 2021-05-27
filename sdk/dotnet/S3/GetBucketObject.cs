@@ -84,6 +84,25 @@ namespace Pulumi.Aws.S3
         /// </summary>
         public static Task<GetBucketObjectResult> InvokeAsync(GetBucketObjectArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBucketObjectResult>("aws:s3/getBucketObject:getBucketObject", args ?? new GetBucketObjectArgs(), options.WithVersion());
+
+        public static Output<GetBucketObjectResult> Invoke(GetBucketObjectOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Bucket.Box(),
+                args.Key.Box(),
+                args.Range.Box(),
+                args.Tags.ToDict().Box(),
+                args.VersionId.Box()
+            ).Apply(a => {
+                    var args = new GetBucketObjectArgs();
+                    a[0].Set(args, nameof(args.Bucket));
+                    a[1].Set(args, nameof(args.Key));
+                    a[2].Set(args, nameof(args.Range));
+                    a[3].Set(args, nameof(args.Tags));
+                    a[4].Set(args, nameof(args.VersionId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -123,6 +142,46 @@ namespace Pulumi.Aws.S3
         public string? VersionId { get; set; }
 
         public GetBucketObjectArgs()
+        {
+        }
+    }
+
+    public sealed class GetBucketObjectOutputArgs
+    {
+        /// <summary>
+        /// The name of the bucket to read the object from. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified
+        /// </summary>
+        [Input("bucket", required: true)]
+        public Input<string> Bucket { get; set; } = null!;
+
+        /// <summary>
+        /// The full path to the object inside the bucket
+        /// </summary>
+        [Input("key", required: true)]
+        public Input<string> Key { get; set; } = null!;
+
+        [Input("range")]
+        public Input<string>? Range { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the object.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Specific version ID of the object returned (defaults to latest version)
+        /// </summary>
+        [Input("versionId")]
+        public Input<string>? VersionId { get; set; }
+
+        public GetBucketObjectOutputArgs()
         {
         }
     }

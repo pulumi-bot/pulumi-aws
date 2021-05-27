@@ -41,6 +41,19 @@ namespace Pulumi.Aws.Ecs
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("aws:ecs/getService:getService", args ?? new GetServiceArgs(), options.WithVersion());
+
+        public static Output<GetServiceResult> Invoke(GetServiceOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ClusterArn.Box(),
+                args.ServiceName.Box()
+            ).Apply(a => {
+                    var args = new GetServiceArgs();
+                    a[0].Set(args, nameof(args.ClusterArn));
+                    a[1].Set(args, nameof(args.ServiceName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -59,6 +72,25 @@ namespace Pulumi.Aws.Ecs
         public string ServiceName { get; set; } = null!;
 
         public GetServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceOutputArgs
+    {
+        /// <summary>
+        /// The arn of the ECS Cluster
+        /// </summary>
+        [Input("clusterArn", required: true)]
+        public Input<string> ClusterArn { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the ECS Service
+        /// </summary>
+        [Input("serviceName", required: true)]
+        public Input<string> ServiceName { get; set; } = null!;
+
+        public GetServiceOutputArgs()
         {
         }
     }

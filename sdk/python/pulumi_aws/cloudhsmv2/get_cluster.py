@@ -151,3 +151,10 @@ def get_cluster(cluster_id: Optional[str] = None,
         security_group_id=__ret__.security_group_id,
         subnet_ids=__ret__.subnet_ids,
         vpc_id=__ret__.vpc_id)
+
+
+@_utilities.lift_output_func(get_cluster)
+def get_cluster_apply(cluster_id: Optional[pulumi.Input[str]] = None,
+                      cluster_state: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
+    ...

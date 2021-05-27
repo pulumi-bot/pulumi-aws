@@ -39,6 +39,17 @@ namespace Pulumi.Aws.Organizations
         /// </summary>
         public static Task<GetDelegatedServicesResult> InvokeAsync(GetDelegatedServicesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDelegatedServicesResult>("aws:organizations/getDelegatedServices:getDelegatedServices", args ?? new GetDelegatedServicesArgs(), options.WithVersion());
+
+        public static Output<GetDelegatedServicesResult> Invoke(GetDelegatedServicesOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.AccountId.Box()
+            ).Apply(a => {
+                    var args = new GetDelegatedServicesArgs();
+                    a[0].Set(args, nameof(args.AccountId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +62,19 @@ namespace Pulumi.Aws.Organizations
         public string AccountId { get; set; } = null!;
 
         public GetDelegatedServicesArgs()
+        {
+        }
+    }
+
+    public sealed class GetDelegatedServicesOutputArgs
+    {
+        /// <summary>
+        /// The account ID number of a delegated administrator account in the organization.
+        /// </summary>
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
+
+        public GetDelegatedServicesOutputArgs()
         {
         }
     }

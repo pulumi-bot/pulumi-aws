@@ -226,3 +226,10 @@ def get_image_recipe(arn: Optional[str] = None,
         tags=__ret__.tags,
         version=__ret__.version,
         working_directory=__ret__.working_directory)
+
+
+@_utilities.lift_output_func(get_image_recipe)
+def get_image_recipe_apply(arn: Optional[pulumi.Input[str]] = None,
+                           tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageRecipeResult]:
+    ...

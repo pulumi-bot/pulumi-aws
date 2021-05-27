@@ -92,6 +92,17 @@ namespace Pulumi.Aws.S3
         /// </summary>
         public static Task<GetBucketResult> InvokeAsync(GetBucketArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBucketResult>("aws:s3/getBucket:getBucket", args ?? new GetBucketArgs(), options.WithVersion());
+
+        public static Output<GetBucketResult> Invoke(GetBucketOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Bucket.Box()
+            ).Apply(a => {
+                    var args = new GetBucketArgs();
+                    a[0].Set(args, nameof(args.Bucket));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -104,6 +115,19 @@ namespace Pulumi.Aws.S3
         public string Bucket { get; set; } = null!;
 
         public GetBucketArgs()
+        {
+        }
+    }
+
+    public sealed class GetBucketOutputArgs
+    {
+        /// <summary>
+        /// The name of the bucket
+        /// </summary>
+        [Input("bucket", required: true)]
+        public Input<string> Bucket { get; set; } = null!;
+
+        public GetBucketOutputArgs()
         {
         }
     }

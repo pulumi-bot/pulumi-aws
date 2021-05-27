@@ -39,6 +39,21 @@ namespace Pulumi.Aws.ImageBuilder
         /// </summary>
         public static Task<GetInfrastructureConfigurationResult> InvokeAsync(GetInfrastructureConfigurationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInfrastructureConfigurationResult>("aws:imagebuilder/getInfrastructureConfiguration:getInfrastructureConfiguration", args ?? new GetInfrastructureConfigurationArgs(), options.WithVersion());
+
+        public static Output<GetInfrastructureConfigurationResult> Invoke(GetInfrastructureConfigurationOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Arn.Box(),
+                args.ResourceTags.ToDict().Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetInfrastructureConfigurationArgs();
+                    a[0].Set(args, nameof(args.Arn));
+                    a[1].Set(args, nameof(args.ResourceTags));
+                    a[2].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -75,6 +90,43 @@ namespace Pulumi.Aws.ImageBuilder
         }
 
         public GetInfrastructureConfigurationArgs()
+        {
+        }
+    }
+
+    public sealed class GetInfrastructureConfigurationOutputArgs
+    {
+        /// <summary>
+        /// Amazon Resource Name (ARN) of the infrastructure configuration.
+        /// </summary>
+        [Input("arn", required: true)]
+        public Input<string> Arn { get; set; } = null!;
+
+        [Input("resourceTags")]
+        private InputMap<string>? _resourceTags;
+
+        /// <summary>
+        /// Key-value map of resource tags for the infrastructure created by the infrastructure configuration.
+        /// </summary>
+        public InputMap<string> ResourceTags
+        {
+            get => _resourceTags ?? (_resourceTags = new InputMap<string>());
+            set => _resourceTags = value;
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Key-value map of resource tags for the infrastructure configuration.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetInfrastructureConfigurationOutputArgs()
         {
         }
     }

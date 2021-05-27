@@ -62,6 +62,28 @@ namespace Pulumi.Aws.Rds
         /// </summary>
         public static Task<GetSnapshotResult> InvokeAsync(GetSnapshotArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotResult>("aws:rds/getSnapshot:getSnapshot", args ?? new GetSnapshotArgs(), options.WithVersion());
+
+        public static Output<GetSnapshotResult> Invoke(GetSnapshotOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetSnapshotOutputArgs();
+            return Pulumi.Output.All(
+                args.DbInstanceIdentifier.Box(),
+                args.DbSnapshotIdentifier.Box(),
+                args.IncludePublic.Box(),
+                args.IncludeShared.Box(),
+                args.MostRecent.Box(),
+                args.SnapshotType.Box()
+            ).Apply(a => {
+                    var args = new GetSnapshotArgs();
+                    a[0].Set(args, nameof(args.DbInstanceIdentifier));
+                    a[1].Set(args, nameof(args.DbSnapshotIdentifier));
+                    a[2].Set(args, nameof(args.IncludePublic));
+                    a[3].Set(args, nameof(args.IncludeShared));
+                    a[4].Set(args, nameof(args.MostRecent));
+                    a[5].Set(args, nameof(args.SnapshotType));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -110,6 +132,55 @@ namespace Pulumi.Aws.Rds
         public string? SnapshotType { get; set; }
 
         public GetSnapshotArgs()
+        {
+        }
+    }
+
+    public sealed class GetSnapshotOutputArgs
+    {
+        /// <summary>
+        /// Returns the list of snapshots created by the specific db_instance
+        /// </summary>
+        [Input("dbInstanceIdentifier")]
+        public Input<string>? DbInstanceIdentifier { get; set; }
+
+        /// <summary>
+        /// Returns information on a specific snapshot_id.
+        /// </summary>
+        [Input("dbSnapshotIdentifier")]
+        public Input<string>? DbSnapshotIdentifier { get; set; }
+
+        /// <summary>
+        /// Set this value to true to include manual DB snapshots that are public and can be
+        /// copied or restored by any AWS account, otherwise set this value to false. The default is `false`.
+        /// </summary>
+        [Input("includePublic")]
+        public Input<bool>? IncludePublic { get; set; }
+
+        /// <summary>
+        /// Set this value to true to include shared manual DB snapshots from other
+        /// AWS accounts that this AWS account has been given permission to copy or restore, otherwise set this value to false.
+        /// The default is `false`.
+        /// </summary>
+        [Input("includeShared")]
+        public Input<bool>? IncludeShared { get; set; }
+
+        /// <summary>
+        /// If more than one result is returned, use the most
+        /// recent Snapshot.
+        /// </summary>
+        [Input("mostRecent")]
+        public Input<bool>? MostRecent { get; set; }
+
+        /// <summary>
+        /// The type of snapshots to be returned. If you don't specify a SnapshotType
+        /// value, then both automated and manual snapshots are returned. Shared and public DB snapshots are not
+        /// included in the returned results by default. Possible values are, `automated`, `manual`, `shared`, `public` and `awsbackup`.
+        /// </summary>
+        [Input("snapshotType")]
+        public Input<string>? SnapshotType { get; set; }
+
+        public GetSnapshotOutputArgs()
         {
         }
     }

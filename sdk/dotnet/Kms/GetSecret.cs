@@ -13,6 +13,17 @@ namespace Pulumi.Aws.Kms
     {
         public static Task<GetSecretResult> InvokeAsync(GetSecretArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecretResult>("aws:kms/getSecret:getSecret", args ?? new GetSecretArgs(), options.WithVersion());
+
+        public static Output<GetSecretResult> Invoke(GetSecretOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Secrets.ToList().Box()
+            ).Apply(a => {
+                    var args = new GetSecretArgs();
+                    a[0].Set(args, nameof(args.Secrets));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -27,6 +38,21 @@ namespace Pulumi.Aws.Kms
         }
 
         public GetSecretArgs()
+        {
+        }
+    }
+
+    public sealed class GetSecretOutputArgs
+    {
+        [Input("secrets", required: true)]
+        private InputList<Inputs.GetSecretSecretArgs>? _secrets;
+        public InputList<Inputs.GetSecretSecretArgs> Secrets
+        {
+            get => _secrets ?? (_secrets = new InputList<Inputs.GetSecretSecretArgs>());
+            set => _secrets = value;
+        }
+
+        public GetSecretOutputArgs()
         {
         }
     }

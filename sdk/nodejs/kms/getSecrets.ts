@@ -45,3 +45,17 @@ export interface GetSecretsResult {
     readonly plaintext: {[key: string]: string};
     readonly secrets: outputs.kms.GetSecretsSecret[];
 }
+
+export function getSecretsApply(args: GetSecretsApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretsResult> {
+    return pulumi.output(args).apply(a => getSecrets(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getSecrets.
+ */
+export interface GetSecretsApplyArgs {
+    /**
+     * One or more encrypted payload definitions from the KMS service. See the Secret Definitions below.
+     */
+    secrets: pulumi.Input<pulumi.Input<inputs.kms.GetSecretsSecret>[]>;
+}

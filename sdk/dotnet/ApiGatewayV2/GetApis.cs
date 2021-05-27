@@ -39,6 +39,22 @@ namespace Pulumi.Aws.ApiGatewayV2
         /// </summary>
         public static Task<GetApisResult> InvokeAsync(GetApisArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApisResult>("aws:apigatewayv2/getApis:getApis", args ?? new GetApisArgs(), options.WithVersion());
+
+        public static Output<GetApisResult> Invoke(GetApisOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetApisOutputArgs();
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.ProtocolType.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetApisArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.ProtocolType));
+                    a[2].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -70,6 +86,38 @@ namespace Pulumi.Aws.ApiGatewayV2
         }
 
         public GetApisArgs()
+        {
+        }
+    }
+
+    public sealed class GetApisOutputArgs
+    {
+        /// <summary>
+        /// The API name.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The API protocol.
+        /// </summary>
+        [Input("protocolType")]
+        public Input<string>? ProtocolType { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags, each pair of which must exactly match
+        /// a pair on the desired APIs.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetApisOutputArgs()
         {
         }
     }

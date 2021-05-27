@@ -113,3 +113,10 @@ def get_vpc_peering_connections(filters: Optional[Sequence[pulumi.InputType['Get
         id=__ret__.id,
         ids=__ret__.ids,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_vpc_peering_connections)
+def get_vpc_peering_connections_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetVpcPeeringConnectionsFilterArgs']]]]] = None,
+                                      tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcPeeringConnectionsResult]:
+    ...

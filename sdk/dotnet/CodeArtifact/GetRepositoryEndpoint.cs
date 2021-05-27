@@ -41,6 +41,23 @@ namespace Pulumi.Aws.CodeArtifact
         /// </summary>
         public static Task<GetRepositoryEndpointResult> InvokeAsync(GetRepositoryEndpointArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryEndpointResult>("aws:codeartifact/getRepositoryEndpoint:getRepositoryEndpoint", args ?? new GetRepositoryEndpointArgs(), options.WithVersion());
+
+        public static Output<GetRepositoryEndpointResult> Invoke(GetRepositoryEndpointOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Domain.Box(),
+                args.DomainOwner.Box(),
+                args.Format.Box(),
+                args.Repository.Box()
+            ).Apply(a => {
+                    var args = new GetRepositoryEndpointArgs();
+                    a[0].Set(args, nameof(args.Domain));
+                    a[1].Set(args, nameof(args.DomainOwner));
+                    a[2].Set(args, nameof(args.Format));
+                    a[3].Set(args, nameof(args.Repository));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -71,6 +88,37 @@ namespace Pulumi.Aws.CodeArtifact
         public string Repository { get; set; } = null!;
 
         public GetRepositoryEndpointArgs()
+        {
+        }
+    }
+
+    public sealed class GetRepositoryEndpointOutputArgs
+    {
+        /// <summary>
+        /// The name of the domain that contains the repository.
+        /// </summary>
+        [Input("domain", required: true)]
+        public Input<string> Domain { get; set; } = null!;
+
+        /// <summary>
+        /// The account number of the AWS account that owns the domain.
+        /// </summary>
+        [Input("domainOwner")]
+        public Input<string>? DomainOwner { get; set; }
+
+        /// <summary>
+        /// Which endpoint of a repository to return. A repository has one endpoint for each package format: `npm`, `pypi`, `maven`, and `nuget`.
+        /// </summary>
+        [Input("format", required: true)]
+        public Input<string> Format { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the repository.
+        /// </summary>
+        [Input("repository", required: true)]
+        public Input<string> Repository { get; set; } = null!;
+
+        public GetRepositoryEndpointOutputArgs()
         {
         }
     }

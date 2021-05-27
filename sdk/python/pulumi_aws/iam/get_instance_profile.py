@@ -160,3 +160,9 @@ def get_instance_profile(name: Optional[str] = None,
         role_arn=__ret__.role_arn,
         role_id=__ret__.role_id,
         role_name=__ret__.role_name)
+
+
+@_utilities.lift_output_func(get_instance_profile)
+def get_instance_profile_apply(name: Optional[pulumi.Input[str]] = None,
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceProfileResult]:
+    ...

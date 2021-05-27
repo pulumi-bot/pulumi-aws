@@ -162,3 +162,15 @@ def get_vpn_gateway(amazon_side_asn: Optional[str] = None,
         id=__ret__.id,
         state=__ret__.state,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_vpn_gateway)
+def get_vpn_gateway_apply(amazon_side_asn: Optional[pulumi.Input[str]] = None,
+                          attached_vpc_id: Optional[pulumi.Input[str]] = None,
+                          availability_zone: Optional[pulumi.Input[str]] = None,
+                          filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetVpnGatewayFilterArgs']]]]] = None,
+                          id: Optional[pulumi.Input[str]] = None,
+                          state: Optional[pulumi.Input[str]] = None,
+                          tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpnGatewayResult]:
+    ...

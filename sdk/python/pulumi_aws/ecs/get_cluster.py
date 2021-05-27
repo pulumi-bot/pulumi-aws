@@ -159,3 +159,9 @@ def get_cluster(cluster_name: Optional[str] = None,
         running_tasks_count=__ret__.running_tasks_count,
         settings=__ret__.settings,
         status=__ret__.status)
+
+
+@_utilities.lift_output_func(get_cluster)
+def get_cluster_apply(cluster_name: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
+    ...

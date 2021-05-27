@@ -109,3 +109,21 @@ export interface GetComponentResult {
      */
     readonly version: string;
 }
+
+export function getComponentApply(args: GetComponentApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetComponentResult> {
+    return pulumi.output(args).apply(a => getComponent(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getComponent.
+ */
+export interface GetComponentApplyArgs {
+    /**
+     * Amazon Resource Name (ARN) of the component.
+     */
+    arn: pulumi.Input<string>;
+    /**
+     * Key-value map of resource tags for the component.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}

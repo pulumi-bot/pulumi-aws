@@ -223,3 +223,14 @@ def get_zone(name: Optional[str] = None,
         tags=__ret__.tags,
         vpc_id=__ret__.vpc_id,
         zone_id=__ret__.zone_id)
+
+
+@_utilities.lift_output_func(get_zone)
+def get_zone_apply(name: Optional[pulumi.Input[str]] = None,
+                   private_zone: Optional[pulumi.Input[bool]] = None,
+                   resource_record_set_count: Optional[pulumi.Input[int]] = None,
+                   tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                   vpc_id: Optional[pulumi.Input[str]] = None,
+                   zone_id: Optional[pulumi.Input[str]] = None,
+                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneResult]:
+    ...

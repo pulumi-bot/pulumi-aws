@@ -155,3 +155,10 @@ def get_product(filters: Optional[Sequence[pulumi.InputType['GetProductFilterArg
         id=__ret__.id,
         result=__ret__.result,
         service_code=__ret__.service_code)
+
+
+@_utilities.lift_output_func(get_product)
+def get_product_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetProductFilterArgs']]]]] = None,
+                      service_code: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProductResult]:
+    ...

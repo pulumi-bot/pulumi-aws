@@ -308,3 +308,9 @@ def get_group(name: Optional[str] = None,
         target_group_arns=__ret__.target_group_arns,
         termination_policies=__ret__.termination_policies,
         vpc_zone_identifier=__ret__.vpc_zone_identifier)
+
+
+@_utilities.lift_output_func(get_group)
+def get_group_apply(name: Optional[pulumi.Input[str]] = None,
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupResult]:
+    ...

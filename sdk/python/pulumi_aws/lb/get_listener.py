@@ -177,3 +177,12 @@ def get_listener(arn: Optional[str] = None,
         protocol=__ret__.protocol,
         ssl_policy=__ret__.ssl_policy,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_listener)
+def get_listener_apply(arn: Optional[pulumi.Input[str]] = None,
+                       load_balancer_arn: Optional[pulumi.Input[str]] = None,
+                       port: Optional[pulumi.Input[int]] = None,
+                       tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetListenerResult]:
+    ...

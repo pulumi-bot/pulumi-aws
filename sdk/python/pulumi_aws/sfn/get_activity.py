@@ -105,3 +105,10 @@ def get_activity(arn: Optional[str] = None,
         creation_date=__ret__.creation_date,
         id=__ret__.id,
         name=__ret__.name)
+
+
+@_utilities.lift_output_func(get_activity)
+def get_activity_apply(arn: Optional[pulumi.Input[str]] = None,
+                       name: Optional[pulumi.Input[str]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetActivityResult]:
+    ...

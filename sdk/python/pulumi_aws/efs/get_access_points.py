@@ -105,3 +105,9 @@ def get_access_points(file_system_id: Optional[str] = None,
         file_system_id=__ret__.file_system_id,
         id=__ret__.id,
         ids=__ret__.ids)
+
+
+@_utilities.lift_output_func(get_access_points)
+def get_access_points_apply(file_system_id: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessPointsResult]:
+    ...

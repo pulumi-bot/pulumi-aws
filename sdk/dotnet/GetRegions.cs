@@ -87,6 +87,20 @@ namespace Pulumi.Aws
         /// </summary>
         public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("aws:index/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithVersion());
+
+        public static Output<GetRegionsResult> Invoke(GetRegionsOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetRegionsOutputArgs();
+            return Pulumi.Output.All(
+                args.AllRegions.Box(),
+                args.Filters.ToList().Box()
+            ).Apply(a => {
+                    var args = new GetRegionsArgs();
+                    a[0].Set(args, nameof(args.AllRegions));
+                    a[1].Set(args, nameof(args.Filters));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -111,6 +125,31 @@ namespace Pulumi.Aws
         }
 
         public GetRegionsArgs()
+        {
+        }
+    }
+
+    public sealed class GetRegionsOutputArgs
+    {
+        /// <summary>
+        /// If true the source will query all regions regardless of availability.
+        /// </summary>
+        [Input("allRegions")]
+        public Input<bool>? AllRegions { get; set; }
+
+        [Input("filters")]
+        private InputList<Inputs.GetRegionsFilterArgs>? _filters;
+
+        /// <summary>
+        /// Configuration block(s) to use as filters. Detailed below.
+        /// </summary>
+        public InputList<Inputs.GetRegionsFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetRegionsFilterArgs>());
+            set => _filters = value;
+        }
+
+        public GetRegionsOutputArgs()
         {
         }
     }

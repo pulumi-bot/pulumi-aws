@@ -68,6 +68,20 @@ namespace Pulumi.Aws.Route53
         /// </summary>
         public static Task<GetResolverEndpointResult> InvokeAsync(GetResolverEndpointArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetResolverEndpointResult>("aws:route53/getResolverEndpoint:getResolverEndpoint", args ?? new GetResolverEndpointArgs(), options.WithVersion());
+
+        public static Output<GetResolverEndpointResult> Invoke(GetResolverEndpointOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetResolverEndpointOutputArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.ResolverEndpointId.Box()
+            ).Apply(a => {
+                    var args = new GetResolverEndpointArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.ResolverEndpointId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -94,6 +108,33 @@ namespace Pulumi.Aws.Route53
         public string? ResolverEndpointId { get; set; }
 
         public GetResolverEndpointArgs()
+        {
+        }
+    }
+
+    public sealed class GetResolverEndpointOutputArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetResolverEndpointFilterArgs>? _filters;
+
+        /// <summary>
+        /// One or more name/value pairs to use as filters. There are
+        /// several valid keys, for a full reference, check out
+        /// [Route53resolver Filter value in the AWS API reference][1].
+        /// </summary>
+        public InputList<Inputs.GetResolverEndpointFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetResolverEndpointFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// The ID of the Route53 Resolver Endpoint.
+        /// </summary>
+        [Input("resolverEndpointId")]
+        public Input<string>? ResolverEndpointId { get; set; }
+
+        public GetResolverEndpointOutputArgs()
         {
         }
     }

@@ -54,3 +54,7 @@ export interface GetCallerIdentityResult {
      */
     readonly userId: string;
 }
+
+export function getCallerIdentityApply(opts?: pulumi.InvokeOptions): pulumi.Output<GetCallerIdentityResult> {
+    return pulumi.output(getCallerIdentity(opts))
+}

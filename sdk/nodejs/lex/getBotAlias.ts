@@ -89,3 +89,21 @@ export interface GetBotAliasResult {
      */
     readonly name: string;
 }
+
+export function getBotAliasApply(args: GetBotAliasApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBotAliasResult> {
+    return pulumi.output(args).apply(a => getBotAlias(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getBotAlias.
+ */
+export interface GetBotAliasApplyArgs {
+    /**
+     * The name of the bot.
+     */
+    botName: pulumi.Input<string>;
+    /**
+     * The name of the bot alias. The name is case sensitive.
+     */
+    name: pulumi.Input<string>;
+}

@@ -39,6 +39,17 @@ namespace Pulumi.Aws.ServiceQuotas
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("aws:servicequotas/getService:getService", args ?? new GetServiceArgs(), options.WithVersion());
+
+        public static Output<GetServiceResult> Invoke(GetServiceOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ServiceName.Box()
+            ).Apply(a => {
+                    var args = new GetServiceArgs();
+                    a[0].Set(args, nameof(args.ServiceName));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +62,19 @@ namespace Pulumi.Aws.ServiceQuotas
         public string ServiceName { get; set; } = null!;
 
         public GetServiceArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceOutputArgs
+    {
+        /// <summary>
+        /// Service name to lookup within Service Quotas. Available values can be found with the [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
+        /// </summary>
+        [Input("serviceName", required: true)]
+        public Input<string> ServiceName { get; set; } = null!;
+
+        public GetServiceOutputArgs()
         {
         }
     }

@@ -85,3 +85,29 @@ export interface GetServerCertificateResult {
     readonly pathPrefix?: string;
     readonly uploadDate: string;
 }
+
+export function getServerCertificateApply(args?: GetServerCertificateApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerCertificateResult> {
+    return pulumi.output(args).apply(a => getServerCertificate(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServerCertificate.
+ */
+export interface GetServerCertificateApplyArgs {
+    /**
+     * sort results by expiration date. returns the certificate with expiration date in furthest in the future.
+     */
+    latest?: pulumi.Input<boolean>;
+    /**
+     * exact name of the cert to lookup
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * prefix of cert to filter by
+     */
+    namePrefix?: pulumi.Input<string>;
+    /**
+     * prefix of path to filter by
+     */
+    pathPrefix?: pulumi.Input<string>;
+}

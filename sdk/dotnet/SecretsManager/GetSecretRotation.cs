@@ -40,6 +40,17 @@ namespace Pulumi.Aws.SecretsManager
         /// </summary>
         public static Task<GetSecretRotationResult> InvokeAsync(GetSecretRotationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecretRotationResult>("aws:secretsmanager/getSecretRotation:getSecretRotation", args ?? new GetSecretRotationArgs(), options.WithVersion());
+
+        public static Output<GetSecretRotationResult> Invoke(GetSecretRotationOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.SecretId.Box()
+            ).Apply(a => {
+                    var args = new GetSecretRotationArgs();
+                    a[0].Set(args, nameof(args.SecretId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -52,6 +63,19 @@ namespace Pulumi.Aws.SecretsManager
         public string SecretId { get; set; } = null!;
 
         public GetSecretRotationArgs()
+        {
+        }
+    }
+
+    public sealed class GetSecretRotationOutputArgs
+    {
+        /// <summary>
+        /// Specifies the secret containing the version that you want to retrieve. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
+        /// </summary>
+        [Input("secretId", required: true)]
+        public Input<string> SecretId { get; set; } = null!;
+
+        public GetSecretRotationOutputArgs()
         {
         }
     }

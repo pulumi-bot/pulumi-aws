@@ -177,3 +177,11 @@ def get_bundle(bundle_id: Optional[str] = None,
         owner=__ret__.owner,
         root_storages=__ret__.root_storages,
         user_storages=__ret__.user_storages)
+
+
+@_utilities.lift_output_func(get_bundle)
+def get_bundle_apply(bundle_id: Optional[pulumi.Input[str]] = None,
+                     name: Optional[pulumi.Input[str]] = None,
+                     owner: Optional[pulumi.Input[str]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBundleResult]:
+    ...

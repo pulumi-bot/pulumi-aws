@@ -134,3 +134,10 @@ def get_parameter(name: Optional[str] = None,
         value=__ret__.value,
         version=__ret__.version,
         with_decryption=__ret__.with_decryption)
+
+
+@_utilities.lift_output_func(get_parameter)
+def get_parameter_apply(name: Optional[pulumi.Input[str]] = None,
+                        with_decryption: Optional[pulumi.Input[bool]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetParameterResult]:
+    ...

@@ -61,6 +61,22 @@ namespace Pulumi.Aws.Ec2
         /// </summary>
         public static Task<GetCustomerGatewayResult> InvokeAsync(GetCustomerGatewayArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCustomerGatewayResult>("aws:ec2/getCustomerGateway:getCustomerGateway", args ?? new GetCustomerGatewayArgs(), options.WithVersion());
+
+        public static Output<GetCustomerGatewayResult> Invoke(GetCustomerGatewayOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetCustomerGatewayOutputArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.Id.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetCustomerGatewayArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Id));
+                    a[2].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -97,6 +113,43 @@ namespace Pulumi.Aws.Ec2
         }
 
         public GetCustomerGatewayArgs()
+        {
+        }
+    }
+
+    public sealed class GetCustomerGatewayOutputArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetCustomerGatewayFilterArgs>? _filters;
+
+        /// <summary>
+        /// One or more [name-value pairs][dcg-filters] to filter by.
+        /// </summary>
+        public InputList<Inputs.GetCustomerGatewayFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetCustomerGatewayFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// The ID of the gateway.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Map of key-value pairs assigned to the gateway.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetCustomerGatewayOutputArgs()
         {
         }
     }

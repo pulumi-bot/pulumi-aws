@@ -18,6 +18,20 @@ namespace Pulumi.Aws.Ebs
         /// </summary>
         public static Task<GetEbsVolumesResult> InvokeAsync(GetEbsVolumesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEbsVolumesResult>("aws:ebs/getEbsVolumes:getEbsVolumes", args ?? new GetEbsVolumesArgs(), options.WithVersion());
+
+        public static Output<GetEbsVolumesResult> Invoke(GetEbsVolumesOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetEbsVolumesOutputArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetEbsVolumesArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -49,6 +63,38 @@ namespace Pulumi.Aws.Ebs
         }
 
         public GetEbsVolumesArgs()
+        {
+        }
+    }
+
+    public sealed class GetEbsVolumesOutputArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetEbsVolumesFilterArgs>? _filters;
+
+        /// <summary>
+        /// Custom filter block as described below.
+        /// </summary>
+        public InputList<Inputs.GetEbsVolumesFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetEbsVolumesFilterArgs>());
+            set => _filters = value;
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags, each pair of which must exactly match
+        /// a pair on the desired volumes.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetEbsVolumesOutputArgs()
         {
         }
     }

@@ -41,6 +41,17 @@ namespace Pulumi.Aws.Iam
         /// </summary>
         public static Task<GetInstanceProfileResult> InvokeAsync(GetInstanceProfileArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceProfileResult>("aws:iam/getInstanceProfile:getInstanceProfile", args ?? new GetInstanceProfileArgs(), options.WithVersion());
+
+        public static Output<GetInstanceProfileResult> Invoke(GetInstanceProfileOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetInstanceProfileArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -53,6 +64,19 @@ namespace Pulumi.Aws.Iam
         public string Name { get; set; } = null!;
 
         public GetInstanceProfileArgs()
+        {
+        }
+    }
+
+    public sealed class GetInstanceProfileOutputArgs
+    {
+        /// <summary>
+        /// The friendly IAM instance profile name to match.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetInstanceProfileOutputArgs()
         {
         }
     }

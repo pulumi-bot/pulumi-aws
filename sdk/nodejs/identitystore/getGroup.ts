@@ -57,3 +57,25 @@ export interface GetGroupResult {
     readonly id: string;
     readonly identityStoreId: string;
 }
+
+export function getGroupApply(args: GetGroupApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupResult> {
+    return pulumi.output(args).apply(a => getGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGroup.
+ */
+export interface GetGroupApplyArgs {
+    /**
+     * Configuration block(s) for filtering. Currently, the AWS Identity Store API supports only 1 filter. Detailed below.
+     */
+    filters: pulumi.Input<pulumi.Input<inputs.identitystore.GetGroupFilter>[]>;
+    /**
+     * The identifier for a group in the Identity Store.
+     */
+    groupId?: pulumi.Input<string>;
+    /**
+     * The Identity Store ID associated with the Single Sign-On Instance.
+     */
+    identityStoreId: pulumi.Input<string>;
+}

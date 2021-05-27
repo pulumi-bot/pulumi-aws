@@ -41,6 +41,19 @@ namespace Pulumi.Aws.Sqs
         /// </summary>
         public static Task<GetQueueResult> InvokeAsync(GetQueueArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetQueueResult>("aws:sqs/getQueue:getQueue", args ?? new GetQueueArgs(), options.WithVersion());
+
+        public static Output<GetQueueResult> Invoke(GetQueueOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetQueueArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    a[1].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -65,6 +78,31 @@ namespace Pulumi.Aws.Sqs
         }
 
         public GetQueueArgs()
+        {
+        }
+    }
+
+    public sealed class GetQueueOutputArgs
+    {
+        /// <summary>
+        /// The name of the queue to match.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of tags for the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetQueueOutputArgs()
         {
         }
     }

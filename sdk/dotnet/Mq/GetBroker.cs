@@ -46,6 +46,24 @@ namespace Pulumi.Aws.Mq
         /// </summary>
         public static Task<GetBrokerResult> InvokeAsync(GetBrokerArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBrokerResult>("aws:mq/getBroker:getBroker", args ?? new GetBrokerArgs(), options.WithVersion());
+
+        public static Output<GetBrokerResult> Invoke(GetBrokerOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetBrokerOutputArgs();
+            return Pulumi.Output.All(
+                args.BrokerId.Box(),
+                args.BrokerName.Box(),
+                args.Logs.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetBrokerArgs();
+                    a[0].Set(args, nameof(args.BrokerId));
+                    a[1].Set(args, nameof(args.BrokerName));
+                    a[2].Set(args, nameof(args.Logs));
+                    a[3].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -75,6 +93,36 @@ namespace Pulumi.Aws.Mq
         }
 
         public GetBrokerArgs()
+        {
+        }
+    }
+
+    public sealed class GetBrokerOutputArgs
+    {
+        /// <summary>
+        /// The unique id of the mq broker.
+        /// </summary>
+        [Input("brokerId")]
+        public Input<string>? BrokerId { get; set; }
+
+        /// <summary>
+        /// The unique name of the mq broker.
+        /// </summary>
+        [Input("brokerName")]
+        public Input<string>? BrokerName { get; set; }
+
+        [Input("logs")]
+        public Input<Inputs.GetBrokerLogsArgs>? Logs { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetBrokerOutputArgs()
         {
         }
     }

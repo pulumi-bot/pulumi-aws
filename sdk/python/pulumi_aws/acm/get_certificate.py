@@ -170,3 +170,14 @@ def get_certificate(domain: Optional[str] = None,
         statuses=__ret__.statuses,
         tags=__ret__.tags,
         types=__ret__.types)
+
+
+@_utilities.lift_output_func(get_certificate)
+def get_certificate_apply(domain: Optional[pulumi.Input[str]] = None,
+                          key_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                          most_recent: Optional[pulumi.Input[bool]] = None,
+                          statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                          tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                          types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateResult]:
+    ...

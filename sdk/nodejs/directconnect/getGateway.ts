@@ -60,3 +60,17 @@ export interface GetGatewayResult {
      */
     readonly ownerAccountId: string;
 }
+
+export function getGatewayApply(args: GetGatewayApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayResult> {
+    return pulumi.output(args).apply(a => getGateway(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGateway.
+ */
+export interface GetGatewayApplyArgs {
+    /**
+     * The name of the gateway to retrieve.
+     */
+    name: pulumi.Input<string>;
+}

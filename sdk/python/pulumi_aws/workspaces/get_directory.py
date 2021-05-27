@@ -265,3 +265,10 @@ def get_directory(directory_id: Optional[str] = None,
         workspace_access_properties=__ret__.workspace_access_properties,
         workspace_creation_properties=__ret__.workspace_creation_properties,
         workspace_security_group_id=__ret__.workspace_security_group_id)
+
+
+@_utilities.lift_output_func(get_directory)
+def get_directory_apply(directory_id: Optional[pulumi.Input[str]] = None,
+                        tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDirectoryResult]:
+    ...

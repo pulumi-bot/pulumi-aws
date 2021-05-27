@@ -187,3 +187,10 @@ def get_compute_environment(compute_environment_name: Optional[str] = None,
         status_reason=__ret__.status_reason,
         tags=__ret__.tags,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_compute_environment)
+def get_compute_environment_apply(compute_environment_name: Optional[pulumi.Input[str]] = None,
+                                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetComputeEnvironmentResult]:
+    ...

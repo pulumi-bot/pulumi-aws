@@ -39,6 +39,17 @@ namespace Pulumi.Aws.Msk
         /// </summary>
         public static Task<GetConfigurationResult> InvokeAsync(GetConfigurationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConfigurationResult>("aws:msk/getConfiguration:getConfiguration", args ?? new GetConfigurationArgs(), options.WithVersion());
+
+        public static Output<GetConfigurationResult> Invoke(GetConfigurationOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Name.Box()
+            ).Apply(a => {
+                    var args = new GetConfigurationArgs();
+                    a[0].Set(args, nameof(args.Name));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +62,19 @@ namespace Pulumi.Aws.Msk
         public string Name { get; set; } = null!;
 
         public GetConfigurationArgs()
+        {
+        }
+    }
+
+    public sealed class GetConfigurationOutputArgs
+    {
+        /// <summary>
+        /// Name of the configuration.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetConfigurationOutputArgs()
         {
         }
     }

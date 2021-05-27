@@ -73,3 +73,21 @@ export interface GetPlanResult {
      */
     readonly version: string;
 }
+
+export function getPlanApply(args: GetPlanApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPlanResult> {
+    return pulumi.output(args).apply(a => getPlan(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getPlan.
+ */
+export interface GetPlanApplyArgs {
+    /**
+     * The backup plan ID.
+     */
+    planId: pulumi.Input<string>;
+    /**
+     * Metadata that you can assign to help organize the plans you create.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}

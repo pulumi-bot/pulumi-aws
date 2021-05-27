@@ -71,6 +71,18 @@ namespace Pulumi.Aws.RedShift
         /// </summary>
         public static Task<GetServiceAccountResult> InvokeAsync(GetServiceAccountArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceAccountResult>("aws:redshift/getServiceAccount:getServiceAccount", args ?? new GetServiceAccountArgs(), options.WithVersion());
+
+        public static Output<GetServiceAccountResult> Invoke(GetServiceAccountOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetServiceAccountOutputArgs();
+            return Pulumi.Output.All(
+                args.Region.Box()
+            ).Apply(a => {
+                    var args = new GetServiceAccountArgs();
+                    a[0].Set(args, nameof(args.Region));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -84,6 +96,20 @@ namespace Pulumi.Aws.RedShift
         public string? Region { get; set; }
 
         public GetServiceAccountArgs()
+        {
+        }
+    }
+
+    public sealed class GetServiceAccountOutputArgs
+    {
+        /// <summary>
+        /// Name of the region whose AWS Redshift account ID is desired.
+        /// Defaults to the region from the AWS provider configuration.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        public GetServiceAccountOutputArgs()
         {
         }
     }

@@ -45,6 +45,23 @@ namespace Pulumi.Aws.Rds
         /// </summary>
         public static Task<GetEngineVersionResult> InvokeAsync(GetEngineVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEngineVersionResult>("aws:rds/getEngineVersion:getEngineVersion", args ?? new GetEngineVersionArgs(), options.WithVersion());
+
+        public static Output<GetEngineVersionResult> Invoke(GetEngineVersionOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Engine.Box(),
+                args.ParameterGroupFamily.Box(),
+                args.PreferredVersions.ToList().Box(),
+                args.Version.Box()
+            ).Apply(a => {
+                    var args = new GetEngineVersionArgs();
+                    a[0].Set(args, nameof(args.Engine));
+                    a[1].Set(args, nameof(args.ParameterGroupFamily));
+                    a[2].Set(args, nameof(args.PreferredVersions));
+                    a[3].Set(args, nameof(args.Version));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -81,6 +98,43 @@ namespace Pulumi.Aws.Rds
         public string? Version { get; set; }
 
         public GetEngineVersionArgs()
+        {
+        }
+    }
+
+    public sealed class GetEngineVersionOutputArgs
+    {
+        /// <summary>
+        /// DB engine. Engine values include `aurora`, `aurora-mysql`, `aurora-postgresql`, `docdb`, `mariadb`, `mysql`, `neptune`, `oracle-ee`, `oracle-se`, `oracle-se1`, `oracle-se2`, `postgres`, `sqlserver-ee`, `sqlserver-ex`, `sqlserver-se`, and `sqlserver-web`.
+        /// </summary>
+        [Input("engine", required: true)]
+        public Input<string> Engine { get; set; } = null!;
+
+        /// <summary>
+        /// The name of a specific DB parameter group family. Examples of parameter group families are `mysql8.0`, `mariadb10.4`, and `postgres12`.
+        /// </summary>
+        [Input("parameterGroupFamily")]
+        public Input<string>? ParameterGroupFamily { get; set; }
+
+        [Input("preferredVersions")]
+        private InputList<string>? _preferredVersions;
+
+        /// <summary>
+        /// Ordered list of preferred engine versions. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. If both the `version` and `preferred_versions` arguments are not configured, the data source will return the default version for the engine.
+        /// </summary>
+        public InputList<string> PreferredVersions
+        {
+            get => _preferredVersions ?? (_preferredVersions = new InputList<string>());
+            set => _preferredVersions = value;
+        }
+
+        /// <summary>
+        /// Version of the DB engine. For example, `5.7.22`, `10.1.34`, and `12.3`. If both the `version` and `preferred_versions` arguments are not configured, the data source will return the default version for the engine.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        public GetEngineVersionOutputArgs()
         {
         }
     }

@@ -69,3 +69,17 @@ export interface GetImageResult {
      */
     readonly state: string;
 }
+
+export function getImageApply(args: GetImageApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageResult> {
+    return pulumi.output(args).apply(a => getImage(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getImage.
+ */
+export interface GetImageApplyArgs {
+    /**
+     * The ID of the image.
+     */
+    imageId: pulumi.Input<string>;
+}

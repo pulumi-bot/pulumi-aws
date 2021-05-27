@@ -39,6 +39,17 @@ namespace Pulumi.Aws.Workspaces
         /// </summary>
         public static Task<GetImageResult> InvokeAsync(GetImageArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("aws:workspaces/getImage:getImage", args ?? new GetImageArgs(), options.WithVersion());
+
+        public static Output<GetImageResult> Invoke(GetImageOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ImageId.Box()
+            ).Apply(a => {
+                    var args = new GetImageArgs();
+                    a[0].Set(args, nameof(args.ImageId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +62,19 @@ namespace Pulumi.Aws.Workspaces
         public string ImageId { get; set; } = null!;
 
         public GetImageArgs()
+        {
+        }
+    }
+
+    public sealed class GetImageOutputArgs
+    {
+        /// <summary>
+        /// The ID of the image.
+        /// </summary>
+        [Input("imageId", required: true)]
+        public Input<string> ImageId { get; set; } = null!;
+
+        public GetImageOutputArgs()
         {
         }
     }

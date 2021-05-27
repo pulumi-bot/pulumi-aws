@@ -157,3 +157,12 @@ def get_outpost(arn: Optional[str] = None,
         name=__ret__.name,
         owner_id=__ret__.owner_id,
         site_id=__ret__.site_id)
+
+
+@_utilities.lift_output_func(get_outpost)
+def get_outpost_apply(arn: Optional[pulumi.Input[str]] = None,
+                      id: Optional[pulumi.Input[str]] = None,
+                      name: Optional[pulumi.Input[str]] = None,
+                      owner_id: Optional[pulumi.Input[str]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOutpostResult]:
+    ...

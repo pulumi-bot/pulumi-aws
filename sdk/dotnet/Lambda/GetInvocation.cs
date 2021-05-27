@@ -18,6 +18,21 @@ namespace Pulumi.Aws.Lambda
         /// </summary>
         public static Task<GetInvocationResult> InvokeAsync(GetInvocationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInvocationResult>("aws:lambda/getInvocation:getInvocation", args ?? new GetInvocationArgs(), options.WithVersion());
+
+        public static Output<GetInvocationResult> Invoke(GetInvocationOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.FunctionName.Box(),
+                args.Input.Box(),
+                args.Qualifier.Box()
+            ).Apply(a => {
+                    var args = new GetInvocationArgs();
+                    a[0].Set(args, nameof(args.FunctionName));
+                    a[1].Set(args, nameof(args.Input));
+                    a[2].Set(args, nameof(args.Qualifier));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -43,6 +58,32 @@ namespace Pulumi.Aws.Lambda
         public string? Qualifier { get; set; }
 
         public GetInvocationArgs()
+        {
+        }
+    }
+
+    public sealed class GetInvocationOutputArgs
+    {
+        /// <summary>
+        /// The name of the lambda function.
+        /// </summary>
+        [Input("functionName", required: true)]
+        public Input<string> FunctionName { get; set; } = null!;
+
+        /// <summary>
+        /// A string in JSON format that is passed as payload to the lambda function.
+        /// </summary>
+        [Input("input", required: true)]
+        public Input<string> Input { get; set; } = null!;
+
+        /// <summary>
+        /// The qualifier (a.k.a version) of the lambda function. Defaults
+        /// to `$LATEST`.
+        /// </summary>
+        [Input("qualifier")]
+        public Input<string>? Qualifier { get; set; }
+
+        public GetInvocationOutputArgs()
         {
         }
     }

@@ -57,3 +57,17 @@ export interface GetOrganizationalUnitsResult {
     readonly id: string;
     readonly parentId: string;
 }
+
+export function getOrganizationalUnitsApply(args: GetOrganizationalUnitsApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationalUnitsResult> {
+    return pulumi.output(args).apply(a => getOrganizationalUnits(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getOrganizationalUnits.
+ */
+export interface GetOrganizationalUnitsApplyArgs {
+    /**
+     * The parent ID of the organizational unit.
+     */
+    parentId: pulumi.Input<string>;
+}

@@ -45,6 +45,19 @@ namespace Pulumi.Aws.ServerlessRepository
         /// </summary>
         public static Task<GetApplicationResult> InvokeAsync(GetApplicationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationResult>("aws:serverlessrepository/getApplication:getApplication", args ?? new GetApplicationArgs(), options.WithVersion());
+
+        public static Output<GetApplicationResult> Invoke(GetApplicationOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.ApplicationId.Box(),
+                args.SemanticVersion.Box()
+            ).Apply(a => {
+                    var args = new GetApplicationArgs();
+                    a[0].Set(args, nameof(args.ApplicationId));
+                    a[1].Set(args, nameof(args.SemanticVersion));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -63,6 +76,25 @@ namespace Pulumi.Aws.ServerlessRepository
         public string? SemanticVersion { get; set; }
 
         public GetApplicationArgs()
+        {
+        }
+    }
+
+    public sealed class GetApplicationOutputArgs
+    {
+        /// <summary>
+        /// The ARN of the application.
+        /// </summary>
+        [Input("applicationId", required: true)]
+        public Input<string> ApplicationId { get; set; } = null!;
+
+        /// <summary>
+        /// The requested version of the application. By default, retrieves the latest version.
+        /// </summary>
+        [Input("semanticVersion")]
+        public Input<string>? SemanticVersion { get; set; }
+
+        public GetApplicationOutputArgs()
         {
         }
     }

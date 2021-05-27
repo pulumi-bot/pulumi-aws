@@ -39,6 +39,17 @@ namespace Pulumi.Aws.Signer
         /// </summary>
         public static Task<GetSigningJobResult> InvokeAsync(GetSigningJobArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSigningJobResult>("aws:signer/getSigningJob:getSigningJob", args ?? new GetSigningJobArgs(), options.WithVersion());
+
+        public static Output<GetSigningJobResult> Invoke(GetSigningJobOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.JobId.Box()
+            ).Apply(a => {
+                    var args = new GetSigningJobArgs();
+                    a[0].Set(args, nameof(args.JobId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +62,19 @@ namespace Pulumi.Aws.Signer
         public string JobId { get; set; } = null!;
 
         public GetSigningJobArgs()
+        {
+        }
+    }
+
+    public sealed class GetSigningJobOutputArgs
+    {
+        /// <summary>
+        /// The ID of the signing job on output.
+        /// </summary>
+        [Input("jobId", required: true)]
+        public Input<string> JobId { get; set; } = null!;
+
+        public GetSigningJobOutputArgs()
         {
         }
     }

@@ -84,3 +84,9 @@ def get_data_catalog_encryption_settings(catalog_id: Optional[str] = None,
         catalog_id=__ret__.catalog_id,
         data_catalog_encryption_settings=__ret__.data_catalog_encryption_settings,
         id=__ret__.id)
+
+
+@_utilities.lift_output_func(get_data_catalog_encryption_settings)
+def get_data_catalog_encryption_settings_apply(catalog_id: Optional[pulumi.Input[str]] = None,
+                                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDataCatalogEncryptionSettingsResult]:
+    ...

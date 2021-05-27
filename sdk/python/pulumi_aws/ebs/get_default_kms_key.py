@@ -81,3 +81,8 @@ def get_default_kms_key(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
     return AwaitableGetDefaultKmsKeyResult(
         id=__ret__.id,
         key_arn=__ret__.key_arn)
+
+
+@_utilities.lift_output_func(get_default_kms_key)
+def get_default_kms_key_apply(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDefaultKmsKeyResult]:
+    ...

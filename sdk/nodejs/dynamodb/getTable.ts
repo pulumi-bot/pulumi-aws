@@ -74,3 +74,19 @@ export interface GetTableResult {
     readonly ttl: outputs.dynamodb.GetTableTtl;
     readonly writeCapacity: number;
 }
+
+export function getTableApply(args: GetTableApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTableResult> {
+    return pulumi.output(args).apply(a => getTable(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getTable.
+ */
+export interface GetTableApplyArgs {
+    /**
+     * The name of the DynamoDB table.
+     */
+    name: pulumi.Input<string>;
+    serverSideEncryption?: pulumi.Input<inputs.dynamodb.GetTableServerSideEncryption>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}

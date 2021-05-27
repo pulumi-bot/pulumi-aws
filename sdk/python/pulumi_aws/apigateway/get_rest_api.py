@@ -216,3 +216,10 @@ def get_rest_api(name: Optional[str] = None,
         policy=__ret__.policy,
         root_resource_id=__ret__.root_resource_id,
         tags=__ret__.tags)
+
+
+@_utilities.lift_output_func(get_rest_api)
+def get_rest_api_apply(name: Optional[pulumi.Input[str]] = None,
+                       tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRestApiResult]:
+    ...

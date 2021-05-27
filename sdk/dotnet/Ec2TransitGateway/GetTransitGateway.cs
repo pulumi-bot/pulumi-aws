@@ -70,6 +70,22 @@ namespace Pulumi.Aws.Ec2TransitGateway
         /// </summary>
         public static Task<GetTransitGatewayResult> InvokeAsync(GetTransitGatewayArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTransitGatewayResult>("aws:ec2transitgateway/getTransitGateway:getTransitGateway", args ?? new GetTransitGatewayArgs(), options.WithVersion());
+
+        public static Output<GetTransitGatewayResult> Invoke(GetTransitGatewayOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetTransitGatewayOutputArgs();
+            return Pulumi.Output.All(
+                args.Filters.ToList().Box(),
+                args.Id.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetTransitGatewayArgs();
+                    a[0].Set(args, nameof(args.Filters));
+                    a[1].Set(args, nameof(args.Id));
+                    a[2].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -106,6 +122,43 @@ namespace Pulumi.Aws.Ec2TransitGateway
         }
 
         public GetTransitGatewayArgs()
+        {
+        }
+    }
+
+    public sealed class GetTransitGatewayOutputArgs
+    {
+        [Input("filters")]
+        private InputList<Inputs.GetTransitGatewayFilterArgs>? _filters;
+
+        /// <summary>
+        /// One or more configuration blocks containing name-values filters. Detailed below.
+        /// </summary>
+        public InputList<Inputs.GetTransitGatewayFilterArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.GetTransitGatewayFilterArgs>());
+            set => _filters = value;
+        }
+
+        /// <summary>
+        /// Identifier of the EC2 Transit Gateway.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Key-value tags for the EC2 Transit Gateway
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetTransitGatewayOutputArgs()
         {
         }
     }

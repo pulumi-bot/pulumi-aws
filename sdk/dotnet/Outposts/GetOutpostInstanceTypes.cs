@@ -39,6 +39,17 @@ namespace Pulumi.Aws.Outposts
         /// </summary>
         public static Task<GetOutpostInstanceTypesResult> InvokeAsync(GetOutpostInstanceTypesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOutpostInstanceTypesResult>("aws:outposts/getOutpostInstanceTypes:getOutpostInstanceTypes", args ?? new GetOutpostInstanceTypesArgs(), options.WithVersion());
+
+        public static Output<GetOutpostInstanceTypesResult> Invoke(GetOutpostInstanceTypesOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Arn.Box()
+            ).Apply(a => {
+                    var args = new GetOutpostInstanceTypesArgs();
+                    a[0].Set(args, nameof(args.Arn));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -51,6 +62,19 @@ namespace Pulumi.Aws.Outposts
         public string Arn { get; set; } = null!;
 
         public GetOutpostInstanceTypesArgs()
+        {
+        }
+    }
+
+    public sealed class GetOutpostInstanceTypesOutputArgs
+    {
+        /// <summary>
+        /// Outpost Amazon Resource Name (ARN).
+        /// </summary>
+        [Input("arn", required: true)]
+        public Input<string> Arn { get; set; } = null!;
+
+        public GetOutpostInstanceTypesOutputArgs()
         {
         }
     }

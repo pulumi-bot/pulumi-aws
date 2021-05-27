@@ -45,6 +45,19 @@ namespace Pulumi.Aws.ApiGateway
         /// </summary>
         public static Task<GetResourceResult> InvokeAsync(GetResourceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetResourceResult>("aws:apigateway/getResource:getResource", args ?? new GetResourceArgs(), options.WithVersion());
+
+        public static Output<GetResourceResult> Invoke(GetResourceOutputArgs args, InvokeOptions? options = null)
+        {
+            return Pulumi.Output.All(
+                args.Path.Box(),
+                args.RestApiId.Box()
+            ).Apply(a => {
+                    var args = new GetResourceArgs();
+                    a[0].Set(args, nameof(args.Path));
+                    a[1].Set(args, nameof(args.RestApiId));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -63,6 +76,25 @@ namespace Pulumi.Aws.ApiGateway
         public string RestApiId { get; set; } = null!;
 
         public GetResourceArgs()
+        {
+        }
+    }
+
+    public sealed class GetResourceOutputArgs
+    {
+        /// <summary>
+        /// The full path of the resource.  If no path is found, an error will be returned.
+        /// </summary>
+        [Input("path", required: true)]
+        public Input<string> Path { get; set; } = null!;
+
+        /// <summary>
+        /// The REST API id that owns the resource. If no REST API is found, an error will be returned.
+        /// </summary>
+        [Input("restApiId", required: true)]
+        public Input<string> RestApiId { get; set; } = null!;
+
+        public GetResourceOutputArgs()
         {
         }
     }

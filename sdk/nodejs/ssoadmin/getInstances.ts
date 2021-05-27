@@ -37,3 +37,7 @@ export interface GetInstancesResult {
      */
     readonly identityStoreIds: string[];
 }
+
+export function getInstancesApply(opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+    return pulumi.output(getInstances(opts))
+}

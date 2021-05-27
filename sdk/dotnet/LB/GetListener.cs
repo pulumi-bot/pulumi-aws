@@ -54,6 +54,24 @@ namespace Pulumi.Aws.LB
         /// </summary>
         public static Task<GetListenerResult> InvokeAsync(GetListenerArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetListenerResult>("aws:lb/getListener:getListener", args ?? new GetListenerArgs(), options.WithVersion());
+
+        public static Output<GetListenerResult> Invoke(GetListenerOutputArgs? args = null, InvokeOptions? options = null)
+        {
+            args = args ?? new GetListenerOutputArgs();
+            return Pulumi.Output.All(
+                args.Arn.Box(),
+                args.LoadBalancerArn.Box(),
+                args.Port.Box(),
+                args.Tags.ToDict().Box()
+            ).Apply(a => {
+                    var args = new GetListenerArgs();
+                    a[0].Set(args, nameof(args.Arn));
+                    a[1].Set(args, nameof(args.LoadBalancerArn));
+                    a[2].Set(args, nameof(args.Port));
+                    a[3].Set(args, nameof(args.Tags));
+                    return InvokeAsync(args, options);
+            });
+        }
     }
 
 
@@ -86,6 +104,39 @@ namespace Pulumi.Aws.LB
         }
 
         public GetListenerArgs()
+        {
+        }
+    }
+
+    public sealed class GetListenerOutputArgs
+    {
+        /// <summary>
+        /// ARN of the listener. Required if `load_balancer_arn` and `port` is not set.
+        /// </summary>
+        [Input("arn")]
+        public Input<string>? Arn { get; set; }
+
+        /// <summary>
+        /// ARN of the load balancer. Required if `arn` is not set.
+        /// </summary>
+        [Input("loadBalancerArn")]
+        public Input<string>? LoadBalancerArn { get; set; }
+
+        /// <summary>
+        /// Port of the listener. Required if `arn` is not set.
+        /// </summary>
+        [Input("port")]
+        public Input<int>? Port { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        public GetListenerOutputArgs()
         {
         }
     }

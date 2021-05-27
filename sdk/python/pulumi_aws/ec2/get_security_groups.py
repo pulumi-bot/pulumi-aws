@@ -125,3 +125,10 @@ def get_security_groups(filters: Optional[Sequence[pulumi.InputType['GetSecurity
         ids=__ret__.ids,
         tags=__ret__.tags,
         vpc_ids=__ret__.vpc_ids)
+
+
+@_utilities.lift_output_func(get_security_groups)
+def get_security_groups_apply(filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GetSecurityGroupsFilterArgs']]]]] = None,
+                              tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecurityGroupsResult]:
+    ...

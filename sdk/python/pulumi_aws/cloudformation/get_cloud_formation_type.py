@@ -273,3 +273,12 @@ def get_cloud_formation_type(arn: Optional[str] = None,
         type_name=__ret__.type_name,
         version_id=__ret__.version_id,
         visibility=__ret__.visibility)
+
+
+@_utilities.lift_output_func(get_cloud_formation_type)
+def get_cloud_formation_type_apply(arn: Optional[pulumi.Input[str]] = None,
+                                   type: Optional[pulumi.Input[str]] = None,
+                                   type_name: Optional[pulumi.Input[str]] = None,
+                                   version_id: Optional[pulumi.Input[str]] = None,
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCloudFormationTypeResult]:
+    ...

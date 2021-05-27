@@ -81,3 +81,27 @@ export interface GetCoipPoolResult {
     readonly poolId: string;
     readonly tags: {[key: string]: string};
 }
+
+export function getCoipPoolApply(args?: GetCoipPoolApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCoipPoolResult> {
+    return pulumi.output(args).apply(a => getCoipPool(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getCoipPool.
+ */
+export interface GetCoipPoolApplyArgs {
+    filters?: pulumi.Input<pulumi.Input<inputs.ec2.GetCoipPoolFilter>[]>;
+    /**
+     * Local Gateway Route Table Id assigned to desired COIP Pool
+     */
+    localGatewayRouteTableId?: pulumi.Input<string>;
+    /**
+     * The id of the specific COIP Pool to retrieve.
+     */
+    poolId?: pulumi.Input<string>;
+    /**
+     * A mapping of tags, each pair of which must exactly match
+     * a pair on the desired COIP Pool.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}

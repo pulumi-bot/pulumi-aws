@@ -71,3 +71,17 @@ export interface GetEventSourceResult {
      */
     readonly state: string;
 }
+
+export function getEventSourceApply(args?: GetEventSourceApplyArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEventSourceResult> {
+    return pulumi.output(args).apply(a => getEventSource(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getEventSource.
+ */
+export interface GetEventSourceApplyArgs {
+    /**
+     * Specifying this limits the results to only those partner event sources with names that start with the specified prefix
+     */
+    namePrefix?: pulumi.Input<string>;
+}
