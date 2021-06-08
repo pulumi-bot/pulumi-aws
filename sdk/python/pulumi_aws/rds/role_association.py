@@ -122,7 +122,7 @@ class _RoleAssociationState:
 class RoleAssociation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  db_instance_identifier: Optional[pulumi.Input[str]] = None,
                  feature_name: Optional[pulumi.Input[str]] = None,
@@ -156,7 +156,7 @@ class RoleAssociation(pulumi.CustomResource):
          $ pulumi import aws:rds/roleAssociation:RoleAssociation example my-db-instance,arn:aws:iam::123456789012:role/my-role
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] db_instance_identifier: DB Instance Identifier to associate with the IAM Role.
         :param pulumi.Input[str] feature_name: Name of the feature for association. This can be found in the AWS documentation relevant to the integration or a full list is available in the `SupportedFeatureNames` list returned by [AWS CLI rds describe-db-engine-versions](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-engine-versions.html).
@@ -165,7 +165,7 @@ class RoleAssociation(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: RoleAssociationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -196,20 +196,20 @@ class RoleAssociation(pulumi.CustomResource):
          $ pulumi import aws:rds/roleAssociation:RoleAssociation example my-db-instance,arn:aws:iam::123456789012:role/my-role
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param RoleAssociationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(RoleAssociationArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  db_instance_identifier: Optional[pulumi.Input[str]] = None,
                  feature_name: Optional[pulumi.Input[str]] = None,
@@ -237,12 +237,12 @@ class RoleAssociation(pulumi.CustomResource):
             __props__.__dict__["role_arn"] = role_arn
         super(RoleAssociation, __self__).__init__(
             'aws:rds/roleAssociation:RoleAssociation',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             db_instance_identifier: Optional[pulumi.Input[str]] = None,
@@ -252,7 +252,7 @@ class RoleAssociation(pulumi.CustomResource):
         Get an existing RoleAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] db_instance_identifier: DB Instance Identifier to associate with the IAM Role.
@@ -266,7 +266,7 @@ class RoleAssociation(pulumi.CustomResource):
         __props__.__dict__["db_instance_identifier"] = db_instance_identifier
         __props__.__dict__["feature_name"] = feature_name
         __props__.__dict__["role_arn"] = role_arn
-        return RoleAssociation(resource_name, opts=opts, __props__=__props__)
+        return RoleAssociation(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="dbInstanceIdentifier")

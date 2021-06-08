@@ -220,7 +220,7 @@ class _UserPoolUICustomizationState:
 class UserPoolUICustomization(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  css: Optional[pulumi.Input[str]] = None,
@@ -242,7 +242,7 @@ class UserPoolUICustomization(pulumi.CustomResource):
          $ pulumi import aws:cognito/userPoolUICustomization:UserPoolUICustomization example us-west-2_ZCTarbt5C,12bu4fuk3mlgqa2rtrujgp6egq
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] client_id: The client ID for the client app. Defaults to `ALL`. If `ALL` is specified, the `css` and/or `image_file` settings will be used for every client that has no UI customization set previously.
         :param pulumi.Input[str] css: The CSS values in the UI customization, provided as a String. At least one of `css` or `image_file` is required.
@@ -252,7 +252,7 @@ class UserPoolUICustomization(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: UserPoolUICustomizationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -270,20 +270,20 @@ class UserPoolUICustomization(pulumi.CustomResource):
          $ pulumi import aws:cognito/userPoolUICustomization:UserPoolUICustomization example us-west-2_ZCTarbt5C,12bu4fuk3mlgqa2rtrujgp6egq
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param UserPoolUICustomizationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(UserPoolUICustomizationArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  css: Optional[pulumi.Input[str]] = None,
@@ -313,12 +313,12 @@ class UserPoolUICustomization(pulumi.CustomResource):
             __props__.__dict__["last_modified_date"] = None
         super(UserPoolUICustomization, __self__).__init__(
             'aws:cognito/userPoolUICustomization:UserPoolUICustomization',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             client_id: Optional[pulumi.Input[str]] = None,
@@ -333,7 +333,7 @@ class UserPoolUICustomization(pulumi.CustomResource):
         Get an existing UserPoolUICustomization resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] client_id: The client ID for the client app. Defaults to `ALL`. If `ALL` is specified, the `css` and/or `image_file` settings will be used for every client that has no UI customization set previously.
@@ -357,7 +357,7 @@ class UserPoolUICustomization(pulumi.CustomResource):
         __props__.__dict__["image_url"] = image_url
         __props__.__dict__["last_modified_date"] = last_modified_date
         __props__.__dict__["user_pool_id"] = user_pool_id
-        return UserPoolUICustomization(resource_name, opts=opts, __props__=__props__)
+        return UserPoolUICustomization(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="clientId")

@@ -286,7 +286,7 @@ class _GlobalReplicationGroupState:
 class GlobalReplicationGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  global_replication_group_description: Optional[pulumi.Input[str]] = None,
                  global_replication_group_id_suffix: Optional[pulumi.Input[str]] = None,
@@ -328,7 +328,7 @@ class GlobalReplicationGroup(pulumi.CustomResource):
          $ pulumi import aws:elasticache/globalReplicationGroup:GlobalReplicationGroup my_global_replication_group okuqm-global-replication-group-1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] global_replication_group_description: A user-created description for the global replication group.
         :param pulumi.Input[str] global_replication_group_id_suffix: The suffix name of a Global Datastore. If `global_replication_group_id_suffix` is changed, creates a new resource.
@@ -337,7 +337,7 @@ class GlobalReplicationGroup(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: GlobalReplicationGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -376,20 +376,20 @@ class GlobalReplicationGroup(pulumi.CustomResource):
          $ pulumi import aws:elasticache/globalReplicationGroup:GlobalReplicationGroup my_global_replication_group okuqm-global-replication-group-1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param GlobalReplicationGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(GlobalReplicationGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  global_replication_group_description: Optional[pulumi.Input[str]] = None,
                  global_replication_group_id_suffix: Optional[pulumi.Input[str]] = None,
@@ -425,12 +425,12 @@ class GlobalReplicationGroup(pulumi.CustomResource):
             __props__.__dict__["transit_encryption_enabled"] = None
         super(GlobalReplicationGroup, __self__).__init__(
             'aws:elasticache/globalReplicationGroup:GlobalReplicationGroup',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             actual_engine_version: Optional[pulumi.Input[str]] = None,
@@ -450,7 +450,7 @@ class GlobalReplicationGroup(pulumi.CustomResource):
         Get an existing GlobalReplicationGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] actual_engine_version: (**DEPRECATED** use `engine_version_actual` instead) The full version number of the cache engine running on the members of this global replication group.
@@ -484,7 +484,7 @@ class GlobalReplicationGroup(pulumi.CustomResource):
         __props__.__dict__["global_replication_group_id_suffix"] = global_replication_group_id_suffix
         __props__.__dict__["primary_replication_group_id"] = primary_replication_group_id
         __props__.__dict__["transit_encryption_enabled"] = transit_encryption_enabled
-        return GlobalReplicationGroup(resource_name, opts=opts, __props__=__props__)
+        return GlobalReplicationGroup(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="actualEngineVersion")

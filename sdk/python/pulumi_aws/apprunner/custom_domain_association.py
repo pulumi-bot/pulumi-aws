@@ -173,7 +173,7 @@ class _CustomDomainAssociationState:
 class CustomDomainAssociation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  enable_www_subdomain: Optional[pulumi.Input[bool]] = None,
@@ -205,7 +205,7 @@ class CustomDomainAssociation(pulumi.CustomResource):
 
          app/8fe1e10304f84fd2b0df550fe98a71fa
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_name: The custom domain endpoint to association. Specify a base domain e.g. `example.com` or a subdomain e.g. `subdomain.example.com`.
         :param pulumi.Input[bool] enable_www_subdomain: Whether to associate the subdomain with the App Runner service in addition to the base domain. Defaults to `true`.
@@ -214,7 +214,7 @@ class CustomDomainAssociation(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: CustomDomainAssociationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -243,20 +243,20 @@ class CustomDomainAssociation(pulumi.CustomResource):
 
          app/8fe1e10304f84fd2b0df550fe98a71fa
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param CustomDomainAssociationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(CustomDomainAssociationArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  enable_www_subdomain: Optional[pulumi.Input[bool]] = None,
@@ -285,12 +285,12 @@ class CustomDomainAssociation(pulumi.CustomResource):
             __props__.__dict__["status"] = None
         super(CustomDomainAssociation, __self__).__init__(
             'aws:apprunner/customDomainAssociation:CustomDomainAssociation',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             certificate_validation_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDomainAssociationCertificateValidationRecordArgs']]]]] = None,
@@ -303,7 +303,7 @@ class CustomDomainAssociation(pulumi.CustomResource):
         Get an existing CustomDomainAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDomainAssociationCertificateValidationRecordArgs']]]] certificate_validation_records: A set of certificate CNAME records used for this domain name. See Certificate Validation Records below for more details.
@@ -323,7 +323,7 @@ class CustomDomainAssociation(pulumi.CustomResource):
         __props__.__dict__["enable_www_subdomain"] = enable_www_subdomain
         __props__.__dict__["service_arn"] = service_arn
         __props__.__dict__["status"] = status
-        return CustomDomainAssociation(resource_name, opts=opts, __props__=__props__)
+        return CustomDomainAssociation(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="certificateValidationRecords")

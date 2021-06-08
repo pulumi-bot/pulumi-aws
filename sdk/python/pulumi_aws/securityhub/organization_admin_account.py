@@ -60,7 +60,7 @@ class _OrganizationAdminAccountState:
 class OrganizationAdminAccount(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_account_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -89,14 +89,14 @@ class OrganizationAdminAccount(pulumi.CustomResource):
          $ pulumi import aws:securityhub/organizationAdminAccount:OrganizationAdminAccount example 123456789012
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] admin_account_id: The AWS account identifier of the account to designate as the Security Hub administrator account.
         """
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: OrganizationAdminAccountArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -124,20 +124,20 @@ class OrganizationAdminAccount(pulumi.CustomResource):
          $ pulumi import aws:securityhub/organizationAdminAccount:OrganizationAdminAccount example 123456789012
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param OrganizationAdminAccountArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(OrganizationAdminAccountArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_account_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -157,12 +157,12 @@ class OrganizationAdminAccount(pulumi.CustomResource):
             __props__.__dict__["admin_account_id"] = admin_account_id
         super(OrganizationAdminAccount, __self__).__init__(
             'aws:securityhub/organizationAdminAccount:OrganizationAdminAccount',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             admin_account_id: Optional[pulumi.Input[str]] = None) -> 'OrganizationAdminAccount':
@@ -170,7 +170,7 @@ class OrganizationAdminAccount(pulumi.CustomResource):
         Get an existing OrganizationAdminAccount resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] admin_account_id: The AWS account identifier of the account to designate as the Security Hub administrator account.
@@ -180,7 +180,7 @@ class OrganizationAdminAccount(pulumi.CustomResource):
         __props__ = _OrganizationAdminAccountState.__new__(_OrganizationAdminAccountState)
 
         __props__.__dict__["admin_account_id"] = admin_account_id
-        return OrganizationAdminAccount(resource_name, opts=opts, __props__=__props__)
+        return OrganizationAdminAccount(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="adminAccountId")

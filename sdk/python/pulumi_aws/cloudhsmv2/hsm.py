@@ -204,7 +204,7 @@ class _HsmState:
 class Hsm(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
@@ -236,7 +236,7 @@ class Hsm(pulumi.CustomResource):
          $ pulumi import aws:cloudhsmv2/hsm:Hsm bar hsm-quo8dahtaca
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: The IDs of AZ in which HSM module will be located. Do not use together with subnet_id.
         :param pulumi.Input[str] cluster_id: The ID of Cloud HSM v2 cluster to which HSM will be added.
@@ -246,7 +246,7 @@ class Hsm(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: HsmArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -274,20 +274,20 @@ class Hsm(pulumi.CustomResource):
          $ pulumi import aws:cloudhsmv2/hsm:Hsm bar hsm-quo8dahtaca
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param HsmArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(HsmArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
@@ -316,12 +316,12 @@ class Hsm(pulumi.CustomResource):
             __props__.__dict__["hsm_state"] = None
         super(Hsm, __self__).__init__(
             'aws:cloudhsmv2/hsm:Hsm',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
@@ -335,7 +335,7 @@ class Hsm(pulumi.CustomResource):
         Get an existing Hsm resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: The IDs of AZ in which HSM module will be located. Do not use together with subnet_id.
@@ -357,7 +357,7 @@ class Hsm(pulumi.CustomResource):
         __props__.__dict__["hsm_state"] = hsm_state
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["subnet_id"] = subnet_id
-        return Hsm(resource_name, opts=opts, __props__=__props__)
+        return Hsm(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="availabilityZone")

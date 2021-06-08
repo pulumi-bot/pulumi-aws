@@ -93,7 +93,7 @@ class _InstancePublicPortsState:
 class InstancePublicPorts(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  port_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePublicPortsPortInfoArgs']]]]] = None,
@@ -124,7 +124,7 @@ class InstancePublicPorts(pulumi.CustomResource):
             )])
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_name: Name of the Lightsail Instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePublicPortsPortInfoArgs']]]] port_infos: Configuration block with port information. AWS closes all currently open ports that are not included in the `port_info`. Detailed below.
@@ -132,7 +132,7 @@ class InstancePublicPorts(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: InstancePublicPortsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -161,20 +161,20 @@ class InstancePublicPorts(pulumi.CustomResource):
             )])
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param InstancePublicPortsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(InstancePublicPortsArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  port_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePublicPortsPortInfoArgs']]]]] = None,
@@ -198,12 +198,12 @@ class InstancePublicPorts(pulumi.CustomResource):
             __props__.__dict__["port_infos"] = port_infos
         super(InstancePublicPorts, __self__).__init__(
             'aws:lightsail/instancePublicPorts:InstancePublicPorts',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
@@ -212,7 +212,7 @@ class InstancePublicPorts(pulumi.CustomResource):
         Get an existing InstancePublicPorts resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_name: Name of the Lightsail Instance.
@@ -224,7 +224,7 @@ class InstancePublicPorts(pulumi.CustomResource):
 
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["port_infos"] = port_infos
-        return InstancePublicPorts(resource_name, opts=opts, __props__=__props__)
+        return InstancePublicPorts(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="instanceName")

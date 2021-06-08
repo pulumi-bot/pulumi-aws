@@ -306,7 +306,7 @@ class _ProxyEndpointState:
 class ProxyEndpoint(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  db_proxy_endpoint_name: Optional[pulumi.Input[str]] = None,
                  db_proxy_name: Optional[pulumi.Input[str]] = None,
@@ -340,7 +340,7 @@ class ProxyEndpoint(pulumi.CustomResource):
          $ pulumi import aws:rds/proxyEndpoint:ProxyEndpoint example example/example
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] db_proxy_endpoint_name: The identifier for the proxy endpoint. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it can't end with a hyphen or contain two consecutive hyphens.
         :param pulumi.Input[str] db_proxy_name: The name of the DB proxy associated with the DB proxy endpoint that you create.
@@ -352,7 +352,7 @@ class ProxyEndpoint(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: ProxyEndpointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -379,20 +379,20 @@ class ProxyEndpoint(pulumi.CustomResource):
          $ pulumi import aws:rds/proxyEndpoint:ProxyEndpoint example example/example
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ProxyEndpointArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ProxyEndpointArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  db_proxy_endpoint_name: Optional[pulumi.Input[str]] = None,
                  db_proxy_name: Optional[pulumi.Input[str]] = None,
@@ -432,12 +432,12 @@ class ProxyEndpoint(pulumi.CustomResource):
             __props__.__dict__["vpc_id"] = None
         super(ProxyEndpoint, __self__).__init__(
             'aws:rds/proxyEndpoint:ProxyEndpoint',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
@@ -455,7 +455,7 @@ class ProxyEndpoint(pulumi.CustomResource):
         Get an existing ProxyEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) for the proxy endpoint.
@@ -484,7 +484,7 @@ class ProxyEndpoint(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vpc_security_group_ids"] = vpc_security_group_ids
         __props__.__dict__["vpc_subnet_ids"] = vpc_subnet_ids
-        return ProxyEndpoint(resource_name, opts=opts, __props__=__props__)
+        return ProxyEndpoint(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

@@ -342,7 +342,7 @@ class ProviderArgs:
 class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_key: Optional[pulumi.Input[str]] = None,
                  allowed_account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -371,7 +371,7 @@ class Provider(pulumi.ProviderResource):
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_key: The access key for API operations. You can retrieve this from the 'Security & Credentials' section of the AWS console.
         :param pulumi.Input[pulumi.InputType['ProviderDefaultTagsArgs']] default_tags: Configuration block with settings to default resource tags across all resources.
@@ -396,7 +396,7 @@ class Provider(pulumi.ProviderResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: Optional[ProviderArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -405,20 +405,20 @@ class Provider(pulumi.ProviderResource):
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ProviderArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ProviderArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_key: Optional[pulumi.Input[str]] = None,
                  allowed_account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -486,7 +486,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["token"] = token
         super(Provider, __self__).__init__(
             'aws',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 

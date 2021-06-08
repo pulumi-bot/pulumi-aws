@@ -513,7 +513,7 @@ class _StackState:
 class Stack(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  disable_rollback: Optional[pulumi.Input[bool]] = None,
@@ -575,7 +575,7 @@ class Stack(pulumi.CustomResource):
          $ pulumi import aws:cloudformation/stack:Stack stack networking-stack
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: A list of capabilities.
                Valid values: `CAPABILITY_IAM`, `CAPABILITY_NAMED_IAM`, or `CAPABILITY_AUTO_EXPAND`
@@ -600,7 +600,7 @@ class Stack(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: Optional[StackArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -648,20 +648,20 @@ class Stack(pulumi.CustomResource):
          $ pulumi import aws:cloudformation/stack:Stack stack networking-stack
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param StackArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(StackArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  disable_rollback: Optional[pulumi.Input[bool]] = None,
@@ -706,12 +706,12 @@ class Stack(pulumi.CustomResource):
             __props__.__dict__["outputs"] = None
         super(Stack, __self__).__init__(
             'aws:cloudformation/stack:Stack',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -733,7 +733,7 @@ class Stack(pulumi.CustomResource):
         Get an existing Stack resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: A list of capabilities.
@@ -776,7 +776,7 @@ class Stack(pulumi.CustomResource):
         __props__.__dict__["template_body"] = template_body
         __props__.__dict__["template_url"] = template_url
         __props__.__dict__["timeout_in_minutes"] = timeout_in_minutes
-        return Stack(resource_name, opts=opts, __props__=__props__)
+        return Stack(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

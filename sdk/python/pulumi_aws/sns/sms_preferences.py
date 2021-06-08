@@ -221,7 +221,7 @@ class _SmsPreferencesState:
 class SmsPreferences(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_sender_id: Optional[pulumi.Input[str]] = None,
                  default_sms_type: Optional[pulumi.Input[str]] = None,
@@ -242,7 +242,7 @@ class SmsPreferences(pulumi.CustomResource):
         update_sms_prefs = aws.sns.SmsPreferences("updateSmsPrefs")
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_sender_id: A string, such as your business brand, that is displayed as the sender on the receiving device.
         :param pulumi.Input[str] default_sms_type: The type of SMS message that you will send by default. Possible values are: Promotional, Transactional
@@ -254,7 +254,7 @@ class SmsPreferences(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: Optional[SmsPreferencesArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -269,20 +269,20 @@ class SmsPreferences(pulumi.CustomResource):
         update_sms_prefs = aws.sns.SmsPreferences("updateSmsPrefs")
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param SmsPreferencesArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(SmsPreferencesArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_sender_id: Optional[pulumi.Input[str]] = None,
                  default_sms_type: Optional[pulumi.Input[str]] = None,
@@ -310,12 +310,12 @@ class SmsPreferences(pulumi.CustomResource):
             __props__.__dict__["usage_report_s3_bucket"] = usage_report_s3_bucket
         super(SmsPreferences, __self__).__init__(
             'aws:sns/smsPreferences:SmsPreferences',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             default_sender_id: Optional[pulumi.Input[str]] = None,
@@ -328,7 +328,7 @@ class SmsPreferences(pulumi.CustomResource):
         Get an existing SmsPreferences resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_sender_id: A string, such as your business brand, that is displayed as the sender on the receiving device.
@@ -348,7 +348,7 @@ class SmsPreferences(pulumi.CustomResource):
         __props__.__dict__["delivery_status_success_sampling_rate"] = delivery_status_success_sampling_rate
         __props__.__dict__["monthly_spend_limit"] = monthly_spend_limit
         __props__.__dict__["usage_report_s3_bucket"] = usage_report_s3_bucket
-        return SmsPreferences(resource_name, opts=opts, __props__=__props__)
+        return SmsPreferences(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="defaultSenderId")

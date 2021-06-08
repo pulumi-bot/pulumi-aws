@@ -186,7 +186,7 @@ class _SshKeyState:
 class SshKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  encoding: Optional[pulumi.Input[str]] = None,
                  public_key: Optional[pulumi.Input[str]] = None,
@@ -217,7 +217,7 @@ class SshKey(pulumi.CustomResource):
          $ pulumi import aws:iam/sshKey:SshKey user user:APKAJNCNNJICVN7CFKCA:SSH
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] encoding: Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use `SSH`. To retrieve the public key in PEM format, use `PEM`.
         :param pulumi.Input[str] public_key: The SSH public key. The public key must be encoded in ssh-rsa format or PEM format.
@@ -227,7 +227,7 @@ class SshKey(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: SshKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -254,20 +254,20 @@ class SshKey(pulumi.CustomResource):
          $ pulumi import aws:iam/sshKey:SshKey user user:APKAJNCNNJICVN7CFKCA:SSH
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param SshKeyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(SshKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  encoding: Optional[pulumi.Input[str]] = None,
                  public_key: Optional[pulumi.Input[str]] = None,
@@ -299,12 +299,12 @@ class SshKey(pulumi.CustomResource):
             __props__.__dict__["ssh_public_key_id"] = None
         super(SshKey, __self__).__init__(
             'aws:iam/sshKey:SshKey',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             encoding: Optional[pulumi.Input[str]] = None,
@@ -317,7 +317,7 @@ class SshKey(pulumi.CustomResource):
         Get an existing SshKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] encoding: Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use `SSH`. To retrieve the public key in PEM format, use `PEM`.
@@ -337,7 +337,7 @@ class SshKey(pulumi.CustomResource):
         __props__.__dict__["ssh_public_key_id"] = ssh_public_key_id
         __props__.__dict__["status"] = status
         __props__.__dict__["username"] = username
-        return SshKey(resource_name, opts=opts, __props__=__props__)
+        return SshKey(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

@@ -506,7 +506,7 @@ class _FirehoseDeliveryStreamState:
 class FirehoseDeliveryStream(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  arn: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
@@ -839,7 +839,7 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
 
          NoteImport does not work for stream destination `s3`. Consider using `extended_s3` since `s3` destination is deprecated.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) specifying the Stream
         :param pulumi.Input[str] destination: This is the destination to where the data is delivered. The only options are `s3` (Deprecated, use `extended_s3` instead), `extended_s3`, `redshift`, `elasticsearch`, `splunk`, and `http_endpoint`.
@@ -862,7 +862,7 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: FirehoseDeliveryStreamArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -1180,20 +1180,20 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
 
          NoteImport does not work for stream destination `s3`. Consider using `extended_s3` since `s3` destination is deprecated.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param FirehoseDeliveryStreamArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(FirehoseDeliveryStreamArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  arn: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
@@ -1241,12 +1241,12 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
             __props__.__dict__["version_id"] = version_id
         super(FirehoseDeliveryStream, __self__).__init__(
             'aws:kinesis/firehoseDeliveryStream:FirehoseDeliveryStream',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
@@ -1268,7 +1268,7 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
         Get an existing FirehoseDeliveryStream resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The Amazon Resource Name (ARN) specifying the Stream
@@ -1308,7 +1308,7 @@ class FirehoseDeliveryStream(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tags_all"] = tags_all
         __props__.__dict__["version_id"] = version_id
-        return FirehoseDeliveryStream(resource_name, opts=opts, __props__=__props__)
+        return FirehoseDeliveryStream(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

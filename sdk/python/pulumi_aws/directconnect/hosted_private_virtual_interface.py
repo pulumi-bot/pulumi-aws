@@ -404,7 +404,7 @@ class _HostedPrivateVirtualInterfaceState:
 class HostedPrivateVirtualInterface(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address_family: Optional[pulumi.Input[str]] = None,
                  amazon_address: Optional[pulumi.Input[str]] = None,
@@ -442,7 +442,7 @@ class HostedPrivateVirtualInterface(pulumi.CustomResource):
          $ pulumi import aws:directconnect/hostedPrivateVirtualInterface:HostedPrivateVirtualInterface test dxvif-33cc44dd
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_family: The address family for the BGP peer. `ipv4 ` or `ipv6`.
         :param pulumi.Input[str] amazon_address: The IPv4 CIDR address to use to send traffic to Amazon. Required for IPv4 BGP peers.
@@ -458,7 +458,7 @@ class HostedPrivateVirtualInterface(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: HostedPrivateVirtualInterfaceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -486,20 +486,20 @@ class HostedPrivateVirtualInterface(pulumi.CustomResource):
          $ pulumi import aws:directconnect/hostedPrivateVirtualInterface:HostedPrivateVirtualInterface test dxvif-33cc44dd
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param HostedPrivateVirtualInterfaceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(HostedPrivateVirtualInterfaceArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address_family: Optional[pulumi.Input[str]] = None,
                  amazon_address: Optional[pulumi.Input[str]] = None,
@@ -549,12 +549,12 @@ class HostedPrivateVirtualInterface(pulumi.CustomResource):
             __props__.__dict__["jumbo_frame_capable"] = None
         super(HostedPrivateVirtualInterface, __self__).__init__(
             'aws:directconnect/hostedPrivateVirtualInterface:HostedPrivateVirtualInterface',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             address_family: Optional[pulumi.Input[str]] = None,
@@ -575,7 +575,7 @@ class HostedPrivateVirtualInterface(pulumi.CustomResource):
         Get an existing HostedPrivateVirtualInterface resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_family: The address family for the BGP peer. `ipv4 ` or `ipv6`.
@@ -610,7 +610,7 @@ class HostedPrivateVirtualInterface(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["owner_account_id"] = owner_account_id
         __props__.__dict__["vlan"] = vlan
-        return HostedPrivateVirtualInterface(resource_name, opts=opts, __props__=__props__)
+        return HostedPrivateVirtualInterface(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="addressFamily")

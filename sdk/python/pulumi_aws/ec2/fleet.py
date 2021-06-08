@@ -365,7 +365,7 @@ class _FleetState:
 class Fleet(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  excess_capacity_termination_policy: Optional[pulumi.Input[str]] = None,
                  launch_template_config: Optional[pulumi.Input[pulumi.InputType['FleetLaunchTemplateConfigArgs']]] = None,
@@ -409,7 +409,7 @@ class Fleet(pulumi.CustomResource):
          $ pulumi import aws:ec2/fleet:Fleet example fleet-b9b55d27-c5fc-41ac-a6f3-48fcc91f080c
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] excess_capacity_termination_policy: Whether running instances should be terminated if the total target capacity of the EC2 Fleet is decreased below the current size of the EC2. Valid values: `no-termination`, `termination`. Defaults to `termination`.
         :param pulumi.Input[pulumi.InputType['FleetLaunchTemplateConfigArgs']] launch_template_config: Nested argument containing EC2 Launch Template configurations. Defined below.
@@ -424,7 +424,7 @@ class Fleet(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: FleetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -457,20 +457,20 @@ class Fleet(pulumi.CustomResource):
          $ pulumi import aws:ec2/fleet:Fleet example fleet-b9b55d27-c5fc-41ac-a6f3-48fcc91f080c
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param FleetArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(FleetArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  excess_capacity_termination_policy: Optional[pulumi.Input[str]] = None,
                  launch_template_config: Optional[pulumi.Input[pulumi.InputType['FleetLaunchTemplateConfigArgs']]] = None,
@@ -512,12 +512,12 @@ class Fleet(pulumi.CustomResource):
             __props__.__dict__["type"] = type
         super(Fleet, __self__).__init__(
             'aws:ec2/fleet:Fleet',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             excess_capacity_termination_policy: Optional[pulumi.Input[str]] = None,
@@ -535,7 +535,7 @@ class Fleet(pulumi.CustomResource):
         Get an existing Fleet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] excess_capacity_termination_policy: Whether running instances should be terminated if the total target capacity of the EC2 Fleet is decreased below the current size of the EC2. Valid values: `no-termination`, `termination`. Defaults to `termination`.
@@ -563,7 +563,7 @@ class Fleet(pulumi.CustomResource):
         __props__.__dict__["terminate_instances"] = terminate_instances
         __props__.__dict__["terminate_instances_with_expiration"] = terminate_instances_with_expiration
         __props__.__dict__["type"] = type
-        return Fleet(resource_name, opts=opts, __props__=__props__)
+        return Fleet(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="excessCapacityTerminationPolicy")

@@ -157,7 +157,7 @@ class _WebAclLoggingConfigurationState:
 class WebAclLoggingConfiguration(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  log_destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logging_filter: Optional[pulumi.Input[pulumi.InputType['WebAclLoggingConfigurationLoggingFilterArgs']]] = None,
@@ -236,7 +236,7 @@ class WebAclLoggingConfiguration(pulumi.CustomResource):
          $ pulumi import aws:wafv2/webAclLoggingConfiguration:WebAclLoggingConfiguration example arn:aws:wafv2:us-west-2:123456789012:regional/webacl/test-logs/a1b2c3d4-5678-90ab-cdef
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] log_destination_configs: The Amazon Kinesis Data Firehose Amazon Resource Name (ARNs) that you want to associate with the web ACL. Currently, only 1 ARN is supported.
         :param pulumi.Input[pulumi.InputType['WebAclLoggingConfigurationLoggingFilterArgs']] logging_filter: A configuration block that specifies which web requests are kept in the logs and which are dropped. You can filter on the rule action and on the web request labels that were applied by matching rules during web ACL evaluation. See Logging Filter below for more details.
@@ -246,7 +246,7 @@ class WebAclLoggingConfiguration(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: WebAclLoggingConfigurationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -321,20 +321,20 @@ class WebAclLoggingConfiguration(pulumi.CustomResource):
          $ pulumi import aws:wafv2/webAclLoggingConfiguration:WebAclLoggingConfiguration example arn:aws:wafv2:us-west-2:123456789012:regional/webacl/test-logs/a1b2c3d4-5678-90ab-cdef
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param WebAclLoggingConfigurationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(WebAclLoggingConfigurationArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  log_destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logging_filter: Optional[pulumi.Input[pulumi.InputType['WebAclLoggingConfigurationLoggingFilterArgs']]] = None,
@@ -362,12 +362,12 @@ class WebAclLoggingConfiguration(pulumi.CustomResource):
             __props__.__dict__["resource_arn"] = resource_arn
         super(WebAclLoggingConfiguration, __self__).__init__(
             'aws:wafv2/webAclLoggingConfiguration:WebAclLoggingConfiguration',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             log_destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -378,7 +378,7 @@ class WebAclLoggingConfiguration(pulumi.CustomResource):
         Get an existing WebAclLoggingConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] log_destination_configs: The Amazon Kinesis Data Firehose Amazon Resource Name (ARNs) that you want to associate with the web ACL. Currently, only 1 ARN is supported.
@@ -394,7 +394,7 @@ class WebAclLoggingConfiguration(pulumi.CustomResource):
         __props__.__dict__["logging_filter"] = logging_filter
         __props__.__dict__["redacted_fields"] = redacted_fields
         __props__.__dict__["resource_arn"] = resource_arn
-        return WebAclLoggingConfiguration(resource_name, opts=opts, __props__=__props__)
+        return WebAclLoggingConfiguration(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="logDestinationConfigs")

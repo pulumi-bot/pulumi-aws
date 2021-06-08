@@ -111,7 +111,7 @@ class _MainRouteTableAssociationState:
 class MainRouteTableAssociation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  route_table_id: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -138,7 +138,7 @@ class MainRouteTableAssociation(pulumi.CustomResource):
         additional Route Table in the AWS console; it must remain intact in order for
         the `main_route_table_association` delete to work properly.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] route_table_id: The ID of the Route Table to set as the new
                main route table for the target VPC
@@ -147,7 +147,7 @@ class MainRouteTableAssociation(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: MainRouteTableAssociationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -172,20 +172,20 @@ class MainRouteTableAssociation(pulumi.CustomResource):
         additional Route Table in the AWS console; it must remain intact in order for
         the `main_route_table_association` delete to work properly.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param MainRouteTableAssociationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(MainRouteTableAssociationArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  route_table_id: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -210,12 +210,12 @@ class MainRouteTableAssociation(pulumi.CustomResource):
             __props__.__dict__["original_route_table_id"] = None
         super(MainRouteTableAssociation, __self__).__init__(
             'aws:ec2/mainRouteTableAssociation:MainRouteTableAssociation',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             original_route_table_id: Optional[pulumi.Input[str]] = None,
@@ -225,7 +225,7 @@ class MainRouteTableAssociation(pulumi.CustomResource):
         Get an existing MainRouteTableAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] original_route_table_id: Used internally, see __Notes__ below
@@ -240,7 +240,7 @@ class MainRouteTableAssociation(pulumi.CustomResource):
         __props__.__dict__["original_route_table_id"] = original_route_table_id
         __props__.__dict__["route_table_id"] = route_table_id
         __props__.__dict__["vpc_id"] = vpc_id
-        return MainRouteTableAssociation(resource_name, opts=opts, __props__=__props__)
+        return MainRouteTableAssociation(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="originalRouteTableId")

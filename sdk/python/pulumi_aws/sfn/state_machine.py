@@ -333,7 +333,7 @@ class _StateMachineState:
 class StateMachine(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  definition: Optional[pulumi.Input[str]] = None,
                  logging_configuration: Optional[pulumi.Input[pulumi.InputType['StateMachineLoggingConfigurationArgs']]] = None,
@@ -431,7 +431,7 @@ class StateMachine(pulumi.CustomResource):
          $ pulumi import aws:sfn/stateMachine:StateMachine foo arn:aws:states:eu-west-1:123456789098:stateMachine:bar
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] definition: The [Amazon States Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html) definition of the state machine.
         :param pulumi.Input[pulumi.InputType['StateMachineLoggingConfigurationArgs']] logging_configuration: Defines what execution history events are logged and where they are logged. The `logging_configuration` parameter is only valid when `type` is set to `EXPRESS`. Defaults to `OFF`. For more information see [Logging Express Workflows](https://docs.aws.amazon.com/step-functions/latest/dg/cw-logs.html) and [Log Levels](https://docs.aws.amazon.com/step-functions/latest/dg/cloudwatch-log-level.html) in the AWS Step Functions User Guide.
@@ -445,7 +445,7 @@ class StateMachine(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: StateMachineArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -535,20 +535,20 @@ class StateMachine(pulumi.CustomResource):
          $ pulumi import aws:sfn/stateMachine:StateMachine foo arn:aws:states:eu-west-1:123456789098:stateMachine:bar
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param StateMachineArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(StateMachineArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  definition: Optional[pulumi.Input[str]] = None,
                  logging_configuration: Optional[pulumi.Input[pulumi.InputType['StateMachineLoggingConfigurationArgs']]] = None,
@@ -587,12 +587,12 @@ class StateMachine(pulumi.CustomResource):
             __props__.__dict__["status"] = None
         super(StateMachine, __self__).__init__(
             'aws:sfn/stateMachine:StateMachine',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
@@ -610,7 +610,7 @@ class StateMachine(pulumi.CustomResource):
         Get an existing StateMachine resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The ARN of the state machine.
@@ -640,7 +640,7 @@ class StateMachine(pulumi.CustomResource):
         __props__.__dict__["tags_all"] = tags_all
         __props__.__dict__["tracing_configuration"] = tracing_configuration
         __props__.__dict__["type"] = type
-        return StateMachine(resource_name, opts=opts, __props__=__props__)
+        return StateMachine(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

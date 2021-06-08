@@ -329,7 +329,7 @@ class _TrafficMirrorSessionState:
 class TrafficMirrorSession(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  network_interface_id: Optional[pulumi.Input[str]] = None,
@@ -372,7 +372,7 @@ class TrafficMirrorSession(pulumi.CustomResource):
          $ pulumi import aws:ec2/trafficMirrorSession:TrafficMirrorSession session tms-0d8aa3ca35897b82e
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the traffic mirror session.
         :param pulumi.Input[str] network_interface_id: ID of the source network interface. Not all network interfaces are eligible as mirror sources. On EC2 instances only nitro based instances support mirroring.
@@ -385,7 +385,7 @@ class TrafficMirrorSession(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: TrafficMirrorSessionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -419,20 +419,20 @@ class TrafficMirrorSession(pulumi.CustomResource):
          $ pulumi import aws:ec2/trafficMirrorSession:TrafficMirrorSession session tms-0d8aa3ca35897b82e
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param TrafficMirrorSessionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(TrafficMirrorSessionArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  network_interface_id: Optional[pulumi.Input[str]] = None,
@@ -476,12 +476,12 @@ class TrafficMirrorSession(pulumi.CustomResource):
             __props__.__dict__["owner_id"] = None
         super(TrafficMirrorSession, __self__).__init__(
             'aws:ec2/trafficMirrorSession:TrafficMirrorSession',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
@@ -499,7 +499,7 @@ class TrafficMirrorSession(pulumi.CustomResource):
         Get an existing TrafficMirrorSession resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The ARN of the traffic mirror session.
@@ -527,7 +527,7 @@ class TrafficMirrorSession(pulumi.CustomResource):
         __props__.__dict__["traffic_mirror_filter_id"] = traffic_mirror_filter_id
         __props__.__dict__["traffic_mirror_target_id"] = traffic_mirror_target_id
         __props__.__dict__["virtual_network_id"] = virtual_network_id
-        return TrafficMirrorSession(resource_name, opts=opts, __props__=__props__)
+        return TrafficMirrorSession(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

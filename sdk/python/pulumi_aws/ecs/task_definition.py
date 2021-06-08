@@ -573,7 +573,7 @@ class _TaskDefinitionState:
 class TaskDefinition(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  container_definitions: Optional[pulumi.Input[str]] = None,
                  cpu: Optional[pulumi.Input[str]] = None,
@@ -755,7 +755,7 @@ class TaskDefinition(pulumi.CustomResource):
          $ pulumi import aws:ecs/taskDefinition:TaskDefinition example arn:aws:ecs:us-east-1:012345678910:task-definition/mytaskfamily:123
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_definitions: A list of valid [container definitions](http://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDefinition.html) provided as a single valid JSON document. Please note that you should only provide values that are part of the container definition document. For a detailed description of what parameters are available, see the [Task Definition Parameters](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html) section from the official [Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide).
         :param pulumi.Input[str] cpu: Number of cpu units used by the task. If the `requires_compatibilities` is `FARGATE` this field is required.
@@ -777,7 +777,7 @@ class TaskDefinition(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: TaskDefinitionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -943,20 +943,20 @@ class TaskDefinition(pulumi.CustomResource):
          $ pulumi import aws:ecs/taskDefinition:TaskDefinition example arn:aws:ecs:us-east-1:012345678910:task-definition/mytaskfamily:123
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param TaskDefinitionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(TaskDefinitionArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  container_definitions: Optional[pulumi.Input[str]] = None,
                  cpu: Optional[pulumi.Input[str]] = None,
@@ -1010,12 +1010,12 @@ class TaskDefinition(pulumi.CustomResource):
             __props__.__dict__["revision"] = None
         super(TaskDefinition, __self__).__init__(
             'aws:ecs/taskDefinition:TaskDefinition',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
@@ -1040,7 +1040,7 @@ class TaskDefinition(pulumi.CustomResource):
         Get an existing TaskDefinition resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: Full ARN of the Task Definition (including both `family` and `revision`).
@@ -1084,7 +1084,7 @@ class TaskDefinition(pulumi.CustomResource):
         __props__.__dict__["tags_all"] = tags_all
         __props__.__dict__["task_role_arn"] = task_role_arn
         __props__.__dict__["volumes"] = volumes
-        return TaskDefinition(resource_name, opts=opts, __props__=__props__)
+        return TaskDefinition(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

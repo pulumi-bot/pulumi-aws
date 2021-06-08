@@ -364,7 +364,7 @@ class _ProvisioningArtifactState:
 class ProvisioningArtifact(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accept_language: Optional[pulumi.Input[str]] = None,
                  active: Optional[pulumi.Input[bool]] = None,
@@ -407,7 +407,7 @@ class ProvisioningArtifact(pulumi.CustomResource):
          $ pulumi import aws:servicecatalog/provisioningArtifact:ProvisioningArtifact example pa-ij2b6lusy6dec:prod-el3an0rma3
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accept_language: Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). The default value is `en`.
         :param pulumi.Input[bool] active: Whether the product version is active. Inactive provisioning artifacts are invisible to end users. End users cannot launch or update a provisioned product from an inactive provisioning artifact. Default is `true`.
@@ -423,7 +423,7 @@ class ProvisioningArtifact(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: ProvisioningArtifactArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -456,20 +456,20 @@ class ProvisioningArtifact(pulumi.CustomResource):
          $ pulumi import aws:servicecatalog/provisioningArtifact:ProvisioningArtifact example pa-ij2b6lusy6dec:prod-el3an0rma3
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ProvisioningArtifactArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ProvisioningArtifactArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accept_language: Optional[pulumi.Input[str]] = None,
                  active: Optional[pulumi.Input[bool]] = None,
@@ -508,12 +508,12 @@ class ProvisioningArtifact(pulumi.CustomResource):
             __props__.__dict__["created_time"] = None
         super(ProvisioningArtifact, __self__).__init__(
             'aws:servicecatalog/provisioningArtifact:ProvisioningArtifact',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             accept_language: Optional[pulumi.Input[str]] = None,
@@ -531,7 +531,7 @@ class ProvisioningArtifact(pulumi.CustomResource):
         Get an existing ProvisioningArtifact resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accept_language: Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). The default value is `en`.
@@ -561,7 +561,7 @@ class ProvisioningArtifact(pulumi.CustomResource):
         __props__.__dict__["template_physical_id"] = template_physical_id
         __props__.__dict__["template_url"] = template_url
         __props__.__dict__["type"] = type
-        return ProvisioningArtifact(resource_name, opts=opts, __props__=__props__)
+        return ProvisioningArtifact(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="acceptLanguage")

@@ -315,7 +315,7 @@ class _KeySigningKeyState:
 class KeySigningKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  hosted_zone_id: Optional[pulumi.Input[str]] = None,
                  key_management_service_arn: Optional[pulumi.Input[str]] = None,
@@ -377,7 +377,7 @@ class KeySigningKey(pulumi.CustomResource):
          $ pulumi import aws:route53/keySigningKey:KeySigningKey example Z1D633PJN98FT9,example
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] hosted_zone_id: Identifier of the Route 53 Hosted Zone.
         :param pulumi.Input[str] key_management_service_arn: Amazon Resource Name (ARN) of the Key Management Service (KMS) Key. This must be unique for each key-signing key (KSK) in a single hosted zone. This key must be in the `us-east-1` Region and meet certain requirements, which are described in the [Route 53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring-dnssec-cmk-requirements.html) and [Route 53 API Reference](https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateKeySigningKey.html).
@@ -387,7 +387,7 @@ class KeySigningKey(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: KeySigningKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -445,20 +445,20 @@ class KeySigningKey(pulumi.CustomResource):
          $ pulumi import aws:route53/keySigningKey:KeySigningKey example Z1D633PJN98FT9,example
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param KeySigningKeyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(KeySigningKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  hosted_zone_id: Optional[pulumi.Input[str]] = None,
                  key_management_service_arn: Optional[pulumi.Input[str]] = None,
@@ -496,12 +496,12 @@ class KeySigningKey(pulumi.CustomResource):
             __props__.__dict__["signing_algorithm_type"] = None
         super(KeySigningKey, __self__).__init__(
             'aws:route53/keySigningKey:KeySigningKey',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             digest_algorithm_mnemonic: Optional[pulumi.Input[str]] = None,
@@ -522,7 +522,7 @@ class KeySigningKey(pulumi.CustomResource):
         Get an existing KeySigningKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] digest_algorithm_mnemonic: A string used to represent the delegation signer digest algorithm. This value must follow the guidelines provided by [RFC-8624 Section 3.3](https://tools.ietf.org/html/rfc8624#section-3.3).
@@ -558,7 +558,7 @@ class KeySigningKey(pulumi.CustomResource):
         __props__.__dict__["signing_algorithm_mnemonic"] = signing_algorithm_mnemonic
         __props__.__dict__["signing_algorithm_type"] = signing_algorithm_type
         __props__.__dict__["status"] = status
-        return KeySigningKey(resource_name, opts=opts, __props__=__props__)
+        return KeySigningKey(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="digestAlgorithmMnemonic")

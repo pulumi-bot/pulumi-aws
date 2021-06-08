@@ -331,7 +331,7 @@ class _CompositeAlarmState:
 class CompositeAlarm(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  actions_enabled: Optional[pulumi.Input[bool]] = None,
                  alarm_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -372,7 +372,7 @@ class CompositeAlarm(pulumi.CustomResource):
          $ pulumi import aws:cloudwatch/compositeAlarm:CompositeAlarm test my-alarm
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] actions_enabled: Indicates whether actions should be executed during any changes to the alarm state of the composite alarm. Defaults to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alarm_actions: The set of actions to execute when this alarm transitions to the `ALARM` state from any other state. Each action is specified as an ARN. Up to 5 actions are allowed.
@@ -387,7 +387,7 @@ class CompositeAlarm(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: CompositeAlarmArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -419,20 +419,20 @@ class CompositeAlarm(pulumi.CustomResource):
          $ pulumi import aws:cloudwatch/compositeAlarm:CompositeAlarm test my-alarm
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param CompositeAlarmArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(CompositeAlarmArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  actions_enabled: Optional[pulumi.Input[bool]] = None,
                  alarm_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -471,12 +471,12 @@ class CompositeAlarm(pulumi.CustomResource):
             __props__.__dict__["arn"] = None
         super(CompositeAlarm, __self__).__init__(
             'aws:cloudwatch/compositeAlarm:CompositeAlarm',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             actions_enabled: Optional[pulumi.Input[bool]] = None,
@@ -493,7 +493,7 @@ class CompositeAlarm(pulumi.CustomResource):
         Get an existing CompositeAlarm resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] actions_enabled: Indicates whether actions should be executed during any changes to the alarm state of the composite alarm. Defaults to `true`.
@@ -521,7 +521,7 @@ class CompositeAlarm(pulumi.CustomResource):
         __props__.__dict__["ok_actions"] = ok_actions
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tags_all"] = tags_all
-        return CompositeAlarm(resource_name, opts=opts, __props__=__props__)
+        return CompositeAlarm(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="actionsEnabled")

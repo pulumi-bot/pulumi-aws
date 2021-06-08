@@ -209,7 +209,7 @@ class _AccountPublicAccessBlockState:
 class AccountPublicAccessBlock(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  block_public_acls: Optional[pulumi.Input[bool]] = None,
@@ -243,7 +243,7 @@ class AccountPublicAccessBlock(pulumi.CustomResource):
          $ pulumi import aws:s3/accountPublicAccessBlock:AccountPublicAccessBlock example 123456789012
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: AWS account ID to configure. Defaults to automatically determined account ID of the this provider AWS provider.
         :param pulumi.Input[bool] block_public_acls: Whether Amazon S3 should block public ACLs for buckets in this account. Defaults to `false`. Enabling this setting does not affect existing policies or ACLs. When set to `true` causes the following behavior:
@@ -259,7 +259,7 @@ class AccountPublicAccessBlock(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: Optional[AccountPublicAccessBlockArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -288,20 +288,20 @@ class AccountPublicAccessBlock(pulumi.CustomResource):
          $ pulumi import aws:s3/accountPublicAccessBlock:AccountPublicAccessBlock example 123456789012
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param AccountPublicAccessBlockArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(AccountPublicAccessBlockArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  block_public_acls: Optional[pulumi.Input[bool]] = None,
@@ -327,12 +327,12 @@ class AccountPublicAccessBlock(pulumi.CustomResource):
             __props__.__dict__["restrict_public_buckets"] = restrict_public_buckets
         super(AccountPublicAccessBlock, __self__).__init__(
             'aws:s3/accountPublicAccessBlock:AccountPublicAccessBlock',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
@@ -344,7 +344,7 @@ class AccountPublicAccessBlock(pulumi.CustomResource):
         Get an existing AccountPublicAccessBlock resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: AWS account ID to configure. Defaults to automatically determined account ID of the this provider AWS provider.
@@ -367,7 +367,7 @@ class AccountPublicAccessBlock(pulumi.CustomResource):
         __props__.__dict__["block_public_policy"] = block_public_policy
         __props__.__dict__["ignore_public_acls"] = ignore_public_acls
         __props__.__dict__["restrict_public_buckets"] = restrict_public_buckets
-        return AccountPublicAccessBlock(resource_name, opts=opts, __props__=__props__)
+        return AccountPublicAccessBlock(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")

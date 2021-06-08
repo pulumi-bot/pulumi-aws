@@ -111,7 +111,7 @@ class _GeoMatchSetState:
 class GeoMatchSet(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  geo_match_constraints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GeoMatchSetGeoMatchConstraintArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -145,7 +145,7 @@ class GeoMatchSet(pulumi.CustomResource):
          $ pulumi import aws:waf/geoMatchSet:GeoMatchSet example a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GeoMatchSetGeoMatchConstraintArgs']]]] geo_match_constraints: The GeoMatchConstraint objects which contain the country that you want AWS WAF to search for.
         :param pulumi.Input[str] name: The name or description of the GeoMatchSet.
@@ -153,7 +153,7 @@ class GeoMatchSet(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: Optional[GeoMatchSetArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -185,20 +185,20 @@ class GeoMatchSet(pulumi.CustomResource):
          $ pulumi import aws:waf/geoMatchSet:GeoMatchSet example a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param GeoMatchSetArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(GeoMatchSetArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  geo_match_constraints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GeoMatchSetGeoMatchConstraintArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -219,12 +219,12 @@ class GeoMatchSet(pulumi.CustomResource):
             __props__.__dict__["arn"] = None
         super(GeoMatchSet, __self__).__init__(
             'aws:waf/geoMatchSet:GeoMatchSet',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
@@ -234,7 +234,7 @@ class GeoMatchSet(pulumi.CustomResource):
         Get an existing GeoMatchSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: Amazon Resource Name (ARN)
@@ -248,7 +248,7 @@ class GeoMatchSet(pulumi.CustomResource):
         __props__.__dict__["arn"] = arn
         __props__.__dict__["geo_match_constraints"] = geo_match_constraints
         __props__.__dict__["name"] = name
-        return GeoMatchSet(resource_name, opts=opts, __props__=__props__)
+        return GeoMatchSet(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

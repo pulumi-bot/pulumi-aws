@@ -122,7 +122,7 @@ class _LocalGatewayRouteState:
 class LocalGatewayRoute(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  destination_cidr_block: Optional[pulumi.Input[str]] = None,
                  local_gateway_route_table_id: Optional[pulumi.Input[str]] = None,
@@ -151,7 +151,7 @@ class LocalGatewayRoute(pulumi.CustomResource):
          $ pulumi import aws:ec2/localGatewayRoute:LocalGatewayRoute example lgw-rtb-12345678_172.16.0.0/16
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] destination_cidr_block: IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
         :param pulumi.Input[str] local_gateway_route_table_id: Identifier of EC2 Local Gateway Route Table.
@@ -160,7 +160,7 @@ class LocalGatewayRoute(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: LocalGatewayRouteArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -186,20 +186,20 @@ class LocalGatewayRoute(pulumi.CustomResource):
          $ pulumi import aws:ec2/localGatewayRoute:LocalGatewayRoute example lgw-rtb-12345678_172.16.0.0/16
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param LocalGatewayRouteArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(LocalGatewayRouteArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  destination_cidr_block: Optional[pulumi.Input[str]] = None,
                  local_gateway_route_table_id: Optional[pulumi.Input[str]] = None,
@@ -227,12 +227,12 @@ class LocalGatewayRoute(pulumi.CustomResource):
             __props__.__dict__["local_gateway_virtual_interface_group_id"] = local_gateway_virtual_interface_group_id
         super(LocalGatewayRoute, __self__).__init__(
             'aws:ec2/localGatewayRoute:LocalGatewayRoute',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             destination_cidr_block: Optional[pulumi.Input[str]] = None,
@@ -242,7 +242,7 @@ class LocalGatewayRoute(pulumi.CustomResource):
         Get an existing LocalGatewayRoute resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] destination_cidr_block: IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
@@ -256,7 +256,7 @@ class LocalGatewayRoute(pulumi.CustomResource):
         __props__.__dict__["destination_cidr_block"] = destination_cidr_block
         __props__.__dict__["local_gateway_route_table_id"] = local_gateway_route_table_id
         __props__.__dict__["local_gateway_virtual_interface_group_id"] = local_gateway_virtual_interface_group_id
-        return LocalGatewayRoute(resource_name, opts=opts, __props__=__props__)
+        return LocalGatewayRoute(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="destinationCidrBlock")

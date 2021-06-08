@@ -717,7 +717,7 @@ class _LaunchConfigurationState:
 class LaunchConfiguration(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
                  ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LaunchConfigurationEbsBlockDeviceArgs']]]]] = None,
@@ -810,7 +810,7 @@ class LaunchConfiguration(pulumi.CustomResource):
          $ pulumi import aws:ec2/launchConfiguration:LaunchConfiguration as_conf lg-123456
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_public_ip_address: Associate a public ip address with an instance in a VPC.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LaunchConfigurationEbsBlockDeviceArgs']]]] ebs_block_devices: Additional EBS block devices to attach to the
@@ -844,7 +844,7 @@ class LaunchConfiguration(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: LaunchConfigurationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -917,20 +917,20 @@ class LaunchConfiguration(pulumi.CustomResource):
          $ pulumi import aws:ec2/launchConfiguration:LaunchConfiguration as_conf lg-123456
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param LaunchConfigurationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(LaunchConfigurationArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
                  ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LaunchConfigurationEbsBlockDeviceArgs']]]]] = None,
@@ -991,12 +991,12 @@ class LaunchConfiguration(pulumi.CustomResource):
             __props__.__dict__["arn"] = None
         super(LaunchConfiguration, __self__).__init__(
             'aws:ec2/launchConfiguration:LaunchConfiguration',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
@@ -1024,7 +1024,7 @@ class LaunchConfiguration(pulumi.CustomResource):
         Get an existing LaunchConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The Amazon Resource Name of the launch configuration.
@@ -1082,7 +1082,7 @@ class LaunchConfiguration(pulumi.CustomResource):
         __props__.__dict__["user_data_base64"] = user_data_base64
         __props__.__dict__["vpc_classic_link_id"] = vpc_classic_link_id
         __props__.__dict__["vpc_classic_link_security_groups"] = vpc_classic_link_security_groups
-        return LaunchConfiguration(resource_name, opts=opts, __props__=__props__)
+        return LaunchConfiguration(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

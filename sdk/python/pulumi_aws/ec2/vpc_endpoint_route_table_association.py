@@ -91,7 +91,7 @@ class _VpcEndpointRouteTableAssociationState:
 class VpcEndpointRouteTableAssociation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  route_table_id: Optional[pulumi.Input[str]] = None,
                  vpc_endpoint_id: Optional[pulumi.Input[str]] = None,
@@ -118,7 +118,7 @@ class VpcEndpointRouteTableAssociation(pulumi.CustomResource):
          $ pulumi import aws:ec2/vpcEndpointRouteTableAssociation:VpcEndpointRouteTableAssociation example vpce-aaaaaaaa/rtb-bbbbbbbb
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] route_table_id: Identifier of the EC2 Route Table to be associated with the VPC Endpoint.
         :param pulumi.Input[str] vpc_endpoint_id: Identifier of the VPC Endpoint with which the EC2 Route Table will be associated.
@@ -126,7 +126,7 @@ class VpcEndpointRouteTableAssociation(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: VpcEndpointRouteTableAssociationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -151,20 +151,20 @@ class VpcEndpointRouteTableAssociation(pulumi.CustomResource):
          $ pulumi import aws:ec2/vpcEndpointRouteTableAssociation:VpcEndpointRouteTableAssociation example vpce-aaaaaaaa/rtb-bbbbbbbb
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param VpcEndpointRouteTableAssociationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(VpcEndpointRouteTableAssociationArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  route_table_id: Optional[pulumi.Input[str]] = None,
                  vpc_endpoint_id: Optional[pulumi.Input[str]] = None,
@@ -188,12 +188,12 @@ class VpcEndpointRouteTableAssociation(pulumi.CustomResource):
             __props__.__dict__["vpc_endpoint_id"] = vpc_endpoint_id
         super(VpcEndpointRouteTableAssociation, __self__).__init__(
             'aws:ec2/vpcEndpointRouteTableAssociation:VpcEndpointRouteTableAssociation',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             route_table_id: Optional[pulumi.Input[str]] = None,
@@ -202,7 +202,7 @@ class VpcEndpointRouteTableAssociation(pulumi.CustomResource):
         Get an existing VpcEndpointRouteTableAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] route_table_id: Identifier of the EC2 Route Table to be associated with the VPC Endpoint.
@@ -214,7 +214,7 @@ class VpcEndpointRouteTableAssociation(pulumi.CustomResource):
 
         __props__.__dict__["route_table_id"] = route_table_id
         __props__.__dict__["vpc_endpoint_id"] = vpc_endpoint_id
-        return VpcEndpointRouteTableAssociation(resource_name, opts=opts, __props__=__props__)
+        return VpcEndpointRouteTableAssociation(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="routeTableId")

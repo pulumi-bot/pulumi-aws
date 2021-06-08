@@ -207,7 +207,7 @@ class _ConfigurationAggregatorState:
 class ConfigurationAggregator(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_aggregation_source: Optional[pulumi.Input[pulumi.InputType['ConfigurationAggregatorAccountAggregationSourceArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -268,7 +268,7 @@ class ConfigurationAggregator(pulumi.CustomResource):
          $ pulumi import aws:cfg/configurationAggregator:ConfigurationAggregator example foo
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ConfigurationAggregatorAccountAggregationSourceArgs']] account_aggregation_source: The account(s) to aggregate config data from as documented below.
         :param pulumi.Input[str] name: The name of the configuration aggregator.
@@ -279,7 +279,7 @@ class ConfigurationAggregator(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: Optional[ConfigurationAggregatorArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -335,20 +335,20 @@ class ConfigurationAggregator(pulumi.CustomResource):
          $ pulumi import aws:cfg/configurationAggregator:ConfigurationAggregator example foo
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ConfigurationAggregatorArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ConfigurationAggregatorArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_aggregation_source: Optional[pulumi.Input[pulumi.InputType['ConfigurationAggregatorAccountAggregationSourceArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -375,12 +375,12 @@ class ConfigurationAggregator(pulumi.CustomResource):
             __props__.__dict__["arn"] = None
         super(ConfigurationAggregator, __self__).__init__(
             'aws:cfg/configurationAggregator:ConfigurationAggregator',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_aggregation_source: Optional[pulumi.Input[pulumi.InputType['ConfigurationAggregatorAccountAggregationSourceArgs']]] = None,
@@ -393,7 +393,7 @@ class ConfigurationAggregator(pulumi.CustomResource):
         Get an existing ConfigurationAggregator resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ConfigurationAggregatorAccountAggregationSourceArgs']] account_aggregation_source: The account(s) to aggregate config data from as documented below.
@@ -413,7 +413,7 @@ class ConfigurationAggregator(pulumi.CustomResource):
         __props__.__dict__["organization_aggregation_source"] = organization_aggregation_source
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tags_all"] = tags_all
-        return ConfigurationAggregator(resource_name, opts=opts, __props__=__props__)
+        return ConfigurationAggregator(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountAggregationSource")

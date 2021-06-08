@@ -699,7 +699,7 @@ class _LustreFileSystemState:
 class LustreFileSystem(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_import_policy: Optional[pulumi.Input[str]] = None,
                  automatic_backup_retention_days: Optional[pulumi.Input[int]] = None,
@@ -757,7 +757,7 @@ class LustreFileSystem(pulumi.CustomResource):
 
          } }
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_import_policy: How Amazon FSx keeps your file and directory listings up to date as you add or modify objects in your linked S3 bucket. see [Auto Import Data Repo](https://docs.aws.amazon.com/fsx/latest/LustreGuide/autoimport-data-repo.html) for more details.
         :param pulumi.Input[int] automatic_backup_retention_days: The number of days to retain automatic backups. Setting this to 0 disables automatic backups. You can retain automatic backups for a maximum of 90 days. only valid for `PERSISTENT_1` deployment_type.
@@ -781,7 +781,7 @@ class LustreFileSystem(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: LustreFileSystemArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -821,20 +821,20 @@ class LustreFileSystem(pulumi.CustomResource):
 
          } }
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param LustreFileSystemArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(LustreFileSystemArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_import_policy: Optional[pulumi.Input[str]] = None,
                  automatic_backup_retention_days: Optional[pulumi.Input[int]] = None,
@@ -896,12 +896,12 @@ class LustreFileSystem(pulumi.CustomResource):
             __props__.__dict__["vpc_id"] = None
         super(LustreFileSystem, __self__).__init__(
             'aws:fsx/lustreFileSystem:LustreFileSystem',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
@@ -932,7 +932,7 @@ class LustreFileSystem(pulumi.CustomResource):
         Get an existing LustreFileSystem resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: Amazon Resource Name of the file system.
@@ -988,7 +988,7 @@ class LustreFileSystem(pulumi.CustomResource):
         __props__.__dict__["tags_all"] = tags_all
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["weekly_maintenance_start_time"] = weekly_maintenance_start_time
-        return LustreFileSystem(resource_name, opts=opts, __props__=__props__)
+        return LustreFileSystem(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

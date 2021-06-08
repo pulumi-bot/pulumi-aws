@@ -141,7 +141,7 @@ class _AccountState:
 class Account(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  finding_publishing_frequency: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -168,7 +168,7 @@ class Account(pulumi.CustomResource):
          $ pulumi import aws:macie2/account:Account example abcd1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] finding_publishing_frequency: Specifies how often to publish updates to policy findings for the account. This includes publishing updates to AWS Security Hub and Amazon EventBridge (formerly called Amazon CloudWatch Events). Valid values are `FIFTEEN_MINUTES`, `ONE_HOUR` or `SIX_HOURS`.
         :param pulumi.Input[str] status: Specifies the status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
@@ -176,7 +176,7 @@ class Account(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: Optional[AccountArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -201,20 +201,20 @@ class Account(pulumi.CustomResource):
          $ pulumi import aws:macie2/account:Account example abcd1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param AccountArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(AccountArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  finding_publishing_frequency: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -237,12 +237,12 @@ class Account(pulumi.CustomResource):
             __props__.__dict__["updated_at"] = None
         super(Account, __self__).__init__(
             'aws:macie2/account:Account',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created_at: Optional[pulumi.Input[str]] = None,
@@ -254,7 +254,7 @@ class Account(pulumi.CustomResource):
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_at: The date and time, in UTC and extended RFC 3339 format, when the Amazon Macie account was created.
@@ -272,7 +272,7 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["service_role"] = service_role
         __props__.__dict__["status"] = status
         __props__.__dict__["updated_at"] = updated_at
-        return Account(resource_name, opts=opts, __props__=__props__)
+        return Account(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="createdAt")

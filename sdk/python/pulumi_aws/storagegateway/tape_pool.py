@@ -235,7 +235,7 @@ class _TapePoolState:
 class TapePool(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  pool_name: Optional[pulumi.Input[str]] = None,
                  retention_lock_time_in_days: Optional[pulumi.Input[int]] = None,
@@ -266,7 +266,7 @@ class TapePool(pulumi.CustomResource):
          $ pulumi import aws:storagegateway/tapePool:TapePool example arn:aws:storagegateway:us-east-1:123456789012:tapepool/pool-12345678
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] pool_name: The name of the new custom tape pool.
         :param pulumi.Input[int] retention_lock_time_in_days: Tape retention lock time is set in days. Tape retention lock can be enabled for up to 100 years (36,500 days). Default value is 0.
@@ -278,7 +278,7 @@ class TapePool(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: TapePoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -303,20 +303,20 @@ class TapePool(pulumi.CustomResource):
          $ pulumi import aws:storagegateway/tapePool:TapePool example arn:aws:storagegateway:us-east-1:123456789012:tapepool/pool-12345678
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param TapePoolArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(TapePoolArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  pool_name: Optional[pulumi.Input[str]] = None,
                  retention_lock_time_in_days: Optional[pulumi.Input[int]] = None,
@@ -349,12 +349,12 @@ class TapePool(pulumi.CustomResource):
             __props__.__dict__["arn"] = None
         super(TapePool, __self__).__init__(
             'aws:storagegateway/tapePool:TapePool',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
@@ -368,7 +368,7 @@ class TapePool(pulumi.CustomResource):
         Get an existing TapePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: Volume Amazon Resource Name (ARN), e.g. `aws_storagegateway_tape_pool.example arn:aws:storagegateway:us-east-1:123456789012:tapepool/pool-12345678`.
@@ -390,7 +390,7 @@ class TapePool(pulumi.CustomResource):
         __props__.__dict__["storage_class"] = storage_class
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tags_all"] = tags_all
-        return TapePool(resource_name, opts=opts, __props__=__props__)
+        return TapePool(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

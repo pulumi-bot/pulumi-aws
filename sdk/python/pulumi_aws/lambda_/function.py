@@ -1025,7 +1025,7 @@ class _FunctionState:
 class Function(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code: Optional[pulumi.Input[pulumi.Archive]] = None,
                  code_signing_config_arn: Optional[pulumi.Input[str]] = None,
@@ -1177,7 +1177,7 @@ class Function(pulumi.CustomResource):
          $ pulumi import aws:lambda/function:Function test_lambda my_test_lambda_function
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.Archive] code: Path to the function's deployment package within the local filesystem. Conflicts with `image_uri`, `s3_bucket`, `s3_key`, and `s3_object_version`.
         :param pulumi.Input[str] code_signing_config_arn: To enable code signing for this function, specify the ARN of a code-signing configuration. A code-signing configuration includes a set of signing profiles, which define the trusted publishers for this function.
@@ -1210,7 +1210,7 @@ class Function(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: FunctionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -1335,20 +1335,20 @@ class Function(pulumi.CustomResource):
          $ pulumi import aws:lambda/function:Function test_lambda my_test_lambda_function
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param FunctionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(FunctionArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code: Optional[pulumi.Input[pulumi.Archive]] = None,
                  code_signing_config_arn: Optional[pulumi.Input[str]] = None,
@@ -1428,12 +1428,12 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["version"] = None
         super(Function, __self__).__init__(
             'aws:lambda/function:Function',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
@@ -1475,7 +1475,7 @@ class Function(pulumi.CustomResource):
         Get an existing Function resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of the Amazon EFS Access Point that provides access to the file system.
@@ -1554,7 +1554,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["tracing_config"] = tracing_config
         __props__.__dict__["version"] = version
         __props__.__dict__["vpc_config"] = vpc_config
-        return Function(resource_name, opts=opts, __props__=__props__)
+        return Function(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

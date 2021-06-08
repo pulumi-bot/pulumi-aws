@@ -60,7 +60,7 @@ class _RegionSettingsState:
 class RegionSettings(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  resource_type_opt_in_preference: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]] = None,
                  __props__=None):
@@ -93,14 +93,14 @@ class RegionSettings(pulumi.CustomResource):
          $ pulumi import aws:backup/regionSettings:RegionSettings test us-west-2
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[bool]]] resource_type_opt_in_preference: A map of services along with the opt-in preferences for the Region.
         """
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: RegionSettingsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -132,20 +132,20 @@ class RegionSettings(pulumi.CustomResource):
          $ pulumi import aws:backup/regionSettings:RegionSettings test us-west-2
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param RegionSettingsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(RegionSettingsArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  resource_type_opt_in_preference: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]] = None,
                  __props__=None):
@@ -165,12 +165,12 @@ class RegionSettings(pulumi.CustomResource):
             __props__.__dict__["resource_type_opt_in_preference"] = resource_type_opt_in_preference
         super(RegionSettings, __self__).__init__(
             'aws:backup/regionSettings:RegionSettings',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             resource_type_opt_in_preference: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]] = None) -> 'RegionSettings':
@@ -178,7 +178,7 @@ class RegionSettings(pulumi.CustomResource):
         Get an existing RegionSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[bool]]] resource_type_opt_in_preference: A map of services along with the opt-in preferences for the Region.
@@ -188,7 +188,7 @@ class RegionSettings(pulumi.CustomResource):
         __props__ = _RegionSettingsState.__new__(_RegionSettingsState)
 
         __props__.__dict__["resource_type_opt_in_preference"] = resource_type_opt_in_preference
-        return RegionSettings(resource_name, opts=opts, __props__=__props__)
+        return RegionSettings(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="resourceTypeOptInPreference")

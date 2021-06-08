@@ -365,7 +365,7 @@ class _ImageState:
 class Image(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  distribution_configuration_arn: Optional[pulumi.Input[str]] = None,
                  enhanced_image_metadata_enabled: Optional[pulumi.Input[bool]] = None,
@@ -398,7 +398,7 @@ class Image(pulumi.CustomResource):
          $ pulumi import aws:imagebuilder/image:Image example arn:aws:imagebuilder:us-east-1:123456789012:image/example/1.0.0/1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] distribution_configuration_arn: Amazon Resource Name (ARN) of the Image Builder Distribution Configuration.
         :param pulumi.Input[bool] enhanced_image_metadata_enabled: Whether additional information about the image being created is collected. Defaults to `true`.
@@ -411,7 +411,7 @@ class Image(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: ImageArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -437,20 +437,20 @@ class Image(pulumi.CustomResource):
          $ pulumi import aws:imagebuilder/image:Image example arn:aws:imagebuilder:us-east-1:123456789012:image/example/1.0.0/1
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ImageArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ImageArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  distribution_configuration_arn: Optional[pulumi.Input[str]] = None,
                  enhanced_image_metadata_enabled: Optional[pulumi.Input[bool]] = None,
@@ -491,12 +491,12 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["version"] = None
         super(Image, __self__).__init__(
             'aws:imagebuilder/image:Image',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
@@ -517,7 +517,7 @@ class Image(pulumi.CustomResource):
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of the image.
@@ -553,7 +553,7 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tags_all"] = tags_all
         __props__.__dict__["version"] = version
-        return Image(resource_name, opts=opts, __props__=__props__)
+        return Image(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

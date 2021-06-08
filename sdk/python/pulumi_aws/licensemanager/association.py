@@ -91,7 +91,7 @@ class _AssociationState:
 class Association(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  license_configuration_arn: Optional[pulumi.Input[str]] = None,
                  resource_arn: Optional[pulumi.Input[str]] = None,
@@ -130,7 +130,7 @@ class Association(pulumi.CustomResource):
          $ pulumi import aws:licensemanager/association:Association example arn:aws:ec2:eu-west-1:123456789012:image/ami-123456789abcdef01,arn:aws:license-manager:eu-west-1:123456789012:license-configuration:lic-0123456789abcdef0123456789abcdef
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] license_configuration_arn: ARN of the license configuration.
         :param pulumi.Input[str] resource_arn: ARN of the resource associated with the license configuration.
@@ -138,7 +138,7 @@ class Association(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: AssociationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -175,20 +175,20 @@ class Association(pulumi.CustomResource):
          $ pulumi import aws:licensemanager/association:Association example arn:aws:ec2:eu-west-1:123456789012:image/ami-123456789abcdef01,arn:aws:license-manager:eu-west-1:123456789012:license-configuration:lic-0123456789abcdef0123456789abcdef
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param AssociationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(AssociationArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  license_configuration_arn: Optional[pulumi.Input[str]] = None,
                  resource_arn: Optional[pulumi.Input[str]] = None,
@@ -212,12 +212,12 @@ class Association(pulumi.CustomResource):
             __props__.__dict__["resource_arn"] = resource_arn
         super(Association, __self__).__init__(
             'aws:licensemanager/association:Association',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             license_configuration_arn: Optional[pulumi.Input[str]] = None,
@@ -226,7 +226,7 @@ class Association(pulumi.CustomResource):
         Get an existing Association resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] license_configuration_arn: ARN of the license configuration.
@@ -238,7 +238,7 @@ class Association(pulumi.CustomResource):
 
         __props__.__dict__["license_configuration_arn"] = license_configuration_arn
         __props__.__dict__["resource_arn"] = resource_arn
-        return Association(resource_name, opts=opts, __props__=__props__)
+        return Association(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="licenseConfigurationArn")

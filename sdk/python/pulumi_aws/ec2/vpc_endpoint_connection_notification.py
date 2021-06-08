@@ -187,7 +187,7 @@ class _VpcEndpointConnectionNotificationState:
 class VpcEndpointConnectionNotification(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  connection_notification_arn: Optional[pulumi.Input[str]] = None,
@@ -236,7 +236,7 @@ class VpcEndpointConnectionNotification(pulumi.CustomResource):
          $ pulumi import aws:ec2/vpcEndpointConnectionNotification:VpcEndpointConnectionNotification foo vpce-nfn-09e6ed3b4efba2263
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] connection_events: One or more endpoint [events](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpcEndpointConnectionNotification.html#API_CreateVpcEndpointConnectionNotification_RequestParameters) for which to receive notifications.
         :param pulumi.Input[str] connection_notification_arn: The ARN of the SNS topic for the notifications.
@@ -246,7 +246,7 @@ class VpcEndpointConnectionNotification(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: VpcEndpointConnectionNotificationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -291,20 +291,20 @@ class VpcEndpointConnectionNotification(pulumi.CustomResource):
          $ pulumi import aws:ec2/vpcEndpointConnectionNotification:VpcEndpointConnectionNotification foo vpce-nfn-09e6ed3b4efba2263
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param VpcEndpointConnectionNotificationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(VpcEndpointConnectionNotificationArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  connection_notification_arn: Optional[pulumi.Input[str]] = None,
@@ -334,12 +334,12 @@ class VpcEndpointConnectionNotification(pulumi.CustomResource):
             __props__.__dict__["state"] = None
         super(VpcEndpointConnectionNotification, __self__).__init__(
             'aws:ec2/vpcEndpointConnectionNotification:VpcEndpointConnectionNotification',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             connection_events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -352,7 +352,7 @@ class VpcEndpointConnectionNotification(pulumi.CustomResource):
         Get an existing VpcEndpointConnectionNotification resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] connection_events: One or more endpoint [events](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpcEndpointConnectionNotification.html#API_CreateVpcEndpointConnectionNotification_RequestParameters) for which to receive notifications.
@@ -372,7 +372,7 @@ class VpcEndpointConnectionNotification(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["vpc_endpoint_id"] = vpc_endpoint_id
         __props__.__dict__["vpc_endpoint_service_id"] = vpc_endpoint_service_id
-        return VpcEndpointConnectionNotification(resource_name, opts=opts, __props__=__props__)
+        return VpcEndpointConnectionNotification(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="connectionEvents")

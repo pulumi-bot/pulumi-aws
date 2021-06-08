@@ -574,7 +574,7 @@ class _AmiFromInstanceState:
 class AmiFromInstance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AmiFromInstanceEbsBlockDeviceArgs']]]]] = None,
@@ -613,7 +613,7 @@ class AmiFromInstance(pulumi.CustomResource):
         example = aws.ec2.AmiFromInstance("example", source_instance_id="i-xxxxxxxx")
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A longer, human-readable description for the AMI.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AmiFromInstanceEbsBlockDeviceArgs']]]] ebs_block_devices: Nested block describing an EBS block device that should be
@@ -631,7 +631,7 @@ class AmiFromInstance(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: AmiFromInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -662,20 +662,20 @@ class AmiFromInstance(pulumi.CustomResource):
         example = aws.ec2.AmiFromInstance("example", source_instance_id="i-xxxxxxxx")
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param AmiFromInstanceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(AmiFromInstanceArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AmiFromInstanceEbsBlockDeviceArgs']]]]] = None,
@@ -728,12 +728,12 @@ class AmiFromInstance(pulumi.CustomResource):
             __props__.__dict__["virtualization_type"] = None
         super(AmiFromInstance, __self__).__init__(
             'aws:ec2/amiFromInstance:AmiFromInstance',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             architecture: Optional[pulumi.Input[str]] = None,
@@ -767,7 +767,7 @@ class AmiFromInstance(pulumi.CustomResource):
         Get an existing AmiFromInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] architecture: Machine architecture for created instances. Defaults to "x86_64".
@@ -829,7 +829,7 @@ class AmiFromInstance(pulumi.CustomResource):
         __props__.__dict__["tags_all"] = tags_all
         __props__.__dict__["usage_operation"] = usage_operation
         __props__.__dict__["virtualization_type"] = virtualization_type
-        return AmiFromInstance(resource_name, opts=opts, __props__=__props__)
+        return AmiFromInstance(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

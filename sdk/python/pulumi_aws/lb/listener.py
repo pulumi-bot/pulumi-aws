@@ -333,7 +333,7 @@ class _ListenerState:
 class Listener(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alpn_policy: Optional[pulumi.Input[str]] = None,
                  certificate_arn: Optional[pulumi.Input[str]] = None,
@@ -534,7 +534,7 @@ class Listener(pulumi.CustomResource):
          $ pulumi import aws:lb/listener:Listener front_end arn:aws:elasticloadbalancing:us-west-2:187416307283:listener/app/front-end-alb/8e4497da625e2d8a/9ab28ade35828f96
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alpn_policy: Name of the Application-Layer Protocol Negotiation (ALPN) policy. Can be set if `protocol` is `TLS`. Valid values are `HTTP1Only`, `HTTP2Only`, `HTTP2Optional`, `HTTP2Preferred`, and `None`.
         :param pulumi.Input[str] certificate_arn: ARN of the default SSL server certificate. Exactly one certificate is required if the protocol is HTTPS. For adding additional SSL certificates, see the `lb.ListenerCertificate` resource.
@@ -549,7 +549,7 @@ class Listener(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: ListenerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -741,20 +741,20 @@ class Listener(pulumi.CustomResource):
          $ pulumi import aws:lb/listener:Listener front_end arn:aws:elasticloadbalancing:us-west-2:187416307283:listener/app/front-end-alb/8e4497da625e2d8a/9ab28ade35828f96
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ListenerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ListenerArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alpn_policy: Optional[pulumi.Input[str]] = None,
                  certificate_arn: Optional[pulumi.Input[str]] = None,
@@ -795,12 +795,12 @@ class Listener(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Listener, __self__).__init__(
             'aws:lb/listener:Listener',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             alpn_policy: Optional[pulumi.Input[str]] = None,
@@ -817,7 +817,7 @@ class Listener(pulumi.CustomResource):
         Get an existing Listener resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alpn_policy: Name of the Application-Layer Protocol Negotiation (ALPN) policy. Can be set if `protocol` is `TLS`. Valid values are `HTTP1Only`, `HTTP2Only`, `HTTP2Optional`, `HTTP2Preferred`, and `None`.
@@ -845,7 +845,7 @@ class Listener(pulumi.CustomResource):
         __props__.__dict__["ssl_policy"] = ssl_policy
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tags_all"] = tags_all
-        return Listener(resource_name, opts=opts, __props__=__props__)
+        return Listener(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="alpnPolicy")

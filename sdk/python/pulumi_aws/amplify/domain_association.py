@@ -188,7 +188,7 @@ class _DomainAssociationState:
 class DomainAssociation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
@@ -235,7 +235,7 @@ class DomainAssociation(pulumi.CustomResource):
          $ pulumi import aws:amplify/domainAssociation:DomainAssociation app d2ypk4k47z8u6/example.com
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: The unique ID for an Amplify app.
         :param pulumi.Input[str] domain_name: The domain name for the domain association.
@@ -245,7 +245,7 @@ class DomainAssociation(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: DomainAssociationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -288,20 +288,20 @@ class DomainAssociation(pulumi.CustomResource):
          $ pulumi import aws:amplify/domainAssociation:DomainAssociation app d2ypk4k47z8u6/example.com
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param DomainAssociationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(DomainAssociationArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
@@ -333,12 +333,12 @@ class DomainAssociation(pulumi.CustomResource):
             __props__.__dict__["certificate_verification_dns_record"] = None
         super(DomainAssociation, __self__).__init__(
             'aws:amplify/domainAssociation:DomainAssociation',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app_id: Optional[pulumi.Input[str]] = None,
@@ -351,7 +351,7 @@ class DomainAssociation(pulumi.CustomResource):
         Get an existing DomainAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: The unique ID for an Amplify app.
@@ -371,7 +371,7 @@ class DomainAssociation(pulumi.CustomResource):
         __props__.__dict__["domain_name"] = domain_name
         __props__.__dict__["sub_domains"] = sub_domains
         __props__.__dict__["wait_for_verification"] = wait_for_verification
-        return DomainAssociation(resource_name, opts=opts, __props__=__props__)
+        return DomainAssociation(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="appId")

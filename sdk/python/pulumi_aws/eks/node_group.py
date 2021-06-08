@@ -683,7 +683,7 @@ class _NodeGroupState:
 class NodeGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ami_type: Optional[pulumi.Input[str]] = None,
                  capacity_type: Optional[pulumi.Input[str]] = None,
@@ -778,7 +778,7 @@ class NodeGroup(pulumi.CustomResource):
          $ pulumi import aws:eks/nodeGroup:NodeGroup my_node_group my_cluster:my_node_group
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ami_type: Type of Amazon Machine Image (AMI) associated with the EKS Node Group. Defaults to `AL2_x86_64`. Valid values: `AL2_x86_64`, `AL2_x86_64_GPU`, `AL2_ARM_64`, `CUSTOM`. This provider will only perform drift detection if a configuration value is provided.
         :param pulumi.Input[str] capacity_type: Type of capacity associated with the EKS Node Group. Valid values: `ON_DEMAND`, `SPOT`. This provider will only perform drift detection if a configuration value is provided.
@@ -803,7 +803,7 @@ class NodeGroup(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: NodeGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -879,20 +879,20 @@ class NodeGroup(pulumi.CustomResource):
          $ pulumi import aws:eks/nodeGroup:NodeGroup my_node_group my_cluster:my_node_group
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param NodeGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(NodeGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ami_type: Optional[pulumi.Input[str]] = None,
                  capacity_type: Optional[pulumi.Input[str]] = None,
@@ -957,12 +957,12 @@ class NodeGroup(pulumi.CustomResource):
             __props__.__dict__["status"] = None
         super(NodeGroup, __self__).__init__(
             'aws:eks/nodeGroup:NodeGroup',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             ami_type: Optional[pulumi.Input[str]] = None,
@@ -991,7 +991,7 @@ class NodeGroup(pulumi.CustomResource):
         Get an existing NodeGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ami_type: Type of Amazon Machine Image (AMI) associated with the EKS Node Group. Defaults to `AL2_x86_64`. Valid values: `AL2_x86_64`, `AL2_x86_64_GPU`, `AL2_ARM_64`, `CUSTOM`. This provider will only perform drift detection if a configuration value is provided.
@@ -1043,7 +1043,7 @@ class NodeGroup(pulumi.CustomResource):
         __props__.__dict__["tags_all"] = tags_all
         __props__.__dict__["taints"] = taints
         __props__.__dict__["version"] = version
-        return NodeGroup(resource_name, opts=opts, __props__=__props__)
+        return NodeGroup(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="amiType")

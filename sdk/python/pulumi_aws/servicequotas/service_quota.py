@@ -226,7 +226,7 @@ class _ServiceQuotaState:
 class ServiceQuota(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  quota_code: Optional[pulumi.Input[str]] = None,
                  service_code: Optional[pulumi.Input[str]] = None,
@@ -255,7 +255,7 @@ class ServiceQuota(pulumi.CustomResource):
          $ pulumi import aws:servicequotas/serviceQuota:ServiceQuota example vpc/L-F678F1CE
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] quota_code: Code of the service quota to track. For example: `L-F678F1CE`. Available values can be found with the [AWS CLI service-quotas list-service-quotas command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html).
         :param pulumi.Input[str] service_code: Code of the service to track. For example: `vpc`. Available values can be found with the [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
@@ -264,7 +264,7 @@ class ServiceQuota(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: ServiceQuotaArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -290,20 +290,20 @@ class ServiceQuota(pulumi.CustomResource):
          $ pulumi import aws:servicequotas/serviceQuota:ServiceQuota example vpc/L-F678F1CE
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ServiceQuotaArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ServiceQuotaArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  quota_code: Optional[pulumi.Input[str]] = None,
                  service_code: Optional[pulumi.Input[str]] = None,
@@ -338,12 +338,12 @@ class ServiceQuota(pulumi.CustomResource):
             __props__.__dict__["service_name"] = None
         super(ServiceQuota, __self__).__init__(
             'aws:servicequotas/serviceQuota:ServiceQuota',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             adjustable: Optional[pulumi.Input[bool]] = None,
@@ -360,7 +360,7 @@ class ServiceQuota(pulumi.CustomResource):
         Get an existing ServiceQuota resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] adjustable: Whether the service quota can be increased.
@@ -386,7 +386,7 @@ class ServiceQuota(pulumi.CustomResource):
         __props__.__dict__["service_code"] = service_code
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["value"] = value
-        return ServiceQuota(resource_name, opts=opts, __props__=__props__)
+        return ServiceQuota(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

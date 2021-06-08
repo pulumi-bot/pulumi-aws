@@ -328,7 +328,7 @@ class _ApnsSandboxChannelState:
 class ApnsSandboxChannel(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
                  bundle_id: Optional[pulumi.Input[str]] = None,
@@ -364,7 +364,7 @@ class ApnsSandboxChannel(pulumi.CustomResource):
          $ pulumi import aws:pinpoint/apnsSandboxChannel:ApnsSandboxChannel apns_sandbox application-id
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: The application ID.
         :param pulumi.Input[str] bundle_id: The ID assigned to your iOS app. To find this value, choose Certificates, IDs & Profiles, choose App IDs in the Identifiers section, and choose your app.
@@ -382,7 +382,7 @@ class ApnsSandboxChannel(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: ApnsSandboxChannelArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -409,20 +409,20 @@ class ApnsSandboxChannel(pulumi.CustomResource):
          $ pulumi import aws:pinpoint/apnsSandboxChannel:ApnsSandboxChannel apns_sandbox application-id
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ApnsSandboxChannelArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ApnsSandboxChannelArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
                  bundle_id: Optional[pulumi.Input[str]] = None,
@@ -458,12 +458,12 @@ class ApnsSandboxChannel(pulumi.CustomResource):
             __props__.__dict__["token_key_id"] = token_key_id
         super(ApnsSandboxChannel, __self__).__init__(
             'aws:pinpoint/apnsSandboxChannel:ApnsSandboxChannel',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             application_id: Optional[pulumi.Input[str]] = None,
@@ -479,7 +479,7 @@ class ApnsSandboxChannel(pulumi.CustomResource):
         Get an existing ApnsSandboxChannel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: The application ID.
@@ -508,7 +508,7 @@ class ApnsSandboxChannel(pulumi.CustomResource):
         __props__.__dict__["team_id"] = team_id
         __props__.__dict__["token_key"] = token_key
         __props__.__dict__["token_key_id"] = token_key_id
-        return ApnsSandboxChannel(resource_name, opts=opts, __props__=__props__)
+        return ApnsSandboxChannel(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="applicationId")

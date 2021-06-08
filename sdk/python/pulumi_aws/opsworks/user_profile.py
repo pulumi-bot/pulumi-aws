@@ -155,7 +155,7 @@ class _UserProfileState:
 class UserProfile(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_self_management: Optional[pulumi.Input[bool]] = None,
                  ssh_public_key: Optional[pulumi.Input[str]] = None,
@@ -176,7 +176,7 @@ class UserProfile(pulumi.CustomResource):
             ssh_username="my_user")
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_self_management: Whether users can specify their own SSH public key through the My Settings page
         :param pulumi.Input[str] ssh_public_key: The users public key
@@ -186,7 +186,7 @@ class UserProfile(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: UserProfileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -203,20 +203,20 @@ class UserProfile(pulumi.CustomResource):
             ssh_username="my_user")
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param UserProfileArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(UserProfileArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_self_management: Optional[pulumi.Input[bool]] = None,
                  ssh_public_key: Optional[pulumi.Input[str]] = None,
@@ -244,12 +244,12 @@ class UserProfile(pulumi.CustomResource):
             __props__.__dict__["user_arn"] = user_arn
         super(UserProfile, __self__).__init__(
             'aws:opsworks/userProfile:UserProfile',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_self_management: Optional[pulumi.Input[bool]] = None,
@@ -260,7 +260,7 @@ class UserProfile(pulumi.CustomResource):
         Get an existing UserProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_self_management: Whether users can specify their own SSH public key through the My Settings page
@@ -276,7 +276,7 @@ class UserProfile(pulumi.CustomResource):
         __props__.__dict__["ssh_public_key"] = ssh_public_key
         __props__.__dict__["ssh_username"] = ssh_username
         __props__.__dict__["user_arn"] = user_arn
-        return UserProfile(resource_name, opts=opts, __props__=__props__)
+        return UserProfile(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="allowSelfManagement")

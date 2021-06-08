@@ -222,7 +222,7 @@ class _RouteTableState:
 class RouteTable(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  propagating_vgws: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouteTableRouteArgs']]]]] = None,
@@ -297,7 +297,7 @@ class RouteTable(pulumi.CustomResource):
          $ pulumi import aws:ec2/routeTable:RouteTable public_rt rtb-4e616f6d69
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] propagating_vgws: A list of virtual gateways for propagation.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouteTableRouteArgs']]]] routes: A list of route objects. Their keys are documented below.
@@ -308,7 +308,7 @@ class RouteTable(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: RouteTableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -378,20 +378,20 @@ class RouteTable(pulumi.CustomResource):
          $ pulumi import aws:ec2/routeTable:RouteTable public_rt rtb-4e616f6d69
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param RouteTableArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(RouteTableArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  propagating_vgws: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouteTableRouteArgs']]]]] = None,
@@ -421,12 +421,12 @@ class RouteTable(pulumi.CustomResource):
             __props__.__dict__["owner_id"] = None
         super(RouteTable, __self__).__init__(
             'aws:ec2/routeTable:RouteTable',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
@@ -440,7 +440,7 @@ class RouteTable(pulumi.CustomResource):
         Get an existing RouteTable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The ARN of the route table.
@@ -462,7 +462,7 @@ class RouteTable(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tags_all"] = tags_all
         __props__.__dict__["vpc_id"] = vpc_id
-        return RouteTable(resource_name, opts=opts, __props__=__props__)
+        return RouteTable(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

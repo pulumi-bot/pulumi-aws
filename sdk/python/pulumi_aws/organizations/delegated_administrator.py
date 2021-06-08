@@ -203,7 +203,7 @@ class _DelegatedAdministratorState:
 class DelegatedAdministrator(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  service_principal: Optional[pulumi.Input[str]] = None,
@@ -230,7 +230,7 @@ class DelegatedAdministrator(pulumi.CustomResource):
          $ pulumi import aws:organizations/delegatedAdministrator:DelegatedAdministrator example 123456789012/config.amazonaws.com
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account ID number of the member account in the organization to register as a delegated administrator.
         :param pulumi.Input[str] service_principal: The service principal of the AWS service for which you want to make the member account a delegated administrator.
@@ -238,7 +238,7 @@ class DelegatedAdministrator(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: DelegatedAdministratorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -263,20 +263,20 @@ class DelegatedAdministrator(pulumi.CustomResource):
          $ pulumi import aws:organizations/delegatedAdministrator:DelegatedAdministrator example 123456789012/config.amazonaws.com
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param DelegatedAdministratorArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(DelegatedAdministratorArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  service_principal: Optional[pulumi.Input[str]] = None,
@@ -307,12 +307,12 @@ class DelegatedAdministrator(pulumi.CustomResource):
             __props__.__dict__["status"] = None
         super(DelegatedAdministrator, __self__).__init__(
             'aws:organizations/delegatedAdministrator:DelegatedAdministrator',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
@@ -328,7 +328,7 @@ class DelegatedAdministrator(pulumi.CustomResource):
         Get an existing DelegatedAdministrator resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account ID number of the member account in the organization to register as a delegated administrator.
@@ -354,7 +354,7 @@ class DelegatedAdministrator(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["service_principal"] = service_principal
         __props__.__dict__["status"] = status
-        return DelegatedAdministrator(resource_name, opts=opts, __props__=__props__)
+        return DelegatedAdministrator(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")

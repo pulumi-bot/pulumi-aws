@@ -212,7 +212,7 @@ class _AccessKeyState:
 class AccessKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  pgp_key: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -268,7 +268,7 @@ class AccessKey(pulumi.CustomResource):
 
          Resource attributes such as `encrypted_secret`, `key_fingerprint`, `pgp_key`, `secret`, and `ses_smtp_password_v4` are not available for imported resources as this information cannot be read from the IAM API.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a
                keybase username in the form `keybase:some_person_that_exists`, for use
@@ -280,7 +280,7 @@ class AccessKey(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: AccessKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -333,20 +333,20 @@ class AccessKey(pulumi.CustomResource):
 
          Resource attributes such as `encrypted_secret`, `key_fingerprint`, `pgp_key`, `secret`, and `ses_smtp_password_v4` are not available for imported resources as this information cannot be read from the IAM API.
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param AccessKeyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(AccessKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  pgp_key: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -375,12 +375,12 @@ class AccessKey(pulumi.CustomResource):
             __props__.__dict__["ses_smtp_password_v4"] = None
         super(AccessKey, __self__).__init__(
             'aws:iam/accessKey:AccessKey',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_date: Optional[pulumi.Input[str]] = None,
@@ -395,7 +395,7 @@ class AccessKey(pulumi.CustomResource):
         Get an existing AccessKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_date: Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the access key was created.
@@ -421,7 +421,7 @@ class AccessKey(pulumi.CustomResource):
         __props__.__dict__["ses_smtp_password_v4"] = ses_smtp_password_v4
         __props__.__dict__["status"] = status
         __props__.__dict__["user"] = user
-        return AccessKey(resource_name, opts=opts, __props__=__props__)
+        return AccessKey(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="createDate")

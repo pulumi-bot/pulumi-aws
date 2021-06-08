@@ -188,7 +188,7 @@ class _PublicKeyState:
 class PublicKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  encoded_key: Optional[pulumi.Input[str]] = None,
@@ -217,7 +217,7 @@ class PublicKey(pulumi.CustomResource):
          $ pulumi import aws:cloudfront/publicKey:PublicKey example K3D5EWEUDCCXON
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: An optional comment about the public key.
         :param pulumi.Input[str] encoded_key: The encoded public key that you want to add to CloudFront to use with features like field-level encryption.
@@ -227,7 +227,7 @@ class PublicKey(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: PublicKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -252,20 +252,20 @@ class PublicKey(pulumi.CustomResource):
          $ pulumi import aws:cloudfront/publicKey:PublicKey example K3D5EWEUDCCXON
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param PublicKeyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(PublicKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  encoded_key: Optional[pulumi.Input[str]] = None,
@@ -293,12 +293,12 @@ class PublicKey(pulumi.CustomResource):
             __props__.__dict__["etag"] = None
         super(PublicKey, __self__).__init__(
             'aws:cloudfront/publicKey:PublicKey',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             caller_reference: Optional[pulumi.Input[str]] = None,
@@ -311,7 +311,7 @@ class PublicKey(pulumi.CustomResource):
         Get an existing PublicKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] caller_reference: Internal value used by CloudFront to allow future updates to the public key configuration.
@@ -331,7 +331,7 @@ class PublicKey(pulumi.CustomResource):
         __props__.__dict__["etag"] = etag
         __props__.__dict__["name"] = name
         __props__.__dict__["name_prefix"] = name_prefix
-        return PublicKey(resource_name, opts=opts, __props__=__props__)
+        return PublicKey(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="callerReference")

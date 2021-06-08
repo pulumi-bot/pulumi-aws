@@ -283,7 +283,7 @@ class _LifecycleHookState:
 class LifecycleHook(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling_group_name: Optional[pulumi.Input[str]] = None,
                  default_result: Optional[pulumi.Input[str]] = None,
@@ -345,7 +345,7 @@ class LifecycleHook(pulumi.CustomResource):
          $ pulumi import aws:autoscaling/lifecycleHook:LifecycleHook test-lifecycle-hook asg-name/lifecycle-hook-name
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] autoscaling_group_name: The name of the Auto Scaling group to which you want to assign the lifecycle hook
         :param pulumi.Input[str] default_result: Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses or if an unexpected failure occurs. The value for this parameter can be either CONTINUE or ABANDON. The default value for this parameter is ABANDON.
@@ -359,7 +359,7 @@ class LifecycleHook(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: LifecycleHookArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -413,20 +413,20 @@ class LifecycleHook(pulumi.CustomResource):
          $ pulumi import aws:autoscaling/lifecycleHook:LifecycleHook test-lifecycle-hook asg-name/lifecycle-hook-name
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param LifecycleHookArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(LifecycleHookArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling_group_name: Optional[pulumi.Input[str]] = None,
                  default_result: Optional[pulumi.Input[str]] = None,
@@ -462,12 +462,12 @@ class LifecycleHook(pulumi.CustomResource):
             __props__.__dict__["role_arn"] = role_arn
         super(LifecycleHook, __self__).__init__(
             'aws:autoscaling/lifecycleHook:LifecycleHook',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             autoscaling_group_name: Optional[pulumi.Input[str]] = None,
@@ -482,7 +482,7 @@ class LifecycleHook(pulumi.CustomResource):
         Get an existing LifecycleHook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] autoscaling_group_name: The name of the Auto Scaling group to which you want to assign the lifecycle hook
@@ -506,7 +506,7 @@ class LifecycleHook(pulumi.CustomResource):
         __props__.__dict__["notification_metadata"] = notification_metadata
         __props__.__dict__["notification_target_arn"] = notification_target_arn
         __props__.__dict__["role_arn"] = role_arn
-        return LifecycleHook(resource_name, opts=opts, __props__=__props__)
+        return LifecycleHook(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="autoscalingGroupName")

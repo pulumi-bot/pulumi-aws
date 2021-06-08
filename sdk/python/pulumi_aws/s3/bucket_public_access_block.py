@@ -208,7 +208,7 @@ class _BucketPublicAccessBlockState:
 class BucketPublicAccessBlock(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  block_public_acls: Optional[pulumi.Input[bool]] = None,
                  block_public_policy: Optional[pulumi.Input[bool]] = None,
@@ -240,7 +240,7 @@ class BucketPublicAccessBlock(pulumi.CustomResource):
          $ pulumi import aws:s3/bucketPublicAccessBlock:BucketPublicAccessBlock example my-bucket
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] block_public_acls: Whether Amazon S3 should block public ACLs for this bucket. Defaults to `false`. Enabling this setting does not affect existing policies or ACLs. When set to `true` causes the following behavior:
                * PUT Bucket acl and PUT Object acl calls will fail if the specified ACL allows public access.
@@ -256,7 +256,7 @@ class BucketPublicAccessBlock(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: BucketPublicAccessBlockArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -283,20 +283,20 @@ class BucketPublicAccessBlock(pulumi.CustomResource):
          $ pulumi import aws:s3/bucketPublicAccessBlock:BucketPublicAccessBlock example my-bucket
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param BucketPublicAccessBlockArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(BucketPublicAccessBlockArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  block_public_acls: Optional[pulumi.Input[bool]] = None,
                  block_public_policy: Optional[pulumi.Input[bool]] = None,
@@ -324,12 +324,12 @@ class BucketPublicAccessBlock(pulumi.CustomResource):
             __props__.__dict__["restrict_public_buckets"] = restrict_public_buckets
         super(BucketPublicAccessBlock, __self__).__init__(
             'aws:s3/bucketPublicAccessBlock:BucketPublicAccessBlock',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             block_public_acls: Optional[pulumi.Input[bool]] = None,
@@ -341,7 +341,7 @@ class BucketPublicAccessBlock(pulumi.CustomResource):
         Get an existing BucketPublicAccessBlock resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] block_public_acls: Whether Amazon S3 should block public ACLs for this bucket. Defaults to `false`. Enabling this setting does not affect existing policies or ACLs. When set to `true` causes the following behavior:
@@ -364,7 +364,7 @@ class BucketPublicAccessBlock(pulumi.CustomResource):
         __props__.__dict__["bucket"] = bucket
         __props__.__dict__["ignore_public_acls"] = ignore_public_acls
         __props__.__dict__["restrict_public_buckets"] = restrict_public_buckets
-        return BucketPublicAccessBlock(resource_name, opts=opts, __props__=__props__)
+        return BucketPublicAccessBlock(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="blockPublicAcls")

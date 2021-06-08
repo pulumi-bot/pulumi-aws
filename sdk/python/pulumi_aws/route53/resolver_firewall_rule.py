@@ -313,7 +313,7 @@ class _ResolverFirewallRuleState:
 class ResolverFirewallRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  block_override_dns_type: Optional[pulumi.Input[str]] = None,
@@ -357,7 +357,7 @@ class ResolverFirewallRule(pulumi.CustomResource):
          $ pulumi import aws:route53/resolverFirewallRule:ResolverFirewallRule example rslvr-frg-0123456789abcdef:rslvr-fdl-0123456789abcdef
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The action that DNS Firewall should take on a DNS query when it matches one of the domains in the rule's domain list. Valid values: `ALLOW`, `BLOCK`, `ALERT`.
         :param pulumi.Input[str] block_override_dns_type: The DNS record's type. This determines the format of the record value that you provided in BlockOverrideDomain. Value values: `CNAME`.
@@ -372,7 +372,7 @@ class ResolverFirewallRule(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: ResolverFirewallRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -407,20 +407,20 @@ class ResolverFirewallRule(pulumi.CustomResource):
          $ pulumi import aws:route53/resolverFirewallRule:ResolverFirewallRule example rslvr-frg-0123456789abcdef:rslvr-fdl-0123456789abcdef
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param ResolverFirewallRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(ResolverFirewallRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  block_override_dns_type: Optional[pulumi.Input[str]] = None,
@@ -462,12 +462,12 @@ class ResolverFirewallRule(pulumi.CustomResource):
             __props__.__dict__["priority"] = priority
         super(ResolverFirewallRule, __self__).__init__(
             'aws:route53/resolverFirewallRule:ResolverFirewallRule',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             action: Optional[pulumi.Input[str]] = None,
@@ -483,7 +483,7 @@ class ResolverFirewallRule(pulumi.CustomResource):
         Get an existing ResolverFirewallRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The action that DNS Firewall should take on a DNS query when it matches one of the domains in the rule's domain list. Valid values: `ALLOW`, `BLOCK`, `ALERT`.
@@ -509,7 +509,7 @@ class ResolverFirewallRule(pulumi.CustomResource):
         __props__.__dict__["firewall_rule_group_id"] = firewall_rule_group_id
         __props__.__dict__["name"] = name
         __props__.__dict__["priority"] = priority
-        return ResolverFirewallRule(resource_name, opts=opts, __props__=__props__)
+        return ResolverFirewallRule(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

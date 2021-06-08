@@ -189,7 +189,7 @@ class _HostState:
 class Host(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  provider_endpoint: Optional[pulumi.Input[str]] = None,
@@ -220,7 +220,7 @@ class Host(pulumi.CustomResource):
          $ pulumi import aws:codestarconnections/host:Host example-host arn:aws:codestar-connections:us-west-1:0123456789:host/79d4d357-a2ee-41e4-b350-2fe39ae59448
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the host to be created. The name must be unique in the calling AWS account.
         :param pulumi.Input[str] provider_endpoint: The endpoint of the infrastructure to be represented by the host after it is created.
@@ -230,7 +230,7 @@ class Host(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: HostArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -257,20 +257,20 @@ class Host(pulumi.CustomResource):
          $ pulumi import aws:codestarconnections/host:Host example-host arn:aws:codestar-connections:us-west-1:0123456789:host/79d4d357-a2ee-41e4-b350-2fe39ae59448
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param HostArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(HostArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  provider_endpoint: Optional[pulumi.Input[str]] = None,
@@ -300,12 +300,12 @@ class Host(pulumi.CustomResource):
             __props__.__dict__["status"] = None
         super(Host, __self__).__init__(
             'aws:codestarconnections/host:Host',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
@@ -318,7 +318,7 @@ class Host(pulumi.CustomResource):
         Get an existing Host resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The CodeStar Host ARN.
@@ -338,7 +338,7 @@ class Host(pulumi.CustomResource):
         __props__.__dict__["provider_type"] = provider_type
         __props__.__dict__["status"] = status
         __props__.__dict__["vpc_configuration"] = vpc_configuration
-        return Host(resource_name, opts=opts, __props__=__props__)
+        return Host(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

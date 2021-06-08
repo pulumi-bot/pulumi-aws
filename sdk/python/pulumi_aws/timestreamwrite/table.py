@@ -197,7 +197,7 @@ class _TableState:
 class Table(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_name: Optional[pulumi.Input[str]] = None,
                  retention_properties: Optional[pulumi.Input[pulumi.InputType['TableRetentionPropertiesArgs']]] = None,
@@ -245,7 +245,7 @@ class Table(pulumi.CustomResource):
          $ pulumi import aws:timestreamwrite/table:Table example ExampleTable:ExampleDatabase
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_name: The name of the Timestream database.
         :param pulumi.Input[pulumi.InputType['TableRetentionPropertiesArgs']] retention_properties: The retention duration for the memory store and magnetic store. See Retention Properties below for more details. If not provided, `magnetic_store_retention_period_in_days` default to 73000 and `memory_store_retention_period_in_hours` defaults to 6.
@@ -255,7 +255,7 @@ class Table(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: TableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -298,20 +298,20 @@ class Table(pulumi.CustomResource):
          $ pulumi import aws:timestreamwrite/table:Table example ExampleTable:ExampleDatabase
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param TableArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(TableArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_name: Optional[pulumi.Input[str]] = None,
                  retention_properties: Optional[pulumi.Input[pulumi.InputType['TableRetentionPropertiesArgs']]] = None,
@@ -342,12 +342,12 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["arn"] = None
         super(Table, __self__).__init__(
             'aws:timestreamwrite/table:Table',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
@@ -360,7 +360,7 @@ class Table(pulumi.CustomResource):
         Get an existing Table resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The ARN that uniquely identifies this table.
@@ -379,7 +379,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["table_name"] = table_name
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tags_all"] = tags_all
-        return Table(resource_name, opts=opts, __props__=__props__)
+        return Table(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

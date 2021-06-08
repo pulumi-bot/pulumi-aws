@@ -236,7 +236,7 @@ class _DomainState:
 class Domain(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
@@ -263,7 +263,7 @@ class Domain(pulumi.CustomResource):
          $ pulumi import aws:codeartifact/domain:Domain example arn:aws:codeartifact:us-west-2:012345678912:domain/tf-acc-test-8593714120730241305
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The name of the domain to create. All domain names in an AWS Region that are in the same AWS account must be unique. The domain name is used as the prefix in DNS hostnames. Do not use sensitive information in a domain name because it is publicly discoverable.
         :param pulumi.Input[str] encryption_key: The encryption key for the domain. This is used to encrypt content stored in a domain. The KMS Key Amazon Resource Name (ARN). The default aws/codeartifact AWS KMS master key is used if this element is absent.
@@ -273,7 +273,7 @@ class Domain(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: DomainArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -296,20 +296,20 @@ class Domain(pulumi.CustomResource):
          $ pulumi import aws:codeartifact/domain:Domain example arn:aws:codeartifact:us-west-2:012345678912:domain/tf-acc-test-8593714120730241305
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param DomainArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(DomainArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
@@ -340,12 +340,12 @@ class Domain(pulumi.CustomResource):
             __props__.__dict__["repository_count"] = None
         super(Domain, __self__).__init__(
             'aws:codeartifact/domain:Domain',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
@@ -361,7 +361,7 @@ class Domain(pulumi.CustomResource):
         Get an existing Domain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The ARN of Domain.
@@ -387,7 +387,7 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["repository_count"] = repository_count
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tags_all"] = tags_all
-        return Domain(resource_name, opts=opts, __props__=__props__)
+        return Domain(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

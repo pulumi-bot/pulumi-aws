@@ -650,7 +650,7 @@ class _CanaryState:
 class Canary(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  artifact_s3_location: Optional[pulumi.Input[str]] = None,
                  execution_role_arn: Optional[pulumi.Input[str]] = None,
@@ -700,7 +700,7 @@ class Canary(pulumi.CustomResource):
          $ pulumi import aws:synthetics/canary:Canary some some-canary
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] artifact_s3_location: Location in Amazon S3 where Synthetics stores artifacts from the test runs of this canary.
         :param pulumi.Input[str] execution_role_arn: ARN of the IAM role to be used to run the canary. see [AWS Docs](https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_CreateCanary.html#API_CreateCanary_RequestSyntax) for permissions needs for IAM Role.
@@ -723,7 +723,7 @@ class Canary(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: CanaryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -756,20 +756,20 @@ class Canary(pulumi.CustomResource):
          $ pulumi import aws:synthetics/canary:Canary some some-canary
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param CanaryArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(CanaryArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  artifact_s3_location: Optional[pulumi.Input[str]] = None,
                  execution_role_arn: Optional[pulumi.Input[str]] = None,
@@ -834,12 +834,12 @@ class Canary(pulumi.CustomResource):
             __props__.__dict__["timelines"] = None
         super(Canary, __self__).__init__(
             'aws:synthetics/canary:Canary',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
@@ -868,7 +868,7 @@ class Canary(pulumi.CustomResource):
         Get an existing Canary resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of the Canary.
@@ -920,7 +920,7 @@ class Canary(pulumi.CustomResource):
         __props__.__dict__["timelines"] = timelines
         __props__.__dict__["vpc_config"] = vpc_config
         __props__.__dict__["zip_file"] = zip_file
-        return Canary(resource_name, opts=opts, __props__=__props__)
+        return Canary(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

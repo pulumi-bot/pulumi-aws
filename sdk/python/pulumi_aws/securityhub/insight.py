@@ -141,7 +141,7 @@ class _InsightState:
 class Insight(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  filters: Optional[pulumi.Input[pulumi.InputType['InsightFiltersArgs']]] = None,
                  group_by_attribute: Optional[pulumi.Input[str]] = None,
@@ -252,7 +252,7 @@ class Insight(pulumi.CustomResource):
          $ pulumi import aws:securityhub/insight:Insight example arn:aws:securityhub:us-west-2:1234567890:insight/1234567890/custom/91299ed7-abd0-4e44-a858-d0b15e37141a
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['InsightFiltersArgs']] filters: A configuration block including one or more (up to 10 distinct) attributes used to filter the findings included in the insight. The insight only includes findings that match criteria defined in the filters. See filters below for more details.
         :param pulumi.Input[str] group_by_attribute: The attribute used to group the findings for the insight e.g. if an insight is grouped by `ResourceId`, then the insight produces a list of resource identifiers.
@@ -261,7 +261,7 @@ class Insight(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: InsightArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -369,20 +369,20 @@ class Insight(pulumi.CustomResource):
          $ pulumi import aws:securityhub/insight:Insight example arn:aws:securityhub:us-west-2:1234567890:insight/1234567890/custom/91299ed7-abd0-4e44-a858-d0b15e37141a
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param InsightArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(InsightArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  filters: Optional[pulumi.Input[pulumi.InputType['InsightFiltersArgs']]] = None,
                  group_by_attribute: Optional[pulumi.Input[str]] = None,
@@ -409,12 +409,12 @@ class Insight(pulumi.CustomResource):
             __props__.__dict__["arn"] = None
         super(Insight, __self__).__init__(
             'aws:securityhub/insight:Insight',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
@@ -425,7 +425,7 @@ class Insight(pulumi.CustomResource):
         Get an existing Insight resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: ARN of the insight.
@@ -441,7 +441,7 @@ class Insight(pulumi.CustomResource):
         __props__.__dict__["filters"] = filters
         __props__.__dict__["group_by_attribute"] = group_by_attribute
         __props__.__dict__["name"] = name
-        return Insight(resource_name, opts=opts, __props__=__props__)
+        return Insight(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

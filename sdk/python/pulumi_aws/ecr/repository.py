@@ -255,7 +255,7 @@ class _RepositoryState:
 class Repository(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  encryption_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryEncryptionConfigurationArgs']]]]] = None,
                  image_scanning_configuration: Optional[pulumi.Input[pulumi.InputType['RepositoryImageScanningConfigurationArgs']]] = None,
@@ -288,7 +288,7 @@ class Repository(pulumi.CustomResource):
          $ pulumi import aws:ecr/repository:Repository service test-service
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryEncryptionConfigurationArgs']]]] encryption_configurations: Encryption configuration for the repository. See below for schema.
         :param pulumi.Input[pulumi.InputType['RepositoryImageScanningConfigurationArgs']] image_scanning_configuration: Configuration block that defines image scanning configuration for the repository. By default, image scanning must be manually triggered. See the [ECR User Guide](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html) for more information about image scanning.
@@ -298,7 +298,7 @@ class Repository(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: Optional[RepositoryArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -325,20 +325,20 @@ class Repository(pulumi.CustomResource):
          $ pulumi import aws:ecr/repository:Repository service test-service
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param RepositoryArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(RepositoryArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  encryption_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryEncryptionConfigurationArgs']]]]] = None,
                  image_scanning_configuration: Optional[pulumi.Input[pulumi.InputType['RepositoryImageScanningConfigurationArgs']]] = None,
@@ -369,12 +369,12 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["repository_url"] = None
         super(Repository, __self__).__init__(
             'aws:ecr/repository:Repository',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
@@ -390,7 +390,7 @@ class Repository(pulumi.CustomResource):
         Get an existing Repository resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: Full ARN of the repository.
@@ -414,7 +414,7 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["repository_url"] = repository_url
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tags_all"] = tags_all
-        return Repository(resource_name, opts=opts, __props__=__props__)
+        return Repository(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

@@ -381,7 +381,7 @@ class _SecurityGroupRuleState:
 class SecurityGroupRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -491,7 +491,7 @@ class SecurityGroupRule(pulumi.CustomResource):
          $ pulumi import aws:ec2/securityGroupRule:SecurityGroupRule rule_name sg-656c65616e6f72_ingress_tcp_80_80_self_2001:db8::/48
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cidr_blocks: List of CIDR blocks. Cannot be specified with `source_security_group_id` or `self`.
         :param pulumi.Input[str] description: Description of the rule.
@@ -509,7 +509,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: SecurityGroupRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -608,20 +608,20 @@ class SecurityGroupRule(pulumi.CustomResource):
          $ pulumi import aws:ec2/securityGroupRule:SecurityGroupRule rule_name sg-656c65616e6f72_ingress_tcp_80_80_self_2001:db8::/48
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param SecurityGroupRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(SecurityGroupRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -669,12 +669,12 @@ class SecurityGroupRule(pulumi.CustomResource):
             __props__.__dict__["type"] = type
         super(SecurityGroupRule, __self__).__init__(
             'aws:ec2/securityGroupRule:SecurityGroupRule',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -692,7 +692,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         Get an existing SecurityGroupRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cidr_blocks: List of CIDR blocks. Cannot be specified with `source_security_group_id` or `self`.
@@ -723,7 +723,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         __props__.__dict__["source_security_group_id"] = source_security_group_id
         __props__.__dict__["to_port"] = to_port
         __props__.__dict__["type"] = type
-        return SecurityGroupRule(resource_name, opts=opts, __props__=__props__)
+        return SecurityGroupRule(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="cidrBlocks")

@@ -164,7 +164,7 @@ class _SecretRotationState:
 class SecretRotation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  rotation_lambda_arn: Optional[pulumi.Input[str]] = None,
                  rotation_rules: Optional[pulumi.Input[pulumi.InputType['SecretRotationRotationRulesArgs']]] = None,
@@ -204,7 +204,7 @@ class SecretRotation(pulumi.CustomResource):
          $ pulumi import aws:secretsmanager/secretRotation:SecretRotation example arn:aws:secretsmanager:us-east-1:123456789012:secret:example-123456
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] rotation_lambda_arn: Specifies the ARN of the Lambda function that can rotate the secret.
         :param pulumi.Input[pulumi.InputType['SecretRotationRotationRulesArgs']] rotation_rules: A structure that defines the rotation configuration for this secret. Defined below.
@@ -213,7 +213,7 @@ class SecretRotation(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: SecretRotationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -249,20 +249,20 @@ class SecretRotation(pulumi.CustomResource):
          $ pulumi import aws:secretsmanager/secretRotation:SecretRotation example arn:aws:secretsmanager:us-east-1:123456789012:secret:example-123456
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param SecretRotationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(SecretRotationArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  rotation_lambda_arn: Optional[pulumi.Input[str]] = None,
                  rotation_rules: Optional[pulumi.Input[pulumi.InputType['SecretRotationRotationRulesArgs']]] = None,
@@ -293,12 +293,12 @@ class SecretRotation(pulumi.CustomResource):
             __props__.__dict__["rotation_enabled"] = None
         super(SecretRotation, __self__).__init__(
             'aws:secretsmanager/secretRotation:SecretRotation',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             rotation_enabled: Optional[pulumi.Input[bool]] = None,
@@ -310,7 +310,7 @@ class SecretRotation(pulumi.CustomResource):
         Get an existing SecretRotation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] rotation_enabled: Specifies whether automatic rotation is enabled for this secret.
@@ -327,7 +327,7 @@ class SecretRotation(pulumi.CustomResource):
         __props__.__dict__["rotation_rules"] = rotation_rules
         __props__.__dict__["secret_id"] = secret_id
         __props__.__dict__["tags"] = tags
-        return SecretRotation(resource_name, opts=opts, __props__=__props__)
+        return SecretRotation(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="rotationEnabled")

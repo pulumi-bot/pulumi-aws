@@ -91,7 +91,7 @@ class _QueuePolicyState:
 class QueuePolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  policy: Optional[pulumi.Input[str]] = None,
                  queue_url: Optional[pulumi.Input[str]] = None,
@@ -138,7 +138,7 @@ class QueuePolicy(pulumi.CustomResource):
          $ pulumi import aws:sqs/queuePolicy:QueuePolicy test https://queue.amazonaws.com/0123456789012/myqueue
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] policy: The JSON policy for the SQS queue.
         :param pulumi.Input[str] queue_url: The URL of the SQS Queue to which to attach the policy
@@ -146,7 +146,7 @@ class QueuePolicy(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: QueuePolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -191,20 +191,20 @@ class QueuePolicy(pulumi.CustomResource):
          $ pulumi import aws:sqs/queuePolicy:QueuePolicy test https://queue.amazonaws.com/0123456789012/myqueue
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param QueuePolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(QueuePolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  policy: Optional[pulumi.Input[str]] = None,
                  queue_url: Optional[pulumi.Input[str]] = None,
@@ -228,12 +228,12 @@ class QueuePolicy(pulumi.CustomResource):
             __props__.__dict__["queue_url"] = queue_url
         super(QueuePolicy, __self__).__init__(
             'aws:sqs/queuePolicy:QueuePolicy',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             policy: Optional[pulumi.Input[str]] = None,
@@ -242,7 +242,7 @@ class QueuePolicy(pulumi.CustomResource):
         Get an existing QueuePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] policy: The JSON policy for the SQS queue.
@@ -254,7 +254,7 @@ class QueuePolicy(pulumi.CustomResource):
 
         __props__.__dict__["policy"] = policy
         __props__.__dict__["queue_url"] = queue_url
-        return QueuePolicy(resource_name, opts=opts, __props__=__props__)
+        return QueuePolicy(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

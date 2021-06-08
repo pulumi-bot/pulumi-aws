@@ -329,7 +329,7 @@ class _LocationFsxWindowsState:
 class LocationFsxWindows(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  fsx_filesystem_arn: Optional[pulumi.Input[str]] = None,
@@ -364,7 +364,7 @@ class LocationFsxWindows(pulumi.CustomResource):
          $ pulumi import aws:datasync/locationFsxWindows:LocationFsxWindows example arn:aws:datasync:us-west-2:123456789012:location/loc-12345678901234567#arn:aws:fsx:us-west-2:476956259333:file-system/fs-08e04cd442c1bb94a
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The name of the Windows domain that the FSx for Windows server belongs to.
         :param pulumi.Input[str] fsx_filesystem_arn: The Amazon Resource Name (ARN) for the FSx for Windows file system.
@@ -378,7 +378,7 @@ class LocationFsxWindows(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: LocationFsxWindowsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -405,20 +405,20 @@ class LocationFsxWindows(pulumi.CustomResource):
          $ pulumi import aws:datasync/locationFsxWindows:LocationFsxWindows example arn:aws:datasync:us-west-2:123456789012:location/loc-12345678901234567#arn:aws:fsx:us-west-2:476956259333:file-system/fs-08e04cd442c1bb94a
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param LocationFsxWindowsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(LocationFsxWindowsArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  fsx_filesystem_arn: Optional[pulumi.Input[str]] = None,
@@ -461,12 +461,12 @@ class LocationFsxWindows(pulumi.CustomResource):
             __props__.__dict__["uri"] = None
         super(LocationFsxWindows, __self__).__init__(
             'aws:datasync/locationFsxWindows:LocationFsxWindows',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
@@ -484,7 +484,7 @@ class LocationFsxWindows(pulumi.CustomResource):
         Get an existing LocationFsxWindows resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: Amazon Resource Name (ARN) of the DataSync Location.
@@ -514,7 +514,7 @@ class LocationFsxWindows(pulumi.CustomResource):
         __props__.__dict__["tags_all"] = tags_all
         __props__.__dict__["uri"] = uri
         __props__.__dict__["user"] = user
-        return LocationFsxWindows(resource_name, opts=opts, __props__=__props__)
+        return LocationFsxWindows(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

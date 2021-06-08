@@ -463,7 +463,7 @@ class _AssociationState:
 class Association(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  apply_only_at_cron_interval: Optional[pulumi.Input[bool]] = None,
                  association_name: Optional[pulumi.Input[str]] = None,
@@ -502,7 +502,7 @@ class Association(pulumi.CustomResource):
          $ pulumi import aws:ssm/association:Association test-association 10abcdef-0abc-1234-5678-90abcdef123456
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] apply_only_at_cron_interval: By default, when you create a new or update associations, the system runs it immediately and then according to the schedule you specified. Enable this option if you do not want an association to run immediately after you create or update it. This parameter is not supported for rate expressions. Default: `false`.
         :param pulumi.Input[str] association_name: The descriptive name for the association.
@@ -521,7 +521,7 @@ class Association(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: Optional[AssociationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -547,20 +547,20 @@ class Association(pulumi.CustomResource):
          $ pulumi import aws:ssm/association:Association test-association 10abcdef-0abc-1234-5678-90abcdef123456
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param AssociationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(AssociationArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  apply_only_at_cron_interval: Optional[pulumi.Input[bool]] = None,
                  association_name: Optional[pulumi.Input[str]] = None,
@@ -603,12 +603,12 @@ class Association(pulumi.CustomResource):
             __props__.__dict__["association_id"] = None
         super(Association, __self__).__init__(
             'aws:ssm/association:Association',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             apply_only_at_cron_interval: Optional[pulumi.Input[bool]] = None,
@@ -629,7 +629,7 @@ class Association(pulumi.CustomResource):
         Get an existing Association resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] apply_only_at_cron_interval: By default, when you create a new or update associations, the system runs it immediately and then according to the schedule you specified. Enable this option if you do not want an association to run immediately after you create or update it. This parameter is not supported for rate expressions. Default: `false`.
@@ -665,7 +665,7 @@ class Association(pulumi.CustomResource):
         __props__.__dict__["parameters"] = parameters
         __props__.__dict__["schedule_expression"] = schedule_expression
         __props__.__dict__["targets"] = targets
-        return Association(resource_name, opts=opts, __props__=__props__)
+        return Association(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="applyOnlyAtCronInterval")

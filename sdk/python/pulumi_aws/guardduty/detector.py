@@ -189,7 +189,7 @@ class _DetectorState:
 class Detector(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  finding_publishing_frequency: Optional[pulumi.Input[str]] = None,
@@ -218,7 +218,7 @@ class Detector(pulumi.CustomResource):
          $ pulumi import aws:guardduty/detector:Detector MyDetector 00b00fd5aecc0ab60a708659477e9617
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enable: Enable monitoring and feedback reporting. Setting to `false` is equivalent to "suspending" GuardDuty. Defaults to `true`.
         :param pulumi.Input[str] finding_publishing_frequency: Specifies the frequency of notifications sent for subsequent finding occurrences. If the detector is a GuardDuty member account, the value is determined by the GuardDuty primary account and cannot be modified, otherwise defaults to `SIX_HOURS`. For standalone and GuardDuty primary accounts, it must be configured in this provider to enable drift detection. Valid values for standalone and primary accounts: `FIFTEEN_MINUTES`, `ONE_HOUR`, `SIX_HOURS`. See [AWS Documentation](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings_cloudwatch.html#guardduty_findings_cloudwatch_notification_frequency) for more information.
@@ -228,7 +228,7 @@ class Detector(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: Optional[DetectorArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -253,20 +253,20 @@ class Detector(pulumi.CustomResource):
          $ pulumi import aws:guardduty/detector:Detector MyDetector 00b00fd5aecc0ab60a708659477e9617
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param DetectorArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(DetectorArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  finding_publishing_frequency: Optional[pulumi.Input[str]] = None,
@@ -292,12 +292,12 @@ class Detector(pulumi.CustomResource):
             __props__.__dict__["arn"] = None
         super(Detector, __self__).__init__(
             'aws:guardduty/detector:Detector',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
@@ -310,7 +310,7 @@ class Detector(pulumi.CustomResource):
         Get an existing Detector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The AWS account ID of the GuardDuty detector
@@ -330,7 +330,7 @@ class Detector(pulumi.CustomResource):
         __props__.__dict__["finding_publishing_frequency"] = finding_publishing_frequency
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tags_all"] = tags_all
-        return Detector(resource_name, opts=opts, __props__=__props__)
+        return Detector(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")

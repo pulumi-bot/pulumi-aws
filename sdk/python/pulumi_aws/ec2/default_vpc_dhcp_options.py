@@ -217,7 +217,7 @@ class _DefaultVpcDhcpOptionsState:
 class DefaultVpcDhcpOptions(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  netbios_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  netbios_node_type: Optional[pulumi.Input[str]] = None,
@@ -257,7 +257,7 @@ class DefaultVpcDhcpOptions(pulumi.CustomResource):
          $ pulumi import aws:ec2/defaultVpcDhcpOptions:DefaultVpcDhcpOptions default_options dopt-d9070ebb
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] netbios_name_servers: List of NETBIOS name servers.
         :param pulumi.Input[str] netbios_node_type: The NetBIOS node type (1, 2, 4, or 8). AWS recommends to specify 2 since broadcast and multicast are not supported in their network. For more information about these node types, see [RFC 2132](http://www.ietf.org/rfc/rfc2132.txt).
@@ -266,7 +266,7 @@ class DefaultVpcDhcpOptions(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: Optional[DefaultVpcDhcpOptionsArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -302,20 +302,20 @@ class DefaultVpcDhcpOptions(pulumi.CustomResource):
          $ pulumi import aws:ec2/defaultVpcDhcpOptions:DefaultVpcDhcpOptions default_options dopt-d9070ebb
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param DefaultVpcDhcpOptionsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(DefaultVpcDhcpOptionsArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  netbios_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  netbios_node_type: Optional[pulumi.Input[str]] = None,
@@ -344,12 +344,12 @@ class DefaultVpcDhcpOptions(pulumi.CustomResource):
             __props__.__dict__["owner_id"] = None
         super(DefaultVpcDhcpOptions, __self__).__init__(
             'aws:ec2/defaultVpcDhcpOptions:DefaultVpcDhcpOptions',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn: Optional[pulumi.Input[str]] = None,
@@ -365,7 +365,7 @@ class DefaultVpcDhcpOptions(pulumi.CustomResource):
         Get an existing DefaultVpcDhcpOptions resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The ARN of the DHCP Options Set.
@@ -387,7 +387,7 @@ class DefaultVpcDhcpOptions(pulumi.CustomResource):
         __props__.__dict__["owner_id"] = owner_id
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tags_all"] = tags_all
-        return DefaultVpcDhcpOptions(resource_name, opts=opts, __props__=__props__)
+        return DefaultVpcDhcpOptions(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

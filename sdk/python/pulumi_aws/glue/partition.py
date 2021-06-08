@@ -260,7 +260,7 @@ class _PartitionState:
 class Partition(pulumi.CustomResource):
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_id: Optional[pulumi.Input[str]] = None,
                  database_name: Optional[pulumi.Input[str]] = None,
@@ -280,7 +280,7 @@ class Partition(pulumi.CustomResource):
          $ pulumi import aws:glue/partition:Partition part 123456789012:MyDatabase:MyTable:val1#val2
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] catalog_id: ID of the Glue Catalog and database to create the table in. If omitted, this defaults to the AWS Account ID plus the database name.
         :param pulumi.Input[str] database_name: Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
@@ -291,7 +291,7 @@ class Partition(pulumi.CustomResource):
         ...
     @overload
     def __init__(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  args: PartitionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
@@ -305,20 +305,20 @@ class Partition(pulumi.CustomResource):
          $ pulumi import aws:glue/partition:Partition part 123456789012:MyDatabase:MyTable:val1#val2
         ```
 
-        :param str resource_name: The name of the resource.
+        :param str resource_name_: The name of the resource.
         :param PartitionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
-    def __init__(__self__, resource_name: str, *args, **kwargs):
+    def __init__(__self__, resource_name_: str, *args, **kwargs):
         resource_args, opts = _utilities.get_resource_args_opts(PartitionArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
-            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+            __self__._internal_init(resource_name_, opts, **resource_args.__dict__)
         else:
-            __self__._internal_init(resource_name, *args, **kwargs)
+            __self__._internal_init(resource_name_, *args, **kwargs)
 
     def _internal_init(__self__,
-                 resource_name: str,
+                 resource_name_: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_id: Optional[pulumi.Input[str]] = None,
                  database_name: Optional[pulumi.Input[str]] = None,
@@ -355,12 +355,12 @@ class Partition(pulumi.CustomResource):
             __props__.__dict__["last_analyzed_time"] = None
         super(Partition, __self__).__init__(
             'aws:glue/partition:Partition',
-            resource_name,
+            resource_name_,
             __props__,
             opts)
 
     @staticmethod
-    def get(resource_name: str,
+    def get(resource_name_: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             catalog_id: Optional[pulumi.Input[str]] = None,
@@ -376,7 +376,7 @@ class Partition(pulumi.CustomResource):
         Get an existing Partition resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
-        :param str resource_name: The unique name of the resulting resource.
+        :param str resource_name_: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] catalog_id: ID of the Glue Catalog and database to create the table in. If omitted, this defaults to the AWS Account ID plus the database name.
@@ -401,7 +401,7 @@ class Partition(pulumi.CustomResource):
         __props__.__dict__["partition_values"] = partition_values
         __props__.__dict__["storage_descriptor"] = storage_descriptor
         __props__.__dict__["table_name"] = table_name
-        return Partition(resource_name, opts=opts, __props__=__props__)
+        return Partition(resource_name_, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="catalogId")
