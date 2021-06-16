@@ -13,6 +13,56 @@ namespace Pulumi.Aws.Ec2
     /// Provides an EC2 instance resource. This allows instances to be created, updated, and deleted.
     /// 
     /// ## Example Usage
+    /// ### Basic Example Using AMI Lookup
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var ubuntu = Output.Create(Aws.Ec2.GetAmi.InvokeAsync(new Aws.Ec2.GetAmiArgs
+    ///         {
+    ///             MostRecent = true,
+    ///             Filters = 
+    ///             {
+    ///                 new Aws.Ec2.Inputs.GetAmiFilterArgs
+    ///                 {
+    ///                     Name = "name",
+    ///                     Values = 
+    ///                     {
+    ///                         "ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*",
+    ///                     },
+    ///                 },
+    ///                 new Aws.Ec2.Inputs.GetAmiFilterArgs
+    ///                 {
+    ///                     Name = "virtualization-type",
+    ///                     Values = 
+    ///                     {
+    ///                         "hvm",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Owners = 
+    ///             {
+    ///                 "099720109477",
+    ///             },
+    ///         }));
+    ///         var web = new Aws.Ec2.Instance("web", new Aws.Ec2.InstanceArgs
+    ///         {
+    ///             Ami = ubuntu.Apply(ubuntu =&gt; ubuntu.Id),
+    ///             InstanceType = "t3.micro",
+    ///             Tags = 
+    ///             {
+    ///                 { "Name", "HelloWorld" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Network and Credit Specification Example
     /// 
     /// ```csharp
@@ -514,7 +564,7 @@ namespace Pulumi.Aws.Ec2
         /// IAM Instance Profile to launch the instance with. Specified as the name of the Instance Profile. Ensure your credentials have the correct permission to assign the instance profile according to the [EC2 documentation](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html#roles-usingrole-ec2instance-permissions), notably `iam:PassRole`.
         /// </summary>
         [Input("iamInstanceProfile")]
-        public Input<string>? IamInstanceProfile { get; set; }
+        public string? IamInstanceProfile { get; set; }
 
         /// <summary>
         /// Shutdown behavior for the instance. Amazon defaults this to `stop` for EBS-backed instances and `terminate` for instance-store instances. Cannot be set on instance-store instances. See [Shutdown Behavior](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingInstanceInitiatedShutdownBehavior) for more information.
@@ -816,7 +866,7 @@ namespace Pulumi.Aws.Ec2
         /// IAM Instance Profile to launch the instance with. Specified as the name of the Instance Profile. Ensure your credentials have the correct permission to assign the instance profile according to the [EC2 documentation](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html#roles-usingrole-ec2instance-permissions), notably `iam:PassRole`.
         /// </summary>
         [Input("iamInstanceProfile")]
-        public Input<string>? IamInstanceProfile { get; set; }
+        public string? IamInstanceProfile { get; set; }
 
         /// <summary>
         /// Shutdown behavior for the instance. Amazon defaults this to `stop` for EBS-backed instances and `terminate` for instance-store instances. Cannot be set on instance-store instances. See [Shutdown Behavior](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#Using_ChangingInstanceInitiatedShutdownBehavior) for more information.

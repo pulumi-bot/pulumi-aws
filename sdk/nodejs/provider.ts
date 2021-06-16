@@ -28,26 +28,6 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
-    /**
-     * The access key for API operations. You can retrieve this from the 'Security & Credentials' section of the AWS console.
-     */
-    public readonly accessKey!: pulumi.Output<string | undefined>;
-    /**
-     * The profile for API operations. If not set, the default profile created with `aws configure` will be used.
-     */
-    public readonly profile!: pulumi.Output<string | undefined>;
-    /**
-     * The secret key for API operations. You can retrieve this from the 'Security & Credentials' section of the AWS console.
-     */
-    public readonly secretKey!: pulumi.Output<string | undefined>;
-    /**
-     * The path to the shared credentials file. If not set this defaults to ~/.aws/credentials.
-     */
-    public readonly sharedCredentialsFile!: pulumi.Output<string | undefined>;
-    /**
-     * session token. A session token is only required if you are using temporary security credentials.
-     */
-    public readonly token!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -60,7 +40,7 @@ export class Provider extends pulumi.ProviderResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            inputs["accessKey"] = args ? args.accessKey : undefined;
+            inputs["accessKey"] = pulumi.output(args ? args.accessKey : undefined).apply(JSON.stringify);
             inputs["allowedAccountIds"] = pulumi.output(args ? args.allowedAccountIds : undefined).apply(JSON.stringify);
             inputs["assumeRole"] = pulumi.output(args ? args.assumeRole : undefined).apply(JSON.stringify);
             inputs["defaultTags"] = pulumi.output(args ? args.defaultTags : undefined).apply(JSON.stringify);
@@ -69,17 +49,17 @@ export class Provider extends pulumi.ProviderResource {
             inputs["ignoreTags"] = pulumi.output(args ? args.ignoreTags : undefined).apply(JSON.stringify);
             inputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
             inputs["maxRetries"] = pulumi.output(args ? args.maxRetries : undefined).apply(JSON.stringify);
-            inputs["profile"] = (args ? args.profile : undefined) ?? utilities.getEnv("AWS_PROFILE");
-            inputs["region"] = (args ? args.region : undefined) ?? <any>utilities.getEnv("AWS_REGION", "AWS_DEFAULT_REGION");
+            inputs["profile"] = pulumi.output((args ? args.profile : undefined) ?? <any>utilities.getEnv("AWS_PROFILE")).apply(JSON.stringify);
+            inputs["region"] = pulumi.output((args ? args.region : undefined) ?? <any>utilities.getEnv("AWS_REGION", "AWS_DEFAULT_REGION")).apply(JSON.stringify);
             inputs["s3ForcePathStyle"] = pulumi.output(args ? args.s3ForcePathStyle : undefined).apply(JSON.stringify);
-            inputs["secretKey"] = args ? args.secretKey : undefined;
-            inputs["sharedCredentialsFile"] = args ? args.sharedCredentialsFile : undefined;
+            inputs["secretKey"] = pulumi.output(args ? args.secretKey : undefined).apply(JSON.stringify);
+            inputs["sharedCredentialsFile"] = pulumi.output(args ? args.sharedCredentialsFile : undefined).apply(JSON.stringify);
             inputs["skipCredentialsValidation"] = pulumi.output((args ? args.skipCredentialsValidation : undefined) ?? true).apply(JSON.stringify);
             inputs["skipGetEc2Platforms"] = pulumi.output((args ? args.skipGetEc2Platforms : undefined) ?? true).apply(JSON.stringify);
             inputs["skipMetadataApiCheck"] = pulumi.output((args ? args.skipMetadataApiCheck : undefined) ?? true).apply(JSON.stringify);
             inputs["skipRegionValidation"] = pulumi.output((args ? args.skipRegionValidation : undefined) ?? true).apply(JSON.stringify);
             inputs["skipRequestingAccountId"] = pulumi.output(args ? args.skipRequestingAccountId : undefined).apply(JSON.stringify);
-            inputs["token"] = args ? args.token : undefined;
+            inputs["token"] = pulumi.output(args ? args.token : undefined).apply(JSON.stringify);
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

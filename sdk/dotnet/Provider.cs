@@ -19,37 +19,6 @@ namespace Pulumi.Aws
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
-        /// The access key for API operations. You can retrieve this from the 'Security &amp; Credentials' section of the AWS console.
-        /// </summary>
-        [Output("accessKey")]
-        public Output<string?> AccessKey { get; private set; } = null!;
-
-        /// <summary>
-        /// The profile for API operations. If not set, the default profile created with `aws configure` will be used.
-        /// </summary>
-        [Output("profile")]
-        public Output<string?> Profile { get; private set; } = null!;
-
-        /// <summary>
-        /// The secret key for API operations. You can retrieve this from the 'Security &amp; Credentials' section of the AWS console.
-        /// </summary>
-        [Output("secretKey")]
-        public Output<string?> SecretKey { get; private set; } = null!;
-
-        /// <summary>
-        /// The path to the shared credentials file. If not set this defaults to ~/.aws/credentials.
-        /// </summary>
-        [Output("sharedCredentialsFile")]
-        public Output<string?> SharedCredentialsFile { get; private set; } = null!;
-
-        /// <summary>
-        /// session token. A session token is only required if you are using temporary security credentials.
-        /// </summary>
-        [Output("token")]
-        public Output<string?> Token { get; private set; } = null!;
-
-
-        /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -79,7 +48,7 @@ namespace Pulumi.Aws
         /// <summary>
         /// The access key for API operations. You can retrieve this from the 'Security &amp; Credentials' section of the AWS console.
         /// </summary>
-        [Input("accessKey")]
+        [Input("accessKey", json: true)]
         public Input<string>? AccessKey { get; set; }
 
         [Input("allowedAccountIds", json: true)]
@@ -136,13 +105,13 @@ namespace Pulumi.Aws
         /// <summary>
         /// The profile for API operations. If not set, the default profile created with `aws configure` will be used.
         /// </summary>
-        [Input("profile")]
+        [Input("profile", json: true)]
         public Input<string>? Profile { get; set; }
 
         /// <summary>
         /// The region where AWS operations will take place. Examples are us-east-1, us-west-2, etc.
         /// </summary>
-        [Input("region")]
+        [Input("region", json: true)]
         public Input<string>? Region { get; set; }
 
         /// <summary>
@@ -156,13 +125,13 @@ namespace Pulumi.Aws
         /// <summary>
         /// The secret key for API operations. You can retrieve this from the 'Security &amp; Credentials' section of the AWS console.
         /// </summary>
-        [Input("secretKey")]
+        [Input("secretKey", json: true)]
         public Input<string>? SecretKey { get; set; }
 
         /// <summary>
         /// The path to the shared credentials file. If not set this defaults to ~/.aws/credentials.
         /// </summary>
-        [Input("sharedCredentialsFile")]
+        [Input("sharedCredentialsFile", json: true)]
         public Input<string>? SharedCredentialsFile { get; set; }
 
         /// <summary>
@@ -197,7 +166,7 @@ namespace Pulumi.Aws
         /// <summary>
         /// session token. A session token is only required if you are using temporary security credentials.
         /// </summary>
-        [Input("token")]
+        [Input("token", json: true)]
         public Input<string>? Token { get; set; }
 
         public ProviderArgs()

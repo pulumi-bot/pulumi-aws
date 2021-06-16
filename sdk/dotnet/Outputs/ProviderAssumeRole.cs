@@ -13,32 +13,32 @@ namespace Pulumi.Aws.Outputs
     [OutputType]
     public sealed class ProviderAssumeRole
     {
-        public readonly int? DurationSeconds;
-        public readonly string? ExternalId;
-        public readonly string? Policy;
-        public readonly ImmutableArray<string> PolicyArns;
-        public readonly string? RoleArn;
-        public readonly string? SessionName;
-        public readonly ImmutableDictionary<string, string>? Tags;
-        public readonly ImmutableArray<string> TransitiveTagKeys;
+        public readonly Input<int>? DurationSeconds;
+        public readonly Input<string>? ExternalId;
+        public readonly Input<string>? Policy;
+        public readonly InputList<string> PolicyArns;
+        public readonly Input<string>? RoleArn;
+        public readonly Input<string>? SessionName;
+        public readonly InputMap<string> Tags;
+        public readonly InputList<string> TransitiveTagKeys;
 
         [OutputConstructor]
         private ProviderAssumeRole(
-            int? durationSeconds,
+            Input<int>? durationSeconds,
 
-            string? externalId,
+            Input<string>? externalId,
 
-            string? policy,
+            Input<string>? policy,
 
-            ImmutableArray<string> policyArns,
+            InputList<string> policyArns,
 
-            string? roleArn,
+            Input<string>? roleArn,
 
-            string? sessionName,
+            Input<string>? sessionName,
 
-            ImmutableDictionary<string, string>? tags,
+            InputMap<string> tags,
 
-            ImmutableArray<string> transitiveTagKeys)
+            InputList<string> transitiveTagKeys)
         {
             DurationSeconds = durationSeconds;
             ExternalId = externalId;

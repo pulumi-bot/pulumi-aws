@@ -121,7 +121,7 @@ namespace Pulumi.Aws.Iam
         /// The user the policy should be applied to
         /// </summary>
         [Input("user", required: true)]
-        public Input<string> User { get; set; } = null!;
+        public string User { get; set; } = null!;
 
         public UserPolicyAttachmentArgs()
         {
@@ -140,7 +140,7 @@ namespace Pulumi.Aws.Iam
         /// The user the policy should be applied to
         /// </summary>
         [Input("user")]
-        public Input<string>? User { get; set; }
+        public string? User { get; set; }
 
         public UserPolicyAttachmentState()
         {

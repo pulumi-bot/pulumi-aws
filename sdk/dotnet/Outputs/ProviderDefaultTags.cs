@@ -13,10 +13,10 @@ namespace Pulumi.Aws.Outputs
     [OutputType]
     public sealed class ProviderDefaultTags
     {
-        public readonly ImmutableDictionary<string, string>? Tags;
+        public readonly InputMap<string> Tags;
 
         [OutputConstructor]
-        private ProviderDefaultTags(ImmutableDictionary<string, string>? tags)
+        private ProviderDefaultTags(InputMap<string> tags)
         {
             Tags = tags;
         }

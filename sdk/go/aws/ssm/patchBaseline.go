@@ -60,7 +60,7 @@ import (
 // 				&ssm.PatchBaselineApprovalRuleArgs{
 // 					ApproveAfterDays: pulumi.Int(7),
 // 					ComplianceLevel:  pulumi.String("HIGH"),
-// 					PatchFilters: ssm.PatchBaselineApprovalRulePatchFilterArray{
+// 					PatchFilters: []ssm.PatchBaselineApprovalRulePatchFilterArgs{
 // 						&ssm.PatchBaselineApprovalRulePatchFilterArgs{
 // 							Key: pulumi.String("PRODUCT"),
 // 							Values: pulumi.StringArray{
@@ -87,7 +87,7 @@ import (
 // 				},
 // 				&ssm.PatchBaselineApprovalRuleArgs{
 // 					ApproveAfterDays: pulumi.Int(7),
-// 					PatchFilters: ssm.PatchBaselineApprovalRulePatchFilterArray{
+// 					PatchFilters: []ssm.PatchBaselineApprovalRulePatchFilterArgs{
 // 						&ssm.PatchBaselineApprovalRulePatchFilterArgs{
 // 							Key: pulumi.String("PRODUCT"),
 // 							Values: pulumi.StringArray{
@@ -150,7 +150,7 @@ import (
 // 			ApprovalRules: ssm.PatchBaselineApprovalRuleArray{
 // 				&ssm.PatchBaselineApprovalRuleArgs{
 // 					ApproveAfterDays: pulumi.Int(7),
-// 					PatchFilters: ssm.PatchBaselineApprovalRulePatchFilterArray{
+// 					PatchFilters: []ssm.PatchBaselineApprovalRulePatchFilterArgs{
 // 						&ssm.PatchBaselineApprovalRulePatchFilterArgs{
 // 							Key: pulumi.String("CLASSIFICATION"),
 // 							Values: pulumi.StringArray{
@@ -169,7 +169,7 @@ import (
 // 				},
 // 				&ssm.PatchBaselineApprovalRuleArgs{
 // 					ApproveAfterDays: pulumi.Int(7),
-// 					PatchFilters: ssm.PatchBaselineApprovalRulePatchFilterArray{
+// 					PatchFilters: []ssm.PatchBaselineApprovalRulePatchFilterArgs{
 // 						&ssm.PatchBaselineApprovalRulePatchFilterArgs{
 // 							Key: pulumi.String("PATCH_SET"),
 // 							Values: pulumi.StringArray{

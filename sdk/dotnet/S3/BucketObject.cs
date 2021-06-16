@@ -345,7 +345,7 @@ namespace Pulumi.Aws.S3
         /// The name of the bucket to put the file in. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified.
         /// </summary>
         [Input("bucket", required: true)]
-        public Input<string> Bucket { get; set; } = null!;
+        public string Bucket { get; set; } = null!;
 
         /// <summary>
         /// Whether or not to use [Amazon S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) for SSE-KMS.
@@ -519,7 +519,7 @@ namespace Pulumi.Aws.S3
         /// The name of the bucket to put the file in. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified.
         /// </summary>
         [Input("bucket")]
-        public Input<string>? Bucket { get; set; }
+        public string? Bucket { get; set; }
 
         /// <summary>
         /// Whether or not to use [Amazon S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) for SSE-KMS.

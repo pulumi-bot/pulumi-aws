@@ -13,14 +13,14 @@ namespace Pulumi.Aws.Outputs
     [OutputType]
     public sealed class ProviderIgnoreTags
     {
-        public readonly ImmutableArray<string> KeyPrefixes;
-        public readonly ImmutableArray<string> Keys;
+        public readonly InputList<string> KeyPrefixes;
+        public readonly InputList<string> Keys;
 
         [OutputConstructor]
         private ProviderIgnoreTags(
-            ImmutableArray<string> keyPrefixes,
+            InputList<string> keyPrefixes,
 
-            ImmutableArray<string> keys)
+            InputList<string> keys)
         {
             KeyPrefixes = keyPrefixes;
             Keys = keys;

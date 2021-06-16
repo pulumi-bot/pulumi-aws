@@ -765,7 +765,7 @@ namespace Pulumi.Aws.S3
         /// A valid [bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html) JSON document. Note that if the policy document is not specific enough (but still valid), the provider may view the policy as constantly changing in a `pulumi up / preview / update`. In this case, please make sure you use the verbose/specific version of the policy.
         /// </summary>
         [Input("policy")]
-        public Input<string>? Policy { get; set; }
+        public string? Policy { get; set; }
 
         /// <summary>
         /// A configuration of [replication configuration](http://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html) (documented below).
@@ -955,7 +955,7 @@ namespace Pulumi.Aws.S3
         /// A valid [bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html) JSON document. Note that if the policy document is not specific enough (but still valid), the provider may view the policy as constantly changing in a `pulumi up / preview / update`. In this case, please make sure you use the verbose/specific version of the policy.
         /// </summary>
         [Input("policy")]
-        public Input<string>? Policy { get; set; }
+        public string? Policy { get; set; }
 
         /// <summary>
         /// The AWS region this bucket resides in.

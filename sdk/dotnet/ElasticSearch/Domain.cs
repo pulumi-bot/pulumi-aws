@@ -424,7 +424,7 @@ namespace Pulumi.Aws.ElasticSearch
         /// IAM policy document specifying the access policies for the domain.
         /// </summary>
         [Input("accessPolicies")]
-        public Input<string>? AccessPolicies { get; set; }
+        public string? AccessPolicies { get; set; }
 
         [Input("advancedOptions")]
         private InputMap<string>? _advancedOptions;
@@ -543,7 +543,7 @@ namespace Pulumi.Aws.ElasticSearch
         /// IAM policy document specifying the access policies for the domain.
         /// </summary>
         [Input("accessPolicies")]
-        public Input<string>? AccessPolicies { get; set; }
+        public string? AccessPolicies { get; set; }
 
         [Input("advancedOptions")]
         private InputMap<string>? _advancedOptions;

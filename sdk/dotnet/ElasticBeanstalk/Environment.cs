@@ -306,7 +306,7 @@ namespace Pulumi.Aws.ElasticBeanstalk
         /// to be deployed
         /// </summary>
         [Input("application", required: true)]
-        public Input<string> Application { get; set; } = null!;
+        public string Application { get; set; } = null!;
 
         /// <summary>
         /// Prefix to use for the fully qualified DNS name of
@@ -437,7 +437,7 @@ namespace Pulumi.Aws.ElasticBeanstalk
         /// to be deployed
         /// </summary>
         [Input("application")]
-        public Input<string>? Application { get; set; }
+        public string? Application { get; set; }
 
         [Input("arn")]
         public Input<string>? Arn { get; set; }

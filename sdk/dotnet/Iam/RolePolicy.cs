@@ -175,13 +175,13 @@ namespace Pulumi.Aws.Iam
         /// The policy document. This is a JSON formatted string.
         /// </summary>
         [Input("policy", required: true)]
-        public Input<string> Policy { get; set; } = null!;
+        public string Policy { get; set; } = null!;
 
         /// <summary>
         /// The IAM role to attach to the policy.
         /// </summary>
         [Input("role", required: true)]
-        public Input<string> Role { get; set; } = null!;
+        public string Role { get; set; } = null!;
 
         public RolePolicyArgs()
         {
@@ -208,13 +208,13 @@ namespace Pulumi.Aws.Iam
         /// The policy document. This is a JSON formatted string.
         /// </summary>
         [Input("policy")]
-        public Input<string>? Policy { get; set; }
+        public string? Policy { get; set; }
 
         /// <summary>
         /// The IAM role to attach to the policy.
         /// </summary>
         [Input("role")]
-        public Input<string>? Role { get; set; }
+        public string? Role { get; set; }
 
         public RolePolicyState()
         {

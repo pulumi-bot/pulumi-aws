@@ -175,7 +175,7 @@ namespace Pulumi.Aws.Ecr
         /// The policy document. This is a JSON formatted string. See more details about [Policy Parameters](http://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html#lifecycle_policy_parameters) in the official AWS docs.
         /// </summary>
         [Input("policy", required: true)]
-        public Input<string> Policy { get; set; } = null!;
+        public string Policy { get; set; } = null!;
 
         /// <summary>
         /// Name of the repository to apply the policy.
@@ -194,7 +194,7 @@ namespace Pulumi.Aws.Ecr
         /// The policy document. This is a JSON formatted string. See more details about [Policy Parameters](http://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html#lifecycle_policy_parameters) in the official AWS docs.
         /// </summary>
         [Input("policy")]
-        public Input<string>? Policy { get; set; }
+        public string? Policy { get; set; }
 
         /// <summary>
         /// The registry ID where the repository was created.

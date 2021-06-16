@@ -150,7 +150,7 @@ namespace Pulumi.Aws.S3
         /// The text of the policy. Note: Bucket policies are limited to 20 KB in size.
         /// </summary>
         [Input("policy", required: true)]
-        public Input<string> Policy { get; set; } = null!;
+        public string Policy { get; set; } = null!;
 
         public BucketPolicyArgs()
         {
@@ -169,7 +169,7 @@ namespace Pulumi.Aws.S3
         /// The text of the policy. Note: Bucket policies are limited to 20 KB in size.
         /// </summary>
         [Input("policy")]
-        public Input<string>? Policy { get; set; }
+        public string? Policy { get; set; }
 
         public BucketPolicyState()
         {
