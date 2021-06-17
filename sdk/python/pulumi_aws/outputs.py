@@ -29,14 +29,14 @@ __all__ = [
 @pulumi.output_type
 class ProviderAssumeRole(dict):
     def __init__(__self__, *,
-                 duration_seconds: Optional[int] = None,
-                 external_id: Optional[str] = None,
-                 policy: Optional[str] = None,
-                 policy_arns: Optional[Sequence[str]] = None,
-                 role_arn: Optional[str] = None,
-                 session_name: Optional[str] = None,
-                 tags: Optional[Mapping[str, str]] = None,
-                 transitive_tag_keys: Optional[Sequence[str]] = None):
+                 duration_seconds: Optional[pulumi.Input[int]] = None,
+                 external_id: Optional[pulumi.Input[str]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
+                 policy_arns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 role_arn: Optional[pulumi.Input[str]] = None,
+                 session_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 transitive_tag_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if duration_seconds is not None:
             pulumi.set(__self__, "duration_seconds", duration_seconds)
         if external_id is not None:
@@ -56,219 +56,219 @@ class ProviderAssumeRole(dict):
 
     @property
     @pulumi.getter(name="durationSeconds")
-    def duration_seconds(self) -> Optional[int]:
+    def duration_seconds(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "duration_seconds")
 
     @property
     @pulumi.getter(name="externalId")
-    def external_id(self) -> Optional[str]:
+    def external_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "external_id")
 
     @property
     @pulumi.getter
-    def policy(self) -> Optional[str]:
+    def policy(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "policy")
 
     @property
     @pulumi.getter(name="policyArns")
-    def policy_arns(self) -> Optional[Sequence[str]]:
+    def policy_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "policy_arns")
 
     @property
     @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[str]:
+    def role_arn(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter(name="sessionName")
-    def session_name(self) -> Optional[str]:
+    def session_name(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "session_name")
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, str]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="transitiveTagKeys")
-    def transitive_tag_keys(self) -> Optional[Sequence[str]]:
+    def transitive_tag_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "transitive_tag_keys")
 
 
 @pulumi.output_type
 class ProviderDefaultTags(dict):
     def __init__(__self__, *,
-                 tags: Optional[Mapping[str, str]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, str]]:
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "tags")
 
 
 @pulumi.output_type
 class ProviderEndpoint(dict):
     def __init__(__self__, *,
-                 accessanalyzer: Optional[str] = None,
-                 acm: Optional[str] = None,
-                 acmpca: Optional[str] = None,
-                 amplify: Optional[str] = None,
-                 apigateway: Optional[str] = None,
-                 appconfig: Optional[str] = None,
-                 applicationautoscaling: Optional[str] = None,
-                 applicationinsights: Optional[str] = None,
-                 appmesh: Optional[str] = None,
-                 apprunner: Optional[str] = None,
-                 appstream: Optional[str] = None,
-                 appsync: Optional[str] = None,
-                 athena: Optional[str] = None,
-                 auditmanager: Optional[str] = None,
-                 autoscaling: Optional[str] = None,
-                 autoscalingplans: Optional[str] = None,
-                 backup: Optional[str] = None,
-                 batch: Optional[str] = None,
-                 budgets: Optional[str] = None,
-                 chime: Optional[str] = None,
-                 cloud9: Optional[str] = None,
-                 cloudformation: Optional[str] = None,
-                 cloudfront: Optional[str] = None,
-                 cloudhsm: Optional[str] = None,
-                 cloudsearch: Optional[str] = None,
-                 cloudtrail: Optional[str] = None,
-                 cloudwatch: Optional[str] = None,
-                 cloudwatchevents: Optional[str] = None,
-                 cloudwatchlogs: Optional[str] = None,
-                 codeartifact: Optional[str] = None,
-                 codebuild: Optional[str] = None,
-                 codecommit: Optional[str] = None,
-                 codedeploy: Optional[str] = None,
-                 codepipeline: Optional[str] = None,
-                 codestarconnections: Optional[str] = None,
-                 cognitoidentity: Optional[str] = None,
-                 cognitoidp: Optional[str] = None,
-                 configservice: Optional[str] = None,
-                 connect: Optional[str] = None,
-                 cur: Optional[str] = None,
-                 dataexchange: Optional[str] = None,
-                 datapipeline: Optional[str] = None,
-                 datasync: Optional[str] = None,
-                 dax: Optional[str] = None,
-                 detective: Optional[str] = None,
-                 devicefarm: Optional[str] = None,
-                 directconnect: Optional[str] = None,
-                 dlm: Optional[str] = None,
-                 dms: Optional[str] = None,
-                 docdb: Optional[str] = None,
-                 ds: Optional[str] = None,
-                 dynamodb: Optional[str] = None,
-                 ec2: Optional[str] = None,
-                 ecr: Optional[str] = None,
-                 ecrpublic: Optional[str] = None,
-                 ecs: Optional[str] = None,
-                 efs: Optional[str] = None,
-                 eks: Optional[str] = None,
-                 elasticache: Optional[str] = None,
-                 elasticbeanstalk: Optional[str] = None,
-                 elastictranscoder: Optional[str] = None,
-                 elb: Optional[str] = None,
-                 emr: Optional[str] = None,
-                 emrcontainers: Optional[str] = None,
-                 es: Optional[str] = None,
-                 firehose: Optional[str] = None,
-                 fms: Optional[str] = None,
-                 forecast: Optional[str] = None,
-                 fsx: Optional[str] = None,
-                 gamelift: Optional[str] = None,
-                 glacier: Optional[str] = None,
-                 globalaccelerator: Optional[str] = None,
-                 glue: Optional[str] = None,
-                 greengrass: Optional[str] = None,
-                 guardduty: Optional[str] = None,
-                 iam: Optional[str] = None,
-                 identitystore: Optional[str] = None,
-                 imagebuilder: Optional[str] = None,
-                 inspector: Optional[str] = None,
-                 iot: Optional[str] = None,
-                 iotanalytics: Optional[str] = None,
-                 iotevents: Optional[str] = None,
-                 kafka: Optional[str] = None,
-                 kinesis: Optional[str] = None,
-                 kinesisanalytics: Optional[str] = None,
-                 kinesisanalyticsv2: Optional[str] = None,
-                 kinesisvideo: Optional[str] = None,
-                 kms: Optional[str] = None,
-                 lakeformation: Optional[str] = None,
-                 lambda_: Optional[str] = None,
-                 lexmodels: Optional[str] = None,
-                 licensemanager: Optional[str] = None,
-                 lightsail: Optional[str] = None,
-                 location: Optional[str] = None,
-                 macie: Optional[str] = None,
-                 macie2: Optional[str] = None,
-                 managedblockchain: Optional[str] = None,
-                 marketplacecatalog: Optional[str] = None,
-                 mediaconnect: Optional[str] = None,
-                 mediaconvert: Optional[str] = None,
-                 medialive: Optional[str] = None,
-                 mediapackage: Optional[str] = None,
-                 mediastore: Optional[str] = None,
-                 mediastoredata: Optional[str] = None,
-                 mq: Optional[str] = None,
-                 mwaa: Optional[str] = None,
-                 neptune: Optional[str] = None,
-                 networkfirewall: Optional[str] = None,
-                 networkmanager: Optional[str] = None,
-                 opsworks: Optional[str] = None,
-                 organizations: Optional[str] = None,
-                 outposts: Optional[str] = None,
-                 personalize: Optional[str] = None,
-                 pinpoint: Optional[str] = None,
-                 pricing: Optional[str] = None,
-                 qldb: Optional[str] = None,
-                 quicksight: Optional[str] = None,
-                 ram: Optional[str] = None,
-                 rds: Optional[str] = None,
-                 redshift: Optional[str] = None,
-                 resourcegroups: Optional[str] = None,
-                 resourcegroupstaggingapi: Optional[str] = None,
-                 route53: Optional[str] = None,
-                 route53domains: Optional[str] = None,
-                 route53resolver: Optional[str] = None,
-                 s3: Optional[str] = None,
-                 s3control: Optional[str] = None,
-                 s3outposts: Optional[str] = None,
-                 sagemaker: Optional[str] = None,
-                 schemas: Optional[str] = None,
-                 sdb: Optional[str] = None,
-                 secretsmanager: Optional[str] = None,
-                 securityhub: Optional[str] = None,
-                 serverlessrepo: Optional[str] = None,
-                 servicecatalog: Optional[str] = None,
-                 servicediscovery: Optional[str] = None,
-                 servicequotas: Optional[str] = None,
-                 ses: Optional[str] = None,
-                 shield: Optional[str] = None,
-                 signer: Optional[str] = None,
-                 sns: Optional[str] = None,
-                 sqs: Optional[str] = None,
-                 ssm: Optional[str] = None,
-                 ssoadmin: Optional[str] = None,
-                 stepfunctions: Optional[str] = None,
-                 storagegateway: Optional[str] = None,
-                 sts: Optional[str] = None,
-                 swf: Optional[str] = None,
-                 synthetics: Optional[str] = None,
-                 timestreamwrite: Optional[str] = None,
-                 transfer: Optional[str] = None,
-                 waf: Optional[str] = None,
-                 wafregional: Optional[str] = None,
-                 wafv2: Optional[str] = None,
-                 worklink: Optional[str] = None,
-                 workmail: Optional[str] = None,
-                 workspaces: Optional[str] = None,
-                 xray: Optional[str] = None):
+                 accessanalyzer: Optional[pulumi.Input[str]] = None,
+                 acm: Optional[pulumi.Input[str]] = None,
+                 acmpca: Optional[pulumi.Input[str]] = None,
+                 amplify: Optional[pulumi.Input[str]] = None,
+                 apigateway: Optional[pulumi.Input[str]] = None,
+                 appconfig: Optional[pulumi.Input[str]] = None,
+                 applicationautoscaling: Optional[pulumi.Input[str]] = None,
+                 applicationinsights: Optional[pulumi.Input[str]] = None,
+                 appmesh: Optional[pulumi.Input[str]] = None,
+                 apprunner: Optional[pulumi.Input[str]] = None,
+                 appstream: Optional[pulumi.Input[str]] = None,
+                 appsync: Optional[pulumi.Input[str]] = None,
+                 athena: Optional[pulumi.Input[str]] = None,
+                 auditmanager: Optional[pulumi.Input[str]] = None,
+                 autoscaling: Optional[pulumi.Input[str]] = None,
+                 autoscalingplans: Optional[pulumi.Input[str]] = None,
+                 backup: Optional[pulumi.Input[str]] = None,
+                 batch: Optional[pulumi.Input[str]] = None,
+                 budgets: Optional[pulumi.Input[str]] = None,
+                 chime: Optional[pulumi.Input[str]] = None,
+                 cloud9: Optional[pulumi.Input[str]] = None,
+                 cloudformation: Optional[pulumi.Input[str]] = None,
+                 cloudfront: Optional[pulumi.Input[str]] = None,
+                 cloudhsm: Optional[pulumi.Input[str]] = None,
+                 cloudsearch: Optional[pulumi.Input[str]] = None,
+                 cloudtrail: Optional[pulumi.Input[str]] = None,
+                 cloudwatch: Optional[pulumi.Input[str]] = None,
+                 cloudwatchevents: Optional[pulumi.Input[str]] = None,
+                 cloudwatchlogs: Optional[pulumi.Input[str]] = None,
+                 codeartifact: Optional[pulumi.Input[str]] = None,
+                 codebuild: Optional[pulumi.Input[str]] = None,
+                 codecommit: Optional[pulumi.Input[str]] = None,
+                 codedeploy: Optional[pulumi.Input[str]] = None,
+                 codepipeline: Optional[pulumi.Input[str]] = None,
+                 codestarconnections: Optional[pulumi.Input[str]] = None,
+                 cognitoidentity: Optional[pulumi.Input[str]] = None,
+                 cognitoidp: Optional[pulumi.Input[str]] = None,
+                 configservice: Optional[pulumi.Input[str]] = None,
+                 connect: Optional[pulumi.Input[str]] = None,
+                 cur: Optional[pulumi.Input[str]] = None,
+                 dataexchange: Optional[pulumi.Input[str]] = None,
+                 datapipeline: Optional[pulumi.Input[str]] = None,
+                 datasync: Optional[pulumi.Input[str]] = None,
+                 dax: Optional[pulumi.Input[str]] = None,
+                 detective: Optional[pulumi.Input[str]] = None,
+                 devicefarm: Optional[pulumi.Input[str]] = None,
+                 directconnect: Optional[pulumi.Input[str]] = None,
+                 dlm: Optional[pulumi.Input[str]] = None,
+                 dms: Optional[pulumi.Input[str]] = None,
+                 docdb: Optional[pulumi.Input[str]] = None,
+                 ds: Optional[pulumi.Input[str]] = None,
+                 dynamodb: Optional[pulumi.Input[str]] = None,
+                 ec2: Optional[pulumi.Input[str]] = None,
+                 ecr: Optional[pulumi.Input[str]] = None,
+                 ecrpublic: Optional[pulumi.Input[str]] = None,
+                 ecs: Optional[pulumi.Input[str]] = None,
+                 efs: Optional[pulumi.Input[str]] = None,
+                 eks: Optional[pulumi.Input[str]] = None,
+                 elasticache: Optional[pulumi.Input[str]] = None,
+                 elasticbeanstalk: Optional[pulumi.Input[str]] = None,
+                 elastictranscoder: Optional[pulumi.Input[str]] = None,
+                 elb: Optional[pulumi.Input[str]] = None,
+                 emr: Optional[pulumi.Input[str]] = None,
+                 emrcontainers: Optional[pulumi.Input[str]] = None,
+                 es: Optional[pulumi.Input[str]] = None,
+                 firehose: Optional[pulumi.Input[str]] = None,
+                 fms: Optional[pulumi.Input[str]] = None,
+                 forecast: Optional[pulumi.Input[str]] = None,
+                 fsx: Optional[pulumi.Input[str]] = None,
+                 gamelift: Optional[pulumi.Input[str]] = None,
+                 glacier: Optional[pulumi.Input[str]] = None,
+                 globalaccelerator: Optional[pulumi.Input[str]] = None,
+                 glue: Optional[pulumi.Input[str]] = None,
+                 greengrass: Optional[pulumi.Input[str]] = None,
+                 guardduty: Optional[pulumi.Input[str]] = None,
+                 iam: Optional[pulumi.Input[str]] = None,
+                 identitystore: Optional[pulumi.Input[str]] = None,
+                 imagebuilder: Optional[pulumi.Input[str]] = None,
+                 inspector: Optional[pulumi.Input[str]] = None,
+                 iot: Optional[pulumi.Input[str]] = None,
+                 iotanalytics: Optional[pulumi.Input[str]] = None,
+                 iotevents: Optional[pulumi.Input[str]] = None,
+                 kafka: Optional[pulumi.Input[str]] = None,
+                 kinesis: Optional[pulumi.Input[str]] = None,
+                 kinesisanalytics: Optional[pulumi.Input[str]] = None,
+                 kinesisanalyticsv2: Optional[pulumi.Input[str]] = None,
+                 kinesisvideo: Optional[pulumi.Input[str]] = None,
+                 kms: Optional[pulumi.Input[str]] = None,
+                 lakeformation: Optional[pulumi.Input[str]] = None,
+                 lambda_: Optional[pulumi.Input[str]] = None,
+                 lexmodels: Optional[pulumi.Input[str]] = None,
+                 licensemanager: Optional[pulumi.Input[str]] = None,
+                 lightsail: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 macie: Optional[pulumi.Input[str]] = None,
+                 macie2: Optional[pulumi.Input[str]] = None,
+                 managedblockchain: Optional[pulumi.Input[str]] = None,
+                 marketplacecatalog: Optional[pulumi.Input[str]] = None,
+                 mediaconnect: Optional[pulumi.Input[str]] = None,
+                 mediaconvert: Optional[pulumi.Input[str]] = None,
+                 medialive: Optional[pulumi.Input[str]] = None,
+                 mediapackage: Optional[pulumi.Input[str]] = None,
+                 mediastore: Optional[pulumi.Input[str]] = None,
+                 mediastoredata: Optional[pulumi.Input[str]] = None,
+                 mq: Optional[pulumi.Input[str]] = None,
+                 mwaa: Optional[pulumi.Input[str]] = None,
+                 neptune: Optional[pulumi.Input[str]] = None,
+                 networkfirewall: Optional[pulumi.Input[str]] = None,
+                 networkmanager: Optional[pulumi.Input[str]] = None,
+                 opsworks: Optional[pulumi.Input[str]] = None,
+                 organizations: Optional[pulumi.Input[str]] = None,
+                 outposts: Optional[pulumi.Input[str]] = None,
+                 personalize: Optional[pulumi.Input[str]] = None,
+                 pinpoint: Optional[pulumi.Input[str]] = None,
+                 pricing: Optional[pulumi.Input[str]] = None,
+                 qldb: Optional[pulumi.Input[str]] = None,
+                 quicksight: Optional[pulumi.Input[str]] = None,
+                 ram: Optional[pulumi.Input[str]] = None,
+                 rds: Optional[pulumi.Input[str]] = None,
+                 redshift: Optional[pulumi.Input[str]] = None,
+                 resourcegroups: Optional[pulumi.Input[str]] = None,
+                 resourcegroupstaggingapi: Optional[pulumi.Input[str]] = None,
+                 route53: Optional[pulumi.Input[str]] = None,
+                 route53domains: Optional[pulumi.Input[str]] = None,
+                 route53resolver: Optional[pulumi.Input[str]] = None,
+                 s3: Optional[pulumi.Input[str]] = None,
+                 s3control: Optional[pulumi.Input[str]] = None,
+                 s3outposts: Optional[pulumi.Input[str]] = None,
+                 sagemaker: Optional[pulumi.Input[str]] = None,
+                 schemas: Optional[pulumi.Input[str]] = None,
+                 sdb: Optional[pulumi.Input[str]] = None,
+                 secretsmanager: Optional[pulumi.Input[str]] = None,
+                 securityhub: Optional[pulumi.Input[str]] = None,
+                 serverlessrepo: Optional[pulumi.Input[str]] = None,
+                 servicecatalog: Optional[pulumi.Input[str]] = None,
+                 servicediscovery: Optional[pulumi.Input[str]] = None,
+                 servicequotas: Optional[pulumi.Input[str]] = None,
+                 ses: Optional[pulumi.Input[str]] = None,
+                 shield: Optional[pulumi.Input[str]] = None,
+                 signer: Optional[pulumi.Input[str]] = None,
+                 sns: Optional[pulumi.Input[str]] = None,
+                 sqs: Optional[pulumi.Input[str]] = None,
+                 ssm: Optional[pulumi.Input[str]] = None,
+                 ssoadmin: Optional[pulumi.Input[str]] = None,
+                 stepfunctions: Optional[pulumi.Input[str]] = None,
+                 storagegateway: Optional[pulumi.Input[str]] = None,
+                 sts: Optional[pulumi.Input[str]] = None,
+                 swf: Optional[pulumi.Input[str]] = None,
+                 synthetics: Optional[pulumi.Input[str]] = None,
+                 timestreamwrite: Optional[pulumi.Input[str]] = None,
+                 transfer: Optional[pulumi.Input[str]] = None,
+                 waf: Optional[pulumi.Input[str]] = None,
+                 wafregional: Optional[pulumi.Input[str]] = None,
+                 wafv2: Optional[pulumi.Input[str]] = None,
+                 worklink: Optional[pulumi.Input[str]] = None,
+                 workmail: Optional[pulumi.Input[str]] = None,
+                 workspaces: Optional[pulumi.Input[str]] = None,
+                 xray: Optional[pulumi.Input[str]] = None):
         if accessanalyzer is not None:
             pulumi.set(__self__, "accessanalyzer", accessanalyzer)
         if acm is not None:
@@ -588,800 +588,800 @@ class ProviderEndpoint(dict):
 
     @property
     @pulumi.getter
-    def accessanalyzer(self) -> Optional[str]:
+    def accessanalyzer(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "accessanalyzer")
 
     @property
     @pulumi.getter
-    def acm(self) -> Optional[str]:
+    def acm(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "acm")
 
     @property
     @pulumi.getter
-    def acmpca(self) -> Optional[str]:
+    def acmpca(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "acmpca")
 
     @property
     @pulumi.getter
-    def amplify(self) -> Optional[str]:
+    def amplify(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "amplify")
 
     @property
     @pulumi.getter
-    def apigateway(self) -> Optional[str]:
+    def apigateway(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "apigateway")
 
     @property
     @pulumi.getter
-    def appconfig(self) -> Optional[str]:
+    def appconfig(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "appconfig")
 
     @property
     @pulumi.getter
-    def applicationautoscaling(self) -> Optional[str]:
+    def applicationautoscaling(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "applicationautoscaling")
 
     @property
     @pulumi.getter
-    def applicationinsights(self) -> Optional[str]:
+    def applicationinsights(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "applicationinsights")
 
     @property
     @pulumi.getter
-    def appmesh(self) -> Optional[str]:
+    def appmesh(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "appmesh")
 
     @property
     @pulumi.getter
-    def apprunner(self) -> Optional[str]:
+    def apprunner(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "apprunner")
 
     @property
     @pulumi.getter
-    def appstream(self) -> Optional[str]:
+    def appstream(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "appstream")
 
     @property
     @pulumi.getter
-    def appsync(self) -> Optional[str]:
+    def appsync(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "appsync")
 
     @property
     @pulumi.getter
-    def athena(self) -> Optional[str]:
+    def athena(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "athena")
 
     @property
     @pulumi.getter
-    def auditmanager(self) -> Optional[str]:
+    def auditmanager(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "auditmanager")
 
     @property
     @pulumi.getter
-    def autoscaling(self) -> Optional[str]:
+    def autoscaling(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "autoscaling")
 
     @property
     @pulumi.getter
-    def autoscalingplans(self) -> Optional[str]:
+    def autoscalingplans(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "autoscalingplans")
 
     @property
     @pulumi.getter
-    def backup(self) -> Optional[str]:
+    def backup(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "backup")
 
     @property
     @pulumi.getter
-    def batch(self) -> Optional[str]:
+    def batch(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "batch")
 
     @property
     @pulumi.getter
-    def budgets(self) -> Optional[str]:
+    def budgets(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "budgets")
 
     @property
     @pulumi.getter
-    def chime(self) -> Optional[str]:
+    def chime(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "chime")
 
     @property
     @pulumi.getter
-    def cloud9(self) -> Optional[str]:
+    def cloud9(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "cloud9")
 
     @property
     @pulumi.getter
-    def cloudformation(self) -> Optional[str]:
+    def cloudformation(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "cloudformation")
 
     @property
     @pulumi.getter
-    def cloudfront(self) -> Optional[str]:
+    def cloudfront(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "cloudfront")
 
     @property
     @pulumi.getter
-    def cloudhsm(self) -> Optional[str]:
+    def cloudhsm(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "cloudhsm")
 
     @property
     @pulumi.getter
-    def cloudsearch(self) -> Optional[str]:
+    def cloudsearch(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "cloudsearch")
 
     @property
     @pulumi.getter
-    def cloudtrail(self) -> Optional[str]:
+    def cloudtrail(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "cloudtrail")
 
     @property
     @pulumi.getter
-    def cloudwatch(self) -> Optional[str]:
+    def cloudwatch(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "cloudwatch")
 
     @property
     @pulumi.getter
-    def cloudwatchevents(self) -> Optional[str]:
+    def cloudwatchevents(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "cloudwatchevents")
 
     @property
     @pulumi.getter
-    def cloudwatchlogs(self) -> Optional[str]:
+    def cloudwatchlogs(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "cloudwatchlogs")
 
     @property
     @pulumi.getter
-    def codeartifact(self) -> Optional[str]:
+    def codeartifact(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "codeartifact")
 
     @property
     @pulumi.getter
-    def codebuild(self) -> Optional[str]:
+    def codebuild(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "codebuild")
 
     @property
     @pulumi.getter
-    def codecommit(self) -> Optional[str]:
+    def codecommit(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "codecommit")
 
     @property
     @pulumi.getter
-    def codedeploy(self) -> Optional[str]:
+    def codedeploy(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "codedeploy")
 
     @property
     @pulumi.getter
-    def codepipeline(self) -> Optional[str]:
+    def codepipeline(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "codepipeline")
 
     @property
     @pulumi.getter
-    def codestarconnections(self) -> Optional[str]:
+    def codestarconnections(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "codestarconnections")
 
     @property
     @pulumi.getter
-    def cognitoidentity(self) -> Optional[str]:
+    def cognitoidentity(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "cognitoidentity")
 
     @property
     @pulumi.getter
-    def cognitoidp(self) -> Optional[str]:
+    def cognitoidp(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "cognitoidp")
 
     @property
     @pulumi.getter
-    def configservice(self) -> Optional[str]:
+    def configservice(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "configservice")
 
     @property
     @pulumi.getter
-    def connect(self) -> Optional[str]:
+    def connect(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "connect")
 
     @property
     @pulumi.getter
-    def cur(self) -> Optional[str]:
+    def cur(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "cur")
 
     @property
     @pulumi.getter
-    def dataexchange(self) -> Optional[str]:
+    def dataexchange(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "dataexchange")
 
     @property
     @pulumi.getter
-    def datapipeline(self) -> Optional[str]:
+    def datapipeline(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "datapipeline")
 
     @property
     @pulumi.getter
-    def datasync(self) -> Optional[str]:
+    def datasync(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "datasync")
 
     @property
     @pulumi.getter
-    def dax(self) -> Optional[str]:
+    def dax(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "dax")
 
     @property
     @pulumi.getter
-    def detective(self) -> Optional[str]:
+    def detective(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "detective")
 
     @property
     @pulumi.getter
-    def devicefarm(self) -> Optional[str]:
+    def devicefarm(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "devicefarm")
 
     @property
     @pulumi.getter
-    def directconnect(self) -> Optional[str]:
+    def directconnect(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "directconnect")
 
     @property
     @pulumi.getter
-    def dlm(self) -> Optional[str]:
+    def dlm(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "dlm")
 
     @property
     @pulumi.getter
-    def dms(self) -> Optional[str]:
+    def dms(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "dms")
 
     @property
     @pulumi.getter
-    def docdb(self) -> Optional[str]:
+    def docdb(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "docdb")
 
     @property
     @pulumi.getter
-    def ds(self) -> Optional[str]:
+    def ds(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "ds")
 
     @property
     @pulumi.getter
-    def dynamodb(self) -> Optional[str]:
+    def dynamodb(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "dynamodb")
 
     @property
     @pulumi.getter
-    def ec2(self) -> Optional[str]:
+    def ec2(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "ec2")
 
     @property
     @pulumi.getter
-    def ecr(self) -> Optional[str]:
+    def ecr(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "ecr")
 
     @property
     @pulumi.getter
-    def ecrpublic(self) -> Optional[str]:
+    def ecrpublic(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "ecrpublic")
 
     @property
     @pulumi.getter
-    def ecs(self) -> Optional[str]:
+    def ecs(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "ecs")
 
     @property
     @pulumi.getter
-    def efs(self) -> Optional[str]:
+    def efs(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "efs")
 
     @property
     @pulumi.getter
-    def eks(self) -> Optional[str]:
+    def eks(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "eks")
 
     @property
     @pulumi.getter
-    def elasticache(self) -> Optional[str]:
+    def elasticache(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "elasticache")
 
     @property
     @pulumi.getter
-    def elasticbeanstalk(self) -> Optional[str]:
+    def elasticbeanstalk(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "elasticbeanstalk")
 
     @property
     @pulumi.getter
-    def elastictranscoder(self) -> Optional[str]:
+    def elastictranscoder(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "elastictranscoder")
 
     @property
     @pulumi.getter
-    def elb(self) -> Optional[str]:
+    def elb(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "elb")
 
     @property
     @pulumi.getter
-    def emr(self) -> Optional[str]:
+    def emr(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "emr")
 
     @property
     @pulumi.getter
-    def emrcontainers(self) -> Optional[str]:
+    def emrcontainers(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "emrcontainers")
 
     @property
     @pulumi.getter
-    def es(self) -> Optional[str]:
+    def es(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "es")
 
     @property
     @pulumi.getter
-    def firehose(self) -> Optional[str]:
+    def firehose(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "firehose")
 
     @property
     @pulumi.getter
-    def fms(self) -> Optional[str]:
+    def fms(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "fms")
 
     @property
     @pulumi.getter
-    def forecast(self) -> Optional[str]:
+    def forecast(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "forecast")
 
     @property
     @pulumi.getter
-    def fsx(self) -> Optional[str]:
+    def fsx(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "fsx")
 
     @property
     @pulumi.getter
-    def gamelift(self) -> Optional[str]:
+    def gamelift(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "gamelift")
 
     @property
     @pulumi.getter
-    def glacier(self) -> Optional[str]:
+    def glacier(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "glacier")
 
     @property
     @pulumi.getter
-    def globalaccelerator(self) -> Optional[str]:
+    def globalaccelerator(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "globalaccelerator")
 
     @property
     @pulumi.getter
-    def glue(self) -> Optional[str]:
+    def glue(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "glue")
 
     @property
     @pulumi.getter
-    def greengrass(self) -> Optional[str]:
+    def greengrass(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "greengrass")
 
     @property
     @pulumi.getter
-    def guardduty(self) -> Optional[str]:
+    def guardduty(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "guardduty")
 
     @property
     @pulumi.getter
-    def iam(self) -> Optional[str]:
+    def iam(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "iam")
 
     @property
     @pulumi.getter
-    def identitystore(self) -> Optional[str]:
+    def identitystore(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "identitystore")
 
     @property
     @pulumi.getter
-    def imagebuilder(self) -> Optional[str]:
+    def imagebuilder(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "imagebuilder")
 
     @property
     @pulumi.getter
-    def inspector(self) -> Optional[str]:
+    def inspector(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "inspector")
 
     @property
     @pulumi.getter
-    def iot(self) -> Optional[str]:
+    def iot(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "iot")
 
     @property
     @pulumi.getter
-    def iotanalytics(self) -> Optional[str]:
+    def iotanalytics(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "iotanalytics")
 
     @property
     @pulumi.getter
-    def iotevents(self) -> Optional[str]:
+    def iotevents(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "iotevents")
 
     @property
     @pulumi.getter
-    def kafka(self) -> Optional[str]:
+    def kafka(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "kafka")
 
     @property
     @pulumi.getter
-    def kinesis(self) -> Optional[str]:
+    def kinesis(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "kinesis")
 
     @property
     @pulumi.getter
-    def kinesisanalytics(self) -> Optional[str]:
+    def kinesisanalytics(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "kinesisanalytics")
 
     @property
     @pulumi.getter
-    def kinesisanalyticsv2(self) -> Optional[str]:
+    def kinesisanalyticsv2(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "kinesisanalyticsv2")
 
     @property
     @pulumi.getter
-    def kinesisvideo(self) -> Optional[str]:
+    def kinesisvideo(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "kinesisvideo")
 
     @property
     @pulumi.getter
-    def kms(self) -> Optional[str]:
+    def kms(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "kms")
 
     @property
     @pulumi.getter
-    def lakeformation(self) -> Optional[str]:
+    def lakeformation(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "lakeformation")
 
     @property
     @pulumi.getter(name="lambda")
-    def lambda_(self) -> Optional[str]:
+    def lambda_(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "lambda_")
 
     @property
     @pulumi.getter
-    def lexmodels(self) -> Optional[str]:
+    def lexmodels(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "lexmodels")
 
     @property
     @pulumi.getter
-    def licensemanager(self) -> Optional[str]:
+    def licensemanager(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "licensemanager")
 
     @property
     @pulumi.getter
-    def lightsail(self) -> Optional[str]:
+    def lightsail(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "lightsail")
 
     @property
     @pulumi.getter
-    def location(self) -> Optional[str]:
+    def location(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
-    def macie(self) -> Optional[str]:
+    def macie(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "macie")
 
     @property
     @pulumi.getter
-    def macie2(self) -> Optional[str]:
+    def macie2(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "macie2")
 
     @property
     @pulumi.getter
-    def managedblockchain(self) -> Optional[str]:
+    def managedblockchain(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "managedblockchain")
 
     @property
     @pulumi.getter
-    def marketplacecatalog(self) -> Optional[str]:
+    def marketplacecatalog(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "marketplacecatalog")
 
     @property
     @pulumi.getter
-    def mediaconnect(self) -> Optional[str]:
+    def mediaconnect(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "mediaconnect")
 
     @property
     @pulumi.getter
-    def mediaconvert(self) -> Optional[str]:
+    def mediaconvert(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "mediaconvert")
 
     @property
     @pulumi.getter
-    def medialive(self) -> Optional[str]:
+    def medialive(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "medialive")
 
     @property
     @pulumi.getter
-    def mediapackage(self) -> Optional[str]:
+    def mediapackage(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "mediapackage")
 
     @property
     @pulumi.getter
-    def mediastore(self) -> Optional[str]:
+    def mediastore(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "mediastore")
 
     @property
     @pulumi.getter
-    def mediastoredata(self) -> Optional[str]:
+    def mediastoredata(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "mediastoredata")
 
     @property
     @pulumi.getter
-    def mq(self) -> Optional[str]:
+    def mq(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "mq")
 
     @property
     @pulumi.getter
-    def mwaa(self) -> Optional[str]:
+    def mwaa(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "mwaa")
 
     @property
     @pulumi.getter
-    def neptune(self) -> Optional[str]:
+    def neptune(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "neptune")
 
     @property
     @pulumi.getter
-    def networkfirewall(self) -> Optional[str]:
+    def networkfirewall(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "networkfirewall")
 
     @property
     @pulumi.getter
-    def networkmanager(self) -> Optional[str]:
+    def networkmanager(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "networkmanager")
 
     @property
     @pulumi.getter
-    def opsworks(self) -> Optional[str]:
+    def opsworks(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "opsworks")
 
     @property
     @pulumi.getter
-    def organizations(self) -> Optional[str]:
+    def organizations(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "organizations")
 
     @property
     @pulumi.getter
-    def outposts(self) -> Optional[str]:
+    def outposts(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "outposts")
 
     @property
     @pulumi.getter
-    def personalize(self) -> Optional[str]:
+    def personalize(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "personalize")
 
     @property
     @pulumi.getter
-    def pinpoint(self) -> Optional[str]:
+    def pinpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "pinpoint")
 
     @property
     @pulumi.getter
-    def pricing(self) -> Optional[str]:
+    def pricing(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "pricing")
 
     @property
     @pulumi.getter
-    def qldb(self) -> Optional[str]:
+    def qldb(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "qldb")
 
     @property
     @pulumi.getter
-    def quicksight(self) -> Optional[str]:
+    def quicksight(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "quicksight")
 
     @property
     @pulumi.getter
-    def ram(self) -> Optional[str]:
+    def ram(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "ram")
 
     @property
     @pulumi.getter
-    def rds(self) -> Optional[str]:
+    def rds(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "rds")
 
     @property
     @pulumi.getter
-    def redshift(self) -> Optional[str]:
+    def redshift(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "redshift")
 
     @property
     @pulumi.getter
-    def resourcegroups(self) -> Optional[str]:
+    def resourcegroups(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "resourcegroups")
 
     @property
     @pulumi.getter
-    def resourcegroupstaggingapi(self) -> Optional[str]:
+    def resourcegroupstaggingapi(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "resourcegroupstaggingapi")
 
     @property
     @pulumi.getter
-    def route53(self) -> Optional[str]:
+    def route53(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "route53")
 
     @property
     @pulumi.getter
-    def route53domains(self) -> Optional[str]:
+    def route53domains(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "route53domains")
 
     @property
     @pulumi.getter
-    def route53resolver(self) -> Optional[str]:
+    def route53resolver(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "route53resolver")
 
     @property
     @pulumi.getter
-    def s3(self) -> Optional[str]:
+    def s3(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "s3")
 
     @property
     @pulumi.getter
-    def s3control(self) -> Optional[str]:
+    def s3control(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "s3control")
 
     @property
     @pulumi.getter
-    def s3outposts(self) -> Optional[str]:
+    def s3outposts(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "s3outposts")
 
     @property
     @pulumi.getter
-    def sagemaker(self) -> Optional[str]:
+    def sagemaker(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "sagemaker")
 
     @property
     @pulumi.getter
-    def schemas(self) -> Optional[str]:
+    def schemas(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "schemas")
 
     @property
     @pulumi.getter
-    def sdb(self) -> Optional[str]:
+    def sdb(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "sdb")
 
     @property
     @pulumi.getter
-    def secretsmanager(self) -> Optional[str]:
+    def secretsmanager(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "secretsmanager")
 
     @property
     @pulumi.getter
-    def securityhub(self) -> Optional[str]:
+    def securityhub(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "securityhub")
 
     @property
     @pulumi.getter
-    def serverlessrepo(self) -> Optional[str]:
+    def serverlessrepo(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "serverlessrepo")
 
     @property
     @pulumi.getter
-    def servicecatalog(self) -> Optional[str]:
+    def servicecatalog(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "servicecatalog")
 
     @property
     @pulumi.getter
-    def servicediscovery(self) -> Optional[str]:
+    def servicediscovery(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "servicediscovery")
 
     @property
     @pulumi.getter
-    def servicequotas(self) -> Optional[str]:
+    def servicequotas(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "servicequotas")
 
     @property
     @pulumi.getter
-    def ses(self) -> Optional[str]:
+    def ses(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "ses")
 
     @property
     @pulumi.getter
-    def shield(self) -> Optional[str]:
+    def shield(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "shield")
 
     @property
     @pulumi.getter
-    def signer(self) -> Optional[str]:
+    def signer(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "signer")
 
     @property
     @pulumi.getter
-    def sns(self) -> Optional[str]:
+    def sns(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "sns")
 
     @property
     @pulumi.getter
-    def sqs(self) -> Optional[str]:
+    def sqs(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "sqs")
 
     @property
     @pulumi.getter
-    def ssm(self) -> Optional[str]:
+    def ssm(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "ssm")
 
     @property
     @pulumi.getter
-    def ssoadmin(self) -> Optional[str]:
+    def ssoadmin(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "ssoadmin")
 
     @property
     @pulumi.getter
-    def stepfunctions(self) -> Optional[str]:
+    def stepfunctions(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "stepfunctions")
 
     @property
     @pulumi.getter
-    def storagegateway(self) -> Optional[str]:
+    def storagegateway(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "storagegateway")
 
     @property
     @pulumi.getter
-    def sts(self) -> Optional[str]:
+    def sts(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "sts")
 
     @property
     @pulumi.getter
-    def swf(self) -> Optional[str]:
+    def swf(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "swf")
 
     @property
     @pulumi.getter
-    def synthetics(self) -> Optional[str]:
+    def synthetics(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "synthetics")
 
     @property
     @pulumi.getter
-    def timestreamwrite(self) -> Optional[str]:
+    def timestreamwrite(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "timestreamwrite")
 
     @property
     @pulumi.getter
-    def transfer(self) -> Optional[str]:
+    def transfer(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "transfer")
 
     @property
     @pulumi.getter
-    def waf(self) -> Optional[str]:
+    def waf(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "waf")
 
     @property
     @pulumi.getter
-    def wafregional(self) -> Optional[str]:
+    def wafregional(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "wafregional")
 
     @property
     @pulumi.getter
-    def wafv2(self) -> Optional[str]:
+    def wafv2(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "wafv2")
 
     @property
     @pulumi.getter
-    def worklink(self) -> Optional[str]:
+    def worklink(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "worklink")
 
     @property
     @pulumi.getter
-    def workmail(self) -> Optional[str]:
+    def workmail(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "workmail")
 
     @property
     @pulumi.getter
-    def workspaces(self) -> Optional[str]:
+    def workspaces(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "workspaces")
 
     @property
     @pulumi.getter
-    def xray(self) -> Optional[str]:
+    def xray(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "xray")
 
 
 @pulumi.output_type
 class ProviderIgnoreTags(dict):
     def __init__(__self__, *,
-                 key_prefixes: Optional[Sequence[str]] = None,
-                 keys: Optional[Sequence[str]] = None):
+                 key_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if key_prefixes is not None:
             pulumi.set(__self__, "key_prefixes", key_prefixes)
         if keys is not None:
@@ -1389,12 +1389,12 @@ class ProviderIgnoreTags(dict):
 
     @property
     @pulumi.getter(name="keyPrefixes")
-    def key_prefixes(self) -> Optional[Sequence[str]]:
+    def key_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "key_prefixes")
 
     @property
     @pulumi.getter
-    def keys(self) -> Optional[Sequence[str]]:
+    def keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "keys")
 
 

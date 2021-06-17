@@ -149,7 +149,7 @@ namespace Pulumi.Aws.Iam
         /// The name of the IAM role to which the policy should be applied
         /// </summary>
         [Input("role", required: true)]
-        public Input<string> Role { get; set; } = null!;
+        public string Role { get; set; } = null!;
 
         public RolePolicyAttachmentArgs()
         {
@@ -168,7 +168,7 @@ namespace Pulumi.Aws.Iam
         /// The name of the IAM role to which the policy should be applied
         /// </summary>
         [Input("role")]
-        public Input<string>? Role { get; set; }
+        public string? Role { get; set; }
 
         public RolePolicyAttachmentState()
         {

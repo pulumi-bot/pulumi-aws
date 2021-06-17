@@ -13,482 +13,482 @@ namespace Pulumi.Aws.Outputs
     [OutputType]
     public sealed class ProviderEndpoint
     {
-        public readonly string? Accessanalyzer;
-        public readonly string? Acm;
-        public readonly string? Acmpca;
-        public readonly string? Amplify;
-        public readonly string? Apigateway;
-        public readonly string? Appconfig;
-        public readonly string? Applicationautoscaling;
-        public readonly string? Applicationinsights;
-        public readonly string? Appmesh;
-        public readonly string? Apprunner;
-        public readonly string? Appstream;
-        public readonly string? Appsync;
-        public readonly string? Athena;
-        public readonly string? Auditmanager;
-        public readonly string? Autoscaling;
-        public readonly string? Autoscalingplans;
-        public readonly string? Backup;
-        public readonly string? Batch;
-        public readonly string? Budgets;
-        public readonly string? Chime;
-        public readonly string? Cloud9;
-        public readonly string? Cloudformation;
-        public readonly string? Cloudfront;
-        public readonly string? Cloudhsm;
-        public readonly string? Cloudsearch;
-        public readonly string? Cloudtrail;
-        public readonly string? Cloudwatch;
-        public readonly string? Cloudwatchevents;
-        public readonly string? Cloudwatchlogs;
-        public readonly string? Codeartifact;
-        public readonly string? Codebuild;
-        public readonly string? Codecommit;
-        public readonly string? Codedeploy;
-        public readonly string? Codepipeline;
-        public readonly string? Codestarconnections;
-        public readonly string? Cognitoidentity;
-        public readonly string? Cognitoidp;
-        public readonly string? Configservice;
-        public readonly string? Connect;
-        public readonly string? Cur;
-        public readonly string? Dataexchange;
-        public readonly string? Datapipeline;
-        public readonly string? Datasync;
-        public readonly string? Dax;
-        public readonly string? Detective;
-        public readonly string? Devicefarm;
-        public readonly string? Directconnect;
-        public readonly string? Dlm;
-        public readonly string? Dms;
-        public readonly string? Docdb;
-        public readonly string? Ds;
-        public readonly string? Dynamodb;
-        public readonly string? Ec2;
-        public readonly string? Ecr;
-        public readonly string? Ecrpublic;
-        public readonly string? Ecs;
-        public readonly string? Efs;
-        public readonly string? Eks;
-        public readonly string? Elasticache;
-        public readonly string? Elasticbeanstalk;
-        public readonly string? Elastictranscoder;
-        public readonly string? Elb;
-        public readonly string? Emr;
-        public readonly string? Emrcontainers;
-        public readonly string? Es;
-        public readonly string? Firehose;
-        public readonly string? Fms;
-        public readonly string? Forecast;
-        public readonly string? Fsx;
-        public readonly string? Gamelift;
-        public readonly string? Glacier;
-        public readonly string? Globalaccelerator;
-        public readonly string? Glue;
-        public readonly string? Greengrass;
-        public readonly string? Guardduty;
-        public readonly string? Iam;
-        public readonly string? Identitystore;
-        public readonly string? Imagebuilder;
-        public readonly string? Inspector;
-        public readonly string? Iot;
-        public readonly string? Iotanalytics;
-        public readonly string? Iotevents;
-        public readonly string? Kafka;
-        public readonly string? Kinesis;
-        public readonly string? Kinesisanalytics;
-        public readonly string? Kinesisanalyticsv2;
-        public readonly string? Kinesisvideo;
-        public readonly string? Kms;
-        public readonly string? Lakeformation;
-        public readonly string? Lambda;
-        public readonly string? Lexmodels;
-        public readonly string? Licensemanager;
-        public readonly string? Lightsail;
-        public readonly string? Location;
-        public readonly string? Macie;
-        public readonly string? Macie2;
-        public readonly string? Managedblockchain;
-        public readonly string? Marketplacecatalog;
-        public readonly string? Mediaconnect;
-        public readonly string? Mediaconvert;
-        public readonly string? Medialive;
-        public readonly string? Mediapackage;
-        public readonly string? Mediastore;
-        public readonly string? Mediastoredata;
-        public readonly string? Mq;
-        public readonly string? Mwaa;
-        public readonly string? Neptune;
-        public readonly string? Networkfirewall;
-        public readonly string? Networkmanager;
-        public readonly string? Opsworks;
-        public readonly string? Organizations;
-        public readonly string? Outposts;
-        public readonly string? Personalize;
-        public readonly string? Pinpoint;
-        public readonly string? Pricing;
-        public readonly string? Qldb;
-        public readonly string? Quicksight;
-        public readonly string? Ram;
-        public readonly string? Rds;
-        public readonly string? Redshift;
-        public readonly string? Resourcegroups;
-        public readonly string? Resourcegroupstaggingapi;
-        public readonly string? Route53;
-        public readonly string? Route53domains;
-        public readonly string? Route53resolver;
-        public readonly string? S3;
-        public readonly string? S3control;
-        public readonly string? S3outposts;
-        public readonly string? Sagemaker;
-        public readonly string? Schemas;
-        public readonly string? Sdb;
-        public readonly string? Secretsmanager;
-        public readonly string? Securityhub;
-        public readonly string? Serverlessrepo;
-        public readonly string? Servicecatalog;
-        public readonly string? Servicediscovery;
-        public readonly string? Servicequotas;
-        public readonly string? Ses;
-        public readonly string? Shield;
-        public readonly string? Signer;
-        public readonly string? Sns;
-        public readonly string? Sqs;
-        public readonly string? Ssm;
-        public readonly string? Ssoadmin;
-        public readonly string? Stepfunctions;
-        public readonly string? Storagegateway;
-        public readonly string? Sts;
-        public readonly string? Swf;
-        public readonly string? Synthetics;
-        public readonly string? Timestreamwrite;
-        public readonly string? Transfer;
-        public readonly string? Waf;
-        public readonly string? Wafregional;
-        public readonly string? Wafv2;
-        public readonly string? Worklink;
-        public readonly string? Workmail;
-        public readonly string? Workspaces;
-        public readonly string? Xray;
+        public readonly Input<string>? Accessanalyzer;
+        public readonly Input<string>? Acm;
+        public readonly Input<string>? Acmpca;
+        public readonly Input<string>? Amplify;
+        public readonly Input<string>? Apigateway;
+        public readonly Input<string>? Appconfig;
+        public readonly Input<string>? Applicationautoscaling;
+        public readonly Input<string>? Applicationinsights;
+        public readonly Input<string>? Appmesh;
+        public readonly Input<string>? Apprunner;
+        public readonly Input<string>? Appstream;
+        public readonly Input<string>? Appsync;
+        public readonly Input<string>? Athena;
+        public readonly Input<string>? Auditmanager;
+        public readonly Input<string>? Autoscaling;
+        public readonly Input<string>? Autoscalingplans;
+        public readonly Input<string>? Backup;
+        public readonly Input<string>? Batch;
+        public readonly Input<string>? Budgets;
+        public readonly Input<string>? Chime;
+        public readonly Input<string>? Cloud9;
+        public readonly Input<string>? Cloudformation;
+        public readonly Input<string>? Cloudfront;
+        public readonly Input<string>? Cloudhsm;
+        public readonly Input<string>? Cloudsearch;
+        public readonly Input<string>? Cloudtrail;
+        public readonly Input<string>? Cloudwatch;
+        public readonly Input<string>? Cloudwatchevents;
+        public readonly Input<string>? Cloudwatchlogs;
+        public readonly Input<string>? Codeartifact;
+        public readonly Input<string>? Codebuild;
+        public readonly Input<string>? Codecommit;
+        public readonly Input<string>? Codedeploy;
+        public readonly Input<string>? Codepipeline;
+        public readonly Input<string>? Codestarconnections;
+        public readonly Input<string>? Cognitoidentity;
+        public readonly Input<string>? Cognitoidp;
+        public readonly Input<string>? Configservice;
+        public readonly Input<string>? Connect;
+        public readonly Input<string>? Cur;
+        public readonly Input<string>? Dataexchange;
+        public readonly Input<string>? Datapipeline;
+        public readonly Input<string>? Datasync;
+        public readonly Input<string>? Dax;
+        public readonly Input<string>? Detective;
+        public readonly Input<string>? Devicefarm;
+        public readonly Input<string>? Directconnect;
+        public readonly Input<string>? Dlm;
+        public readonly Input<string>? Dms;
+        public readonly Input<string>? Docdb;
+        public readonly Input<string>? Ds;
+        public readonly Input<string>? Dynamodb;
+        public readonly Input<string>? Ec2;
+        public readonly Input<string>? Ecr;
+        public readonly Input<string>? Ecrpublic;
+        public readonly Input<string>? Ecs;
+        public readonly Input<string>? Efs;
+        public readonly Input<string>? Eks;
+        public readonly Input<string>? Elasticache;
+        public readonly Input<string>? Elasticbeanstalk;
+        public readonly Input<string>? Elastictranscoder;
+        public readonly Input<string>? Elb;
+        public readonly Input<string>? Emr;
+        public readonly Input<string>? Emrcontainers;
+        public readonly Input<string>? Es;
+        public readonly Input<string>? Firehose;
+        public readonly Input<string>? Fms;
+        public readonly Input<string>? Forecast;
+        public readonly Input<string>? Fsx;
+        public readonly Input<string>? Gamelift;
+        public readonly Input<string>? Glacier;
+        public readonly Input<string>? Globalaccelerator;
+        public readonly Input<string>? Glue;
+        public readonly Input<string>? Greengrass;
+        public readonly Input<string>? Guardduty;
+        public readonly Input<string>? Iam;
+        public readonly Input<string>? Identitystore;
+        public readonly Input<string>? Imagebuilder;
+        public readonly Input<string>? Inspector;
+        public readonly Input<string>? Iot;
+        public readonly Input<string>? Iotanalytics;
+        public readonly Input<string>? Iotevents;
+        public readonly Input<string>? Kafka;
+        public readonly Input<string>? Kinesis;
+        public readonly Input<string>? Kinesisanalytics;
+        public readonly Input<string>? Kinesisanalyticsv2;
+        public readonly Input<string>? Kinesisvideo;
+        public readonly Input<string>? Kms;
+        public readonly Input<string>? Lakeformation;
+        public readonly Input<string>? Lambda;
+        public readonly Input<string>? Lexmodels;
+        public readonly Input<string>? Licensemanager;
+        public readonly Input<string>? Lightsail;
+        public readonly Input<string>? Location;
+        public readonly Input<string>? Macie;
+        public readonly Input<string>? Macie2;
+        public readonly Input<string>? Managedblockchain;
+        public readonly Input<string>? Marketplacecatalog;
+        public readonly Input<string>? Mediaconnect;
+        public readonly Input<string>? Mediaconvert;
+        public readonly Input<string>? Medialive;
+        public readonly Input<string>? Mediapackage;
+        public readonly Input<string>? Mediastore;
+        public readonly Input<string>? Mediastoredata;
+        public readonly Input<string>? Mq;
+        public readonly Input<string>? Mwaa;
+        public readonly Input<string>? Neptune;
+        public readonly Input<string>? Networkfirewall;
+        public readonly Input<string>? Networkmanager;
+        public readonly Input<string>? Opsworks;
+        public readonly Input<string>? Organizations;
+        public readonly Input<string>? Outposts;
+        public readonly Input<string>? Personalize;
+        public readonly Input<string>? Pinpoint;
+        public readonly Input<string>? Pricing;
+        public readonly Input<string>? Qldb;
+        public readonly Input<string>? Quicksight;
+        public readonly Input<string>? Ram;
+        public readonly Input<string>? Rds;
+        public readonly Input<string>? Redshift;
+        public readonly Input<string>? Resourcegroups;
+        public readonly Input<string>? Resourcegroupstaggingapi;
+        public readonly Input<string>? Route53;
+        public readonly Input<string>? Route53domains;
+        public readonly Input<string>? Route53resolver;
+        public readonly Input<string>? S3;
+        public readonly Input<string>? S3control;
+        public readonly Input<string>? S3outposts;
+        public readonly Input<string>? Sagemaker;
+        public readonly Input<string>? Schemas;
+        public readonly Input<string>? Sdb;
+        public readonly Input<string>? Secretsmanager;
+        public readonly Input<string>? Securityhub;
+        public readonly Input<string>? Serverlessrepo;
+        public readonly Input<string>? Servicecatalog;
+        public readonly Input<string>? Servicediscovery;
+        public readonly Input<string>? Servicequotas;
+        public readonly Input<string>? Ses;
+        public readonly Input<string>? Shield;
+        public readonly Input<string>? Signer;
+        public readonly Input<string>? Sns;
+        public readonly Input<string>? Sqs;
+        public readonly Input<string>? Ssm;
+        public readonly Input<string>? Ssoadmin;
+        public readonly Input<string>? Stepfunctions;
+        public readonly Input<string>? Storagegateway;
+        public readonly Input<string>? Sts;
+        public readonly Input<string>? Swf;
+        public readonly Input<string>? Synthetics;
+        public readonly Input<string>? Timestreamwrite;
+        public readonly Input<string>? Transfer;
+        public readonly Input<string>? Waf;
+        public readonly Input<string>? Wafregional;
+        public readonly Input<string>? Wafv2;
+        public readonly Input<string>? Worklink;
+        public readonly Input<string>? Workmail;
+        public readonly Input<string>? Workspaces;
+        public readonly Input<string>? Xray;
 
         [OutputConstructor]
         private ProviderEndpoint(
-            string? accessanalyzer,
+            Input<string>? accessanalyzer,
 
-            string? acm,
+            Input<string>? acm,
 
-            string? acmpca,
+            Input<string>? acmpca,
 
-            string? amplify,
+            Input<string>? amplify,
 
-            string? apigateway,
+            Input<string>? apigateway,
 
-            string? appconfig,
+            Input<string>? appconfig,
 
-            string? applicationautoscaling,
+            Input<string>? applicationautoscaling,
 
-            string? applicationinsights,
+            Input<string>? applicationinsights,
 
-            string? appmesh,
+            Input<string>? appmesh,
 
-            string? apprunner,
+            Input<string>? apprunner,
 
-            string? appstream,
+            Input<string>? appstream,
 
-            string? appsync,
+            Input<string>? appsync,
 
-            string? athena,
+            Input<string>? athena,
 
-            string? auditmanager,
+            Input<string>? auditmanager,
 
-            string? autoscaling,
+            Input<string>? autoscaling,
 
-            string? autoscalingplans,
+            Input<string>? autoscalingplans,
 
-            string? backup,
+            Input<string>? backup,
 
-            string? batch,
+            Input<string>? batch,
 
-            string? budgets,
+            Input<string>? budgets,
 
-            string? chime,
+            Input<string>? chime,
 
-            string? cloud9,
+            Input<string>? cloud9,
 
-            string? cloudformation,
+            Input<string>? cloudformation,
 
-            string? cloudfront,
+            Input<string>? cloudfront,
 
-            string? cloudhsm,
+            Input<string>? cloudhsm,
 
-            string? cloudsearch,
+            Input<string>? cloudsearch,
 
-            string? cloudtrail,
+            Input<string>? cloudtrail,
 
-            string? cloudwatch,
+            Input<string>? cloudwatch,
 
-            string? cloudwatchevents,
+            Input<string>? cloudwatchevents,
 
-            string? cloudwatchlogs,
+            Input<string>? cloudwatchlogs,
 
-            string? codeartifact,
+            Input<string>? codeartifact,
 
-            string? codebuild,
+            Input<string>? codebuild,
 
-            string? codecommit,
+            Input<string>? codecommit,
 
-            string? codedeploy,
+            Input<string>? codedeploy,
 
-            string? codepipeline,
+            Input<string>? codepipeline,
 
-            string? codestarconnections,
+            Input<string>? codestarconnections,
 
-            string? cognitoidentity,
+            Input<string>? cognitoidentity,
 
-            string? cognitoidp,
+            Input<string>? cognitoidp,
 
-            string? configservice,
+            Input<string>? configservice,
 
-            string? connect,
+            Input<string>? connect,
 
-            string? cur,
+            Input<string>? cur,
 
-            string? dataexchange,
+            Input<string>? dataexchange,
 
-            string? datapipeline,
+            Input<string>? datapipeline,
 
-            string? datasync,
+            Input<string>? datasync,
 
-            string? dax,
+            Input<string>? dax,
 
-            string? detective,
+            Input<string>? detective,
 
-            string? devicefarm,
+            Input<string>? devicefarm,
 
-            string? directconnect,
+            Input<string>? directconnect,
 
-            string? dlm,
+            Input<string>? dlm,
 
-            string? dms,
+            Input<string>? dms,
 
-            string? docdb,
+            Input<string>? docdb,
 
-            string? ds,
+            Input<string>? ds,
 
-            string? dynamodb,
+            Input<string>? dynamodb,
 
-            string? ec2,
+            Input<string>? ec2,
 
-            string? ecr,
+            Input<string>? ecr,
 
-            string? ecrpublic,
+            Input<string>? ecrpublic,
 
-            string? ecs,
+            Input<string>? ecs,
 
-            string? efs,
+            Input<string>? efs,
 
-            string? eks,
+            Input<string>? eks,
 
-            string? elasticache,
+            Input<string>? elasticache,
 
-            string? elasticbeanstalk,
+            Input<string>? elasticbeanstalk,
 
-            string? elastictranscoder,
+            Input<string>? elastictranscoder,
 
-            string? elb,
+            Input<string>? elb,
 
-            string? emr,
+            Input<string>? emr,
 
-            string? emrcontainers,
+            Input<string>? emrcontainers,
 
-            string? es,
+            Input<string>? es,
 
-            string? firehose,
+            Input<string>? firehose,
 
-            string? fms,
+            Input<string>? fms,
 
-            string? forecast,
+            Input<string>? forecast,
 
-            string? fsx,
+            Input<string>? fsx,
 
-            string? gamelift,
+            Input<string>? gamelift,
 
-            string? glacier,
+            Input<string>? glacier,
 
-            string? globalaccelerator,
+            Input<string>? globalaccelerator,
 
-            string? glue,
+            Input<string>? glue,
 
-            string? greengrass,
+            Input<string>? greengrass,
 
-            string? guardduty,
+            Input<string>? guardduty,
 
-            string? iam,
+            Input<string>? iam,
 
-            string? identitystore,
+            Input<string>? identitystore,
 
-            string? imagebuilder,
+            Input<string>? imagebuilder,
 
-            string? inspector,
+            Input<string>? inspector,
 
-            string? iot,
+            Input<string>? iot,
 
-            string? iotanalytics,
+            Input<string>? iotanalytics,
 
-            string? iotevents,
+            Input<string>? iotevents,
 
-            string? kafka,
+            Input<string>? kafka,
 
-            string? kinesis,
+            Input<string>? kinesis,
 
-            string? kinesisanalytics,
+            Input<string>? kinesisanalytics,
 
-            string? kinesisanalyticsv2,
+            Input<string>? kinesisanalyticsv2,
 
-            string? kinesisvideo,
+            Input<string>? kinesisvideo,
 
-            string? kms,
+            Input<string>? kms,
 
-            string? lakeformation,
+            Input<string>? lakeformation,
 
-            string? lambda,
+            Input<string>? lambda,
 
-            string? lexmodels,
+            Input<string>? lexmodels,
 
-            string? licensemanager,
+            Input<string>? licensemanager,
 
-            string? lightsail,
+            Input<string>? lightsail,
 
-            string? location,
+            Input<string>? location,
 
-            string? macie,
+            Input<string>? macie,
 
-            string? macie2,
+            Input<string>? macie2,
 
-            string? managedblockchain,
+            Input<string>? managedblockchain,
 
-            string? marketplacecatalog,
+            Input<string>? marketplacecatalog,
 
-            string? mediaconnect,
+            Input<string>? mediaconnect,
 
-            string? mediaconvert,
+            Input<string>? mediaconvert,
 
-            string? medialive,
+            Input<string>? medialive,
 
-            string? mediapackage,
+            Input<string>? mediapackage,
 
-            string? mediastore,
+            Input<string>? mediastore,
 
-            string? mediastoredata,
+            Input<string>? mediastoredata,
 
-            string? mq,
+            Input<string>? mq,
 
-            string? mwaa,
+            Input<string>? mwaa,
 
-            string? neptune,
+            Input<string>? neptune,
 
-            string? networkfirewall,
+            Input<string>? networkfirewall,
 
-            string? networkmanager,
+            Input<string>? networkmanager,
 
-            string? opsworks,
+            Input<string>? opsworks,
 
-            string? organizations,
+            Input<string>? organizations,
 
-            string? outposts,
+            Input<string>? outposts,
 
-            string? personalize,
+            Input<string>? personalize,
 
-            string? pinpoint,
+            Input<string>? pinpoint,
 
-            string? pricing,
+            Input<string>? pricing,
 
-            string? qldb,
+            Input<string>? qldb,
 
-            string? quicksight,
+            Input<string>? quicksight,
 
-            string? ram,
+            Input<string>? ram,
 
-            string? rds,
+            Input<string>? rds,
 
-            string? redshift,
+            Input<string>? redshift,
 
-            string? resourcegroups,
+            Input<string>? resourcegroups,
 
-            string? resourcegroupstaggingapi,
+            Input<string>? resourcegroupstaggingapi,
 
-            string? route53,
+            Input<string>? route53,
 
-            string? route53domains,
+            Input<string>? route53domains,
 
-            string? route53resolver,
+            Input<string>? route53resolver,
 
-            string? s3,
+            Input<string>? s3,
 
-            string? s3control,
+            Input<string>? s3control,
 
-            string? s3outposts,
+            Input<string>? s3outposts,
 
-            string? sagemaker,
+            Input<string>? sagemaker,
 
-            string? schemas,
+            Input<string>? schemas,
 
-            string? sdb,
+            Input<string>? sdb,
 
-            string? secretsmanager,
+            Input<string>? secretsmanager,
 
-            string? securityhub,
+            Input<string>? securityhub,
 
-            string? serverlessrepo,
+            Input<string>? serverlessrepo,
 
-            string? servicecatalog,
+            Input<string>? servicecatalog,
 
-            string? servicediscovery,
+            Input<string>? servicediscovery,
 
-            string? servicequotas,
+            Input<string>? servicequotas,
 
-            string? ses,
+            Input<string>? ses,
 
-            string? shield,
+            Input<string>? shield,
 
-            string? signer,
+            Input<string>? signer,
 
-            string? sns,
+            Input<string>? sns,
 
-            string? sqs,
+            Input<string>? sqs,
 
-            string? ssm,
+            Input<string>? ssm,
 
-            string? ssoadmin,
+            Input<string>? ssoadmin,
 
-            string? stepfunctions,
+            Input<string>? stepfunctions,
 
-            string? storagegateway,
+            Input<string>? storagegateway,
 
-            string? sts,
+            Input<string>? sts,
 
-            string? swf,
+            Input<string>? swf,
 
-            string? synthetics,
+            Input<string>? synthetics,
 
-            string? timestreamwrite,
+            Input<string>? timestreamwrite,
 
-            string? transfer,
+            Input<string>? transfer,
 
-            string? waf,
+            Input<string>? waf,
 
-            string? wafregional,
+            Input<string>? wafregional,
 
-            string? wafv2,
+            Input<string>? wafv2,
 
-            string? worklink,
+            Input<string>? worklink,
 
-            string? workmail,
+            Input<string>? workmail,
 
-            string? workspaces,
+            Input<string>? workspaces,
 
-            string? xray)
+            Input<string>? xray)
         {
             Accessanalyzer = accessanalyzer;
             Acm = acm;

@@ -127,7 +127,7 @@ namespace Pulumi.Aws.Sqs
         /// The JSON policy for the SQS queue.
         /// </summary>
         [Input("policy", required: true)]
-        public Input<string> Policy { get; set; } = null!;
+        public string Policy { get; set; } = null!;
 
         /// <summary>
         /// The URL of the SQS Queue to which to attach the policy
@@ -146,7 +146,7 @@ namespace Pulumi.Aws.Sqs
         /// The JSON policy for the SQS queue.
         /// </summary>
         [Input("policy")]
-        public Input<string>? Policy { get; set; }
+        public string? Policy { get; set; }
 
         /// <summary>
         /// The URL of the SQS Queue to which to attach the policy

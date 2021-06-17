@@ -153,7 +153,7 @@ namespace Pulumi.Aws.ApiGateway
         /// The id of the API to connect.
         /// </summary>
         [Input("restApi", required: true)]
-        public Input<string> RestApi { get; set; } = null!;
+        public string RestApi { get; set; } = null!;
 
         /// <summary>
         /// The name of a specific deployment stage to expose at the given path. If omitted, callers may select any stage by including its name as a path element after the base path.
@@ -184,7 +184,7 @@ namespace Pulumi.Aws.ApiGateway
         /// The id of the API to connect.
         /// </summary>
         [Input("restApi")]
-        public Input<string>? RestApi { get; set; }
+        public string? RestApi { get; set; }
 
         /// <summary>
         /// The name of a specific deployment stage to expose at the given path. If omitted, callers may select any stage by including its name as a path element after the base path.

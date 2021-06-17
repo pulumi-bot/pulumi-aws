@@ -28,26 +28,6 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
-    /**
-     * The access key for API operations. You can retrieve this from the 'Security & Credentials' section of the AWS console.
-     */
-    public readonly accessKey!: pulumi.Output<string | undefined>;
-    /**
-     * The profile for API operations. If not set, the default profile created with `aws configure` will be used.
-     */
-    public readonly profile!: pulumi.Output<string | undefined>;
-    /**
-     * The secret key for API operations. You can retrieve this from the 'Security & Credentials' section of the AWS console.
-     */
-    public readonly secretKey!: pulumi.Output<string | undefined>;
-    /**
-     * The path to the shared credentials file. If not set this defaults to ~/.aws/credentials.
-     */
-    public readonly sharedCredentialsFile!: pulumi.Output<string | undefined>;
-    /**
-     * session token. A session token is only required if you are using temporary security credentials.
-     */
-    public readonly token!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -69,7 +49,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["ignoreTags"] = pulumi.output(args ? args.ignoreTags : undefined).apply(JSON.stringify);
             inputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
             inputs["maxRetries"] = pulumi.output(args ? args.maxRetries : undefined).apply(JSON.stringify);
-            inputs["profile"] = (args ? args.profile : undefined) ?? utilities.getEnv("AWS_PROFILE");
+            inputs["profile"] = (args ? args.profile : undefined) ?? <any>utilities.getEnv("AWS_PROFILE");
             inputs["region"] = (args ? args.region : undefined) ?? <any>utilities.getEnv("AWS_REGION", "AWS_DEFAULT_REGION");
             inputs["s3ForcePathStyle"] = pulumi.output(args ? args.s3ForcePathStyle : undefined).apply(JSON.stringify);
             inputs["secretKey"] = args ? args.secretKey : undefined;

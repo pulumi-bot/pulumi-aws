@@ -119,7 +119,7 @@ namespace Pulumi.Aws.Iot
         /// The name of the policy to attach.
         /// </summary>
         [Input("policy", required: true)]
-        public Input<string> Policy { get; set; } = null!;
+        public string Policy { get; set; } = null!;
 
         /// <summary>
         /// The identity to which the policy is attached.
@@ -138,7 +138,7 @@ namespace Pulumi.Aws.Iot
         /// The name of the policy to attach.
         /// </summary>
         [Input("policy")]
-        public Input<string>? Policy { get; set; }
+        public string? Policy { get; set; }
 
         /// <summary>
         /// The identity to which the policy is attached.

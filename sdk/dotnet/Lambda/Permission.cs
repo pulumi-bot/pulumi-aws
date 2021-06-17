@@ -352,7 +352,7 @@ namespace Pulumi.Aws.Lambda
         /// Name of the Lambda function whose resource policy you are updating
         /// </summary>
         [Input("function", required: true)]
-        public Input<string> Function { get; set; } = null!;
+        public string Function { get; set; } = null!;
 
         /// <summary>
         /// The principal who is getting this permission. e.g. `s3.amazonaws.com`, an AWS account ID, or any valid AWS service principal such as `events.amazonaws.com` or `sns.amazonaws.com`.
@@ -417,7 +417,7 @@ namespace Pulumi.Aws.Lambda
         /// Name of the Lambda function whose resource policy you are updating
         /// </summary>
         [Input("function")]
-        public Input<string>? Function { get; set; }
+        public string? Function { get; set; }
 
         /// <summary>
         /// The principal who is getting this permission. e.g. `s3.amazonaws.com`, an AWS account ID, or any valid AWS service principal such as `events.amazonaws.com` or `sns.amazonaws.com`.

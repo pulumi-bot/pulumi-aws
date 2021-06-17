@@ -36,13 +36,13 @@ func GetIgnoreTags(ctx *pulumi.Context) string {
 }
 
 // Explicitly allow the provider to perform "insecure" SSL requests. If omitted,default value is `false`
-func GetInsecure(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "aws:insecure")
+func GetInsecure(ctx *pulumi.Context) string {
+	return config.Get(ctx, "aws:insecure")
 }
 
 // The maximum number of times an AWS API request is being executed. If the API request still fails, an error is thrown.
-func GetMaxRetries(ctx *pulumi.Context) int {
-	return config.GetInt(ctx, "aws:maxRetries")
+func GetMaxRetries(ctx *pulumi.Context) string {
+	return config.Get(ctx, "aws:maxRetries")
 }
 
 // The profile for API operations. If not set, the default profile created with `aws configure` will be used.
@@ -66,8 +66,8 @@ func GetRegion(ctx *pulumi.Context) string {
 // Set this to true to force the request to use path-style addressing, i.e., http://s3.amazonaws.com/BUCKET/KEY. By
 // default, the S3 client will use virtual hosted bucket addressing when possible (http://BUCKET.s3.amazonaws.com/KEY).
 // Specific to the Amazon S3 service.
-func GetS3ForcePathStyle(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "aws:s3ForcePathStyle")
+func GetS3ForcePathStyle(ctx *pulumi.Context) string {
+	return config.Get(ctx, "aws:s3ForcePathStyle")
 }
 
 // The secret key for API operations. You can retrieve this from the 'Security & Credentials' section of the AWS console.
@@ -82,8 +82,8 @@ func GetSharedCredentialsFile(ctx *pulumi.Context) string {
 
 // Skip the credentials validation via STS API. Used for AWS API implementations that do not have STS
 // available/implemented.
-func GetSkipCredentialsValidation(ctx *pulumi.Context) bool {
-	v, err := config.TryBool(ctx, "aws:skipCredentialsValidation")
+func GetSkipCredentialsValidation(ctx *pulumi.Context) string {
+	v, err := config.Try(ctx, "aws:skipCredentialsValidation")
 	if err == nil {
 		return v
 	}
@@ -91,15 +91,15 @@ func GetSkipCredentialsValidation(ctx *pulumi.Context) bool {
 }
 
 // Skip getting the supported EC2 platforms. Used by users that don't have ec2:DescribeAccountAttributes permissions.
-func GetSkipGetEc2Platforms(ctx *pulumi.Context) bool {
-	v, err := config.TryBool(ctx, "aws:skipGetEc2Platforms")
+func GetSkipGetEc2Platforms(ctx *pulumi.Context) string {
+	v, err := config.Try(ctx, "aws:skipGetEc2Platforms")
 	if err == nil {
 		return v
 	}
 	return true
 }
-func GetSkipMetadataApiCheck(ctx *pulumi.Context) bool {
-	v, err := config.TryBool(ctx, "aws:skipMetadataApiCheck")
+func GetSkipMetadataApiCheck(ctx *pulumi.Context) string {
+	v, err := config.Try(ctx, "aws:skipMetadataApiCheck")
 	if err == nil {
 		return v
 	}
@@ -108,8 +108,8 @@ func GetSkipMetadataApiCheck(ctx *pulumi.Context) bool {
 
 // Skip static validation of region name. Used by users of alternative AWS-like APIs or users w/ access to regions that are
 // not public (yet).
-func GetSkipRegionValidation(ctx *pulumi.Context) bool {
-	v, err := config.TryBool(ctx, "aws:skipRegionValidation")
+func GetSkipRegionValidation(ctx *pulumi.Context) string {
+	v, err := config.Try(ctx, "aws:skipRegionValidation")
 	if err == nil {
 		return v
 	}
@@ -117,8 +117,8 @@ func GetSkipRegionValidation(ctx *pulumi.Context) bool {
 }
 
 // Skip requesting the account ID. Used for AWS API implementations that do not have IAM/STS API and/or metadata API.
-func GetSkipRequestingAccountId(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "aws:skipRequestingAccountId")
+func GetSkipRequestingAccountId(ctx *pulumi.Context) string {
+	return config.Get(ctx, "aws:skipRequestingAccountId")
 }
 
 // session token. A session token is only required if you are using temporary security credentials.
