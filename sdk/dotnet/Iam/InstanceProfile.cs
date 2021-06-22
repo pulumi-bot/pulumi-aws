@@ -182,7 +182,7 @@ namespace Pulumi.Aws.Iam
         /// Name of the role to add to the profile.
         /// </summary>
         [Input("role")]
-        public Input<string>? Role { get; set; }
+        public string? Role { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
@@ -249,7 +249,7 @@ namespace Pulumi.Aws.Iam
         /// Name of the role to add to the profile.
         /// </summary>
         [Input("role")]
-        public Input<string>? Role { get; set; }
+        public string? Role { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;

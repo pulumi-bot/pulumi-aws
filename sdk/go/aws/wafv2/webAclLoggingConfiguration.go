@@ -69,10 +69,10 @@ import (
 // 			ResourceArn: pulumi.Any(aws_wafv2_web_acl.Example.Arn),
 // 			LoggingFilter: &wafv2.WebAclLoggingConfigurationLoggingFilterArgs{
 // 				DefaultBehavior: pulumi.String("KEEP"),
-// 				Filters: wafv2.WebAclLoggingConfigurationLoggingFilterFilterArray{
+// 				Filters: []wafv2.WebAclLoggingConfigurationLoggingFilterFilterArgs{
 // 					&wafv2.WebAclLoggingConfigurationLoggingFilterFilterArgs{
 // 						Behavior: pulumi.String("DROP"),
-// 						Conditions: wafv2.WebAclLoggingConfigurationLoggingFilterFilterConditionArray{
+// 						Conditions: []wafv2.WebAclLoggingConfigurationLoggingFilterFilterConditionArgs{
 // 							&wafv2.WebAclLoggingConfigurationLoggingFilterFilterConditionArgs{
 // 								ActionCondition: &wafv2.WebAclLoggingConfigurationLoggingFilterFilterConditionActionConditionArgs{
 // 									Action: pulumi.String("COUNT"),
@@ -88,7 +88,7 @@ import (
 // 					},
 // 					&wafv2.WebAclLoggingConfigurationLoggingFilterFilterArgs{
 // 						Behavior: pulumi.String("KEEP"),
-// 						Conditions: wafv2.WebAclLoggingConfigurationLoggingFilterFilterConditionArray{
+// 						Conditions: []wafv2.WebAclLoggingConfigurationLoggingFilterFilterConditionArgs{
 // 							&wafv2.WebAclLoggingConfigurationLoggingFilterFilterConditionArgs{
 // 								ActionCondition: &wafv2.WebAclLoggingConfigurationLoggingFilterFilterConditionActionConditionArgs{
 // 									Action: pulumi.String("ALLOW"),

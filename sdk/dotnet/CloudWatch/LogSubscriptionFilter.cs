@@ -150,7 +150,7 @@ namespace Pulumi.Aws.CloudWatch
         /// The name of the log group to associate the subscription filter with
         /// </summary>
         [Input("logGroup", required: true)]
-        public Input<string> LogGroup { get; set; } = null!;
+        public string LogGroup { get; set; } = null!;
 
         /// <summary>
         /// A name for the subscription filter
@@ -193,7 +193,7 @@ namespace Pulumi.Aws.CloudWatch
         /// The name of the log group to associate the subscription filter with
         /// </summary>
         [Input("logGroup")]
-        public Input<string>? LogGroup { get; set; }
+        public string? LogGroup { get; set; }
 
         /// <summary>
         /// A name for the subscription filter

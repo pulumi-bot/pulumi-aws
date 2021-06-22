@@ -46,7 +46,7 @@ import (
 // 			Type:         pulumi.String("CONDITIONAL"),
 // 			WorkflowName: example.Name,
 // 			Predicate: &glue.TriggerPredicateArgs{
-// 				Conditions: glue.TriggerPredicateConditionArray{
+// 				Conditions: []glue.TriggerPredicateConditionArgs{
 // 					&glue.TriggerPredicateConditionArgs{
 // 						JobName: pulumi.String("example-job"),
 // 						State:   pulumi.String("SUCCEEDED"),

@@ -43,7 +43,7 @@ import (
 // 		_, err = servicediscovery.NewService(ctx, "exampleService", &servicediscovery.ServiceArgs{
 // 			DnsConfig: &servicediscovery.ServiceDnsConfigArgs{
 // 				NamespaceId: examplePrivateDnsNamespace.ID(),
-// 				DnsRecords: servicediscovery.ServiceDnsConfigDnsRecordArray{
+// 				DnsRecords: []servicediscovery.ServiceDnsConfigDnsRecordArgs{
 // 					&servicediscovery.ServiceDnsConfigDnsRecordArgs{
 // 						Ttl:  pulumi.Int(10),
 // 						Type: pulumi.String("A"),
@@ -82,7 +82,7 @@ import (
 // 		_, err = servicediscovery.NewService(ctx, "exampleService", &servicediscovery.ServiceArgs{
 // 			DnsConfig: &servicediscovery.ServiceDnsConfigArgs{
 // 				NamespaceId: examplePublicDnsNamespace.ID(),
-// 				DnsRecords: servicediscovery.ServiceDnsConfigDnsRecordArray{
+// 				DnsRecords: []servicediscovery.ServiceDnsConfigDnsRecordArgs{
 // 					&servicediscovery.ServiceDnsConfigDnsRecordArgs{
 // 						Ttl:  pulumi.Int(10),
 // 						Type: pulumi.String("A"),

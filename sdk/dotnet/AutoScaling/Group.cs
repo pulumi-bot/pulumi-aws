@@ -802,7 +802,7 @@ namespace Pulumi.Aws.AutoScaling
         /// The name of the launch configuration to use.
         /// </summary>
         [Input("launchConfiguration")]
-        public Input<string>? LaunchConfiguration { get; set; }
+        public string? LaunchConfiguration { get; set; }
 
         /// <summary>
         /// Nested argument containing launch template settings along with the overrides to specify multiple instance types and weights. Defined below.
@@ -879,7 +879,7 @@ namespace Pulumi.Aws.AutoScaling
         /// The name of the placement group into which you'll launch your instances, if any.
         /// </summary>
         [Input("placementGroup")]
-        public Input<string>? PlacementGroup { get; set; }
+        public string? PlacementGroup { get; set; }
 
         /// <summary>
         /// Allows setting instance protection. The
@@ -921,14 +921,14 @@ namespace Pulumi.Aws.AutoScaling
         }
 
         [Input("tagsCollection")]
-        private InputList<ImmutableDictionary<string, string>>? _tagsCollection;
+        private InputList<ImmutableDictionary<string, Input<string>>>? _tagsCollection;
 
         /// <summary>
         /// Set of maps containing resource tags. Conflicts with `tag`. Documented below.
         /// </summary>
-        public InputList<ImmutableDictionary<string, string>> TagsCollection
+        public InputList<ImmutableDictionary<string, Input<string>>> TagsCollection
         {
-            get => _tagsCollection ?? (_tagsCollection = new InputList<ImmutableDictionary<string, string>>());
+            get => _tagsCollection ?? (_tagsCollection = new InputList<ImmutableDictionary<string, Input<string>>>());
             set => _tagsCollection = value;
         }
 
@@ -1107,7 +1107,7 @@ namespace Pulumi.Aws.AutoScaling
         /// The name of the launch configuration to use.
         /// </summary>
         [Input("launchConfiguration")]
-        public Input<string>? LaunchConfiguration { get; set; }
+        public string? LaunchConfiguration { get; set; }
 
         /// <summary>
         /// Nested argument containing launch template settings along with the overrides to specify multiple instance types and weights. Defined below.
@@ -1184,7 +1184,7 @@ namespace Pulumi.Aws.AutoScaling
         /// The name of the placement group into which you'll launch your instances, if any.
         /// </summary>
         [Input("placementGroup")]
-        public Input<string>? PlacementGroup { get; set; }
+        public string? PlacementGroup { get; set; }
 
         /// <summary>
         /// Allows setting instance protection. The
@@ -1226,14 +1226,14 @@ namespace Pulumi.Aws.AutoScaling
         }
 
         [Input("tagsCollection")]
-        private InputList<ImmutableDictionary<string, string>>? _tagsCollection;
+        private InputList<ImmutableDictionary<string, Input<string>>>? _tagsCollection;
 
         /// <summary>
         /// Set of maps containing resource tags. Conflicts with `tag`. Documented below.
         /// </summary>
-        public InputList<ImmutableDictionary<string, string>> TagsCollection
+        public InputList<ImmutableDictionary<string, Input<string>>> TagsCollection
         {
-            get => _tagsCollection ?? (_tagsCollection = new InputList<ImmutableDictionary<string, string>>());
+            get => _tagsCollection ?? (_tagsCollection = new InputList<ImmutableDictionary<string, Input<string>>>());
             set => _tagsCollection = value;
         }
 

@@ -238,7 +238,7 @@ namespace Pulumi.Aws.ApiGateway
         /// The ID of the deployment that the stage points to
         /// </summary>
         [Input("deployment", required: true)]
-        public Input<string> Deployment { get; set; } = null!;
+        public string Deployment { get; set; } = null!;
 
         /// <summary>
         /// The description of the stage
@@ -256,7 +256,7 @@ namespace Pulumi.Aws.ApiGateway
         /// The ID of the associated REST API
         /// </summary>
         [Input("restApi", required: true)]
-        public Input<string> RestApi { get; set; } = null!;
+        public string RestApi { get; set; } = null!;
 
         /// <summary>
         /// The name of the stage
@@ -347,7 +347,7 @@ namespace Pulumi.Aws.ApiGateway
         /// The ID of the deployment that the stage points to
         /// </summary>
         [Input("deployment")]
-        public Input<string>? Deployment { get; set; }
+        public string? Deployment { get; set; }
 
         /// <summary>
         /// The description of the stage
@@ -380,7 +380,7 @@ namespace Pulumi.Aws.ApiGateway
         /// The ID of the associated REST API
         /// </summary>
         [Input("restApi")]
-        public Input<string>? RestApi { get; set; }
+        public string? RestApi { get; set; }
 
         /// <summary>
         /// The name of the stage

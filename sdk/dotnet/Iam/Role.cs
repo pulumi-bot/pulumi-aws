@@ -438,7 +438,7 @@ namespace Pulumi.Aws.Iam
         /// Policy that grants an entity permission to assume the role.
         /// </summary>
         [Input("assumeRolePolicy", required: true)]
-        public Input<string> AssumeRolePolicy { get; set; } = null!;
+        public string AssumeRolePolicy { get; set; } = null!;
 
         /// <summary>
         /// Description of the role.
@@ -547,7 +547,7 @@ namespace Pulumi.Aws.Iam
         /// Policy that grants an entity permission to assume the role.
         /// </summary>
         [Input("assumeRolePolicy")]
-        public Input<string>? AssumeRolePolicy { get; set; }
+        public string? AssumeRolePolicy { get; set; }
 
         /// <summary>
         /// Creation date of the IAM role.
