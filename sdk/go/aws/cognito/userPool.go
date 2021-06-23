@@ -77,7 +77,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cognito.NewUserPool(ctx, "test", &cognito.UserPoolArgs{
 // 			AccountRecoverySetting: &cognito.UserPoolAccountRecoverySettingArgs{
-// 				RecoveryMechanisms: cognito.UserPoolAccountRecoverySettingRecoveryMechanismArray{
+// 				RecoveryMechanisms: []cognito.UserPoolAccountRecoverySettingRecoveryMechanismArgs{
 // 					&cognito.UserPoolAccountRecoverySettingRecoveryMechanismArgs{
 // 						Name:     pulumi.String("verified_email"),
 // 						Priority: pulumi.Int(1),

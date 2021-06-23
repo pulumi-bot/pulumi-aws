@@ -36,7 +36,7 @@ import (
 // 		_, err = ecr.NewReplicationConfiguration(ctx, "exampleReplicationConfiguration", &ecr.ReplicationConfigurationArgs{
 // 			ReplicationConfiguration: &ecr.ReplicationConfigurationReplicationConfigurationArgs{
 // 				Rule: &ecr.ReplicationConfigurationReplicationConfigurationRuleArgs{
-// 					Destinations: ecr.ReplicationConfigurationReplicationConfigurationRuleDestinationArray{
+// 					Destinations: []ecr.ReplicationConfigurationReplicationConfigurationRuleDestinationArgs{
 // 						&ecr.ReplicationConfigurationReplicationConfigurationRuleDestinationArgs{
 // 							Region:     pulumi.String(exampleRegions.Names[0]),
 // 							RegistryId: pulumi.String(current.AccountId),
