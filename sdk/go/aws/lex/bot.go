@@ -38,7 +38,7 @@ import (
 // 			ChildDirected: pulumi.Bool(false),
 // 			ClarificationPrompt: &lex.BotClarificationPromptArgs{
 // 				MaxAttempts: pulumi.Int(2),
-// 				Messages: lex.BotClarificationPromptMessageArray{
+// 				Messages: []lex.BotClarificationPromptMessageArgs{
 // 					&lex.BotClarificationPromptMessageArgs{
 // 						Content:     pulumi.String("I didn't understand you, what would you like to do?"),
 // 						ContentType: pulumi.String("PlainText"),

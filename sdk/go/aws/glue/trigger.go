@@ -34,7 +34,7 @@ import (
 // 				},
 // 			},
 // 			Predicate: &glue.TriggerPredicateArgs{
-// 				Conditions: glue.TriggerPredicateConditionArray{
+// 				Conditions: []glue.TriggerPredicateConditionArgs{
 // 					&glue.TriggerPredicateConditionArgs{
 // 						JobName: pulumi.Any(aws_glue_job.Example2.Name),
 // 						State:   pulumi.String("SUCCEEDED"),
@@ -126,7 +126,7 @@ import (
 // 				},
 // 			},
 // 			Predicate: &glue.TriggerPredicateArgs{
-// 				Conditions: glue.TriggerPredicateConditionArray{
+// 				Conditions: []glue.TriggerPredicateConditionArgs{
 // 					&glue.TriggerPredicateConditionArgs{
 // 						JobName: pulumi.Any(aws_glue_job.Example2.Name),
 // 						State:   pulumi.String("SUCCEEDED"),
@@ -163,7 +163,7 @@ import (
 // 				},
 // 			},
 // 			Predicate: &glue.TriggerPredicateArgs{
-// 				Conditions: glue.TriggerPredicateConditionArray{
+// 				Conditions: []glue.TriggerPredicateConditionArgs{
 // 					&glue.TriggerPredicateConditionArgs{
 // 						CrawlerName: pulumi.Any(aws_glue_crawler.Example2.Name),
 // 						CrawlState:  pulumi.String("SUCCEEDED"),

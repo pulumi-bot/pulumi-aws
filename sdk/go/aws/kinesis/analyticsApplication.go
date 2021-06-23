@@ -49,7 +49,7 @@ import (
 // 					Count: pulumi.Int(1),
 // 				},
 // 				Schema: &kinesis.AnalyticsApplicationInputsSchemaArgs{
-// 					RecordColumns: kinesis.AnalyticsApplicationInputsSchemaRecordColumnArray{
+// 					RecordColumns: []kinesis.AnalyticsApplicationInputsSchemaRecordColumnArgs{
 // 						&kinesis.AnalyticsApplicationInputsSchemaRecordColumnArgs{
 // 							Mapping: pulumi.String(fmt.Sprintf("%v%v", "$", ".test")),
 // 							Name:    pulumi.String("test"),
@@ -121,7 +121,7 @@ import (
 // 			Inputs: &kinesis.AnalyticsApplicationInputsArgs{
 // 				NamePrefix: pulumi.String("example_prefix"),
 // 				Schema: &kinesis.AnalyticsApplicationInputsSchemaArgs{
-// 					RecordColumns: kinesis.AnalyticsApplicationInputsSchemaRecordColumnArray{
+// 					RecordColumns: []kinesis.AnalyticsApplicationInputsSchemaRecordColumnArgs{
 // 						&kinesis.AnalyticsApplicationInputsSchemaRecordColumnArgs{
 // 							Name:    pulumi.String("COLUMN_1"),
 // 							SqlType: pulumi.String("INTEGER"),
