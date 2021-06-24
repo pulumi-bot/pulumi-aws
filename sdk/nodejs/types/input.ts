@@ -259,6 +259,7 @@ export interface ProviderIgnoreTags {
     keyPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
     keys?: pulumi.Input<pulumi.Input<string>[]>;
 }
+
 export namespace acm {
     export interface CertificateDomainValidationOption {
         /**
@@ -400,16 +401,17 @@ export namespace acmpca {
     }
 
     export interface GetCertificateAuthorityRevocationConfiguration {
-        crlConfigurations?: inputs.acmpca.GetCertificateAuthorityRevocationConfigurationCrlConfiguration[];
+        crlConfigurations: inputs.acmpca.GetCertificateAuthorityRevocationConfigurationCrlConfiguration[];
     }
 
     export interface GetCertificateAuthorityRevocationConfigurationCrlConfiguration {
-        customCname?: string;
-        enabled?: boolean;
-        expirationInDays?: number;
-        s3BucketName?: string;
-        s3ObjectAcl?: string;
+        customCname: string;
+        enabled: boolean;
+        expirationInDays: number;
+        s3BucketName: string;
+        s3ObjectAcl: string;
     }
+
 }
 
 export namespace alb {
@@ -3975,6 +3977,7 @@ export namespace appmesh {
          */
         virtualRouterName: pulumi.Input<string>;
     }
+
 }
 
 export namespace apprunner {
@@ -6178,6 +6181,7 @@ export namespace cloudfront {
          */
         streamArn: pulumi.Input<string>;
     }
+
 }
 
 export namespace cloudhsmv2 {
@@ -6659,6 +6663,7 @@ export namespace cloudwatch {
          */
         namespace: pulumi.Input<string>;
     }
+
 }
 
 export namespace codeartifact {
@@ -8391,8 +8396,8 @@ export namespace docdb {
 
 export namespace dynamodb {
     export interface GetTableServerSideEncryption {
-        enabled?: boolean;
-        kmsKeyArn?: string;
+        enabled: boolean;
+        kmsKeyArn: string;
     }
 
     export interface GlobalTableReplica {
@@ -8553,6 +8558,7 @@ export namespace ebs {
         name: string;
         values: string[];
     }
+
 }
 
 export namespace ec2 {
@@ -9085,35 +9091,35 @@ export namespace ec2 {
     }
 
     export interface GetInstanceTypeFpga {
-        count?: number;
-        manufacturer?: string;
+        count: number;
+        manufacturer: string;
         /**
          * Size of the instance memory, in MiB.
          */
-        memorySize?: number;
-        name?: string;
+        memorySize: number;
+        name: string;
     }
 
     export interface GetInstanceTypeGpus {
-        count?: number;
-        manufacturer?: string;
+        count: number;
+        manufacturer: string;
         /**
          * Size of the instance memory, in MiB.
          */
-        memorySize?: number;
-        name?: string;
+        memorySize: number;
+        name: string;
     }
 
     export interface GetInstanceTypeInferenceAccelerator {
-        count?: number;
-        manufacturer?: string;
-        name?: string;
+        count: number;
+        manufacturer: string;
+        name: string;
     }
 
     export interface GetInstanceTypeInstanceDisk {
-        count?: number;
-        size?: number;
-        type?: string;
+        count: number;
+        size: number;
+        type: string;
     }
 
     export interface GetInstanceTypeOfferingFilter {
@@ -10846,6 +10852,7 @@ export namespace ec2transitgateway {
          */
         values: string[];
     }
+
 }
 
 export namespace ecr {
@@ -11703,6 +11710,7 @@ export namespace elasticloadbalancing {
          */
         value: pulumi.Input<string>;
     }
+
 }
 
 export namespace elasticloadbalancingv2 {
@@ -12783,6 +12791,7 @@ export namespace elb {
          */
         value: pulumi.Input<string>;
     }
+
 }
 
 export namespace emr {
@@ -14534,6 +14543,7 @@ export namespace identitystore {
          */
         attributeValue: string;
     }
+
 }
 
 export namespace imagebuilder {
@@ -16538,6 +16548,7 @@ export namespace kinesis {
          */
         parameterValue: pulumi.Input<string>;
     }
+
 }
 
 export namespace kinesisanalyticsv2 {
@@ -17064,6 +17075,7 @@ export namespace kinesisanalyticsv2 {
          */
         logStreamArn: pulumi.Input<string>;
     }
+
 }
 
 export namespace kms {
@@ -17136,14 +17148,14 @@ export namespace lakeformation {
         /**
          * Identifier for the Data Catalog. By default, it is the account ID of the caller.
          */
-        catalogId?: string;
+        catalogId: string;
     }
 
     export interface GetPermissionsDatabase {
         /**
          * Identifier for the Data Catalog. By default, it is the account ID of the caller.
          */
-        catalogId?: string;
+        catalogId: string;
         /**
          * Name of the table resource.
          */
@@ -17154,7 +17166,7 @@ export namespace lakeformation {
         /**
          * Identifier for the Data Catalog. By default, it is the account ID of the caller.
          */
-        catalogId?: string;
+        catalogId: string;
         /**
          * Name of the database for the table with columns resource. Unique to the Data Catalog.
          */
@@ -17162,7 +17174,7 @@ export namespace lakeformation {
         /**
          * Name of the table resource.
          */
-        name?: string;
+        name: string;
         /**
          * Whether to use a wildcard representing every table under a database. At least one of `name` or `wildcard` is required. Defaults to `false`.
          */
@@ -17173,7 +17185,7 @@ export namespace lakeformation {
         /**
          * Identifier for the Data Catalog. By default, it is the account ID of the caller.
          */
-        catalogId?: string;
+        catalogId: string;
         /**
          * Set of column names for the table. At least one of `columnNames` or `excludedColumnNames` is required.
          */
@@ -17254,6 +17266,7 @@ export namespace lakeformation {
         name: pulumi.Input<string>;
         wildcard?: pulumi.Input<boolean>;
     }
+
 }
 
 export namespace lambda {
@@ -19523,6 +19536,7 @@ export namespace networkfirewall {
          */
         masks?: pulumi.Input<pulumi.Input<string>[]>;
     }
+
 }
 
 export namespace opsworks {
@@ -20007,6 +20021,7 @@ export namespace organizations {
          */
         name?: pulumi.Input<string>;
     }
+
 }
 
 export namespace pinpoint {
@@ -20067,6 +20082,7 @@ export namespace pricing {
          */
         value: string;
     }
+
 }
 
 export namespace ram {
@@ -20080,6 +20096,7 @@ export namespace ram {
          */
         values: string[];
     }
+
 }
 
 export namespace rds {
@@ -20421,6 +20438,7 @@ export namespace resourcegroupstaggingapi {
          */
         values?: string[];
     }
+
 }
 
 export namespace route53 {
@@ -21110,6 +21128,7 @@ export namespace s3 {
          */
         uri?: pulumi.Input<string>;
     }
+
 }
 
 export namespace s3control {
@@ -21689,6 +21708,7 @@ export namespace sagemaker {
          */
         sagemakerImageArn?: pulumi.Input<string>;
     }
+
 }
 
 export namespace secretsmanager {
@@ -23596,6 +23616,7 @@ export namespace signer {
         type: pulumi.Input<string>;
         value: pulumi.Input<number>;
     }
+
 }
 
 export namespace ssm {
