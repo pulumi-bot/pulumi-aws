@@ -33,22 +33,108 @@ const (
 	RuntimeCustomAL2     = Runtime("provided.al2")
 )
 
+type RuntimeOutput struct{ *pulumi.OutputState }
+
+func (RuntimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Runtime)(nil)).Elem()
+}
+
+func (o RuntimeOutput) ToRuntimeOutput() RuntimeOutput {
+	return o
+}
+
+func (o RuntimeOutput) ToRuntimeOutputWithContext(ctx context.Context) RuntimeOutput {
+	return o
+}
+
+func (o RuntimeOutput) ToRuntimePtrOutput() RuntimePtrOutput {
+	return o.ToRuntimePtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeOutput) ToRuntimePtrOutputWithContext(ctx context.Context) RuntimePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v string) *string {
+		return &v
+	}).(RuntimePtrOutput)
+}
+
+type RuntimePtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimePtrOutput) ElementType() reflect.Type {
+	return runtimePtrType
+}
+
+func (o RuntimePtrOutput) ToRuntimePtrOutput() RuntimePtrOutput {
+	return o
+}
+
+func (o RuntimePtrOutput) ToRuntimePtrOutputWithContext(ctx context.Context) RuntimePtrOutput {
+	return o
+}
+
+func (o RuntimePtrOutput) Elem() RuntimeOutput {
+	return o.ApplyT(func(v *string) string {
+		var ret string
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(RuntimeOutput)
+}
+
+// RuntimeInput is an input type that accepts RuntimeArgs and RuntimeOutput values.
+// You can construct a concrete instance of `RuntimeInput` via:
+//
+//          RuntimeArgs{...}
+type RuntimeInput interface {
+	pulumi.Input
+
+	ToRuntimeOutput() RuntimeOutput
+	ToRuntimeOutputWithContext(context.Context) RuntimeOutput
+}
+
 func (Runtime) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*string)(nil)).Elem()
 }
 
-func (e Runtime) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+func (e Runtime) ToRuntimeOutput() RuntimeOutput {
+	return pulumi.ToOutput(Runtime(e)).(RuntimeOutput)
 }
 
-func (e Runtime) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+func (e Runtime) ToRuntimeOutputWithContext(ctx context.Context) RuntimeOutput {
+	return pulumi.ToOutputWithContext(ctx, Runtime(e)).(RuntimeOutput)
 }
 
-func (e Runtime) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+func (e Runtime) ToRuntimePtrOutput() RuntimePtrOutput {
+	return Runtime(e).ToRuntimePtrOutputWithContext(context.Background())
 }
 
-func (e Runtime) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+func (e Runtime) ToRuntimePtrOutputWithContext(ctx context.Context) RuntimePtrOutput {
+	return Runtime(e).ToRuntimeOutputWithContext(ctx).ToRuntimePtrOutputWithContext(ctx)
+}
+
+var runtimePtrType = reflect.TypeOf((**string)(nil)).Elem()
+
+type RuntimePtrInput interface {
+	pulumi.Input
+
+	ToRuntimePtrOutput() RuntimePtrOutput
+	ToRuntimePtrOutputWithContext(context.Context) RuntimePtrOutput
+}
+
+type runtimePtr string
+
+func RuntimePtr(v string) RuntimePtrInput {
+	return (*runtimePtr)(&v)
+}
+
+func (*runtimePtr) ElementType() reflect.Type {
+	return runtimePtrType
+}
+
+func (in *runtimePtr) ToRuntimePtrOutput() RuntimePtrOutput {
+	return pulumi.ToOutput(in).(RuntimePtrOutput)
+}
+
+func (in *runtimePtr) ToRuntimePtrOutputWithContext(ctx context.Context) RuntimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RuntimePtrOutput)
 }

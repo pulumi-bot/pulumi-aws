@@ -24,22 +24,108 @@ const (
 	CannedAclLogDeliveryWrite       = CannedAcl("log-delivery-write")
 )
 
+type CannedAclOutput struct{ *pulumi.OutputState }
+
+func (CannedAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CannedAcl)(nil)).Elem()
+}
+
+func (o CannedAclOutput) ToCannedAclOutput() CannedAclOutput {
+	return o
+}
+
+func (o CannedAclOutput) ToCannedAclOutputWithContext(ctx context.Context) CannedAclOutput {
+	return o
+}
+
+func (o CannedAclOutput) ToCannedAclPtrOutput() CannedAclPtrOutput {
+	return o.ToCannedAclPtrOutputWithContext(context.Background())
+}
+
+func (o CannedAclOutput) ToCannedAclPtrOutputWithContext(ctx context.Context) CannedAclPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v string) *string {
+		return &v
+	}).(CannedAclPtrOutput)
+}
+
+type CannedAclPtrOutput struct{ *pulumi.OutputState }
+
+func (CannedAclPtrOutput) ElementType() reflect.Type {
+	return cannedAclPtrType
+}
+
+func (o CannedAclPtrOutput) ToCannedAclPtrOutput() CannedAclPtrOutput {
+	return o
+}
+
+func (o CannedAclPtrOutput) ToCannedAclPtrOutputWithContext(ctx context.Context) CannedAclPtrOutput {
+	return o
+}
+
+func (o CannedAclPtrOutput) Elem() CannedAclOutput {
+	return o.ApplyT(func(v *string) string {
+		var ret string
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(CannedAclOutput)
+}
+
+// CannedAclInput is an input type that accepts CannedAclArgs and CannedAclOutput values.
+// You can construct a concrete instance of `CannedAclInput` via:
+//
+//          CannedAclArgs{...}
+type CannedAclInput interface {
+	pulumi.Input
+
+	ToCannedAclOutput() CannedAclOutput
+	ToCannedAclOutputWithContext(context.Context) CannedAclOutput
+}
+
 func (CannedAcl) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*string)(nil)).Elem()
 }
 
-func (e CannedAcl) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+func (e CannedAcl) ToCannedAclOutput() CannedAclOutput {
+	return pulumi.ToOutput(CannedAcl(e)).(CannedAclOutput)
 }
 
-func (e CannedAcl) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+func (e CannedAcl) ToCannedAclOutputWithContext(ctx context.Context) CannedAclOutput {
+	return pulumi.ToOutputWithContext(ctx, CannedAcl(e)).(CannedAclOutput)
 }
 
-func (e CannedAcl) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+func (e CannedAcl) ToCannedAclPtrOutput() CannedAclPtrOutput {
+	return CannedAcl(e).ToCannedAclPtrOutputWithContext(context.Background())
 }
 
-func (e CannedAcl) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+func (e CannedAcl) ToCannedAclPtrOutputWithContext(ctx context.Context) CannedAclPtrOutput {
+	return CannedAcl(e).ToCannedAclOutputWithContext(ctx).ToCannedAclPtrOutputWithContext(ctx)
+}
+
+var cannedAclPtrType = reflect.TypeOf((**string)(nil)).Elem()
+
+type CannedAclPtrInput interface {
+	pulumi.Input
+
+	ToCannedAclPtrOutput() CannedAclPtrOutput
+	ToCannedAclPtrOutputWithContext(context.Context) CannedAclPtrOutput
+}
+
+type cannedAclPtr string
+
+func CannedAclPtr(v string) CannedAclPtrInput {
+	return (*cannedAclPtr)(&v)
+}
+
+func (*cannedAclPtr) ElementType() reflect.Type {
+	return cannedAclPtrType
+}
+
+func (in *cannedAclPtr) ToCannedAclPtrOutput() CannedAclPtrOutput {
+	return pulumi.ToOutput(in).(CannedAclPtrOutput)
+}
+
+func (in *cannedAclPtr) ToCannedAclPtrOutputWithContext(ctx context.Context) CannedAclPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CannedAclPtrOutput)
 }

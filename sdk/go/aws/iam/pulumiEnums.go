@@ -291,22 +291,108 @@ const (
 	ManagedPolicyViewOnlyAccess                                        = ManagedPolicy("arn:aws:iam::aws:policy/job-function/ViewOnlyAccess")
 )
 
+type ManagedPolicyOutput struct{ *pulumi.OutputState }
+
+func (ManagedPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedPolicy)(nil)).Elem()
+}
+
+func (o ManagedPolicyOutput) ToManagedPolicyOutput() ManagedPolicyOutput {
+	return o
+}
+
+func (o ManagedPolicyOutput) ToManagedPolicyOutputWithContext(ctx context.Context) ManagedPolicyOutput {
+	return o
+}
+
+func (o ManagedPolicyOutput) ToManagedPolicyPtrOutput() ManagedPolicyPtrOutput {
+	return o.ToManagedPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedPolicyOutput) ToManagedPolicyPtrOutputWithContext(ctx context.Context) ManagedPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v string) *string {
+		return &v
+	}).(ManagedPolicyPtrOutput)
+}
+
+type ManagedPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedPolicyPtrOutput) ElementType() reflect.Type {
+	return managedPolicyPtrType
+}
+
+func (o ManagedPolicyPtrOutput) ToManagedPolicyPtrOutput() ManagedPolicyPtrOutput {
+	return o
+}
+
+func (o ManagedPolicyPtrOutput) ToManagedPolicyPtrOutputWithContext(ctx context.Context) ManagedPolicyPtrOutput {
+	return o
+}
+
+func (o ManagedPolicyPtrOutput) Elem() ManagedPolicyOutput {
+	return o.ApplyT(func(v *string) string {
+		var ret string
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ManagedPolicyOutput)
+}
+
+// ManagedPolicyInput is an input type that accepts ManagedPolicyArgs and ManagedPolicyOutput values.
+// You can construct a concrete instance of `ManagedPolicyInput` via:
+//
+//          ManagedPolicyArgs{...}
+type ManagedPolicyInput interface {
+	pulumi.Input
+
+	ToManagedPolicyOutput() ManagedPolicyOutput
+	ToManagedPolicyOutputWithContext(context.Context) ManagedPolicyOutput
+}
+
 func (ManagedPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*string)(nil)).Elem()
 }
 
-func (e ManagedPolicy) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+func (e ManagedPolicy) ToManagedPolicyOutput() ManagedPolicyOutput {
+	return pulumi.ToOutput(ManagedPolicy(e)).(ManagedPolicyOutput)
 }
 
-func (e ManagedPolicy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+func (e ManagedPolicy) ToManagedPolicyOutputWithContext(ctx context.Context) ManagedPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, ManagedPolicy(e)).(ManagedPolicyOutput)
 }
 
-func (e ManagedPolicy) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+func (e ManagedPolicy) ToManagedPolicyPtrOutput() ManagedPolicyPtrOutput {
+	return ManagedPolicy(e).ToManagedPolicyPtrOutputWithContext(context.Background())
 }
 
-func (e ManagedPolicy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+func (e ManagedPolicy) ToManagedPolicyPtrOutputWithContext(ctx context.Context) ManagedPolicyPtrOutput {
+	return ManagedPolicy(e).ToManagedPolicyOutputWithContext(ctx).ToManagedPolicyPtrOutputWithContext(ctx)
+}
+
+var managedPolicyPtrType = reflect.TypeOf((**string)(nil)).Elem()
+
+type ManagedPolicyPtrInput interface {
+	pulumi.Input
+
+	ToManagedPolicyPtrOutput() ManagedPolicyPtrOutput
+	ToManagedPolicyPtrOutputWithContext(context.Context) ManagedPolicyPtrOutput
+}
+
+type managedPolicyPtr string
+
+func ManagedPolicyPtr(v string) ManagedPolicyPtrInput {
+	return (*managedPolicyPtr)(&v)
+}
+
+func (*managedPolicyPtr) ElementType() reflect.Type {
+	return managedPolicyPtrType
+}
+
+func (in *managedPolicyPtr) ToManagedPolicyPtrOutput() ManagedPolicyPtrOutput {
+	return pulumi.ToOutput(in).(ManagedPolicyPtrOutput)
+}
+
+func (in *managedPolicyPtr) ToManagedPolicyPtrOutputWithContext(ctx context.Context) ManagedPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ManagedPolicyPtrOutput)
 }
