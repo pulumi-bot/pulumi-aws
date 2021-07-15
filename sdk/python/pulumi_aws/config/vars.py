@@ -74,7 +74,7 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('profile') or _utilities.get_env('AWS_PROFILE')
 
     @property
-    def region(self) -> str:
+    def region(self) -> Optional[str]:
         """
         The region where AWS operations will take place. Examples are us-east-1, us-west-2, etc.
         """
@@ -104,7 +104,7 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('sharedCredentialsFile')
 
     @property
-    def skip_credentials_validation(self) -> Optional[str]:
+    def skip_credentials_validation(self) -> str:
         """
         Skip the credentials validation via STS API. Used for AWS API implementations that do not have STS
         available/implemented.
@@ -112,18 +112,18 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('skipCredentialsValidation') or True
 
     @property
-    def skip_get_ec2_platforms(self) -> Optional[str]:
+    def skip_get_ec2_platforms(self) -> str:
         """
         Skip getting the supported EC2 platforms. Used by users that don't have ec2:DescribeAccountAttributes permissions.
         """
         return __config__.get('skipGetEc2Platforms') or True
 
     @property
-    def skip_metadata_api_check(self) -> Optional[str]:
+    def skip_metadata_api_check(self) -> str:
         return __config__.get('skipMetadataApiCheck') or True
 
     @property
-    def skip_region_validation(self) -> Optional[str]:
+    def skip_region_validation(self) -> str:
         """
         Skip static validation of region name. Used by users of alternative AWS-like APIs or users w/ access to regions that are
         not public (yet).
