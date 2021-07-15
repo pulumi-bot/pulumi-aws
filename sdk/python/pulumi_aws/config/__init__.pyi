@@ -47,7 +47,7 @@ profile: Optional[str]
 The profile for API operations. If not set, the default profile created with `aws configure` will be used.
 """
 
-region: str
+region: Optional[str]
 """
 The region where AWS operations will take place. Examples are us-east-1, us-west-2, etc.
 """
@@ -69,20 +69,20 @@ sharedCredentialsFile: Optional[str]
 The path to the shared credentials file. If not set this defaults to ~/.aws/credentials.
 """
 
-skipCredentialsValidation: Optional[str]
+skipCredentialsValidation: str
 """
 Skip the credentials validation via STS API. Used for AWS API implementations that do not have STS
 available/implemented.
 """
 
-skipGetEc2Platforms: Optional[str]
+skipGetEc2Platforms: str
 """
 Skip getting the supported EC2 platforms. Used by users that don't have ec2:DescribeAccountAttributes permissions.
 """
 
-skipMetadataApiCheck: Optional[str]
+skipMetadataApiCheck: str
 
-skipRegionValidation: Optional[str]
+skipRegionValidation: str
 """
 Skip static validation of region name. Used by users of alternative AWS-like APIs or users w/ access to regions that are
 not public (yet).
