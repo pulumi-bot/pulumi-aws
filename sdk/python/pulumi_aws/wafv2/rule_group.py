@@ -349,11 +349,11 @@ class RuleGroup(pulumi.CustomResource):
                         ],
                     ),
                 ),
-                visibility_config={
-                    "cloudwatchMetricsEnabled": False,
-                    "metric_name": "friendly-rule-metric-name",
-                    "sampledRequestsEnabled": False,
-                },
+                visibility_config=aws.wafv2.RuleGroupRuleVisibilityConfigArgs(
+                    cloudwatch_metrics_enabled=False,
+                    metric_name="friendly-rule-metric-name",
+                    sampled_requests_enabled=False,
+                ),
             )],
             scope="REGIONAL",
             visibility_config=aws.wafv2.RuleGroupVisibilityConfigArgs(
@@ -414,11 +414,11 @@ class RuleGroup(pulumi.CustomResource):
                         ],
                     ),
                 ),
-                visibility_config={
-                    "cloudwatchMetricsEnabled": False,
-                    "metric_name": "friendly-rule-metric-name",
-                    "sampledRequestsEnabled": False,
-                },
+                visibility_config=aws.wafv2.RuleGroupRuleVisibilityConfigArgs(
+                    cloudwatch_metrics_enabled=False,
+                    metric_name="friendly-rule-metric-name",
+                    sampled_requests_enabled=False,
+                ),
             )],
             scope="REGIONAL",
             visibility_config=aws.wafv2.RuleGroupVisibilityConfigArgs(

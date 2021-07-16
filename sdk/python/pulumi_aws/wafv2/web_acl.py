@@ -376,11 +376,11 @@ class WebAcl(pulumi.CustomResource):
                         vendor_name="AWS",
                     ),
                 ),
-                visibility_config={
-                    "cloudwatchMetricsEnabled": False,
-                    "metric_name": "friendly-rule-metric-name",
-                    "sampledRequestsEnabled": False,
-                },
+                visibility_config=aws.wafv2.WebAclRuleVisibilityConfigArgs(
+                    cloudwatch_metrics_enabled=False,
+                    metric_name="friendly-rule-metric-name",
+                    sampled_requests_enabled=False,
+                ),
             )],
             scope="REGIONAL",
             tags={
@@ -424,11 +424,11 @@ class WebAcl(pulumi.CustomResource):
                         ),
                     ),
                 ),
-                visibility_config={
-                    "cloudwatchMetricsEnabled": False,
-                    "metric_name": "friendly-rule-metric-name",
-                    "sampledRequestsEnabled": False,
-                },
+                visibility_config=aws.wafv2.WebAclRuleVisibilityConfigArgs(
+                    cloudwatch_metrics_enabled=False,
+                    metric_name="friendly-rule-metric-name",
+                    sampled_requests_enabled=False,
+                ),
             )],
             scope="REGIONAL",
             tags={
@@ -462,11 +462,11 @@ class WebAcl(pulumi.CustomResource):
                             country_codes=["NL"],
                         ),
                     ),
-                    visibility_config={
-                        "cloudwatchMetricsEnabled": False,
-                        "metric_name": "friendly-rule-metric-name",
-                        "sampledRequestsEnabled": False,
-                    },
+                    visibility_config=aws.wafv2.RuleGroupRuleVisibilityConfigArgs(
+                        cloudwatch_metrics_enabled=False,
+                        metric_name="friendly-rule-metric-name",
+                        sampled_requests_enabled=False,
+                    ),
                 ),
                 aws.wafv2.RuleGroupRuleArgs(
                     name="rule-to-exclude-a",
@@ -479,11 +479,11 @@ class WebAcl(pulumi.CustomResource):
                             country_codes=["US"],
                         ),
                     ),
-                    visibility_config={
-                        "cloudwatchMetricsEnabled": False,
-                        "metric_name": "friendly-rule-metric-name",
-                        "sampledRequestsEnabled": False,
-                    },
+                    visibility_config=aws.wafv2.RuleGroupRuleVisibilityConfigArgs(
+                        cloudwatch_metrics_enabled=False,
+                        metric_name="friendly-rule-metric-name",
+                        sampled_requests_enabled=False,
+                    ),
                 ),
                 aws.wafv2.RuleGroupRuleArgs(
                     name="rule-to-exclude-b",
@@ -496,11 +496,11 @@ class WebAcl(pulumi.CustomResource):
                             country_codes=["GB"],
                         ),
                     ),
-                    visibility_config={
-                        "cloudwatchMetricsEnabled": False,
-                        "metric_name": "friendly-rule-metric-name",
-                        "sampledRequestsEnabled": False,
-                    },
+                    visibility_config=aws.wafv2.RuleGroupRuleVisibilityConfigArgs(
+                        cloudwatch_metrics_enabled=False,
+                        metric_name="friendly-rule-metric-name",
+                        sampled_requests_enabled=False,
+                    ),
                 ),
             ],
             visibility_config=aws.wafv2.RuleGroupVisibilityConfigArgs(
@@ -532,11 +532,11 @@ class WebAcl(pulumi.CustomResource):
                         ],
                     ),
                 ),
-                visibility_config={
-                    "cloudwatchMetricsEnabled": False,
-                    "metric_name": "friendly-rule-metric-name",
-                    "sampledRequestsEnabled": False,
-                },
+                visibility_config=aws.wafv2.WebAclRuleVisibilityConfigArgs(
+                    cloudwatch_metrics_enabled=False,
+                    metric_name="friendly-rule-metric-name",
+                    sampled_requests_enabled=False,
+                ),
             )],
             tags={
                 "Tag1": "Value1",
@@ -611,11 +611,11 @@ class WebAcl(pulumi.CustomResource):
                         vendor_name="AWS",
                     ),
                 ),
-                visibility_config={
-                    "cloudwatchMetricsEnabled": False,
-                    "metric_name": "friendly-rule-metric-name",
-                    "sampledRequestsEnabled": False,
-                },
+                visibility_config=aws.wafv2.WebAclRuleVisibilityConfigArgs(
+                    cloudwatch_metrics_enabled=False,
+                    metric_name="friendly-rule-metric-name",
+                    sampled_requests_enabled=False,
+                ),
             )],
             scope="REGIONAL",
             tags={
@@ -659,11 +659,11 @@ class WebAcl(pulumi.CustomResource):
                         ),
                     ),
                 ),
-                visibility_config={
-                    "cloudwatchMetricsEnabled": False,
-                    "metric_name": "friendly-rule-metric-name",
-                    "sampledRequestsEnabled": False,
-                },
+                visibility_config=aws.wafv2.WebAclRuleVisibilityConfigArgs(
+                    cloudwatch_metrics_enabled=False,
+                    metric_name="friendly-rule-metric-name",
+                    sampled_requests_enabled=False,
+                ),
             )],
             scope="REGIONAL",
             tags={
@@ -697,11 +697,11 @@ class WebAcl(pulumi.CustomResource):
                             country_codes=["NL"],
                         ),
                     ),
-                    visibility_config={
-                        "cloudwatchMetricsEnabled": False,
-                        "metric_name": "friendly-rule-metric-name",
-                        "sampledRequestsEnabled": False,
-                    },
+                    visibility_config=aws.wafv2.RuleGroupRuleVisibilityConfigArgs(
+                        cloudwatch_metrics_enabled=False,
+                        metric_name="friendly-rule-metric-name",
+                        sampled_requests_enabled=False,
+                    ),
                 ),
                 aws.wafv2.RuleGroupRuleArgs(
                     name="rule-to-exclude-a",
@@ -714,11 +714,11 @@ class WebAcl(pulumi.CustomResource):
                             country_codes=["US"],
                         ),
                     ),
-                    visibility_config={
-                        "cloudwatchMetricsEnabled": False,
-                        "metric_name": "friendly-rule-metric-name",
-                        "sampledRequestsEnabled": False,
-                    },
+                    visibility_config=aws.wafv2.RuleGroupRuleVisibilityConfigArgs(
+                        cloudwatch_metrics_enabled=False,
+                        metric_name="friendly-rule-metric-name",
+                        sampled_requests_enabled=False,
+                    ),
                 ),
                 aws.wafv2.RuleGroupRuleArgs(
                     name="rule-to-exclude-b",
@@ -731,11 +731,11 @@ class WebAcl(pulumi.CustomResource):
                             country_codes=["GB"],
                         ),
                     ),
-                    visibility_config={
-                        "cloudwatchMetricsEnabled": False,
-                        "metric_name": "friendly-rule-metric-name",
-                        "sampledRequestsEnabled": False,
-                    },
+                    visibility_config=aws.wafv2.RuleGroupRuleVisibilityConfigArgs(
+                        cloudwatch_metrics_enabled=False,
+                        metric_name="friendly-rule-metric-name",
+                        sampled_requests_enabled=False,
+                    ),
                 ),
             ],
             visibility_config=aws.wafv2.RuleGroupVisibilityConfigArgs(
@@ -767,11 +767,11 @@ class WebAcl(pulumi.CustomResource):
                         ],
                     ),
                 ),
-                visibility_config={
-                    "cloudwatchMetricsEnabled": False,
-                    "metric_name": "friendly-rule-metric-name",
-                    "sampledRequestsEnabled": False,
-                },
+                visibility_config=aws.wafv2.WebAclRuleVisibilityConfigArgs(
+                    cloudwatch_metrics_enabled=False,
+                    metric_name="friendly-rule-metric-name",
+                    sampled_requests_enabled=False,
+                ),
             )],
             tags={
                 "Tag1": "Value1",
